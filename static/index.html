@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CT30 Advisor</title>
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Stili LESS (Configurazione professionale) -->
+    <link rel="stylesheet/less" href="less/style.less" />
+    <link rel="stylesheet/less" href="less/tooltip.less" />
+    <link rel="stylesheet/less" href="less/uadialog.less" />
+
+    <script src="less/less.js"></script>
+
+    <script type="module" src="js/app.js"></script>
+</head>
+
+<body class="professional-layout">
+
+    <header class="app-header">
+        <div class="header-left" style="position: relative;">
+            <button id="cmd-reset" class="cmd-btn danger" data-tt="Pagina Iniziale">RESET</button>
+            <div id="reset-tooltip-box" class="context-tooltip-box"></div>
+            <div class="header-nav-group" style="margin-left: 20px; display: flex; gap: 10px;">
+                <button id="btn-wiz-prev-global" class="sec-btn" style="display: none;">Indietro</button>
+                <button id="btn-wiz-next-global" class="cmd-btn" style="display: none;">Avanti</button>
+            </div>
+        </div>
+        <div class="header-right">
+            <button id="btn-theme-toggle" class="btn-theme-toggle tt-left" data-tt="Cambia Tema">
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5" />
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                </svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="main-layout-container">
+        <nav class="side-commands" aria-label="Navigazione Principale">
+            <section class="cmd-group">
+                <h2>PRATICHE</h2>
+                <ul>
+                    <li><button id="cmd-nuova-pratica" class="cmd-btn">Nuova Pratica</button></li>
+                    <li><button id="cmd-elenco-pratiche" class="cmd-btn">Elenco Pratiche</button></li>
+                </ul>
+            </section>
+
+            <section class="cmd-group">
+                <h2>NORMATIVA</h2>
+                <ul>
+                    <li><button id="cmd-view-rules" class="cmd-btn">Regole Base</button></li>
+                    <li><button id="cmd-view-catalog" class="cmd-btn">Catalogo Interventi</button></li>
+                </ul>
+            </section>
+        </nav>
+
+        <main class="work-area" id="main-work-area">
+            <section id="wizard-viewport" class="text-out" aria-live="polite">
+                <article>
+                    <div id="welcome-screen">
+                        <h1>Conto Termico 3.0</h1>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/infra/vendor/marked.min.js"></script>
+</body>
+
+</html>

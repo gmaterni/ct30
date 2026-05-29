@@ -1,0 +1,28 @@
+{
+    "nome": "Test 04 - Condominio Ricarica Veicoli",
+    "descrizione": "Installazione colonnine di ricarica per parcheggio condominiale in Zona E.",
+    "soggetto": {
+        "tipo": "Condominio",
+        "denominazione": "Condominio Belvedere",
+        "codiceFiscale": "90012345678",
+        "email": "amministrazione@condominiobelvedere.it"
+    },
+    "immobile": {
+        "indirizzo": "Piazza della Libertà 1, Torino (TO)",
+        "zonaClimatica": "Zona E",
+        "destinazione": "Residenziale",
+        "tipo_edificio": "Condominio",
+        "categoriaCatastale": "A/2",
+        "classeEnergeticaAnte": "E"
+    },
+    "richiestaPreliminareInviata": false,
+    "selectedInterventi": ["II.G"],
+    "interventiData": {
+        "II.G": {
+            "costo_colonnina": 15000,
+            "numero_punti_ricarica": 6,
+            "potenza_ricarica_kw": 22.0,
+            "tipo_ricarica": "trifase"
+        }
+    }
+}

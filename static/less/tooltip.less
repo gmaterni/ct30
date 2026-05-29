@@ -1,0 +1,88 @@
+/**
+ * tooltip.less - Stili Material Design per i tooltip.
+ *
+ * @format
+ */
+
+@import "modules/variables.less";
+
+/* ========= VARIABILI LESS ========= */
+@tt-bg: rgba(33, 33, 33, 0.9);
+@tt-text: #ffffff;
+@tt-font: 12px @fsans;
+@tt-radius: 4px;
+@tt-shadow: 0 2px 4px rgba(0,0,0,0.2);
+@tt-transition: 0.2s opacity;
+
+/* ========= BASE TOOLTIP ========= */
+.tt-top,
+.tt-bottom,
+.tt-left,
+.tt-right {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: @tt-transition;
+    content: attr(data-tt);
+    background: @tt-bg;
+    color: @tt-text;
+    font: @tt-font;
+    padding: 6px 10px;
+    border-radius: @tt-radius;
+    box-shadow: @tt-shadow;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.dark-theme .tt-top,
+.dark-theme .tt-bottom,
+.dark-theme .tt-left,
+.dark-theme .tt-right {
+    &::before {
+        background: rgba(255, 255, 255, 0.9);
+        color: #000;
+    }
+}
+
+/* ========= POSIZIONAMENTI ========= */
+.tt-top {
+  &::before {
+    bottom: ~"calc(100% + 8px)";
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.tt-bottom {
+  &::before {
+    top: ~"calc(100% + 8px)";
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.tt-left {
+  &::before {
+    right: ~"calc(100% + 8px)";
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.tt-right {
+  &::before {
+    left: ~"calc(100% + 8px)";
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

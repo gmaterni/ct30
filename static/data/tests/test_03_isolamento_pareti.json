@@ -1,0 +1,27 @@
+{
+    "nome": "Test 03 - Privato Isolamento Pareti",
+    "descrizione": "Cappotto termico per abitazione singola in Zona F.",
+    "soggetto": {
+        "tipo": "Privato residenziale",
+        "denominazione": "Luigi Bianchi",
+        "codiceFiscale": "BNCLGU75M15L219Z",
+        "email": "luigi.bianchi@webmail.com"
+    },
+    "immobile": {
+        "indirizzo": "Località Montagna 5, Belluno (BL)",
+        "zonaClimatica": "Zona F",
+        "destinazione": "Residenziale",
+        "tipo_edificio": "Edificio Singolo",
+        "categoriaCatastale": "A/3",
+        "classeEnergeticaAnte": "G"
+    },
+    "richiestaPreliminareInviata": false,
+    "selectedInterventi": ["II.A"],
+    "interventiData": {
+        "II.A": {
+            "superficie_isolata_mq": 220,
+            "costo_isolamento": 32000,
+            "tipo_superficie_opaca": "pareti verticali"
+        }
+    }
+}

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test MODIFICA #1 - Esclusione PDC Gas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #2c3e50; margin-top: 30px; }
+        .test-case {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #3498db;
+        }
+        .test-case.BLOCCATO { border-left-color: #e74c3c; }
+        .test-case.OK { border-left-color: #27ae60; }
+        .test-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .test-id { font-weight: bold; color: #7f8c8d; }
+        .test-result {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .OK { background: #27ae60; color: white; }
+        .BLOCCATO { background: #e74c3c; color: white; }
+        .PENDING { background: #f39c12; color: white; }
+        .test-input { background: #ecf0f1; padding: 10px; border-radius: 4px; margin: 10px 0; font-size: 0.9em; }
+        .test-expected { background: #f8f9fa; padding: 10px; border-radius: 4px; margin: 10px 0; }
+        .error-message { color: #e74c3c; font-weight: bold; margin-top: 10px; }
+        .success-message { color: #27ae60; font-weight: bold; margin-top: 10px; }
+        .summary {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .summary-item {
+            display: inline-block;
+            margin-right: 30px;
+            padding: 10px 20px;
+            background: #ecf0f1;
+            border-radius: 4px;
+        }
+        .summary-item .count { font-size: 1.5em; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test MODIFICA #1: Esclusione PDC Gas per Imprese/ETS</h1>
+    <p><strong>Riferimento:</strong> Art. 25, comma 2 - D.M. 7 agosto 2025</p>
+    <p><strong>Descrizione:</strong> Validazione che PDC a gas/ibride siano escluse per Imprese ed ETS economici</p>
+    
+    <div id="test-results"></div>
+
+    <script type="module">
+        import { RulesEngine } from './js/core/rules_engine.js';
+        
+        // Test cases from test_modifica_01.json
+        const testCases = [
+            {
+                id: "TEST-01-A",
+                nome: "Privato + PDC aria/acqua (elettrica) → AMMESSO",
+                input: {
+                    subjectType: "Privato residenziale",
+                    category: "A/2",
+                    buildingStatus: "esistente",
+                    richiestaPreliminareInviata: false,
+                    selectedInterventi: ["III.A"],
+                    interventiData: {
+                        "III.A": {
+                            tipologia_pdc: "aria/acqua",
+                            potenza_pdc_kw: 12,
+                            scop: 4.1,
+                            eta_s: 155
+                        }
+                    }
+                },
+                atteso: { success: true, errors: [] }
+            },
+            {
+                id: "TEST-01-B",
+                nome: "Impresa + PDC aria/acqua (elettrica) → AMMESSO",
+                input: {
+                    subjectType: "Impresa",
+                    category: "D/7",
+                    buildingStatus: "esistente",
+                    richiestaPreliminareInviata: true,
+                    dataRichiestaPreliminare: "2026-01-15",
+                    dataPrimoImpegno: "2026-02-01",
+                    selectedInterventi: ["III.A"],
+                    interventiData: {
+                        "III.A": {
+                            tipologia_pdc: "aria/acqua",
+                            potenza_pdc_kw: 100,
+                            scop: 5.2,
+                            eta_s: 190
+                        }
+                    }
+                },
+                atteso: { success: true, errors: [] }
+            },
+            {
+                id: "TEST-01-D",
+                nome: "Impresa + III.B (Ibrido gas+PDC) → BLOCCATO",
+                input: {
+                    subjectType: "Impresa",
+                    category: "D/7",
+                    buildingStatus: "esistente",
+                    richiestaPreliminareInviata: true,
+                    dataRichiestaPreliminare: "2026-01-15",
+                    dataPrimoImpegno: "2026-02-01",
+                    selectedInterventi: ["III.B"],
+                    interventiData: {
+                        "III.B": {
+                            potenza_pdc_kw: 50,
+                            scop: 4.5
+                        }
+                    }
+                },
+                atteso: { 
+                    success: false,
+                    errors: ["ESCLUSIONE NORMATIVA (Art. 25, comma 2): Per Impresa, le pompe di calore a gas o ibride (III.B) non sono ammissibili. Solo PDC **elettriche pure** sono consentite."]
+                }
+            },
+            {
+                id: "TEST-01-G",
+                nome: "ETS economico + PDC non elettrica → BLOCCATO",
+                input: {
+                    subjectType: "ETS economico",
+                    category: "C/1",
+                    buildingStatus: "esistente",
+                    richiestaPreliminareInviata: true,
+                    dataRichiestaPreliminare: "2026-01-15",
+                    dataPrimoImpegno: "2026-02-01",
+                    selectedInterventi: ["III.A"],
+                    interventiData: {
+                        "III.A": {
+                            tipologia_pdc: "aria/aria",
+                            pdc_elettrica: "no",
+                            potenza_pdc_kw: 30
+                        }
+                    }
+                },
+                atteso: { 
+                    success: false,
+                    errors: ["ESCLUSIONE NORMATIVA (Art. 25, comma 2): Per ETS economico, le pompe di calore a gas o ibride (III.A) non sono ammissibili. Solo PDC **elettriche pure** sono consentite."]
+                }
+            },
+            {
+                id: "TEST-01-H",
+                nome: "Impresa + PDC aria/acqua + III.B → BLOCCATO",
+                input: {
+                    subjectType: "Impresa",
+                    category: "D/7",
+                    buildingStatus: "esistente",
+                    richiestaPreliminareInviata: true,
+                    dataRichiestaPreliminare: "2026-01-15",
+                    dataPrimoImpegno: "2026-02-01",
+                    selectedInterventi: ["III.A", "III.B"],
+                    interventiData: {
+                        "III.A": {
+                            tipologia_pdc: "aria/acqua",
+                            pdc_elettrica: "sì",
+                            potenza_pdc_kw: 100
+                        },
+                        "III.B": {
+                            potenza_pdc_kw: 50
+                        }
+                    }
+                },
+                atteso: { 
+                    success: false,
+                    errors: ["ESCLUSIONE NORMATIVA (Art. 25, comma 2): Per Impresa, le pompe di calore a gas o ibride (III.B) non sono ammissibili. Solo PDC **elettriche pure** sono consentite."]
+                }
+            }
+        ];
+
+        // Execute tests
+        const results = [];
+        let totalTests = testCases.length;
+        let passedTests = 0;
+        let failedTests = 0;
+
+        testCases.forEach(testCase => {
+            const result = RulesEngine.validateAmmissibilita(testCase.input);
+            
+            // Check if result matches expected
+            const isSuccessMatch = result.success === testCase.atteso.success;
+            const errorsMatch = JSON.stringify(result.errors) === JSON.stringify(testCase.atteso.errors || []);
+            const passed = isSuccessMatch && errorsMatch;
+            
+            if (passed) {
+                passedTests++;
+            } else {
+                failedTests++;
+            }
+            
+            results.push({
+                ...testCase,
+                actual: result,
+                passed: passed,
+                resultClass: passed ? 'OK' : 'BLOCCATO'
+            });
+        });
+
+        // Render results
+        const resultsContainer = document.getElementById('test-results');
+        
+        results.forEach(result => {
+            const testDiv = document.createElement('div');
+            testDiv.className = `test-case ${result.resultClass}`;
+            
+            const hasPdcGasError = result.actual.errors.some(e => e.includes('ESCLUSIONE NORMATIVA'));
+            const isBlocked = !result.actual.success && hasPdcGasError;
+            
+            testDiv.innerHTML = `
+                <div class="test-header">
+                    <span class="test-id">${result.id}</span>
+                    <span class="test-result ${result.passed ? 'OK' : 'BLOCCATO'}">
+                        ${result.passed ? '✓ PASS' : '✗ FAIL'}
+                    </span>
+                </div>
+                <h3>${result.nome}</h3>
+                <div class="test-input">
+                    <strong>Input:</strong> ${result.input.subjectType} + ${result.input.selectedInterventi.join(', ')}
+                    ${result.input.interventiData['III.A']?.pdc_elettrica ? ` | PDC elettrica: ${result.input.interventiData['III.A'].pdc_elettrica}` : ''}
+                </div>
+                <div class="test-expected">
+                    <strong>Atteso:</strong> ${result.atteso.success ? 'Success' : 'Error'}<br>
+                    ${result.atteso.errors?.length ? `<strong>Errori:</strong> ${result.atteso.errors.join('<br>')}` : ''}
+                </div>
+                <div>
+                    <strong>Attuale:</strong> ${result.actual.success ? '✓ Success' : '✗ Error'}<br>
+                    ${result.actual.errors?.length ? `<div class="error-message">${result.actual.errors.join('<br>')}</div>` : '<div class="success-message">Nessun errore</div>'}
+                </div>
+            `;
+            
+            resultsContainer.appendChild(testDiv);
+        });
+
+        // Add summary
+        const summaryDiv = document.createElement('div');
+        summaryDiv.className = 'summary';
+        summaryDiv.innerHTML = `
+            <h2>📊 Riepilogo Test</h2>
+            <div class="summary-item">
+                <span>Totale Test:</span>
+                <span class="count">${totalTests}</span>
+            </div>
+            <div class="summary-item" style="background: #27ae60; color: white;">
+                <span>Passati:</span>
+                <span class="count">${passedTests}</span>
+            </div>
+            <div class="summary-item" style="background: #e74c3c; color: white;">
+                <span>Falliti:</span>
+                <span class="count">${failedTests}</span>
+            </div>
+            <div class="summary-item">
+                <span>Percentuale Successo:</span>
+                <span class="count">${((passedTests/totalTests)*100).toFixed(1)}%</span>
+            </div>
+        `;
+        resultsContainer.appendChild(summaryDiv);
+
+        // Log to console
+        console.log('=== Test MODIFICA #1 Results ===');
+        console.log(`Total: ${totalTests}, Passed: ${passedTests}, Failed: ${failedTests}`);
+        results.forEach(r => {
+            console.log(`${r.id}: ${r.passed ? 'PASS' : 'FAIL'}`);
+            if (!r.passed) {
+                console.log('  Expected:', r.atteso);
+                console.log('  Actual:', r.actual);
+            }
+        });
+    </script>
+</body>
+</html>

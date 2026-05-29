@@ -1,0 +1,242 @@
+@import "modules/variables.less";
+@import "modules/layout_base.less";
+@import "modules/components.less";
+
+// ============================================================================
+// PROFESSIONAL LAYOUT
+// ============================================================================
+
+body.professional-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    font-family: @fsans;
+    transition: background 0.3s, color 0.3s;
+    margin: 0;
+    padding: 0;
+}
+
+// Integrazione Tematica Globale
+.light-theme.professional-layout {
+    background: @light-bg;
+    color: @light-text-primary;
+    h1, h2, h3, h4, h5, h6 { color: @light-primary; }
+    p { color: @light-text-primary; }
+}
+
+.dark-theme.professional-layout {
+    background: @dark-bg;
+    color: @dark-text-primary;
+    h1, h2, h3, h4, h5, h6 { color: @dark-primary; }
+    p { color: @dark-text-primary; }
+}
+
+.app-header {
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    z-index: 1000;
+    flex-shrink: 0;
+    transition: all 0.3s;
+    background: @light-surface;
+    color: @light-text-primary;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    .header-left {
+        display: flex;
+        align-items: center;
+
+        .header-nav-group {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            border-left: 1px solid rgba(0,0,0,0.1);
+            padding-left: 20px;
+            margin-left: 20px;
+        }
+    }
+
+    .header-right {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+
+        button {
+            background: transparent;
+            border: 1px solid @light-border-shadow;
+            color: @light-text-secondary;
+            padding: 6px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+
+            svg { width: 22px; height: 22px; display: block; stroke: currentColor; }
+            &:hover { background: rgba(0, 0, 0, 0.04); border-color: @light-primary; color: @light-primary; }
+        }
+    }
+}
+
+.dark-theme .app-header {
+    background: @dark-surface;
+    color: @dark-text-primary;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+
+    .header-left .header-nav-group {
+        border-left-color: rgba(255,255,255,0.1);
+    }
+
+    .header-right button {
+        border-color: @dark-border-shadow;
+        color: @dark-text-secondary;
+        &:hover { background: rgba(255, 255, 255, 0.08); color: @dark-primary; border-color: @dark-primary; }
+    }
+}
+
+.main-layout-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+// Tooltip Contestuale (es. per RESET)
+.context-tooltip-box {
+    position: absolute;
+    top: ~"calc(100% + 8px)";
+    left: 0;
+    background: @light-surface;
+    color: @light-text-primary;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: 1px solid @light-primary;
+    display: none;
+    z-index: 3000;
+    white-space: nowrap;
+    pointer-events: none; // Non intercettare il mouse
+}
+
+.dark-theme .context-tooltip-box {
+    background: @dark-surface;
+    color: @dark-text-primary;
+    border-color: @dark-primary;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+// Potenziamento Pulsanti Navigation (Avanti / Indietro)
+.cmd-btn, .sec-btn {
+    transition: all 0.2s;
+    
+    &:hover {
+        text-decoration: underline;
+        filter: brightness(1.1);
+        transform: translateY(-1px);
+    }
+}
+
+.light-theme {
+    .cmd-btn:hover { background-color: darken(@light-primary, 5%) !important; }
+    .sec-btn:hover { background-color: darken(@light-btn-bg, 10%) !important; }
+}
+
+.dark-theme {
+    .cmd-btn:hover { background-color: lighten(@dark-primary, 10%) !important; }
+    .sec-btn:hover { background-color: lighten(@dark-btn-bg, 15%) !important; }
+}
+
+.side-commands {
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+    flex-shrink: 0;
+    transition: all 0.3s;
+    background: @light-surface;
+    border-right: 1px solid @light-border-shadow;
+
+    .cmd-group {
+        margin-bottom: 32px;
+        padding: 0 16px;
+        h3 {
+            font-size: 12px;
+            color: @light-text-secondary;
+            margin-bottom: 12px;
+            padding-left: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+        &.bottom { margin-top: auto; margin-bottom: 0; }
+    }
+
+    .cmd-btn {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 10px 16px;
+        margin-bottom: 8px;
+        background: transparent;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        color: @light-text-primary;
+        box-shadow: none;
+        transition: all 0.2s;
+        text-transform: none;
+        font-weight: 500;
+
+        &:hover { background: rgba(0, 0, 0, 0.04); color: @light-primary; }
+        &.active { background: rgba(0, 121, 107, 0.08); color: @light-primary; }
+        &.danger { color: @light-secondary; box-shadow: none; &:hover { background: rgba(211, 47, 47, 0.04); color: @light-secondary !important; } }
+    }
+}
+
+.dark-theme .side-commands {
+    background: @dark-surface;
+    border-right-color: @dark-border-shadow;
+
+    .cmd-group h3 { color: @dark-text-secondary; }
+
+    .cmd-btn {
+        color: @dark-text-primary;
+        &:hover { background: rgba(255, 255, 255, 0.08); color: @dark-primary; }
+        &.active { background: rgba(128, 203, 196, 0.08); color: @dark-primary; }
+        &.danger { color: @dark-secondary; &:hover { background: rgba(239, 154, 154, 0.04); } }
+    }
+}
+
+.work-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 0;
+    overflow-y: auto;
+    transition: background 0.3s;
+    background: @light-bg;
+    color: @light-text-primary;
+
+    #wizard-viewport {
+        align-self: flex-start;
+        flex: 1;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 32px;
+        width: 100%;
+    }
+}
+
+.dark-theme .work-area {
+    background: @dark-bg;
+    color: @dark-text-primary;
+}

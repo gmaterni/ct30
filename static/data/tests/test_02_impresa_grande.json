@@ -1,0 +1,38 @@
+{
+    "nome": "Test 02 - Impresa Grande PdC + FV",
+    "descrizione": "Riqualificazione industriale con PdC 100kW e Fotovoltaico 50kW in Zona C.",
+    "soggetto": {
+        "tipo": "Impresa",
+        "denominazione": "TecnoIndustria S.p.A.",
+        "codiceFiscale": "01234567890",
+        "partitaIva": "01234567890",
+        "email": "info@tecnoindustria.it"
+    },
+    "immobile": {
+        "indirizzo": "Via delle Industrie 50, Napoli (NA)",
+        "zonaClimatica": "Zona C",
+        "destinazione": "Terziario",
+        "tipo_edificio": "Edificio Singolo",
+        "categoriaCatastale": "D/7",
+        "classeEnergeticaAnte": "F"
+    },
+    "richiestaPreliminareInviata": true,
+    "dataRichiestaPreliminare": "2026-01-15",
+    "dataPrimoImpegno": "2026-02-01",
+    "selectedInterventi": ["III.A", "II.H"],
+    "interventiData": {
+        "III.A": {
+            "potenza_pdc_kw": 100,
+            "tipologia_pdc": "acqua/acqua",
+            "scop": 5.2,
+            "eta_s": 190,
+            "costo_pdc": 85000
+        },
+        "II.H": {
+            "potenza_fv_kw": 50,
+            "capacita_accumulo_kwh": 20,
+            "costo_fv": 65000,
+            "sostituzione_integrale": "sì"
+        }
+    }
+}
