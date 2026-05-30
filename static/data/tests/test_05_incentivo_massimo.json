@@ -1,0 +1,54 @@
+{
+    "nome": "Test 05 - Super Pratica (Completa)",
+    "descrizione": "Pratica con anagrafica completa, ruoli definiti, edificio e dati tecnici validi.",
+    "soggetti": {
+        "sa": { 
+            "denominazione": "Mario Rossi", 
+            "tipo": "Privato residenziale", 
+            "cf_piva": "RSSMRA80A01H501U",
+            "titolo_godimento": "Proprietà",
+            "email": "mario.rossi@email.it",
+            "telefono": "3331234567"
+        },
+        "sr": { 
+            "denominazione": "Mario Rossi", 
+            "cf_piva": "RSSMRA80A01H501U", 
+            "iban": "IT60X0542811101000000123456", 
+            "pec": "mario.rossi@pec.it", 
+            "coincide_con_sa": true 
+        },
+        "proprietario": { 
+            "denominazione": "Mario Rossi", 
+            "cf_piva": "RSSMRA80A01H501U", 
+            "coincide_con_sa": true, 
+            "atto_assenso": true 
+        },
+        "delegato": { "nome": "", "cf": "" }
+    },
+    "edificio": {
+        "indirizzo": "Via Milano 10, Milano (MI)",
+        "categoria_catastale": "A/2",
+        "zona_climatica": "Zona E",
+        "potenza_esistente_kw": 35.0,
+        "combustibile_ante": "metano"
+    },
+    "interventi": ["III.A"],
+    "valori_campi": {
+        "III.A": {
+            "marca_pdc": "BrandX",
+            "modello_pdc": "PDC-40-W",
+            "tipologia_pdc": "aria/acqua",
+            "potenza_pdc_kw": 40,
+            "potenza_elettrica_assorbita_kw": 10,
+            "cop": 4.2,
+            "scop": 4.5,
+            "eta_s": 150,
+            "servizio_pdc": "climatizzazione invernale",
+            "generatore_sostituito": "Caldaia a gas 35kW",
+            "made_in_eu": "si",
+            "scheda_tecnica_pdc": "si",
+            "costo_pdc": 25000,
+            "sostituisce_esistente": "si"
+        }
+    }
+}

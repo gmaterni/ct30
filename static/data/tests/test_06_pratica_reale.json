@@ -1,0 +1,67 @@
+{
+    "nome": "Test 06 - Pratica Reale (Incentivo Calcolato)",
+    "descrizione": "Simulazione completa di pratica reale con preventivo, ruoli, e tutti i dati tecnici.",
+    "soggetti": {
+        "sa": { 
+            "denominazione": "Mario Rossi", 
+            "tipo": "Privato residenziale", 
+            "cf_piva": "RSSMRA80A01H501U",
+            "titolo_godimento": "Proprietà",
+            "email": "mario.rossi@email.it",
+            "telefono": "3331234567"
+        },
+        "sr": { 
+            "denominazione": "Mario Rossi", 
+            "cf_piva": "RSSMRA80A01H501U", 
+            "iban": "IT60X0542811101000000123456", 
+            "pec": "mario.rossi@pec.it", 
+            "coincide_con_sa": true 
+        },
+        "proprietario": { 
+            "denominazione": "Mario Rossi", 
+            "cf_piva": "RSSMRA80A01H501U", 
+            "coincide_con_sa": true, 
+            "atto_assenso": true 
+        },
+        "delegato": { "nome": "Arch. Studio Sviluppo", "cf": "STDSVL80A01H501W" }
+    },
+    "edificio": {
+        "indirizzo": "Via Milano 10, Milano (MI)",
+        "categoria_catastale": "A/2",
+        "zona_climatica": "Zona E",
+        "potenza_esistente_kw": 35.0,
+        "combustibile_ante": "metano"
+    },
+    "interventi": ["III.A"],
+    "valori_campi": {
+        "III.A": {
+            "marca_pdc": "BrandX",
+            "modello_pdc": "PDC-40-W",
+            "tipologia_pdc": "aria/acqua",
+            "potenza_pdc_kw": 40,
+            "potenza_elettrica_assorbita_kw": 10,
+            "cop": 4.2,
+            "scop": 4.5,
+            "eta_s": 150,
+            "servizio_pdc": "climatizzazione invernale",
+            "generatore_sostituito": "Caldaia a gas 35kW",
+            "made_in_eu": "si",
+            "scheda_tecnica_pdc": "si",
+            "costo_pdc": 25000,
+            "sostituisce_esistente": "si"
+        }
+    },
+    "preventivo": {
+        "items": [
+            { "id": "forn", "codice_intervento": "III.A", "descrizione": "Fornitura pompa di calore", "tipo_costo": "fornitura", "importo": 20000, "quantita": 1, "unita": "corpo", "is_custom": false },
+            { "id": "posa", "codice_intervento": "III.A", "descrizione": "Posa e collegamenti idraulici/elettrici", "tipo_costo": "posa", "importo": 5000, "quantita": 1, "unita": "corpo", "is_custom": false },
+            { "id": "docu", "codice_intervento": "III.A", "descrizione": "Pratiche autorizzative e documentazione", "tipo_costo": "documentazione", "importo": 2000, "quantita": 1, "unita": "corpo", "is_custom": false }
+        ],
+        "totals": {
+            "totale": 27000,
+            "totale_fornitura": 20000,
+            "totale_posa": 5000,
+            "totale_documentazione": 2000
+        }
+    }
+}

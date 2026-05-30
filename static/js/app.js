@@ -164,7 +164,7 @@ const _setupBaseEventListeners = function() {
                         <tr>
                             <td>${dataStr}</td>
                             <td>${p.nome}</td>
-                            <td>${p.dati.anagrafica.denominazione}</td>
+                            <td>${p.dati.soggetti?.sa?.denominazione || p.dati.anagrafica?.denominazione || 'N/D'}</td>
                             <td>
                                 <button class="cmd-btn small btn-load" data-id="${p.id}">Carica</button>
                                 <button class="cmd-btn small btn-view" data-id="${p.id}">Visualizza</button>

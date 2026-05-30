@@ -94,6 +94,8 @@ const UaWizardManager = function(viewportId) {
             { file: "data/tests/test_02_impresa_grande.json", label: "Impresa - PdC Grande + FV" },
             { file: "data/tests/test_03_isolamento_pareti.json", label: "Privato - Isolamento Pareti" },
             { file: "data/tests/test_04_ricarica_auto.json", label: "Condominio - Ricarica Veicoli" },
+            { file: "data/tests/test_05_incentivo_massimo.json", label: "Test 05 - Super Pratica (Incentivo Massimo)" },
+            { file: "data/tests/test_06_pratica_reale.json", label: "Test 06 - Pratica Reale (Incentivo Calcolato)" },
             { file: "test/impresa_pdc_fv.json", label: "Impresa - PDC + FV (Legacy)" }
         ];
 
@@ -157,14 +159,23 @@ const UaWizardManager = function(viewportId) {
      * @param {Object} scenario 
      */
     const _loadScenarioData = (scenario) => {
-        // Reset e caricamento
+        // Mappatura scenario verso struttura relazionale (MOD-007)
         _praticaData = {
-            id: _generateTmpId(),
-            nome: scenario.nome || "Nuova Pratica Test",
-            anagrafica: scenario.soggetto || { tipo: "Privato residenziale", denominazione: "", codiceFiscale: "" },
-            immobile: scenario.immobile || { indirizzo: "", zonaClimatica: "Zona E", categoriaCatastale: "A/2", classeEnergeticaAnte: "G" },
-            // Nuova struttura Ruoli GSE (MOD-004)
-            ruoli: scenario.ruoli || {
+            pratica: {
+                id: _generateTmpId(),
+                codice_pratica: "",
+                status: "Bozza",
+                data_creazione: new Date().toISOString()
+            },
+            edificio: {
+                id: null,
+                indirizzo: scenario.edificio?.indirizzo || scenario.immobile?.indirizzo || "",
+                categoria_catastale: scenario.edificio?.categoria_catastale || scenario.immobile?.categoriaCatastale || "",
+                zona_climatica: scenario.edificio?.zona_climatica || scenario.immobile?.zonaClimatica || "Zona E",
+                potenza_esistente_kw: scenario.edificio?.potenza_esistente_kw || scenario.immobile?.potenza_esistente_kw || 0,
+                combustibile_ante: scenario.edificio?.combustibile_ante || scenario.immobile?.combustibile_ante || ""
+            },
+            soggetti: scenario.soggetti || {
                 sa: { 
                     denominazione: scenario.soggetto?.denominazione || "", 
                     tipo: scenario.soggetto?.tipo || "Privato residenziale", 
@@ -182,38 +193,31 @@ const UaWizardManager = function(viewportId) {
                     denominazione: scenario.soggetto?.denominazione || "", 
                     cf_piva: scenario.soggetto?.codiceFiscale || "", 
                     coincide_con_sa: true, 
-                    atto_assenso: false 
+                    atto_assenso: true 
                 },
                 delegato: { nome: "", cf: "" }
             },
-            richiestaPreliminareInviata: scenario.richiestaPreliminareInviata || false,
-            dataRichiestaPreliminare: scenario.dataRichiestaPreliminare || "",
-            dataPrimoImpegno: scenario.dataPrimoImpegno || "",
-            selectedInterventi: scenario.selectedInterventi || [],
-            interventiData: scenario.interventiData || {},
-            preventivo: { items: [], totals: {} },
+            interventi: scenario.interventi || scenario.selectedInterventi || [],
+            valori_campi: scenario.valori_campi || scenario.interventiData || {},
+            preventivo: scenario.preventivo || { items: [], totals: {} },
             documentiStatus: {},
             validation: null,
             postOperam: scenario.postOperam || null
         };
-
-        // Adattamento anagrafica se nel JSON è "soggetto" invece di "anagrafica"
-        if (scenario.soggetto && !_praticaData.anagrafica.tipo) {
-             _praticaData.anagrafica = { ...scenario.soggetto };
-        }
-
-        // Forza validazione ammissibilità per attivare il tasto "Avanti"
+        console.debug("DEBUG _loadScenarioData - Pratica caricata:", _praticaData);
+        console.debug("DEBUG _loadScenarioData - Preventivo:", _praticaData.preventivo);
+        
+        // Forza validazione ammissibilità (adattata al nuovo modello)
         const validationInput = {
-            subjectType: _praticaData.anagrafica.tipo,
-            category: _praticaData.immobile.categoriaCatastale,
+            subjectType: _praticaData.soggetti.sa.tipo,
+            category: _praticaData.edificio.categoria_catastale,
             buildingStatus: "esistente",
-            richiestaPreliminareInviata: _praticaData.richiestaPreliminareInviata,
-            dataRichiestaPreliminare: _praticaData.dataRichiestaPreliminare,
-            dataPrimoImpegno: _praticaData.dataPrimoImpegno
+            richiestaPreliminareInviata: scenario.richiestaPreliminareInviata || false,
+            dataRichiestaPreliminare: scenario.dataRichiestaPreliminare || "",
+            dataPrimoImpegno: scenario.dataPrimoImpegno || ""
         };
         _praticaData.validation = RulesEngine.validateAmmissibilita(validationInput);
         
-        // Ci posizioniamo allo step 0 (Dati Anagrafici) come richiesto
         _goToStep(0);
     };
     
@@ -224,34 +228,40 @@ const UaWizardManager = function(viewportId) {
     const _generateTmpId = () => `TMP_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`;
 
     let _praticaData = {
-        id: _generateTmpId(),
-        status: "Bozza", // MOD-006: Stato iniziale
-        anagrafica: { tipo: "", denominazione: "", codiceFiscale: "" },
-        immobile: { indirizzo: "", categoriaCatastale: "", zonaClimatica: "Zona E", classeEnergeticaAnte: "G" },
-        // ... (ruoli omessi per brevità, resta invariato)
-        ruoli: {
-            sa: { denominazione: "", tipo: "", cf_piva: "", titolo_godimento: "Proprietà" },
-            sr: { denominazione: "", cf_piva: "", iban: "", pec: "", coincide_con_sa: true },
-            proprietario: { denominazione: "", cf_piva: "", coincide_con_sa: true, atto_assenso: false },
-            delegato: { nome: "", cf: "" }
+        pratica: {
+            id: _generateTmpId(),
+            codice_pratica: "",
+            status: "Bozza",
+            tipo_accesso: "Diretto",
+            data_creazione: new Date().toISOString()
         },
-        richiestaPreliminareInviata: false,
-        dataRichiestaPreliminare: "",
-        dataPrimoImpegno: "",
-        selectedInterventi: [],
-        interventiData: {},
+        edificio: {
+            id: null,
+            indirizzo: "",
+            categoria_catastale: "",
+            zona_climatica: "Zona E",
+            potenza_esistente_kw: 0,
+            combustibile_ante: ""
+        },
+        soggetti: {
+            sa: { id: null, denominazione: "", tipo: "", cf_piva: "", titolo_godimento: "Proprietà" },
+            sr: { id: null, denominazione: "", cf_piva: "", iban: "", pec: "", coincide_con_sa: true },
+            proprietario: { id: null, denominazione: "", cf_piva: "", coincide_con_sa: true, atto_assenso: false },
+            delegato: { id: null, nome: "", cf: "" }
+        },
+        interventi: [], 
+        valori_campi: {}, 
         preventivo: { items: [], totals: {} },
         documentiStatus: {},
         validation: null,
         postOperam: null
     };
 
-    // Documenti base sempre richiesti
+    // Documenti base sempre richiesti (Soggetto Ammesso ed Edificio)
     const BASE_DOCUMENTS = [
-        "Documento Identità richiedente",
-        "Codice Fiscale / Tessera Sanitaria",
+        "Documento Identità richiedente (SA)",
+        "Codice Fiscale / Tessera Sanitaria (SA)",
         "Visura Catastale recente (ultimi 6 mesi)",
-        "Delega (se soggetto diverso da proprietario)",
         "Titolo di possesso (atto, contratto locazione, ecc.)"
     ];
 
@@ -271,21 +281,32 @@ const UaWizardManager = function(viewportId) {
         const allDocs = [...BASE_DOCUMENTS];
         
         // 1. Regole Ruoli (MOD-005)
-        if (_praticaData.ruoli.proprietario.coincide_con_sa === false) {
+        if (_praticaData.soggetti.proprietario.coincide_con_sa === false) {
             allDocs.push("Atto di Assenso Proprietario");
         }
-        if (_praticaData.ruoli.delegato && _praticaData.ruoli.delegato.nome && _praticaData.ruoli.delegato.nome !== "") {
+        if (_praticaData.soggetti.sr.coincide_con_sa === false) {
+            allDocs.push("Copia documento identità Soggetto Responsabile");
+            allDocs.push("IBAN (documento di conferma conto)");
+            allDocs.push("PEC del Soggetto Responsabile");
+        }
+        if (_praticaData.soggetti.delegato && _praticaData.soggetti.delegato.nome && _praticaData.soggetti.delegato.nome !== "") {
             allDocs.push("Delega alla compilazione");
         }
         
-        // 2. Regole Soggetto (Condominio)
-        if (_praticaData.anagrafica.tipo === "Condominio") {
+        // 2. Regole Tipo Accesso (MOD-005)
+        if (_praticaData.pratica.tipo_accesso === "Prenotazione") {
+            allDocs.push("Delibera di approvazione del progetto");
+            allDocs.push("Relazione tecnica illustrativa del progetto");
+        }
+
+        // 3. Regole Soggetto (Condominio)
+        if (_praticaData.soggetti.sa.tipo === "Condominio") {
             allDocs.push("Verbale Assemblea Condominiale");
             allDocs.push("Tabella Millesimale");
         }
 
         // 3. Regole Interventi Specifici
-        _praticaData.selectedInterventi.forEach(code => {
+        _praticaData.interventi.forEach(code => {
             // Aggiunta automatica documenti base per interventi specifici
             if (code === "III.A") {
                 allDocs.push("Scheda Tecnica PDC");
@@ -358,41 +379,24 @@ const UaWizardManager = function(viewportId) {
         const subjectTypes = RulesEngine.getSubjectTypes();
         const catMap = CATASTO.categorie;
         const climateZonesMap = RULES.fasce_climatiche;
-        const energyClassesMap = CLASSI_ENERGETICHE;
 
-        // Generazione opzioni select (Template Literal Strict)
+        // Generazione opzioni select
         const subjectsHtml = subjectTypes.map(t => {
-            const isSelected = t === _praticaData.anagrafica.tipo ? 'selected' : '';
-            const opt = `<option value="${t}" ${isSelected}>${t}</option>`;
-            return opt;
+            const isSelected = t === _praticaData.soggetti.sa.tipo ? 'selected' : '';
+            return `<option value="${t}" ${isSelected}>${t}</option>`;
         }).join('');
 
         const catHtml = Object.entries(catMap).map(([code, info]) => {
-            const isSelected = code === _praticaData.immobile.categoriaCatastale ? 'selected' : '';
+            const isSelected = code === _praticaData.edificio.categoria_catastale ? 'selected' : '';
             const label = `${code} ${info.ambito}`;
-            const opt = `<option value="${code}" ${isSelected}>${label}</option>`;
-            return opt;
+            return `<option value="${code}" ${isSelected}>${label}</option>`;
         }).join('');
 
         const zonesHtml = Object.entries(climateZonesMap).map(([name, info]) => {
-            const isSelected = name === _praticaData.immobile.zonaClimatica ? 'selected' : '';
+            const isSelected = name === _praticaData.edificio.zona_climatica ? 'selected' : '';
             const label = `${name} - ${info.descrizione}`;
-            const opt = `<option value="${name}" ${isSelected}>${label}</option>`;
-            return opt;
+            return `<option value="${name}" ${isSelected}>${label}</option>`;
         }).join('');
-
-        const classesHtml = Object.entries(energyClassesMap).map(([code, info]) => {
-            const isSelected = code === _praticaData.immobile.classeEnergeticaAnte ? 'selected' : '';
-            const label = `${code} - ${info.descrizione}`;
-            const opt = `<option value="${code}" ${isSelected}>${label}</option>`;
-            return opt;
-        }).join('');
-
-        const nameValue = _praticaData.anagrafica.denominazione;
-        const cfValue = _praticaData.anagrafica.codiceFiscale;
-        const addrValue = _praticaData.immobile.indirizzo;
-        const potenzaEsistenteValue = _praticaData.immobile.potenza_esistente_kw || "";
-        const combustibileAnteValue = _praticaData.immobile.combustibile_ante || "";
 
         const html = `
             <div class="wizard-step">
@@ -404,15 +408,15 @@ const UaWizardManager = function(viewportId) {
                     </div>
                     <div class="form-group">
                         <label>Nominativo/Ragione Soc.:</label>
-                        <input type="text" id="inp-nome" value="${nameValue}" placeholder="Cognome Nome o Azienda">
+                        <input type="text" id="inp-nome" value="${_praticaData.soggetti.sa.denominazione}" placeholder="Cognome Nome o Azienda">
                     </div>
                     <div class="form-group">
                         <label>Codice Fiscale / P.IVA:</label>
-                        <input type="text" id="inp-cf" value="${cfValue}" placeholder="CF o Partita IVA">
+                        <input type="text" id="inp-cf" value="${_praticaData.soggetti.sa.cf_piva}" placeholder="CF o Partita IVA">
                     </div>
                     <div class="form-group">
                         <label>Indirizzo Immobile:</label>
-                        <input type="text" id="inp-indirizzo" value="${addrValue}" placeholder="Via, Civico, Comune">
+                        <input type="text" id="inp-indirizzo" value="${_praticaData.edificio.indirizzo}" placeholder="Via, Civico, Comune">
                     </div>
                     <div class="form-group">
                         <label>Categoria Catastale:</label>
@@ -422,77 +426,90 @@ const UaWizardManager = function(viewportId) {
                         <label>Zona Climatica:</label>
                         <select id="inp-fascia">${zonesHtml}</select>
                     </div>
-                    <div class="form-group">
-                        <label>Classe Energetica (Ante):</label>
-                        <select id="inp-classe">${classesHtml}</select>
+                    <div class="form-group" id="group-tipo-accesso" style="display: none;">
+                        <label>Tipo Accesso:</label>
+                        <select id="inp-tipo-accesso">
+                            <option value="Diretto" ${_praticaData.pratica.tipo_accesso === "Diretto" ? 'selected' : ''}>Accesso Diretto</option>
+                            <option value="Prenotazione" ${_praticaData.pratica.tipo_accesso === "Prenotazione" ? 'selected' : ''}>Prenotazione (Solo PA)</option>
+                        </select>
                     </div>
-                    </div>
+                </div>
 
-                    <!-- Dati Ante Operam (MOD-003) -->
-                    <div class="ante-operam-section" style="margin-top: 20px; padding: 15px; background: rgba(76, 175, 222, 0.05); border: 1px solid #4caf50; border-radius: 4px;">
+                <!-- Dati Ante Operam -->
+                <div class="ante-operam-section" style="margin-top: 20px; padding: 15px; background: rgba(76, 175, 222, 0.05); border: 1px solid #4caf50; border-radius: 4px;">
                     <h4 style="margin-top: 0; color: #2e7d32;">Dati Impianto Esistente (Obbligatori per ammissibilità)</h4>
                     <div class="form-grid">
                         <div class="form-group">
                             <label>Potenza Generatore Esistente (kW):</label>
-                            <input type="number" id="inp-potenza-esistente" value="${potenzaEsistenteValue}" step="0.01" min="0" placeholder="0" style="width: 100%;">
-                            <p class="field-note" style="margin-top: 5px; font-size: 0.8em; color: #666;">Inserire 0 se non presente. Attenzione: per CT 3.0 è richiesto un impianto esistente.</p>
+                            <input type="number" id="inp-potenza-esistente" value="${_praticaData.edificio.potenza_esistente_kw}" step="0.01" min="0" placeholder="0" style="width: 100%;">
                         </div>
                         <div class="form-group">
                             <label>Combustibile Ante:</label>
                             <select id="inp-combustibile-ante" style="width: 100%;">
-                                <option value="" ${combustibileAnteValue === "" ? 'selected' : ''}>Non specificato</option>
-                                <option value="metano" ${combustibileAnteValue === "metano" ? 'selected' : ''}>Metano</option>
-                                <option value="gasolio" ${combustibileAnteValue === "gasolio" ? 'selected' : ''}>Gasolio</option>
-                                <option value="gpl" ${combustibileAnteValue === "gpl" ? 'selected' : ''}>GPL</option>
-                                <option value="biomassa" ${combustibileAnteValue === "biomassa" ? 'selected' : ''}>Biomassa</option>
-                                <option value="elettrico" ${combustibileAnteValue === "elettrico" ? 'selected' : ''}>Elettrico</option>
-                                <option value="altro" ${combustibileAnteValue === "altro" ? 'selected' : ''}>Altro</option>
+                                <option value="" ${_praticaData.edificio.combustibile_ante === "" ? 'selected' : ''}>Non specificato</option>
+                                <option value="metano" ${_praticaData.edificio.combustibile_ante === "metano" ? 'selected' : ''}>Metano</option>
+                                <option value="gasolio" ${_praticaData.edificio.combustibile_ante === "gasolio" ? 'selected' : ''}>Gasolio</option>
+                                <option value="gpl" ${_praticaData.edificio.combustibile_ante === "gpl" ? 'selected' : ''}>GPL</option>
+                                <option value="biomassa" ${_praticaData.edificio.combustibile_ante === "biomassa" ? 'selected' : ''}>Biomassa</option>
+                                <option value="elettrico" ${_praticaData.edificio.combustibile_ante === "elettrico" ? 'selected' : ''}>Elettrico</option>
+                                <option value="altro" ${_praticaData.edificio.combustibile_ante === "altro" ? 'selected' : ''}>Altro</option>
                             </select>
                         </div>
                     </div>
-                    </div>
+                </div>
 
-                    <div id="box-effetto-incentivante" style="margin-top: 20px; padding: 15px; background: rgba(255,193,7,0.1); border: 1px solid #ffc107; border-radius: 4px; display: none;">
+                <div id="box-effetto-incentivante" style="margin-top: 20px; padding: 15px; background: rgba(255,193,7,0.1); border: 1px solid #ffc107; border-radius: 4px; display: none;">
                     <h4 style="margin-top: 0; color: #856404;">Effetto Incentivante (Obbligatorio per Imprese)</h4>
                     <div class="form-grid">
                         <div class="form-group">
                             <label>Richiesta Preliminare Inviata?</label>
                             <select id="inp-preliminare-inviata">
-                                <option value="no" ${_praticaData.richiestaPreliminareInviata ? '' : 'selected'}>No</option>
-                                <option value="si" ${_praticaData.richiestaPreliminareInviata ? 'selected' : ''}>Sì</option>
+                                <option value="no" ${_praticaData.pratica.richiestaPreliminareInviata ? '' : 'selected'}>No</option>
+                                <option value="si" ${_praticaData.pratica.richiestaPreliminareInviata ? 'selected' : ''}>Sì</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Data Invio Preliminare:</label>
-                            <input type="date" id="inp-data-preliminare" value="${_praticaData.dataRichiestaPreliminare}">
+                            <input type="date" id="inp-data-preliminare" value="${_praticaData.pratica.dataRichiestaPreliminare}">
                         </div>
                         <div class="form-group">
                             <label>Data Primo Impegno (Ordine/Contratto):</label>
-                            <input type="date" id="inp-data-impegno" value="${_praticaData.dataPrimoImpegno}">
+                            <input type="date" id="inp-data-impegno" value="${_praticaData.pratica.dataPrimoImpegno}">
                         </div>
                     </div>
-                    <p class="field-note">La Richiesta Preliminare deve essere inviata al GSE prima di assumere impegni vincolanti.</p>
-                    </div>
-                    </div>
-                    `;
-                    _viewport.innerHTML = html;
+                </div>
+            </div>
+        `;
+        _viewport.innerHTML = html;
 
-                    // Logica di visibilità condizionale
-                    const inpTipo = document.getElementById("inp-tipo-soggetto");
-                    const boxEffetto = document.getElementById("box-effetto-incentivante");
+        // Logica di visibilità condizionale
+        const inpTipo = document.getElementById("inp-tipo-soggetto");
+        const boxEffetto = document.getElementById("box-effetto-incentivante");
 
-                    const updateEffettoVisibility = () => {
-                    const tipo = inpTipo.value;
-                    if (tipo === "Impresa" || tipo === "ETS economico") {
-                    boxEffetto.style.display = "block";
-                    } else {
-                    boxEffetto.style.display = "none";
-                    }
-                    };
+        const updateEffettoVisibility = () => {
+            const tipo = inpTipo.value;
+            // Visibilità Effetto Incentivante
+            if (tipo === "Impresa" || tipo === "ETS economico") {
+                boxEffetto.style.display = "block";
+            } else {
+                boxEffetto.style.display = "none";
+            }
 
-                    inpTipo.addEventListener("change", updateEffettoVisibility);
-                    updateEffettoVisibility(); // Esecuzione iniziale
-                    };
+            // Visibilità Tipo Accesso (Solo PA o ESCO)
+            const groupAccesso = document.getElementById("group-tipo-accesso");
+            if (groupAccesso) {
+                if (tipo === "Pubblica Amministrazione" || tipo === "ESCO (per conto PA)") {
+                    groupAccesso.style.display = "block";
+                } else {
+                    groupAccesso.style.display = "none";
+                    _praticaData.pratica.tipo_accesso = "Diretto"; // Reset se non PA
+                }
+            }
+        };
+
+        inpTipo.addEventListener("change", updateEffettoVisibility);
+        updateEffettoVisibility();
+    };
 
 
     /**
@@ -501,7 +518,7 @@ const UaWizardManager = function(viewportId) {
      */
     const _renderStepRuoliGSE = function() {
         const container = _getDivText();
-        const ruoli = _praticaData.ruoli;
+        const ruoli = _praticaData.soggetti;
 
         const html = `
             <div class="wizard-step">
@@ -617,41 +634,42 @@ const UaWizardManager = function(viewportId) {
      */
     const _handleStepRuoliGSENext = function() {
         try {
-            const ruoli = _praticaData.ruoli;
-            
-            // SA (Aggiornamento da step precedente per sicurezza)
-            ruoli.sa.titolo_godimento = document.getElementById("inp-sa-titolo").value;
-            ruoli.sa.denominazione = _praticaData.anagrafica.denominazione;
-            ruoli.sa.cf_piva = _praticaData.anagrafica.codiceFiscale;
-            ruoli.sa.tipo = _praticaData.anagrafica.tipo;
+            const getVal = (id) => document.getElementById(id)?.value || "";
+            const isChecked = (id) => document.getElementById(id)?.checked || false;
+
+            const ruoli = _praticaData.soggetti;
+
+            // SA
+            ruoli.sa.titolo_godimento = getVal("inp-sa-titolo");
+            // SA è già popolato dallo step 0 in _praticaData.soggetti.sa
 
             // SR
-            ruoli.sr.coincide_con_sa = document.getElementById("chk-sr-coincide").checked;
-            ruoli.sr.iban = document.getElementById("inp-sr-iban").value.trim().toUpperCase();
-            ruoli.sr.pec = document.getElementById("inp-sr-pec").value.trim();
+            ruoli.sr.coincide_con_sa = isChecked("chk-sr-coincide");
+            ruoli.sr.iban = getVal("inp-sr-iban").trim().toUpperCase();
+            ruoli.sr.pec = getVal("inp-sr-pec").trim();
             if (ruoli.sr.coincide_con_sa) {
                 ruoli.sr.denominazione = ruoli.sa.denominazione;
                 ruoli.sr.cf_piva = ruoli.sa.cf_piva;
             } else {
-                ruoli.sr.denominazione = document.getElementById("inp-sr-nome").value.trim();
-                ruoli.sr.cf_piva = document.getElementById("inp-sr-cf").value.trim().toUpperCase();
+                ruoli.sr.denominazione = getVal("inp-sr-nome").trim();
+                ruoli.sr.cf_piva = getVal("inp-sr-cf").trim().toUpperCase();
             }
 
             // Proprietario
-            ruoli.proprietario.coincide_con_sa = document.getElementById("chk-prop-coincide").checked;
+            ruoli.proprietario.coincide_con_sa = isChecked("chk-prop-coincide");
             if (ruoli.proprietario.coincide_con_sa) {
                 ruoli.proprietario.denominazione = ruoli.sa.denominazione;
                 ruoli.proprietario.cf_piva = ruoli.sa.cf_piva;
                 ruoli.proprietario.atto_assenso = true; // Implicito
             } else {
-                ruoli.proprietario.denominazione = document.getElementById("inp-prop-nome").value.trim();
-                ruoli.proprietario.cf_piva = document.getElementById("inp-prop-cf").value.trim().toUpperCase();
-                ruoli.proprietario.atto_assenso = document.getElementById("chk-prop-assenso").checked;
+                ruoli.proprietario.denominazione = getVal("inp-prop-nome").trim();
+                ruoli.proprietario.cf_piva = getVal("inp-prop-cf").trim().toUpperCase();
+                ruoli.proprietario.atto_assenso = isChecked("chk-prop-assenso");
             }
 
             // Delegato
-            ruoli.delegato.nome = document.getElementById("inp-delegato-nome").value.trim();
-            ruoli.delegato.cf = document.getElementById("inp-delegato-cf").value.trim().toUpperCase();
+            ruoli.delegato.nome = getVal("inp-delegato-nome").trim();
+            ruoli.delegato.cf = getVal("inp-delegato-cf").trim().toUpperCase();
 
             // Validazione aggiuntiva Ruoli in RulesEngine (MOD-004)
             const roleValidation = RulesEngine.validateRoles(ruoli);
@@ -709,7 +727,7 @@ const UaWizardManager = function(viewportId) {
 
         const cardsHtml = Object.entries(catalog).map(([code, info]) => {
             const isCompatible = RulesEngine.getInterventoCompatibility(code, validTitles);
-            const isSelected = _praticaData.selectedInterventi.includes(code) ? 'checked' : '';
+            const isSelected = _praticaData.interventi.includes(code) ? 'checked' : '';
             
             const card = `
                 <div class="intervento-card ${isCompatible.isCompatible ? '' : 'incompatible'} ${isSelected ? 'selected' : ''}" data-code="${code}">
@@ -755,14 +773,19 @@ const UaWizardManager = function(viewportId) {
      */
     const _renderStepDatiTecnici = function() {
         const container = _getDivText();
-        const selected = _praticaData.selectedInterventi;
+        console.log("DEBUG _renderStepDatiTecnici - praticaData:", _praticaData);
+        const selected = _praticaData.interventi;
+        if (!selected) {
+            console.error("DEBUG - selected è undefined!");
+            return;
+        }
         const schede = SCHEDE_TECNICHE;
 
         const sheetsHtml = selected.map(code => {
             const scheda = schede[code];
             if (!scheda) return `<div class="tech-sheet error">Scheda tecnica non trovata per ${code}</div>`;
 
-            const currentData = _praticaData.interventiData[code] || {};
+            const currentData = _praticaData.valori_campi[code] || {};
 
             const campiHtml = scheda.campi.map(campo => {
                 const val = currentData[campo.id] || "";
@@ -882,13 +905,13 @@ const UaWizardManager = function(viewportId) {
 
         // Calcolo Riepilogo con check sicurezza (Fail Safe)
         let totaleIncentivo = 0;
-        const selected = _praticaData.selectedInterventi || [];
-        const techMap = _praticaData.interventiData || {};
+        const selected = _praticaData.interventi || [];
+        const techMap = _praticaData.valori_campi || {};
         const docStatusMap = _praticaData.documentiStatus || {};
 
         const resultsHtml = selected.map(code => {
             const dati = techMap[code] || {};
-            const res = FormulaEngine.calculate(code, dati, { zonaClimatica: _praticaData.immobile.zonaClimatica });
+            const res = FormulaEngine.calculate(code, dati, { zonaClimatica: _praticaData.edificio.zona_climatica });
             totaleIncentivo += res.amount;
             
             const amountStr = PreventivoManager.formatCurrency(res.amount);
@@ -1048,7 +1071,9 @@ const UaWizardManager = function(viewportId) {
      */
     const _archivePratica = async function() {
         // Suggeriamo il nome esistente
-        const defaultName = _praticaData.nome || `Pratica_${_praticaData.anagrafica.denominazione.replace(/\s+/g, '_')}`;
+        const currentNome = _praticaData.pratica.nome || _praticaData.nome || "";
+        const saDenominazione = _praticaData.soggetti.sa.denominazione || "nuova";
+        const defaultName = currentNome || `Pratica_${saDenominazione.replace(/\s+/g, '_')}`;
         const nomePratica = await prompt("Inserisci un nome per identificare questa pratica:", defaultName);
         
         if (!nomePratica) {
@@ -1057,23 +1082,24 @@ const UaWizardManager = function(viewportId) {
 
         try {
             // Se il nome è cambiato o non esiste un ID valido, generiamo un nuovo ID
-            const isNewName = nomePratica !== _praticaData.nome;
-            const id = (isNewName || !_praticaData.id || !_praticaData.id.startsWith("PRATICA_")) 
+            const isNewName = nomePratica !== currentNome;
+            const id = (isNewName || !_praticaData.pratica.id || !_praticaData.pratica.id.startsWith("PRATICA_")) 
                        ? `PRATICA_${Date.now()}` 
-                       : _praticaData.id;
+                       : _praticaData.pratica.id;
 
             const dataToSave = {
                 id: id,
                 nome: nomePratica,
-                dataCrea: isNewName ? new Date().toISOString() : (_praticaData.dataCrea || new Date().toISOString()),
+                dataCrea: isNewName ? new Date().toISOString() : (_praticaData.pratica.data_creazione || new Date().toISOString()),
                 dati: JSON.parse(JSON.stringify(_praticaData))
             };
 
             await praticheMgr.save(dataToSave);
             
             // Aggiorniamo lo stato locale con il nome e ID (nuovi o aggiornati)
-            _praticaData.id = id;
-            _praticaData.nome = nomePratica;
+            _praticaData.pratica.id = id;
+            _praticaData.pratica.nome = nomePratica;
+            _praticaData.nome = nomePratica; // Per compatibilità temporanea
 
             const btn = document.getElementById("btn-wiz-archive");
             if (btn) {
@@ -1091,16 +1117,15 @@ const UaWizardManager = function(viewportId) {
      */
     const _saveSintesi = async function() {
         const dateStr = new Date().toLocaleString('it-IT');
-        const denom = _praticaData.anagrafica.denominazione;
-        const tipo = _praticaData.anagrafica.tipo;
-        const cf = _praticaData.anagrafica.codiceFiscale;
-        const addr = _praticaData.immobile.indirizzo;
-        const cat = _praticaData.immobile.categoriaCatastale;
-        const zone = _praticaData.immobile.zonaClimatica;
-        const cls = _praticaData.immobile.classeEnergeticaAnte;
-        const intervs = _praticaData.selectedInterventi.map(i => `- ${i}`).join('\n');
-        const eff = _praticaData.postOperam.efficienza;
-        const rinn = _praticaData.postOperam.rinnovabili ? 'Sì' : 'No';
+        const denom = _praticaData.soggetti.sa.denominazione;
+        const tipo = _praticaData.soggetti.sa.tipo;
+        const cf = _praticaData.soggetti.sa.cf_piva;
+        const addr = _praticaData.edificio.indirizzo;
+        const cat = _praticaData.edificio.categoria_catastale;
+        const zone = _praticaData.edificio.zona_climatica;
+        const intervs = _praticaData.interventi.map(i => `- ${i}`).join('\n');
+        const eff = _praticaData.postOperam ? _praticaData.postOperam.efficienza : "Standard";
+        const rinn = (_praticaData.postOperam && _praticaData.postOperam.rinnovabili) ? 'Sì' : 'No';
 
         const content = `SINTESI PRATICA CONTO TERMICO 3.0\n` +
                       `==================================\n\n` +
@@ -1110,8 +1135,7 @@ const UaWizardManager = function(viewportId) {
                       `INDIRIZZO: ${addr}\n\n` +
                       `DATI IMMOBILE:\n` +
                       `- Categoria Catastale: ${cat}\n` +
-                      `- Zona Climatica: ${zone}\n` +
-                      `- Classe Energetica Ante: ${cls}\n\n` +
+                      `- Zona Climatica: ${zone}\n\n` +
                       `INTERVENTI SELEZIONATI:\n` +
                       `${intervs}\n\n` +
                       `CONFIGURAZIONE POST-OPERAM:\n` +
@@ -1221,7 +1245,7 @@ const UaWizardManager = function(viewportId) {
         win.addClassStyle(isDark ? "dark-theme" : "light-theme");
 
         const dateStr = new Date().toLocaleDateString('it-IT');
-        const rel = ReliabilityEngine.calculateReliability(_praticaData.interventiData, _praticaData.documentiStatus);
+        const rel = ReliabilityEngine.calculateReliability(_praticaData.valori_campi, _praticaData.documentiStatus);
         
         // --- HELPER PER ETICHETTE TECNICHE ---
         const getLabel = (code, key) => {
@@ -1236,9 +1260,9 @@ const UaWizardManager = function(viewportId) {
         let totalBaseIncentive = 0;
         let totalBonuses = 0;
         
-        const summaryRows = _praticaData.selectedInterventi.map(code => {
-            const tech = _praticaData.interventiData[code] || {};
-            const calc = FormulaEngine.calculate(code, tech, { zonaClimatica: _praticaData.immobile.zonaClimatica });
+        const summaryRows = _praticaData.interventi.map(code => {
+            const tech = _praticaData.valori_campi[code] || {};
+            const calc = FormulaEngine.calculate(code, tech, { zonaClimatica: _praticaData.edificio.zona_climatica });
             
             // Estrazione Spesa (cerca campo economico nella scheda)
             const scheda = SCHEDE_TECNICHE[code];
@@ -1266,10 +1290,10 @@ const UaWizardManager = function(viewportId) {
         }).join('');
 
         // --- GENERAZIONE DETTAGLIO INTERVENTI ---
-        let interventiHtml = _praticaData.selectedInterventi.map(code => {
+        let interventiHtml = _praticaData.interventi.map(code => {
             const info = INTERVENTI[code] || {};
-            const tech = _praticaData.interventiData[code] || {};
-            const calc = FormulaEngine.calculate(code, tech, { zonaClimatica: _praticaData.immobile.zonaClimatica });
+            const tech = _praticaData.valori_campi[code] || {};
+            const calc = FormulaEngine.calculate(code, tech, { zonaClimatica: _praticaData.edificio.zona_climatica });
 
             // Dati Tecnici con Label
             const techRows = Object.entries(tech).map(([k, v]) => {
@@ -1316,7 +1340,7 @@ const UaWizardManager = function(viewportId) {
 
         const html = `
             <div class="window-header">
-                <span class="title">Consulenza Tecnica CT 3.0 - ${_praticaData.anagrafica.denominazione}</span>
+                <span class="title">Consulenza Tecnica CT 3.0 - ${_praticaData.soggetti.sa.denominazione}</span>
                 <div class="header-actions">
                     <button id="btn-save-report-txt" class="cmd-btn">💾 Esporta Dati</button>
                     <button id="btn-save-report-pdf" class="cmd-btn">🖨️ Stampa Report</button>
@@ -1368,26 +1392,30 @@ const UaWizardManager = function(viewportId) {
                     <h2 style="border-bottom: 1px solid #3f51b5; padding-bottom: 8px;">2. Inquadramento Soggetti e Immobile (GSE Roles)</h2>
                     <div class="report-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 15px;">
                         <div style="background: #f9f9f9; padding: 15px; border-radius: 4px;">
-                            <h4 style="margin-top: 0; color: #3f51b5;">Soggetto Ammesso (SA)</h4>
-                            <p style="margin: 5px 0;"><strong>Nominativo:</strong> ${_praticaData.ruoli.sa.denominazione}</p>
-                            <p style="margin: 5px 0;"><strong>Tipologia:</strong> ${_praticaData.ruoli.sa.tipo}</p>
-                            <p style="margin: 5px 0;"><strong>CF/P.IVA:</strong> ${_praticaData.ruoli.sa.cf_piva}</p>
-                            <p style="margin: 5px 0;"><strong>Titolo Godimento:</strong> ${_praticaData.ruoli.sa.titolo_godimento}</p>
+                            <h4 style="margin-top: 0; color: #3f51b5;">Dati Pratica</h4>
+                            <p style="margin: 5px 0;"><strong>Tipo Accesso:</strong> ${_praticaData.pratica.tipo_accesso || 'Diretto'}</p>
+                            <p style="margin: 5px 0;"><strong>Stato Istanza:</strong> ${_praticaData.status}</p>
+
+                            <h4 style="margin-top: 15px; color: #3f51b5;">Soggetto Ammesso (SA)</h4>
+                            <p style="margin: 5px 0;"><strong>Nominativo:</strong> ${_praticaData.soggetti.sa.denominazione}</p>
+                            <p style="margin: 5px 0;"><strong>Tipologia:</strong> ${_praticaData.soggetti.sa.tipo}</p>
+                            <p style="margin: 5px 0;"><strong>CF/P.IVA:</strong> ${_praticaData.soggetti.sa.cf_piva}</p>
+                            <p style="margin: 5px 0;"><strong>Titolo Godimento:</strong> ${_praticaData.soggetti.sa.titolo_godimento}</p>
                             
                             <h4 style="margin-top: 15px; color: #3f51b5;">Soggetto Responsabile (SR)</h4>
-                            <p style="margin: 5px 0;"><strong>Nominativo:</strong> ${_praticaData.ruoli.sr.denominazione}</p>
-                            <p style="margin: 5px 0;"><strong>CF/P.IVA:</strong> ${_praticaData.ruoli.sr.cf_piva}</p>
-                            <p style="margin: 5px 0;"><strong>IBAN:</strong> ${_praticaData.ruoli.sr.iban}</p>
+                            <p style="margin: 5px 0;"><strong>Nominativo:</strong> ${_praticaData.soggetti.sr.denominazione}</p>
+                            <p style="margin: 5px 0;"><strong>CF/P.IVA:</strong> ${_praticaData.soggetti.sr.cf_piva}</p>
+                            <p style="margin: 5px 0;"><strong>IBAN:</strong> ${_praticaData.soggetti.sr.iban}</p>
                         </div>
                         <div style="background: #f9f9f9; padding: 15px; border-radius: 4px;">
                             <h4 style="margin-top: 0; color: #3f51b5;">Ubicazione e Catasto</h4>
-                            <p style="margin: 5px 0;"><strong>Indirizzo:</strong> ${_praticaData.immobile.indirizzo}</p>
-                            <p style="margin: 5px 0;"><strong>Catasto:</strong> ${_praticaData.immobile.categoriaCatastale} | Zona: ${_praticaData.immobile.zonaClimatica}</p>
+                            <p style="margin: 5px 0;"><strong>Indirizzo:</strong> ${_praticaData.edificio.indirizzo}</p>
+                            <p style="margin: 5px 0;"><strong>Catasto:</strong> ${_praticaData.edificio.categoria_catastale} | Zona: ${_praticaData.edificio.zona_climatica}</p>
                             
                             <h4 style="margin-top: 15px; color: #3f51b5;">Proprietario e Delegato</h4>
-                            <p style="margin: 5px 0;"><strong>Proprietario:</strong> ${_praticaData.ruoli.proprietario.denominazione}</p>
-                            <p style="margin: 5px 0;"><strong>Assenso:</strong> ${_praticaData.ruoli.proprietario.atto_assenso ? "Sì" : "No"}</p>
-                            <p style="margin: 5px 0;"><strong>Delegato:</strong> ${_praticaData.ruoli.delegato.nome || "Nessuno"}</p>
+                            <p style="margin: 5px 0;"><strong>Proprietario:</strong> ${_praticaData.soggetti.proprietario.denominazione}</p>
+                            <p style="margin: 5px 0;"><strong>Assenso:</strong> ${_praticaData.soggetti.proprietario.atto_assenso ? "Sì" : "No"}</p>
+                            <p style="margin: 5px 0;"><strong>Delegato:</strong> ${_praticaData.soggetti.delegato.nome || "Nessuno"}</p>
                         </div>
                     </div>
                 </div>
@@ -1508,27 +1536,44 @@ const UaWizardManager = function(viewportId) {
      */
     const _handleStepSoggettoNext = function() {
         try {
-            const tipo = document.getElementById("inp-tipo-soggetto").value;
-            const nome = document.getElementById("inp-nome").value;
-            const cf = document.getElementById("inp-cf").value.trim().toUpperCase();
-            const indirizzo = document.getElementById("inp-indirizzo").value.trim();
-            const catasto = document.getElementById("inp-catasto").value;
-            const fascia = document.getElementById("inp-fascia").value;
-            const classe = document.getElementById("inp-classe").value;
+            const getVal = (id) => document.getElementById(id)?.value || "";
+            
+            const tipo = getVal("inp-tipo-soggetto");
+            const nome = getVal("inp-nome");
+            const cf = getVal("inp-cf").trim().toUpperCase();
+            const indirizzo = getVal("inp-indirizzo").trim();
+            const catasto = getVal("inp-catasto");
+            const fascia = getVal("inp-fascia");
+            const potenzaEsistente = getVal("inp-potenza-esistente");
+            const combustibile = getVal("inp-combustibile-ante");
+
+            // Tipo Accesso
+            const inpAccesso = document.getElementById("inp-tipo-accesso");
+            const tipoAccesso = (inpAccesso && inpAccesso.offsetParent !== null) ? inpAccesso.value : "Diretto";
 
             // Dati Effetto Incentivante
             const prelimInviata = document.getElementById("inp-preliminare-inviata")?.value === "si";
-            const dataPrelim = document.getElementById("inp-data-preliminare")?.value || "";
-            const dataImpegno = document.getElementById("inp-data-impegno")?.value || "";
+            const dataPrelim = getVal("inp-data-preliminare");
+            const dataImpegno = getVal("inp-data-impegno");
 
-            _praticaData.anagrafica = { tipo, denominazione: nome, codiceFiscale: cf };
-            _praticaData.immobile = { indirizzo, categoriaCatastale: catasto, zonaClimatica: fascia, classeEnergeticaAnte: classe };
+            // Popolamento struttura relazionale
+            _praticaData.soggetti.sa = { ..._praticaData.soggetti.sa, tipo, denominazione: nome, cf_piva: cf };
+            _praticaData.edificio = { 
+                ..._praticaData.edificio, 
+                indirizzo, 
+                categoria_catastale: catasto, 
+                zona_climatica: fascia,
+                potenza_esistente_kw: parseFloat(potenzaEsistente) || 0,
+                combustibile_ante: combustibile
+            };
             
-            _praticaData.richiestaPreliminareInviata = prelimInviata;
-            _praticaData.dataRichiestaPreliminare = dataPrelim;
-            _praticaData.dataPrimoImpegno = dataImpegno;
+            // Richiesta preliminare e Tipo Accesso salvata nel contesto pratica
+            _praticaData.pratica.tipo_accesso = tipoAccesso;
+            _praticaData.pratica.richiestaPreliminareInviata = prelimInviata;
+            _praticaData.pratica.dataRichiestaPreliminare = dataPrelim;
+            _praticaData.pratica.dataPrimoImpegno = dataImpegno;
 
-            // Corrispondenza campi richiesta da RulesEngine
+            // Validazione
             const validationInput = {
                 subjectType: tipo,
                 category: catasto,
@@ -1538,7 +1583,6 @@ const UaWizardManager = function(viewportId) {
                 dataPrimoImpegno: dataImpegno
             };
 
-            // Inietta soggettInfo nel wizard per evitare errori futuri
             const validationResults = RulesEngine.validateAmmissibilita(validationInput);
             validationResults.subjectInfo = SOGGETTI_CONFIG[tipo] || { label: "N/A", descrizione: "N/A" };
             _praticaData.validation = validationResults;
@@ -1625,45 +1669,42 @@ const UaWizardManager = function(viewportId) {
      */
     const _renderStepEconomico = function() {
         if (!_praticaData.preventivo) _praticaData.preventivo = { items: [], totals: {} };
+        console.log("DEBUG _renderStepEconomico - Preventivo.items:", _praticaData.preventivo.items);
 
         if (_praticaData.preventivo.items.length === 0) {
-            _praticaData.selectedInterventi.forEach(code => {
-                const techData = _praticaData.interventiData[code] || {};
+            _praticaData.interventi.forEach(code => {
+                const techData = _praticaData.valori_campi[code] || {};
                 const suggestions = PreventivoManager.getSuggestedItems(code, techData);
                 _praticaData.preventivo.items.push(...suggestions);
             });
         }
 
         const items = _praticaData.preventivo.items;
+        console.debug("DEBUG _renderStepEconomico - Items:", items);
         const totals = PreventivoManager.calculateTotals(items);
+        console.debug("DEBUG _renderStepEconomico - Totals calcolati:", totals);
+        _praticaData.preventivo.totals = totals;
 
         let itemsHtml = items.map((item, index) => {
-            const costTypes = PreventivoManager.getCostTypes();
-            const selectedTypes = item.tipo_costo ? (Array.isArray(item.tipo_costo) ? item.tipo_costo : [item.tipo_costo]) : [];
-            
-            // Ordiniamo i tipi di costo per seguire lo schema richiesto dall'utente:
-            // 1. fornitura (R1C1), 2. posa (R1C2)
-            // 3. opere_accessorie (R2C1), 4. pratiche (R2C2)
-            // 5. documentazione (R3C1)
             return `
                 <div class="preventivo-entry" data-index="${index}">
                     <h4>${item.codice_intervento}</h4>
                     <div class="form-grid">
                         <div class="form-group">
                             <label>Descrizione:</label>
-                            <input type="text" class="inp-desc" value="${item.descrizione}" style="width: 100%;">
+                            <input type="text" class="inp-desc" value="${item.descrizione || ''}" style="width: 100%;">
                         </div>
                         <div class="form-group">
                             <label>Dati Economici:</label>
                             <div style="display: flex; gap: 30px; align-items: center; flex: 1;">
                                 <div style="display: flex; align-items: center; gap: 10px;">
                                     <span style="font-size: 0.9em; white-space: nowrap;">Importo Unitario:</span>
-                                    <input type="number" class="inp-importo" value="${item.importo}" step="0.01" style="width: 100px; text-align: right;">
+                                    <input type="number" class="inp-importo" value="${item.importo || 0}" step="0.01" style="width: 100px; text-align: right;">
                                     <span style="font-size: 0.9em;">€</span>
                                 </div>
                                 <div style="display: flex; align-items: center; gap: 10px;">
                                     <span style="font-size: 0.9em; white-space: nowrap;">Quantità:</span>
-                                    <input type="number" class="inp-quantita" value="${item.quantita}" step="1" style="width: 60px; text-align: right;">
+                                    <input type="number" class="inp-quantita" value="${item.quantita || 0}" step="1" style="width: 60px; text-align: right;">
                                 </div>
                             </div>
                         </div>
@@ -1746,7 +1787,7 @@ const UaWizardManager = function(viewportId) {
             return;
         }
 
-        _praticaData.selectedInterventi = selected;
+        _praticaData.interventi = selected;
         const count = selected.length;
         _goToStep(4);
     };
@@ -1775,12 +1816,12 @@ const UaWizardManager = function(viewportId) {
                     });
                 }
 
-                _praticaData.interventiData[code] = techData;
+                _praticaData.valori_campi[code] = techData;
             });
 
             // Validazione vincoli tecnici con i dati appena inseriti (MOD-002)
-            const selected = _praticaData.selectedInterventi || [];
-            const interventiData = _praticaData.interventiData || {};
+            const selected = _praticaData.interventi || [];
+            const interventiData = _praticaData.valori_campi || {};
             
             const validation = CrossRuleEngine.validateSelectionWithData(selected, interventiData);
             
@@ -1801,11 +1842,15 @@ const UaWizardManager = function(viewportId) {
      * @private
      */
     const _handleStepPostOperamNext = function() {
-        const eff = document.getElementById("inp-post-eff").value;
-        const rinn = document.getElementById("inp-post-rinn").checked;
+        try {
+            const eff = document.getElementById("inp-post-eff")?.value || "standard";
+            const rinn = document.getElementById("inp-post-rinn")?.checked || false;
 
-        _praticaData.postOperam = { efficienza: eff, rinnovabili: rinn };
-        _goToStep(7);
+            _praticaData.postOperam = { efficienza: eff, rinnovabili: rinn };
+            _goToStep(7);
+        } catch (error) {
+            console.error("_handleStepPostOperamNext:", error);
+        }
     };
 
     // 4. API PUBBLICA
@@ -1822,22 +1867,28 @@ const UaWizardManager = function(viewportId) {
          */
         reset: function() {
             _praticaData = {
-                id: _generateTmpId(),
-                status: "Bozza", // MOD-006
-                anagrafica: { tipo: "", denominazione: "", codiceFiscale: "" },
-                immobile: { indirizzo: "", categoriaCatastale: "", zonaClimatica: "Zona E", classeEnergeticaAnte: "G" },
-                // Nuova struttura Ruoli GSE (MOD-004)
-                ruoli: {
-                    sa: { denominazione: "", tipo: "", cf_piva: "", titolo_godimento: "Proprietà" },
-                    sr: { denominazione: "", cf_piva: "", iban: "", pec: "", coincide_con_sa: true },
-                    proprietario: { denominazione: "", cf_piva: "", coincide_con_sa: true, atto_assenso: false },
-                    delegato: { nome: "", cf: "" }
+                pratica: {
+                    id: _generateTmpId(),
+                    codice_pratica: "",
+                    status: "Bozza",
+                    data_creazione: new Date().toISOString()
                 },
-                richiestaPreliminareInviata: false,
-                dataRichiestaPreliminare: "",
-                dataPrimoImpegno: "",
-                selectedInterventi: [],
-                interventiData: {},
+                edificio: {
+                    id: null,
+                    indirizzo: "",
+                    categoria_catastale: "",
+                    zona_climatica: "Zona E",
+                    potenza_esistente_kw: 0,
+                    combustibile_ante: ""
+                },
+                soggetti: {
+                    sa: { id: null, denominazione: "", tipo: "", cf_piva: "", titolo_godimento: "Proprietà" },
+                    sr: { id: null, denominazione: "", cf_piva: "", iban: "", pec: "", coincide_con_sa: true },
+                    proprietario: { id: null, denominazione: "", cf_piva: "", coincide_con_sa: true, atto_assenso: false },
+                    delegato: { id: null, nome: "", cf: "" }
+                },
+                interventi: [],
+                valori_campi: {},
                 preventivo: { items: [], totals: {} },
                 documentiStatus: {},
                 validation: null,
@@ -1966,50 +2017,40 @@ const UaWizardManager = function(viewportId) {
             
             // Ripristino profondo dei dati (clonazione per sicurezza)
             // L'oggetto 'data' contiene il record completo dal DB (id, nome, dati, ecc.)
-            _praticaData = JSON.parse(JSON.stringify(data.dati));
+            const d = JSON.parse(JSON.stringify(data.dati));
             
-            // Ripristiniamo esplicitamente il nome e l'id della pratica
-            _praticaData.nome = data.nome || "";
-            _praticaData.id = data.id || "";
+            // Migrazione verso struttura relazionale (MOD-007)
+            _praticaData.pratica = {
+                id: data.id || _generateTmpId(),
+                codice_pratica: data.codice_pratica || "",
+                status: d.status || d.pratica?.status || "Bozza",
+                data_creazione: d.data_creazione || new Date().toISOString()
+            };
 
-            // Assicuriamo l'esistenza della struttura minima (retrocompatibilità)
-            _praticaData.interventiData = _praticaData.interventiData || {};
-            _praticaData.documentiStatus = _praticaData.documentiStatus || {};
-            _praticaData.preventivo = _praticaData.preventivo || { items: [], totals: {} };
-            _praticaData.selectedInterventi = _praticaData.selectedInterventi || [];
+            // Migrazione Edificio
+            _praticaData.edificio = d.edificio || {
+                indirizzo: d.immobile?.indirizzo || "",
+                categoria_catastale: d.immobile?.categoriaCatastale || "",
+                zona_climatica: d.immobile?.zonaClimatica || "Zona E",
+                potenza_esistente_kw: d.immobile?.potenza_esistente_kw || 0,
+                combustibile_ante: d.immobile?.combustibile_ante || ""
+            };
+
+            // Migrazione Soggetti (Ruoli)
+            _praticaData.soggetti = d.soggetti || d.ruoli || {
+                sa: { denominazione: d.anagrafica?.denominazione || "", tipo: d.anagrafica?.tipo || "", cf_piva: d.anagrafica?.codiceFiscale || "", titolo_godimento: "Proprietà" },
+                sr: { denominazione: "", cf_piva: "", iban: "", pec: "", coincide_con_sa: true },
+                proprietario: { denominazione: "", cf_piva: "", coincide_con_sa: true, atto_assenso: false },
+                delegato: { nome: "", cf: "" }
+            };
+
+            _praticaData.interventi = d.interventi || d.selectedInterventi || [];
+            _praticaData.valori_campi = d.valori_campi || d.interventiData || {};
+            _praticaData.preventivo = d.preventivo || { items: [], totals: {} };
+            _praticaData.documentiStatus = d.documentiStatus || {};
+            _praticaData.postOperam = d.postOperam || null;
             
-            // Retrocompatibilità Ruoli (MOD-004)
-            if (!_praticaData.ruoli) {
-                _praticaData.ruoli = {
-                    sa: { 
-                        denominazione: _praticaData.anagrafica?.denominazione || "", 
-                        tipo: _praticaData.anagrafica?.tipo || "Privato residenziale", 
-                        cf_piva: _praticaData.anagrafica?.codiceFiscale || "",
-                        titolo_godimento: "Proprietà" 
-                    },
-                    sr: { 
-                        denominazione: _praticaData.anagrafica?.denominazione || "", 
-                        cf_piva: _praticaData.anagrafica?.codiceFiscale || "", 
-                        iban: "", 
-                        pec: "", 
-                        coincide_con_sa: true 
-                    },
-                    proprietario: { 
-                        denominazione: _praticaData.anagrafica?.denominazione || "", 
-                        cf_piva: _praticaData.anagrafica?.codiceFiscale || "", 
-                        coincide_con_sa: true, 
-                        atto_assenso: false 
-                    },
-                    delegato: { nome: "", cf: "" }
-                };
-            }
-            
-            // Retrocompatibilità Stato (MOD-006)
-            if (!_praticaData.status) {
-                _praticaData.status = "Bozza";
-            }
-            
-            console.info(`loadPratica: Caricata pratica ${_praticaData.id} con nome ${_praticaData.nome} [Stato: ${_praticaData.status}]`);
+            console.info(`loadPratica: Caricata pratica ${_praticaData.pratica.id} [Stato: ${_praticaData.pratica.status}]`);
             
             // Avviamo dal primo step per permettere la revisione dei dati
             _goToStep(0);
@@ -2057,9 +2098,9 @@ const UaWizardManager = function(viewportId) {
 
         let contentHtml = "";
 
-        _praticaData.selectedInterventi.forEach(code => {
-            const dati = _praticaData.interventiData[code] || {};
-            const calc = FormulaEngine.calculate(code, dati, { zonaClimatica: _praticaData.immobile.zonaClimatica });
+        _praticaData.interventi.forEach(code => {
+            const dati = _praticaData.valori_campi[code] || {};
+            const calc = FormulaEngine.calculate(code, dati, { zonaClimatica: _praticaData.edificio.zona_climatica });
             
             let stepsHtml = "";
             if (calc.steps && calc.steps.length > 0) {
