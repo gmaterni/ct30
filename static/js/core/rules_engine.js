@@ -159,15 +159,17 @@ const UaRulesEngine = function() {
 
         // Categoriale condizionatamente escluse (dipende dal soggetto)
         // Secondo D.M. 7 Agosto 2025:
-        // - A/1, A/8, A/9 sono escluse SALVO per PA o se aperte al pubblico
-        const categoryExcludedForPrivate = ["A/1", "A/8", "A/9"];
+        // - A/1, A/8, A/9 sono escluse SALVO per PA o ETS non economico (assimilato)
+        const categoriesLuxury = ["A/1", "A/8", "A/9"];
         
-        if (categoryExcludedForPrivate.includes(normalizedCode)) {
-            // Solo PA può accedere a queste categorie
-            const paTypes = ["Pubblica Amministrazione", "PA"];
-            if (!subjectType || !paTypes.includes(subjectType)) {
+        if (categoriesLuxury.includes(normalizedCode)) {
+            const isPA = subjectType === "Pubblica Amministrazione" || subjectType === "PA";
+            const isETSNonEcon = subjectType === "ETS non economico";
+            
+            if (!isPA && !isETSNonEcon) {
                 result.isAllowed = false;
-                result.reason = `Categoria ${normalizedCode} esclusa per il soggetto ${subjectType || 'non specificato'}. Ammessa solo per Pubblica Amministrazione.`;
+                const msg = `La categoria ${normalizedCode} è esclusa per il soggetto ${subjectType || 'Privato'}. Ammessa solo per PA o ETS non economico.`;
+                result.reason = msg;
                 return result;
             }
         }
@@ -188,24 +190,24 @@ const UaRulesEngine = function() {
      * @private
      */
     const _checkSostituzioneObbligatoria = function(potenzaEsistenteKw) {
-        const result = { success: true, error: "" };
+        const res = { success: true, error: "" };
 
         // Fail Fast
         if (potenzaEsistenteKw === undefined || potenzaEsistenteKw === null) {
-            result.success = false;
-            result.error = "OBBLIGO SOSTITUZIONE: Dati sulla potenza esistente mancanti.";
-            return result;
+            res.success = false;
+            res.error = "Art. 25 (Sostituzione): Dati sulla potenza esistente mancanti.";
+            return res;
         }
 
-        const pn = parseFloat(potenzaEsistenteKw);
+        const pn = parseFloat(potenzaEsistenteKw) || 0;
         
         if (pn <= 0) {
-            result.success = false;
-            result.error = "OBBLIGO SOSTITUZIONE: Deve esistere un impianto di climatizzazione invernale pre-esistente (potenza > 0 kW).";
-            return result;
+            res.success = false;
+            res.error = "Art. 25 (Sostituzione): L'accesso agli incentivi per interventi di climatizzazione richiede la sostituzione di un impianto esistente (Potenza > 0 kW).";
+            return res;
         }
 
-        return result;
+        return res;
     };
 
     /**
@@ -219,49 +221,31 @@ const UaRulesEngine = function() {
      * @private
      */
     const _checkInterventoAmmissibilita = function(subjectType, interventoCode, interventoDati) {
-        const result = { success: true, error: "" };
+        const res = { success: true, error: "" };
 
         // Fail Fast
         if (!subjectType || !interventoCode) {
-            return result; // Non blocchiamo, ma non validiamo
+            return res;
         }
 
         // Regola specifica: Esclusione PDC a gas per Imprese ed ETS economici (Art. 25 comma 2)
-        // Nota: Le PDC a gas sono ESCLUSE per questi soggetti
         const soggettiEsclusiPdCGas = ["Impresa", "ETS economico"];
+        const tipologieGasEscluse = ["ibrido", "gas", "hybrid", "metano", "gpl"];
         
         if (soggettiEsclusiPdCGas.includes(subjectType) && interventoCode === "III.A") {
-            const tipologiaPdc = (interventoDati || {}).tipologia_pdc || 
-                                (interventoDati || {}).tipologia || "";
-            const combustibileAnte = (interventoDati || {}).combustibile_ante || "";
+            const dati = interventoDati || {};
+            const tipologiaPdc = (dati.tipologia_pdc || dati.tipologia || "").toLowerCase();
             
-            // Controllo se è PDC a gas
-            // Se il combustibile dell'impianto esistente è gas E la nuova PDC non è elettrica,
-            // allora è bloccato
-            const combustibiliGas = ["gas", "metano", "gasolio", "gpl"];
-            const isPdCGas = combustibiliGas.some(c => 
-                tipologiaPdc.toLowerCase().includes(c) || 
-                combustibileAnte.toLowerCase().includes(c)
-            );
+            const isPdCGas = tipologieGasEscluse.some(t => tipologiaPdc.includes(t));
             
-            // DC: secondo le specifiche, per Imprese ed ETS, le PDC a GAS sono escluse
-            // Ma aria/aria e aria/acqua sono ELETTRICHE, non a gas
-            // Quindi dobbiamo controllare se la PDC usa combustibile a gas
-            // Oppure se è un sistema ibrido gas + elettrico
-            
-            // Tipologie considerate "a gas" (non elettriche pure)
-            const tipologieGas = ["ibrido", "gas", "hybrid"];
-            const isTipologiaGas = tipologieGas.some(t => 
-                tipologiaPdc.toLowerCase().includes(t)
-            );
-            
-            if (isTipologiaGas) {
-                result.success = false;
-                result.error = `ESCLUSIONE: Le PDC a gas/ibride non sono ammesse per ${subjectType} (Art. 25 comma 2 D.M. 7/8/2025).`;
+            if (isPdCGas) {
+                res.success = false;
+                res.error = `Art. 25 comma 2: Le PDC a gas o ibride non sono ammesse per ${subjectType}.`;
+                return res;
             }
         }
 
-        return result;
+        return res;
     };
 
     // 3. FUNZIONI PUBBLICHE

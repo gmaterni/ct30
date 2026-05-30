@@ -305,15 +305,15 @@ export const INTERVENTI = {
  */
 export const CATASTO = {
     "categorie": {
-        "A/1": {"ambito": "residenziale", "ammissibile": true},
+        "A/1": {"ambito": "residenziale", "ammissibile": true, "motivo": "Ammissibile salvo per privati."},
         "A/2": {"ambito": "residenziale", "ammissibile": true},
         "A/3": {"ambito": "residenziale", "ammissibile": true},
         "A/4": {"ambito": "residenziale", "ammissibile": true},
         "A/5": {"ambito": "residenziale", "ammissibile": true},
         "A/6": {"ambito": "residenziale", "ammissibile": true},
         "A/7": {"ambito": "residenziale", "ammissibile": true},
-        "A/8": {"ambito": "escluso", "ammissibile": false, "motivo": "Categoria A/8 esclusa dagli incentivi."},
-        "A/9": {"ambito": "escluso", "ammissibile": false, "motivo": "Categoria A/9 esclusa dagli incentivi."},
+        "A/8": {"ambito": "escluso", "ammissibile": true, "motivo": "Ammissibile salvo per privati."},
+        "A/9": {"ambito": "escluso", "ammissibile": true, "motivo": "Ammissibile salvo per privati."},
         "A/10": {"ambito": "terziario", "ammissibile": true},
         "A/11": {"ambito": "residenziale", "ammissibile": true},
         "B/1": {"ambito": "terziario", "ammissibile": true},
