@@ -1500,6 +1500,18 @@ const UaWizardManager = function(viewportId) {
                 _praticaData.interventiData[code] = techData;
             });
 
+            // Validazione vincoli tecnici con i dati appena inseriti (MOD-002)
+            const selected = _praticaData.selectedInterventi || [];
+            const interventiData = _praticaData.interventiData || {};
+            
+            const validation = CrossRuleEngine.validateSelectionWithData(selected, interventiData);
+            
+            if (!validation.success) {
+                const errorMsg = validation.errors.join("\n");
+                alert(`VINCOLI TECNICI:\n${errorMsg}`);
+                return;
+            }
+
             _goToStep(4);
         } catch (error) {
             console.error("_handleStepDatiTecniciNext:", error);

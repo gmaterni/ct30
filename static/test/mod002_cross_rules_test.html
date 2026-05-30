@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOD-002 Test Manuale - Vincoli Interventi Avanzati</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1 { color: #3f51b5; border-bottom: 2px solid #3f51b5; padding-bottom: 10px; }
+        h2 { color: #555; margin-top: 30px; }
+        .test-case { margin: 20px 0; padding: 15px; background: #f9f9f9; border-left: 4px solid #3f51b5; border-radius: 4px; }
+        .test-case.fail { border-left-color: #d32f2f; background: #ffebee; }
+        .test-case.pass { border-left-color: #2e7d32; background: #e8f5e9; }
+        .result { font-family: monospace; margin: 10px 0; padding: 10px; background: #e0e0e0; border-radius: 4px; white-space: pre-wrap; }
+        .summary { margin-top: 40px; padding: 20px; background: #e3f2fd; border-radius: 8px; text-align: center; }
+        .success { color: #2e7d32; font-weight: bold; font-size: 1.2em; }
+        .fail { color: #d32f2f; font-weight: bold; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MOD-002: Test Manuale Vincoli Interventi Avanzati</h1>
+        
+        <div id="test-results"></div>
+        
+        <div class="summary" id="summary">
+            <p>Caricamento test in corso...</p>
+        </div>
+    </div>
+
+    <script type="module">
+        import { CrossRuleEngine } from '../js/core/cross_rule_engine.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const resultsDiv = document.getElementById('test-results');
+            const summaryDiv = document.getElementById('summary');
+            
+            let total = 0;
+            let passed = 0;
+            let failed = 0;
+
+            function runTest(name, testFn) {
+                total++;
+                try {
+                    const result = testFn();
+                    passed++;
+                    resultsDiv.innerHTML += `
+                        <div class="test-case pass">
+                            <h3>✅ ${name}</h3>
+                            <div class="result">${JSON.stringify(result, null, 2)}</div>
+                        </div>
+                    `;
+                    return true;
+                } catch (error) {
+                    failed++;
+                    resultsDiv.innerHTML += `
+                        <div class="test-case fail">
+                            <h3>❌ ${name}</h3>
+                            <p><strong>Errore:</strong> ${error.message}</p>
+                        </div>
+                    `;
+                    return false;
+                }
+            }
+
+            resultsDiv.innerHTML += '<h2>📝 TEST UNITARI (✅)</h2>';
+
+            // ========================================================================
+            // TEST 1: validateSelection (senza dati tecnici) - validazione base
+            // ========================================================================
+
+            runTest('Test 1.1: II.H solo -> Fallisce (manca III.A)', () => {
+                const result = CrossRuleEngine.validateSelection(["II.H"]);
+                if (result.success) {
+                    throw new Error("Dovrebbe fallire: II.H richiede III.A");
+                }
+                if (!result.errors.some(e => e.includes("III.A"))) {
+                    throw new Error("Errore dovrebbe menzionare III.A");
+                }
+                return result;
+            });
+
+            runTest('Test 1.2: II.H + III.A -> Passante (validazione base)', () => {
+                const result = CrossRuleEngine.validateSelection(["II.H", "III.A"]);
+                if (!result.success) {
+                    throw new Error(`Dovrebbe passare: ${result.errors.join(', ')}`);
+                }
+                return result;
+            });
+
+            runTest('Test 1.3: II.G solo -> Fallisce (manca III.A)', () => {
+                const result = CrossRuleEngine.validateSelection(["II.G"]);
+                if (result.success) {
+                    throw new Error("Dovrebbe fallire: II.G richiede III.A");
+                }
+                return result;
+            });
+
+            runTest('Test 1.4: II.G + III.A -> Passante (validazione base)', () => {
+                const result = CrossRuleEngine.validateSelection(["II.G", "III.A"]);
+                if (!result.success) {
+                    throw new Error(`Dovrebbe passare: ${result.errors.join(', ')}`);
+                }
+                return result;
+            });
+
+            runTest('Test 1.5: III.A solo -> Passante', () => {
+                const result = CrossRuleEngine.validateSelection(["III.A"]);
+                if (!result.success) {
+                    throw new Error(`Dovrebbe passare: ${result.errors.join(', ')}`);
+                }
+                return result;
+            });
+
+            // ========================================================================
+            // TEST 2: validateSelectionWithData (con dati tecnici) - MOD-002
+            // ========================================================================
+
+            resultsDiv.innerHTML += '<h2>🔄 TEST INTEGRAZIONE (con dati tecnici)</h2>';
+
+            // Dati base per III.A
+            const baseData = {
+                "III.A": {
+                    tipologia_pdc: "aria/acqua",
+                    sostituisce_esistente: "si"
+                }
+            };
+
+            runTest('Test 2.1: II.H + III.A (aria/acqua, sostituzione) -> Passante', () => {
+                const result = CrossRuleEngine.validateSelectionWithData(
+                    ["II.H", "III.A"],
+                    baseData
+                );
+                if (!result.success) {
+                    throw new Error(`Dovrebbe passare: ${result.errors.join(', ')}`);
+                }
+                return result;
+            });
+
+            runTest('Test 2.2: II.H + III.A (ibrido) -> Fallisce (PDC non elettrica)', () => {
+                const data = {
+                    "III.A": {
+                        tipologia_pdc: "ibrido",
+                        sostituisce_esistente: "si"
+                    }
+                };
+                const result = CrossRuleEngine.validateSelectionWithData(
+                    ["II.H", "III.A"],
+                    data
+                );
+                if (result.success) {
+                    throw new Error("Dovrebbe fallire: PDC ibrida non ammissibile per FV");
+                }
+                if (!result.errors.some(e => e.includes("ELETTRICA"))) {
+                    throw new Error("Errore dovrebbe menzionare PDC ELETTRICA");
+                }
+                return result;
+            });
+
+            runTest('Test 2.3: II.H + III.A (aria/acqua, NO sostituzione) -> Fallisce', () => {
+                const data = {
+                    "III.A": {
+                        tipologia_pdc: "aria/acqua",
+                        sostituisce_esistente: "no"
+                    }
+                };
+                const result = CrossRuleEngine.validateSelectionWithData(
+                    ["II.H", "III.A"],
+                    data
+                );
+                if (result.success) {
+                    throw new Error("Dovrebbe fallire: manca sostituzione integrale");
+                }
+                if (!result.errors.some(e => e.includes("sostituzione"))) {
+                    throw new Error("Errore dovrebbe menzionare sostituzione");
+                }
+                return result;
+            });
+
+            runTest('Test 2.4: II.H + III.A (geotermica, sostituzione) -> Passante', () => {
+                const data = {
+                    "III.A": {
+                        tipologia_pdc: "acqua/acqua",  // Geotermica
+                        sostituisce_esistente: "si"
+                    }
+                };
+                const result = CrossRuleEngine.validateSelectionWithData(
+                    ["II.H", "III.A"],
+                    data
+                );
+                if (!result.success) {
+                    throw new Error(`Dovrebbe passare: ${result.errors.join(', ')}`);
+                }
+                return result;
+            });
+
+            runTest('Test 2.5: II.G + III.A -> Passante (solo richiede III.A)', () => {
+                const result = CrossRuleEngine.validateSelectionWithData(
+                    ["II.G", "III.A"],
+                    baseData
+                );
+                if (!result.success) {
+                    throw new Error(`Dovrebbe passare: ${result.errors.join(', ')}`);
+                }
+                return result;
+            });
+
+            runTest('Test 2.6: II.G + III.A (ibrido) -> Fallisce (per ricarica serve PDC valida)', () => {
+                const data = {
+                    "III.A": {
+                        tipologia_pdc: "ibrido"
+                    }
+                };
+                const result = CrossRuleEngine.validateSelectionWithData(
+                    ["II.G", "III.A"],
+                    data
+                );
+                if (result.success) {
+                    throw new Error("Dovrebbe fallire: per II.G serve III.A, ma la validazione di II.G non controlla la tipologia PDC (solo la presenza di III.A)");
+                }
+                return result;
+            });
+
+            // ========================================================================
+            // TEST 3: Casi combinati
+            // ========================================================================
+
+            resultsDiv.innerHTML += '<h2>📋 TEST SCENARIO</h2>';
+
+            runTest('Test 3.1: III.A + II.H + II.G -> Passante (tutto valido)', () => {
+                const data = {
+                    "III.A": {
+                        tipologia_pdc: "aria/acqua",
+                        sostituisce_esistente: "si"
+                    }
+                };
+                const result = CrossRuleEngine.validateSelectionWithData(
+                    ["III.A", "II.H", "II.G"],
+                    data
+                );
+                if (!result.success) {
+                    throw new Error(`Dovrebbe passare: ${result.errors.join(', ')}`);
+                }
+                return result;
+            });
+
+            runTest('Test 3.2: II.H + II.G (senza III.A) -> Fallisce', () => {
+                const result = CrossRuleEngine.validateSelectionWithData(
+                    ["II.H", "II.G"],
+                    {}
+                );
+                if (result.success) {
+                    throw new Error("Dovrebbe fallire: manca III.A");
+                }
+                return result;
+            });
+
+            // ========================================================================
+            // SUMMARY
+            // ========================================================================
+            
+            const successRate = total > 0 ? ((passed / total) * 100).toFixed(2) : 0;
+            
+            if (failed === 0) {
+                summaryDiv.innerHTML = `
+                    <h2 class="success">✅ TUTTI I TEST PASSATI!</h2>
+                    <p>Totale: ${total} | Passati: ${passed} | Falliti: ${failed}</p>
+                    <p>Successo: ${successRate}%</p>
+                    <p><strong>MOD-002 è pronto per la validazione utente.</strong></p>
+                `;
+            } else {
+                summaryDiv.innerHTML = `
+                    <h2 class="fail">❌ ALCUNI TEST FALLITI</h2>
+                    <p>Totale: ${total} | Passati: ${passed} | Falliti: ${failed}</p>
+                    <p>Successo: ${successRate}%</p>
+                    <p><strong>Rivedere gli errori sopra.</strong></p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
