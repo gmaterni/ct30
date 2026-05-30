@@ -225,9 +225,10 @@ const UaWizardManager = function(viewportId) {
 
     let _praticaData = {
         id: _generateTmpId(),
+        status: "Bozza", // MOD-006: Stato iniziale
         anagrafica: { tipo: "", denominazione: "", codiceFiscale: "" },
         immobile: { indirizzo: "", categoriaCatastale: "", zonaClimatica: "Zona E", classeEnergeticaAnte: "G" },
-        // Struttura Ruoli GSE (MOD-004)
+        // ... (ruoli omessi per brevità, resta invariato)
         ruoli: {
             sa: { denominazione: "", tipo: "", cf_piva: "", titolo_godimento: "Proprietà" },
             sr: { denominazione: "", cf_piva: "", iban: "", pec: "", coincide_con_sa: true },
@@ -269,7 +270,28 @@ const UaWizardManager = function(viewportId) {
 
         const allDocs = [...BASE_DOCUMENTS];
         
+        // 1. Regole Ruoli (MOD-005)
+        if (_praticaData.ruoli.proprietario.coincide_con_sa === false) {
+            allDocs.push("Atto di Assenso Proprietario");
+        }
+        if (_praticaData.ruoli.delegato && _praticaData.ruoli.delegato.nome && _praticaData.ruoli.delegato.nome !== "") {
+            allDocs.push("Delega alla compilazione");
+        }
+        
+        // 2. Regole Soggetto (Condominio)
+        if (_praticaData.anagrafica.tipo === "Condominio") {
+            allDocs.push("Verbale Assemblea Condominiale");
+            allDocs.push("Tabella Millesimale");
+        }
+
+        // 3. Regole Interventi Specifici
         _praticaData.selectedInterventi.forEach(code => {
+            // Aggiunta automatica documenti base per interventi specifici
+            if (code === "III.A") {
+                allDocs.push("Scheda Tecnica PDC");
+                allDocs.push("Dichiarazione Conformità");
+            }
+
             const intervention = catalog[code];
             if (intervention && intervention.documenti_richiesti) {
                 intervention.documenti_richiesti.forEach(doc => {
@@ -899,14 +921,20 @@ const UaWizardManager = function(viewportId) {
             `;
         }
 
+        // Aggiorna automaticamente lo stato se valida (MOD-006)
+        if (_praticaData.validation && _praticaData.validation.success && _praticaData.status === "Bozza") {
+            _updateStatus("Validata");
+        }
+
         const html = `
             <div class="window-header">
                 <span class="title">Risultati Analisi CT 3.0</span>
+                <span class="status-badge">Stato: ${_praticaData.status}</span>
                 <div class="header-actions">
                     <button id="btn-wiz-preview-report" class="cmd-btn">Report</button>
                     <button id="btn-wiz-calcoli" class="sec-btn">Calcoli</button>
                     <button id="btn-wiz-qa" class="sec-btn">Test QA</button>
-                    <button id="btn-wiz-archive" class="cmd-btn">Archivia Pratica</button>
+                    <button id="btn-wiz-archive" class="cmd-btn" ${(_praticaData.status !== "Validata" && _praticaData.status !== "Documentazione_Pronta") ? 'disabled' : ''}>Archivia Pratica</button>
                 </div>
                 <button class="close-btn btn-close-win tt-bottom" data-tt="Chiudi">×</button>
             </div>
@@ -1449,18 +1477,27 @@ const UaWizardManager = function(viewportId) {
     };
 
     /**
-     * Valida il formato del Codice Fiscale (semplificato).
-     * @param {string} cf - Il codice fiscale da validare.
-     * @returns {boolean}
-     * @private
+     * Aggiorna lo stato della pratica con validazione.
+     * @param {string} newStatus 
      */
-    const _validateCF = function(cf) {
-        if (!cf) {
+    const _updateStatus = function(newStatus) {
+        const allowedTransitions = {
+            "Bozza": ["Validata"],
+            "Validata": ["Bozza", "Documentazione_Pronta"],
+            "Documentazione_Pronta": ["Validata", "Archiviata"],
+            "Archiviata": ["Inviata_GSE"],
+            "Inviata_GSE": ["Incentivata"]
+        };
+
+        const current = _praticaData.status;
+        if (allowedTransitions[current] && allowedTransitions[current].includes(newStatus)) {
+            _praticaData.status = newStatus;
+            console.info(`Stato pratica aggiornato: ${current} -> ${newStatus}`);
+            return true;
+        } else {
+            console.warn(`Transizione stato non permessa: ${current} -> ${newStatus}`);
             return false;
         }
-        const regex = /^[A-Z0-9]{11,16}$/i;
-        const isValid = regex.test(cf);
-        return isValid;
     };
 
     // 3. GESTORI EVENTI
@@ -1786,6 +1823,7 @@ const UaWizardManager = function(viewportId) {
         reset: function() {
             _praticaData = {
                 id: _generateTmpId(),
+                status: "Bozza", // MOD-006
                 anagrafica: { tipo: "", denominazione: "", codiceFiscale: "" },
                 immobile: { indirizzo: "", categoriaCatastale: "", zonaClimatica: "Zona E", classeEnergeticaAnte: "G" },
                 // Nuova struttura Ruoli GSE (MOD-004)
@@ -1966,7 +2004,12 @@ const UaWizardManager = function(viewportId) {
                 };
             }
             
-            console.info(`loadPratica: Caricata pratica ${_praticaData.id} con nome ${_praticaData.nome}`);
+            // Retrocompatibilità Stato (MOD-006)
+            if (!_praticaData.status) {
+                _praticaData.status = "Bozza";
+            }
+            
+            console.info(`loadPratica: Caricata pratica ${_praticaData.id} con nome ${_praticaData.nome} [Stato: ${_praticaData.status}]`);
             
             // Avviamo dal primo step per permettere la revisione dei dati
             _goToStep(0);
