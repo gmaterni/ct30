@@ -55,13 +55,13 @@ const UaWizardManager = function(viewportId) {
         }
 
         // Visibilità pulsante Indietro (nascosto solo al primo step o ai risultati finali)
-        _btnPrevGlobal.style.display = (_currentStep > 0 && _currentStep < 6) ? "block" : "none";
+        _btnPrevGlobal.style.display = (_currentStep > 0 && _currentStep < 7) ? "block" : "none";
 
         // Visibilità pulsante Avanti (nascosto se siamo ai risultati finali)
-        _btnNextGlobal.style.display = (_currentStep < 6) ? "block" : "none";
+        _btnNextGlobal.style.display = (_currentStep < 7) ? "block" : "none";
 
-        // Caso speciale: Step Ammissibilità (Avanti solo se validato)
-        if (_currentStep === 1) {
+        // Caso speciale: Step Ammissibilità (Avanti solo se validato) - Ora Step 2 (MOD-004)
+        if (_currentStep === 2) {
             const results = _praticaData.validation;
             _btnNextGlobal.style.display = (results && results.success) ? "block" : "none";
         }
@@ -163,6 +163,29 @@ const UaWizardManager = function(viewportId) {
             nome: scenario.nome || "Nuova Pratica Test",
             anagrafica: scenario.soggetto || { tipo: "Privato residenziale", denominazione: "", codiceFiscale: "" },
             immobile: scenario.immobile || { indirizzo: "", zonaClimatica: "Zona E", categoriaCatastale: "A/2", classeEnergeticaAnte: "G" },
+            // Nuova struttura Ruoli GSE (MOD-004)
+            ruoli: scenario.ruoli || {
+                sa: { 
+                    denominazione: scenario.soggetto?.denominazione || "", 
+                    tipo: scenario.soggetto?.tipo || "Privato residenziale", 
+                    cf_piva: scenario.soggetto?.codiceFiscale || "",
+                    titolo_godimento: "Proprietà" 
+                },
+                sr: { 
+                    denominazione: scenario.soggetto?.denominazione || "", 
+                    cf_piva: scenario.soggetto?.codiceFiscale || "", 
+                    iban: "", 
+                    pec: "", 
+                    coincide_con_sa: true 
+                },
+                proprietario: { 
+                    denominazione: scenario.soggetto?.denominazione || "", 
+                    cf_piva: scenario.soggetto?.codiceFiscale || "", 
+                    coincide_con_sa: true, 
+                    atto_assenso: false 
+                },
+                delegato: { nome: "", cf: "" }
+            },
             richiestaPreliminareInviata: scenario.richiestaPreliminareInviata || false,
             dataRichiestaPreliminare: scenario.dataRichiestaPreliminare || "",
             dataPrimoImpegno: scenario.dataPrimoImpegno || "",
@@ -204,6 +227,13 @@ const UaWizardManager = function(viewportId) {
         id: _generateTmpId(),
         anagrafica: { tipo: "", denominazione: "", codiceFiscale: "" },
         immobile: { indirizzo: "", categoriaCatastale: "", zonaClimatica: "Zona E", classeEnergeticaAnte: "G" },
+        // Struttura Ruoli GSE (MOD-004)
+        ruoli: {
+            sa: { denominazione: "", tipo: "", cf_piva: "", titolo_godimento: "Proprietà" },
+            sr: { denominazione: "", cf_piva: "", iban: "", pec: "", coincide_con_sa: true },
+            proprietario: { denominazione: "", cf_piva: "", coincide_con_sa: true, atto_assenso: false },
+            delegato: { nome: "", cf: "" }
+        },
         richiestaPreliminareInviata: false,
         dataRichiestaPreliminare: "",
         dataPrimoImpegno: "",
@@ -442,6 +472,177 @@ const UaWizardManager = function(viewportId) {
                     updateEffettoVisibility(); // Esecuzione iniziale
                     };
 
+
+    /**
+     * Renderizza lo Step 1: Ruoli GSE (SR, Proprietario, Delegato).
+     * @private
+     */
+    const _renderStepRuoliGSE = function() {
+        const container = _getDivText();
+        const ruoli = _praticaData.ruoli;
+
+        const html = `
+            <div class="wizard-step">
+                <h3>Definizione Ruoli GSE</h3>
+                <p class="step-intro">Specifica i soggetti coinvolti nella pratica come richiesto dal portale GSE.</p>
+                
+                <section class="ruolo-box" style="margin-bottom: 20px; padding: 15px; background: rgba(63, 81, 181, 0.05); border-radius: 8px; border: 1px solid rgba(63, 81, 181, 0.1);">
+                    <h4 style="margin-top: 0; color: #3f51b5; border-bottom: 1px solid #3f51b5; padding-bottom: 5px;">Soggetto Ammesso (SA)</h4>
+                    <p class="field-note">Chi ha la disponibilità dell'immobile (già inserito nello step precedente).</p>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Titolo di Godimento:</label>
+                            <select id="inp-sa-titolo">
+                                <option value="Proprietà" ${ruoli.sa.titolo_godimento === "Proprietà" ? 'selected' : ''}>Proprietà / Comproprietà</option>
+                                <option value="Diritto Reale" ${ruoli.sa.titolo_godimento === "Diritto Reale" ? 'selected' : ''}>Diritto Reale di Godimento (es. Usufrutto)</option>
+                                <option value="Personale di Godimento" ${ruoli.sa.titolo_godimento === "Personale di Godimento" ? 'selected' : ''}>Diritto Personale di Godimento (es. Locazione)</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="ruolo-box" style="margin-bottom: 20px; padding: 15px; background: rgba(63, 81, 181, 0.05); border-radius: 8px; border: 1px solid rgba(63, 81, 181, 0.1);">
+                    <h4 style="margin-top: 0; color: #3f51b5; border-bottom: 1px solid #3f51b5; padding-bottom: 5px;">Soggetto Responsabile (SR)</h4>
+                    <p class="field-note">Chi sostiene le spese e riceve l'incentivo sul proprio IBAN.</p>
+                    <div class="form-group checkbox-group" style="margin-bottom: 15px;">
+                        <input type="checkbox" id="chk-sr-coincide" ${ruoli.sr.coincide_con_sa ? 'checked' : ''}>
+                        <label for="chk-sr-coincide" style="font-weight: 600;">Coincide con il Soggetto Ammesso (SA)</label>
+                    </div>
+                    
+                    <div id="box-sr-dettagli" style="display: ${ruoli.sr.coincide_con_sa ? 'none' : 'block'}; margin-bottom: 15px; padding: 15px; border: 1px dashed #3f51b5; border-radius: 4px;">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Ragione Sociale/Nome SR:</label>
+                                <input type="text" id="inp-sr-nome" value="${ruoli.sr.denominazione}">
+                            </div>
+                            <div class="form-group">
+                                <label>CF/P.IVA SR:</label>
+                                <input type="text" id="inp-sr-cf" value="${ruoli.sr.cf_piva}">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>IBAN per accredito:</label>
+                            <input type="text" id="inp-sr-iban" value="${ruoli.sr.iban}" placeholder="IT00...">
+                        </div>
+                        <div class="form-group">
+                            <label>PEC di riferimento:</label>
+                            <input type="email" id="inp-sr-pec" value="${ruoli.sr.pec}">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="ruolo-box" style="margin-bottom: 20px; padding: 15px; background: rgba(63, 81, 181, 0.05); border-radius: 8px; border: 1px solid rgba(63, 81, 181, 0.1);">
+                    <h4 style="margin-top: 0; color: #3f51b5; border-bottom: 1px solid #3f51b5; padding-bottom: 5px;">Proprietario dell'Immobile</h4>
+                    <div class="form-group checkbox-group" style="margin-bottom: 15px;">
+                        <input type="checkbox" id="chk-prop-coincide" ${ruoli.proprietario.coincide_con_sa ? 'checked' : ''}>
+                        <label for="chk-prop-coincide" style="font-weight: 600;">Coincide con il Soggetto Ammesso (SA)</label>
+                    </div>
+                    
+                    <div id="box-prop-dettagli" style="display: ${ruoli.proprietario.coincide_con_sa ? 'none' : 'block'}; margin-bottom: 15px; padding: 15px; border: 1px dashed #3f51b5; border-radius: 4px;">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Nome/Ragione Sociale Proprietario:</label>
+                                <input type="text" id="inp-prop-nome" value="${ruoli.proprietario.denominazione}">
+                            </div>
+                            <div class="form-group">
+                                <label>CF/P.IVA Proprietario:</label>
+                                <input type="text" id="inp-prop-cf" value="${ruoli.proprietario.cf_piva}">
+                            </div>
+                        </div>
+                        <div class="form-group checkbox-group" style="margin-top: 15px;">
+                            <input type="checkbox" id="chk-prop-assenso" ${ruoli.proprietario.atto_assenso ? 'checked' : ''}>
+                            <label for="chk-prop-assenso">Atto di assenso del proprietario disponibile</label>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="ruolo-box" style="padding: 15px; background: rgba(63, 81, 181, 0.05); border-radius: 8px; border: 1px solid rgba(63, 81, 181, 0.1);">
+                    <h4 style="margin-top: 0; color: #3f51b5; border-bottom: 1px solid #3f51b5; padding-bottom: 5px;">Soggetto Delegato (Opzionale)</h4>
+                    <p class="field-note">Tecnico o consulente delegato alla compilazione dell'istanza.</p>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Nome Delegato:</label>
+                            <input type="text" id="inp-delegato-nome" value="${ruoli.delegato.nome}">
+                        </div>
+                        <div class="form-group">
+                            <label>CF Delegato:</label>
+                            <input type="text" id="inp-delegato-cf" value="${ruoli.delegato.cf}">
+                        </div>
+                    </div>
+                </section>
+            </div>
+        `;
+
+        container.innerHTML = html;
+
+        // Toggle visibilità box SR
+        document.getElementById("chk-sr-coincide").addEventListener("change", (e) => {
+            document.getElementById("box-sr-dettagli").style.display = e.target.checked ? "none" : "block";
+        });
+
+        // Toggle visibilità box Proprietario
+        document.getElementById("chk-prop-coincide").addEventListener("change", (e) => {
+            document.getElementById("box-prop-dettagli").style.display = e.target.checked ? "none" : "block";
+        });
+    };
+
+    /**
+     * Gestisce il salvataggio dei dati dello step Ruoli GSE.
+     * @private
+     */
+    const _handleStepRuoliGSENext = function() {
+        try {
+            const ruoli = _praticaData.ruoli;
+            
+            // SA (Aggiornamento da step precedente per sicurezza)
+            ruoli.sa.titolo_godimento = document.getElementById("inp-sa-titolo").value;
+            ruoli.sa.denominazione = _praticaData.anagrafica.denominazione;
+            ruoli.sa.cf_piva = _praticaData.anagrafica.codiceFiscale;
+            ruoli.sa.tipo = _praticaData.anagrafica.tipo;
+
+            // SR
+            ruoli.sr.coincide_con_sa = document.getElementById("chk-sr-coincide").checked;
+            ruoli.sr.iban = document.getElementById("inp-sr-iban").value.trim().toUpperCase();
+            ruoli.sr.pec = document.getElementById("inp-sr-pec").value.trim();
+            if (ruoli.sr.coincide_con_sa) {
+                ruoli.sr.denominazione = ruoli.sa.denominazione;
+                ruoli.sr.cf_piva = ruoli.sa.cf_piva;
+            } else {
+                ruoli.sr.denominazione = document.getElementById("inp-sr-nome").value.trim();
+                ruoli.sr.cf_piva = document.getElementById("inp-sr-cf").value.trim().toUpperCase();
+            }
+
+            // Proprietario
+            ruoli.proprietario.coincide_con_sa = document.getElementById("chk-prop-coincide").checked;
+            if (ruoli.proprietario.coincide_con_sa) {
+                ruoli.proprietario.denominazione = ruoli.sa.denominazione;
+                ruoli.proprietario.cf_piva = ruoli.sa.cf_piva;
+                ruoli.proprietario.atto_assenso = true; // Implicito
+            } else {
+                ruoli.proprietario.denominazione = document.getElementById("inp-prop-nome").value.trim();
+                ruoli.proprietario.cf_piva = document.getElementById("inp-prop-cf").value.trim().toUpperCase();
+                ruoli.proprietario.atto_assenso = document.getElementById("chk-prop-assenso").checked;
+            }
+
+            // Delegato
+            ruoli.delegato.nome = document.getElementById("inp-delegato-nome").value.trim();
+            ruoli.delegato.cf = document.getElementById("inp-delegato-cf").value.trim().toUpperCase();
+
+            // Validazione aggiuntiva Ruoli in RulesEngine (MOD-004)
+            const roleValidation = RulesEngine.validateRoles(ruoli);
+            if (!roleValidation.success) {
+                alert(`ERRORE RUOLI:\n${roleValidation.errors.join("\n")}`);
+                return;
+            }
+
+            _goToStep(2);
+        } catch (error) {
+            console.error("_handleStepRuoliGSENext:", error);
+        }
+    };
 
     /**
      * Step 2: Validazione Ammissibilità Soggetto/Immobile.
@@ -1136,19 +1337,29 @@ const UaWizardManager = function(viewportId) {
                 </div>
 
                 <div class="report-section" style="margin-top: 40px;">
-                    <h2 style="border-bottom: 1px solid #3f51b5; padding-bottom: 8px;">2. Inquadramento Soggetto e Immobile</h2>
+                    <h2 style="border-bottom: 1px solid #3f51b5; padding-bottom: 8px;">2. Inquadramento Soggetti e Immobile (GSE Roles)</h2>
                     <div class="report-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 15px;">
                         <div style="background: #f9f9f9; padding: 15px; border-radius: 4px;">
-                            <h4 style="margin-top: 0;">Soggetto Richiedente</h4>
-                            <p style="margin: 5px 0;"><strong>Nominativo:</strong> ${_praticaData.anagrafica.denominazione}</p>
-                            <p style="margin: 5px 0;"><strong>Tipologia:</strong> ${_praticaData.anagrafica.tipo}</p>
-                            <p style="margin: 5px 0;"><strong>Codice Fiscale:</strong> ${_praticaData.anagrafica.codiceFiscale}</p>
+                            <h4 style="margin-top: 0; color: #3f51b5;">Soggetto Ammesso (SA)</h4>
+                            <p style="margin: 5px 0;"><strong>Nominativo:</strong> ${_praticaData.ruoli.sa.denominazione}</p>
+                            <p style="margin: 5px 0;"><strong>Tipologia:</strong> ${_praticaData.ruoli.sa.tipo}</p>
+                            <p style="margin: 5px 0;"><strong>CF/P.IVA:</strong> ${_praticaData.ruoli.sa.cf_piva}</p>
+                            <p style="margin: 5px 0;"><strong>Titolo Godimento:</strong> ${_praticaData.ruoli.sa.titolo_godimento}</p>
+                            
+                            <h4 style="margin-top: 15px; color: #3f51b5;">Soggetto Responsabile (SR)</h4>
+                            <p style="margin: 5px 0;"><strong>Nominativo:</strong> ${_praticaData.ruoli.sr.denominazione}</p>
+                            <p style="margin: 5px 0;"><strong>CF/P.IVA:</strong> ${_praticaData.ruoli.sr.cf_piva}</p>
+                            <p style="margin: 5px 0;"><strong>IBAN:</strong> ${_praticaData.ruoli.sr.iban}</p>
                         </div>
                         <div style="background: #f9f9f9; padding: 15px; border-radius: 4px;">
-                            <h4 style="margin-top: 0;">Ubicazione Intervento</h4>
+                            <h4 style="margin-top: 0; color: #3f51b5;">Ubicazione e Catasto</h4>
                             <p style="margin: 5px 0;"><strong>Indirizzo:</strong> ${_praticaData.immobile.indirizzo}</p>
-                            <p style="margin: 5px 0;"><strong>Dati Catastali:</strong> ${_praticaData.immobile.categoriaCatastale}</p>
-                            <p style="margin: 5px 0;"><strong>Zona Climatica:</strong> ${_praticaData.immobile.zonaClimatica} | Classe Ante: ${_praticaData.immobile.classeEnergeticaAnte}</p>
+                            <p style="margin: 5px 0;"><strong>Catasto:</strong> ${_praticaData.immobile.categoriaCatastale} | Zona: ${_praticaData.immobile.zonaClimatica}</p>
+                            
+                            <h4 style="margin-top: 15px; color: #3f51b5;">Proprietario e Delegato</h4>
+                            <p style="margin: 5px 0;"><strong>Proprietario:</strong> ${_praticaData.ruoli.proprietario.denominazione}</p>
+                            <p style="margin: 5px 0;"><strong>Assenso:</strong> ${_praticaData.ruoli.proprietario.atto_assenso ? "Sì" : "No"}</p>
+                            <p style="margin: 5px 0;"><strong>Delegato:</strong> ${_praticaData.ruoli.delegato.nome || "Nessuno"}</p>
                         </div>
                     </div>
                 </div>
@@ -1312,12 +1523,13 @@ const UaWizardManager = function(viewportId) {
         
         switch(_currentStep) {
             case 0: _renderStepSoggetto(); break;
-            case 1: _renderStepAmmissibilita(); break;
-            case 2: _renderStepSelezioneInterventi(); break;
-            case 3: _renderStepDatiTecnici(); break;
-            case 4: _renderStepEconomico(); break;
-            case 5: _renderStepPostOperam(); break;
-            case 6: _renderStepRisultati(); break;
+            case 1: _renderStepRuoliGSE(); break;
+            case 2: _renderStepAmmissibilita(); break;
+            case 3: _renderStepSelezioneInterventi(); break;
+            case 4: _renderStepDatiTecnici(); break;
+            case 5: _renderStepEconomico(); break;
+            case 6: _renderStepPostOperam(); break;
+            case 7: _renderStepRisultati(); break;
         }
 
         // Aggiorna navigazione globale
@@ -1330,14 +1542,15 @@ const UaWizardManager = function(viewportId) {
             // Mappatura azioni next
             switch(_currentStep) {
                 case 0: _btnNextGlobal.onclick = _handleStepSoggettoNext; break;
-                case 1: _btnNextGlobal.onclick = () => _goToStep(2); break;
-                case 2: _btnNextGlobal.onclick = _handleStepSelezioneNext; break;
-                case 3: _btnNextGlobal.onclick = _handleStepDatiTecniciNext; break;
-                case 4: _btnNextGlobal.onclick = () => {
+                case 1: _btnNextGlobal.onclick = _handleStepRuoliGSENext; break;
+                case 2: _btnNextGlobal.onclick = () => _goToStep(3); break;
+                case 3: _btnNextGlobal.onclick = _handleStepSelezioneNext; break;
+                case 4: _btnNextGlobal.onclick = _handleStepDatiTecniciNext; break;
+                case 5: _btnNextGlobal.onclick = () => {
                     _praticaData.preventivo.totals = PreventivoManager.calculateTotals(_praticaData.preventivo.items);
-                    _goToStep(5);
+                    _goToStep(6);
                 }; break;
-                case 5: _btnNextGlobal.onclick = _handleStepPostOperamNext; break;
+                case 6: _btnNextGlobal.onclick = _handleStepPostOperamNext; break;
             }
         }
 
@@ -1351,6 +1564,8 @@ const UaWizardManager = function(viewportId) {
                 case 3: _btnPrevGlobal.onclick = () => _goToStep(2); break;
                 case 4: _btnPrevGlobal.onclick = () => _goToStep(3); break;
                 case 5: _btnPrevGlobal.onclick = () => _goToStep(4); break;
+                case 6: _btnPrevGlobal.onclick = () => _goToStep(5); break;
+                case 7: _btnPrevGlobal.onclick = () => _goToStep(6); break;
             }
         }
 
@@ -1496,7 +1711,7 @@ const UaWizardManager = function(viewportId) {
 
         _praticaData.selectedInterventi = selected;
         const count = selected.length;
-        _goToStep(3);
+        _goToStep(4);
     };
 
     /**
@@ -1538,7 +1753,7 @@ const UaWizardManager = function(viewportId) {
                 return;
             }
 
-            _goToStep(4);
+            _goToStep(5);
         } catch (error) {
             console.error("_handleStepDatiTecniciNext:", error);
         }
@@ -1553,7 +1768,7 @@ const UaWizardManager = function(viewportId) {
         const rinn = document.getElementById("inp-post-rinn").checked;
 
         _praticaData.postOperam = { efficienza: eff, rinnovabili: rinn };
-        _goToStep(6);
+        _goToStep(7);
     };
 
     // 4. API PUBBLICA
@@ -1573,6 +1788,16 @@ const UaWizardManager = function(viewportId) {
                 id: _generateTmpId(),
                 anagrafica: { tipo: "", denominazione: "", codiceFiscale: "" },
                 immobile: { indirizzo: "", categoriaCatastale: "", zonaClimatica: "Zona E", classeEnergeticaAnte: "G" },
+                // Nuova struttura Ruoli GSE (MOD-004)
+                ruoli: {
+                    sa: { denominazione: "", tipo: "", cf_piva: "", titolo_godimento: "Proprietà" },
+                    sr: { denominazione: "", cf_piva: "", iban: "", pec: "", coincide_con_sa: true },
+                    proprietario: { denominazione: "", cf_piva: "", coincide_con_sa: true, atto_assenso: false },
+                    delegato: { nome: "", cf: "" }
+                },
+                richiestaPreliminareInviata: false,
+                dataRichiestaPreliminare: "",
+                dataPrimoImpegno: "",
                 selectedInterventi: [],
                 interventiData: {},
                 preventivo: { items: [], totals: {} },
@@ -1715,6 +1940,32 @@ const UaWizardManager = function(viewportId) {
             _praticaData.preventivo = _praticaData.preventivo || { items: [], totals: {} };
             _praticaData.selectedInterventi = _praticaData.selectedInterventi || [];
             
+            // Retrocompatibilità Ruoli (MOD-004)
+            if (!_praticaData.ruoli) {
+                _praticaData.ruoli = {
+                    sa: { 
+                        denominazione: _praticaData.anagrafica?.denominazione || "", 
+                        tipo: _praticaData.anagrafica?.tipo || "Privato residenziale", 
+                        cf_piva: _praticaData.anagrafica?.codiceFiscale || "",
+                        titolo_godimento: "Proprietà" 
+                    },
+                    sr: { 
+                        denominazione: _praticaData.anagrafica?.denominazione || "", 
+                        cf_piva: _praticaData.anagrafica?.codiceFiscale || "", 
+                        iban: "", 
+                        pec: "", 
+                        coincide_con_sa: true 
+                    },
+                    proprietario: { 
+                        denominazione: _praticaData.anagrafica?.denominazione || "", 
+                        cf_piva: _praticaData.anagrafica?.codiceFiscale || "", 
+                        coincide_con_sa: true, 
+                        atto_assenso: false 
+                    },
+                    delegato: { nome: "", cf: "" }
+                };
+            }
+            
             console.info(`loadPratica: Caricata pratica ${_praticaData.id} con nome ${_praticaData.nome}`);
             
             // Avviamo dal primo step per permettere la revisione dei dati
@@ -1733,9 +1984,9 @@ const UaWizardManager = function(viewportId) {
             }
             // Carica i dati
             _praticaData = JSON.parse(JSON.stringify(data));
-            // Forza il rendering dello step 6 (necessario per inizializzare calcoli e variabili di stato interne)
-            _goToStep(6);
-            // Chiude la finestra dei risultati (che viene aperta da _goToStep(6)) e apre il report
+            // Forza il rendering dello step 7 (necessario per inizializzare calcoli e variabili di stato interne)
+            _goToStep(7);
+            // Chiude la finestra dei risultati (che viene aperta da _goToStep(7)) e apre il report
             const winRes = UaWindowAdm.get("win-wizard-risultati");
             if (winRes) winRes.close();
             

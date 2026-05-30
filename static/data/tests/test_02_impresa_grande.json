@@ -8,13 +8,37 @@
         "partitaIva": "01234567890",
         "email": "info@tecnoindustria.it"
     },
+    "ruoli": {
+        "sa": { 
+            "denominazione": "TecnoIndustria S.p.A.", 
+            "tipo": "Impresa", 
+            "cf_piva": "01234567890",
+            "titolo_godimento": "Proprietà" 
+        },
+        "sr": { 
+            "denominazione": "TecnoIndustria S.p.A.", 
+            "cf_piva": "01234567890", 
+            "iban": "IT99P0123456789012345678901", 
+            "pec": "amministrazione@pec.tecnoindustria.it", 
+            "coincide_con_sa": true 
+        },
+        "proprietario": { 
+            "denominazione": "TecnoIndustria S.p.A.", 
+            "cf_piva": "01234567890", 
+            "coincide_con_sa": true, 
+            "atto_assenso": true 
+        },
+        "delegato": { "nome": "Ing. Marco Verdi", "cf": "VRDMRA80A01H501U" }
+    },
     "immobile": {
         "indirizzo": "Via delle Industrie 50, Napoli (NA)",
         "zonaClimatica": "Zona C",
         "destinazione": "Terziario",
         "tipo_edificio": "Edificio Singolo",
         "categoriaCatastale": "D/7",
-        "classeEnergeticaAnte": "F"
+        "classeEnergeticaAnte": "F",
+        "potenza_esistente_kw": 150.0,
+        "combustibile_ante": "gasolio"
     },
     "richiestaPreliminareInviata": true,
     "dataRichiestaPreliminare": "2026-01-15",
@@ -26,7 +50,8 @@
             "tipologia_pdc": "acqua/acqua",
             "scop": 5.2,
             "eta_s": 190,
-            "costo_pdc": 85000
+            "costo_pdc": 85000,
+            "sostituisce_esistente": "si"
         },
         "II.H": {
             "potenza_fv_kw": 50,

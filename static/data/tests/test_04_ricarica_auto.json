@@ -7,22 +7,54 @@
         "codiceFiscale": "90012345678",
         "email": "amministrazione@condominiobelvedere.it"
     },
+    "ruoli": {
+        "sa": { 
+            "denominazione": "Condominio Belvedere", 
+            "tipo": "Condominio", 
+            "cf_piva": "90012345678",
+            "titolo_godimento": "Proprietà" 
+        },
+        "sr": { 
+            "denominazione": "Condominio Belvedere", 
+            "cf_piva": "90012345678", 
+            "iban": "IT22Y0123456789012345678901", 
+            "pec": "amministrazione@pec.condominiobelvedere.it", 
+            "coincide_con_sa": true 
+        },
+        "proprietario": { 
+            "denominazione": "Condominio Belvedere", 
+            "cf_piva": "90012345678", 
+            "coincide_con_sa": true, 
+            "atto_assenso": true 
+        },
+        "delegato": { "nome": "Studio Amministratore Rossi", "cf": "09876543210" }
+    },
     "immobile": {
         "indirizzo": "Piazza della Libertà 1, Torino (TO)",
         "zonaClimatica": "Zona E",
         "destinazione": "Residenziale",
         "tipo_edificio": "Condominio",
         "categoriaCatastale": "A/2",
-        "classeEnergeticaAnte": "E"
+        "classeEnergeticaAnte": "E",
+        "potenza_esistente_kw": 120.0,
+        "combustibile_ante": "metano"
     },
     "richiestaPreliminareInviata": false,
-    "selectedInterventi": ["II.G"],
+    "selectedInterventi": ["II.G", "III.A"],
     "interventiData": {
         "II.G": {
             "costo_colonnina": 15000,
             "numero_punti_ricarica": 6,
             "potenza_ricarica_kw": 22.0,
             "tipo_ricarica": "trifase"
+        },
+        "III.A": {
+            "potenza_pdc_kw": 120,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.2,
+            "eta_s": 160,
+            "costo_pdc": 45000,
+            "sostituisce_esistente": "si"
         }
     }
 }

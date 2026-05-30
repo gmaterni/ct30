@@ -8,13 +8,37 @@
         "email": "mario.rossi@email.it",
         "telefono": "021234567"
     },
+    "ruoli": {
+        "sa": { 
+            "denominazione": "Mario Rossi", 
+            "tipo": "Privato residenziale", 
+            "cf_piva": "RSSMRA80A01H501U",
+            "titolo_godimento": "Proprietà" 
+        },
+        "sr": { 
+            "denominazione": "Mario Rossi", 
+            "cf_piva": "RSSMRA80A01H501U", 
+            "iban": "IT60X0542811101000000123456", 
+            "pec": "mario.rossi@pec.it", 
+            "coincide_con_sa": true 
+        },
+        "proprietario": { 
+            "denominazione": "Mario Rossi", 
+            "cf_piva": "RSSMRA80A01H501U", 
+            "coincide_con_sa": true, 
+            "atto_assenso": true 
+        },
+        "delegato": { "nome": "", "cf": "" }
+    },
     "immobile": {
         "indirizzo": "Via Roma 10, Milano (MI)",
         "zonaClimatica": "Zona E",
         "destinazione": "Residenziale",
         "tipo_edificio": "Condominio",
         "categoriaCatastale": "A/2",
-        "classeEnergeticaAnte": "G"
+        "classeEnergeticaAnte": "G",
+        "potenza_esistente_kw": 24.0,
+        "combustibile_ante": "metano"
     },
     "richiestaPreliminareInviata": false,
     "selectedInterventi": ["III.A"],
@@ -24,7 +48,8 @@
             "tipologia_pdc": "aria/acqua",
             "scop": 4.1,
             "eta_s": 155,
-            "costo_pdc": 12500
+            "costo_pdc": 12500,
+            "sostituisce_esistente": "si"
         }
     }
 }

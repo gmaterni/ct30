@@ -7,13 +7,37 @@
         "codiceFiscale": "BNCLGU75M15L219Z",
         "email": "luigi.bianchi@webmail.com"
     },
+    "ruoli": {
+        "sa": { 
+            "denominazione": "Luigi Bianchi", 
+            "tipo": "Privato residenziale", 
+            "cf_piva": "BNCLGU75M15L219Z",
+            "titolo_godimento": "Proprietà" 
+        },
+        "sr": { 
+            "denominazione": "Luigi Bianchi", 
+            "cf_piva": "BNCLGU75M15L219Z", 
+            "iban": "IT11X0123456789012345678901", 
+            "pec": "luigi.bianchi@pec.it", 
+            "coincide_con_sa": true 
+        },
+        "proprietario": { 
+            "denominazione": "Luigi Bianchi", 
+            "cf_piva": "BNCLGU75M15L219Z", 
+            "coincide_con_sa": true, 
+            "atto_assenso": true 
+        },
+        "delegato": { "nome": "", "cf": "" }
+    },
     "immobile": {
         "indirizzo": "Località Montagna 5, Belluno (BL)",
         "zonaClimatica": "Zona F",
         "destinazione": "Residenziale",
         "tipo_edificio": "Edificio Singolo",
         "categoriaCatastale": "A/3",
-        "classeEnergeticaAnte": "G"
+        "classeEnergeticaAnte": "G",
+        "potenza_esistente_kw": 18.0,
+        "combustibile_ante": "gpl"
     },
     "richiestaPreliminareInviata": false,
     "selectedInterventi": ["II.A"],

@@ -6,11 +6,35 @@
         "denominazione": "Mario Rossi", 
         "codiceFiscale": "RSSMRA80A01H501U" 
     },
+    "ruoli": {
+        "sa": { 
+            "denominazione": "Mario Rossi", 
+            "tipo": "Privato residenziale", 
+            "cf_piva": "RSSMRA80A01H501U",
+            "titolo_godimento": "Proprietà" 
+        },
+        "sr": { 
+            "denominazione": "Mario Rossi", 
+            "cf_piva": "RSSMRA80A01H501U", 
+            "iban": "IT60X0542811101000000123456", 
+            "pec": "mario.rossi@pec.it", 
+            "coincide_con_sa": true 
+        },
+        "proprietario": { 
+            "denominazione": "Mario Rossi", 
+            "cf_piva": "RSSMRA80A01H501U", 
+            "coincide_con_sa": true, 
+            "atto_assenso": true 
+        },
+        "delegato": { "nome": "", "cf": "" }
+    },
     "immobile": { 
         "indirizzo": "Via Milano 10, Milano", 
         "categoriaCatastale": "A/2", 
         "zonaClimatica": "Zona E", 
-        "classeEnergeticaAnte": "E" 
+        "classeEnergeticaAnte": "E",
+        "potenza_esistente_kw": 35.0,
+        "combustibile_ante": "metano"
     },
     "richiestaPreliminareInviata": false,
     "dataRichiestaPreliminare": "",
@@ -31,7 +55,8 @@
             "generatore_sostituito": "Caldaia a gas 30kW",
             "made_in_eu": "sì",
             "scheda_tecnica_pdc": "sì",
-            "costo_pdc": "25000"
+            "costo_pdc": "25000",
+            "sostituisce_esistente": "si"
         }
     },
     "preventivo": {

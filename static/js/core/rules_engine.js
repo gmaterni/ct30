@@ -248,6 +248,47 @@ const UaRulesEngine = function() {
         return res;
     };
 
+    /**
+     * Valida la coerenza e completezza dei ruoli GSE.
+     * 
+     * @param {Object} ruoli - Struttura ruoli della pratica.
+     * @returns {Object} Esito della validazione.
+     */
+    const validateRoles = function(ruoli) {
+        const errors = [];
+        
+        if (!ruoli) {
+            return { success: false, errors: ["Dati ruoli mancanti"] };
+        }
+
+        // 1. Verifica Proprietario ed Atto Assenso
+        if (!ruoli.proprietario.coincide_con_sa && !ruoli.proprietario.atto_assenso) {
+            errors.push("PROPRIETARIO: Se il proprietario è diverso dal Soggetto Ammesso (SA), è obbligatorio disporre dell'Atto di Assenso.");
+        }
+
+        // 2. Verifica CF/P.IVA SR (se diverso da SA)
+        if (!ruoli.sr.coincide_con_sa) {
+            if (!ruoli.sr.cf_piva || ruoli.sr.cf_piva.length < 11) {
+                errors.push("SR: Codice Fiscale o Partita IVA del Soggetto Responsabile non valido.");
+            }
+        }
+
+        // 3. Verifica IBAN (molto semplificata)
+        if (ruoli.sr.iban && ruoli.sr.iban.length < 27) {
+            errors.push("SR: Formato IBAN non valido (troppo corto).");
+        }
+
+        // 4. Verifica Titolo di Godimento per Privati
+        if (ruoli.sa.tipo === "Privato residenziale" && !ruoli.sa.titolo_godimento) {
+            errors.push("SA: È obbligatorio specificare il titolo di godimento dell'immobile.");
+        }
+
+        return {
+            success: errors.length === 0,
+            errors: errors
+        };
+    };
+
     // 3. FUNZIONI PUBBLICHE
 
     /**
@@ -399,6 +440,7 @@ const UaRulesEngine = function() {
     // 4. API PUBBLICA
     const api = {
         validateAmmissibilita: validateAmmissibilita,
+        validateRoles: validateRoles,
         getSubjectTypes: getSubjectTypes,
         getInterventoCompatibility: getInterventoCompatibility
     };
