@@ -34,7 +34,8 @@ const UaCrossRuleEngine = function() {
         "aria/aria",
         "aria/acqua", 
         "acqua/acqua",
-        "salamoia/acqua"
+        "salamoia/acqua",
+        "geotermica"
     ];
 
     /**
@@ -48,7 +49,9 @@ const UaCrossRuleEngine = function() {
             error: ""
         };
 
-        if (!metadata) return result;
+        if (!metadata) {
+            return result;
+        }
 
         // Gestione interventi_collegati_obbligatori (AND - devono esserci tutti)
         const obbligatori = metadata.interventi_collegati_obbligatori || [];
@@ -76,7 +79,7 @@ const UaCrossRuleEngine = function() {
      * Verifica le regole specifiche per interventi che richiedono parametri tecnici.
      * Attualmente gestisce:
      * - II.H (Fotovoltaico): richiede III.A ELETTRICA pura + sostituzione integrale
-     * - II.G (Ricarica): richiede III.A
+     * - II.G (Ricarica): richiede III.A ELETTRICA pura + sostituzione integrale
      * 
      * @param {string} code - Codice intervento da validare.
      * @param {Array} selectedCodes - Lista di tutti gli interventi selezionati.
@@ -98,14 +101,18 @@ const UaCrossRuleEngine = function() {
         }
 
         const metadata = _catalog[code];
-        if (!metadata) return result;
+        if (!metadata) {
+            return result;
+        }
 
-        // Regole specifiche per II.H (Fotovoltaico + Accumulo)
-        if (code === "II.H") {
+        // Regole specifiche per II.H (Fotovoltaico + Accumulo) e II.G (Ricarica veicoli)
+        if (code === "II.H" || code === "II.G") {
+            const label = code === "II.H" ? "FV" : "Ricarica veicoli";
+            
             // Vincolo 1: Richiede III.A
             if (!selectedCodes.includes("III.A")) {
                 result.isValid = false;
-                result.error = `FV (${code}) richiede abbinamento con pompa di calore (III.A).`;
+                result.error = `${label} (${code}) richiede abbinamento con pompa di calore (III.A).`;
                 return result;
             }
 
@@ -115,36 +122,18 @@ const UaCrossRuleEngine = function() {
             
             if (!_ELETTRICHE_TIPOLOGIE.includes(tipologiaPdc)) {
                 result.isValid = false;
-                result.error = `FV (${code}) richiede PDC ELETTRICA pura. Tipologia '${tipologiaPdc}' non ammissibile.`;
+                result.error = `${label} (${code}) richiede PDC ELETTRICA pura. Tipologia '${tipologiaPdc}' non ammissibile.`;
                 return result;
             }
 
             // Vincolo 3: Richiede sostituzione integrale dell'impianto esistente
             // Verifica nei dati tecnici di III.A
             const sostituisceEsistente = iiiADati.sostituisce_esistente || iiiADati.sostituzione_integrale || false;
-            if (sostituisceEsistente !== true && sostituisceEsistente !== "si" && sostituisceEsistente !== "Sì") {
-                result.isValid = false;
-                result.error = `FV (${code}) richiede sostituzione integrale del generatore esistente.`;
-                return result;
-            }
-        }
-
-        // Regole specifiche per II.G (Infrastrutture ricarica veicoli elettrici)
-        if (code === "II.G") {
-            // Vincolo 1: Richiede III.A (pompa di calore)
-            if (!selectedCodes.includes("III.A")) {
-                result.isValid = false;
-                result.error = `Ricarica veicoli (${code}) richiede abbinamento con pompa di calore (III.A).`;
-                return result;
-            }
-
-            // Vincolo 2: III.A deve essere ELETTRICA pura
-            const iiiADati = interventiData["III.A"] || {};
-            const tipologiaPdc = iiiADati.tipologia_pdc || iiiADati.tipologia || "";
+            const isSostituzioneValida = (sostituisceEsistente === true || sostituisceEsistente === "si" || sostituisceEsistente === "Sì");
             
-            if (!_ELETTRICHE_TIPOLOGIE.includes(tipologiaPdc)) {
+            if (!isSostituzioneValida) {
                 result.isValid = false;
-                result.error = `Ricarica veicoli (${code}) richiede PDC ELETTRICA pura. Tipologia '${tipologiaPdc}' non ammissibile.`;
+                result.error = `${label} (${code}) richiede sostituzione integrale del generatore esistente per l'intervento III.A.`;
                 return result;
             }
         }
