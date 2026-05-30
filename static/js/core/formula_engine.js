@@ -25,17 +25,74 @@ const UaFormulaEngine = function() {
     // 1. FUNZIONI DI SUPPORTO ALLA RISOLUZIONE DEI COEFFICIENTI
 
     /**
-     * Calcola il piano di erogazione (rateizzazione).
+     * Estrae la potenza nominale dai dati tecnici dell'intervento.
+     * Cerca in vari campi possibili a seconda del tipo di intervento.
+     * 
+     * @param {string} code - Codice intervento.
+     * @param {Object} dati - Dati tecnici dell'intervento.
+     * @returns {number} Potenza in kW, 0 se non trovata.
+     * @private
+     */
+    const _getPotenzaNominaleKw = function(code, dati) {
+        if (!dati) {
+            return 0;
+        }
+
+        // Mappa dei campi potenza per ogni tipo di intervento
+        const potenzaFieldMap = {
+            "III.A": ["potenza_pdc_kw", "potenza_termica_nominale", "pn_nominale"],
+            "III.B": ["potenza_nominale_Pn_pdc", "potenza_pdc_kw"],
+            "III.E": ["potenza_termica_nominale"],
+            "II.H": ["potenza_fv_kw", "potenza_picco_kW"],
+            "II.G": ["potenza_ricarica_kw", "potenza_kw"],
+            "III.G": ["potenza_elettrica"]
+        };
+
+        const fields = potenzaFieldMap[code] || [];
+        
+        let potenza = 0;
+        for (const field of fields) {
+            if (dati[field] !== undefined) {
+                potenza = parseFloat(dati[field]) || 0;
+                break;
+            }
+        }
+
+        return potenza;
+    };
+
+    /**
+     * Calcola il piano di erogazione (rateizzazione) secondo D.M. 7 Agosto 2025.
+     * 
+     * Regole CT 3.0:
+     * - Rata unica se incentivo totale <= 15.000 €
+     * - 2 annualità se potenza < 35 kW
+     * - 5 annualità se potenza >= 35 kW
      * 
      * @param {number} totalAmount - Incentivo totale calcolato.
      * @param {string} code - Codice intervento.
      * @param {Object} dati - Dati tecnici per determinare la durata.
-     * @returns {Object} Dettaglio rate.
+     * @returns {Object} Dettaglio rate con piano di erogazione.
      * @private
      */
     const _calculatePaymentPlan = function(totalAmount, code, dati) {
-        const threshold = PROCEDURA_CONFIG.SOGLIA_UNICA_SOLUZIONE;
-        
+        // Fail Fast: validazione input
+        if (typeof totalAmount !== "number" || totalAmount < 0) {
+            console.error("_calculatePaymentPlan: totalAmount non valido", totalAmount);
+            return null;
+        }
+
+        if (!code) {
+            console.error("_calculatePaymentPlan: codice intervento mancante");
+            return null;
+        }
+
+        // Costanti da configurazione
+        const SOGLIA_UNICA_SOLUZIONE = PROCEDURA_CONFIG.SOGLIA_UNICA_SOLUZIONE;
+        const DURATA_PICCOLA_POTENZA = PROCEDURA_CONFIG.DURATA_STANDARD_PICCOLA_POTENZA;
+        const DURATA_GRANDE_POTENZA = PROCEDURA_CONFIG.DURATA_STANDARD_GRANDE_POTENZA;
+        const SOGLIA_POTENZA_KW = 35; // Soglia per discriminare durata
+
         const plan = {
             total: totalAmount,
             numInstallments: 1,
@@ -43,29 +100,47 @@ const UaFormulaEngine = function() {
             isSinglePayment: false
         };
 
-        if (totalAmount <= threshold) {
+        // Regola 1: Rata unica se incentivo <= 15.000 €
+        if (totalAmount <= SOGLIA_UNICA_SOLUZIONE) {
             plan.numInstallments = 1;
             plan.isSinglePayment = true;
             plan.installments.push({ n: 1, amount: totalAmount, label: "Unica soluzione" });
-        } else {
-            // Determinazione durata in anni
-            let years = 5; // Default standard CT 3.0
-            const interventionRules = RULES.interventi[code];
-            
-            if (interventionRules && interventionRules.durata) {
-                if (typeof interventionRules.durata === "object") {
-                    const pn = parseFloat(dati.potenza_pdc_kw) || 0;
-                    years = pn <= 35 ? 2 : 5; // Regola PdC standard
-                } else {
-                    years = interventionRules.durata;
-                }
-            }
+            return plan;
+        }
 
-            plan.numInstallments = years;
-            const installmentAmount = totalAmount / years;
-            for (let i = 1; i <= years; i++) {
-                plan.installments.push({ n: i, amount: installmentAmount, label: `Rata ${i} di ${years}` });
+        // Regola 2: Determinare durata basata su potenza o regole intervento
+        let years = DURATA_GRANDE_POTENZA; // Default: 5 anni
+        const interventionRules = RULES.interventi[code];
+
+        // Priorità 1: Usare durata esplicita dall'intervento se definita come numero
+        if (interventionRules && typeof interventionRules.durata === "number") {
+            years = interventionRules.durata;
+        } else {
+            // Priorità 2: Determinare durata basata su potenza
+            const potenzaKw = _getPotenzaNominaleKw(code, dati);
+            
+            if (potenzaKw > 0) {
+                years = potenzaKw < SOGLIA_POTENZA_KW ? DURATA_PICCOLA_POTENZA : DURATA_GRANDE_POTENZA;
+            } else if (interventionRules && typeof interventionRules.durata === "object") {
+                // Caso speciale per interventi con durata oggettuale
+                // Esempio: PdC con soglia a 35kW
+                years = DURATA_GRANDE_POTENZA; // Default sicuro
             }
+        }
+
+        // Calcolo importo rata
+        plan.numInstallments = years;
+        const installmentAmount = totalAmount / years;
+        
+        // Arrotondamento preciso a 2 decimali usando toFixed per evitare imprecisioni floating-point
+        const roundedInstallment = parseFloat(installmentAmount.toFixed(2));
+        
+        for (let i = 1; i <= years; i++) {
+            plan.installments.push({ 
+                n: i, 
+                amount: roundedInstallment, 
+                label: `Rata ${i} di ${years}` 
+            });
         }
 
         return plan;
