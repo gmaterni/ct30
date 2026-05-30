@@ -117,10 +117,11 @@ const UaRulesEngine = function() {
      * Valida l'ammissibilità basata sulla categoria catastale.
      * 
      * @param {string} categoryCode - Codice catastale (es. 'A/1', 'C/2').
+     * @param {string} subjectType - Tipo di soggetto (opzionale, per validare eccezioni).
      * @returns {Object} Risultato con status e titoli ammessi.
      * @private
      */
-    const _checkCatastale = function(categoryCode) {
+    const _checkCatastale = function(categoryCode, subjectType = null) {
         const data = _getEngineData();
         const categories = data.categories ? data.categories.categorie : null;
 
@@ -149,12 +150,115 @@ const UaRulesEngine = function() {
             return result;
         }
 
-        if (catInfo.ammissibile === false) {
+        // Categoriale assolutamente escluse (per tutti i soggetti)
+        if (catInfo.ammissibile === false && !catInfo.motivo?.includes("salvo")) {
             result.isAllowed = false;
             result.reason = catInfo.motivo || "Categoria esclusa dagli incentivi.";
-        } else {
-            result.isAllowed = true;
-            result.allowedTitles = ["II", "III"];
+            return result;
+        }
+
+        // Categoriale condizionatamente escluse (dipende dal soggetto)
+        // Secondo D.M. 7 Agosto 2025:
+        // - A/1, A/8, A/9 sono escluse SALVO per PA o se aperte al pubblico
+        const categoryExcludedForPrivate = ["A/1", "A/8", "A/9"];
+        
+        if (categoryExcludedForPrivate.includes(normalizedCode)) {
+            // Solo PA può accedere a queste categorie
+            const paTypes = ["Pubblica Amministrazione", "PA"];
+            if (!subjectType || !paTypes.includes(subjectType)) {
+                result.isAllowed = false;
+                result.reason = `Categoria ${normalizedCode} esclusa per il soggetto ${subjectType || 'non specificato'}. Ammessa solo per Pubblica Amministrazione.`;
+                return result;
+            }
+        }
+
+        // Se arriviamo qui, la categoria è ammissibile
+        result.isAllowed = true;
+        result.allowedTitles = ["II", "III"];
+
+        return result;
+    };
+
+    /**
+     * Verifica l'obbligo di sostituzione dell'impianto esistente (Art. 25 D.M. 7 Agosto 2025).
+     * Deve esistere un generatore di climatizzazione invernale pre-esistente.
+     * 
+     * @param {number} potenzaEsistenteKw - Potenza del generatore esistente in kW.
+     * @returns {Object} Risultato della validazione.
+     * @private
+     */
+    const _checkSostituzioneObbligatoria = function(potenzaEsistenteKw) {
+        const result = { success: true, error: "" };
+
+        // Fail Fast
+        if (potenzaEsistenteKw === undefined || potenzaEsistenteKw === null) {
+            result.success = false;
+            result.error = "OBBLIGO SOSTITUZIONE: Dati sulla potenza esistente mancanti.";
+            return result;
+        }
+
+        const pn = parseFloat(potenzaEsistenteKw);
+        
+        if (pn <= 0) {
+            result.success = false;
+            result.error = "OBBLIGO SOSTITUZIONE: Deve esistere un impianto di climatizzazione invernale pre-esistente (potenza > 0 kW).";
+            return result;
+        }
+
+        return result;
+    };
+
+    /**
+     * Verifica se la tipologia di intervento è ammissibile per il soggetto.
+     * Gestisce regole specifiche come l'esclusione di PDC a gas per Imprese ed ETS economici.
+     * 
+     * @param {string} subjectType - Tipo di soggetto (es. 'Impresa', 'ETS economico').
+     * @param {string} interventoCode - Codice intervento (es. 'III.A').
+     * @param {Object} interventoDati - Dati tecnici dell'intervento.
+     * @returns {Object} Risultato della validazione.
+     * @private
+     */
+    const _checkInterventoAmmissibilita = function(subjectType, interventoCode, interventoDati) {
+        const result = { success: true, error: "" };
+
+        // Fail Fast
+        if (!subjectType || !interventoCode) {
+            return result; // Non blocchiamo, ma non validiamo
+        }
+
+        // Regola specifica: Esclusione PDC a gas per Imprese ed ETS economici (Art. 25 comma 2)
+        // Nota: Le PDC a gas sono ESCLUSE per questi soggetti
+        const soggettiEsclusiPdCGas = ["Impresa", "ETS economico"];
+        
+        if (soggettiEsclusiPdCGas.includes(subjectType) && interventoCode === "III.A") {
+            const tipologiaPdc = (interventoDati || {}).tipologia_pdc || 
+                                (interventoDati || {}).tipologia || "";
+            const combustibileAnte = (interventoDati || {}).combustibile_ante || "";
+            
+            // Controllo se è PDC a gas
+            // Se il combustibile dell'impianto esistente è gas E la nuova PDC non è elettrica,
+            // allora è bloccato
+            const combustibiliGas = ["gas", "metano", "gasolio", "gpl"];
+            const isPdCGas = combustibiliGas.some(c => 
+                tipologiaPdc.toLowerCase().includes(c) || 
+                combustibileAnte.toLowerCase().includes(c)
+            );
+            
+            // DC: secondo le specifiche, per Imprese ed ETS, le PDC a GAS sono escluse
+            // Ma aria/aria e aria/acqua sono ELETTRICHE, non a gas
+            // Quindi dobbiamo controllare se la PDC usa combustibile a gas
+            // Oppure se è un sistema ibrido gas + elettrico
+            
+            // Tipologie considerate "a gas" (non elettriche pure)
+            const tipologieGas = ["ibrido", "gas", "hybrid"];
+            const isTipologiaGas = tipologieGas.some(t => 
+                tipologiaPdc.toLowerCase().includes(t)
+            );
+            
+            if (isTipologiaGas) {
+                result.success = false;
+                result.error = `ESCLUSIONE: Le PDC a gas/ibride non sono ammesse per ${subjectType} (Art. 25 comma 2 D.M. 7/8/2025).`;
+            }
         }
 
         return result;
@@ -165,7 +269,13 @@ const UaRulesEngine = function() {
     /**
      * Esegue una verifica completa di ammissibilità preliminare.
      * 
-     * @param {Object} input - Dati della pratica (subjectType, category, buildingStatus).
+     * @param {Object} input - Dati della pratica:
+     *   - subjectType: Tipo di soggetto
+     *   - category: Categoria catastale
+     *   - buildingStatus: Stato edificio ('esistente')
+     *   - potenzaEsistenteKw: Potenza generatore esistente (opzionale, per obbligo sostituzione)
+     *   - selectedInterventi: Interventi selezionati (opzionale, per validazione specifiche)
+     *   - interventiData: Dati tecnici interventi (opzionale, per validazione PDC gas)
      * @returns {Object} Esito della validazione.
      */
     const validateAmmissibilita = function(input) {
@@ -184,15 +294,29 @@ const UaRulesEngine = function() {
             errors.push("L'edificio deve essere esistente (accatastato o con F/2).");
         }
 
-        // 2. Verifica Categoria Catastale
+        // 2. Verifica Obbligo Sostituzione (Art. 25 D.M. 7/8/2025) - MOD-003
+        if (input.potenzaEsistenteKw !== undefined) {
+            const sostituzioneCheck = _checkSostituzioneObbligatoria(input.potenzaEsistenteKw);
+            if (!sostituzioneCheck.success) {
+                errors.push(sostituzioneCheck.error);
+            }
+        }
+
+        // 2.5. Warning se potenzaEsistenteKw non fornita
+        if (input.potenzaEsistenteKw === undefined && input.buildingStatus === "esistente") {
+            warnings.push("Attenzione: Dati sulla potenza del generatore esistente non forniti. Validazione obbligo sostituzione non eseguita.");
+        }
+
+        // 3. Verifica Categoria Catastale (con soggetto per eccezioni)
         const category = input.category || "";
-        const catCheck = _checkCatastale(category);
+        const subjectType = input.subjectType || null;
+        const catCheck = _checkCatastale(category, subjectType);
         if (!catCheck.isAllowed) {
             const catError = `Incompatibilità catastale: ${catCheck.reason}`;
             errors.push(catError);
         }
 
-        // 3. Incrocio Soggetto / Titoli potenziali
+        // 4. Incrocio Soggetto / Titoli potenziali
         const potentialTitles = catCheck.allowedTitles;
         const validTitles = potentialTitles.filter(title => _isSubjectCompatible(input.subjectType, title));
 
@@ -202,10 +326,33 @@ const UaRulesEngine = function() {
             errors.push(subError);
         }
 
-        // 4. Verifica Effetto Incentivante (Specifico CT 3.0 per Imprese)
+        // 5. Verifica Effetto Incentivante (Specifico CT 3.0 per Imprese)
         const effettoCheck = _checkEffettoIncentivante(input);
         if (!effettoCheck.success) {
             errors.push(effettoCheck.error);
+        }
+
+        // 6. Validazione interventi specifici (se forniti) - MOD-003
+        if (input.selectedInterventi && Array.isArray(input.selectedInterventi)) {
+            const interventiData = input.interventiData || {};
+            
+            input.selectedInterventi.forEach(interventoCode => {
+                const interventoDati = interventiData[interventoCode] || {};
+                const interventoCheck = _checkInterventoAmmissibilita(
+                    input.subjectType, 
+                    interventoCode, 
+                    interventoDati
+                );
+                
+                if (!interventoCheck.success) {
+                    errors.push(interventoCheck.error);
+                }
+            });
+        }
+
+        // 7. Warning se selectedInterventi fornito ma senza dati tecnici
+        if (input.selectedInterventi && !input.interventiData) {
+            warnings.push("Attenzione: Validazione interventi specifici non completata (dati tecnici mancanti).");
         }
 
         const validationResult = {

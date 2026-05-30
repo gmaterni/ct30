@@ -339,6 +339,8 @@ const UaWizardManager = function(viewportId) {
         const nameValue = _praticaData.anagrafica.denominazione;
         const cfValue = _praticaData.anagrafica.codiceFiscale;
         const addrValue = _praticaData.immobile.indirizzo;
+        const potenzaEsistenteValue = _praticaData.immobile.potenza_esistente_kw || "";
+        const combustibileAnteValue = _praticaData.immobile.combustibile_ante || "";
 
         const html = `
             <div class="wizard-step">
@@ -371,6 +373,30 @@ const UaWizardManager = function(viewportId) {
                     <div class="form-group">
                         <label>Classe Energetica (Ante):</label>
                         <select id="inp-classe">${classesHtml}</select>
+                    </div>
+                    </div>
+
+                    <!-- Dati Ante Operam (MOD-003) -->
+                    <div class="ante-operam-section" style="margin-top: 20px; padding: 15px; background: rgba(76, 175, 222, 0.05); border: 1px solid #4caf50; border-radius: 4px;">
+                    <h4 style="margin-top: 0; color: #2e7d32;">Dati Impianto Esistente (Obbligatori per ammissibilità)</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Potenza Generatore Esistente (kW):</label>
+                            <input type="number" id="inp-potenza-esistente" value="${potenzaEsistenteValue}" step="0.01" min="0" placeholder="0" style="width: 100%;">
+                            <p class="field-note" style="margin-top: 5px; font-size: 0.8em; color: #666;">Inserire 0 se non presente. Attenzione: per CT 3.0 è richiesto un impianto esistente.</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Combustibile Ante:</label>
+                            <select id="inp-combustibile-ante" style="width: 100%;">
+                                <option value="" ${combustibileAnteValue === "" ? 'selected' : ''}>Non specificato</option>
+                                <option value="metano" ${combustibileAnteValue === "metano" ? 'selected' : ''}>Metano</option>
+                                <option value="gasolio" ${combustibileAnteValue === "gasolio" ? 'selected' : ''}>Gasolio</option>
+                                <option value="gpl" ${combustibileAnteValue === "gpl" ? 'selected' : ''}>GPL</option>
+                                <option value="biomassa" ${combustibileAnteValue === "biomassa" ? 'selected' : ''}>Biomassa</option>
+                                <option value="elettrico" ${combustibileAnteValue === "elettrico" ? 'selected' : ''}>Elettrico</option>
+                                <option value="altro" ${combustibileAnteValue === "altro" ? 'selected' : ''}>Altro</option>
+                            </select>
+                        </div>
                     </div>
                     </div>
 

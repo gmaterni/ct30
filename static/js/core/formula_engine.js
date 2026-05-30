@@ -94,7 +94,7 @@ const UaFormulaEngine = function() {
         const SOGLIA_POTENZA_KW = 35; // Soglia per discriminare durata
 
         const plan = {
-            total: totalAmount,
+            total: parseFloat(totalAmount.toFixed(2)),
             numInstallments: 1,
             installments: [],
             isSinglePayment: false
@@ -104,7 +104,7 @@ const UaFormulaEngine = function() {
         if (totalAmount <= SOGLIA_UNICA_SOLUZIONE) {
             plan.numInstallments = 1;
             plan.isSinglePayment = true;
-            plan.installments.push({ n: 1, amount: totalAmount, label: "Unica soluzione" });
+            plan.installments.push({ n: 1, amount: parseFloat(totalAmount.toFixed(2)), label: "Unica soluzione" });
             return plan;
         }
 
@@ -224,6 +224,15 @@ const UaFormulaEngine = function() {
             params.cmax_fisso = RULES.interventi["II.G"].varianti[varKey]?.cmax_fisso || 2400;
             params.cmax_kw = RULES.interventi["II.G"].varianti["Potenza > 22 kW"]?.cmax_kw || 1200;
             params.percentuale = 0.3;
+        } else if (code === "III.G") {
+            // Microcogenerazione: usa il valore 'perc' dalle regole
+            const ruleConfig = RULES.interventi["III.G"];
+            params.percentuale = ruleConfig?.perc || 0.5; // Default 0.5 se non definito
+        }
+
+        // Case generico per interventi di tipo "percentuale_spesa" non esplicitamente gestiti
+        if (metadata.tipo_formula === "percentuale_spesa" && params.percentuale === undefined) {
+            params.percentuale = RULES.interventi[code]?.perc || 0;
         }
 
         // Calcolo variabili intermedie
@@ -258,7 +267,8 @@ const UaFormulaEngine = function() {
 
                         // Se arriviamo qui, il calcolo è riuscito
                         variables[v.codice] = result;
-                        steps.push({ desc: v.descrizione, label: v.codice, formula: v.espressione, value: result });
+                        // Arrotondamento a 2 decimali solo per visualizzazione in steps (non per calcolo)
+                        steps.push({ desc: v.descrizione, label: v.codice, formula: v.espressione, value: parseFloat(result.toFixed(2)) });
                         progress = true;
                     } catch (e) {
                         // Se è un ReferenceError, la variabile potrebbe dipendere da una non ancora calcolata
@@ -293,14 +303,16 @@ const UaFormulaEngine = function() {
             const func = new Function('ctx', 'min', 'max', 'log', `with(ctx) { return ${finalFormula}; }`);
             amount = func(variables, Math.min, Math.max, Math.log);
             
-            steps.push({ desc: "Calcolo Incentivo Finale", label: "I_tot", formula: finalFormula, value: amount, unit: "€" });
+            // Arrotondamento preciso a 2 decimali per amount e steps
+            const roundedAmount = parseFloat(amount.toFixed(2));
+            steps.push({ desc: "Calcolo Incentivo Finale", label: "I_tot", formula: finalFormula, value: roundedAmount, unit: "€" });
         } catch (e) {
             console.error(`Errore valutazione formula finale per ${code}:`, e);
             return { amount: 0, params: variables, steps: steps, errors: [`Errore calcolo: ${e.message}`] };
         }
 
         return {
-            amount: amount,
+            amount: parseFloat(amount.toFixed(2)),
             params: variables,
             steps: steps,
             isEstimate: true
