@@ -1233,7 +1233,7 @@ const TEST_SCENARIOS_LIST = [
                 </div>
                 <button class="close-btn btn-close-win tt-bottom" data-tt="Chiudi">×</button>
             </div>
-            <div class="window-body" style="position: relative; background: #fff; color: #333;">
+            <div class="window-body" style="position: relative;">
                 ${watermarkHtml}
                 
                 <header class="report-print-header" style="text-align: center; margin-bottom: 40px; border-bottom: 3px solid #3f51b5; padding-bottom: 20px;">
@@ -1276,34 +1276,41 @@ const TEST_SCENARIOS_LIST = [
 
                 <div class="report-section" style="margin-top: 40px;">
                     <h2 style="border-bottom: 1px solid #3f51b5; padding-bottom: 8px;">2. Inquadramento Soggetti e Immobile (GSE Roles)</h2>
-                    <div class="report-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 15px;">
-                        <div style="background: #f9f9f9; padding: 15px; border-radius: 4px;">
-                            <h4 style="margin-top: 0; color: #3f51b5;">Dati Pratica</h4>
-                            <p style="margin: 5px 0;"><strong>Tipo Accesso:</strong> ${_praticaData.pratica?.tipo_accesso || 'Diretto'}</p>
-                            <p style="margin: 5px 0;"><strong>Stato Istanza:</strong> ${_praticaData.pratica?.status || 'N/D'}</p>
-
-                            <h4 style="margin-top: 15px; color: #3f51b5;">Soggetto Ammesso (SA)</h4>
-                            <p style="margin: 5px 0;"><strong>Nominativo:</strong> ${_praticaData.soggetti?.sa?.denominazione || 'N/D'}</p>
-                            <p style="margin: 5px 0;"><strong>Tipologia:</strong> ${_praticaData.soggetti?.sa?.tipo || 'N/D'}</p>
-                            <p style="margin: 5px 0;"><strong>CF/P.IVA:</strong> ${_praticaData.soggetti?.sa?.cf_piva || 'N/D'}</p>
-                            <p style="margin: 5px 0;"><strong>Titolo Godimento:</strong> ${_praticaData.soggetti?.sa?.titolo_godimento || 'N/D'}</p>
-                            
-                            <h4 style="margin-top: 15px; color: #3f51b5;">Soggetto Responsabile (SR)</h4>
-                            <p style="margin: 5px 0;"><strong>Nominativo:</strong> ${_praticaData.soggetti?.sr?.denominazione || 'N/D'}</p>
-                            <p style="margin: 5px 0;"><strong>CF/P.IVA:</strong> ${_praticaData.soggetti?.sr?.cf_piva || 'N/D'}</p>
-                            <p style="margin: 5px 0;"><strong>IBAN:</strong> ${_praticaData.soggetti?.sr?.iban || 'N/D'}</p>
-                        </div>
-                        <div style="background: #f9f9f9; padding: 15px; border-radius: 4px;">
-                            <h4 style="margin-top: 0; color: #3f51b5;">Ubicazione e Catasto</h4>
-                            <p style="margin: 5px 0;"><strong>Indirizzo:</strong> ${_praticaData.edificio?.indirizzo || 'N/D'}</p>
-                            <p style="margin: 5px 0;"><strong>Catasto:</strong> ${_praticaData.edificio?.categoria_catastale || 'N/D'} | Zona: ${_praticaData.edificio?.zona_climatica || 'N/D'}</p>
-                            
-                            <h4 style="margin-top: 15px; color: #3f51b5;">Proprietario e Delegato</h4>
-                            <p style="margin: 5px 0;"><strong>Proprietario:</strong> ${_praticaData.soggetti?.proprietario?.denominazione || 'N/D'}</p>
-                            <p style="margin: 5px 0;"><strong>Assenso:</strong> ${_praticaData.soggetti?.proprietario?.atto_assenso ? "Sì" : "No"}</p>
-                            <p style="margin: 5px 0;"><strong>Delegato:</strong> ${_praticaData.soggetti?.delegato?.nome || "Nessuno"}</p>
-                        </div>
-                    </div>
+                    <table class="data-table" style="margin-top: 15px; width: 100%;">
+                        <thead>
+                            <tr><th style="width: 50%;">Soggetti e Dati Pratica</th><th style="width: 50%;">Edificio e Proprietario</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="vertical-align: top; padding: 12px;">
+                                    <strong style="color: #3f51b5;">Dati Pratica</strong><br>
+                                    <span style="font-size:0.9em;"><strong>Tipo Accesso:</strong> ${_praticaData.pratica?.tipo_accesso || 'Diretto'}</span><br>
+                                    <span style="font-size:0.9em;"><strong>Stato Istanza:</strong> ${_praticaData.pratica?.status || 'N/D'}</span><br>
+                                    <br>
+                                    <strong style="color: #3f51b5;">Soggetto Ammesso (SA)</strong><br>
+                                    <span style="font-size:0.9em;"><strong>Nominativo:</strong> ${_praticaData.soggetti?.sa?.denominazione || 'N/D'}</span><br>
+                                    <span style="font-size:0.9em;"><strong>Tipologia:</strong> ${_praticaData.soggetti?.sa?.tipo || 'N/D'}</span><br>
+                                    <span style="font-size:0.9em;"><strong>CF/P.IVA:</strong> ${_praticaData.soggetti?.sa?.cf_piva || 'N/D'}</span><br>
+                                    <span style="font-size:0.9em;"><strong>Titolo Godimento:</strong> ${_praticaData.soggetti?.sa?.titolo_godimento || 'N/D'}</span><br>
+                                    <br>
+                                    <strong style="color: #3f51b5;">Soggetto Responsabile (SR)</strong><br>
+                                    <span style="font-size:0.9em;"><strong>Nominativo:</strong> ${_praticaData.soggetti?.sr?.denominazione || 'N/D'}</span><br>
+                                    <span style="font-size:0.9em;"><strong>CF/P.IVA:</strong> ${_praticaData.soggetti?.sr?.cf_piva || 'N/D'}</span><br>
+                                    <span style="font-size:0.9em;"><strong>IBAN:</strong> ${_praticaData.soggetti?.sr?.iban || 'N/D'}</span>
+                                </td>
+                                <td style="vertical-align: top; padding: 12px;">
+                                    <strong style="color: #3f51b5;">Ubicazione e Catasto</strong><br>
+                                    <span style="font-size:0.9em;"><strong>Indirizzo:</strong> ${_praticaData.edificio?.indirizzo || 'N/D'}</span><br>
+                                    <span style="font-size:0.9em;"><strong>Catasto:</strong> ${_praticaData.edificio?.categoria_catastale || 'N/D'} | Zona: ${_praticaData.edificio?.zona_climatica || 'N/D'}</span><br>
+                                    <br>
+                                    <strong style="color: #3f51b5;">Proprietario e Delegato</strong><br>
+                                    <span style="font-size:0.9em;"><strong>Proprietario:</strong> ${_praticaData.soggetti?.proprietario?.denominazione || 'N/D'}</span><br>
+                                    <span style="font-size:0.9em;"><strong>Assenso:</strong> ${_praticaData.soggetti?.proprietario?.atto_assenso ? "Sì" : "No"}</span><br>
+                                    <span style="font-size:0.9em;"><strong>Delegato:</strong> ${_praticaData.soggetti?.delegato?.nome || "Nessuno"}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="report-section" style="margin-top: 40px;">
