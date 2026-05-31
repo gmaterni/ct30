@@ -62,8 +62,56 @@ const UaPremialitaEngine = function() {
         return maxBonus;
     };
 
+    /**
+     * Calcola la maggiorazione percentuale per un intervento con dettaglio.
+     * 
+     * @param {string} code - Codice intervento (es. 'II.H', 'II.A').
+     * @param {Object} data - Dati tecnici dell'intervento.
+     * @returns {Object} with { totalBonus, items: [{ label, perc, enabled }] }
+     */
+    const calculateBonusDetailed = function(code, data) {
+        const items = [];
+        let totalBonus = 0;
+
+        if (!data) return { totalBonus: 0, items: [] };
+
+        for (const [key, config] of Object.entries(PREMIALITA_CONFIG)) {
+            const isApplicable = config.applicabile_a.some(prefix => code.startsWith(prefix));
+            if (!isApplicable) continue;
+
+            let currentBonus = 0;
+            let enabled = false;
+
+            if (config.bonus_perc && config.campo_attivazione) {
+                if (data[config.campo_attivazione] === "sì" || data[config.campo_attivazione] === true || data[config.campo_attivazione] === 1) {
+                    currentBonus = config.bonus_perc;
+                    enabled = true;
+                }
+            } else if (config.varianti) {
+                for (const [vkey, variant] of Object.entries(config.varianti)) {
+                    if (data[variant.campo] === "sì" || data[variant.campo] === true || data[variant.campo] === 1) {
+                        currentBonus = Math.max(currentBonus, variant.bonus_perc);
+                    }
+                }
+                enabled = currentBonus > 0;
+            }
+
+            if (currentBonus > 0) {
+                items.push({
+                    label: config.label,
+                    perc: currentBonus,
+                    enabled
+                });
+                totalBonus += currentBonus;
+            }
+        }
+
+        return { totalBonus, items };
+    };
+
     return {
-        calculateBonus
+        calculateBonus,
+        calculateBonusDetailed
     };
 };
 

@@ -50,8 +50,8 @@ const UaFormulaEngine = function() {
             "II.D": ["superficie_utile_mq"],
             "II.E": ["superficie_illuminata_mq"],
             "II.F": ["superficie_edificio_mq"],
-            "II.H": ["potenza_fv_kw", "potenza_picco_kW"],
-            "II.G": ["potenza_ricarica_kw", "potenza_kw"],
+            "II.H": ["potenza_fv_kw", "potenza_picco_kW", "_trainante_potenza_kw"],
+            "II.G": ["potenza_ricarica_kw", "potenza_kw", "_trainante_potenza_kw"],
             "III.G": ["potenza_elettrica"]
         };
 
@@ -465,6 +465,16 @@ const UaFormulaEngine = function() {
             return calculationResult;
         }
 
+        // Trainati (II.H/II.G) ereditano durata piano erogazione dal trainante III.A
+        const trainatiCodes = ["II.H", "II.G"];
+        if (trainatiCodes.includes(code) && contesto?.allInterventiData?.["III.A"]) {
+            const iiiAData = contesto.allInterventiData["III.A"];
+            const iiiAPotenza = iiiAData.potenza_pdc_kw || iiiAData.potenza_termica_nominale;
+            if (iiiAPotenza) {
+                datiTecnici = { ...datiTecnici, _trainante_potenza_kw: parseFloat(iiiAPotenza) };
+            }
+        }
+
         try {
             const res = _executeGenericFormula(code, datiTecnici, contesto);
             calculationResult = { ...calculationResult, ...res };
@@ -476,11 +486,12 @@ const UaFormulaEngine = function() {
 
             // Applicazione Premialità
             if (calculationResult.errors.length === 0 && calculationResult.amount > 0) {
-                const bonusPerc = PremialitaEngine.calculateBonus(code, datiTecnici);
-                if (bonusPerc > 0) {
-                    const bonusAmount = calculationResult.amount * bonusPerc;
+                const bonusDetail = PremialitaEngine.calculateBonusDetailed(code, datiTecnici);
+                if (bonusDetail.totalBonus > 0) {
+                    const bonusAmount = calculationResult.amount * bonusDetail.totalBonus;
+                    const bonusDesc = bonusDetail.items.map(i => `${i.label} (+${(i.perc * 100).toFixed(0)}%)`).join(", ");
                     calculationResult.steps.push({
-                        desc: "Premialità (es. Made in EU / Registro ENEA)",
+                        desc: `Premialità: ${bonusDesc}`,
                         label: "Bonus",
                         value: bonusAmount,
                         unit: "€"

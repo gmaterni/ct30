@@ -53,6 +53,13 @@ export const PREMIALITA_CONFIG = {
         "applicabile_a": ["II.", "III."],
         "campo_attivazione": "zona_assistita_c",
         "note": "+5% per zone assistite ai sensi dell'art. 107.3 lett.c TFUE"
+    },
+    "riduzione_ep_10": {
+        "label": "Riduzione EP ≥10%",
+        "bonus_perc": 0.15,
+        "applicabile_a": ["II.A", "II.B", "II.D", "II.E"],
+        "campo_attivazione": "riduzione_ep_10",
+        "note": "+15% se riduzione EP ≥10% rispetto a edificio esistente (Titolo II)"
     }
 };
 
@@ -641,7 +648,11 @@ export const SCHEDE_TECNICHE = {
             { "id": "trasmittanza_ante", "label": "Trasmittanza ante operam", "tipo": "number", "obbligatorio": true, "unita": "W/m²K", "min": 0.1, "max": 5.0, "categoria": "ammissibilita", "fonte_dato": "relazione tecnica/stratigrafia", "note": "Verifica miglioramento." },
             { "id": "trasmittanza_post", "label": "Trasmittanza post operam", "tipo": "number", "obbligatorio": true, "unita": "W/m²K", "min": 0.01, "max": 0.5, "categoria": "formula", "fonte_dato": "relazione tecnica/progetto", "note": "Verifica rispetto limiti zona." },
             { "id": "costo_isolamento", "label": "Costo totale isolamento", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 5000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." },
-            { "id": "ape_ante_post_disponibile", "label": "APE ante/post disponibile", "tipo": "select", "opzioni": ["sì", "no", "da verificare"], "obbligatorio": false, "unita": "", "categoria": "documentazione", "fonte_dato": "documentazione tecnica", "note": "Da verificare in base a soggetto/intervento." }
+            { "id": "ape_ante_post_disponibile", "label": "APE ante/post disponibile", "tipo": "select", "opzioni": ["sì", "no", "da verificare"], "obbligatorio": false, "unita": "", "categoria": "documentazione", "fonte_dato": "documentazione tecnica", "note": "Da verificare in base a soggetto/intervento." },
+            { "id": "made_in_eu", "label": "Materiali Made in EU", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "certificato", "note": "Bonus +10% per Titolo II." },
+            { "id": "riduzione_ep_10", "label": "Riduzione EP ≥10%", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "APE", "note": "Bonus +15% se riduzione EP ≥10%." },
+            { "id": "zona_assistita_a", "label": "Zona assistita (art. 107.3 lett.a)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +15% per zone assistite." },
+            { "id": "zona_assistita_c", "label": "Zona assistita (art. 107.3 lett.c)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +5% per zone assistite." }
         ]
     },
     "II.B": {
@@ -652,7 +663,11 @@ export const SCHEDE_TECNICHE = {
             { "id": "superficie_infissi_mq", "label": "Superficie totale infissi", "tipo": "number", "obbligatorio": true, "unita": "mq", "min": 0.5, "max": 5000, "categoria": "formula", "fonte_dato": "computo/rilievo", "note": "Superficie oggetto di sostituzione." },
             { "id": "trasmittanza_infissi_ante", "label": "Trasmittanza ante operam", "tipo": "number", "obbligatorio": true, "unita": "W/m²K", "min": 0.5, "max": 7.0, "categoria": "formula", "fonte_dato": "documentazione/relazione", "note": "Dato ante operam." },
             { "id": "trasmittanza_infissi_post", "label": "Trasmittanza post operam", "tipo": "number", "obbligatorio": true, "unita": "W/m²K", "min": 0.5, "max": 2.5, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Dato post operam." },
-            { "id": "costo_infissi", "label": "Costo intervento infissi", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 1000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+            { "id": "costo_infissi", "label": "Costo intervento infissi", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 1000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." },
+            { "id": "made_in_eu", "label": "Infissi Made in EU", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "certificato", "note": "Bonus +10% per Titolo II." },
+            { "id": "riduzione_ep_10", "label": "Riduzione EP ≥10%", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "APE", "note": "Bonus +15% se riduzione EP ≥10%." },
+            { "id": "zona_assistita_a", "label": "Zona assistita (art. 107.3 lett.a)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +15% per zone assistite." },
+            { "id": "zona_assistita_c", "label": "Zona assistita (art. 107.3 lett.c)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +5% per zone assistite." }
         ]
     },
     "II.G": {
@@ -664,7 +679,10 @@ export const SCHEDE_TECNICHE = {
             { "id": "tipo_ricarica", "label": "Tipo ricarica", "tipo": "select", "opzioni": ["Punto ricarica Monofase", "Punto ricarica Trifase", "Potenza > 22 kW"], "obbligatorio": true, "unita": "", "categoria": "descrittivo", "fonte_dato": "scheda tecnica", "note": "Variante per Cmax." },
             { "id": "is_smart", "label": "Dispositivo Smart", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "scheda tecnica", "note": "Obbligatorio per CT 3.0." },
             { "id": "modo_ricarica", "label": "Modo di ricarica", "tipo": "select", "opzioni": ["modo 3", "modo 4"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "scheda tecnica", "note": "Obbligatorio Modo 3 o 4." },
-            { "id": "costo_colonnina", "label": "Costo infrastruttura ricarica", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 200000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+            { "id": "costo_colonnina", "label": "Costo infrastruttura ricarica", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 200000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." },
+            { "id": "made_in_eu", "label": "Apparecchiature Made in EU", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "certificato", "note": "Bonus +10% per Titolo II." },
+            { "id": "zona_assistita_a", "label": "Zona assistita (art. 107.3 lett.a)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +15% per zone assistite." },
+            { "id": "zona_assistita_c", "label": "Zona assistita (art. 107.3 lett.c)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +5% per zone assistite." }
         ]
     },
     "II.H": {
@@ -691,7 +709,10 @@ export const SCHEDE_TECNICHE = {
             { "id": "scop", "label": "SCOP", "tipo": "number", "obbligatorio": true, "unita": "", "min": 2.0, "max": 10.0, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Efficienza stagionale." },
             { "id": "eta_s", "label": "Efficienza stagionale (ηs)", "tipo": "number", "obbligatorio": true, "unita": "%", "min": 110, "max": 500, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "ηs per calcolo kp." },
             { "id": "made_in_eu", "label": "PDC Made in EU", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "certificato", "note": "Bonus +5%." },
-            { "id": "costo_pdc", "label": "Costo totale intervento PDC", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 3000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+            { "id": "miglioramento_ep_40", "label": "Miglioramento EP ≥40%", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "APE", "note": "Bonus +15% se riduzione EP ≥40%." },
+            { "id": "costo_pdc", "label": "Costo totale intervento PDC", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 3000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." },
+            { "id": "zona_assistita_a", "label": "Zona assistita (art. 107.3 lett.a)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +15% per zone assistite." },
+            { "id": "zona_assistita_c", "label": "Zona assistita (art. 107.3 lett.c)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +5% per zone assistite." }
         ]
     },
     "III.G": {
@@ -701,7 +722,9 @@ export const SCHEDE_TECNICHE = {
             { "id": "potenza_elettrica", "label": "Potenza elettrica nominale", "tipo": "number", "obbligatorio": true, "unita": "kWe", "min": 1, "max": 50, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Massimo 50 kWe." },
             { "id": "pes", "label": "Risparmio Energia Primaria (PES)", "tipo": "number", "obbligatorio": true, "unita": "%", "min": 10, "max": 100, "categoria": "formula", "fonte_dato": "asseverazione", "note": "Minimo 10%." },
             { "id": "tipo_alimentazione", "label": "Fonte di alimentazione", "tipo": "select", "opzioni": ["Biomassa", "Biogas", "Altro"], "obbligatorio": true, "unita": "", "categoria": "descrittivo", "fonte_dato": "progetto", "note": "Fonte rinnovabile." },
-            { "id": "costo_intervento", "label": "Costo totale microcogenerazione", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 1000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+            { "id": "costo_intervento", "label": "Costo totale microcogenerazione", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 1000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." },
+            { "id": "zona_assistita_a", "label": "Zona assistita (art. 107.3 lett.a)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +15% per zone assistite." },
+            { "id": "zona_assistita_c", "label": "Zona assistita (art. 107.3 lett.c)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +5% per zone assistite." }
         ]
     },
     "II.C": {
@@ -712,7 +735,10 @@ export const SCHEDE_TECNICHE = {
             { "id": "superficie_schermata_mq", "label": "Superficie schermata", "tipo": "number", "obbligatorio": true, "unita": "mq", "min": 0.5, "max": 10000, "categoria": "formula", "fonte_dato": "rilievo/progetto", "note": "Superficie netta." },
             { "id": "fattore_solare_g", "label": "Fattore solare g (ante)", "tipo": "number", "obbligatorio": true, "unita": "", "min": 0.1, "max": 1.0, "categoria": "ammissibilita", "fonte_dato": "scheda tecnica", "note": "Valore ante operam." },
             { "id": "fattore_solare_g_post", "label": "Fattore solare g (post)", "tipo": "number", "obbligatorio": true, "unita": "", "min": 0.01, "max": 0.9, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Valore post operam." },
-            { "id": "costo_schermatura", "label": "Costo totale schermatura", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 500000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+            { "id": "costo_schermatura", "label": "Costo totale schermatura", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 500000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." },
+            { "id": "made_in_eu", "label": "Prodotti Made in EU", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "certificato", "note": "Bonus +10% per Titolo II." },
+            { "id": "zona_assistita_a", "label": "Zona assistita (art. 107.3 lett.a)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +15% per zone assistite." },
+            { "id": "zona_assistita_c", "label": "Zona assistita (art. 107.3 lett.c)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +5% per zone assistite." }
         ]
     },
     "II.D": {
@@ -722,7 +748,11 @@ export const SCHEDE_TECNICHE = {
             { "id": "tipo_intervento_nzeb", "label": "Tipo intervento", "tipo": "select", "opzioni": ["Demolizione e ricostruzione", "Ampliamento ≤25%"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "progetto", "note": "Determina Cmax." },
             { "id": "superficie_utile_mq", "label": "Superficie utile", "tipo": "number", "obbligatorio": true, "unita": "mq", "min": 10, "max": 50000, "categoria": "formula", "fonte_dato": "progetto", "note": "Superficie utile dell'edificio." },
             { "id": "classe_energetica_post", "label": "Classe energetica post", "tipo": "select", "opzioni": ["A4", "A3", "A2", "A1"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "APE", "note": "Deve essere nZEB (A4)." },
-            { "id": "costo_nzeb", "label": "Costo totale intervento", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 10000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+            { "id": "costo_nzeb", "label": "Costo totale intervento", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 10000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." },
+            { "id": "made_in_eu", "label": "Materiali Made in EU", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "certificato", "note": "Bonus +10% per Titolo II." },
+            { "id": "riduzione_ep_10", "label": "Riduzione EP ≥10%", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "APE", "note": "Bonus +15% se riduzione EP ≥10%." },
+            { "id": "zona_assistita_a", "label": "Zona assistita (art. 107.3 lett.a)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +15% per zone assistite." },
+            { "id": "zona_assistita_c", "label": "Zona assistita (art. 107.3 lett.c)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +5% per zone assistite." }
         ]
     },
     "II.E": {
@@ -732,7 +762,11 @@ export const SCHEDE_TECNICHE = {
             { "id": "tipo_edificio_illuminazione", "label": "Tipo edificio", "tipo": "select", "opzioni": ["Edifici privati", "Edifici PA"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "dichiarazione", "note": "Determina Cmax." },
             { "id": "superficie_illuminata_mq", "label": "Superficie illuminata", "tipo": "number", "obbligatorio": true, "unita": "mq", "min": 10, "max": 50000, "categoria": "formula", "fonte_dato": "rilievo/progetto", "note": "Superficie servita." },
             { "id": "efficienza_luminosa_lmW", "label": "Efficienza luminosa", "tipo": "number", "obbligatorio": true, "unita": "lm/W", "min": 50, "max": 250, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Efficienza nuovi corpi." },
-            { "id": "costo_illuminazione", "label": "Costo totale illuminazione", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 1000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+            { "id": "costo_illuminazione", "label": "Costo totale illuminazione", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 1000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." },
+            { "id": "made_in_eu", "label": "Corpi illuminanti Made in EU", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "certificato", "note": "Bonus +10% per Titolo II." },
+            { "id": "riduzione_ep_10", "label": "Riduzione EP ≥10%", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "APE", "note": "Bonus +15% se riduzione EP ≥10%." },
+            { "id": "zona_assistita_a", "label": "Zona assistita (art. 107.3 lett.a)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +15% per zone assistite." },
+            { "id": "zona_assistita_c", "label": "Zona assistita (art. 107.3 lett.c)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +5% per zone assistite." }
         ]
     },
     "III.B": {
@@ -744,7 +778,10 @@ export const SCHEDE_TECNICHE = {
             { "id": "scop", "label": "SCOP PDC", "tipo": "number", "obbligatorio": true, "unita": "", "min": 2.0, "max": 10.0, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Efficienza stagionale." },
             { "id": "eta_s", "label": "Efficienza stagionale (ηs)", "tipo": "number", "obbligatorio": true, "unita": "%", "min": 110, "max": 500, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "ηs per calcolo kp." },
             { "id": "tipo_sistema", "label": "Tipo sistema", "tipo": "select", "opzioni": ["Ibrido parallelo", "Bivalente", "Add-on PDC"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "progetto", "note": "Configurazione impianto." },
-            { "id": "costo_ibrido", "label": "Costo totale sistema ibrido", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 3000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+            { "id": "miglioramento_ep_40", "label": "Miglioramento EP ≥40%", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "APE", "note": "Bonus +15% se riduzione EP ≥40%." },
+            { "id": "costo_ibrido", "label": "Costo totale sistema ibrido", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 3000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." },
+            { "id": "zona_assistita_a", "label": "Zona assistita (art. 107.3 lett.a)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +15% per zone assistite." },
+            { "id": "zona_assistita_c", "label": "Zona assistita (art. 107.3 lett.c)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +5% per zone assistite." }
         ]
     },
     "III.C": {
@@ -754,7 +791,10 @@ export const SCHEDE_TECNICHE = {
             { "id": "potenza_nominale_kw", "label": "Potenza nominale", "tipo": "number", "obbligatorio": true, "unita": "kW", "min": 1, "max": 2000, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Massimo 2.000 kW." },
             { "id": "classe_emissiva", "label": "Classe emissiva", "tipo": "select", "opzioni": ["5 stelle", "4 stelle"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "scheda tecnica", "note": "Solo 5 stelle ammessa." },
             { "id": "tipo_biomassa", "label": "Tipo combustibile", "tipo": "select", "opzioni": ["Pellet", "Cippato", "Legna", "Altro"], "obbligatorio": true, "unita": "", "categoria": "descrittivo", "fonte_dato": "scheda tecnica", "note": "Tipologia prevalente." },
-            { "id": "costo_biomassa", "label": "Costo totale generatore biomassa", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 2000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+            { "id": "miglioramento_ep_40", "label": "Miglioramento EP ≥40%", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "APE", "note": "Bonus +15% se riduzione EP ≥40%." },
+            { "id": "costo_biomassa", "label": "Costo totale generatore biomassa", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 2000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." },
+            { "id": "zona_assistita_a", "label": "Zona assistita (art. 107.3 lett.a)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +15% per zone assistite." },
+            { "id": "zona_assistita_c", "label": "Zona assistita (art. 107.3 lett.c)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +5% per zone assistite." }
         ]
     },
     "III.D": {
@@ -764,7 +804,9 @@ export const SCHEDE_TECNICHE = {
             { "id": "tipo_pannello_solare", "label": "Tipo pannello", "tipo": "select", "opzioni": ["Pannelli piani vetrati", "Pannelli sottovuoto", "Pannelli non vetrati"], "obbligatorio": true, "unita": "", "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Determina Cmax." },
             { "id": "superficie_lorda_mq", "label": "Superficie lorda", "tipo": "number", "obbligatorio": true, "unita": "mq", "min": 1, "max": 2500, "categoria": "formula", "fonte_dato": "progetto", "note": "Massimo 2.500 m²." },
             { "id": "certificazione_solar_keymark", "label": "Certificazione Solar Keymark", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "certificato", "note": "Obbligatoria per incentivo." },
-            { "id": "costo_solare_termico", "label": "Costo totale solare termico", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 1000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+            { "id": "costo_solare_termico", "label": "Costo totale solare termico", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 1000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." },
+            { "id": "zona_assistita_a", "label": "Zona assistita (art. 107.3 lett.a)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +15% per zone assistite." },
+            { "id": "zona_assistita_c", "label": "Zona assistita (art. 107.3 lett.c)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +5% per zone assistite." }
         ]
     },
     "III.E": {
@@ -773,7 +815,9 @@ export const SCHEDE_TECNICHE = {
         "campi": [
             { "id": "capacita_litri", "label": "Capacità accumulo", "tipo": "number", "obbligatorio": true, "unita": "litri", "min": 50, "max": 1000, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Determina importo fisso." },
             { "id": "classe_energetica", "label": "Classe energetica", "tipo": "select", "opzioni": ["A+", "A", "B", "C"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "scheda tecnica", "note": "Deve essere almeno A." },
-            { "id": "costo_scaldacqua", "label": "Costo totale scaldacqua", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 50000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+            { "id": "costo_scaldacqua", "label": "Costo totale scaldacqua", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 50000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." },
+            { "id": "zona_assistita_a", "label": "Zona assistita (art. 107.3 lett.a)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +15% per zone assistite." },
+            { "id": "zona_assistita_c", "label": "Zona assistita (art. 107.3 lett.c)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +5% per zone assistite." }
         ]
     },
     "II.F": {
@@ -783,7 +827,10 @@ export const SCHEDE_TECNICHE = {
             { "id": "superficie_edificio_mq", "label": "Superficie asservita", "tipo": "number", "obbligatorio": true, "unita": "mq", "min": 10, "max": 50000, "categoria": "formula", "fonte_dato": "rilievo/progetto", "note": "Superficie gestita dal sistema." },
             { "id": "classe_bac", "label": "Classe BAC (EN 15232)", "tipo": "select", "opzioni": ["A", "B", "C", "D"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "progetto", "note": "Minimo classe B per incentivo." },
             { "id": "funzioni_controllo", "label": "Funzioni implementate", "tipo": "textarea", "obbligatorio": false, "unita": "", "categoria": "descrittivo", "fonte_dato": "progetto", "note": "Elenco funzioni di controllo e gestione." },
-            { "id": "costo_building_automation", "label": "Costo totale building automation", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 500000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+            { "id": "costo_building_automation", "label": "Costo totale building automation", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 500000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." },
+            { "id": "made_in_eu", "label": "Apparecchiature Made in EU", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "certificato", "note": "Bonus +10% per Titolo II." },
+            { "id": "zona_assistita_a", "label": "Zona assistita (art. 107.3 lett.a)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +15% per zone assistite." },
+            { "id": "zona_assistita_c", "label": "Zona assistita (art. 107.3 lett.c)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +5% per zone assistite." }
         ]
     },
     "III.F": {
@@ -793,7 +840,9 @@ export const SCHEDE_TECNICHE = {
             { "id": "tipo_allaccio", "label": "Tipo allaccio", "tipo": "select", "opzioni": ["Allaccio singolo", "Allaccio multiplo"], "obbligatorio": true, "unita": "", "categoria": "formula", "fonte_dato": "contratto", "note": "Determina Cmax." },
             { "id": "potenza_allaccio_kw", "label": "Potenza allaccio", "tipo": "number", "obbligatorio": true, "unita": "kW", "min": 1, "max": 10000, "categoria": "formula", "fonte_dato": "contratto", "note": "Potenza sottostazione." },
             { "id": "teleriscaldamento_efficiente", "label": "Teleriscaldamento efficiente (Dir. 2012/27/UE)", "tipo": "select", "opzioni": ["sì", "no", "da verificare"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "certificazione gestore", "note": "Obbligatorio." },
-            { "id": "costo_allaccio", "label": "Costo totale allaccio", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 500000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+            { "id": "costo_allaccio", "label": "Costo totale allaccio", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 500000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." },
+            { "id": "zona_assistita_a", "label": "Zona assistita (art. 107.3 lett.a)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +15% per zone assistite." },
+            { "id": "zona_assistita_c", "label": "Zona assistita (art. 107.3 lett.c)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +5% per zone assistite." }
         ]
     }
 };

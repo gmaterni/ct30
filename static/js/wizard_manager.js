@@ -835,7 +835,7 @@ const TEST_SCENARIOS_LIST = [
 
         let totaleIncentivo = 0;
         const resultsHtml = _praticaData.interventi.map(code => {
-            const res = FormulaEngine.calculate(code, _praticaData.valori_campi[code] || {}, { zonaClimatica: _praticaData.edificio.zona_climatica });
+            const res = FormulaEngine.calculate(code, _praticaData.valori_campi[code] || {}, { zonaClimatica: _praticaData.edificio.zona_climatica, allInterventiData: _praticaData.valori_campi });
             totaleIncentivo += res.amount;
             return `<div class="result-item" style="margin-bottom: 10px; padding: 10px; border-left: 4px solid #3f51b5; background: rgba(0,0,0,0.02);"><strong>${code}</strong>: <span class="${res.isBlocked ? 'calc-error' : 'calc-success'}">${res.isBlocked ? 'BLOCCATO' : PreventivoManager.formatCurrency(res.amount)}</span>${res.isBlocked ? `<br><small class="calc-error">${res.errors.join(', ')}</small>` : ''}</div>`;
         }).join('');
@@ -1148,7 +1148,7 @@ const TEST_SCENARIOS_LIST = [
         
         const summaryRows = _praticaData.interventi.map(code => {
             const tech = _praticaData.valori_campi[code] || {};
-            const calc = FormulaEngine.calculate(code, tech, { zonaClimatica: _praticaData.edificio.zona_climatica });
+            const calc = FormulaEngine.calculate(code, tech, { zonaClimatica: _praticaData.edificio.zona_climatica, allInterventiData: _praticaData.valori_campi });
             
             // Estrazione Spesa (cerca campo economico nella scheda)
             const scheda = SCHEDE_TECNICHE[code];
@@ -1179,7 +1179,7 @@ const TEST_SCENARIOS_LIST = [
         let interventiHtml = _praticaData.interventi.map(code => {
             const info = INTERVENTI[code] || {};
             const tech = _praticaData.valori_campi[code] || {};
-            const calc = FormulaEngine.calculate(code, tech, { zonaClimatica: _praticaData.edificio.zona_climatica });
+            const calc = FormulaEngine.calculate(code, tech, { zonaClimatica: _praticaData.edificio.zona_climatica, allInterventiData: _praticaData.valori_campi });
 
             // Dati Tecnici con Label
             const techRows = Object.entries(tech).map(([k, v]) => {
@@ -1737,7 +1737,7 @@ const TEST_SCENARIOS_LIST = [
 
         _praticaData.interventi.forEach(code => {
             const dati = _praticaData.valori_campi[code] || {};
-            const calc = FormulaEngine.calculate(code, dati, { zonaClimatica: _praticaData.edificio.zona_climatica });
+            const calc = FormulaEngine.calculate(code, dati, { zonaClimatica: _praticaData.edificio.zona_climatica, allInterventiData: _praticaData.valori_campi });
             
             let stepsHtml = "";
             if (calc.steps && calc.steps.length > 0) {
