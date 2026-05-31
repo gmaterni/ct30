@@ -211,6 +211,12 @@ const TEST_SCENARIOS_LIST = [
         };
     };
 
+    const _normalizeZona = (z) => {
+        if (!z) return "Zona E";
+        const m = String(z).match(/^([A-F])$/);
+        return m ? "Zona " + m[1] : z;
+    };
+
     const _loadScenarioData = (scenario) => {
         // Mappatura scenario verso struttura relazionale (MOD-007)
         _praticaData = {
@@ -224,7 +230,7 @@ const TEST_SCENARIOS_LIST = [
                 id: null,
                 indirizzo: scenario.edificio?.indirizzo || scenario.immobile?.indirizzo || "",
                 categoria_catastale: scenario.edificio?.categoria_catastale || scenario.immobile?.categoriaCatastale || "",
-                zona_climatica: scenario.edificio?.zona_climatica || scenario.immobile?.zonaClimatica || "Zona E",
+                zona_climatica: _normalizeZona(scenario.edificio?.zona_climatica || scenario.immobile?.zonaClimatica),
                 potenza_esistente_kw: scenario.edificio?.potenza_esistente_kw || scenario.immobile?.potenza_esistente_kw || 0,
                 combustibile_ante: scenario.edificio?.combustibile_ante || scenario.immobile?.combustibile_ante || ""
             },

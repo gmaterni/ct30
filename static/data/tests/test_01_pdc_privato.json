@@ -9,50 +9,56 @@
         "telefono": "021234567"
     },
     "soggetti": {
-        "sa": { 
-            "denominazione": "Mario Rossi", 
-            "tipo": "Privato residenziale", 
+        "sa": {
+            "denominazione": "Mario Rossi",
+            "tipo": "Privato residenziale",
             "cf_piva": "RSSMRA80A01H501U",
             "titolo_godimento": "Proprietà",
             "email": "mario.rossi@email.it",
             "telefono": "021234567"
         },
-        "sr": { 
-            "denominazione": "Mario Rossi", 
-            "cf_piva": "RSSMRA80A01H501U", 
-            "iban": "IT60X0542811101000000123456", 
-            "pec": "mario.rossi@pec.it", 
-            "coincide_con_sa": true 
+        "sr": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "mario.rossi@pec.it",
+            "coincide_con_sa": true
         },
-        "proprietario": { 
-            "denominazione": "Mario Rossi", 
-            "cf_piva": "RSSMRA80A01H501U", 
-            "coincide_con_sa": true, 
-            "atto_assenso": true 
+        "proprietario": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "coincide_con_sa": true,
+            "atto_assenso": true
         },
-        "delegato": { "nome": "", "cf": "" }
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
     },
     "ruoli": {
-        "sa": { 
-            "denominazione": "Mario Rossi", 
-            "tipo": "Privato residenziale", 
+        "sa": {
+            "denominazione": "Mario Rossi",
+            "tipo": "Privato residenziale",
             "cf_piva": "RSSMRA80A01H501U",
-            "titolo_godimento": "Proprietà" 
+            "titolo_godimento": "Proprietà"
         },
-        "sr": { 
-            "denominazione": "Mario Rossi", 
-            "cf_piva": "RSSMRA80A01H501U", 
-            "iban": "IT60X0542811101000000123456", 
-            "pec": "mario.rossi@pec.it", 
-            "coincide_con_sa": true 
+        "sr": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "mario.rossi@pec.it",
+            "coincide_con_sa": true
         },
-        "proprietario": { 
-            "denominazione": "Mario Rossi", 
-            "cf_piva": "RSSMRA80A01H501U", 
-            "coincide_con_sa": true, 
-            "atto_assenso": true 
+        "proprietario": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "coincide_con_sa": true,
+            "atto_assenso": true
         },
-        "delegato": { "nome": "", "cf": "" }
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
     },
     "immobile": {
         "indirizzo": "Via Roma 10, Milano (MI)",
@@ -61,35 +67,39 @@
         "tipo_edificio": "Condominio",
         "categoriaCatastale": "A/2",
         "classeEnergeticaAnte": "G",
-        "potenza_esistente_kw": 24.0,
+        "potenza_esistente_kw": 24,
         "combustibile_ante": "metano"
     },
     "edificio": {
         "indirizzo": "Via Roma 10, Milano (MI)",
         "categoria_catastale": "A/2",
         "zona_climatica": "Zona E",
-        "potenza_esistente_kw": 24.0,
+        "potenza_esistente_kw": 24,
         "combustibile_ante": "metano"
     },
     "richiestaPreliminareInviata": false,
-    "selectedInterventi": ["III.A"],
-    "interventi": ["III.A"],
+    "selectedInterventi": [
+        "III.A"
+    ],
+    "interventi": [
+        "III.A"
+    ],
     "interventiData": {
         "III.A": {
             "marca_pdc": "Climax",
             "modello_pdc": "ClimaxHeat 12kW",
             "potenza_pdc_kw": 12,
-            "potenza_elettrica_assorbita_kw": 3.0,
+            "potenza_elettrica_assorbita_kw": 3,
             "tipologia_pdc": "aria/acqua",
             "scop": 4.1,
             "cop": 4.5,
             "eta_s": 155,
             "servizio_pdc": "climatizzazione invernale",
             "generatore_sostituito": "Caldaia a gas 24kW",
-            "made_in_eu": "si",
-            "scheda_tecnica_pdc": "si",
+            "made_in_eu": "sì",
+            "scheda_tecnica_pdc": "sì",
             "costo_pdc": 12500,
-            "sostituisce_esistente": "si"
+            "sostituisce_esistente": "sì"
         }
     },
     "valori_campi": {
@@ -97,17 +107,17 @@
             "marca_pdc": "Climax",
             "modello_pdc": "ClimaxHeat 12kW",
             "potenza_pdc_kw": 12,
-            "potenza_elettrica_assorbita_kw": 3.0,
+            "potenza_elettrica_assorbita_kw": 3,
             "tipologia_pdc": "aria/acqua",
             "scop": 4.1,
             "cop": 4.5,
             "eta_s": 155,
             "servizio_pdc": "climatizzazione invernale",
             "generatore_sostituito": "Caldaia a gas 24kW",
-            "made_in_eu": "si",
-            "scheda_tecnica_pdc": "si",
+            "made_in_eu": "sì",
+            "scheda_tecnica_pdc": "sì",
             "costo_pdc": 12500,
-            "sostituisce_esistente": "si"
+            "sostituisce_esistente": "sì"
         }
     },
     "postOperam": {
@@ -122,10 +132,46 @@
     },
     "preventivo": {
         "items": [
-            { "id": "forn", "codice_intervento": "III.A", "descrizione": "Fornitura pompa di calore Climax 12kW", "tipo_costo": "fornitura", "importo": 8000, "quantita": 1, "unita": "corpo", "is_custom": false },
-            { "id": "posa", "codice_intervento": "III.A", "descrizione": "Posa e collegamenti idraulici/elettrici", "tipo_costo": "posa", "importo": 3000, "quantita": 1, "unita": "corpo", "is_custom": false },
-            { "id": "dis", "codice_intervento": "III.A", "descrizione": "Dismissione caldaia esistente", "tipo_costo": "opere_accessorie", "importo": 800, "quantita": 1, "unita": "corpo", "is_custom": false },
-            { "id": "coll", "codice_intervento": "III.A", "descrizione": "Avviamento, collaudo e dichiarazione conformità", "tipo_costo": "documentazione", "importo": 700, "quantita": 1, "unita": "corpo", "is_custom": false }
+            {
+                "id": "forn",
+                "codice_intervento": "III.A",
+                "descrizione": "Fornitura pompa di calore Climax 12kW",
+                "tipo_costo": "fornitura",
+                "importo": 8000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "posa",
+                "codice_intervento": "III.A",
+                "descrizione": "Posa e collegamenti idraulici/elettrici",
+                "tipo_costo": "posa",
+                "importo": 3000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "dis",
+                "codice_intervento": "III.A",
+                "descrizione": "Dismissione caldaia esistente",
+                "tipo_costo": "opere_accessorie",
+                "importo": 800,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "coll",
+                "codice_intervento": "III.A",
+                "descrizione": "Avviamento, collaudo e dichiarazione conformità",
+                "tipo_costo": "documentazione",
+                "importo": 700,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
         ],
         "totals": {
             "totale": 12500,

@@ -65,7 +65,7 @@
     },
     "immobile": {
         "indirizzo": "Via dell'Innovazione, 42 – Milano (MI)",
-        "zonaClimatica": "E",
+        "zonaClimatica": "Zona E",
         "destinazione": "Terziario",
         "tipo_edificio": "Edificio Singolo",
         "categoriaCatastale": "D/7",
@@ -76,15 +76,27 @@
     "edificio": {
         "indirizzo": "Via dell'Innovazione, 42 – Milano (MI)",
         "categoria_catastale": "D/7",
-        "zona_climatica": "E",
+        "zona_climatica": "Zona E",
         "potenza_esistente_kw": 150,
         "combustibile_ante": "Gas"
     },
     "richiestaPreliminareInviata": true,
     "dataRichiestaPreliminare": "2025-12-15",
     "dataPrimoImpegno": "2026-01-20",
-    "interventi": ["III.A", "II.H", "II.G", "II.F", "III.E"],
-    "selectedInterventi": ["III.A", "II.H", "II.G", "II.F", "III.E"],
+    "interventi": [
+        "III.A",
+        "II.H",
+        "II.G",
+        "II.F",
+        "III.E"
+    ],
+    "selectedInterventi": [
+        "III.A",
+        "II.H",
+        "II.G",
+        "II.F",
+        "III.E"
+    ],
     "valori_campi": {
         "III.A": {
             "marca_pdc": "Clivet",
@@ -97,14 +109,14 @@
             "eta_s": 145,
             "servizio_pdc": "Riscaldamento + ACS",
             "generatore_sostituito": "Caldaia a gas",
-            "made_in_eu": true,
+            "made_in_eu": "sì",
             "scheda_tecnica_pdc": "disponibile",
             "costo_pdc": 52000,
-            "sostituisce_esistente": true,
-            "sostituzione_integrale": true,
+            "sostituisce_esistente": "sì",
+            "sostituzione_integrale": "sì",
             "classe_energetica_prodotto": "A++",
             "potenza_termica_nominale": 78.5,
-            "con_accumulo": true,
+            "con_accumulo": "sì",
             "capacita_accumulo_pdc_l": 500
         },
         "II.H": {
@@ -112,15 +124,15 @@
             "modello_moduli": "MAX6-450",
             "potenza_fv_kw": 60,
             "numero_moduli": 135,
-            "accumulo_presente": true,
+            "accumulo_presente": "sì",
             "capacita_accumulo_kwh": 120,
-            "made_in_eu": true,
-            "registro_enea": true,
-            "ue_production": true,
-            "same_section": true,
-            "is_autoconsumo": true,
+            "made_in_eu": "sì",
+            "registro_enea": "sì",
+            "ue_production": "sì",
+            "same_section": "sì",
+            "is_autoconsumo": "sì",
             "costo_fv": 48000,
-            "sostituzione_integrale": true,
+            "sostituzione_integrale": "sì",
             "marca_inverter": "Fronius",
             "modello_inverter": "Symo 50.0-3-S",
             "potenza_inverter_kw": 50
@@ -130,21 +142,21 @@
             "numero_punti_ricarica": 6,
             "potenza_ricarica_kw": 22,
             "tipo_ricarica": "trifase",
-            "is_smart": true,
+            "is_smart": "sì",
             "modo_ricarica": "Modo 4",
             "marca_colonnina": "ABB",
             "modello_colonnina": "Terra AC 22",
-            "con_contabilizzazione": true
+            "con_contabilizzazione": "sì"
         },
         "II.F": {
             "costo_building_automation": 15000,
             "tipo_controllo": "BMS",
             "funzioni_previste": "Gestione carichi, termoregolazione, monitoraggio",
-            "made_in_eu": true,
+            "made_in_eu": "sì",
             "classe_sistema": "Classe B",
             "nr_dispositivi": 35,
-            "contabilizzazione_calore": true,
-            "sistema_centrale": true
+            "contabilizzazione_calore": "sì",
+            "sistema_centrale": "sì"
         },
         "III.E": {
             "marca_scaldacqua": "Ariston",
@@ -152,8 +164,8 @@
             "capacita_accumulo_l": 200,
             "classe_energetica": "A+",
             "costo_scaldacqua": 2500,
-            "made_in_eu": true,
-            "sostituisce_scaldacqua_esistente": true,
+            "made_in_eu": "sì",
+            "sostituisce_scaldacqua_esistente": "sì",
             "tipo_sostituito": "Elettrico",
             "cop_scaldacqua": 3.2
         }
@@ -170,14 +182,14 @@
             "eta_s": 145,
             "servizio_pdc": "Riscaldamento + ACS",
             "generatore_sostituito": "Caldaia a gas",
-            "made_in_eu": true,
+            "made_in_eu": "sì",
             "scheda_tecnica_pdc": "disponibile",
             "costo_pdc": 52000,
-            "sostituisce_esistente": true,
-            "sostituzione_integrale": true,
+            "sostituisce_esistente": "sì",
+            "sostituzione_integrale": "sì",
             "classe_energetica_prodotto": "A++",
             "potenza_termica_nominale": 78.5,
-            "con_accumulo": true,
+            "con_accumulo": "sì",
             "capacita_accumulo_pdc_l": 500
         },
         "II.H": {
@@ -185,15 +197,15 @@
             "modello_moduli": "MAX6-450",
             "potenza_fv_kw": 60,
             "numero_moduli": 135,
-            "accumulo_presente": true,
+            "accumulo_presente": "sì",
             "capacita_accumulo_kwh": 120,
-            "made_in_eu": true,
-            "registro_enea": true,
-            "ue_production": true,
-            "same_section": true,
-            "is_autoconsumo": true,
+            "made_in_eu": "sì",
+            "registro_enea": "sì",
+            "ue_production": "sì",
+            "same_section": "sì",
+            "is_autoconsumo": "sì",
             "costo_fv": 48000,
-            "sostituzione_integrale": true,
+            "sostituzione_integrale": "sì",
             "marca_inverter": "Fronius",
             "modello_inverter": "Symo 50.0-3-S",
             "potenza_inverter_kw": 50
@@ -203,30 +215,30 @@
             "numero_punti_ricarica": 6,
             "potenza_ricarica_kw": 22,
             "tipo_ricarica": "trifase",
-            "is_smart": true,
+            "is_smart": "sì",
             "modo_ricarica": "Modo 4",
             "marca_colonnina": "ABB",
             "modello_colonnina": "Terra AC 22",
-            "con_contabilizzazione": true
+            "con_contabilizzazione": "sì"
         },
         "II.F": {
             "costo_building_automation": 15000,
             "tipo_controllo": "BMS",
             "funzioni_previste": "Gestione carichi, termoregolazione, monitoraggio",
-            "made_in_eu": true,
+            "made_in_eu": "sì",
             "classe_sistema": "Classe B",
             "nr_dispositivi": 35,
-            "contabilizzazione_calore": true,
-            "sistema_centrale": true
+            "contabilizzazione_calore": "sì",
+            "sistema_centrale": "sì"
         },
         "III.E": {
-            "marca_scaldacqua": "Arison",
+            "marca_scaldacqua": "Ariston",
             "modello_scaldacqua": "Nuos Evo 200",
             "capacita_accumulo_l": 200,
             "classe_energetica": "A+",
             "costo_scaldacqua": 2500,
-            "made_in_eu": true,
-            "sostituisce_scaldacqua_esistente": true,
+            "made_in_eu": "sì",
+            "sostituisce_scaldacqua_esistente": "sì",
             "tipo_sostituito": "Elettrico",
             "cop_scaldacqua": 3.2
         }
@@ -236,7 +248,7 @@
             "tipo_nuovo_generatore": "Pompa di calore aria/acqua",
             "pdc_elettrica_pura": true,
             "rimane_gas": false,
-            "dismesso_esistente": true,
+            "dismesso_esistente": "sì",
             "sostituzione_integrale": true,
             "serve_clima_invernale": true
         },
@@ -269,161 +281,178 @@
                 "codice_intervento": "III.A",
                 "descrizione": "Pompa di calore Clivet WSAN-XEE 120",
                 "tipo_costo": "fornitura",
-                "importo": 38000.00,
+                "importo": 38000,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             },
             {
                 "id": "III.A_02",
                 "codice_intervento": "III.A",
                 "descrizione": "Posa in opera PDC e collegamenti idraulici",
                 "tipo_costo": "posa",
-                "importo": 8500.00,
+                "importo": 8500,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             },
             {
                 "id": "III.A_03",
                 "codice_intervento": "III.A",
                 "descrizione": "Adeguamento terminali e sistema di regolazione",
                 "tipo_costo": "opere_accessorie",
-                "importo": 4200.00,
+                "importo": 4200,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             },
             {
                 "id": "III.A_04",
                 "codice_intervento": "III.A",
                 "descrizione": "Pratiche e documentazione tecnica",
                 "tipo_costo": "documentazione",
-                "importo": 1300.00,
+                "importo": 1300,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             },
             {
                 "id": "II.H_01",
                 "codice_intervento": "II.H",
                 "descrizione": "Moduli FV SunPower MAX6-450 (135 pz)",
                 "tipo_costo": "fornitura",
-                "importo": 32000.00,
+                "importo": 32000,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             },
             {
                 "id": "II.H_02",
                 "codice_intervento": "II.H",
                 "descrizione": "Inverter Fronius Symo 50.0 e accumulo 120kWh",
                 "tipo_costo": "fornitura",
-                "importo": 9500.00,
+                "importo": 9500,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             },
             {
                 "id": "II.H_03",
                 "codice_intervento": "II.H",
                 "descrizione": "Posa impianto FV e collegamenti elettrici",
                 "tipo_costo": "posa",
-                "importo": 5500.00,
+                "importo": 5500,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             },
             {
                 "id": "II.H_04",
                 "codice_intervento": "II.H",
                 "descrizione": "Documentazione tecnica e pratiche GSE",
                 "tipo_costo": "documentazione",
-                "importo": 1000.00,
+                "importo": 1000,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             },
             {
                 "id": "II.G_01",
                 "codice_intervento": "II.G",
                 "descrizione": "Colonnine ricarica ABB Terra AC 22 (6 pz)",
                 "tipo_costo": "fornitura",
-                "importo": 12000.00,
+                "importo": 12000,
                 "quantita": 6,
-                "unita": "pz"
+                "unita": "pz",
+                "is_custom": false
             },
             {
                 "id": "II.G_02",
                 "codice_intervento": "II.G",
                 "descrizione": "Posa colonnine e linee elettriche dedicate",
                 "tipo_costo": "posa",
-                "importo": 4500.00,
+                "importo": 4500,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             },
             {
                 "id": "II.G_03",
                 "codice_intervento": "II.G",
                 "descrizione": "Opere civili accessorie",
                 "tipo_costo": "opere_accessorie",
-                "importo": 1500.00,
+                "importo": 1500,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             },
             {
                 "id": "II.F_01",
                 "codice_intervento": "II.F",
                 "descrizione": "Sistema BMS e building automation",
                 "tipo_costo": "fornitura",
-                "importo": 10500.00,
+                "importo": 10500,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             },
             {
                 "id": "II.F_02",
                 "codice_intervento": "II.F",
                 "descrizione": "Configurazione e collaudo BMS",
                 "tipo_costo": "posa",
-                "importo": 3500.00,
+                "importo": 3500,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             },
             {
                 "id": "II.F_03",
                 "codice_intervento": "II.F",
                 "descrizione": "Documentazione sistema building automation",
                 "tipo_costo": "documentazione",
-                "importo": 1000.00,
+                "importo": 1000,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             },
             {
                 "id": "III.E_01",
                 "codice_intervento": "III.E",
                 "descrizione": "Scaldacqua PDC Ariston Nuos Evo 200",
                 "tipo_costo": "fornitura",
-                "importo": 1800.00,
+                "importo": 1800,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             },
             {
                 "id": "III.E_02",
                 "codice_intervento": "III.E",
                 "descrizione": "Posa scaldacqua PDC e collegamenti",
                 "tipo_costo": "posa",
-                "importo": 500.00,
+                "importo": 500,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             },
             {
                 "id": "III.E_03",
                 "codice_intervento": "III.E",
                 "descrizione": "Documentazione tecnica scaldacqua",
                 "tipo_costo": "documentazione",
-                "importo": 200.00,
+                "importo": 200,
                 "quantita": 1,
-                "unita": "corpo"
+                "unita": "corpo",
+                "is_custom": false
             }
         ],
         "totals": {
-            "fornitura": 103800.00,
-            "posa": 22500.00,
-            "opere_accessorie": 5700.00,
-            "documentazione": 3500.00,
-            "totale_complessivo": 135500.00
+            "totale": 135500,
+            "totale_fornitura": 103800,
+            "totale_posa": 22500,
+            "totale_opere_accessorie": 5700,
+            "totale_documentazione": 3500
         }
     },
     "documentiStatus": {

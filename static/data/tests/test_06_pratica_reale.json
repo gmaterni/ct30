@@ -9,50 +9,56 @@
         "telefono": "3331234567"
     },
     "soggetti": {
-        "sa": { 
-            "denominazione": "Mario Rossi", 
-            "tipo": "Privato residenziale", 
+        "sa": {
+            "denominazione": "Mario Rossi",
+            "tipo": "Privato residenziale",
             "cf_piva": "RSSMRA80A01H501U",
             "titolo_godimento": "Proprietà",
             "email": "mario.rossi@email.it",
             "telefono": "3331234567"
         },
-        "sr": { 
-            "denominazione": "Mario Rossi", 
-            "cf_piva": "RSSMRA80A01H501U", 
-            "iban": "IT60X0542811101000000123456", 
-            "pec": "mario.rossi@pec.it", 
-            "coincide_con_sa": true 
+        "sr": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "mario.rossi@pec.it",
+            "coincide_con_sa": true
         },
-        "proprietario": { 
-            "denominazione": "Mario Rossi", 
-            "cf_piva": "RSSMRA80A01H501U", 
-            "coincide_con_sa": true, 
-            "atto_assenso": true 
+        "proprietario": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "coincide_con_sa": true,
+            "atto_assenso": true
         },
-        "delegato": { "nome": "Arch. Studio Sviluppo", "cf": "STDSVL80A01H501W" }
+        "delegato": {
+            "nome": "Arch. Studio Sviluppo",
+            "cf": "STDSVL80A01H501W"
+        }
     },
     "ruoli": {
-        "sa": { 
-            "denominazione": "Mario Rossi", 
-            "tipo": "Privato residenziale", 
+        "sa": {
+            "denominazione": "Mario Rossi",
+            "tipo": "Privato residenziale",
             "cf_piva": "RSSMRA80A01H501U",
-            "titolo_godimento": "Proprietà" 
+            "titolo_godimento": "Proprietà"
         },
-        "sr": { 
-            "denominazione": "Mario Rossi", 
-            "cf_piva": "RSSMRA80A01H501U", 
-            "iban": "IT60X0542811101000000123456", 
-            "pec": "mario.rossi@pec.it", 
-            "coincide_con_sa": true 
+        "sr": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "mario.rossi@pec.it",
+            "coincide_con_sa": true
         },
-        "proprietario": { 
-            "denominazione": "Mario Rossi", 
-            "cf_piva": "RSSMRA80A01H501U", 
-            "coincide_con_sa": true, 
-            "atto_assenso": true 
+        "proprietario": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "coincide_con_sa": true,
+            "atto_assenso": true
         },
-        "delegato": { "nome": "Arch. Studio Sviluppo", "cf": "STDSVL80A01H501W" }
+        "delegato": {
+            "nome": "Arch. Studio Sviluppo",
+            "cf": "STDSVL80A01H501W"
+        }
     },
     "immobile": {
         "indirizzo": "Via Milano 10, Milano (MI)",
@@ -61,19 +67,23 @@
         "tipo_edificio": "Condominio",
         "categoriaCatastale": "A/2",
         "classeEnergeticaAnte": "F",
-        "potenza_esistente_kw": 35.0,
+        "potenza_esistente_kw": 35,
         "combustibile_ante": "metano"
     },
     "edificio": {
         "indirizzo": "Via Milano 10, Milano (MI)",
         "categoria_catastale": "A/2",
         "zona_climatica": "Zona E",
-        "potenza_esistente_kw": 35.0,
+        "potenza_esistente_kw": 35,
         "combustibile_ante": "metano"
     },
     "richiestaPreliminareInviata": false,
-    "selectedInterventi": ["III.A"],
-    "interventi": ["III.A"],
+    "selectedInterventi": [
+        "III.A"
+    ],
+    "interventi": [
+        "III.A"
+    ],
     "interventiData": {
         "III.A": {
             "marca_pdc": "BrandX",
@@ -86,10 +96,10 @@
             "eta_s": 150,
             "servizio_pdc": "climatizzazione invernale",
             "generatore_sostituito": "Caldaia a gas 35kW",
-            "made_in_eu": "si",
-            "scheda_tecnica_pdc": "si",
+            "made_in_eu": "sì",
+            "scheda_tecnica_pdc": "sì",
             "costo_pdc": 25000,
-            "sostituisce_esistente": "si"
+            "sostituisce_esistente": "sì"
         }
     },
     "valori_campi": {
@@ -104,10 +114,10 @@
             "eta_s": 150,
             "servizio_pdc": "climatizzazione invernale",
             "generatore_sostituito": "Caldaia a gas 35kW",
-            "made_in_eu": "si",
-            "scheda_tecnica_pdc": "si",
+            "made_in_eu": "sì",
+            "scheda_tecnica_pdc": "sì",
             "costo_pdc": 25000,
-            "sostituisce_esistente": "si"
+            "sostituisce_esistente": "sì"
         }
     },
     "postOperam": {
@@ -122,9 +132,36 @@
     },
     "preventivo": {
         "items": [
-            { "id": "forn", "codice_intervento": "III.A", "descrizione": "Fornitura pompa di calore BrandX PDC-40-W", "tipo_costo": "fornitura", "importo": 20000, "quantita": 1, "unita": "corpo", "is_custom": false },
-            { "id": "posa", "codice_intervento": "III.A", "descrizione": "Posa e collegamenti idraulici/elettrici", "tipo_costo": "posa", "importo": 5000, "quantita": 1, "unita": "corpo", "is_custom": false },
-            { "id": "docu", "codice_intervento": "III.A", "descrizione": "Pratiche autorizzative e documentazione", "tipo_costo": "documentazione", "importo": 2000, "quantita": 1, "unita": "corpo", "is_custom": false }
+            {
+                "id": "forn",
+                "codice_intervento": "III.A",
+                "descrizione": "Fornitura pompa di calore BrandX PDC-40-W",
+                "tipo_costo": "fornitura",
+                "importo": 20000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "posa",
+                "codice_intervento": "III.A",
+                "descrizione": "Posa e collegamenti idraulici/elettrici",
+                "tipo_costo": "posa",
+                "importo": 5000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "docu",
+                "codice_intervento": "III.A",
+                "descrizione": "Pratiche autorizzative e documentazione",
+                "tipo_costo": "documentazione",
+                "importo": 2000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
         ],
         "totals": {
             "totale": 27000,
