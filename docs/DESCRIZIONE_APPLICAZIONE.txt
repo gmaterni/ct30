@@ -1,0 +1,38 @@
+DESCRIZIONE ARCHITETTURALE E FUNZIONALE: CT30 ADVISOR
+
+1. PANORAMICA
+CT30 Advisor e un'applicazione web prototipale progettata per la simulazione e la validazione delle pratiche di incentivo secondo il Decreto Conto Termico 3.0 (D.M. 7 agosto 2025). L'applicazione e interamente client-side (frontend-only) e adotta un'architettura rigorosamente data-driven.
+
+2. ARCHITETTURA DEI DATI
+L'applicazione si basa su una "Single Source of Truth" (SSOT) centralizzata:
+
+- normativa.js: Il cuore dell'applicazione. Contiene:
+  * RULES: Coefficienti tecnici (Quf, Ci Tabella 9), massimali di spesa (Cmax) e parametri delle fasce climatiche.
+  * INTERVENTI: Catalogo degli interventi ammissibili (Titolo II e III) con vincoli logici e suggerimenti.
+  * SCHEDE_TECNICHE: Definizione dinamica dei campi di input necessari per ogni tecnologia.
+  * FORMULE_INCENTIVO: Metadati delle formule normative, mappatura variabili e algoritmi di calcolo.
+  * SOGGETTI_CONFIG: Regole di accesso e compatibilita per tipo di soggetto (Privato, PA, Impresa).
+
+3. MOTORI LOGICI (ENGINE)
+La logica di business e separata dal caricamento dei dati:
+
+- RulesEngine (rules_engine.js): Valida l'ammissibilita soggettiva, catastale e procedurale (es. Effetto Incentivante per Imprese).
+- CrossRuleEngine (cross_rule_engine.js): Gestisce le dipendenze tra interventi (trainanti/trainati).
+- FormulaEngine (formula_engine.js): Esegue gli algoritmi normativi (es. calcolo Ei per pompe di calore) e genera il piano di erogazione (unica soluzione vs rate).
+- PremialitaEngine (premialita_engine.js): Calcola le maggiorazioni percentuali (Made in EU, Registro ENEA).
+- ReliabilityEngine (reliability_engine.js): Valuta la qualita del dato inserito basandosi sulla fonte (Certificato vs Dichiarato).
+
+4. WORKFLOW DELL'APPLICAZIONE (WIZARD)
+L'utente interagisce attraverso un processo guidato in 6 fasi:
+
+STEP 1: Inquadramento. Inserimento dati anagrafici, immobile e verifica dell'effetto incentivante (obbligatorio per Imprese).
+STEP 2: Ammissibilita. Il sistema verifica se il soggetto e l'immobile hanno titolo per accedere agli incentivi richiesti.
+STEP 3: Selezione Interventi. Scelta delle tecnologie. Il sistema suggerisce interventi correlati e valida i vincoli di dipendenza.
+STEP 4: Dati Tecnici (Data-Entry). Maschere dinamiche generate in base agli interventi scelti per raccogliere parametri come potenza, SCOP, eta_s.
+STEP 5: Preventivo. Configurazione delle voci di spesa reali basata sui suggerimenti del catalogo.
+STEP 6: Risultati e Report. Sintesi economica, calcolo del piano di erogazione e valutazione dell'affidabilita globale della pratica.
+
+5. TECNOLOGIE UTILIZZATE
+- Frontend: HTML5, Vanilla JavaScript (ES6 Modules), CSS/LESS.
+- Data Storage: JSON per la configurazione normativa, IndexedDB (tramite Dexie.js) per la persistenza locale delle pratiche.
+- UI: Componenti custom per finestre modali e gestione degli step (WizardManager).
