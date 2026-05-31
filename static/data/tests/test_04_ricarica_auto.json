@@ -1,11 +1,35 @@
 {
     "nome": "Test 04 - Condominio Ricarica Veicoli",
-    "descrizione": "Installazione colonnine di ricarica per parcheggio condominiale in Zona E.",
+    "descrizione": "Installazione colonnine di ricarica per parcheggio condominiale + PdC centralizzata 120kW in Zona E. Verifica II.G + III.A, cross-rules.",
     "soggetto": {
         "tipo": "Condominio",
         "denominazione": "Condominio Belvedere",
         "codiceFiscale": "90012345678",
         "email": "amministrazione@condominiobelvedere.it"
+    },
+    "soggetti": {
+        "sa": { 
+            "denominazione": "Condominio Belvedere", 
+            "tipo": "Condominio", 
+            "cf_piva": "90012345678",
+            "titolo_godimento": "Proprietà",
+            "email": "amministrazione@condominiobelvedere.it",
+            "telefono": "0111234567"
+        },
+        "sr": { 
+            "denominazione": "Condominio Belvedere", 
+            "cf_piva": "90012345678", 
+            "iban": "IT22Y0123456789012345678901", 
+            "pec": "amministrazione@pec.condominiobelvedere.it", 
+            "coincide_con_sa": true 
+        },
+        "proprietario": { 
+            "denominazione": "Condominio Belvedere", 
+            "cf_piva": "90012345678", 
+            "coincide_con_sa": true, 
+            "atto_assenso": true 
+        },
+        "delegato": { "nome": "Studio Amministratore Rossi", "cf": "09876543210" }
     },
     "ruoli": {
         "sa": { 
@@ -39,22 +63,103 @@
         "potenza_esistente_kw": 120.0,
         "combustibile_ante": "metano"
     },
+    "edificio": {
+        "indirizzo": "Piazza della Libertà 1, Torino (TO)",
+        "categoria_catastale": "A/2",
+        "zona_climatica": "Zona E",
+        "potenza_esistente_kw": 120.0,
+        "combustibile_ante": "metano"
+    },
     "richiestaPreliminareInviata": false,
     "selectedInterventi": ["II.G", "III.A"],
+    "interventi": ["II.G", "III.A"],
     "interventiData": {
         "II.G": {
             "costo_colonnina": 15000,
             "numero_punti_ricarica": 6,
             "potenza_ricarica_kw": 22.0,
-            "tipo_ricarica": "trifase"
+            "tipo_ricarica": "Punto ricarica Trifase",
+            "is_smart": "sì",
+            "modo_ricarica": "modo 3"
         },
         "III.A": {
+            "marca_pdc": "Climaveneta",
+            "modello_pdc": "CV-120kW",
             "potenza_pdc_kw": 120,
+            "potenza_elettrica_assorbita_kw": 30.0,
             "tipologia_pdc": "aria/acqua",
             "scop": 4.2,
+            "cop": 4.5,
             "eta_s": 160,
+            "servizio_pdc": "climatizzazione invernale centralizzata",
+            "generatore_sostituito": "Caldaia centralizzata metano 120kW",
+            "made_in_eu": "sì",
+            "scheda_tecnica_pdc": "sì",
             "costo_pdc": 45000,
             "sostituisce_esistente": "si"
         }
+    },
+    "valori_campi": {
+        "II.G": {
+            "costo_colonnina": 15000,
+            "numero_punti_ricarica": 6,
+            "potenza_ricarica_kw": 22.0,
+            "tipo_ricarica": "Punto ricarica Trifase",
+            "is_smart": "sì",
+            "modo_ricarica": "modo 3"
+        },
+        "III.A": {
+            "marca_pdc": "Climaveneta",
+            "modello_pdc": "CV-120kW",
+            "potenza_pdc_kw": 120,
+            "potenza_elettrica_assorbita_kw": 30.0,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.2,
+            "cop": 4.5,
+            "eta_s": 160,
+            "servizio_pdc": "climatizzazione invernale centralizzata",
+            "generatore_sostituito": "Caldaia centralizzata metano 120kW",
+            "made_in_eu": "sì",
+            "scheda_tecnica_pdc": "sì",
+            "costo_pdc": 45000,
+            "sostituisce_esistente": "si"
+        }
+    },
+    "postOperam": {
+        "II.G": {
+            "punti_ricarica_installati": 6,
+            "tipo": "trifase 22kW",
+            "pdc_elettrica_presente": true
+        },
+        "III.A": {
+            "tipo_nuovo_generatore": "pompa di calore elettrica",
+            "pdc_elettrica_pura": true,
+            "rimane_gas": false,
+            "dismesso_esistente": "sì",
+            "sostituzione_integrale": "sì",
+            "serve_clima_invernale": true
+        }
+    },
+    "preventivo": {
+        "items": [
+            { "id": "pdc_forn", "codice_intervento": "III.A", "descrizione": "Fornitura PDC centralizzata Climaveneta 120kW", "tipo_costo": "fornitura", "importo": 28000, "quantita": 1, "unita": "corpo", "is_custom": false },
+            { "id": "pdc_posa", "codice_intervento": "III.A", "descrizione": "Posa e adeguamento centrale termica", "tipo_costo": "posa", "importo": 13000, "quantita": 1, "unita": "corpo", "is_custom": false },
+            { "id": "pdc_doc", "codice_intervento": "III.A", "descrizione": "Documentazione e conformità", "tipo_costo": "documentazione", "importo": 4000, "quantita": 1, "unita": "corpo", "is_custom": false },
+            { "id": "col_forn", "codice_intervento": "II.G", "descrizione": "Fornitura 6 colonnine trifase 22kW", "tipo_costo": "fornitura", "importo": 9000, "quantita": 6, "unita": "punto", "is_custom": false },
+            { "id": "col_posa", "codice_intervento": "II.G", "descrizione": "Posa linee e colonnine parcheggio", "tipo_costo": "posa", "importo": 5000, "quantita": 1, "unita": "corpo", "is_custom": false },
+            { "id": "col_doc", "codice_intervento": "II.G", "descrizione": "Documentazione e dichiarazione conformità", "tipo_costo": "documentazione", "importo": 1000, "quantita": 1, "unita": "corpo", "is_custom": false }
+        ],
+        "totals": {
+            "totale": 60000,
+            "totale_fornitura": 37000,
+            "totale_posa": 18000,
+            "totale_documentazione": 5000
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Visura Catastale recente (ultimi 6 mesi)": true,
+        "Titolo di possesso (atto, contratto locazione, ecc.)": true
     }
 }

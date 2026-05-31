@@ -1,6 +1,13 @@
 {
     "nome": "Test 06 - Pratica Reale (Incentivo Calcolato)",
-    "descrizione": "Simulazione completa di pratica reale con preventivo, ruoli, e tutti i dati tecnici.",
+    "descrizione": "Simulazione completa di pratica reale con preventivo, ruoli, delegato tecnico, e tutti i dati tecnici. PdC 40kW Zona E con premialità made in EU.",
+    "soggetto": {
+        "tipo": "Privato residenziale",
+        "denominazione": "Mario Rossi",
+        "codiceFiscale": "RSSMRA80A01H501U",
+        "email": "mario.rossi@email.it",
+        "telefono": "3331234567"
+    },
     "soggetti": {
         "sa": { 
             "denominazione": "Mario Rossi", 
@@ -25,6 +32,38 @@
         },
         "delegato": { "nome": "Arch. Studio Sviluppo", "cf": "STDSVL80A01H501W" }
     },
+    "ruoli": {
+        "sa": { 
+            "denominazione": "Mario Rossi", 
+            "tipo": "Privato residenziale", 
+            "cf_piva": "RSSMRA80A01H501U",
+            "titolo_godimento": "Proprietà" 
+        },
+        "sr": { 
+            "denominazione": "Mario Rossi", 
+            "cf_piva": "RSSMRA80A01H501U", 
+            "iban": "IT60X0542811101000000123456", 
+            "pec": "mario.rossi@pec.it", 
+            "coincide_con_sa": true 
+        },
+        "proprietario": { 
+            "denominazione": "Mario Rossi", 
+            "cf_piva": "RSSMRA80A01H501U", 
+            "coincide_con_sa": true, 
+            "atto_assenso": true 
+        },
+        "delegato": { "nome": "Arch. Studio Sviluppo", "cf": "STDSVL80A01H501W" }
+    },
+    "immobile": {
+        "indirizzo": "Via Milano 10, Milano (MI)",
+        "zonaClimatica": "Zona E",
+        "destinazione": "Residenziale",
+        "tipo_edificio": "Condominio",
+        "categoriaCatastale": "A/2",
+        "classeEnergeticaAnte": "F",
+        "potenza_esistente_kw": 35.0,
+        "combustibile_ante": "metano"
+    },
     "edificio": {
         "indirizzo": "Via Milano 10, Milano (MI)",
         "categoria_catastale": "A/2",
@@ -32,7 +71,27 @@
         "potenza_esistente_kw": 35.0,
         "combustibile_ante": "metano"
     },
+    "richiestaPreliminareInviata": false,
+    "selectedInterventi": ["III.A"],
     "interventi": ["III.A"],
+    "interventiData": {
+        "III.A": {
+            "marca_pdc": "BrandX",
+            "modello_pdc": "PDC-40-W",
+            "tipologia_pdc": "aria/acqua",
+            "potenza_pdc_kw": 40,
+            "potenza_elettrica_assorbita_kw": 10,
+            "cop": 4.2,
+            "scop": 4.5,
+            "eta_s": 150,
+            "servizio_pdc": "climatizzazione invernale",
+            "generatore_sostituito": "Caldaia a gas 35kW",
+            "made_in_eu": "si",
+            "scheda_tecnica_pdc": "si",
+            "costo_pdc": 25000,
+            "sostituisce_esistente": "si"
+        }
+    },
     "valori_campi": {
         "III.A": {
             "marca_pdc": "BrandX",
@@ -51,9 +110,19 @@
             "sostituisce_esistente": "si"
         }
     },
+    "postOperam": {
+        "III.A": {
+            "tipo_nuovo_generatore": "pompa di calore elettrica",
+            "pdc_elettrica_pura": true,
+            "rimane_gas": false,
+            "dismesso_esistente": "sì",
+            "sostituzione_integrale": "sì",
+            "serve_clima_invernale": true
+        }
+    },
     "preventivo": {
         "items": [
-            { "id": "forn", "codice_intervento": "III.A", "descrizione": "Fornitura pompa di calore", "tipo_costo": "fornitura", "importo": 20000, "quantita": 1, "unita": "corpo", "is_custom": false },
+            { "id": "forn", "codice_intervento": "III.A", "descrizione": "Fornitura pompa di calore BrandX PDC-40-W", "tipo_costo": "fornitura", "importo": 20000, "quantita": 1, "unita": "corpo", "is_custom": false },
             { "id": "posa", "codice_intervento": "III.A", "descrizione": "Posa e collegamenti idraulici/elettrici", "tipo_costo": "posa", "importo": 5000, "quantita": 1, "unita": "corpo", "is_custom": false },
             { "id": "docu", "codice_intervento": "III.A", "descrizione": "Pratiche autorizzative e documentazione", "tipo_costo": "documentazione", "importo": 2000, "quantita": 1, "unita": "corpo", "is_custom": false }
         ],
@@ -63,5 +132,11 @@
             "totale_posa": 5000,
             "totale_documentazione": 2000
         }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Visura Catastale recente (ultimi 6 mesi)": true,
+        "Titolo di possesso (atto, contratto locazione, ecc.)": true
     }
 }

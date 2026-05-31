@@ -1,12 +1,36 @@
 {
     "nome": "Test 02 - Impresa Grande PdC + FV",
-    "descrizione": "Riqualificazione industriale con PdC 100kW e Fotovoltaico 50kW in Zona C.",
+    "descrizione": "Riqualificazione industriale con PdC 100kW e Fotovoltaico 50kW in Zona C. Verifica effetto incentivante, rate 5 anni, cross-rules II.H+III.A.",
     "soggetto": {
         "tipo": "Impresa",
         "denominazione": "TecnoIndustria S.p.A.",
         "codiceFiscale": "01234567890",
         "partitaIva": "01234567890",
         "email": "info@tecnoindustria.it"
+    },
+    "soggetti": {
+        "sa": { 
+            "denominazione": "TecnoIndustria S.p.A.", 
+            "tipo": "Impresa", 
+            "cf_piva": "01234567890",
+            "titolo_godimento": "Proprietà",
+            "email": "info@tecnoindustria.it",
+            "telefono": "0811234567"
+        },
+        "sr": { 
+            "denominazione": "TecnoIndustria S.p.A.", 
+            "cf_piva": "01234567890", 
+            "iban": "IT99P0123456789012345678901", 
+            "pec": "amministrazione@pec.tecnoindustria.it", 
+            "coincide_con_sa": true 
+        },
+        "proprietario": { 
+            "denominazione": "TecnoIndustria S.p.A.", 
+            "cf_piva": "01234567890", 
+            "coincide_con_sa": true, 
+            "atto_assenso": true 
+        },
+        "delegato": { "nome": "Ing. Marco Verdi", "cf": "VRDMRA80A01H501U" }
     },
     "ruoli": {
         "sa": { 
@@ -40,24 +64,121 @@
         "potenza_esistente_kw": 150.0,
         "combustibile_ante": "gasolio"
     },
+    "edificio": {
+        "indirizzo": "Via delle Industrie 50, Napoli (NA)",
+        "categoria_catastale": "D/7",
+        "zona_climatica": "Zona C",
+        "potenza_esistente_kw": 150.0,
+        "combustibile_ante": "gasolio"
+    },
     "richiestaPreliminareInviata": true,
     "dataRichiestaPreliminare": "2026-01-15",
     "dataPrimoImpegno": "2026-02-01",
     "selectedInterventi": ["III.A", "II.H"],
+    "interventi": ["III.A", "II.H"],
     "interventiData": {
         "III.A": {
+            "marca_pdc": "ThermoSys",
+            "modello_pdc": "ThermoSys 100kW",
             "potenza_pdc_kw": 100,
+            "potenza_elettrica_assorbita_kw": 22.0,
             "tipologia_pdc": "acqua/acqua",
             "scop": 5.2,
+            "cop": 5.8,
             "eta_s": 190,
+            "servizio_pdc": "climatizzazione invernale e ACS",
+            "generatore_sostituito": "Caldaia a gasolio 150kW",
+            "made_in_eu": "sì",
+            "scheda_tecnica_pdc": "sì",
             "costo_pdc": 85000,
             "sostituisce_esistente": "si"
         },
         "II.H": {
+            "marca_moduli": "SolarTech",
+            "modello_moduli": "ST-450Wp",
             "potenza_fv_kw": 50,
+            "numero_moduli": 112,
+            "accumulo_presente": "sì",
             "capacita_accumulo_kwh": 20,
+            "made_in_eu": "sì",
+            "registro_enea": "sì",
+            "ue_production": "sì",
+            "same_section": "sì",
+            "is_autoconsumo": "sì",
             "costo_fv": 65000,
             "sostituzione_integrale": "sì"
         }
+    },
+    "valori_campi": {
+        "III.A": {
+            "marca_pdc": "ThermoSys",
+            "modello_pdc": "ThermoSys 100kW",
+            "potenza_pdc_kw": 100,
+            "potenza_elettrica_assorbita_kw": 22.0,
+            "tipologia_pdc": "acqua/acqua",
+            "scop": 5.2,
+            "cop": 5.8,
+            "eta_s": 190,
+            "servizio_pdc": "climatizzazione invernale e ACS",
+            "generatore_sostituito": "Caldaia a gasolio 150kW",
+            "made_in_eu": "sì",
+            "scheda_tecnica_pdc": "sì",
+            "costo_pdc": 85000,
+            "sostituisce_esistente": "si"
+        },
+        "II.H": {
+            "marca_moduli": "SolarTech",
+            "modello_moduli": "ST-450Wp",
+            "potenza_fv_kw": 50,
+            "numero_moduli": 112,
+            "accumulo_presente": "sì",
+            "capacita_accumulo_kwh": 20,
+            "made_in_eu": "sì",
+            "registro_enea": "sì",
+            "ue_production": "sì",
+            "same_section": "sì",
+            "is_autoconsumo": "sì",
+            "costo_fv": 65000,
+            "sostituzione_integrale": "sì"
+        }
+    },
+    "postOperam": {
+        "III.A": {
+            "tipo_nuovo_generatore": "pompa di calore elettrica",
+            "pdc_elettrica_pura": true,
+            "rimane_gas": false,
+            "dismesso_esistente": "sì",
+            "sostituzione_integrale": "sì",
+            "serve_clima_invernale": true
+        },
+        "II.H": {
+            "fv_installato": true,
+            "accumulo_installato": true,
+            "pdc_elettrica_presente": true,
+            "sostituzione_integrale": "sì"
+        }
+    },
+    "preventivo": {
+        "items": [
+            { "id": "pdc_forn", "codice_intervento": "III.A", "descrizione": "Fornitura pompa di calore ThermoSys 100kW acqua/acqua", "tipo_costo": "fornitura", "importo": 55000, "quantita": 1, "unita": "corpo", "is_custom": false },
+            { "id": "pdc_posa", "codice_intervento": "III.A", "descrizione": "Posa, collegamenti idraulici e adeguamento impianto", "tipo_costo": "posa", "importo": 20000, "quantita": 1, "unita": "corpo", "is_custom": false },
+            { "id": "pdc_doc", "codice_intervento": "III.A", "descrizione": "Documentazione tecnica e dichiarazione conformità", "tipo_costo": "documentazione", "importo": 10000, "quantita": 1, "unita": "corpo", "is_custom": false },
+            { "id": "fv_forn", "codice_intervento": "II.H", "descrizione": "Fornitura moduli FV SolarTech 50kWp e inverter", "tipo_costo": "fornitura", "importo": 38000, "quantita": 1, "unita": "corpo", "is_custom": false },
+            { "id": "fv_accu", "codice_intervento": "II.H", "descrizione": "Sistema accumulo 20kWh", "tipo_costo": "fornitura", "importo": 12000, "quantita": 1, "unita": "corpo", "is_custom": false },
+            { "id": "fv_posa", "codice_intervento": "II.H", "descrizione": "Posa moduli, inverter e collegamenti", "tipo_costo": "posa", "importo": 12000, "quantita": 1, "unita": "corpo", "is_custom": false },
+            { "id": "fv_doc", "codice_intervento": "II.H", "descrizione": "Pratiche di connessione e documentazione impianto", "tipo_costo": "documentazione", "importo": 3000, "quantita": 1, "unita": "corpo", "is_custom": false }
+        ],
+        "totals": {
+            "totale": 150000,
+            "totale_fornitura": 105000,
+            "totale_posa": 32000,
+            "totale_documentazione": 13000
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Visura Catastale recente (ultimi 6 mesi)": true,
+        "Titolo di possesso (atto, contratto locazione, ecc.)": true
     }
 }
