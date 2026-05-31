@@ -24,6 +24,13 @@ export const PREMIALITA_CONFIG = {
         "campo_attivazione": "made_in_eu",
         "note": "+10% su Titolo II"
     },
+    "made_in_eu_III": {
+        "label": "Made in EU (Titolo III)",
+        "bonus_perc": 0.05,
+        "applicabile_a": ["III."],
+        "campo_attivazione": "made_in_eu",
+        "note": "+5% su Titolo III"
+    },
     "registro_enea_fv": {
         "label": "Registro ENEA (FV)",
         "applicabile_a": ["II.H"],
@@ -193,6 +200,7 @@ export const RULES = {
         "II.F": {
             "desc": "Building automation e gestione carichi",
             "varianti": {
+                "Classe A EN 15232": { "cmax": 70 },
                 "Classe B EN 15232": { "cmax": 60 }
             },
             "imax": 100000,
@@ -697,7 +705,9 @@ export const SCHEDE_TECNICHE = {
             { "id": "same_section", "label": "Stessa Sezione Registro", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "certificato", "note": "Bonus +15%." },
             { "id": "accumulo_presente", "label": "Accumulo presente", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "ammissibilita", "fonte_dato": "progetto", "note": "Dato per configurazione." },
             { "id": "capacita_accumulo_kwh", "label": "Capacità accumulo", "tipo": "number", "obbligatorio": false, "unita": "kWh", "min": 1, "max": 2000, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Capacità nominale." },
-            { "id": "costo_fv", "label": "Costo FV + Accumulo", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 3000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+            { "id": "costo_fv", "label": "Costo FV + Accumulo", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 3000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." },
+            { "id": "zona_assistita_a", "label": "Zona assistita (art. 107.3 lett.a)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +15% per zone assistite." },
+            { "id": "zona_assistita_c", "label": "Zona assistita (art. 107.3 lett.c)", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "dichiarazione", "note": "Bonus +5% per zone assistite." }
         ]
     },
     "III.A": {

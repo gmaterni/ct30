@@ -92,7 +92,8 @@
             "potenza_ricarica_kw": 22,
             "tipo_ricarica": "Punto ricarica Trifase",
             "is_smart": "sì",
-            "modo_ricarica": "modo 3"
+            "modo_ricarica": "modo 3",
+            "made_in_eu": "sì"
         },
         "III.A": {
             "marca_pdc": "Climaveneta",

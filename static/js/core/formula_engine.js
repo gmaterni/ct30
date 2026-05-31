@@ -98,7 +98,7 @@ const UaFormulaEngine = function() {
         const SOGLIA_UNICA_SOLUZIONE = PROCEDURA_CONFIG.SOGLIA_UNICA_SOLUZIONE;
         const DURATA_PICCOLA_POTENZA = PROCEDURA_CONFIG.DURATA_STANDARD_PICCOLA_POTENZA;
         const DURATA_GRANDE_POTENZA = PROCEDURA_CONFIG.DURATA_STANDARD_GRANDE_POTENZA;
-        const SOGLIA_POTENZA_KW = 35; // Soglia per discriminare durata
+        const SOGLIA_POTENZA_KW = PROCEDURA_CONFIG.SOGLIA_POTENZA_PICCOLA || 35; // Soglia per discriminare durata
 
         const plan = {
             total: parseFloat(totalAmount.toFixed(2)),
@@ -278,7 +278,9 @@ const UaFormulaEngine = function() {
             params.cmax = RULES.interventi["II.E"].varianti[tipo]?.cmax || 35;
             params.percentuale = RULES.interventi["II.E"].perc || 0.4;
         } else if (code === "II.F") {
-            params.cmax = RULES.interventi["II.F"].varianti["Classe B EN 15232"]?.cmax || 60;
+            const bacClass = dati.classe_bac || "B";
+            const bacKey = `Classe ${bacClass} EN 15232`;
+            params.cmax = RULES.interventi["II.F"].varianti[bacKey]?.cmax || 60;
             params.percentuale = RULES.interventi["II.F"].perc || 0.4;
         } else if (code === "II.G") {
             const tipo = dati.tipo_ricarica || "monofase";
