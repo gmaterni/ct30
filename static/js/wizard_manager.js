@@ -96,7 +96,6 @@ const TEST_SCENARIOS_LIST = [
     { file: "data/tests/test_04_ricarica_auto.json", label: "Condominio - Ricarica Veicoli" },
     { file: "data/tests/test_05_incentivo_massimo.json", label: "Super Pratica (Incentivo Massimo)" },
     { file: "data/tests/test_06_pratica_reale.json", label: "Pratica Reale (Incentivo Calcolato)" },
-    { file: "test/impresa_pdc_fv.json", label: "Impresa - PDC + FV" },
     { file: "data/tests/test_07_completo.json", label: "Full Electric 5x (Massima Completezza)" }
 ];
 
