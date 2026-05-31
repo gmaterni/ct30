@@ -13,7 +13,7 @@
 "use strict";
 
 import { WebId } from "./infra/webuser_id.js";
-import { idbMgr } from "./infra/idb_mgr.js";
+import { idbMgr, praticheMgr } from "./infra/idb_mgr.js";
 import { UaWindowAdm } from "./ui/lib/uawindow.js";
 import "./ui/lib/uadialog.js"; // Attiva sovrascritture alert/confirm/prompt
 import { UaWizardManager } from "./wizard_manager.js";
@@ -136,7 +136,7 @@ const _setupBaseEventListeners = function() {
          */
         const handleElenco = async () => {
             try {
-                const pratiche = await idbMgr.db().pratiche.toArray();
+                const pratiche = await praticheMgr.getAll();
                 const winId = "win-elenco-pratiche";
                 let win = UaWindowAdm.get(winId);
 
@@ -204,7 +204,7 @@ const _setupBaseEventListeners = function() {
                 win.getElement().querySelectorAll(".btn-load").forEach(btn => {
                     btn.addEventListener("click", async () => {
                         const id = btn.getAttribute("data-id");
-                        const p = await idbMgr.db().pratiche.get(id);
+                        const p = await praticheMgr.get(id);
                         if (p && _wizard) {
                             _wizard.loadPratica(p);
                             win.close();
@@ -215,7 +215,7 @@ const _setupBaseEventListeners = function() {
                 win.getElement().querySelectorAll(".btn-view").forEach(btn => {
                     btn.addEventListener("click", async () => {
                         const id = btn.getAttribute("data-id");
-                        const p = await idbMgr.db().pratiche.get(id);
+                        const p = await praticheMgr.get(id);
                         if (p && _wizard) {
                             _wizard.showReport(p.dati);
                             win.close();
@@ -237,7 +237,7 @@ const _setupBaseEventListeners = function() {
                             return;
                         }
 
-                        await idbMgr.db().pratiche.delete(id);
+                        await praticheMgr.delete(id);
                         handleElenco();
                     });
                 });

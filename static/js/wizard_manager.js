@@ -89,15 +89,16 @@ const UaWizardManager = function(viewportId) {
             navCommands.appendChild(testSection);
         }
 
-        const TEST_SCENARIOS_LIST = [
-            { file: "data/tests/test_01_pdc_privato.json", label: "Privato - PdC Aria/Acqua" },
-            { file: "data/tests/test_02_impresa_grande.json", label: "Impresa - PdC Grande + FV" },
-            { file: "data/tests/test_03_isolamento_pareti.json", label: "Privato - Isolamento Pareti" },
-            { file: "data/tests/test_04_ricarica_auto.json", label: "Condominio - Ricarica Veicoli" },
-            { file: "data/tests/test_05_incentivo_massimo.json", label: "Super Pratica (Incentivo Massimo)" },
-            { file: "data/tests/test_06_pratica_reale.json", label: "Pratica Reale (Incentivo Calcolato)" },
-            { file: "test/impresa_pdc_fv.json", label: "Impresa - PDC + FV" }
-        ];
+const TEST_SCENARIOS_LIST = [
+    { file: "data/tests/test_01_pdc_privato.json", label: "Privato - PdC Aria/Acqua" },
+    { file: "data/tests/test_02_impresa_grande.json", label: "Impresa - PdC Grande + FV" },
+    { file: "data/tests/test_03_isolamento_pareti.json", label: "Privato - Isolamento Pareti" },
+    { file: "data/tests/test_04_ricarica_auto.json", label: "Condominio - Ricarica Veicoli" },
+    { file: "data/tests/test_05_incentivo_massimo.json", label: "Super Pratica (Incentivo Massimo)" },
+    { file: "data/tests/test_06_pratica_reale.json", label: "Pratica Reale (Incentivo Calcolato)" },
+    { file: "test/impresa_pdc_fv.json", label: "Impresa - PDC + FV" },
+    { file: "data/tests/test_07_completo.json", label: "Full Electric 5x (Massima Completezza)" }
+];
 
         document.getElementById("btn-load-test").onclick = () => {
             const winId = "win-test-selector";
@@ -158,6 +159,32 @@ const UaWizardManager = function(viewportId) {
      * Carica i dati di uno scenario nella pratica corrente.
      * @param {Object} scenario 
      */
+    const _mergeSoggetti = (scenario) => {
+        const src = scenario.soggetti || {};
+        return {
+            sa: Object.assign({
+                denominazione: scenario.soggetto?.denominazione || "",
+                tipo: scenario.soggetto?.tipo || "Privato residenziale",
+                cf_piva: scenario.soggetto?.codiceFiscale || "",
+                titolo_godimento: "Proprietà"
+            }, src.sa || {}),
+            sr: Object.assign({
+                denominazione: scenario.soggetto?.denominazione || "",
+                cf_piva: scenario.soggetto?.codiceFiscale || "",
+                iban: "",
+                pec: "",
+                coincide_con_sa: true
+            }, src.sr || {}),
+            proprietario: Object.assign({
+                denominazione: scenario.soggetto?.denominazione || "",
+                cf_piva: scenario.soggetto?.codiceFiscale || "",
+                coincide_con_sa: true,
+                atto_assenso: true
+            }, src.proprietario || {}),
+            delegato: Object.assign({ nome: "", cf: "" }, src.delegato || {})
+        };
+    };
+
     const _loadScenarioData = (scenario) => {
         // Mappatura scenario verso struttura relazionale (MOD-007)
         _praticaData = {
@@ -175,48 +202,29 @@ const UaWizardManager = function(viewportId) {
                 potenza_esistente_kw: scenario.edificio?.potenza_esistente_kw || scenario.immobile?.potenza_esistente_kw || 0,
                 combustibile_ante: scenario.edificio?.combustibile_ante || scenario.immobile?.combustibile_ante || ""
             },
-            soggetti: scenario.soggetti || {
-                sa: { 
-                    denominazione: scenario.soggetto?.denominazione || "", 
-                    tipo: scenario.soggetto?.tipo || "Privato residenziale", 
-                    cf_piva: scenario.soggetto?.codiceFiscale || "",
-                    titolo_godimento: "Proprietà" 
-                },
-                sr: { 
-                    denominazione: scenario.soggetto?.denominazione || "", 
-                    cf_piva: scenario.soggetto?.codiceFiscale || "", 
-                    iban: "", 
-                    pec: "", 
-                    coincide_con_sa: true 
-                },
-                proprietario: { 
-                    denominazione: scenario.soggetto?.denominazione || "", 
-                    cf_piva: scenario.soggetto?.codiceFiscale || "", 
-                    coincide_con_sa: true, 
-                    atto_assenso: true 
-                },
-                delegato: { nome: "", cf: "" }
-            },
+            soggetti: _mergeSoggetti(scenario),
             interventi: scenario.interventi || scenario.selectedInterventi || [],
             valori_campi: scenario.valori_campi || scenario.interventiData || {},
             preventivo: scenario.preventivo || { items: [], totals: {} },
-            documentiStatus: {},
+            documentiStatus: scenario.documentiStatus || {},
             validation: null,
             postOperam: scenario.postOperam || null
         };
+        _praticaData.pratica.richiestaPreliminareInviata = scenario.richiestaPreliminareInviata || false;
+        _praticaData.pratica.dataRichiestaPreliminare = scenario.dataRichiestaPreliminare || "";
+        _praticaData.pratica.dataPrimoImpegno = scenario.dataPrimoImpegno || "";
         console.debug("DEBUG _loadScenarioData - Pratica caricata:", _praticaData);
         console.debug("DEBUG _loadScenarioData - Preventivo:", _praticaData.preventivo);
         
         // Forza validazione ammissibilità (adattata al nuovo modello)
-        const validationInput = {
+        _praticaData.validation = RulesEngine.validateAmmissibilita({
             subjectType: _praticaData.soggetti.sa.tipo,
             category: _praticaData.edificio.categoria_catastale,
             buildingStatus: "esistente",
-            richiestaPreliminareInviata: scenario.richiestaPreliminareInviata || false,
-            dataRichiestaPreliminare: scenario.dataRichiestaPreliminare || "",
-            dataPrimoImpegno: scenario.dataPrimoImpegno || ""
-        };
-        _praticaData.validation = RulesEngine.validateAmmissibilita(validationInput);
+            richiestaPreliminareInviata: _praticaData.pratica.richiestaPreliminareInviata,
+            dataRichiestaPreliminare: _praticaData.pratica.dataRichiestaPreliminare,
+            dataPrimoImpegno: _praticaData.pratica.dataPrimoImpegno
+        });
         
         _goToStep(0);
     };
@@ -281,10 +289,10 @@ const UaWizardManager = function(viewportId) {
         const allDocs = [...BASE_DOCUMENTS];
         
         // 1. Regole Ruoli (MOD-005)
-        if (_praticaData.soggetti.proprietario.coincide_con_sa === false) {
+        if (_praticaData.soggetti.proprietario?.coincide_con_sa === false) {
             allDocs.push("Atto di Assenso Proprietario");
         }
-        if (_praticaData.soggetti.sr.coincide_con_sa === false) {
+        if (_praticaData.soggetti.sr?.coincide_con_sa === false) {
             allDocs.push("Copia documento identità Soggetto Responsabile");
             allDocs.push("IBAN (documento di conferma conto)");
             allDocs.push("PEC del Soggetto Responsabile");
@@ -300,7 +308,7 @@ const UaWizardManager = function(viewportId) {
         }
 
         // 3. Regole Soggetto (Condominio)
-        if (_praticaData.soggetti.sa.tipo === "Condominio") {
+        if (_praticaData.soggetti.sa?.tipo === "Condominio") {
             allDocs.push("Verbale Assemblea Condominiale");
             allDocs.push("Tabella Millesimale");
         }
@@ -1098,7 +1106,7 @@ const UaWizardManager = function(viewportId) {
                 <header class="report-print-header" style="text-align: center; margin-bottom: 40px; border-bottom: 3px solid #3f51b5; padding-bottom: 20px;">
                     <h1 style="margin: 0; color: #3f51b5; font-size: 2.2em;">REPORT DI ANALISI PRELIMINARE</h1>
                     <div style="text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-top: 5px;">Conto Termico 3.0 (D.M. 7 Agosto 2025)</div>
-                    <div style="margin-top: 15px; font-size: 0.9em; color: #666;">Data Documento: ${dateStr} | Identificativo: ${_praticaData.id}</div>
+                    <div style="margin-top: 15px; font-size: 0.9em; color: #666;">Data Documento: ${dateStr} | Identificativo: ${_praticaData.pratica.id}</div>
                 </header>
 
                 <div class="report-section">
@@ -1139,7 +1147,7 @@ const UaWizardManager = function(viewportId) {
                         <div style="background: #f9f9f9; padding: 15px; border-radius: 4px;">
                             <h4 style="margin-top: 0; color: #3f51b5;">Dati Pratica</h4>
                             <p style="margin: 5px 0;"><strong>Tipo Accesso:</strong> ${_praticaData.pratica.tipo_accesso || 'Diretto'}</p>
-                            <p style="margin: 5px 0;"><strong>Stato Istanza:</strong> ${_praticaData.status}</p>
+                            <p style="margin: 5px 0;"><strong>Stato Istanza:</strong> ${_praticaData.pratica.status}</p>
 
                             <h4 style="margin-top: 15px; color: #3f51b5;">Soggetto Ammesso (SA)</h4>
                             <p style="margin: 5px 0;"><strong>Nominativo:</strong> ${_praticaData.soggetti.sa.denominazione}</p>
@@ -1160,7 +1168,7 @@ const UaWizardManager = function(viewportId) {
                             <h4 style="margin-top: 15px; color: #3f51b5;">Proprietario e Delegato</h4>
                             <p style="margin: 5px 0;"><strong>Proprietario:</strong> ${_praticaData.soggetti.proprietario.denominazione}</p>
                             <p style="margin: 5px 0;"><strong>Assenso:</strong> ${_praticaData.soggetti.proprietario.atto_assenso ? "Sì" : "No"}</p>
-                            <p style="margin: 5px 0;"><strong>Delegato:</strong> ${_praticaData.soggetti.delegato.nome || "Nessuno"}</p>
+                            <p style="margin: 5px 0;"><strong>Delegato:</strong> ${_praticaData.soggetti.delegato?.nome || "Nessuno"}</p>
                         </div>
                     </div>
                 </div>
@@ -1518,12 +1526,22 @@ const UaWizardManager = function(viewportId) {
                 combustibile_ante: d.immobile?.combustibile_ante || ""
             };
 
-            // Migrazione Soggetti (Ruoli)
-            _praticaData.soggetti = d.soggetti || d.ruoli || {
-                sa: { denominazione: d.anagrafica?.denominazione || "", tipo: d.anagrafica?.tipo || "", cf_piva: d.anagrafica?.codiceFiscale || "", titolo_godimento: "Proprietà" },
-                sr: { denominazione: "", cf_piva: "", iban: "", pec: "", coincide_con_sa: true },
-                proprietario: { denominazione: "", cf_piva: "", coincide_con_sa: true, atto_assenso: false },
-                delegato: { nome: "", cf: "" }
+            // Migrazione Soggetti (Ruoli) — merge profondo
+            const src = d.soggetti || d.ruoli || {};
+            _praticaData.soggetti = {
+                sa: Object.assign({
+                    denominazione: d.anagrafica?.denominazione || "",
+                    tipo: d.anagrafica?.tipo || "",
+                    cf_piva: d.anagrafica?.codiceFiscale || "",
+                    titolo_godimento: "Proprietà"
+                }, src.sa || {}),
+                sr: Object.assign({
+                    denominazione: "", cf_piva: "", iban: "", pec: "", coincide_con_sa: true
+                }, src.sr || {}),
+                proprietario: Object.assign({
+                    denominazione: "", cf_piva: "", coincide_con_sa: true, atto_assenso: false
+                }, src.proprietario || {}),
+                delegato: Object.assign({ nome: "", cf: "" }, src.delegato || {})
             };
 
             _praticaData.interventi = d.interventi || d.selectedInterventi || [];

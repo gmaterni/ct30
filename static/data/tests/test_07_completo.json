@@ -1,0 +1,463 @@
+{
+    "nome": "Impresa - Pacchetto Full Electric (Massima Completezza)",
+    "descrizione": "Pratica completa con 5 interventi (PdC, FV, Ricarica, Building Automation, Scaldacqua PDC) per test esaustivo di tutti i moduli. Include doppio formato legacy/nuovo per immobile/edificio, soggetto/soggetti, interventi/interventiData. Soggetto Impresa, terziario D/7, zona E.",
+    "soggetto": {
+        "tipo": "Impresa",
+        "denominazione": "GreenBuild S.r.l.",
+        "codiceFiscale": "09876543210",
+        "partitaIva": "09876543210",
+        "email": "amministrazione@greenbuild.it",
+        "telefono": "+39 02 12345678"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "GreenBuild S.r.l.",
+            "tipo": "Impresa",
+            "cf_piva": "09876543210",
+            "titolo_godimento": "Proprietà",
+            "email": "amministrazione@greenbuild.it",
+            "telefono": "+39 02 12345678"
+        },
+        "sr": {
+            "denominazione": "Studio Tecnico Energetica S.r.l.",
+            "cf_piva": "03729150155",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "studiogestione@pec.energetica.it",
+            "coincide_con_sa": false
+        },
+        "proprietario": {
+            "denominazione": "GreenBuild S.r.l.",
+            "cf_piva": "09876543210",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "Ing. Marco Bianchi",
+            "cf": "BNCMRC85M15H501U"
+        }
+    },
+    "ruoli": {
+        "sa": {
+            "denominazione": "GreenBuild S.r.l.",
+            "tipo": "Impresa",
+            "cf_piva": "09876543210",
+            "titolo_godimento": "Proprietà",
+            "email": "amministrazione@greenbuild.it",
+            "telefono": "+39 02 12345678"
+        },
+        "sr": {
+            "denominazione": "Studio Tecnico Energetica S.r.l.",
+            "cf_piva": "03729150155",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "studiogestione@pec.energetica.it",
+            "coincide_con_sa": false
+        },
+        "proprietario": {
+            "denominazione": "GreenBuild S.r.l.",
+            "cf_piva": "09876543210",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "Ing. Marco Bianchi",
+            "cf": "BNCMRC85M15H501U"
+        }
+    },
+    "immobile": {
+        "indirizzo": "Via dell'Innovazione, 42 – Milano (MI)",
+        "zonaClimatica": "E",
+        "destinazione": "Terziario",
+        "tipo_edificio": "Edificio Singolo",
+        "categoriaCatastale": "D/7",
+        "classeEnergeticaAnte": "F",
+        "potenza_esistente_kw": 150,
+        "combustibile_ante": "Gas"
+    },
+    "edificio": {
+        "indirizzo": "Via dell'Innovazione, 42 – Milano (MI)",
+        "categoria_catastale": "D/7",
+        "zona_climatica": "E",
+        "potenza_esistente_kw": 150,
+        "combustibile_ante": "Gas"
+    },
+    "richiestaPreliminareInviata": true,
+    "dataRichiestaPreliminare": "2025-12-15",
+    "dataPrimoImpegno": "2026-01-20",
+    "interventi": ["III.A", "II.H", "II.G", "II.F", "III.E"],
+    "selectedInterventi": ["III.A", "II.H", "II.G", "II.F", "III.E"],
+    "valori_campi": {
+        "III.A": {
+            "marca_pdc": "Clivet",
+            "modello_pdc": "WSAN-XEE 120",
+            "potenza_pdc_kw": 80,
+            "potenza_elettrica_assorbita_kw": 22,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.2,
+            "cop": 4.5,
+            "eta_s": 145,
+            "servizio_pdc": "Riscaldamento + ACS",
+            "generatore_sostituito": "Caldaia a gas",
+            "made_in_eu": true,
+            "scheda_tecnica_pdc": "disponibile",
+            "costo_pdc": 52000,
+            "sostituisce_esistente": true,
+            "sostituzione_integrale": true,
+            "classe_energetica_prodotto": "A++",
+            "potenza_termica_nominale": 78.5,
+            "con_accumulo": true,
+            "capacita_accumulo_pdc_l": 500
+        },
+        "II.H": {
+            "marca_moduli": "SunPower",
+            "modello_moduli": "MAX6-450",
+            "potenza_fv_kw": 60,
+            "numero_moduli": 135,
+            "accumulo_presente": true,
+            "capacita_accumulo_kwh": 120,
+            "made_in_eu": true,
+            "registro_enea": true,
+            "ue_production": true,
+            "same_section": true,
+            "is_autoconsumo": true,
+            "costo_fv": 48000,
+            "sostituzione_integrale": true,
+            "marca_inverter": "Fronius",
+            "modello_inverter": "Symo 50.0-3-S",
+            "potenza_inverter_kw": 50
+        },
+        "II.G": {
+            "costo_colonnina": 18000,
+            "numero_punti_ricarica": 6,
+            "potenza_ricarica_kw": 22,
+            "tipo_ricarica": "trifase",
+            "is_smart": true,
+            "modo_ricarica": "Modo 4",
+            "marca_colonnina": "ABB",
+            "modello_colonnina": "Terra AC 22",
+            "con_contabilizzazione": true
+        },
+        "II.F": {
+            "costo_building_automation": 15000,
+            "tipo_controllo": "BMS",
+            "funzioni_previste": "Gestione carichi, termoregolazione, monitoraggio",
+            "made_in_eu": true,
+            "classe_sistema": "Classe B",
+            "nr_dispositivi": 35,
+            "contabilizzazione_calore": true,
+            "sistema_centrale": true
+        },
+        "III.E": {
+            "marca_scaldacqua": "Ariston",
+            "modello_scaldacqua": "Nuos Evo 200",
+            "capacita_accumulo_l": 200,
+            "classe_energetica": "A+",
+            "costo_scaldacqua": 2500,
+            "made_in_eu": true,
+            "sostituisce_scaldacqua_esistente": true,
+            "tipo_sostituito": "Elettrico",
+            "cop_scaldacqua": 3.2
+        }
+    },
+    "interventiData": {
+        "III.A": {
+            "marca_pdc": "Clivet",
+            "modello_pdc": "WSAN-XEE 120",
+            "potenza_pdc_kw": 80,
+            "potenza_elettrica_assorbita_kw": 22,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.2,
+            "cop": 4.5,
+            "eta_s": 145,
+            "servizio_pdc": "Riscaldamento + ACS",
+            "generatore_sostituito": "Caldaia a gas",
+            "made_in_eu": true,
+            "scheda_tecnica_pdc": "disponibile",
+            "costo_pdc": 52000,
+            "sostituisce_esistente": true,
+            "sostituzione_integrale": true,
+            "classe_energetica_prodotto": "A++",
+            "potenza_termica_nominale": 78.5,
+            "con_accumulo": true,
+            "capacita_accumulo_pdc_l": 500
+        },
+        "II.H": {
+            "marca_moduli": "SunPower",
+            "modello_moduli": "MAX6-450",
+            "potenza_fv_kw": 60,
+            "numero_moduli": 135,
+            "accumulo_presente": true,
+            "capacita_accumulo_kwh": 120,
+            "made_in_eu": true,
+            "registro_enea": true,
+            "ue_production": true,
+            "same_section": true,
+            "is_autoconsumo": true,
+            "costo_fv": 48000,
+            "sostituzione_integrale": true,
+            "marca_inverter": "Fronius",
+            "modello_inverter": "Symo 50.0-3-S",
+            "potenza_inverter_kw": 50
+        },
+        "II.G": {
+            "costo_colonnina": 18000,
+            "numero_punti_ricarica": 6,
+            "potenza_ricarica_kw": 22,
+            "tipo_ricarica": "trifase",
+            "is_smart": true,
+            "modo_ricarica": "Modo 4",
+            "marca_colonnina": "ABB",
+            "modello_colonnina": "Terra AC 22",
+            "con_contabilizzazione": true
+        },
+        "II.F": {
+            "costo_building_automation": 15000,
+            "tipo_controllo": "BMS",
+            "funzioni_previste": "Gestione carichi, termoregolazione, monitoraggio",
+            "made_in_eu": true,
+            "classe_sistema": "Classe B",
+            "nr_dispositivi": 35,
+            "contabilizzazione_calore": true,
+            "sistema_centrale": true
+        },
+        "III.E": {
+            "marca_scaldacqua": "Arison",
+            "modello_scaldacqua": "Nuos Evo 200",
+            "capacita_accumulo_l": 200,
+            "classe_energetica": "A+",
+            "costo_scaldacqua": 2500,
+            "made_in_eu": true,
+            "sostituisce_scaldacqua_esistente": true,
+            "tipo_sostituito": "Elettrico",
+            "cop_scaldacqua": 3.2
+        }
+    },
+    "postOperam": {
+        "III.A": {
+            "tipo_nuovo_generatore": "Pompa di calore aria/acqua",
+            "pdc_elettrica_pura": true,
+            "rimane_gas": false,
+            "dismesso_esistente": true,
+            "sostituzione_integrale": true,
+            "serve_clima_invernale": true
+        },
+        "II.H": {
+            "fv_installato": true,
+            "accumulo_installato": true,
+            "pdc_elettrica_presente": true,
+            "sostituzione_integrale": true
+        },
+        "II.G": {
+            "punti_ricarica_installati": 6,
+            "tipo": "colonnina trifase",
+            "pdc_elettrica_presente": true
+        },
+        "II.F": {
+            "building_automation_installato": true,
+            "classe_sistema": "Classe B",
+            "bms_centrale": true
+        },
+        "III.E": {
+            "scaldacqua_pdc_installato": true,
+            "sostituisce_esistente": true,
+            "tipo_esistente": "Elettrico"
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "III.A_01",
+                "codice_intervento": "III.A",
+                "descrizione": "Pompa di calore Clivet WSAN-XEE 120",
+                "tipo_costo": "fornitura",
+                "importo": 38000.00,
+                "quantita": 1,
+                "unita": "corpo"
+            },
+            {
+                "id": "III.A_02",
+                "codice_intervento": "III.A",
+                "descrizione": "Posa in opera PDC e collegamenti idraulici",
+                "tipo_costo": "posa",
+                "importo": 8500.00,
+                "quantita": 1,
+                "unita": "corpo"
+            },
+            {
+                "id": "III.A_03",
+                "codice_intervento": "III.A",
+                "descrizione": "Adeguamento terminali e sistema di regolazione",
+                "tipo_costo": "opere_accessorie",
+                "importo": 4200.00,
+                "quantita": 1,
+                "unita": "corpo"
+            },
+            {
+                "id": "III.A_04",
+                "codice_intervento": "III.A",
+                "descrizione": "Pratiche e documentazione tecnica",
+                "tipo_costo": "documentazione",
+                "importo": 1300.00,
+                "quantita": 1,
+                "unita": "corpo"
+            },
+            {
+                "id": "II.H_01",
+                "codice_intervento": "II.H",
+                "descrizione": "Moduli FV SunPower MAX6-450 (135 pz)",
+                "tipo_costo": "fornitura",
+                "importo": 32000.00,
+                "quantita": 1,
+                "unita": "corpo"
+            },
+            {
+                "id": "II.H_02",
+                "codice_intervento": "II.H",
+                "descrizione": "Inverter Fronius Symo 50.0 e accumulo 120kWh",
+                "tipo_costo": "fornitura",
+                "importo": 9500.00,
+                "quantita": 1,
+                "unita": "corpo"
+            },
+            {
+                "id": "II.H_03",
+                "codice_intervento": "II.H",
+                "descrizione": "Posa impianto FV e collegamenti elettrici",
+                "tipo_costo": "posa",
+                "importo": 5500.00,
+                "quantita": 1,
+                "unita": "corpo"
+            },
+            {
+                "id": "II.H_04",
+                "codice_intervento": "II.H",
+                "descrizione": "Documentazione tecnica e pratiche GSE",
+                "tipo_costo": "documentazione",
+                "importo": 1000.00,
+                "quantita": 1,
+                "unita": "corpo"
+            },
+            {
+                "id": "II.G_01",
+                "codice_intervento": "II.G",
+                "descrizione": "Colonnine ricarica ABB Terra AC 22 (6 pz)",
+                "tipo_costo": "fornitura",
+                "importo": 12000.00,
+                "quantita": 6,
+                "unita": "pz"
+            },
+            {
+                "id": "II.G_02",
+                "codice_intervento": "II.G",
+                "descrizione": "Posa colonnine e linee elettriche dedicate",
+                "tipo_costo": "posa",
+                "importo": 4500.00,
+                "quantita": 1,
+                "unita": "corpo"
+            },
+            {
+                "id": "II.G_03",
+                "codice_intervento": "II.G",
+                "descrizione": "Opere civili accessorie",
+                "tipo_costo": "opere_accessorie",
+                "importo": 1500.00,
+                "quantita": 1,
+                "unita": "corpo"
+            },
+            {
+                "id": "II.F_01",
+                "codice_intervento": "II.F",
+                "descrizione": "Sistema BMS e building automation",
+                "tipo_costo": "fornitura",
+                "importo": 10500.00,
+                "quantita": 1,
+                "unita": "corpo"
+            },
+            {
+                "id": "II.F_02",
+                "codice_intervento": "II.F",
+                "descrizione": "Configurazione e collaudo BMS",
+                "tipo_costo": "posa",
+                "importo": 3500.00,
+                "quantita": 1,
+                "unita": "corpo"
+            },
+            {
+                "id": "II.F_03",
+                "codice_intervento": "II.F",
+                "descrizione": "Documentazione sistema building automation",
+                "tipo_costo": "documentazione",
+                "importo": 1000.00,
+                "quantita": 1,
+                "unita": "corpo"
+            },
+            {
+                "id": "III.E_01",
+                "codice_intervento": "III.E",
+                "descrizione": "Scaldacqua PDC Ariston Nuos Evo 200",
+                "tipo_costo": "fornitura",
+                "importo": 1800.00,
+                "quantita": 1,
+                "unita": "corpo"
+            },
+            {
+                "id": "III.E_02",
+                "codice_intervento": "III.E",
+                "descrizione": "Posa scaldacqua PDC e collegamenti",
+                "tipo_costo": "posa",
+                "importo": 500.00,
+                "quantita": 1,
+                "unita": "corpo"
+            },
+            {
+                "id": "III.E_03",
+                "codice_intervento": "III.E",
+                "descrizione": "Documentazione tecnica scaldacqua",
+                "tipo_costo": "documentazione",
+                "importo": 200.00,
+                "quantita": 1,
+                "unita": "corpo"
+            }
+        ],
+        "totals": {
+            "fornitura": 103800.00,
+            "posa": 22500.00,
+            "opere_accessorie": 5700.00,
+            "documentazione": 3500.00,
+            "totale_complessivo": 135500.00
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Visura Catastale recente (ultimi 6 mesi)": true,
+        "Titolo di possesso (atto, contratto locazione, ecc.)": true,
+        "Copia documento identità Soggetto Responsabile": false,
+        "IBAN (documento di conferma conto)": false,
+        "PEC del Soggetto Responsabile": false,
+        "Delega alla compilazione": true,
+        "Atto di Assenso Proprietario": true,
+        "Verbale Assemblea Condominiale": false,
+        "Tabella Millesimale": false,
+        "Relazione tecnica di valutazione preliminare": true,
+        "Documentazione fotografica ante-operam": true,
+        "APE / Diagnosi Energetica": true,
+        "Delibera di approvazione del progetto": true,
+        "Relazione tecnica illustrativa del progetto": true,
+        "Scheda tecnica PDC": true,
+        "Certificazioni prestazionali (COP, SCOP, ETA_s)": true,
+        "Libretto impianto ante": true,
+        "Libretto impianto post": true,
+        "Schede tecniche moduli FV": true,
+        "Scheda inverter": true,
+        "Documentazione accumulo": true,
+        "Verifica registro ENEA": true,
+        "Scheda tecnica colonnina ricarica": true,
+        "Schema elettrico colonnine": true,
+        "Relazione sistema building automation": true,
+        "Schede tecniche building automation": true,
+        "Scheda tecnica scaldacqua PDC": true,
+        "Prova esistenza scaldacqua sostituito": true,
+        "Fatture e bonifici": true,
+        "Dichiarazione di conformità": true
+    }
+}
