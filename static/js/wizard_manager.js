@@ -94,7 +94,7 @@ const UaWizardManager = function(viewportId) {
             { file: "data/tests/test_02_impresa_grande.json", label: "Impresa - PdC Grande + FV" },
             { file: "data/tests/test_03_isolamento_pareti.json", label: "Privato - Isolamento Pareti" },
             { file: "data/tests/test_04_ricarica_auto.json", label: "Condominio - Ricarica Veicoli" },
-            { file: "data/tests/test_05_incentivo_massimo.json", label: "Test 05 - Super Pratica (Incentivo Massimo)" },
+            { file: "data/tests/test_05_incentivo_massimo.json", label: "Super Pratica (Incentivo Massimo)" },
             { file: "data/tests/test_06_pratica_reale.json", label: "Test 06 - Pratica Reale (Incentivo Calcolato)" },
             { file: "test/impresa_pdc_fv.json", label: "Impresa - PDC + FV (Legacy)" }
         ];
