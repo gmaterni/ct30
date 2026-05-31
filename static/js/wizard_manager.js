@@ -867,7 +867,7 @@ const TEST_SCENARIOS_LIST = [
     const _archivePratica = async function() {
         // Suggeriamo il nome esistente
         const currentNome = _praticaData.pratica.nome || _praticaData.nome || "";
-        const saDenominazione = _praticaData.soggetti.sa.denominazione || "nuova";
+        const saDenominazione = _praticaData.soggetti?.sa?.denominazione || "nuova";
         const defaultName = currentNome || `Pratica_${saDenominazione.replace(/\s+/g, '_')}`;
         const nomePratica = await prompt("Inserisci un nome per identificare questa pratica:", defaultName);
         
@@ -1226,7 +1226,7 @@ const TEST_SCENARIOS_LIST = [
 
         const html = `
             <div class="window-header">
-                <span class="title">Consulenza Tecnica CT 3.0 - ${_praticaData.soggetti.sa.denominazione}</span>
+                <span class="title">Consulenza Tecnica CT 3.0 - ${_praticaData.soggetti?.sa?.denominazione || _praticaData.nome || 'Report'}</span>
                 <div class="header-actions">
                     <button id="btn-save-report-txt" class="cmd-btn">💾 Esporta Dati</button>
                     <button id="btn-save-report-pdf" class="cmd-btn">🖨️ Stampa Report</button>
@@ -1279,29 +1279,29 @@ const TEST_SCENARIOS_LIST = [
                     <div class="report-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 15px;">
                         <div style="background: #f9f9f9; padding: 15px; border-radius: 4px;">
                             <h4 style="margin-top: 0; color: #3f51b5;">Dati Pratica</h4>
-                            <p style="margin: 5px 0;"><strong>Tipo Accesso:</strong> ${_praticaData.pratica.tipo_accesso || 'Diretto'}</p>
-                            <p style="margin: 5px 0;"><strong>Stato Istanza:</strong> ${_praticaData.pratica.status}</p>
+                            <p style="margin: 5px 0;"><strong>Tipo Accesso:</strong> ${_praticaData.pratica?.tipo_accesso || 'Diretto'}</p>
+                            <p style="margin: 5px 0;"><strong>Stato Istanza:</strong> ${_praticaData.pratica?.status || 'N/D'}</p>
 
                             <h4 style="margin-top: 15px; color: #3f51b5;">Soggetto Ammesso (SA)</h4>
-                            <p style="margin: 5px 0;"><strong>Nominativo:</strong> ${_praticaData.soggetti.sa.denominazione}</p>
-                            <p style="margin: 5px 0;"><strong>Tipologia:</strong> ${_praticaData.soggetti.sa.tipo}</p>
-                            <p style="margin: 5px 0;"><strong>CF/P.IVA:</strong> ${_praticaData.soggetti.sa.cf_piva}</p>
-                            <p style="margin: 5px 0;"><strong>Titolo Godimento:</strong> ${_praticaData.soggetti.sa.titolo_godimento}</p>
+                            <p style="margin: 5px 0;"><strong>Nominativo:</strong> ${_praticaData.soggetti?.sa?.denominazione || 'N/D'}</p>
+                            <p style="margin: 5px 0;"><strong>Tipologia:</strong> ${_praticaData.soggetti?.sa?.tipo || 'N/D'}</p>
+                            <p style="margin: 5px 0;"><strong>CF/P.IVA:</strong> ${_praticaData.soggetti?.sa?.cf_piva || 'N/D'}</p>
+                            <p style="margin: 5px 0;"><strong>Titolo Godimento:</strong> ${_praticaData.soggetti?.sa?.titolo_godimento || 'N/D'}</p>
                             
                             <h4 style="margin-top: 15px; color: #3f51b5;">Soggetto Responsabile (SR)</h4>
-                            <p style="margin: 5px 0;"><strong>Nominativo:</strong> ${_praticaData.soggetti.sr.denominazione}</p>
-                            <p style="margin: 5px 0;"><strong>CF/P.IVA:</strong> ${_praticaData.soggetti.sr.cf_piva}</p>
-                            <p style="margin: 5px 0;"><strong>IBAN:</strong> ${_praticaData.soggetti.sr.iban}</p>
+                            <p style="margin: 5px 0;"><strong>Nominativo:</strong> ${_praticaData.soggetti?.sr?.denominazione || 'N/D'}</p>
+                            <p style="margin: 5px 0;"><strong>CF/P.IVA:</strong> ${_praticaData.soggetti?.sr?.cf_piva || 'N/D'}</p>
+                            <p style="margin: 5px 0;"><strong>IBAN:</strong> ${_praticaData.soggetti?.sr?.iban || 'N/D'}</p>
                         </div>
                         <div style="background: #f9f9f9; padding: 15px; border-radius: 4px;">
                             <h4 style="margin-top: 0; color: #3f51b5;">Ubicazione e Catasto</h4>
-                            <p style="margin: 5px 0;"><strong>Indirizzo:</strong> ${_praticaData.edificio.indirizzo}</p>
-                            <p style="margin: 5px 0;"><strong>Catasto:</strong> ${_praticaData.edificio.categoria_catastale} | Zona: ${_praticaData.edificio.zona_climatica}</p>
+                            <p style="margin: 5px 0;"><strong>Indirizzo:</strong> ${_praticaData.edificio?.indirizzo || 'N/D'}</p>
+                            <p style="margin: 5px 0;"><strong>Catasto:</strong> ${_praticaData.edificio?.categoria_catastale || 'N/D'} | Zona: ${_praticaData.edificio?.zona_climatica || 'N/D'}</p>
                             
                             <h4 style="margin-top: 15px; color: #3f51b5;">Proprietario e Delegato</h4>
-                            <p style="margin: 5px 0;"><strong>Proprietario:</strong> ${_praticaData.soggetti.proprietario.denominazione}</p>
-                            <p style="margin: 5px 0;"><strong>Assenso:</strong> ${_praticaData.soggetti.proprietario.atto_assenso ? "Sì" : "No"}</p>
-                            <p style="margin: 5px 0;"><strong>Delegato:</strong> ${_praticaData.soggetti.delegato?.nome || "Nessuno"}</p>
+                            <p style="margin: 5px 0;"><strong>Proprietario:</strong> ${_praticaData.soggetti?.proprietario?.denominazione || 'N/D'}</p>
+                            <p style="margin: 5px 0;"><strong>Assenso:</strong> ${_praticaData.soggetti?.proprietario?.atto_assenso ? "Sì" : "No"}</p>
+                            <p style="margin: 5px 0;"><strong>Delegato:</strong> ${_praticaData.soggetti?.delegato?.nome || "Nessuno"}</p>
                         </div>
                     </div>
                 </div>

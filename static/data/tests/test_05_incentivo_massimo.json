@@ -38,6 +38,9 @@
     "interventi": [
         "III.A"
     ],
+    "selectedInterventi": [
+        "III.A"
+    ],
     "interventiData": {
         "III.A": {
             "marca_pdc": "BrandX",
