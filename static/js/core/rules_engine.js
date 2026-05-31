@@ -211,6 +211,75 @@ const UaRulesEngine = function() {
     };
 
     /**
+     * Verifica la soglia antimafia (Art. 5 comma 5 D.M. 7/8/2025).
+     * Se l'incentivo richiesto supera 150.000€, è obbligatoria la documentazione antimafia.
+     * 
+     * @param {number} importoRichiesto - Importo complessivo richiesto.
+     * @param {boolean} documentazioneAntimafia - Flag se la doc. antimafia è presente.
+     * @returns {Object} Risultato della validazione.
+     * @private
+     */
+    const _checkAntimafia = function(importoRichiesto, documentazioneAntimafia) {
+        const res = { success: true, error: "" };
+        const soglia = PROCEDURA_CONFIG.SOGLIA_ANTIMAFIA;
+
+        if (importoRichiesto > soglia && !documentazioneAntimafia) {
+            res.success = false;
+            res.error = `Soglia ANTIMAFIA: L'importo richiesto (${importoRichiesto.toLocaleString()}€) supera la soglia di ${soglia.toLocaleString()}€. È obbligatoria la documentazione antimafia (D.Lgs. 159/2011).`;
+        }
+
+        return res;
+    };
+
+    /**
+     * Verifica il termine di 90 giorni per accesso diretto (Art. 10 comma 1 D.M. 7/8/2025).
+     * Per accesso diretto (non prenotazione), la richiesta va inviata entro 90 giorni 
+     * dalla data di fine lavori / collaudo.
+     * 
+     * @param {boolean} isPrenotazione - Se l'accesso è in prenotazione.
+     * @param {string} dataRichiesta - Data di invio della richiesta (YYYY-MM-DD).
+     * @param {string} dataFineLavori - Data di fine lavori / collaudo (YYYY-MM-DD).
+     * @returns {Object} Risultato della validazione.
+     * @private
+     */
+    const _checkAccessoDiretto = function(isPrenotazione, dataRichiesta, dataFineLavori) {
+        const res = { success: true, error: "" };
+        const termineGiorni = PROCEDURA_CONFIG.ACCESSO_DIRETTO_TERMINE_GIORNI;
+
+        // Solo per accesso diretto (non prenotazione)
+        if (isPrenotazione) {
+            return res;
+        }
+
+        if (!dataRichiesta || !dataFineLavori) {
+            res.success = false;
+            res.error = `ACCESSO DIRETTO: Per completare la verifica del termine di ${termineGiorni} giorni, sono necessarie la data di richiesta e la data di fine lavori.`;
+            return res;
+        }
+
+        const dtRichiesta = new Date(dataRichiesta);
+        const dtFineLavori = new Date(dataFineLavori);
+
+        if (isNaN(dtRichiesta.getTime()) || isNaN(dtFineLavori.getTime())) {
+            res.success = false;
+            res.error = "ACCESSO DIRETTO: Date non valide per la verifica del termine.";
+            return res;
+        }
+
+        const diffGiorni = Math.floor((dtRichiesta - dtFineLavori) / (1000 * 60 * 60 * 24));
+
+        if (diffGiorni < 0) {
+            res.success = false;
+            res.error = `ACCESSO DIRETTO: La richiesta (${dataRichiesta}) è stata inviata prima della fine lavori (${dataFineLavori}). La richiesta deve essere inviata DOPO il collaudo.`;
+        } else if (diffGiorni > termineGiorni) {
+            res.success = false;
+            res.error = `ACCESSO DIRETTO: La richiesta è stata inviata ${diffGiorni} giorni dopo la fine lavori. Il termine massimo è di ${termineGiorni} giorni (Art. 10 comma 1).`;
+        }
+
+        return res;
+    };
+
+    /**
      * Verifica se la tipologia di intervento è ammissibile per il soggetto.
      * Gestisce regole specifiche come l'esclusione di PDC a gas per Imprese ed ETS economici.
      * 
@@ -375,7 +444,28 @@ const UaRulesEngine = function() {
             });
         }
 
-        // 7. Warning se selectedInterventi fornito ma senza dati tecnici
+        // 7. Verifica Soglia Antimafia (Art. 5 comma 5)
+        if (input.importoRichiesto !== undefined) {
+            const antimafiaCheck = _checkAntimafia(input.importoRichiesto, input.documentazioneAntimafia);
+            if (!antimafiaCheck.success) {
+                errors.push(antimafiaCheck.error);
+            }
+        }
+
+        // 8. Verifica Accesso Diretto 90gg (Art. 10 comma 1)
+        if (input.dataRichiesta || input.dataFineLavori) {
+            const isPrenotazione = input.isPrenotazione || false;
+            const accessoCheck = _checkAccessoDiretto(
+                isPrenotazione,
+                input.dataRichiesta,
+                input.dataFineLavori
+            );
+            if (!accessoCheck.success) {
+                errors.push(accessoCheck.error);
+            }
+        }
+
+        // 9. Warning se selectedInterventi fornito ma senza dati tecnici
         if (input.selectedInterventi && !input.interventiData) {
             warnings.push("Attenzione: Validazione interventi specifici non completata (dati tecnici mancanti).");
         }

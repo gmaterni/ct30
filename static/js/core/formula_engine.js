@@ -42,7 +42,14 @@ const UaFormulaEngine = function() {
         const potenzaFieldMap = {
             "III.A": ["potenza_pdc_kw", "potenza_termica_nominale", "pn_nominale"],
             "III.B": ["potenza_nominale_Pn_pdc", "potenza_pdc_kw"],
+            "III.C": ["potenza_nominale_kw"],
+            "III.D": ["superficie_lorda_mq"],
             "III.E": ["potenza_termica_nominale"],
+            "III.F": ["potenza_allaccio_kw"],
+            "II.C": ["superficie_schermata_mq"],
+            "II.D": ["superficie_utile_mq"],
+            "II.E": ["superficie_illuminata_mq"],
+            "II.F": ["superficie_edificio_mq"],
             "II.H": ["potenza_fv_kw", "potenza_picco_kW"],
             "II.G": ["potenza_ricarica_kw", "potenza_kw"],
             "III.G": ["potenza_elettrica"]
@@ -144,6 +151,37 @@ const UaFormulaEngine = function() {
         }
 
         return plan;
+    };
+
+    /**
+     * Risolve la percentuale di intensità in base al soggetto e contesto.
+     * Priorità: regole specifiche per soggetto (PA scuole/Comuni<15k, Impresa multi/singolo).
+     * 
+     * @private
+     */
+    const _resolvePercentuale = function(code, percDefault, contesto) {
+        const soggetto = contesto?.soggetto || "";
+        const intensita = PROCEDURA_CONFIG.INTENSITA_MASSIMA || {};
+        const isMulti = contesto?.isMultiIntervento === true;
+
+        // PA con comuni <15.000 ab. o scuole/ospedali: 100%
+        if (soggetto === "Pubblica Amministrazione") {
+            const isComuneSotto15k = contesto?.comuneSotto15k === true;
+            const isScuolaOspedale = contesto?.scuolaOspedale === true;
+            if (isComuneSotto15k || isScuolaOspedale) {
+                return intensita.PA_comuni_sotto_15000 || 1.0;
+            }
+        }
+
+        // Impresa: Titolo II ha intensità diversa per singolo/multi
+        if (soggetto === "Impresa" && code.startsWith("II.")) {
+            return isMulti
+                ? (intensita.Impresa_multi_Titolo_II || 0.55)
+                : (intensita.Impresa_singolo_Titolo_II || 0.45);
+        }
+
+        // Fallback: usa il perc dell'intervento
+        return percDefault;
     };
 
     /**
@@ -277,6 +315,11 @@ const UaFormulaEngine = function() {
         // Case generico per interventi di tipo "percentuale_spesa" non esplicitamente gestiti
         if (metadata.tipo_formula === "percentuale_spesa" && params.percentuale === undefined) {
             params.percentuale = RULES.interventi[code]?.perc || 0;
+        }
+
+        // Applica intensità differenziata per soggetto (PA scuole/comuni<15k, Impresa multi/singolo)
+        if (params.percentuale !== undefined && contesto?.soggetto) {
+            params.percentuale = _resolvePercentuale(code, params.percentuale, contesto);
         }
 
         // Calcolo variabili intermedie
