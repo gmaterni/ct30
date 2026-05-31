@@ -183,6 +183,38 @@ export const idbMgr = {
             success = _logErr("clearAll", e); 
         } 
         return success;
+    },
+
+    exportAll: async function() {
+        const dump = {};
+        try {
+            for (const table of _db.tables) {
+                dump[table.name] = await table.toArray();
+            }
+            return dump;
+        } catch (e) {
+            _logErr("exportAll", e);
+            return null;
+        }
+    },
+
+    importAll: async function(data) {
+        if (!data || typeof data !== "object") return false;
+        try {
+            await _db.transaction('rw', ..._db.tables, async () => {
+                for (const table of _db.tables) {
+                    await table.clear();
+                    const records = data[table.name];
+                    if (Array.isArray(records) && records.length) {
+                        await table.bulkAdd(records);
+                    }
+                }
+            });
+            return true;
+        } catch (e) {
+            _logErr("importAll", e);
+            return false;
+        }
     }
 };
 

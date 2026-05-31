@@ -302,8 +302,53 @@ const _setupBaseEventListeners = function() {
             const ok2 = await confirm("Sei sicuro? Verranno cancellate tutte le pratiche, le impostazioni e i documenti.");
             if (!ok2) return;
             await idbMgr.clearAll();
-            alert("Database pulito. Recaricare la pagina per applicare le modifiche.");
+            alert("Database pulito. Ricaricare la pagina.");
             location.reload();
+        });
+    }
+
+    const cmdSalva = document.getElementById("cmd-salva-db");
+    if (cmdSalva) {
+        cmdSalva.addEventListener("click", async () => {
+            const data = await idbMgr.exportAll();
+            if (!data) { alert("Errore nell'esportazione del database."); return; }
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `CT30_${new Date().toISOString().slice(0, 10)}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            alert("Database salvato correttamente.");
+        });
+    }
+
+    const cmdCarica = document.getElementById("cmd-carica-db");
+    if (cmdCarica) {
+        cmdCarica.addEventListener("click", () => {
+            const input = document.createElement("input");
+            input.type = "file";
+            input.accept = ".json";
+            input.onchange = async (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                const ok = await confirm("Caricare questo file sostituirà COMPLETAMENTE il database corrente. Continuare?");
+                if (!ok) return;
+                try {
+                    const text = await file.text();
+                    const data = JSON.parse(text);
+                    const success = await idbMgr.importAll(data);
+                    if (success) {
+                        alert("Database caricato con successo. Ricaricare la pagina.");
+                        location.reload();
+                    } else {
+                        alert("Errore durante il caricamento del database.");
+                    }
+                } catch (err) {
+                    alert("File non valido: " + err.message);
+                }
+            };
+            input.click();
         });
     }
 };

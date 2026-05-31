@@ -81,10 +81,11 @@ const UaWizardManager = function(viewportId) {
                 <li><button id="btn-load-test" class="cmd-btn" style="background:#455a64;">Carica Scenario</button></li>
             </ul>
         `;
-        // Inserimento dopo il catalogo
-        const catalogGroup = navCommands.querySelectorAll(".cmd-group")[1];
-        if (catalogGroup) {
-            catalogGroup.parentNode.insertBefore(testSection, catalogGroup.nextSibling);
+        // Inserimento dopo l'ultima sezione (NORMATIVA)
+        const groups = navCommands.querySelectorAll(".cmd-group");
+        const lastGroup = groups[groups.length - 1];
+        if (lastGroup) {
+            lastGroup.parentNode.insertBefore(testSection, lastGroup.nextSibling);
         } else {
             navCommands.appendChild(testSection);
         }
