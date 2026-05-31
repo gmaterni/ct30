@@ -16,7 +16,7 @@
 import { RulesEngine } from "./core/rules_engine.js";
 import { FormulaEngine } from "./core/formula_engine.js";
 import { CrossRuleEngine } from "./core/cross_rule_engine.js";
-import { RULES, INTERVENTI, CATASTO, SCHEDE_TECNICHE, SOGGETTI_CONFIG, CLASSI_ENERGETICHE } from "./core/normativa.js";
+import { RULES, INTERVENTI, CATASTO, SCHEDE_TECNICHE, SOGGETTI_CONFIG } from "./core/normativa.js";
 import { UaWindowAdm } from "./ui/lib/uawindow.js";
 import { idbMgr, praticheMgr, documentiMgr } from "./infra/idb_mgr.js";
 import { PreventivoManager } from "./core/preventivo_manager.js";
@@ -99,6 +99,32 @@ const TEST_SCENARIOS_LIST = [
     { file: "test/impresa_pdc_fv.json", label: "Impresa - PDC + FV" },
     { file: "data/tests/test_07_completo.json", label: "Full Electric 5x (Massima Completezza)" }
 ];
+
+        // MOD-008: beforeunload — avvisa se la pratica ha dati modificati NON archiviati
+        window.addEventListener("beforeunload", (e) => {
+            const sa = _praticaData.soggetti?.sa;
+            const hasData = sa?.denominazione || _praticaData.interventi?.length > 0;
+            const isArchived = _praticaData.pratica.id?.startsWith("PRATICA_");
+            if (hasData && !isArchived) {
+                e.preventDefault();
+                e.returnValue = "";
+            }
+        });
+
+        // MOD-008: migrazione automatica pratiche legacy all'avvio
+        (async () => {
+            try {
+                const all = await praticheMgr.getAll();
+                for (const p of all) {
+                    if (p.dati && p.dati.pratica?.id && !p.dati.edificio) {
+                        console.info(`Migrazione pratica legacy: ${p.id}`);
+                        await praticheMgr.migrate(p);
+                    }
+                }
+            } catch (e) {
+                console.warn("Migrazione legacy non eseguita:", e);
+            }
+        })();
 
         document.getElementById("btn-load-test").onclick = () => {
             const winId = "win-test-selector";
@@ -584,6 +610,14 @@ const TEST_SCENARIOS_LIST = [
         else { s.proprietario.denominazione = getVal("inp-prop-nome"); s.proprietario.atto_assenso = isChecked("chk-prop-assenso"); }
         s.delegato.nome = getVal("inp-delegato-nome");
         s.delegato.cf = getVal("inp-delegato-cf").toUpperCase();
+
+        // MOD-004: Validazione Ruoli GSE
+        const roleValidation = RulesEngine.validateRoles(_praticaData.soggetti);
+        if (!roleValidation.success) {
+            alert("Errori nei ruoli GSE:\n- " + roleValidation.errors.join("\n- "));
+            return;
+        }
+
         _praticaData.validation = RulesEngine.validateAmmissibilita({
             subjectType: s.sa.tipo, category: _praticaData.edificio.categoria_catastale, buildingStatus: "esistente",
             richiestaPreliminareInviata: _praticaData.pratica.richiestaPreliminareInviata,
@@ -822,6 +856,27 @@ const TEST_SCENARIOS_LIST = [
      * Salva la pratica corrente su IndexedDB.
      * @private
      */
+    let _autoSaveTimer = null;
+
+    const _autoSave = async function() {
+        if (!_praticaData.soggetti?.sa?.denominazione) return;
+        const id = _praticaData.pratica.id && _praticaData.pratica.id.startsWith("PRATICA_")
+            ? _praticaData.pratica.id
+            : `AUTO_${Date.now()}`;
+        _praticaData.pratica.id = id;
+        await praticheMgr.save({
+            id: id,
+            nome: _praticaData.pratica.nome || _praticaData.soggetti.sa.denominazione || "Bozza",
+            dataCrea: _praticaData.pratica.data_creazione || new Date().toISOString(),
+            dati: JSON.parse(JSON.stringify(_praticaData))
+        });
+    };
+
+    const _scheduleAutoSave = function() {
+        if (_autoSaveTimer) clearTimeout(_autoSaveTimer);
+        _autoSaveTimer = setTimeout(_autoSave, 2000);
+    };
+
     const _archivePratica = async function() {
         // Suggeriamo il nome esistente
         const currentNome = _praticaData.pratica.nome || _praticaData.nome || "";
@@ -1292,6 +1347,7 @@ const TEST_SCENARIOS_LIST = [
     const _goToStep = function(stepIndex) {
         _currentStep = stepIndex;
         _clearViewport();
+        _autoSave();
         
         switch(_currentStep) {
             case 0: _renderStep0_CensimentoEdificio(); break;

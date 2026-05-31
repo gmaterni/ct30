@@ -475,7 +475,6 @@ export const VALIDAZIONE_FONTI = {
     }
 };
 
-// #TODO: Non ancora utilizzato
 /**
  * Elenco delle classi energetiche con descrizioni sintetiche.
  */
@@ -574,7 +573,6 @@ export const FORMULE_INCENTIVO = {
     }
 };
 
-// #TODO: Non ancora utilizzato
 /**
  * Voci di catalogo suggerite per il preventivo.
  * Sorgente: data/preventivo_voci_catalogo.json
@@ -588,7 +586,6 @@ export const PREVENTIVO_VOCI = {
     "II.G": { "nome": "Infrastrutture ricarica veicoli elettrici", "voci_suggerite": [ { "descrizione": "Fornitura infrastruttura di ricarica", "tipo_costo": "fornitura" }, { "descrizione": "Adeguamento elettrico e posa", "tipo_costo": "posa" }, { "descrizione": "Dichiarazioni e documentazione tecnica", "tipo_costo": "documentazione" } ] }
 };
 
-// #TODO: Non ancora utilizzato
 /**
  * Casi prova manuali guidati per validazione.
  * Sorgente: data/manual_test_scenarios.json

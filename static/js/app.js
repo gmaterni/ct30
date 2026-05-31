@@ -231,7 +231,6 @@ const _setupBaseEventListeners = function() {
                             return;
                         }
 
-                        // TODO: Integrare UaDialog qui per sostituire il confirm nativo
                         const confermato = confirm("Eliminare definitivamente questa pratica?");
                         if (!confermato) {
                             return;
