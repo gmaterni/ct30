@@ -908,45 +908,136 @@ const TEST_SCENARIOS_LIST = [
      * Gestisce il salvataggio della sintesi, permettendo di scegliere la cartella (se supportato).
      * @private
      */
+    const _exportPraticaTxt = function(dati) {
+        if (!dati) dati = _praticaData;
+        const sogg = dati.soggetti || {};
+        const lines = [];
+
+        lines.push("=".repeat(60));
+        lines.push("  REPORT DETTAGLIATO PRATICA");
+        lines.push("=".repeat(60));
+        lines.push("");
+        lines.push("DATI GENERALI");
+        lines.push("-".repeat(40));
+        lines.push(`  ID:              ${dati.pratica?.id || "N/D"}`);
+        lines.push(`  Nome:            ${dati.pratica?.nome || dati.nome || ""}`);
+        lines.push(`  Data creazione:  ${dati.pratica?.data_creazione || ""}`);
+        lines.push(`  Stato:           ${dati.pratica?.status || "N/D"}`);
+        if (dati.pratica?.richiestaPreliminareInviata) {
+            lines.push(`  Rich. Preliminare: Sì (${dati.pratica.dataRichiestaPreliminare || ""})`);
+            lines.push(`  Primo impegno:     ${dati.pratica.dataPrimoImpegno || ""}`);
+        }
+        lines.push("");
+
+        lines.push("EDIFICIO");
+        lines.push("-".repeat(40));
+        const ed = dati.edificio || {};
+        lines.push(`  Indirizzo:             ${ed.indirizzo || "N/D"}`);
+        lines.push(`  Categoria catastale:   ${ed.categoria_catastale || "N/D"}`);
+        lines.push(`  Zona climatica:        ${ed.zona_climatica || "N/D"}`);
+        lines.push(`  Potenza esistente kW:  ${ed.potenza_esistente_kw || 0}`);
+        lines.push(`  Combustibile ante:     ${ed.combustibile_ante || "N/D"}`);
+        lines.push("");
+
+        lines.push("SOGGETTI");
+        lines.push("-".repeat(40));
+        for (const [ruolo, info] of Object.entries(sogg)) {
+            if (!info || (!info.denominazione && !info.nome)) continue;
+            lines.push(`  ${ruolo.toUpperCase()}:`);
+            for (const [k, v] of Object.entries(info)) {
+                if (v) lines.push(`    ${k}: ${v}`);
+            }
+        }
+        lines.push("");
+
+        const interventi = dati.interventi || [];
+        const vc = dati.valori_campi || {};
+        if (interventi.length) {
+            lines.push("INTERVENTI SELEZIONATI");
+            lines.push("-".repeat(40));
+            interventi.forEach(code => {
+                lines.push(`  ${code}`);
+                const campi = vc[code];
+                if (campi) {
+                    for (const [k, v] of Object.entries(campi)) {
+                        if (v) lines.push(`    ${k}: ${v}`);
+                    }
+                }
+            });
+            lines.push("");
+        }
+
+        if (dati.postOperam) {
+            lines.push("POST OPERAM");
+            lines.push("-".repeat(40));
+            for (const [code, vals] of Object.entries(dati.postOperam)) {
+                if (!vals) continue;
+                lines.push(`  ${code}:`);
+                for (const [k, v] of Object.entries(vals)) {
+                    if (v !== null && v !== undefined) lines.push(`    ${k}: ${v}`);
+                }
+            }
+            lines.push("");
+        }
+
+        const prev = dati.preventivo || {};
+        if (prev.items && prev.items.length) {
+            lines.push("PREVENTIVO");
+            lines.push("-".repeat(40));
+            let tot = 0;
+            prev.items.forEach(item => {
+                const imp = (item.importo || 0) * (item.quantita || 1);
+                tot += imp;
+                lines.push(`  ${item.codice_intervento} | ${item.descrizione} | ${item.tipo_costo} | ${imp.toFixed(2)} €`);
+            });
+            lines.push(`  ${"-".repeat(30)}`);
+            lines.push(`  TOTALE: ${tot.toFixed(2)} €`);
+            lines.push("");
+        }
+
+        if (dati.documentiStatus) {
+            lines.push("DOCUMENTI");
+            lines.push("-".repeat(40));
+            for (const [nome, status] of Object.entries(dati.documentiStatus)) {
+                lines.push(`  ${status ? "[OK]" : "[  ]"} ${nome}`);
+            }
+            lines.push("");
+        }
+
+        if (dati.validation) {
+            lines.push("VALIDAZIONE");
+            lines.push("-".repeat(40));
+            const v = dati.validation;
+            lines.push(`  Esito:              ${v.success ? "AMMISSIBILE" : "NON AMMISSIBILE"}`);
+            if (v.message) lines.push(`  Messaggio:          ${v.message}`);
+            if (v.validTitles?.length) lines.push(`  Titoli validi:      ${v.validTitles.join(", ")}`);
+            if (v.errors?.length) lines.push(`  Errori:             ${v.errors.join("; ")}`);
+            if (v.warnings?.length) lines.push(`  Warning:            ${v.warnings.join("; ")}`);
+            if (v.subjectInfo) {
+                const si = v.subjectInfo;
+                lines.push(`  Soggetto:           ${si.descrizione || ""}`);
+                if (si.titoli?.length) lines.push(`  Titoli accessibili: ${si.titoli.join(", ")}`);
+            }
+            lines.push("");
+        }
+
+        lines.push("=".repeat(60));
+        lines.push(`  Generato il ${new Date().toLocaleString()}`);
+        lines.push("=".repeat(60));
+
+        return lines.join("\n");
+    };
+
     const _saveSintesi = async function() {
-        const dateStr = new Date().toLocaleString('it-IT');
-        const denom = _praticaData.soggetti.sa.denominazione;
-        const tipo = _praticaData.soggetti.sa.tipo;
-        const cf = _praticaData.soggetti.sa.cf_piva;
-        const addr = _praticaData.edificio.indirizzo;
-        const cat = _praticaData.edificio.categoria_catastale;
-        const zone = _praticaData.edificio.zona_climatica;
-        const intervs = _praticaData.interventi.map(i => `- ${i}`).join('\n');
-        const eff = _praticaData.postOperam ? _praticaData.postOperam.efficienza : "Standard";
-        const rinn = (_praticaData.postOperam && _praticaData.postOperam.rinnovabili) ? 'Sì' : 'No';
-
-        const content = `SINTESI PRATICA CONTO TERMICO 3.0\n` +
-                      `==================================\n\n` +
-                      `DATA: ${dateStr}\n` +
-                      `SOGGETTO: ${denom} (${tipo})\n` +
-                      `CODICE FISCALE/PIVA: ${cf}\n` +
-                      `INDIRIZZO: ${addr}\n\n` +
-                      `DATI IMMOBILE:\n` +
-                      `- Categoria Catastale: ${cat}\n` +
-                      `- Zona Climatica: ${zone}\n\n` +
-                      `INTERVENTI SELEZIONATI:\n` +
-                      `${intervs}\n\n` +
-                      `CONFIGURAZIONE POST-OPERAM:\n` +
-                      `- Efficienza: ${eff}\n` +
-                      `- Integrazione Rinnovabili: ${rinn}\n\n` +
-                      `----------------------------------\n` +
-                      `Generato da CT30 Advisor`;
-
-        const fileName = `Sintesi_Pratica_${cf}.txt`;
+        const content = _exportPraticaTxt();
+        const denom = _praticaData.soggetti?.sa?.denominazione || "pratica";
+        const fileName = `${denom.replace(/[^a-zA-Z0-9]/g, "_")}_${new Date().toISOString().slice(0, 10)}.txt`;
 
         if (window.showSaveFilePicker) {
             try {
                 const handle = await window.showSaveFilePicker({
                     suggestedName: fileName,
-                    types: [{
-                        description: 'Documento di Testo',
-                        accept: { 'text/plain': ['.txt'] },
-                    }],
+                    types: [{ description: 'Documento di Testo', accept: { 'text/plain': ['.txt'] } }],
                 });
                 const writable = await handle.createWritable();
                 await writable.write(content);
@@ -1615,6 +1706,10 @@ const TEST_SCENARIOS_LIST = [
             if (winRes) winRes.close();
             
             _showReportPreview();
+        },
+
+        exportPraticaTxt: function(dati) {
+            return _exportPraticaTxt(dati);
         }
     };
 
