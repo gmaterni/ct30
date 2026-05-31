@@ -45,6 +45,10 @@ input[type=number] {
         background: @light-secondary !important; color: @light-on-secondary !important;
         &:hover { background: @light-secondary-variant !important; }
     }
+    &.green {
+        background: #2e7d32 !important; color: #fff !important;
+        &:hover { background: #1b5e20 !important; }
+    }
 }
 
 .sec-btn {
@@ -64,6 +68,10 @@ input[type=number] {
         &.danger { 
             background: @dark-secondary !important; color: @dark-on-secondary !important;
             &:hover { background: lighten(@dark-secondary, 10%) !important; }
+        }
+        &.green {
+            background: #388e3c !important; color: #fff !important;
+            &:hover { background: #2e7d32 !important; }
         }
     }
     .sec-btn {
@@ -373,7 +381,7 @@ input[type=number] {
 .data-table {
     width: 100%;
     border-collapse: collapse;
-    th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid @light-border-shadow; }
+    th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid @light-border-shadow; }
     th { font-weight: 600; text-transform: uppercase; font-size: 12px; color: @light-text-secondary; }
 }
 

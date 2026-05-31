@@ -307,7 +307,7 @@ const UaRulesEngine = function() {
         // Fail Fast
         if (!input) {
             console.error("validateAmmissibilita: Input mancante.");
-            const errRes = { success: false, errors: ["Dati mancanti"] };
+            const errRes = { success: false, message: "Dati mancanti", errors: ["Dati mancanti"] };
             return errRes;
         }
 
@@ -380,8 +380,12 @@ const UaRulesEngine = function() {
             warnings.push("Attenzione: Validazione interventi specifici non completata (dati tecnici mancanti).");
         }
 
+        const msg = errors.length > 0
+            ? "Pratica non ammissibile: " + errors.join("; ")
+            : "Pratica ammissibile. Titoli validi: " + validTitles.join(", ") + ".";
         const validationResult = {
             success: errors.length === 0,
+            message: msg,
             validTitles: validTitles,
             errors: errors,
             warnings: warnings,

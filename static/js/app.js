@@ -149,7 +149,7 @@ const _setupBaseEventListeners = function() {
                 if (!win) {
                     win = UaWindowAdm.create(winId);
                     win.addClassStyle("ua-modal-window");
-                    win.setStyle({ minWidth: "800px" });
+                    win.setStyle({ minWidth: "1000px" });
                     win.setXY(15, 10).setZ(1200).drag();
                 }
 
@@ -291,6 +291,19 @@ const _setupBaseEventListeners = function() {
             if (_wizard) {
                 _wizard.showCatalog();
             }
+        });
+    }
+
+    const cmdPulisci = document.getElementById("cmd-pulisci-db");
+    if (cmdPulisci) {
+        cmdPulisci.addEventListener("click", async () => {
+            const ok = await confirm("Eliminare TUTTI i dati dal database? Operazione irreversibile.");
+            if (!ok) return;
+            const ok2 = await confirm("Sei sicuro? Verranno cancellate tutte le pratiche, le impostazioni e i documenti.");
+            if (!ok2) return;
+            await idbMgr.clearAll();
+            alert("Database pulito. Recaricare la pagina per applicare le modifiche.");
+            location.reload();
         });
     }
 };

@@ -639,11 +639,15 @@ const TEST_SCENARIOS_LIST = [
     const _renderStep2_Screening = function() {
         const container = _getDivText();
         const results = _praticaData.validation;
+        if (!results) {
+            container.innerHTML = `<div class="wizard-step"><h3>Stato 2: Screening Ammissibilità</h3><p class="field-note">Eseguire prima la validazione.</p></div>`;
+            return;
+        }
         const html = `
             <div class="wizard-step">
                 <h3>Stato 2: Screening Ammissibilità</h3>
                 <div class="result-box ${results.success ? 'success' : 'error'}">
-                    <p>${results.message}</p>
+                    <p>${results.message || (results.success ? 'Pratica ammissibile.' : 'Pratica non ammissibile.')}</p>
                     ${results.success ? `<div class="tags-container">${results.validTitles.map(t => `<span class="tag success">Titolo ${t}</span>`).join(' ')}</div>` : `<ul>${results.errors.map(e => `<li>${e}</li>`).join('')}</ul>`}
                 </div>
             </div>
@@ -839,7 +843,7 @@ const TEST_SCENARIOS_LIST = [
         const years = totaleIncentivo > 15000 ? 5 : 1;
 
         win.setHtml(`
-            <div class="window-header"><span class="title">Stato 5: Erogazione e Chiusura</span><div class="header-actions"><button id="btn-wiz-preview-report" class="cmd-btn">Report</button><button id="btn-wiz-calcoli" class="sec-btn">Calcoli</button><button id="btn-wiz-archive" class="cmd-btn">Archivia</button></div><button class="win-close-btn">×</button></div>
+            <div class="window-header"><span class="title">Stato 5: Erogazione e Chiusura</span><div class="header-actions"><button id="btn-wiz-preview-report" class="cmd-btn">Report</button><button id="btn-wiz-calcoli" class="sec-btn">Calcoli</button><button id="btn-wiz-archive" class="cmd-btn green">Archivia</button></div><button class="win-close-btn">×</button></div>
             <div class="window-body">
                 <div class="reliability-banner"><strong>Affidabilità Dati: ${rel.label}</strong> (Score: ${rel.score.toFixed(2)})</div>
                 <div class="summary-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
@@ -856,31 +860,6 @@ const TEST_SCENARIOS_LIST = [
         dom.querySelector("#btn-wiz-archive").onclick = () => _archivePratica();
         dom.querySelectorAll(".chk-doc-verify").forEach(chk => chk.onchange = (e) => { _praticaData.documentiStatus[e.target.dataset.doc] = e.target.checked ? "verificato" : "mancante"; _renderStep5_Erogazione(); });
         api.showHome();
-    };
-
-    /**
-     * Salva la pratica corrente su IndexedDB.
-     * @private
-     */
-    let _autoSaveTimer = null;
-
-    const _autoSave = async function() {
-        if (!_praticaData.soggetti?.sa?.denominazione) return;
-        const id = _praticaData.pratica.id && _praticaData.pratica.id.startsWith("PRATICA_")
-            ? _praticaData.pratica.id
-            : `AUTO_${Date.now()}`;
-        _praticaData.pratica.id = id;
-        await praticheMgr.save({
-            id: id,
-            nome: _praticaData.pratica.nome || _praticaData.soggetti.sa.denominazione || "Bozza",
-            dataCrea: _praticaData.pratica.data_creazione || new Date().toISOString(),
-            dati: JSON.parse(JSON.stringify(_praticaData))
-        });
-    };
-
-    const _scheduleAutoSave = function() {
-        if (_autoSaveTimer) clearTimeout(_autoSaveTimer);
-        _autoSaveTimer = setTimeout(_autoSave, 2000);
     };
 
     const _archivePratica = async function() {
@@ -1353,7 +1332,6 @@ const TEST_SCENARIOS_LIST = [
     const _goToStep = function(stepIndex) {
         _currentStep = stepIndex;
         _clearViewport();
-        _autoSave();
         
         switch(_currentStep) {
             case 0: _renderStep0_CensimentoEdificio(); break;
