@@ -377,7 +377,76 @@ const Mod001TestRunner = function() {
     };
 
     /**
-     * TEST 10: Scenario test_02_impresa_grande.json
+     * TEST 10: Trainati (II.H/II.G) ereditano durata da III.A
+     * II.H o II.G senza III.A usano propria potenza
+     * Con III.A con potenza >= 35kW → 5 rate
+     * Con III.A con potenza < 35kW → 2 rate
+     */
+    const testTrainatiEreditanoDurata = function() {
+        const testCases = [
+            {
+                name: "II.H trainato da III.A >=35kW → 5 rate",
+                iiiAPotenza: 40,
+                fvPotenza: 10,
+                expectedYears: 5
+            },
+            {
+                name: "II.H trainato da III.A <35kW → 2 rate",
+                iiiAPotenza: 10,
+                fvPotenza: 50,
+                expectedYears: 2
+            },
+            {
+                name: "II.G trainato da III.A >=35kW → 5 rate",
+                iiiAPotenza: 35,
+                chargingPower: 22,
+                expectedYears: 5
+            }
+        ];
+
+        for (const tc of testCases) {
+            try {
+                const { FormulaEngine } = require("../js/core/formula_engine.js");
+                const code = tc.name.includes("II.G") ? "II.G" : "II.H";
+                const dati = code === "II.H" 
+                    ? { potenza_fv_kw: tc.fvPotenza, costo_fv: 20000, is_autoconsumo: "sì" }
+                    : { potenza_ricarica_kw: tc.chargingPower, costo_colonnina: 15000, numero_punti_ricarica: 3 };
+                
+                // Passa dati III.A nel contesto per trainati
+                const contesto = {
+                    zonaClimatica: "Zona E",
+                    allInterventiData: {
+                        "III.A": {
+                            potenza_pdc_kw: tc.iiiAPotenza,
+                            tipologia_pdc: "aria/acqua",
+                            made_in_eu: "sì",
+                            sostituisce_esistente: "sì"
+                        }
+                    }
+                };
+
+                const result = FormulaEngine.calculate(code, dati, contesto);
+
+                if (!result.paymentPlan) {
+                    // Se amount <= 15000, è rata unica, non testiamo durata
+                    if (result.amount <= 15000) continue;
+                    _registerResult(`${tc.name} - paymentPlan mancante`, false, "paymentPlan non generato");
+                    continue;
+                }
+
+                const plan = result.paymentPlan;
+                _assert(plan.numInstallments === tc.expectedYears, 
+                    `${tc.name}: numInstallments dovrebbe essere ${tc.expectedYears}, ottenuto ${plan.numInstallments}`);
+
+                _registerResult(tc.name, true, null);
+            } catch (error) {
+                _registerResult(tc.name, false, error.message);
+            }
+        }
+    };
+
+    /**
+     * TEST 11: Scenario test_02_impresa_grande.json
      * Impresa - PdC Grande + FV
      */
     const testScenario02 = function() {
@@ -441,6 +510,9 @@ const Mod001TestRunner = function() {
         console.log("\n--- TEST INTEGRAZIONE (🔄) ---");
         testIntegrazioneFormulaEngine();
         testIntegrazioneDiversiInterventi();
+
+        console.log("\n--- TEST TRAINATI (🔗) ---");
+        testTrainatiEreditanoDurata();
 
         console.log("\n--- TEST SCENARIO (📋) ---");
         testScenario01();

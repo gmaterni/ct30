@@ -51,6 +51,9 @@
             "servizio_pdc": "climatizzazione invernale",
             "generatore_sostituito": "Caldaia a gas 35kW",
             "made_in_eu": "sì",
+            "miglioramento_ep_40": "no",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "no",
             "scheda_tecnica_pdc": "sì",
             "costo_pdc": 25000,
             "sostituisce_esistente": "sì"

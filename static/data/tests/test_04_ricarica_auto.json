@@ -106,6 +106,9 @@
             "servizio_pdc": "climatizzazione invernale centralizzata",
             "generatore_sostituito": "Caldaia centralizzata metano 120kW",
             "made_in_eu": "sì",
+            "miglioramento_ep_40": "sì",
+            "zona_assistita_a": "sì",
+            "zona_assistita_c": "no",
             "scheda_tecnica_pdc": "sì",
             "costo_pdc": 45000,
             "sostituisce_esistente": "sì"
@@ -118,7 +121,9 @@
             "potenza_ricarica_kw": 22,
             "tipo_ricarica": "Punto ricarica Trifase",
             "is_smart": "sì",
-            "modo_ricarica": "modo 3"
+            "modo_ricarica": "modo 3",
+            "zona_assistita_a": "sì",
+            "zona_assistita_c": "no"
         },
         "III.A": {
             "marca_pdc": "Climaveneta",
@@ -132,6 +137,9 @@
             "servizio_pdc": "climatizzazione invernale centralizzata",
             "generatore_sostituito": "Caldaia centralizzata metano 120kW",
             "made_in_eu": "sì",
+            "miglioramento_ep_40": "sì",
+            "zona_assistita_a": "sì",
+            "zona_assistita_c": "no",
             "scheda_tecnica_pdc": "sì",
             "costo_pdc": 45000,
             "sostituisce_esistente": "sì"

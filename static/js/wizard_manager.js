@@ -718,7 +718,7 @@ const TEST_SCENARIOS_LIST = [
             formsContainer.innerHTML = selected.map(code => {
                 const scheda = SCHEDE_TECNICHE[code]; if (!scheda) return `<div class="error">Scheda tecnica non trovata per ${code}</div>`;
                 const currentData = _praticaData.valori_campi[code] || {};
-                const fieldsHtml = scheda.campi.filter(f => f.categoria === "tecnico").map(f => {
+                const fieldsHtml = scheda.campi.filter(f => !["documentazione"].includes(f.categoria)).map(f => {
                     const val = currentData[f.id] || "";
                     let inputHtml = f.tipo === "select" ? `<select class="inp-tech-auto" data-code="${code}" data-id="${f.id}">${f.opzioni.map(o => `<option value="${o}" ${o === val ? 'selected' : ''}>${o}</option>`).join('')}</select>` : `<input type="${f.tipo}" class="inp-tech-auto" data-code="${code}" data-id="${f.id}" value="${val}" step="any" placeholder="${f.unita || ''}">`;
                     return `<div class="form-group"><label>${f.label} ${f.unita ? `(${f.unita})` : ''}:</label>${inputHtml}</div>`;

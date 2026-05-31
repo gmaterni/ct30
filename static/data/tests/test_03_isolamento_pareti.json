@@ -91,7 +91,10 @@
             "trasmittanza_post": 0.18,
             "costo_isolamento": 32000,
             "ape_ante_post_disponibile": "sì",
-            "made_in_eu": "sì"
+            "made_in_eu": "sì",
+            "riduzione_ep_10": "sì",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "sì"
         }
     },
     "valori_campi": {
@@ -102,7 +105,10 @@
             "trasmittanza_post": 0.18,
             "costo_isolamento": 32000,
             "ape_ante_post_disponibile": "sì",
-            "made_in_eu": "sì"
+            "made_in_eu": "sì",
+            "riduzione_ep_10": "sì",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "sì"
         }
     },
     "postOperam": {
