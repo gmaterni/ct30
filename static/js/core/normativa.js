@@ -19,9 +19,10 @@
 export const PREMIALITA_CONFIG = {
     "made_in_eu": {
         "label": "Made in EU",
-        "bonus_perc": 0.05,
-        "applicabile_a": ["II.", "III."],
-        "campo_attivazione": "made_in_eu"
+        "bonus_perc": 0.10,
+        "applicabile_a": ["II."],
+        "campo_attivazione": "made_in_eu",
+        "note": "+10% su Titolo II"
     },
     "registro_enea_fv": {
         "label": "Registro ENEA (FV)",
@@ -31,6 +32,27 @@ export const PREMIALITA_CONFIG = {
             "ue_prod": { "bonus_perc": 0.10, "campo": "ue_production" },
             "same_sec": { "bonus_perc": 0.15, "campo": "same_section" }
         }
+    },
+    "miglioramento_ep_40": {
+        "label": "Miglioramento EP ≥40%",
+        "bonus_perc": 0.15,
+        "applicabile_a": ["III.A", "III.B", "III.C"],
+        "campo_attivazione": "miglioramento_ep_40",
+        "note": "+15% se riduzione EP ≥40% rispetto a edificio esistente"
+    },
+    "zona_assistita_a": {
+        "label": "Zona assistita (art. 107.3 lett.a)",
+        "bonus_perc": 0.15,
+        "applicabile_a": ["II.", "III."],
+        "campo_attivazione": "zona_assistita_a",
+        "note": "+15% per zone assistite ai sensi dell'art. 107.3 lett.a TFUE"
+    },
+    "zona_assistita_c": {
+        "label": "Zona assistita (art. 107.3 lett.c)",
+        "bonus_perc": 0.05,
+        "applicabile_a": ["II.", "III."],
+        "campo_attivazione": "zona_assistita_c",
+        "note": "+5% per zone assistite ai sensi dell'art. 107.3 lett.c TFUE"
     }
 };
 
@@ -39,9 +61,27 @@ export const PREMIALITA_CONFIG = {
  */
 export const PROCEDURA_CONFIG = {
     "SOGLIA_UNICA_SOLUZIONE": 15000,
-    "EFFETTO_INCENTIVANTE_OBBLIGATORIO": ["Impresa", "ETS economico"],
-    "DURATA_STANDARD_PICCOLA_POTENZA": 2, // anni per P <= 35kW
-    "DURATA_STANDARD_GRANDE_POTENZA": 5    // anni per P > 35kW
+    "EFFETTO_INCENTIVANTE_OBBLIGATORIO": ["Impresa", "ETS economico", "ESCO"],
+    "DURATA_STANDARD_PICCOLA_POTENZA": 2,
+    "DURATA_STANDARD_GRANDE_POTENZA": 5,
+    "SOGLIA_ANTIMAFIA": 150000,
+    "ACCESSO_DIRETTO_TERMINE_GIORNI": 90,
+    "DURATA_TITOLO_II_ANNI": 5,
+    "INTERVENTI_DURATA_5_ANNI": ["II.A", "II.B", "II.C", "II.D", "II.E", "II.F"],
+    "INTERVENTI_DURATA_2_ANNI": ["III.E"],
+    "SOGLIA_POTENZA_PICCOLA": 35,
+    "FV_POTENZA_MIN_KW": 2,
+    "FV_POTENZA_MAX_KW": 1000,
+    "INTENSITA_MASSIMA": {
+        "default_Titolo_II": 0.40,
+        "default_Titolo_III": 0.65,
+        "PA_comuni_sotto_15000": 1.0,
+        "PA_scuole_ospedali": 1.0,
+        "PA_altri": 0.40,
+        "Impresa_singolo_Titolo_II": 0.45,
+        "Impresa_multi_Titolo_II": 0.55,
+        "Impresa_Titolo_III": 0.65
+    }
 };
 
 /**
@@ -63,8 +103,8 @@ export const RULES = {
         "Zona F": { "quf": 1800, "descrizione": "Clima molto freddo (es. Belluno, zone montane)" }
     },
     "interventi": {
-        "II.A": { "desc": "Isolamento termico superfici opache", "varianti": { "Coperture Esterno": { "cmax": 300 }, "Coperture Interno": { "cmax": 150 }, "Coperture Ventilata": { "cmax": 350 }, "Parete Esterna": { "cmax": 200 }, "Parete Interna": { "cmax": 100 }, "Parete Ventilata": { "cmax": 250 }, "Pavimenti Esterno": { "cmax": 170 }, "Pavimenti Interno": { "cmax": 150 } }, "imax": 1000000, "perc": 0.4, "perc_zone_EF": 0.5, "perc_multi": 0.55 },
-        "II.B": { "desc": "Sostituzione infissi", "varianti": { "Zone A,B,C": { "cmax": 700 }, "Zone D,E,F": { "cmax": 800 } }, "imax": 500000, "perc": 0.4, "perc_multi": 0.55 },
+        "II.A": { "desc": "Isolamento termico superfici opache", "varianti": { "Coperture Esterno": { "cmax": 300 }, "Coperture Interno": { "cmax": 150 }, "Coperture Ventilata": { "cmax": 350 }, "Parete Esterna": { "cmax": 200 }, "Parete Interna": { "cmax": 100 }, "Parete Ventilata": { "cmax": 250 }, "Pavimenti Esterno": { "cmax": 170 }, "Pavimenti Interno": { "cmax": 150 } }, "imax": 1000000, "perc": 0.4, "perc_zone_EF": 0.5, "perc_multi": 0.55, "durata": 5 },
+        "II.B": { "desc": "Sostituzione infissi", "varianti": { "Zone A,B,C": { "cmax": 700 }, "Zone D,E,F": { "cmax": 800 } }, "imax": 500000, "perc": 0.4, "perc_multi": 0.55, "durata": 5 },
         "II.G": { 
             "desc": "Infrastrutture ricarica veicoli elettrici", 
             "varianti": { 
@@ -97,8 +137,8 @@ export const RULES = {
                 "Ci_PDC_aria_aria_rooftop_le35kW": 0.150,
                 "Ci_PDC_aria_aria_rooftop_gt35kW": 0.055,
                 "Ci_PDC_aria_acqua_le35kW": 0.150,
-                "Ci_PDC_aria_acqua_gt35kW": 0.055,
-                "Ci_PDC_acqua_aria_le35kW": 0.150,
+                "Ci_PDC_aria_acqua_gt35kW": 0.060,
+                "Ci_PDC_acqua_aria_le35kW": 0.160,
                 "Ci_PDC_acqua_aria_gt35kW": 0.060,
                 "Ci_PDC_acqua_acqua_le35kW": 0.160,
                 "Ci_PDC_acqua_acqua_gt35kW": 0.060,
@@ -110,11 +150,116 @@ export const RULES = {
             "durata": { "piccola": 2, "grande": 5 }, 
             "soglia_potenza": 35 
         },
+        "II.C": {
+            "desc": "Schermature/ombreggiamento solare",
+            "varianti": {
+                "Schermature mobili": { "cmax": 150 },
+                "Schermature fisse": { "cmax": 150 },
+                "Tende da sole": { "cmax": 50 },
+                "Pellicole": { "cmax": 50 },
+                "Vetri elettrocromici": { "cmax": 250 }
+            },
+            "imax": 90000,
+            "perc": 0.4,
+            "durata": 5
+        },
+        "II.D": {
+            "desc": "Trasformazione nZEB (demolizione/ricostruzione o ampliamento ≤25%)",
+            "varianti": {
+                "Demolizione e ricostruzione": { "cmax": 1300 },
+                "Ampliamento ≤25%": { "cmax": 1000 }
+            },
+            "imax": 3000000,
+            "perc": 0.4,
+            "durata": 5
+        },
+        "II.E": {
+            "desc": "Sostituzione illuminazione",
+            "varianti": {
+                "Edifici privati": { "cmax": 35 },
+                "Edifici PA": { "cmax": 15 }
+            },
+            "imax": 140000,
+            "perc": 0.4,
+            "durata": 5
+        },
+        "II.F": {
+            "desc": "Building automation e gestione carichi",
+            "varianti": {
+                "Classe B EN 15232": { "cmax": 60 }
+            },
+            "imax": 100000,
+            "perc": 0.4,
+            "durata": 5
+        },
+        "III.B": {
+            "desc": "Sistemi ibridi/bivalenti/add-on (gas + PDC)",
+            "durata": { "piccola": 2, "grande": 5 },
+            "soglia_potenza": 35,
+            "coefficienti_ci": {
+                "Ci_PDC_aria_aria_split_le12kW": 0.070,
+                "Ci_PDC_aria_aria_fixed_double_duct_le12kW": 0.200,
+                "Ci_PDC_aria_aria_VRF_12_35kW": 0.150,
+                "Ci_PDC_aria_aria_VRF_gt35kW": 0.055,
+                "Ci_PDC_aria_aria_rooftop_le35kW": 0.150,
+                "Ci_PDC_aria_aria_rooftop_gt35kW": 0.055,
+                "Ci_PDC_aria_acqua_le35kW": 0.150,
+                "Ci_PDC_aria_acqua_gt35kW": 0.060,
+                "Ci_PDC_acqua_aria_le35kW": 0.160,
+                "Ci_PDC_acqua_aria_gt35kW": 0.060,
+                "Ci_PDC_acqua_acqua_le35kW": 0.160,
+                "Ci_PDC_acqua_acqua_gt35kW": 0.060,
+                "Ci_PDC_salamoia_aria_le35kW": 0.160,
+                "Ci_PDC_salamoia_aria_gt35kW": 0.060,
+                "Ci_PDC_salamoia_acqua_le35kW": 0.160,
+                "Ci_PDC_salamoia_acqua_gt35kW": 0.060
+            }
+        },
+        "III.C": {
+            "desc": "Generatori a biomassa (≤2.000 kW)",
+            "varianti": {
+                "Biomassa classe 5 stelle": { "cmax": 600, "perc": 0.65 },
+                "Biomassa classe 4 stelle": { "cmax": 0, "perc": 0 }
+            },
+            "durata": { "piccola": 2, "grande": 5 },
+            "soglia_potenza": 35
+        },
+        "III.D": {
+            "desc": "Solare termico (≤2.500 m²)",
+            "varianti": {
+                "Pannelli piani vetrati": { "cmax": 550 },
+                "Pannelli sottovuoto": { "cmax": 700 },
+                "Pannelli non vetrati": { "cmax": 250 }
+            },
+            "imax": 250000,
+            "durata": { "piccola": 2, "grande": 5 },
+            "soglia_superficie": 50,
+            "perc": 0.65
+        },
+        "III.E": {
+            "desc": "Scaldacqua a pompa di calore",
+            "scaglioni": [
+                { "fino_a": 150, "incentivo_fisso": 500 },
+                { "fino_a": 300, "incentivo_fisso": 1000 },
+                { "oltre": true, "incentivo_fisso": 1500 }
+            ],
+            "durata": 2,
+            "perc": 0.4
+        },
+        "III.F": {
+            "desc": "Allaccio a teleriscaldamento efficiente",
+            "varianti": {
+                "Allaccio singolo": { "cmax": 6500 },
+                "Allaccio multiplo": { "cmax": 30000 }
+            },
+            "durata": 5,
+            "perc": 0.65
+        },
         "III.G": {
-            "desc": "Microcogenerazione",
+            "desc": "Microcogenerazione (≤50 kWe)",
             "perc": 0.5,
             "cmax": 4500,
-            "imax": 1000000,
+            "imax": 100000,
             "durata": 5
         }
     }
@@ -185,11 +330,21 @@ export const SOGGETTI_CONFIG = {
     "ETS economico": {
         "label": "ETS economico",
         "descrizione": "Enti del Terzo Settore che svolgono attività commerciale.",
-        "titoli_ammessi": ["III"],
+        "titoli_ammessi": ["II_solo_terziario", "III"],
         "incentivo_base": 0.65,
         "richiesta_preliminare": true,
         "prenotazione": false,
-        "alert": "ATTENZIONE: Obbligo di Richiesta Preliminare. Ammesso solo per Titolo III."
+        "alert": "ATTENZIONE: Obbligo di Richiesta Preliminare. Titolo II ammesso solo su terziario."
+    },
+    "ESCO": {
+        "label": "ESCO (Energy Service Company)",
+        "descrizione": "Società di servizi energetici certificata UNI CEI 11352.",
+        "titoli_ammessi": ["II", "III"],
+        "incentivo_base": 0.65,
+        "richiesta_preliminare": true,
+        "prenotazione": false,
+        "certificazione_richiesta": "UNI CEI 11352",
+        "alert": "ATTENZIONE: Obbligo di Richiesta Preliminare. La certificazione UNI CEI 11352 deve essere valida al momento della richiesta."
     },
     "CER": {
         "label": "Comunità di Energia Rinnovabile (CER)",
@@ -296,6 +451,90 @@ export const INTERVENTI = {
         "documenti_richiesti": [ "scheda tecnica", "prova scaldacqua esistente", "foto ante/post", "fatture e bonifici" ],
         "note_compilatore": "Non confondere con PDC per climatizzazione invernale III.A.",
         "warning": []
+    },
+    "II.C": {
+        "nome": "Schermature e ombreggiamento solare",
+        "descrizione": "Installazione di sistemi di schermatura solare, tende da sole, pellicole o vetri elettrocromici per ridurre i carichi termici estivi.",
+        "lavorazioni_comprese": [ "fornitura e posa sistemi schermanti", "eventuali opere edili connesse", "sistemi motorizzati e domotici", "configurazione e collaudo" ],
+        "lavorazioni_da_verificare": [ "fattore solare g", "efficacia schermatura", "rilascio certificazioni" ],
+        "vincoli": [ "intervento Titolo II", "verificare ammissibilita soggetto/ambito" ],
+        "interventi_collegati_obbligatori": [],
+        "interventi_collegati_suggeriti": [ "II.B", "II.A", "II.F" ],
+        "documenti_richiesti": [ "schede tecniche prodotti", "certificazioni prestazionali", "foto ante/post", "fatture e bonifici" ],
+        "note_compilatore": "Utile per ridurre carichi estivi, abbinabile a infissi e isolamento.",
+        "warning": []
+    },
+    "II.D": {
+        "nome": "Trasformazione in edificio nZEB",
+        "descrizione": "Demolizione e ricostruzione o ampliamento volumetrico ≤25% con raggiungimento classe nZEB.",
+        "lavorazioni_comprese": [ "demolizione selettiva", "ricostruzione con involucro ad alte prestazioni", "impianti ad alta efficienza", "certificazione nZEB" ],
+        "lavorazioni_da_verificare": [ "limite ampliamento 25%", "classe energetica nZEB", "permessi edilizi" ],
+        "vincoli": [ "intervento complesso su intero edificio", "richiede autorizzazioni edilizie" ],
+        "interventi_collegati_obbligatori": [],
+        "interventi_collegati_suggeriti": [ "III.A", "II.H", "II.F" ],
+        "documenti_richiesti": [ "progetto architettonico", "APE nZEB", "relazione tecnica", "permessi edilizi", "fatture e bonifici" ],
+        "note_compilatore": "Intervento complesso, verificare requisiti nZEB completi.",
+        "warning": []
+    },
+    "II.E": {
+        "nome": "Sostituzione illuminazione",
+        "descrizione": "Sostituzione di impianti di illuminazione esistenti con sorgenti LED ad alta efficienza e sistemi di controllo.",
+        "lavorazioni_comprese": [ "rimozione corpi illuminanti esistenti", "fornitura e posa nuovi corpi LED", "sistemi di regolazione e controllo", "adeguamento quadri elettrici" ],
+        "lavorazioni_da_verificare": [ "efficienza luminosa", "classe energetica", "sistemi di controllo presenti" ],
+        "vincoli": [ "intervento Titolo II", "verificare ammissibilita soggetto/ambito" ],
+        "interventi_collegati_obbligatori": [],
+        "interventi_collegati_suggeriti": [ "II.F" ],
+        "documenti_richiesti": [ "schede tecniche corpi illuminanti", "progetto illuminotecnico", "foto ante/post", "fatture e bonifici" ],
+        "note_compilatore": "Intervento Titolo II, verificare soggetto ammesso.",
+        "warning": []
+    },
+    "III.B": {
+        "nome": "Sistema ibrido/bivalente/add-on (gas + PDC)",
+        "descrizione": "Installazione di sistema ibrido con pompa di calore e caldaia a gas, sistema bivalente o add-on PDC su generatore esistente.",
+        "lavorazioni_comprese": [ "fornitura e posa PDC", "integrazione con caldaia esistente o nuova", "centralina ibrida di gestione", "collegamenti idraulici/elettrici", "avviamento e collaudo" ],
+        "lavorazioni_da_verificare": [ "configurazione ibrida/bivalente", "ripartizione carichi", "SCOP sistema" ],
+        "vincoli": [ "richiede edificio esistente climatizzato", "non traina II.H (FV)", "non ammesso per imprese/ETS economici se a gas" ],
+        "interventi_collegati_obbligatori": [],
+        "interventi_collegati_suggeriti": [ "II.F" ],
+        "documenti_richiesti": [ "schede tecniche PDC", "scheda tecnica caldaia", "certificazioni prestazionali", "foto ante/post", "fatture e bonifici" ],
+        "note_compilatore": "Non trainabile per FV. Verificare soggetto e tipo gas.",
+        "warning": [ "Non traina II.H" ]
+    },
+    "III.C": {
+        "nome": "Generatori a biomassa (classe 5 stelle)",
+        "descrizione": "Sostituzione di generatore esistente con caldaia/stufa a biomassa classe 5 stelle, potenza ≤2.000 kW.",
+        "lavorazioni_comprese": [ "rimozione generatore esistente", "fornitura e posa generatore biomassa", "collegamenti idraulici/fumi", "silo/canale alimentazione", "avviamento e collaudo" ],
+        "lavorazioni_da_verificare": [ "classe emissiva 5 stelle", "potenza ≤2.000 kW", "tipologia combustibile" ],
+        "vincoli": [ "richiede sostituzione generatore esistente", "classe 5 stelle obbligatoria", "non ammesso per imprese/ETS economici" ],
+        "interventi_collegati_obbligatori": [],
+        "interventi_collegati_suggeriti": [ "II.A", "II.F" ],
+        "documenti_richiesti": [ "scheda tecnica generatore", "certificazione classe 5 stelle", "libretto impianto ante/post", "foto ante/post", "fatture e bonifici" ],
+        "note_compilatore": "Solo classe 5 stelle ammessa. Classe 4 stelle non incentivabile.",
+        "warning": [ "Classe 4 stelle non ammessa", "Non ammesso per imprese/ETS economici" ]
+    },
+    "III.D": {
+        "nome": "Solare termico",
+        "descrizione": "Installazione di pannelli solari termici per produzione di ACS e/o integrazione riscaldamento, superficie ≤2.500 m².",
+        "lavorazioni_comprese": [ "fornitura e posa pannelli solari termici", "accumulo e centralina", "collegamenti idraulici", "opere di connessione" ],
+        "lavorazioni_da_verificare": [ "tipo pannello", "superficie lorda", "certificazione Solar Keymark" ],
+        "vincoli": [ "superficie ≤2.500 m²", "richiede edificio esistente" ],
+        "interventi_collegati_obbligatori": [],
+        "interventi_collegati_suggeriti": [ "II.A", "II.F" ],
+        "documenti_richiesti": [ "scheda tecnica pannelli", "certificazione Solar Keymark", "foto ante/post", "fatture e bonifici" ],
+        "note_compilatore": "Superficie lorda totale ≤2.500 m².",
+        "warning": []
+    },
+    "III.F": {
+        "nome": "Allaccio a teleriscaldamento efficiente",
+        "descrizione": "Allacciamento dell'edificio a una rete di teleriscaldamento efficiente conforme alla direttiva 2012/27/UE.",
+        "lavorazioni_comprese": [ "scavo e posa tubazioni", "sotto-stazione di scambio", "contabilizzazione", "disconnessione generatore esistente", "adeguamento impianto esistente" ],
+        "lavorazioni_da_verificare": [ "classificazione teleriscaldamento efficiente", "certificazione del gestore", "potenza allacciamento" ],
+        "vincoli": [ "richiede edificio esistente climatizzato", "teleriscaldamento deve essere efficiente (direttiva 2012/27/UE)" ],
+        "interventi_collegati_obbligatori": [],
+        "interventi_collegati_suggeriti": [ "II.A", "II.F" ],
+        "documenti_richiesti": [ "contratto allaccio", "certificazione gestore teleriscaldamento", "foto ante/post", "fatture e bonifici" ],
+        "note_compilatore": "Verificare classificazione teleriscaldamento efficiente.",
+        "warning": []
     }
 };
 
@@ -374,12 +613,17 @@ export const INCENTIVI_SCHEMA = {
     "interventi": [
         { "codice_intervento": "II.A", "titolo": "Isolamento termico superfici opache", "nome": "Cappotto termico", "tipo_calcolo": "percentuale_spesa", "percentuale_base": 0.4, "percentuale_massima": 0.55, "massimale_spesa": 1000000.0, "massimale_incentivo": null, "costo_massimo_unitario": 200.0, "unita_misura": "mq", "formula_riferimento": "min(Spesa, Superficie * Cmax) * %", "fonte": "D.M. 7 agosto 2025", "note": [ "Variante Cmax in base a tipo parete" ], "stato_validatione": "validato_documentale", "parametri": [ { "nome": "superficie_isolata", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "spesa_totale", "categoria": "economico", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "zona_climatica", "categoria": "formula", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" } ] },
         { "codice_intervento": "II.D", "titolo": "Trasformazione nZEB", "nome": "Edifici a energia quasi zero", "tipo_calcolo": "da_verificare", "percentuale_base": null, "percentuale_massima": null, "massimale_spesa": null, "massimale_incentivo": null, "costo_massimo_unitario": null, "unita_misura": "mq", "formula_riferimento": "da_verificare", "fonte": "D.M. 7 agosto 2025", "note": [ "Intervento complesso su intero edificio" ], "stato_validazione": "da_validare", "parametri": [ { "nome": "superficie_utile", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "spesa_totale", "categoria": "economico", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "attestazione_nzeb", "categoria": "ammissibilita", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" } ] },
-        { "codice_intervento": "II.F", "titolo": "Building Automation", "nome": "Sistemi di automazione e controllo", "tipo_calcolo": "percentuale_spesa", "percentuale_base": 0.4, "percentuale_massima": 0.4, "massimale_spesa": 50000.0, "massimale_incentivo": null, "costo_massimo_unitario": 50.0, "unita_misura": "mq", "formula_riferimento": "min(Spesa, Superficie * Cmax) * %", "fonte": "D.M. 7 agosto 2025", "note": [ "Classe B secondo EN 15232" ], "stato_validazione": "da_validare", "parametri": [ { "nome": "superficie_asservita", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "spesa_totale", "categoria": "economico", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" } ] },
+        { "codice_intervento": "II.F", "titolo": "Building Automation", "nome": "Sistemi di automazione e controllo", "tipo_calcolo": "percentuale_spesa", "percentuale_base": 0.4, "percentuale_massima": 0.4, "massimale_spesa": 100000.0, "massimale_incentivo": null, "costo_massimo_unitario": 60.0, "unita_misura": "mq", "formula_riferimento": "min(Spesa, Superficie * Cmax) * %", "fonte": "D.M. 7 agosto 2025", "note": [ "Classe B secondo EN 15232" ], "stato_validazione": "da_validare", "parametri": [ { "nome": "superficie_asservita", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "spesa_totale", "categoria": "economico", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" } ] },
         { "codice_intervento": "II.G", "titolo": "Infrastrutture ricarica veicoli elettrici", "nome": "Colonnine ricarica", "tipo_calcolo": "percentuale_spesa", "percentuale_base": 0.3, "percentuale_massima": 0.3, "massimale_spesa": null, "massimale_incentivo": null, "costo_massimo_unitario": null, "unita_misura": "n_punti", "formula_riferimento": "min(Spesa, Cmax_fisso + Potenza * Cmax_kw) * %", "fonte": "D.M. 7 agosto 2025", "note": [ "Richiede III.A elettrica" ], "stato_validazione": "parziale", "parametri": [ { "nome": "numero_punti_ricarica", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "tipo_monofase_trifase", "categoria": "formula", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "potenza_kw", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "spesa_totale", "categoria": "economico", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" } ] },
         { "codice_intervento": "II.H", "titolo": "Fotovoltaico + Accumulo", "nome": "Fotovoltaico trainato", "tipo_calcolo": "percentuale_spesa", "percentuale_base": 0.2, "percentuale_massima": 0.35, "massimale_spesa": null, "massimale_incentivo": null, "costo_massimo_unitario": 1500.0, "unita_misura": "kW", "formula_riferimento": "Potenza * Cmax_scaglione * %", "fonte": "D.M. 7 agosto 2025", "note": [ "Richiede III.A elettrica pura e sostituzione integrale" ], "stato_validazione": "validato_documentale", "parametri": [ { "nome": "potenza_picco_kW", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "numero_moduli", "categoria": "documentazione", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "marca_moduli", "categoria": "documentazione", "obbligatorio": false, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "modello_moduli", "categoria": "documentazione", "obbligatorio": false, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "iscritti_enea", "categoria": "premialita", "obbligatorio": false, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "sezione_enea", "categoria": "premialita", "obbligatorio": false, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "produzione_ue", "categoria": "premialita", "obbligatorio": false, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "accumulo_presente", "categoria": "ammissibilita", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "capacita_accumulo_kWh", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "costo_fv", "categoria": "economico", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "costo_accumulo", "categoria": "economico", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "connessione_pertinenze", "categoria": "ammissibilita", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "abbinato_pdc_elettrica", "categoria": "ammissibilita", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "documentazione_disponibile", "categoria": "documentazione", "obbligatorio": false, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "preventivo_disponibile", "categoria": "documentazione", "obbligatorio": false, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" } ] },
         { "codice_intervento": "III.A", "titolo": "Pompa di calore elettrica", "nome": "Sostituzione con PDC", "tipo_calcolo": "formula_prestazionale", "percentuale_base": 0.65, "percentuale_massima": 0.65, "massimale_spesa": null, "massimale_incentivo": null, "costo_massimo_unitario": null, "unita_measure": "kW", "formula_riferimento": "Pn * Ci * Quf", "fonte": "D.M. 7 agosto 2025", "note": [ "Quf dipendente da zona climatica" ], "stato_validazione": "validato_documentale", "parametri": [ { "nome": "marca", "categoria": "documentazione", "obbligatorio": false, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "modello", "categoria": "documentazione", "obbligatorio": false, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "tipologia_pdc", "categoria": "formula", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "is_elettrica", "categoria": "ammissibilita", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "potenza_termica_nominale", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "potenza_elettrica_assorbita", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "cop", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "sorgente_energetica", "categoria": "formula", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "servizio", "categoria": "formula", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "sostituisce_esistente", "categoria": "ammissibilita", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "documentazione_disponibile", "categoria": "documentazione", "obbligatorio": false, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "scheda_prodotto", "categoria": "documentazione", "obbligatorio": false, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "certificazione_prestazionale", "categoria": "documentazione", "obbligatorio": false, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "zona_climatica", "categoria": "formula", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "coefficiente_Ci", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" } ] },
         { "codice_intervento": "III.B", "titolo": "Sistemi ibridi / bivalenti / add-on", "nome": "Ibrido gas + PDC", "tipo_calcolo": "formula_prestazionale", "percentuale_base": 0.65, "percentuale_massima": 0.65, "massimale_spesa": null, "massimale_incentivo": null, "costo_massimo_unitario": null, "unita_measure": "kW", "formula_riferimento": "Pn * Ci * Quf", "fonte": "D.M. 7 agosto 2025", "note": [ "Non traina II.H" ], "stato_validazione": "parziale", "parametri": [ { "nome": "potenza_nominale_Pn_pdc", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "zona_climatica", "categoria": "formula", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "coefficiente_Ci", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "spesa_totale", "categoria": "economico", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" } ] },
-        { "codice_intervento": "III.E", "titolo": "Scaldacqua a pompa di calore", "nome": "PDC per ACS", "tipo_calcolo": "percentuale_spesa", "percentuale_base": 0.4, "percentuale_massima": 0.4, "massimale_spesa": null, "massimale_incentivo": 1500.0, "costo_massimo_unitario": null, "unita_measure": "litri", "formula_riferimento": "Incentivo_fisso * %", "fonte": "D.M. 7 agosto 2025", "note": [ "Importi fissi per scaglioni litri" ], "stato_validazione": "validato_documentale", "parametri": [ { "nome": "capacita_litri", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "classe_energetica", "categoria": "ammissibilita", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "spesa_totale", "categoria": "economico", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" } ] }
+        { "codice_intervento": "III.E", "titolo": "Scaldacqua a pompa di calore", "nome": "PDC per ACS", "tipo_calcolo": "percentuale_spesa", "percentuale_base": 0.4, "percentuale_massima": 0.4, "massimale_spesa": null, "massimale_incentivo": 1500.0, "costo_massimo_unitario": null, "unita_measure": "litri", "formula_riferimento": "min(spesa, incentivo_fisso_per_scaglione)", "fonte": "D.M. 7 agosto 2025", "note": [ "Importi fissi per scaglioni litri: ≤150L=500€, ≤300L=1000€, >300L=1500€" ], "stato_validazione": "validato_documentale", "parametri": [ { "nome": "capacita_litri", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "classe_energetica", "categoria": "ammissibilita", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "spesa_totale", "categoria": "economico", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" } ] },
+        { "codice_intervento": "II.C", "titolo": "Schermature e ombreggiamento solare", "nome": "Sistemi schermanti", "tipo_calcolo": "percentuale_spesa", "percentuale_base": 0.4, "percentuale_massima": 0.55, "massimale_spesa": null, "massimale_incentivo": 90000.0, "costo_massimo_unitario": null, "unita_misura": "mq", "formula_riferimento": "min(Spesa, Superficie * Cmax) * %", "fonte": "D.M. 7 agosto 2025", "note": [ "Cmax variabile per tipo schermatura" ], "stato_validazione": "da_validare", "parametri": [ { "nome": "superficie_schermata", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "tipo_schermatura", "categoria": "formula", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "spesa_totale", "categoria": "economico", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" } ] },
+        { "codice_intervento": "II.E", "titolo": "Sostituzione illuminazione", "nome": "LED e controllo", "tipo_calcolo": "percentuale_spesa", "percentuale_base": 0.4, "percentuale_massima": 0.55, "massimale_spesa": null, "massimale_incentivo": 140000.0, "costo_massimo_unitario": null, "unita_misura": "mq", "formula_riferimento": "min(Spesa, Superficie * Cmax) * %", "fonte": "D.M. 7 agosto 2025", "note": [ "Cmax differenziato per privati/PA" ], "stato_validazione": "da_validare", "parametri": [ { "nome": "superficie_illuminata", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "tipo_edificio", "categoria": "ammissibilita", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "dichiarazione", "stato_validazione": "da_validare", "note": "" }, { "nome": "spesa_totale", "categoria": "economico", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" } ] },
+        { "codice_intervento": "III.C", "titolo": "Generatori a biomassa", "nome": "Caldaie/stufe biomassa classe 5 stelle", "tipo_calcolo": "percentuale_spesa", "percentuale_base": 0.65, "percentuale_massima": 0.65, "massimale_spesa": null, "massimale_incentivo": null, "costo_massimo_unitario": 600.0, "unita_measure": "kW", "formula_riferimento": "min(Spesa, Potenza * Cmax) * %", "fonte": "D.M. 7 agosto 2025", "note": [ "Solo classe 5 stelle ammessa", "Potenza ≤2.000 kW" ], "stato_validazione": "da_validare", "parametri": [ { "nome": "potenza_nominale_kw", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "classe_emissiva", "categoria": "ammissibilita", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "spesa_totale", "categoria": "economico", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" } ] },
+        { "codice_intervento": "III.D", "titolo": "Solare termico", "nome": "Pannelli solari termici", "tipo_calcolo": "percentuale_spesa", "percentuale_base": 0.65, "percentuale_massima": 0.65, "massimale_spesa": null, "massimale_incentivo": 250000.0, "costo_massimo_unitario": null, "unita_measure": "mq", "formula_riferimento": "min(Spesa, Superficie * Cmax) * %", "fonte": "D.M. 7 agosto 2025", "note": [ "Superficie lorda ≤2.500 m²", "Cmax variabile per tipo pannello" ], "stato_validazione": "da_validare", "parametri": [ { "nome": "superficie_lorda_mq", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "tipo_pannello", "categoria": "formula", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" }, { "nome": "spesa_totale", "categoria": "economico", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" } ] },
+        { "codice_intervento": "III.F", "titolo": "Allaccio a teleriscaldamento", "nome": "Allaccio a rete efficiente", "tipo_calcolo": "percentuale_spesa", "percentuale_base": 0.65, "percentuale_massima": 0.65, "massimale_spesa": null, "massimale_incentivo": null, "costo_massimo_unitario": null, "unita_misura": "kW", "formula_riferimento": "min(Spesa, Cmax_allaccio) * %", "fonte": "D.M. 7 agosto 2025", "note": [ "Cmax 6.500€ singolo, 30.000€ multiplo" ], "stato_validazione": "da_validare", "parametri": [ { "nome": "tipo_allaccio", "categoria": "formula", "obbligatorio": true, "tipo_dato": "string", "fonte_dato": "contratto", "stato_validazione": "da_validare", "note": "" }, { "nome": "potenza_allaccio", "categoria": "formula", "obbligatorio": true, "tipo_dato": "number", "fonte_dato": "contratto", "stato_validazione": "da_validare", "note": "" }, { "nome": "spesa_totale", "categoria": "economico", "obbligatorio": false, "tipo_dato": "number", "fonte_dato": "scheda_tecnica", "stato_validazione": "da_validare", "note": "" } ] }
     ]
 };
 
@@ -427,7 +671,7 @@ export const SCHEDE_TECNICHE = {
         "nome": "Fotovoltaico + accumulo",
         "descrizione": "Raccolta dati FV/accumulo. Richiede abbinamento con PDC elettrica.",
         "campi": [
-            { "id": "potenza_fv_kw", "label": "Potenza FV", "tipo": "number", "obbligatorio": true, "unita": "kWp", "min": 1, "max": 1000, "categoria": "formula", "fonte_dato": "progetto/preventivo", "note": "Potenza di picco." },
+            { "id": "potenza_fv_kw", "label": "Potenza FV", "tipo": "number", "obbligatorio": true, "unita": "kWp", "min": 2, "max": 1000, "categoria": "formula", "fonte_dato": "progetto/preventivo", "note": "Potenza di picco (min 2 kW, max 1.000 kW)." },
             { "id": "is_autoconsumo", "label": "Regime Autoconsumo", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "dichiarazione", "note": "Obbligatorio per incentivo." },
             { "id": "made_in_eu", "label": "Moduli Made in EU", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "certificato", "note": "Bonus +5%." },
             { "id": "registro_enea", "label": "Iscritto Registro ENEA", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": false, "unita": "", "categoria": "premialita", "fonte_dato": "registro ENEA", "note": "Bonus variabile." },
@@ -442,7 +686,7 @@ export const SCHEDE_TECNICHE = {
         "nome": "Pompe di calore",
         "descrizione": "Raccolta dati tecnici PDC per calcolo Ei.",
         "campi": [
-            { "id": "tipologia_pdc", "label": "Tipologia PDC", "tipo": "select", "opzioni": ["aria/aria", "aria/acqua", "acqua/acqua", "salamoia/acqua"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "scheda tecnica", "note": "Sorgente/Utenza." },
+            { "id": "tipologia_pdc", "label": "Tipologia PDC", "tipo": "select", "opzioni": ["aria/aria", "aria/acqua", "acqua/aria", "acqua/acqua", "salamoia/aria", "salamoia/acqua"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "scheda tecnica", "note": "Sorgente/Utenza." },
             { "id": "potenza_pdc_kw", "label": "Potenza termica nominale (Prated)", "tipo": "number", "obbligatorio": true, "unita": "kW", "min": 1, "max": 2000, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Prated." },
             { "id": "scop", "label": "SCOP", "tipo": "number", "obbligatorio": true, "unita": "", "min": 2.0, "max": 10.0, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Efficienza stagionale." },
             { "id": "eta_s", "label": "Efficienza stagionale (ηs)", "tipo": "number", "obbligatorio": true, "unita": "%", "min": 110, "max": 500, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "ηs per calcolo kp." },
@@ -458,6 +702,98 @@ export const SCHEDE_TECNICHE = {
             { "id": "pes", "label": "Risparmio Energia Primaria (PES)", "tipo": "number", "obbligatorio": true, "unita": "%", "min": 10, "max": 100, "categoria": "formula", "fonte_dato": "asseverazione", "note": "Minimo 10%." },
             { "id": "tipo_alimentazione", "label": "Fonte di alimentazione", "tipo": "select", "opzioni": ["Biomassa", "Biogas", "Altro"], "obbligatorio": true, "unita": "", "categoria": "descrittivo", "fonte_dato": "progetto", "note": "Fonte rinnovabile." },
             { "id": "costo_intervento", "label": "Costo totale microcogenerazione", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 1000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+        ]
+    },
+    "II.C": {
+        "nome": "Schermature e ombreggiamento solare",
+        "descrizione": "Raccolta dati per sistemi di schermatura solare.",
+        "campi": [
+            { "id": "tipo_schermatura", "label": "Tipo schermatura", "tipo": "select", "opzioni": ["Schermature mobili", "Schermature fisse", "Tende da sole", "Pellicole", "Vetri elettrocromici"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "scheda tecnica", "note": "Determina Cmax." },
+            { "id": "superficie_schermata_mq", "label": "Superficie schermata", "tipo": "number", "obbligatorio": true, "unita": "mq", "min": 0.5, "max": 10000, "categoria": "formula", "fonte_dato": "rilievo/progetto", "note": "Superficie netta." },
+            { "id": "fattore_solare_g", "label": "Fattore solare g (ante)", "tipo": "number", "obbligatorio": true, "unita": "", "min": 0.1, "max": 1.0, "categoria": "ammissibilita", "fonte_dato": "scheda tecnica", "note": "Valore ante operam." },
+            { "id": "fattore_solare_g_post", "label": "Fattore solare g (post)", "tipo": "number", "obbligatorio": true, "unita": "", "min": 0.01, "max": 0.9, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Valore post operam." },
+            { "id": "costo_schermatura", "label": "Costo totale schermatura", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 500000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+        ]
+    },
+    "II.D": {
+        "nome": "Trasformazione nZEB",
+        "descrizione": "Raccolta dati per demolizione/ricostruzione o ampliamento nZEB.",
+        "campi": [
+            { "id": "tipo_intervento_nzeb", "label": "Tipo intervento", "tipo": "select", "opzioni": ["Demolizione e ricostruzione", "Ampliamento ≤25%"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "progetto", "note": "Determina Cmax." },
+            { "id": "superficie_utile_mq", "label": "Superficie utile", "tipo": "number", "obbligatorio": true, "unita": "mq", "min": 10, "max": 50000, "categoria": "formula", "fonte_dato": "progetto", "note": "Superficie utile dell'edificio." },
+            { "id": "classe_energetica_post", "label": "Classe energetica post", "tipo": "select", "opzioni": ["A4", "A3", "A2", "A1"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "APE", "note": "Deve essere nZEB (A4)." },
+            { "id": "costo_nzeb", "label": "Costo totale intervento", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 10000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+        ]
+    },
+    "II.E": {
+        "nome": "Sostituzione illuminazione",
+        "descrizione": "Raccolta dati per sostituzione corpi illuminanti con LED.",
+        "campi": [
+            { "id": "tipo_edificio_illuminazione", "label": "Tipo edificio", "tipo": "select", "opzioni": ["Edifici privati", "Edifici PA"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "dichiarazione", "note": "Determina Cmax." },
+            { "id": "superficie_illuminata_mq", "label": "Superficie illuminata", "tipo": "number", "obbligatorio": true, "unita": "mq", "min": 10, "max": 50000, "categoria": "formula", "fonte_dato": "rilievo/progetto", "note": "Superficie servita." },
+            { "id": "efficienza_luminosa_lmW", "label": "Efficienza luminosa", "tipo": "number", "obbligatorio": true, "unita": "lm/W", "min": 50, "max": 250, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Efficienza nuovi corpi." },
+            { "id": "costo_illuminazione", "label": "Costo totale illuminazione", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 1000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+        ]
+    },
+    "III.B": {
+        "nome": "Sistema ibrido/bivalente/add-on",
+        "descrizione": "Raccolta dati per sistemi ibridi gas + PDC.",
+        "campi": [
+            { "id": "tipologia_pdc", "label": "Tipologia PDC", "tipo": "select", "opzioni": ["aria/aria", "aria/acqua", "acqua/aria", "acqua/acqua", "salamoia/aria", "salamoia/acqua"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "scheda tecnica", "note": "Sorgente/Utenza." },
+            { "id": "potenza_pdc_kw", "label": "Potenza termica nominale PDC", "tipo": "number", "obbligatorio": true, "unita": "kW", "min": 1, "max": 2000, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Pn PDC." },
+            { "id": "scop", "label": "SCOP PDC", "tipo": "number", "obbligatorio": true, "unita": "", "min": 2.0, "max": 10.0, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Efficienza stagionale." },
+            { "id": "eta_s", "label": "Efficienza stagionale (ηs)", "tipo": "number", "obbligatorio": true, "unita": "%", "min": 110, "max": 500, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "ηs per calcolo kp." },
+            { "id": "tipo_sistema", "label": "Tipo sistema", "tipo": "select", "opzioni": ["Ibrido parallelo", "Bivalente", "Add-on PDC"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "progetto", "note": "Configurazione impianto." },
+            { "id": "costo_ibrido", "label": "Costo totale sistema ibrido", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 3000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+        ]
+    },
+    "III.C": {
+        "nome": "Generatori a biomassa",
+        "descrizione": "Raccolta dati per caldaie/stufe a biomassa classe 5 stelle.",
+        "campi": [
+            { "id": "potenza_nominale_kw", "label": "Potenza nominale", "tipo": "number", "obbligatorio": true, "unita": "kW", "min": 1, "max": 2000, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Massimo 2.000 kW." },
+            { "id": "classe_emissiva", "label": "Classe emissiva", "tipo": "select", "opzioni": ["5 stelle", "4 stelle"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "scheda tecnica", "note": "Solo 5 stelle ammessa." },
+            { "id": "tipo_biomassa", "label": "Tipo combustibile", "tipo": "select", "opzioni": ["Pellet", "Cippato", "Legna", "Altro"], "obbligatorio": true, "unita": "", "categoria": "descrittivo", "fonte_dato": "scheda tecnica", "note": "Tipologia prevalente." },
+            { "id": "costo_biomassa", "label": "Costo totale generatore biomassa", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 2000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+        ]
+    },
+    "III.D": {
+        "nome": "Solare termico",
+        "descrizione": "Raccolta dati per pannelli solari termici.",
+        "campi": [
+            { "id": "tipo_pannello_solare", "label": "Tipo pannello", "tipo": "select", "opzioni": ["Pannelli piani vetrati", "Pannelli sottovuoto", "Pannelli non vetrati"], "obbligatorio": true, "unita": "", "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Determina Cmax." },
+            { "id": "superficie_lorda_mq", "label": "Superficie lorda", "tipo": "number", "obbligatorio": true, "unita": "mq", "min": 1, "max": 2500, "categoria": "formula", "fonte_dato": "progetto", "note": "Massimo 2.500 m²." },
+            { "id": "certificazione_solar_keymark", "label": "Certificazione Solar Keymark", "tipo": "select", "opzioni": ["sì", "no"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "certificato", "note": "Obbligatoria per incentivo." },
+            { "id": "costo_solare_termico", "label": "Costo totale solare termico", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 1000000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+        ]
+    },
+    "III.E": {
+        "nome": "Scaldacqua a pompa di calore",
+        "descrizione": "Raccolta dati per scaldacqua PDC.",
+        "campi": [
+            { "id": "capacita_litri", "label": "Capacità accumulo", "tipo": "number", "obbligatorio": true, "unita": "litri", "min": 50, "max": 1000, "categoria": "formula", "fonte_dato": "scheda tecnica", "note": "Determina importo fisso." },
+            { "id": "classe_energetica", "label": "Classe energetica", "tipo": "select", "opzioni": ["A+", "A", "B", "C"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "scheda tecnica", "note": "Deve essere almeno A." },
+            { "id": "costo_scaldacqua", "label": "Costo totale scaldacqua", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 50000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+        ]
+    },
+    "II.F": {
+        "nome": "Building automation",
+        "descrizione": "Raccolta dati per sistemi di automazione e controllo edificio.",
+        "campi": [
+            { "id": "superficie_edificio_mq", "label": "Superficie asservita", "tipo": "number", "obbligatorio": true, "unita": "mq", "min": 10, "max": 50000, "categoria": "formula", "fonte_dato": "rilievo/progetto", "note": "Superficie gestita dal sistema." },
+            { "id": "classe_bac", "label": "Classe BAC (EN 15232)", "tipo": "select", "opzioni": ["A", "B", "C", "D"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "progetto", "note": "Minimo classe B per incentivo." },
+            { "id": "funzioni_controllo", "label": "Funzioni implementate", "tipo": "textarea", "obbligatorio": false, "unita": "", "categoria": "descrittivo", "fonte_dato": "progetto", "note": "Elenco funzioni di controllo e gestione." },
+            { "id": "costo_building_automation", "label": "Costo totale building automation", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 500000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
+        ]
+    },
+    "III.F": {
+        "nome": "Allaccio a teleriscaldamento efficiente",
+        "descrizione": "Raccolta dati per allaccio a rete di teleriscaldamento.",
+        "campi": [
+            { "id": "tipo_allaccio", "label": "Tipo allaccio", "tipo": "select", "opzioni": ["Allaccio singolo", "Allaccio multiplo"], "obbligatorio": true, "unita": "", "categoria": "formula", "fonte_dato": "contratto", "note": "Determina Cmax." },
+            { "id": "potenza_allaccio_kw", "label": "Potenza allaccio", "tipo": "number", "obbligatorio": true, "unita": "kW", "min": 1, "max": 10000, "categoria": "formula", "fonte_dato": "contratto", "note": "Potenza sottostazione." },
+            { "id": "teleriscaldamento_efficiente", "label": "Teleriscaldamento efficiente (Dir. 2012/27/UE)", "tipo": "select", "opzioni": ["sì", "no", "da verificare"], "obbligatorio": true, "unita": "", "categoria": "ammissibilita", "fonte_dato": "certificazione gestore", "note": "Obbligatorio." },
+            { "id": "costo_allaccio", "label": "Costo totale allaccio", "tipo": "number", "obbligatorio": true, "unita": "€", "min": 1, "max": 500000, "categoria": "economico", "fonte_dato": "preventivo/fattura", "note": "Dato economico." }
         ]
     }
 };
@@ -570,6 +906,184 @@ export const FORMULE_INCENTIVO = {
         "versione_normativa": "CT3_DM_2025",
         "fonte": "normativa",
         "note": ["Calcolo su spesa sostenuta con limiti PES/Potenza"]
+    },
+    "II.C": {
+        "nome": "Schermature e ombreggiamento solare",
+        "formula_status": "validato_tecnico",
+        "tipo_formula": "percentuale_spesa",
+        "attiva": true,
+        "formula_base": "min(spesa, superficie * cmax) * percentuale",
+        "richiede": ["superficie_schermata_mq", "costo_schermatura", "tipo_schermatura"],
+        "mappatura_dati": {
+            "spesa": "costo_schermatura",
+            "superficie": "superficie_schermata_mq"
+        },
+        "blocchi": [],
+        "versione_normativa": "CT3_DM_2025",
+        "fonte": "normativa",
+        "note": ["Formula identica a II.A"]
+    },
+    "II.D": {
+        "nome": "Trasformazione nZEB",
+        "formula_status": "da_validare",
+        "tipo_formula": "percentuale_spesa",
+        "attiva": true,
+        "formula_base": "min(spesa, superficie * cmax) * percentuale",
+        "richiede": ["superficie_utile_mq", "costo_nzeb", "tipo_intervento_nzeb"],
+        "mappatura_dati": {
+            "spesa": "costo_nzeb",
+            "superficie": "superficie_utile_mq"
+        },
+        "blocchi": [],
+        "versione_normativa": "CT3_DM_2025",
+        "fonte": "normativa",
+        "note": ["Intervento complesso su intero edificio"]
+    },
+    "II.E": {
+        "nome": "Sostituzione illuminazione",
+        "formula_status": "validato_tecnico",
+        "tipo_formula": "percentuale_spesa",
+        "attiva": true,
+        "formula_base": "min(spesa, superficie * cmax) * percentuale",
+        "richiede": ["superficie_illuminata_mq", "costo_illuminazione", "tipo_edificio_illuminazione"],
+        "mappatura_dati": {
+            "spesa": "costo_illuminazione",
+            "superficie": "superficie_illuminata_mq"
+        },
+        "blocchi": [],
+        "versione_normativa": "CT3_DM_2025",
+        "fonte": "normativa",
+        "note": ["Cmax differenziato per privati/PA"]
+    },
+    "II.F": {
+        "nome": "Building automation",
+        "formula_status": "validato_tecnico",
+        "tipo_formula": "percentuale_spesa",
+        "attiva": true,
+        "formula_base": "min(spesa, superficie * cmax) * percentuale",
+        "richiede": ["superficie_edificio_mq", "costo_building_automation"],
+        "mappatura_dati": {
+            "spesa": "costo_building_automation",
+            "superficie": "superficie_edificio_mq"
+        },
+        "blocchi": [],
+        "versione_normativa": "CT3_DM_2025",
+        "fonte": "normativa",
+        "note": ["Classe B EN 15232"]
+    },
+    "II.H": {
+        "nome": "Fotovoltaico + accumulo",
+        "formula_status": "validato_tecnico",
+        "tipo_formula": "percentuale_spesa",
+        "attiva": true,
+        "formula_base": "min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale",
+        "richiede": ["potenza_fv_kw", "costo_fv", "accumulo_presente", "capacita_accumulo_kwh"],
+        "mappatura_dati": {
+            "spesa": "costo_fv",
+            "potenza_fv": "potenza_fv_kw",
+            "accumulo_kwh": "capacita_accumulo_kwh"
+        },
+        "vincoli": [
+            { "campo": "potenza_fv_kw", "min": 2, "max": 1000 }
+        ],
+        "blocchi": [],
+        "versione_normativa": "CT3_DM_2025",
+        "fonte": "normativa",
+        "note": ["II.H non autonomo, richiede III.A"]
+    },
+    "III.B": {
+        "nome": "Sistemi ibridi/bivalenti/add-on",
+        "formula_status": "validato_tecnico",
+        "tipo_formula": "prestazionale",
+        "attiva": true,
+        "formula_base": "k * Ei * Ci (stessa formula III.A con k ≤ 1)",
+        "variabili": [
+            { "codice": "kp", "espressione": "eta_s / eta_s_min_ecodesign", "descrizione": "Coefficiente di premialità" },
+            { "codice": "Qu", "espressione": "Prated * Quf", "descrizione": "Calore totale prodotto stimato" },
+            { "codice": "Ei", "espressione": "Qu * (1 - 1/SCOP) * kp", "descrizione": "Energia termica incentivata" },
+            { "codice": "k", "descrizione": "Coefficiente riduttivo per sistemi ibridi", "valore_default": 0.7 }
+        ],
+        "richiede": ["potenza_pdc_kw", "tipologia_pdc", "scop", "eta_s", "tipo_sistema"],
+        "mappatura_dati": {
+            "Prated": "potenza_pdc_kw",
+            "SCOP": "scop",
+            "eta_s": "eta_s"
+        },
+        "blocchi": [],
+        "versione_normativa": "CT3_DM_2025",
+        "fonte": "normativa",
+        "note": ["Non traina II.H"]
+    },
+    "III.C": {
+        "nome": "Generatori a biomassa",
+        "formula_status": "validato_tecnico",
+        "tipo_formula": "percentuale_spesa",
+        "attiva": true,
+        "formula_base": "min(spesa, potenza * cmax) * percentuale",
+        "richiede": ["potenza_nominale_kw", "costo_biomassa", "classe_emissiva"],
+        "mappatura_dati": {
+            "spesa": "costo_biomassa",
+            "potenza": "potenza_nominale_kw"
+        },
+        "vincoli": [
+            { "campo": "potenza_nominale_kw", "max": 2000 },
+            { "campo": "classe_emissiva", "valori_ammessi": ["5 stelle"] }
+        ],
+        "blocchi": [],
+        "versione_normativa": "CT3_DM_2025",
+        "fonte": "normativa",
+        "note": ["Solo classe 5 stelle"]
+    },
+    "III.D": {
+        "nome": "Solare termico",
+        "formula_status": "validato_tecnico",
+        "tipo_formula": "percentuale_spesa",
+        "attiva": true,
+        "formula_base": "min(spesa, superficie * cmax) * percentuale",
+        "richiede": ["superficie_lorda_mq", "costo_solare_termico", "tipo_pannello_solare"],
+        "mappatura_dati": {
+            "spesa": "costo_solare_termico",
+            "superficie": "superficie_lorda_mq"
+        },
+        "vincoli": [
+            { "campo": "superficie_lorda_mq", "max": 2500 }
+        ],
+        "blocchi": [],
+        "versione_normativa": "CT3_DM_2025",
+        "fonte": "normativa",
+        "note": ["Superficie lorda ≤2.500 m²"]
+    },
+    "III.E": {
+        "nome": "Scaldacqua a pompa di calore",
+        "formula_status": "validato_tecnico",
+        "tipo_formula": "percentuale_spesa",
+        "attiva": true,
+        "formula_base": "min(spesa, incentivo_fisso_per_scaglione)",
+        "richiede": ["capacita_litri", "costo_scaldacqua"],
+        "mappatura_dati": {
+            "spesa": "costo_scaldacqua",
+            "capacita": "capacita_litri"
+        },
+        "blocchi": [],
+        "versione_normativa": "CT3_DM_2025",
+        "fonte": "normativa",
+        "note": ["Importi fissi: ≤150L=500€, ≤300L=1000€, >300L=1500€"]
+    },
+    "III.F": {
+        "nome": "Allaccio a teleriscaldamento efficiente",
+        "formula_status": "validato_tecnico",
+        "tipo_formula": "percentuale_spesa",
+        "attiva": true,
+        "formula_base": "min(spesa, cmax_allaccio) * percentuale",
+        "richiede": ["tipo_allaccio", "costo_allaccio", "potenza_allaccio_kw"],
+        "mappatura_dati": {
+            "spesa": "costo_allaccio",
+            "tipo": "tipo_allaccio"
+        },
+        "blocchi": [],
+        "versione_normativa": "CT3_DM_2025",
+        "fonte": "normativa",
+        "note": ["Cmax: 6.500€ singolo, 30.000€ multiplo"]
     }
 };
 
@@ -583,7 +1097,15 @@ export const PREVENTIVO_VOCI = {
     "II.A": { "nome": "Isolamento termico", "voci_suggerite": [ { "descrizione": "Materiale isolante", "tipo_costo": "fornitura" }, { "descrizione": "Posa sistema isolante", "tipo_costo": "posa" }, { "descrizione": "Opere accessorie e ponteggi", "tipo_costo": "opere_accessorie" }, { "descrizione": "Relazione tecnica e asseverazioni", "tipo_costo": "documentazione" } ] },
     "II.B": { "nome": "Infissi", "voci_suggerite": [ { "descrizione": "Fornitura serramenti", "tipo_costo": "fornitura" }, { "descrizione": "Smontaggio infissi esistenti", "tipo_costo": "opere_accessorie" }, { "descrizione": "Posa nuovi serramenti", "tipo_costo": "posa" }, { "descrizione": "Schede tecniche, marcatura CE e dichiarazioni", "tipo_costo": "documentazione" } ] },
     "II.F": { "nome": "Building automation", "voci_suggerite": [ { "descrizione": "Sensori, controller e dispositivi attuatori", "tipo_costo": "fornitura" }, { "descrizione": "Installazione e configurazione sistema", "tipo_costo": "posa" }, { "descrizione": "Collaudo e documentazione tecnica", "tipo_costo": "documentazione" } ] },
-    "II.G": { "nome": "Infrastrutture ricarica veicoli elettrici", "voci_suggerite": [ { "descrizione": "Fornitura infrastruttura di ricarica", "tipo_costo": "fornitura" }, { "descrizione": "Adeguamento elettrico e posa", "tipo_costo": "posa" }, { "descrizione": "Dichiarazioni e documentazione tecnica", "tipo_costo": "documentazione" } ] }
+    "II.G": { "nome": "Infrastrutture ricarica veicoli elettrici", "voci_suggerite": [ { "descrizione": "Fornitura infrastruttura di ricarica", "tipo_costo": "fornitura" }, { "descrizione": "Adeguamento elettrico e posa", "tipo_costo": "posa" }, { "descrizione": "Dichiarazioni e documentazione tecnica", "tipo_costo": "documentazione" } ] },
+    "II.C": { "nome": "Schermature e ombreggiamento", "voci_suggerite": [ { "descrizione": "Fornitura sistemi schermanti", "tipo_costo": "fornitura" }, { "descrizione": "Posa e installazione", "tipo_costo": "posa" }, { "descrizione": "Motorizzazione e domotica", "tipo_costo": "fornitura" } ] },
+    "II.D": { "nome": "Trasformazione nZEB", "voci_suggerite": [ { "descrizione": "Demolizione e ricostruzione", "tipo_costo": "fornitura" }, { "descrizione": "Progettazione e direzione lavori", "tipo_costo": "documentazione" }, { "descrizione": "Certificazione nZEB", "tipo_costo": "documentazione" } ] },
+    "II.E": { "nome": "Illuminazione LED", "voci_suggerite": [ { "descrizione": "Fornitura corpi illuminanti LED", "tipo_costo": "fornitura" }, { "descrizione": "Adeguamento quadri e cablaggi", "tipo_costo": "posa" }, { "descrizione": "Progetto illuminotecnico", "tipo_costo": "documentazione" } ] },
+    "III.B": { "nome": "Sistema ibrido gas + PDC", "voci_suggerite": [ { "descrizione": "Fornitura pompa di calore", "tipo_costo": "fornitura" }, { "descrizione": "Caldaia a gas e centralina ibrida", "tipo_costo": "fornitura" }, { "descrizione": "Posa e collegamenti", "tipo_costo": "posa" }, { "descrizione": "Configurazione e collaudo", "tipo_costo": "documentazione" } ] },
+    "III.C": { "nome": "Generatore biomassa", "voci_suggerite": [ { "descrizione": "Fornitura caldaia/stufa biomassa", "tipo_costo": "fornitura" }, { "descrizione": "Posa e collegamenti", "tipo_costo": "posa" }, { "descrizione": "Sistema alimentazione e accumulo", "tipo_costo": "fornitura" }, { "descrizione": "Dichiarazione conformità", "tipo_costo": "documentazione" } ] },
+    "III.D": { "nome": "Solare termico", "voci_suggerite": [ { "descrizione": "Fornitura pannelli solari termici", "tipo_costo": "fornitura" }, { "descrizione": "Accumulo e centralina", "tipo_costo": "fornitura" }, { "descrizione": "Posa e collegamenti idraulici", "tipo_costo": "posa" } ] },
+    "III.E": { "nome": "Scaldacqua PDC", "voci_suggerite": [ { "descrizione": "Fornitura scaldacqua PDC", "tipo_costo": "fornitura" }, { "descrizione": "Posa e collegamenti", "tipo_costo": "posa" }, { "descrizione": "Smaltimento scaldacqua esistente", "tipo_costo": "opere_accessorie" } ] },
+    "III.F": { "nome": "Allaccio teleriscaldamento", "voci_suggerite": [ { "descrizione": "Sotto-stazione di scambio", "tipo_costo": "fornitura" }, { "descrizione": "Scavo e posa tubazioni", "tipo_costo": "posa" }, { "descrizione": "Contabilizzazione", "tipo_costo": "fornitura" }, { "descrizione": "Disconnessione generatore esistente", "tipo_costo": "opere_accessorie" } ] }
 };
 
 /**

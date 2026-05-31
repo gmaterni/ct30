@@ -302,7 +302,9 @@ const TEST_SCENARIOS_LIST = [
         "Documento Identità richiedente (SA)",
         "Codice Fiscale / Tessera Sanitaria (SA)",
         "Visura Catastale recente (ultimi 6 mesi)",
-        "Titolo di possesso (atto, contratto locazione, ecc.)"
+        "Titolo di possesso (atto, contratto locazione, ecc.)",
+        "Asseverazione tecnico abilitato (Art. 8 comma 4 D.M. 7/8/2025)",
+        "DSAN - Dichiarazione Sostitutiva Atto Notorietà"
     ];
 
     // 2. FUNZIONI PRIVATE DI RENDERING

@@ -33,7 +33,9 @@ const UaCrossRuleEngine = function() {
     const _ELETTRICHE_TIPOLOGIE = [
         "aria/aria",
         "aria/acqua", 
+        "acqua/aria",
         "acqua/acqua",
+        "salamoia/aria",
         "salamoia/acqua",
         "geotermica"
     ];

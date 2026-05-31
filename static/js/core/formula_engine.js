@@ -164,14 +164,19 @@ const UaFormulaEngine = function() {
 
         let key = "";
         if (tipologia === "aria/aria") {
-            // Distinzione tra split, VRF e rooftop non ancora granulare nei dati input, 
-            // uso logica di fallback o default split se <= 12
             if (pn <= 12) key = "Ci_PDC_aria_aria_split_le12kW";
-            else key = "Ci_PDC_aria_aria_VRF_12_35kW"; // Esempio di mapping
+            else if (pn <= 35) key = "Ci_PDC_aria_aria_VRF_12_35kW";
+            else key = "Ci_PDC_aria_aria_VRF_gt35kW";
         } else if (tipologia === "aria/acqua") {
             key = pn <= 35 ? "Ci_PDC_aria_acqua_le35kW" : "Ci_PDC_aria_acqua_gt35kW";
+        } else if (tipologia === "acqua/aria") {
+            key = pn <= 35 ? "Ci_PDC_acqua_aria_le35kW" : "Ci_PDC_acqua_aria_gt35kW";
         } else if (tipologia === "acqua/acqua" || tipologia === "geotermica") {
             key = pn <= 35 ? "Ci_PDC_acqua_acqua_le35kW" : "Ci_PDC_acqua_acqua_gt35kW";
+        } else if (tipologia === "salamoia/aria") {
+            key = pn <= 35 ? "Ci_PDC_salamoia_aria_le35kW" : "Ci_PDC_salamoia_aria_gt35kW";
+        } else if (tipologia === "salamoia/acqua") {
+            key = pn <= 35 ? "Ci_PDC_salamoia_acqua_le35kW" : "Ci_PDC_salamoia_acqua_gt35kW";
         }
 
         return config[key] || 0;
@@ -210,24 +215,63 @@ const UaFormulaEngine = function() {
         }
 
         // Risoluzione coefficienti specifici per intervento
-        if (code === "III.A") {
+        if (code === "III.A" || code === "III.B") {
             params.Ci = _resolveCiPdc(dati);
             params.Quf = params.quf;
-            params.k = 1.0; // Default per standard, da gestire per ibridi
-            params.eta_s_min_ecodesign = 110; // Valore di esempio, da prendere da tabelle ecodesign
+            params.k = code === "III.B" ? 0.7 : 1.0;
+            params.eta_s_min_ecodesign = 110;
         } else if (code === "II.A") {
             params.cmax = _resolveCmaxIsolamento(dati.tipo_superficie_opaca);
             params.percentuale = (zona === "Zona E" || zona === "Zona F") ? 0.5 : 0.4;
+        } else if (code === "II.B") {
+            const cmaxKey = (zona === "Zona A" || zona === "Zona B" || zona === "Zona C") ? "Zone A,B,C" : "Zone D,E,F";
+            params.cmax = RULES.interventi["II.B"].varianti[cmaxKey]?.cmax || 700;
+            params.percentuale = RULES.interventi["II.B"].perc || 0.4;
+        } else if (code === "II.C") {
+            const tipo = dati.tipo_schermatura || "Schermature mobili";
+            params.cmax = RULES.interventi["II.C"].varianti[tipo]?.cmax || 150;
+            params.percentuale = RULES.interventi["II.C"].perc || 0.4;
+        } else if (code === "II.D") {
+            const tipo = dati.tipo_intervento_nzeb || "Demolizione e ricostruzione";
+            params.cmax = RULES.interventi["II.D"].varianti[tipo]?.cmax || 1300;
+            params.percentuale = RULES.interventi["II.D"].perc || 0.4;
+        } else if (code === "II.E") {
+            const tipo = dati.tipo_edificio_illuminazione || "Edifici privati";
+            params.cmax = RULES.interventi["II.E"].varianti[tipo]?.cmax || 35;
+            params.percentuale = RULES.interventi["II.E"].perc || 0.4;
+        } else if (code === "II.F") {
+            params.cmax = RULES.interventi["II.F"].varianti["Classe B EN 15232"]?.cmax || 60;
+            params.percentuale = RULES.interventi["II.F"].perc || 0.4;
         } else if (code === "II.G") {
             const tipo = dati.tipo_ricarica || "monofase";
             const varKey = tipo.includes("trifase") ? "Punto ricarica Trifase" : "Punto ricarica Monofase";
             params.cmax_fisso = RULES.interventi["II.G"].varianti[varKey]?.cmax_fisso || 2400;
             params.cmax_kw = RULES.interventi["II.G"].varianti["Potenza > 22 kW"]?.cmax_kw || 1200;
             params.percentuale = 0.3;
+        } else if (code === "II.H") {
+            const potenza = parseFloat(dati.potenza_fv_kw) || 0;
+            const scaglioni = RULES.interventi["II.H"].scaglioni_fv || [];
+            let cmax = 1050;
+            for (const s of scaglioni) {
+                if (potenza <= s.fino_a) { cmax = s.cmax; break; }
+            }
+            params.cmax = cmax;
+            params.cmax_accumulo = RULES.interventi["II.H"].accumulo?.cmax || 1000;
+            params.percentuale = RULES.interventi["II.H"].perc || 0.2;
+        } else if (code === "III.C") {
+            params.cmax = RULES.interventi["III.C"].varianti["Biomassa classe 5 stelle"]?.cmax || 600;
+            params.percentuale = RULES.interventi["III.C"].varianti["Biomassa classe 5 stelle"]?.perc || 0.65;
+        } else if (code === "III.D") {
+            const tipo = dati.tipo_pannello_solare || "Pannelli piani vetrati";
+            params.cmax = RULES.interventi["III.D"].varianti[tipo]?.cmax || 550;
+            params.percentuale = RULES.interventi["III.D"].perc || 0.65;
+        } else if (code === "III.F") {
+            const tipo = dati.tipo_allaccio || "Allaccio singolo";
+            params.cmax = RULES.interventi["III.F"].varianti[tipo]?.cmax || 6500;
+            params.percentuale = RULES.interventi["III.F"].perc || 0.65;
         } else if (code === "III.G") {
-            // Microcogenerazione: usa il valore 'perc' dalle regole
             const ruleConfig = RULES.interventi["III.G"];
-            params.percentuale = ruleConfig?.perc || 0.5; // Default 0.5 se non definito
+            params.percentuale = ruleConfig?.perc || 0.5;
         }
 
         // Case generico per interventi di tipo "percentuale_spesa" non esplicitamente gestiti
