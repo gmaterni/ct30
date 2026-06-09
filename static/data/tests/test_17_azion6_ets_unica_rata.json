@@ -1,0 +1,166 @@
+{
+    "codice": "CT30-T17",
+    "nome": "Az#6 — ETS non econ unica rata sopra 15k",
+    "descrizione": "Test azione #6: ETS non economico con II.A sopra 15.000€. Deve mostrare unica rata (non rateizzata) perché PA/ETS hanno sempre soluzione unica.",
+    "soggetto": {
+        "tipo": "ETS non economico",
+        "denominazione": "Fondazione Casa Accoglienza ETS",
+        "codiceFiscale": "90012345678",
+        "partitaIva": "90012345678",
+        "email": "info@fondazionecasaaccoglienza.ets.it",
+        "telefono": "+39 0423 654321"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "Fondazione Casa Accoglienza ETS",
+            "tipo": "ETS non economico",
+            "cf_piva": "90012345678",
+            "partita_iva": "90012345678",
+            "indirizzo": "Via Roma 15, Montebelluna (TV)",
+            "titolo_godimento": "Proprietà",
+            "pec": "fondazionecasaaccoglienza@pec.ets.it",
+            "email": "info@fondazionecasaaccoglienza.ets.it",
+            "telefono": "+39 0423 654321"
+        },
+        "sr": {
+            "denominazione": "Fondazione Casa Accoglienza ETS",
+            "cf_piva": "90012345678",
+            "partita_iva": "90012345678",
+            "indirizzo": "Via Roma 15, Montebelluna (TV)",
+            "iban": "IT60X0542811101000000654321",
+            "pec": "fondazionecasaaccoglienza@pec.ets.it",
+            "email": "info@fondazionecasaaccoglienza.ets.it",
+            "coincide_con_sa": true,
+            "tipo": "ETS non economico"
+        },
+        "proprietario": {
+            "denominazione": "Fondazione Casa Accoglienza ETS",
+            "cf_piva": "90012345678",
+            "partita_iva": "90012345678",
+            "indirizzo": "Via Roma 15, Montebelluna (TV)",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        }
+    },
+    "immobile": {
+        "indirizzo": "Via Roma 15, Montebelluna (TV)",
+        "zonaClimatica": "Zona E",
+        "destinazione": "Terziario",
+        "tipo_edificio": "Edificio Singolo",
+        "categoriaCatastale": "B/1",
+        "classeEnergeticaAnte": "F",
+        "potenza_esistente_kw": 60,
+        "combustibile_ante": "Gasolio"
+    },
+    "edificio": {
+        "indirizzo": "Via Roma 15, Montebelluna (TV)",
+        "categoria_catastale": "B/1",
+        "zona_climatica": "Zona E",
+        "ambito": "Terziario",
+        "anno_costruzione": 1985,
+        "superficie_utile_mq": 800,
+        "comune_sotto_15k": false,
+        "scuola_ospedale": false,
+        "impianto_esistente": {
+            "tipo": "Caldaia",
+            "potenza_kw": 60,
+            "combustibile": "gasolio",
+            "libretto": true,
+            "libretto_codice": "IT0123456710"
+        }
+    },
+    "selectedInterventi": [
+        "II.A"
+    ],
+    "interventi": [
+        "II.A"
+    ],
+    "valori_campi": {
+        "II.A": {
+            "tipo_superficie_opaca": "Parete Esterna",
+            "superficie_isolata_mq": 500,
+            "costo_isolamento": 50000,
+            "made_in_eu": "no",
+            "riduzione_ep_10": "no",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "no"
+        }
+    },
+    "interventiData": {
+        "II.A": {
+            "tipo_superficie_opaca": "Parete Esterna",
+            "superficie_isolata_mq": 500,
+            "costo_isolamento": 50000,
+            "made_in_eu": "no",
+            "riduzione_ep_10": "no",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "no"
+        }
+    },
+    "postOperam": {
+        "II.A": {
+            "parete_isolata": true,
+            "superficie_mq": 500,
+            "miglioramento_trasmittanza": true
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "II.A_01",
+                "codice_intervento": "II.A",
+                "descrizione": "Cappotto termico esterno 500mq",
+                "tipo_costo": "fornitura",
+                "importo": 35000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "II.A_02",
+                "codice_intervento": "II.A",
+                "descrizione": "Posa cappotto termico",
+                "tipo_costo": "posa",
+                "importo": 12000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "II.A_03",
+                "codice_intervento": "II.A",
+                "descrizione": "Documentazione tecnica e relazione",
+                "tipo_costo": "documentazione",
+                "importo": 3000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 50000,
+            "totale_fornitura": 35000,
+            "totale_posa": 12000,
+            "totale_documentazione": 3000
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Visura Catastale recente (ultimi 6 mesi)": true,
+        "Titolo di possesso (atto, contratto locazione, ecc.)": true,
+        "Copia documento identità Soggetto Responsabile": true,
+        "IBAN (documento di conferma conto)": true,
+        "PEC del Soggetto Responsabile": true,
+        "Diagnosi energetica ante": true,
+        "Documentazione tecnica cappotto": true,
+        "Certificazione materiali isolanti": true,
+        "Fatture e bonifici": true,
+        "Dichiarazione di conformità": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

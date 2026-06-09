@@ -1,0 +1,189 @@
+{
+    "codice": "CT30-T15",
+    "nome": "Az#4 — II.B valvole non presenti (blocco)",
+    "descrizione": "Test azione #4: II.B infissi con valvole_termostatiche = \"non presenti\". Il calcolo deve essere bloccato.",
+    "soggetto": {
+        "tipo": "Privato terziario",
+        "denominazione": "Giuseppe Verdi",
+        "codiceFiscale": "VRDGPP75R15F205X",
+        "email": "giuseppe.verdi@email.it",
+        "telefono": "051 9876543"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "Giuseppe Verdi",
+            "tipo": "Privato terziario",
+            "cf_piva": "VRDGPP75R15F205X",
+            "titolo_godimento": "Proprietà",
+            "email": "giuseppe.verdi@email.it",
+            "telefono": "051 9876543"
+        },
+        "sr": {
+            "denominazione": "Giuseppe Verdi",
+            "cf_piva": "VRDGPP75R15F205X",
+            "iban": "IT40X0123456789012345678901",
+            "pec": "giuseppe.verdi@pec.it",
+            "coincide_con_sa": true,
+            "tipo": "Privato"
+        },
+        "proprietario": {
+            "denominazione": "Giuseppe Verdi",
+            "cf_piva": "VRDGPP75R15F205X",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "ruoli": {
+        "sa": {
+            "denominazione": "Giuseppe Verdi",
+            "tipo": "Privato terziario",
+            "cf_piva": "VRDGPP75R15F205X",
+            "titolo_godimento": "Proprietà"
+        },
+        "sr": {
+            "denominazione": "Giuseppe Verdi",
+            "cf_piva": "VRDGPP75R15F205X",
+            "iban": "IT40X0123456789012345678901",
+            "pec": "giuseppe.verdi@pec.it",
+            "coincide_con_sa": true
+        },
+        "proprietario": {
+            "denominazione": "Giuseppe Verdi",
+            "cf_piva": "VRDGPP75R15F205X",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "immobile": {
+        "indirizzo": "Via Dante Alighieri 22, Bologna (BO)",
+        "zonaClimatica": "Zona E",
+        "destinazione": "Residenziale",
+        "tipo_edificio": "Condominio",
+        "categoriaCatastale": "A/3",
+        "classeEnergeticaAnte": "F",
+        "potenza_esistente_kw": 35,
+        "combustibile_ante": "metano"
+    },
+    "edificio": {
+        "indirizzo": "Via Dante Alighieri 22, Bologna (BO)",
+        "categoria_catastale": "A/3",
+        "zona_climatica": "Zona E",
+        "impianto_esistente": {
+            "tipo": "Caldaia",
+            "potenza_kw": 35,
+            "combustibile": "metano",
+            "libretto": false,
+            "libretto_codice": ""
+        }
+    },
+    "richiestaPreliminareInviata": false,
+    "selectedInterventi": [
+        "II.B"
+    ],
+    "interventi": [
+        "II.B"
+    ],
+    "valori_campi": {
+        "II.B": {
+            "tipologia_serramento": "finestra",
+            "superficie_infissi_mq": 28,
+            "trasmittanza_infissi_ante": 3.2,
+            "trasmittanza_infissi_post": 1.1,
+            "costo_infissi": 21000,
+            "made_in_eu": "sì",
+            "riduzione_ep_10": "sì",
+            "zona_assistita_a": "sì",
+            "zona_assistita_c": "no",
+            "valvole_termostatiche": "non presenti"
+        }
+    },
+    "interventiData": {
+        "II.B": {
+            "tipologia_serramento": "finestra",
+            "superficie_infissi_mq": 28,
+            "trasmittanza_infissi_ante": 3.2,
+            "trasmittanza_infissi_post": 1.1,
+            "costo_infissi": 21000,
+            "made_in_eu": "sì",
+            "riduzione_ep_10": "sì",
+            "zona_assistita_a": "sì",
+            "zona_assistita_c": "no",
+            "valvole_termostatiche": "non presenti"
+        }
+    },
+    "postOperam": {
+        "II.B": {
+            "infissi_sostituiti": true,
+            "superficie_mq": 28,
+            "miglioramento_trasmittanza": true
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "inf_forn",
+                "codice_intervento": "II.B",
+                "descrizione": "Fornitura infissi classe A+ 28mq",
+                "tipo_costo": "fornitura",
+                "importo": 14000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "inf_posa",
+                "codice_intervento": "II.B",
+                "descrizione": "Posa infissi e smaltimento vecchi serramenti",
+                "tipo_costo": "posa",
+                "importo": 5500,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "inf_doc",
+                "codice_intervento": "II.B",
+                "descrizione": "Documentazione tecnica infissi",
+                "tipo_costo": "documentazione",
+                "importo": 1500,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 21000,
+            "totale_fornitura": 14000,
+            "totale_posa": 5500,
+            "totale_documentazione": 1500
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Visura Catastale recente (ultimi 6 mesi)": true,
+        "Titolo di possesso (atto, contratto locazione, ecc.)": true,
+        "Atto di Assenso Proprietario": true,
+        "Documentazione fotografica ante-operam": true,
+        "APE / Diagnosi Energetica": true,
+        "Relazione tecnica illustrativa del progetto": true,
+        "Schede tecniche infissi": true,
+        "Certificazione trasmittanza infissi": true,
+        "Certificazione Made in EU (infissi)": true,
+        "Fatture e bonifici": true,
+        "Dichiarazione di conformità": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

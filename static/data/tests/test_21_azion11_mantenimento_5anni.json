@@ -1,0 +1,120 @@
+{
+    "codice": "CT30-T21",
+    "nome": "Az#11 — Vincolo mantenimento 5 anni",
+    "descrizione": "Test azione #11: Impresa con III.A. Verifica presenza obbligo normativo di mantenimento impianto per 5 anni dalla data di erogazione (D.M. 7 agosto 2025).",
+    "mantenimento_5_anni": true,
+    "soggetto": {
+        "tipo": "Impresa",
+        "denominazione": "GreenTech Service Srl",
+        "codiceFiscale": "07654321012",
+        "email": "info@greentech.it",
+        "telefono": "02 3456789"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "GreenTech Service Srl",
+            "tipo": "Impresa",
+            "cf_piva": "07654321012",
+            "titolo_godimento": "Proprietà",
+            "email": "info@greentech.it",
+            "telefono": "02 3456789"
+        },
+        "sr": {
+            "denominazione": "Anna Bianchi",
+            "cf_piva": "BNCNNA80A41F205Z",
+            "iban": "IT40X0123456789012345678903",
+            "pec": "anna.bianchi@pec.it",
+            "coincide_con_sa": false,
+            "tipo": "Privato"
+        },
+        "proprietario": {
+            "denominazione": "GreenTech Service Srl",
+            "cf_piva": "07654321012",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "immobile": {
+        "indirizzo": "Viale Lombardia 50, Milano (MI)",
+        "zonaClimatica": "Zona E",
+        "destinazione": "Terziario",
+        "tipo_edificio": "Uffici",
+        "categoriaCatastale": "D/7",
+        "classeEnergeticaAnte": "F",
+        "potenza_esistente_kw": 60,
+        "combustibile_ante": "metano"
+    },
+    "edificio": {
+        "indirizzo": "Viale Lombardia 50, Milano (MI)",
+        "categoria_catastale": "D/7",
+        "zona_climatica": "Zona E",
+        "superficie_utile_mq": 400,
+        "anno_costruzione": 1990,
+        "impianto_esistente": {
+            "tipo": "Caldaia",
+            "potenza_kw": 60,
+            "combustibile": "metano",
+            "libretto": true,
+            "libretto_codice": "IT0112233446"
+        }
+    },
+    "selectedInterventi": [
+        "III.A"
+    ],
+    "interventi": [
+        "III.A"
+    ],
+    "iva": {
+        "III.A": 3168
+    },
+    "valori_campi": {
+        "III.A": {
+            "potenza_pdc_kw": 10,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.5,
+            "eta_s": 140,
+            "made_in_eu": "sì"
+        }
+    },
+    "interventiData": {
+        "III.A": {
+            "potenza_pdc_kw": 10,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.5,
+            "eta_s": 140,
+            "made_in_eu": "sì"
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "III.A_01",
+                "codice_intervento": "III.A",
+                "descrizione": "Pompa di calore 10kW aria/acqua",
+                "tipo_costo": "fornitura",
+                "importo": 18000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 18000
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Titolo di possesso": true,
+        "APE": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

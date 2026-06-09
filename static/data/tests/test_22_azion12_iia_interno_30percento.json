@@ -1,0 +1,132 @@
+{
+    "codice": "CT30-T22",
+    "nome": "Az#12 — II.A Parete Interna con maggiorazione cmax 30%",
+    "descrizione": "Test azione #12: Impresa terziario con II.A Parete Interna. Verifica maggiorazione cmax 30% per parete interna e corretta applicazione limite di spesa.",
+    "soggetto": {
+        "tipo": "Impresa",
+        "denominazione": "EdilFutura S.r.l.",
+        "codiceFiscale": "05432109876",
+        "email": "info@edilfutura.it",
+        "telefono": "035 567890"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "EdilFutura S.r.l.",
+            "tipo": "Impresa",
+            "cf_piva": "05432109876",
+            "titolo_godimento": "Proprietà",
+            "email": "info@edilfutura.it",
+            "telefono": "035 567890"
+        },
+        "sr": {
+            "denominazione": "EdilFutura S.r.l.",
+            "cf_piva": "05432109876",
+            "iban": "IT40X0123456789012345678904",
+            "pec": "edilfutura@pec.it",
+            "coincide_con_sa": true,
+            "tipo": "Privato"
+        },
+        "proprietario": {
+            "denominazione": "EdilFutura S.r.l.",
+            "cf_piva": "05432109876",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "immobile": {
+        "indirizzo": "Piazza della Repubblica 12, Bergamo (BG)",
+        "zonaClimatica": "Zona E",
+        "destinazione": "Terziario",
+        "tipo_edificio": "Uffici",
+        "categoriaCatastale": "D/7",
+        "classeEnergeticaAnte": "G",
+        "potenza_esistente_kw": 30,
+        "combustibile_ante": "gasolio"
+    },
+    "edificio": {
+        "indirizzo": "Piazza della Repubblica 12, Bergamo (BG)",
+        "categoria_catastale": "D/7",
+        "zona_climatica": "Zona E",
+        "superficie_utile_mq": 300,
+        "anno_costruzione": 1975,
+        "impianto_esistente": {
+            "tipo": "Caldaia",
+            "potenza_kw": 30,
+            "combustibile": "gasolio",
+            "libretto": true,
+            "libretto_codice": "IT0554433221"
+        }
+    },
+    "selectedInterventi": [
+        "II.A"
+    ],
+    "interventi": [
+        "II.A"
+    ],
+    "valori_campi": {
+        "II.A": {
+            "tipo_superficie_opaca": "Parete Interna",
+            "superficie_isolata_mq": 80,
+            "superficie_mq": 80,
+            "trasmittanza_ante": 1.2,
+            "trasmittanza_post": 0.28,
+            "costo_isolamento": 15000,
+            "made_in_eu": "sì"
+        }
+    },
+    "interventiData": {
+        "II.A": {
+            "tipo_superficie_opaca": "Parete Interna",
+            "superficie_isolata_mq": 80,
+            "superficie_mq": 80,
+            "trasmittanza_ante": 1.2,
+            "trasmittanza_post": 0.28,
+            "costo_isolamento": 15000,
+            "made_in_eu": "sì"
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "II.A_01",
+                "codice_intervento": "II.A",
+                "descrizione": "Isolamento parete interna 80mq",
+                "tipo_costo": "fornitura",
+                "importo": 10000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "II.A_02",
+                "codice_intervento": "II.A",
+                "descrizione": "Posa isolamento parete interna",
+                "tipo_costo": "posa",
+                "importo": 5000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 15000,
+            "totale_fornitura": 10000,
+            "totale_posa": 5000
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Titolo di possesso": true,
+        "APE": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

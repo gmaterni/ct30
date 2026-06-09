@@ -1,0 +1,5129 @@
+{
+  "III.D": {
+    "ACQUAPOWER": {
+      "AS - 2,37": [
+        {
+          "area_lorda_m2": 2.37,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1154,
+          "energia_qcol_75c_kwhtanno": 682,
+          "producibilita_specifica_kwhtm2anno": 487,
+          "tipologia_pannello": "piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "AS - 2,37H": [
+        {
+          "area_lorda_m2": 2.37,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1154,
+          "energia_qcol_75c_kwhtanno": 682,
+          "producibilita_specifica_kwhtm2anno": 487,
+          "tipologia_pannello": "piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "AS - 2,72": [
+        {
+          "area_lorda_m2": 2.72,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1461,
+          "energia_qcol_75c_kwhtanno": 932,
+          "producibilita_specifica_kwhtm2anno": 537,
+          "tipologia_pannello": "piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "AS - 2,72H": [
+        {
+          "area_lorda_m2": 2.72,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1461,
+          "energia_qcol_75c_kwhtanno": 932,
+          "producibilita_specifica_kwhtm2anno": 537,
+          "tipologia_pannello": "piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ASC 3.00V": [
+        {
+          "area_lorda_m2": 3.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1552,
+          "energia_qcol_75c_kwhtanno": 893,
+          "producibilita_specifica_kwhtm2anno": 517,
+          "tipologia_pannello": "piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ASC 3.00H": [
+        {
+          "area_lorda_m2": 3.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1552,
+          "energia_qcol_75c_kwhtanno": 893,
+          "producibilita_specifica_kwhtm2anno": 517,
+          "tipologia_pannello": "piani",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "AIRCON": {
+      "AIR SUN 2.72": [
+        {
+          "area_lorda_m2": 2.72,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1461,
+          "energia_qcol_75c_kwhtanno": 932,
+          "producibilita_specifica_kwhtm2anno": 537.0,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "AIR SUN GEN 2.00": [
+        {
+          "area_lorda_m2": 2.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1072,
+          "energia_qcol_75c_kwhtanno": 683,
+          "producibilita_specifica_kwhtm2anno": 536,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "AIR SUN GEN 3.00": [
+        {
+          "area_lorda_m2": 3.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1656,
+          "energia_qcol_75c_kwhtanno": 1101,
+          "producibilita_specifica_kwhtm2anno": 552,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ]
+    },
+    "ATLANTIC": {
+      "HELIO PLAN 2.0": [
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 896,
+          "energia_qcol_75c_kwhtanno": 508,
+          "producibilita_specifica_kwhtm2anno": 444,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "VARSUN 2.0": [
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 896,
+          "energia_qcol_75c_kwhtanno": 508,
+          "producibilita_specifica_kwhtm2anno": 444,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ]
+    },
+    "AVALEN": {
+      "FG 21": [
+        {
+          "area_lorda_m2": 2.07,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 961,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.07,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 961,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.07,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 961,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.07,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 961,
+          "energia_qcol_75c_kwhtanno": 591,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.07,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 961,
+          "energia_qcol_75c_kwhtanno": 591,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.07,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 961,
+          "energia_qcol_75c_kwhtanno": 591,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Teleriscaldamento"
+        }
+      ],
+      "FG 25": [
+        {
+          "area_lorda_m2": 2.42,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1124,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.42,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1124,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.42,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1124,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.42,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1124,
+          "energia_qcol_75c_kwhtanno": 691,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.42,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1124,
+          "energia_qcol_75c_kwhtanno": 691,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.42,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1124,
+          "energia_qcol_75c_kwhtanno": 691,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Teleriscaldamento"
+        }
+      ],
+      "FG 27": [
+        {
+          "area_lorda_m2": 2.72,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1461,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 537,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.72,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1461,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 537,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.72,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1461,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 537,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.72,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 932,
+          "energia_qcol_75c_kwhtanno": 932,
+          "producibilita_specifica_kwhtm2anno": 343,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.72,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 932,
+          "energia_qcol_75c_kwhtanno": 932,
+          "producibilita_specifica_kwhtm2anno": 343,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.72,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1461,
+          "energia_qcol_75c_kwhtanno": 932,
+          "producibilita_specifica_kwhtm2anno": 537,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Teleriscaldamento"
+        }
+      ],
+      "ZEFYR 24": [
+        {
+          "area_lorda_m2": 2.38,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1585,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.38,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1585,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.38,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1585,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.38,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1357,
+          "energia_qcol_75c_kwhtanno": 1357,
+          "producibilita_specifica_kwhtm2anno": 570,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.38,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1357,
+          "energia_qcol_75c_kwhtanno": 1357,
+          "producibilita_specifica_kwhtm2anno": 570,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.38,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1585,
+          "energia_qcol_75c_kwhtanno": 1357,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Teleriscaldamento"
+        }
+      ],
+      "ZEFYR 36": [
+        {
+          "area_lorda_m2": 3.55,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2365,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 3.55,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2365,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.55,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2365,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.55,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2024,
+          "energia_qcol_75c_kwhtanno": 2024,
+          "producibilita_specifica_kwhtm2anno": 570,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 3.55,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2024,
+          "energia_qcol_75c_kwhtanno": 2024,
+          "producibilita_specifica_kwhtm2anno": 570,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 3.55,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2365,
+          "energia_qcol_75c_kwhtanno": 2024,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Teleriscaldamento"
+        }
+      ],
+      "ZEFYR 48": [
+        {
+          "area_lorda_m2": 4.72,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 3144,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 4.72,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 3144,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 4.72,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 3144,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 4.72,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2692,
+          "energia_qcol_75c_kwhtanno": 2692,
+          "producibilita_specifica_kwhtm2anno": 570,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 4.72,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2692,
+          "energia_qcol_75c_kwhtanno": 2692,
+          "producibilita_specifica_kwhtm2anno": 570,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 4.72,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 3144,
+          "energia_qcol_75c_kwhtanno": 2692,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Teleriscaldamento"
+        }
+      ],
+      "ZEFYR 59": [
+        {
+          "area_lorda_m2": 5.9,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 3930,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 5.9,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 3930,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 5.9,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 3930,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 5.9,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 3365,
+          "energia_qcol_75c_kwhtanno": 3365,
+          "producibilita_specifica_kwhtm2anno": 570,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 5.9,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 3365,
+          "energia_qcol_75c_kwhtanno": 3365,
+          "producibilita_specifica_kwhtm2anno": 570,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 5.9,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 3930,
+          "energia_qcol_75c_kwhtanno": 3365,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Teleriscaldamento"
+        }
+      ],
+      "ZEFYR 71": [
+        {
+          "area_lorda_m2": 7.07,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 4710,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 7.07,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 4710,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 7.07,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 4710,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 7.07,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 4032,
+          "energia_qcol_75c_kwhtanno": 4032,
+          "producibilita_specifica_kwhtm2anno": 570,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 7.07,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 4032,
+          "energia_qcol_75c_kwhtanno": 4032,
+          "producibilita_specifica_kwhtm2anno": 570,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 7.07,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 4710,
+          "energia_qcol_75c_kwhtanno": 4032,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Teleriscaldamento"
+        }
+      ],
+      "ZEFYR 83": [
+        {
+          "area_lorda_m2": 8.24,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 5597,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 679,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 8.24,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 5597,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 679,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 8.24,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 5597,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 679,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 8.24,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 4848,
+          "energia_qcol_75c_kwhtanno": 4848,
+          "producibilita_specifica_kwhtm2anno": 588,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 8.24,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 4848,
+          "energia_qcol_75c_kwhtanno": 4848,
+          "producibilita_specifica_kwhtm2anno": 588,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 8.24,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 5597,
+          "energia_qcol_75c_kwhtanno": 4848,
+          "producibilita_specifica_kwhtm2anno": 679,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Teleriscaldamento"
+        }
+      ]
+    },
+    "BALTUR": {
+      "ETASUN 20H": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 813,
+          "energia_qcol_75c_kwhtanno": 443,
+          "producibilita_specifica_kwhtm2anno": 405,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "ETASUN 25V": [
+        {
+          "area_lorda_m2": 2.51,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1016,
+          "energia_qcol_75c_kwhtanno": 554,
+          "producibilita_specifica_kwhtm2anno": 405,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "ETASUN 25H": [
+        {
+          "area_lorda_m2": 2.51,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1016,
+          "energia_qcol_75c_kwhtanno": 554,
+          "producibilita_specifica_kwhtm2anno": 405,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "ETASUN 20V": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 813,
+          "energia_qcol_75c_kwhtanno": 443,
+          "producibilita_specifica_kwhtm2anno": 405,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ]
+    },
+    "BAXI": {
+      "SOL 250-V": [
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1223,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 485,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1223,
+          "energia_qcol_75c_kwhtanno": 705,
+          "producibilita_specifica_kwhtm2anno": 485,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOL 250-O": [
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1163,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 462,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1163,
+          "energia_qcol_75c_kwhtanno": 602,
+          "producibilita_specifica_kwhtm2anno": 462,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOL 200-V": [
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 918,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 454,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 918,
+          "energia_qcol_75c_kwhtanno": 522,
+          "producibilita_specifica_kwhtm2anno": 454,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SB 25+V": [
+        {
+          "area_lorda_m2": 2.51,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1192,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 475,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.51,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1192,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 475,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SB 20+V": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 931,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 463,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 931,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 463,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "STS+ 150 2.0 FR/OR": [
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": 1.92,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": null,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "STS+ 200 2.0 FR/OR": [
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": 1.92,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": null,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "STS+ 200 2.5 FR/OR": [
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": 2.4,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": null,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "STS+ 300 2.0 FR": [
+        {
+          "area_lorda_m2": 4.04,
+          "area_assorbitore_m2": 3.84,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": null,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "STS+ 300 2.5 FR": [
+        {
+          "area_lorda_m2": 5.04,
+          "area_assorbitore_m2": 4.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": null,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "STS+ 300 2.0 OR": [
+        {
+          "area_lorda_m2": 4.04,
+          "area_assorbitore_m2": 3.84,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": null,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "STS+ 300 2.5 OR": [
+        {
+          "area_lorda_m2": 5.02,
+          "area_assorbitore_m2": 4.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": null,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "BERETTA": {
+      "SCF-25/4B": [
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1055,
+          "energia_qcol_75c_kwhtanno": 638,
+          "producibilita_specifica_kwhtm2anno": 459,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1055,
+          "energia_qcol_75c_kwhtanno": 638,
+          "producibilita_specifica_kwhtm2anno": 459,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1055,
+          "energia_qcol_75c_kwhtanno": 638,
+          "producibilita_specifica_kwhtm2anno": 459,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "NB-SOL 150/1 TI": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 565,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "NB-SOL 150/1 TP": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 565,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "NB-SOL 200/1 TI": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 585,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "NB-SOL 200/1 TP": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 585,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "NB-SOL 220/2 TI": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 440,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "NB-SOL 220/2 TP": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 440,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "NB-SOL 300/2 TI": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 507,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "NB-SOL 300/2 TP": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 507,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "NB-SOL 300/3 TI": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 442,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "NB-SOL 300/3 TP": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 442,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "BIASI": {
+      "SOL BLUHX+": [
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1419,
+          "energia_qcol_75c_kwhtanno": 949,
+          "producibilita_specifica_kwhtm2anno": 563,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1419,
+          "energia_qcol_75c_kwhtanno": 949,
+          "producibilita_specifica_kwhtm2anno": 563,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1419,
+          "energia_qcol_75c_kwhtanno": 949,
+          "producibilita_specifica_kwhtm2anno": 563,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "SOLVITA30": [
+        {
+          "area_lorda_m2": 3.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1499,
+          "energia_qcol_75c_kwhtanno": 922,
+          "producibilita_specifica_kwhtm2anno": 499,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1499,
+          "energia_qcol_75c_kwhtanno": 922,
+          "producibilita_specifica_kwhtm2anno": 499,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 3.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1499,
+          "energia_qcol_75c_kwhtanno": 922,
+          "producibilita_specifica_kwhtm2anno": 499,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ]
+    },
+    "BONGIOANNI": {
+      "EcoSolar AP4-NP/1.4": [
+        {
+          "area_lorda_m2": 1.36,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 613,
+          "energia_qcol_75c_kwhtanno": 401,
+          "producibilita_specifica_kwhtm2anno": 451,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "EcoSolar AP4-NP/1.8": [
+        {
+          "area_lorda_m2": 1.83,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 825,
+          "energia_qcol_75c_kwhtanno": 540,
+          "producibilita_specifica_kwhtm2anno": 451,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "EcoSolar AP4-NP/2.0": [
+        {
+          "area_lorda_m2": 2.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 902,
+          "energia_qcol_75c_kwhtanno": 590,
+          "producibilita_specifica_kwhtm2anno": 451,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "EcoSolar AP4-NP/2.3": [
+        {
+          "area_lorda_m2": 2.31,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1042,
+          "energia_qcol_75c_kwhtanno": 681,
+          "producibilita_specifica_kwhtm2anno": 451,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "EcoSolar System CRN 200 1x2,3": [
+        {
+          "area_lorda_m2": 2.31,
+          "area_assorbitore_m2": 2.11,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 590,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "EcoSolar System CRN 300 2x2,3": [
+        {
+          "area_lorda_m2": 2.31,
+          "area_assorbitore_m2": 2.11,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "COSMOGAS": {
+      "Solarplus V": [
+        {
+          "area_lorda_m2": 2.25,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 947,
+          "energia_qcol_75c_kwhtanno": 554,
+          "producibilita_specifica_kwhtm2anno": 421,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "Solarplus O": [
+        {
+          "area_lorda_m2": 2.25,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 947,
+          "energia_qcol_75c_kwhtanno": 554,
+          "producibilita_specifica_kwhtm2anno": 421,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ]
+    },
+    "COSTRUZIONI SOLARI": {
+      "PANDA 2.0": [
+        {
+          "area_lorda_m2": 2.04,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 928,
+          "energia_qcol_75c_kwhtanno": 596,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.04,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 928,
+          "energia_qcol_75c_kwhtanno": 596,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.04,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 928,
+          "energia_qcol_75c_kwhtanno": 596,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.04,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 928,
+          "energia_qcol_75c_kwhtanno": 596,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.04,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 928,
+          "energia_qcol_75c_kwhtanno": 596,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.04,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 928,
+          "energia_qcol_75c_kwhtanno": 596,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Teleriscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.04,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 928,
+          "energia_qcol_75c_kwhtanno": 596,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solar cooling a media temperatura"
+        },
+        {
+          "area_lorda_m2": 2.04,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 928,
+          "energia_qcol_75c_kwhtanno": 596,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Calore di processo a media temperatura"
+        }
+      ],
+      "PANDA 2.7": [
+        {
+          "area_lorda_m2": 2.7,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1228,
+          "energia_qcol_75c_kwhtanno": 789,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.7,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1228,
+          "energia_qcol_75c_kwhtanno": 789,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.7,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1228,
+          "energia_qcol_75c_kwhtanno": 789,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.7,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1228,
+          "energia_qcol_75c_kwhtanno": 789,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.7,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1228,
+          "energia_qcol_75c_kwhtanno": 789,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.7,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1228,
+          "energia_qcol_75c_kwhtanno": 789,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Teleriscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.7,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1228,
+          "energia_qcol_75c_kwhtanno": 789,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solar cooling a media temperatura"
+        },
+        {
+          "area_lorda_m2": 2.7,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1228,
+          "energia_qcol_75c_kwhtanno": 789,
+          "producibilita_specifica_kwhtm2anno": 455,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Calore di processo a media temperatura"
+        }
+      ]
+    },
+    "DAIKIN": {
+      "EKSV21P": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 805,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 400,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 805,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 400,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 805,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 400,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "EKSV26P": [
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1042,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 401,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1042,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 401,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1042,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 401,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "EKSH26P": [
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1042,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 401,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1042,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 401,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1042,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 401,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ]
+    },
+    "ELCO": {
+      "Solatron XP 2.7 V": [
+        {
+          "area_lorda_m2": 2.77,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1188,
+          "energia_qcol_75c_kwhtanno": 723,
+          "producibilita_specifica_kwhtm2anno": 429,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "Solatron XP 2.7 H": [
+        {
+          "area_lorda_m2": 2.76,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1184,
+          "energia_qcol_75c_kwhtanno": 720,
+          "producibilita_specifica_kwhtm2anno": 429,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "Solatron CF 2.0-3": [
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 867,
+          "energia_qcol_75c_kwhtanno": 527,
+          "producibilita_specifica_kwhtm2anno": 429,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "Solatron S2.5-1 H": [
+        {
+          "area_lorda_m2": 2.53,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1173,
+          "energia_qcol_75c_kwhtanno": 737,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "Solatron S2.5-1 V": [
+        {
+          "area_lorda_m2": 2.53,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1173,
+          "energia_qcol_75c_kwhtanno": 737,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "Solatron CF 2.0-1": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 753,
+          "energia_qcol_75c_kwhtanno": 423,
+          "producibilita_specifica_kwhtm2anno": 375,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "Solatron N Plus 2.0 150-1": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 544,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "Solatron N Plus 2.0 200-1": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 626,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "Solatron N Plus 2.0 300-2": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 555,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "Solatron CF-GR 150-1": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": 1.83,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 536,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "Solatron CF-GR 200-1": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": 1.83,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 631,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "Solatron CF-GR 200-2": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": 1.83,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 447,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "Solatron CF-GR 300-2": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": 1.83,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 572,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "Solatron CF-GR 150-1 TR / TT / TT DT": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": 1.83,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 536,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "Solatron CF-GR 200-1 TR / TT / TT DT": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": 1.83,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 632,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "Solatron CF-GR 200-2 TR / TT / TT DT": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": 1.83,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 448,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "Solatron CF-GR 300-2 TR / TT / TT DT": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": 1.83,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 572,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "EMMETI": {
+      "ARCOBALENO SXM": [
+        {
+          "area_lorda_m2": 2.34,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1037,
+          "energia_qcol_75c_kwhtanno": 581,
+          "producibilita_specifica_kwhtm2anno": 443,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "ARCOBALENO NS12": [
+        {
+          "area_lorda_m2": 2.42,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1124,
+          "energia_qcol_75c_kwhtanno": 691,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "NVSN1S 150": [
+        {
+          "area_lorda_m2": 2.11,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 515,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "NVSN1S 200": [
+        {
+          "area_lorda_m2": 2.11,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 597,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "NVSN2S 200": [
+        {
+          "area_lorda_m2": 4.22,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 426,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "NVSN2S 280": [
+        {
+          "area_lorda_m2": 4.22,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 555,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "FERROLI": {
+      "SOLAREVO 2.1 V": [
+        {
+          "area_lorda_m2": 2.09,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1026,
+          "energia_qcol_75c_kwhtanno": 591,
+          "producibilita_specifica_kwhtm2anno": 491,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.09,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1026,
+          "energia_qcol_75c_kwhtanno": 591,
+          "producibilita_specifica_kwhtm2anno": 491,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.09,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1026,
+          "energia_qcol_75c_kwhtanno": 591,
+          "producibilita_specifica_kwhtm2anno": 491,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "SOLAREVO 2.6 V": [
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1277,
+          "energia_qcol_75c_kwhtanno": 736,
+          "producibilita_specifica_kwhtm2anno": 491,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1277,
+          "energia_qcol_75c_kwhtanno": 736,
+          "producibilita_specifica_kwhtm2anno": 491,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1277,
+          "energia_qcol_75c_kwhtanno": 736,
+          "producibilita_specifica_kwhtm2anno": 491,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "SOLAREVO NAT 160L/ 2,1-TP": [
+        {
+          "area_lorda_m2": 2.09,
+          "area_assorbitore_m2": 1.96,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 559,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOLAREVO NAT 200L/2,1-TP": [
+        {
+          "area_lorda_m2": 2.09,
+          "area_assorbitore_m2": 1.96,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 675,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOLAREVO NAT 300L/5,2-TP": [
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": 2.44,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 517,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOLAREVO NAT 160L/ 2,1-TI": [
+        {
+          "area_lorda_m2": 2.09,
+          "area_assorbitore_m2": 1.96,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 559,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOLAREVO NAT 200L/2,1-TI": [
+        {
+          "area_lorda_m2": 2.09,
+          "area_assorbitore_m2": 1.96,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 675,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOLAREVO NAT 300L/5,2-TI": [
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": 2.44,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 517,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOLAREVO NAT 300L/5.2-TP 30°": [
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": 2.44,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 517,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "FONDITAL": {
+      "HWF 20": [
+        {
+          "area_lorda_m2": 2.06,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1037,
+          "energia_qcol_75c_kwhtanno": 650,
+          "producibilita_specifica_kwhtm2anno": 503,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "HWF 26": [
+        {
+          "area_lorda_m2": 2.62,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1319,
+          "energia_qcol_75c_kwhtanno": 827,
+          "producibilita_specifica_kwhtm2anno": 503,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "VLC 25": [
+        {
+          "area_lorda_m2": 2.57,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1095,
+          "energia_qcol_75c_kwhtanno": 640,
+          "producibilita_specifica_kwhtm2anno": 426,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "SULPACK NATURAL PLUS 150": [
+        {
+          "area_lorda_m2": 2.11,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 566,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SULPACK NATURAL PLUS 200": [
+        {
+          "area_lorda_m2": 2.11,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 598,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SULPACK NATURAL PLUS 300": [
+        {
+          "area_lorda_m2": 2.11,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 557,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "HOVAL": {
+      "ULTRASOL 2V": [
+        {
+          "area_lorda_m2": 2.53,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1009,
+          "energia_qcol_75c_kwhtanno": 541,
+          "producibilita_specifica_kwhtm2anno": null,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ]
+    },
+    "IMMERGAS": {
+      "CP4 M": [
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 896,
+          "energia_qcol_75c_kwhtanno": 508,
+          "producibilita_specifica_kwhtm2anno": 444,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 896,
+          "energia_qcol_75c_kwhtanno": 508,
+          "producibilita_specifica_kwhtm2anno": 444,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 896,
+          "energia_qcol_75c_kwhtanno": 508,
+          "producibilita_specifica_kwhtm2anno": 444,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "CP4 XL": [
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1180,
+          "energia_qcol_75c_kwhtanno": 682,
+          "producibilita_specifica_kwhtm2anno": 468,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1180,
+          "energia_qcol_75c_kwhtanno": 682,
+          "producibilita_specifica_kwhtm2anno": 468,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1180,
+          "energia_qcol_75c_kwhtanno": 682,
+          "producibilita_specifica_kwhtm2anno": 468,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "CP 4M": [
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 896,
+          "energia_qcol_75c_kwhtanno": 508,
+          "producibilita_specifica_kwhtm2anno": 444,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 896,
+          "energia_qcol_75c_kwhtanno": 508,
+          "producibilita_specifica_kwhtm2anno": 444,
+          "tipologia_pannello": "Piani",
+          "applicazione": "solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 896,
+          "energia_qcol_75c_kwhtanno": 508,
+          "producibilita_specifica_kwhtm2anno": 444,
+          "tipologia_pannello": "Piani",
+          "applicazione": "solo riscaldamento"
+        }
+      ],
+      "CP 4XL": [
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1180,
+          "energia_qcol_75c_kwhtanno": 682,
+          "producibilita_specifica_kwhtm2anno": 468,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1180,
+          "energia_qcol_75c_kwhtanno": 682,
+          "producibilita_specifica_kwhtm2anno": 468,
+          "tipologia_pannello": "Piani",
+          "applicazione": "solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1180,
+          "energia_qcol_75c_kwhtanno": 682,
+          "producibilita_specifica_kwhtm2anno": 468,
+          "tipologia_pannello": "Piani",
+          "applicazione": "solo riscaldamento"
+        }
+      ],
+      "NATURAL SOL 150 V2": [
+        {
+          "area_lorda_m2": 2.11,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 567,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.11,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 566,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "NATURAL SOL 200 V2": [
+        {
+          "area_lorda_m2": 2.11,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 598,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.11,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 597,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "NATURAL SOL 280 V2": [
+        {
+          "area_lorda_m2": 2.11,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 557,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.11,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 556,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "SOLARSMART 110 R": [
+        {
+          "area_lorda_m2": 1.52,
+          "area_assorbitore_m2": 1.09,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 603,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOLARSMART 110": [
+        {
+          "area_lorda_m2": 1.52,
+          "area_assorbitore_m2": 1.09,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 603,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOLARSMART 150 R": [
+        {
+          "area_lorda_m2": 1.93,
+          "area_assorbitore_m2": 1.48,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 595,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOLARSMART 150": [
+        {
+          "area_lorda_m2": 1.93,
+          "area_assorbitore_m2": 1.48,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 595,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOLARSMART 220 R": [
+        {
+          "area_lorda_m2": 2.77,
+          "area_assorbitore_m2": 2.25,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 584,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOLARSMART 220": [
+        {
+          "area_lorda_m2": 2.77,
+          "area_assorbitore_m2": 2.25,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 584,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOLARSMART 260 R": [
+        {
+          "area_lorda_m2": 3.18,
+          "area_assorbitore_m2": 2.64,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 599,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOLARSMART 2260": [
+        {
+          "area_lorda_m2": 3.18,
+          "area_assorbitore_m2": 2.64,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 599,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "ITALTHERM": {
+      "Slim Solar 2.0": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 813,
+          "energia_qcol_75c_kwhtanno": 443,
+          "producibilita_specifica_kwhtm2anno": 404,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 813,
+          "energia_qcol_75c_kwhtanno": 443,
+          "producibilita_specifica_kwhtm2anno": 404,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 813,
+          "energia_qcol_75c_kwhtanno": 443,
+          "producibilita_specifica_kwhtm2anno": 404,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "Slim Solar 2.5": [
+        {
+          "area_lorda_m2": 2.51,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1016,
+          "energia_qcol_75c_kwhtanno": 554,
+          "producibilita_specifica_kwhtm2anno": 405,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.51,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1016,
+          "energia_qcol_75c_kwhtanno": 554,
+          "producibilita_specifica_kwhtm2anno": 405,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.51,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1016,
+          "energia_qcol_75c_kwhtanno": 554,
+          "producibilita_specifica_kwhtm2anno": 405,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ]
+    },
+    "JODO ITALIA": {
+      "SOLE200": [
+        {
+          "area_lorda_m2": null,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 896,
+          "energia_qcol_75c_kwhtanno": 508,
+          "producibilita_specifica_kwhtm2anno": 444,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": null,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 896,
+          "energia_qcol_75c_kwhtanno": 508,
+          "producibilita_specifica_kwhtm2anno": 444,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SOLE250": [
+        {
+          "area_lorda_m2": null,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1180,
+          "energia_qcol_75c_kwhtanno": 682,
+          "producibilita_specifica_kwhtm2anno": 468,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": null,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1180,
+          "energia_qcol_75c_kwhtanno": 682,
+          "producibilita_specifica_kwhtm2anno": 468,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "PLEION SPA": {
+      "KSF 25D": [
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1261,
+          "energia_qcol_75c_kwhtanno": 806,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1261,
+          "energia_qcol_75c_kwhtanno": 806,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1261,
+          "energia_qcol_75c_kwhtanno": 806,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1261,
+          "energia_qcol_75c_kwhtanno": 806,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1261,
+          "energia_qcol_75c_kwhtanno": 806,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1261,
+          "energia_qcol_75c_kwhtanno": 806,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1261,
+          "energia_qcol_75c_kwhtanno": 806,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1261,
+          "energia_qcol_75c_kwhtanno": 806,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "calore di processo a bassa temperatura"
+        }
+      ],
+      "KSF P26": [
+        {
+          "area_lorda_m2": 2.62,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1392,
+          "energia_qcol_75c_kwhtanno": 855,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.62,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1392,
+          "energia_qcol_75c_kwhtanno": 855,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.62,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1392,
+          "energia_qcol_75c_kwhtanno": 855,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.62,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1392,
+          "energia_qcol_75c_kwhtanno": 855,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.62,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1392,
+          "energia_qcol_75c_kwhtanno": 855,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.62,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1392,
+          "energia_qcol_75c_kwhtanno": 855,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.62,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1392,
+          "energia_qcol_75c_kwhtanno": 855,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.62,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1392,
+          "energia_qcol_75c_kwhtanno": 855,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "calore di processo a bassa temperatura"
+        }
+      ],
+      "UNIKO P21": [
+        {
+          "area_lorda_m2": 2.06,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1094,
+          "energia_qcol_75c_kwhtanno": 673,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.06,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1094,
+          "energia_qcol_75c_kwhtanno": 673,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.06,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1094,
+          "energia_qcol_75c_kwhtanno": 673,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.06,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1094,
+          "energia_qcol_75c_kwhtanno": 673,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.06,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1094,
+          "energia_qcol_75c_kwhtanno": 673,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.06,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1094,
+          "energia_qcol_75c_kwhtanno": 673,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.06,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1094,
+          "energia_qcol_75c_kwhtanno": 673,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.06,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1094,
+          "energia_qcol_75c_kwhtanno": 673,
+          "producibilita_specifica_kwhtm2anno": 531,
+          "tipologia_pannello": "Piani",
+          "applicazione": "calore di processo a bassa temperatura"
+        }
+      ],
+      "EGO 110": [
+        {
+          "area_lorda_m2": 1.52,
+          "area_assorbitore_m2": 1.09,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 603,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 1.52,
+          "area_assorbitore_m2": 1.09,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 603,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "EGO 150": [
+        {
+          "area_lorda_m2": 1.93,
+          "area_assorbitore_m2": 1.48,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 595,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 1.93,
+          "area_assorbitore_m2": 1.48,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 595,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "EGO 180": [
+        {
+          "area_lorda_m2": 2.35,
+          "area_assorbitore_m2": 1.86,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 586,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.35,
+          "area_assorbitore_m2": 1.86,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 586,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "EGO 220": [
+        {
+          "area_lorda_m2": 2.77,
+          "area_assorbitore_m2": 2.25,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 584,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.77,
+          "area_assorbitore_m2": 2.25,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 584,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "EGO 260": [
+        {
+          "area_lorda_m2": 3.18,
+          "area_assorbitore_m2": 2.64,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 599,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 3.18,
+          "area_assorbitore_m2": 2.64,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 599,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "EGO PRIME 110": [
+        {
+          "area_lorda_m2": 1.28,
+          "area_assorbitore_m2": 1.09,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 603,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 1.28,
+          "area_assorbitore_m2": 1.09,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 603,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "EGO PRIME 150": [
+        {
+          "area_lorda_m2": 1.68,
+          "area_assorbitore_m2": 1.48,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 595,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 1.68,
+          "area_assorbitore_m2": 1.48,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 595,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "EGO PRIME 180": [
+        {
+          "area_lorda_m2": 2.08,
+          "area_assorbitore_m2": 1.86,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 586,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.08,
+          "area_assorbitore_m2": 1.86,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 586,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "EGO PRIME 220": [
+        {
+          "area_lorda_m2": 2.48,
+          "area_assorbitore_m2": 2.25,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 584,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.48,
+          "area_assorbitore_m2": 2.25,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 584,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "EGO PRIME 260": [
+        {
+          "area_lorda_m2": 2.88,
+          "area_assorbitore_m2": 2.64,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 599,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.88,
+          "area_assorbitore_m2": 2.64,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 599,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "FREE S 150.1.20": [
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": 1.83,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 625,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "FREE S 200.1.20": [
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": 1.83,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 762,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "FREE S 300.2.25": [
+        {
+          "area_lorda_m2": 5.04,
+          "area_assorbitore_m2": 4.64,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 565,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "X-RAY 10 R": [
+        {
+          "area_lorda_m2": 2.12,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1234,
+          "energia_qcol_75c_kwhtanno": 946,
+          "producibilita_specifica_kwhtm2anno": 582,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.12,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1234,
+          "energia_qcol_75c_kwhtanno": 946,
+          "producibilita_specifica_kwhtm2anno": 582,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.12,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1234,
+          "energia_qcol_75c_kwhtanno": 946,
+          "producibilita_specifica_kwhtm2anno": 582,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.12,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1234,
+          "energia_qcol_75c_kwhtanno": 946,
+          "producibilita_specifica_kwhtm2anno": 582,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.12,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1234,
+          "energia_qcol_75c_kwhtanno": 946,
+          "producibilita_specifica_kwhtm2anno": 582,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.12,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1234,
+          "energia_qcol_75c_kwhtanno": 946,
+          "producibilita_specifica_kwhtm2anno": 582,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.12,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1234,
+          "energia_qcol_75c_kwhtanno": 946,
+          "producibilita_specifica_kwhtm2anno": 582,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.12,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1234,
+          "energia_qcol_75c_kwhtanno": 946,
+          "producibilita_specifica_kwhtm2anno": 582,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.12,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1234,
+          "energia_qcol_75c_kwhtanno": 946,
+          "producibilita_specifica_kwhtm2anno": 582,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "solar cooling a bassa temperatura"
+        }
+      ],
+      "X-RAY 15 R": [
+        {
+          "area_lorda_m2": 3.18,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1975,
+          "energia_qcol_75c_kwhtanno": 1607,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 3.18,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1975,
+          "energia_qcol_75c_kwhtanno": 1607,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.18,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1975,
+          "energia_qcol_75c_kwhtanno": 1607,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.18,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1975,
+          "energia_qcol_75c_kwhtanno": 1607,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 3.18,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1975,
+          "energia_qcol_75c_kwhtanno": 1607,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 3.18,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1975,
+          "energia_qcol_75c_kwhtanno": 1607,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.18,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1975,
+          "energia_qcol_75c_kwhtanno": 1607,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.18,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1975,
+          "energia_qcol_75c_kwhtanno": 1607,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 3.18,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1975,
+          "energia_qcol_75c_kwhtanno": 1607,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "solar cooling a bassa temperatura"
+        }
+      ],
+      "X-RAY 18 R": [
+        {
+          "area_lorda_m2": 3.82,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2372,
+          "energia_qcol_75c_kwhtanno": 1930,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 3.82,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2372,
+          "energia_qcol_75c_kwhtanno": 1930,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.82,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2372,
+          "energia_qcol_75c_kwhtanno": 1930,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.82,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2372,
+          "energia_qcol_75c_kwhtanno": 1930,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 3.82,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2372,
+          "energia_qcol_75c_kwhtanno": 1930,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 3.82,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2372,
+          "energia_qcol_75c_kwhtanno": 1930,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.82,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2372,
+          "energia_qcol_75c_kwhtanno": 1930,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.82,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2372,
+          "energia_qcol_75c_kwhtanno": 1930,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 3.82,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2372,
+          "energia_qcol_75c_kwhtanno": 1930,
+          "producibilita_specifica_kwhtm2anno": 621,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "solar cooling a bassa temperatura"
+        }
+      ]
+    },
+    "RADIANT BRUCIATORI SPA": {
+      "RH1T 21": [
+        {
+          "area_lorda_m2": 2.11,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 841,
+          "energia_qcol_75c_kwhtanno": 488,
+          "producibilita_specifica_kwhtm2anno": 399,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "RH1TX 29V": [
+        {
+          "area_lorda_m2": 2.93,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1293,
+          "energia_qcol_75c_kwhtanno": 789,
+          "producibilita_specifica_kwhtm2anno": 441,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ]
+    },
+    "RIELLO": {
+      "RPS 20/4 A": [
+        {
+          "area_lorda_m2": 2.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 947,
+          "energia_qcol_75c_kwhtanno": 522,
+          "producibilita_specifica_kwhtm2anno": 474,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 947,
+          "energia_qcol_75c_kwhtanno": 522,
+          "producibilita_specifica_kwhtm2anno": 474,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 947,
+          "energia_qcol_75c_kwhtanno": 522,
+          "producibilita_specifica_kwhtm2anno": 474,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "RPS 25/4 A": [
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1184,
+          "energia_qcol_75c_kwhtanno": 652,
+          "producibilita_specifica_kwhtm2anno": 474,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1184,
+          "energia_qcol_75c_kwhtanno": 652,
+          "producibilita_specifica_kwhtm2anno": 474,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1184,
+          "energia_qcol_75c_kwhtanno": 652,
+          "producibilita_specifica_kwhtm2anno": 474,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "RPS 25/2 EVO": [
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1076,
+          "energia_qcol_75c_kwhtanno": 652,
+          "producibilita_specifica_kwhtm2anno": 468,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1076,
+          "energia_qcol_75c_kwhtanno": 652,
+          "producibilita_specifica_kwhtm2anno": 468,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1076,
+          "energia_qcol_75c_kwhtanno": 652,
+          "producibilita_specifica_kwhtm2anno": 468,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "RPS 25/4": [
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1055,
+          "energia_qcol_75c_kwhtanno": 638,
+          "producibilita_specifica_kwhtm2anno": 459,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1055,
+          "energia_qcol_75c_kwhtanno": 638,
+          "producibilita_specifica_kwhtm2anno": 459,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1055,
+          "energia_qcol_75c_kwhtanno": 638,
+          "producibilita_specifica_kwhtm2anno": 459,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "CSNA-A 160/2,5 45°": [
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": 2.39,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 483,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA-A 200/2,5 45°": [
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": 2.39,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 597,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA-A 200/4 45°": [
+        {
+          "area_lorda_m2": 2.0,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 449,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA-A 300/4 45°": [
+        {
+          "area_lorda_m2": 2.0,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 589,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA-A 300/5 45°": [
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": 2.39,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 515,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA-A 160/2,5 0°": [
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": 2.39,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 483,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA-A 200/2,5 0°": [
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": 2.39,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 597,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA-A 200/4 0°": [
+        {
+          "area_lorda_m2": 2.0,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 449,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA-A 300/4 0°": [
+        {
+          "area_lorda_m2": 2.0,
+          "area_assorbitore_m2": 1.91,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 589,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA-A 300/5 0°": [
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": 2.39,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 515,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA 20 RS 150/1 0°": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 565,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA 20 RS 150/1 30°": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 565,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA 20 RS 200/1 0°": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 585,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA 20 RS 200/1 30°": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 585,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA 20 RS 220/2 0°": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 440,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA 20 RS 220/2 30°": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 440,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA 20 RS 300/2 0°": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 507,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA 20 RS 300/2 30°": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 507,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA 20 RS 300/3 0°": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 442,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "CSNA 20 RS 300/3 30°": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 442,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "ROSSATO": {
+      "CSP 240 H": [
+        {
+          "area_lorda_m2": 2.37,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1299,
+          "energia_qcol_75c_kwhtanno": 829,
+          "producibilita_specifica_kwhtm2anno": 548,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "CSP 240 V": [
+        {
+          "area_lorda_m2": 2.37,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1299,
+          "energia_qcol_75c_kwhtanno": 829,
+          "producibilita_specifica_kwhtm2anno": 548,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ]
+    },
+    "SAVIO": {
+      "SOL BLUHX+": [
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1419,
+          "energia_qcol_75c_kwhtanno": 949,
+          "producibilita_specifica_kwhtm2anno": 563,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1419,
+          "energia_qcol_75c_kwhtanno": 949,
+          "producibilita_specifica_kwhtm2anno": 563,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1419,
+          "energia_qcol_75c_kwhtanno": 949,
+          "producibilita_specifica_kwhtm2anno": 563,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "SOLVITA30": [
+        {
+          "area_lorda_m2": 3.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1499,
+          "energia_qcol_75c_kwhtanno": 922,
+          "producibilita_specifica_kwhtm2anno": 499,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1499,
+          "energia_qcol_75c_kwhtanno": 922,
+          "producibilita_specifica_kwhtm2anno": 499,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 3.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1499,
+          "energia_qcol_75c_kwhtanno": 922,
+          "producibilita_specifica_kwhtm2anno": 499,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ]
+    },
+    "STELBI": {
+      "PERFORMANCE VMH 8120": [
+        {
+          "area_lorda_m2": 1.88,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 752,
+          "energia_qcol_75c_kwhtanno": 388,
+          "producibilita_specifica_kwhtm2anno": 400,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "PERFORMANCE VMH 8125": [
+        {
+          "area_lorda_m2": 2.37,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 948,
+          "energia_qcol_75c_kwhtanno": 489,
+          "producibilita_specifica_kwhtm2anno": 400,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "ECOGLASS VMH 150/25": [
+        {
+          "area_lorda_m2": 2.37,
+          "area_assorbitore_m2": 2.33,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 492,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ECOGLASS VMH 200/25": [
+        {
+          "area_lorda_m2": 2.37,
+          "area_assorbitore_m2": 2.33,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 609,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ECOGLASS VMH 302/20": [
+        {
+          "area_lorda_m2": 1.88,
+          "area_assorbitore_m2": 1.83,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 603,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ECOGLASS VMH 302/25": [
+        {
+          "area_lorda_m2": 2.37,
+          "area_assorbitore_m2": 2.33,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 526,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SUNSTAR AV DF/58-10": [
+        {
+          "area_lorda_m2": 2.38,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1585,
+          "energia_qcol_75c_kwhtanno": 1357,
+          "producibilita_specifica_kwhtm2anno": 665,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "SUNSTAR AV DF10": [
+        {
+          "area_lorda_m2": 2.38,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1585,
+          "energia_qcol_75c_kwhtanno": 1357,
+          "producibilita_specifica_kwhtm2anno": 666,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ]
+    },
+    "SUNERG SOLAR": {
+      "RED20+": [
+        {
+          "area_lorda_m2": 2.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1000,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1000,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "RED30+": [
+        {
+          "area_lorda_m2": 3.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1499,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.0,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1499,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "RED20": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 679,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 357,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 679,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 357,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "RED25": [
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 819,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 356,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 819,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 356,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "BLUH+": [
+        {
+          "area_lorda_m2": 1.96,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 963,
+          "energia_qcol_75c_kwhtanno": 594,
+          "producibilita_specifica_kwhtm2anno": 491,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 1.96,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 963,
+          "energia_qcol_75c_kwhtanno": 594,
+          "producibilita_specifica_kwhtm2anno": 491,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "BLUHX+": [
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1419,
+          "energia_qcol_75c_kwhtanno": 949,
+          "producibilita_specifica_kwhtm2anno": 563,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1419,
+          "energia_qcol_75c_kwhtanno": 949,
+          "producibilita_specifica_kwhtm2anno": 563,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SLIM+": [
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1010,
+          "energia_qcol_75c_kwhtanno": 646,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1010,
+          "energia_qcol_75c_kwhtanno": 646,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SLIMX+": [
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1261,
+          "energia_qcol_75c_kwhtanno": 806,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.52,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1261,
+          "energia_qcol_75c_kwhtanno": 806,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SLIMXL+": [
+        {
+          "area_lorda_m2": 2.92,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1461,
+          "energia_qcol_75c_kwhtanno": 933,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.92,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1461,
+          "energia_qcol_75c_kwhtanno": 933,
+          "producibilita_specifica_kwhtm2anno": 500,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "KOMPATTO150-B": [
+        {
+          "area_lorda_m2": 1.97,
+          "area_assorbitore_m2": 1.78,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 477,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "KOMPATTO200-BX": [
+        {
+          "area_lorda_m2": 2.34,
+          "area_assorbitore_m2": 2.13,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 588,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "SYLBER": {
+      "CFS-25/4": [
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1055,
+          "energia_qcol_75c_kwhtanno": 638,
+          "producibilita_specifica_kwhtm2anno": 459,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1055,
+          "energia_qcol_75c_kwhtanno": 638,
+          "producibilita_specifica_kwhtm2anno": 459,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1055,
+          "energia_qcol_75c_kwhtanno": 638,
+          "producibilita_specifica_kwhtm2anno": 459,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "SN 150/1 TI": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 565,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SN 150/1 TP": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 565,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SN 200/1 TI": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 585,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SN 200/1 TP": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 585,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SN 220/2 TI": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 440,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SN 220/2 TP": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 440,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SN 300/2 TI": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 507,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SN 300/2 TP": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 507,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SN 300/3 TI": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 442,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SN 300/3 TP": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.77,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 442,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "VIESSMANN": {
+      "Vitosol 200-F SVE": [
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1208,
+          "energia_qcol_75c_kwhtanno": 693,
+          "producibilita_specifica_kwhtm2anno": 483,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1208,
+          "energia_qcol_75c_kwhtanno": 693,
+          "producibilita_specifica_kwhtm2anno": 483,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1208,
+          "energia_qcol_75c_kwhtanno": 693,
+          "producibilita_specifica_kwhtm2anno": 483,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1208,
+          "energia_qcol_75c_kwhtanno": 693,
+          "producibilita_specifica_kwhtm2anno": 483,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1208,
+          "energia_qcol_75c_kwhtanno": 693,
+          "producibilita_specifica_kwhtm2anno": 483,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1208,
+          "energia_qcol_75c_kwhtanno": 693,
+          "producibilita_specifica_kwhtm2anno": 483,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Teleriscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1208,
+          "energia_qcol_75c_kwhtanno": 693,
+          "producibilita_specifica_kwhtm2anno": 483,
+          "tipologia_pannello": "Piani",
+          "applicazione": "calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.5,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1208,
+          "energia_qcol_75c_kwhtanno": 693,
+          "producibilita_specifica_kwhtm2anno": 483,
+          "tipologia_pannello": "Piani",
+          "applicazione": "solar cooling a bassa temperatura"
+        }
+      ],
+      "Vitosol 200-FM SV2G": [
+        {
+          "area_lorda_m2": 2.56,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1008,
+          "energia_qcol_75c_kwhtanno": 430,
+          "producibilita_specifica_kwhtm2anno": 393,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "Vitosol 300-TM SP3C 1,25 m2 HW": [
+        {
+          "area_lorda_m2": 1.98,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 829,
+          "energia_qcol_75c_kwhtanno": 552,
+          "producibilita_specifica_kwhtm2anno": 418,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 1.98,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 829,
+          "energia_qcol_75c_kwhtanno": 552,
+          "producibilita_specifica_kwhtm2anno": 418,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 1.98,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 829,
+          "energia_qcol_75c_kwhtanno": 552,
+          "producibilita_specifica_kwhtm2anno": 419,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 1.98,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 829,
+          "energia_qcol_75c_kwhtanno": 552,
+          "producibilita_specifica_kwhtm2anno": 419,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "Vitosol 300-TM SP3C 1,51 m2": [
+        {
+          "area_lorda_m2": 2.36,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1028,
+          "energia_qcol_75c_kwhtanno": 792,
+          "producibilita_specifica_kwhtm2anno": 435,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.36,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1028,
+          "energia_qcol_75c_kwhtanno": 792,
+          "producibilita_specifica_kwhtm2anno": 435,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.36,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1028,
+          "energia_qcol_75c_kwhtanno": 792,
+          "producibilita_specifica_kwhtm2anno": 436,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.36,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1028,
+          "energia_qcol_75c_kwhtanno": 792,
+          "producibilita_specifica_kwhtm2anno": 436,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "Vitosol 300-TM SP3C 3,03 m2": [
+        {
+          "area_lorda_m2": 4.61,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2162,
+          "energia_qcol_75c_kwhtanno": 1689,
+          "producibilita_specifica_kwhtm2anno": 468,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 4.61,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2162,
+          "energia_qcol_75c_kwhtanno": 1689,
+          "producibilita_specifica_kwhtm2anno": 468,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 4.61,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2162,
+          "energia_qcol_75c_kwhtanno": 1689,
+          "producibilita_specifica_kwhtm2anno": 469,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 4.61,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2162,
+          "energia_qcol_75c_kwhtanno": 1689,
+          "producibilita_specifica_kwhtm2anno": 469,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "Vitosol 200-TM SPEA 1,63 m2": [
+        {
+          "area_lorda_m2": 2.67,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1132,
+          "energia_qcol_75c_kwhtanno": 890,
+          "producibilita_specifica_kwhtm2anno": 423,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.67,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1132,
+          "energia_qcol_75c_kwhtanno": 890,
+          "producibilita_specifica_kwhtm2anno": 423,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.67,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1132,
+          "energia_qcol_75c_kwhtanno": 890,
+          "producibilita_specifica_kwhtm2anno": 423,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.67,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1132,
+          "energia_qcol_75c_kwhtanno": 890,
+          "producibilita_specifica_kwhtm2anno": 423,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Teleriscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.67,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1132,
+          "energia_qcol_75c_kwhtanno": 890,
+          "producibilita_specifica_kwhtm2anno": 424,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.67,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1132,
+          "energia_qcol_75c_kwhtanno": 890,
+          "producibilita_specifica_kwhtm2anno": 424,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.67,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1132,
+          "energia_qcol_75c_kwhtanno": 890,
+          "producibilita_specifica_kwhtm2anno": 424,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 2.67,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1132,
+          "energia_qcol_75c_kwhtanno": 890,
+          "producibilita_specifica_kwhtm2anno": 424,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "solar cooling a bassa temperatura"
+        }
+      ],
+      "Vitosol 200-TM SPEA 3,26 m2": [
+        {
+          "area_lorda_m2": 5.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2358,
+          "energia_qcol_75c_kwhtanno": 1879,
+          "producibilita_specifica_kwhtm2anno": 444,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 5.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2358,
+          "energia_qcol_75c_kwhtanno": 1879,
+          "producibilita_specifica_kwhtm2anno": 444,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 5.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2358,
+          "energia_qcol_75c_kwhtanno": 1879,
+          "producibilita_specifica_kwhtm2anno": 444,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 5.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2358,
+          "energia_qcol_75c_kwhtanno": 1879,
+          "producibilita_specifica_kwhtm2anno": 444,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Teleriscaldamento"
+        },
+        {
+          "area_lorda_m2": 5.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2358,
+          "energia_qcol_75c_kwhtanno": 1879,
+          "producibilita_specifica_kwhtm2anno": 445,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 5.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2358,
+          "energia_qcol_75c_kwhtanno": 1879,
+          "producibilita_specifica_kwhtm2anno": 445,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 5.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2358,
+          "energia_qcol_75c_kwhtanno": 1879,
+          "producibilita_specifica_kwhtm2anno": 445,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 5.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2358,
+          "energia_qcol_75c_kwhtanno": 1879,
+          "producibilita_specifica_kwhtm2anno": 445,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "solar cooling a bassa temperatura"
+        }
+      ]
+    },
+    "WOLF": {
+      "CFK-1": [
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 887,
+          "energia_qcol_75c_kwhtanno": 513,
+          "producibilita_specifica_kwhtm2anno": 386,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "TopSon F3-1": [
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1048,
+          "energia_qcol_75c_kwhtanno": 627,
+          "producibilita_specifica_kwhtm2anno": 456,
+          "tipologia_pannello": "Piani",
+          "applicazione": "ACS e riscaldamento"
+        }
+      ],
+      "F3-1Q": [
+        {
+          "area_lorda_m2": 2.3,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1062,
+          "energia_qcol_75c_kwhtanno": 647,
+          "producibilita_specifica_kwhtm2anno": 462,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "ARISTON": {
+      "KAIROS CF 2.0-1": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 754,
+          "energia_qcol_75c_kwhtanno": 420,
+          "producibilita_specifica_kwhtm2anno": 375,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "KAIROS XP 2.5-1 V": [
+        {
+          "area_lorda_m2": 2.53,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1173,
+          "energia_qcol_75c_kwhtanno": 737,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "KAIROS XP 2.5-1 H": [
+        {
+          "area_lorda_m2": 2.53,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1173,
+          "energia_qcol_75c_kwhtanno": 737,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "KAIROS CF 2.0-3": [
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 867,
+          "energia_qcol_75c_kwhtanno": 527,
+          "producibilita_specifica_kwhtm2anno": 429,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "KAIROS XP 2.7 V": [
+        {
+          "area_lorda_m2": 2.77,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1188,
+          "energia_qcol_75c_kwhtanno": 723,
+          "producibilita_specifica_kwhtm2anno": 429,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "KAIROS XP 2.7 H": [
+        {
+          "area_lorda_m2": 2.76,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1184,
+          "energia_qcol_75c_kwhtanno": 720,
+          "producibilita_specifica_kwhtm2anno": 429,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "KAIROS THERMO GR-2 150-1 TR": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": 1.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "KAIROS THERMO GR-2 150-1 TT": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": 1.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "KAIROS THERMO GR-2 200-1 TR": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": 1.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 696,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "KAIROS THERMO GR-2 200-1 TT": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": 1.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 696,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "KAIROS THERMO GR-2 300-2 TR": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": 1.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 623,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "KAIROS THERMO GR-2 300-2 TT": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": 1.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 623,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "KAIROS THERMO HF-2 150-1 TR": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 545,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "KAIROS THERMO HF-2 150-1 TT": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 545,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "KAIROS THERMO HF-2 200-1 TR": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 626,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "KAIROS THERMO HF-2 200-1 TT": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 626,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "KAIROS THERMO HF-2 200-2 TT": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 408,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "KAIROS THERMO HF-2 300-2 TR": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 556,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "KAIROS THERMO HF-2 300-2 TT": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 556,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "KAIROS THERMO HF-2 200-2 TR": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 408,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "ATI DI MARIANI": {
+      "PLANOSOL PSC20": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 831,
+          "energia_qcol_75c_kwhtanno": 433,
+          "producibilita_specifica_kwhtm2anno": 437,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "DISCOSOL DS01": [
+        {
+          "area_lorda_m2": 1.2,
+          "area_assorbitore_m2": 0.92,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 729,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 1.2,
+          "area_assorbitore_m2": 0.92,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 729,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "DISCOSOL DS02": [
+        {
+          "area_lorda_m2": 1.2,
+          "area_assorbitore_m2": 0.92,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 700,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 1.2,
+          "area_assorbitore_m2": 0.92,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 700,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "HYDROSOL 200": [
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.52,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 707,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 1.89,
+          "area_assorbitore_m2": 1.52,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 707,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "PLANOSOL PSS2020A": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": 1.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 695,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "PLANOSOL PSS2040A": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": 1.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 472,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "CHAFFOTEAUX": {
+      "ZELIOS XP 2.5-1 V": [
+        {
+          "area_lorda_m2": 2.53,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1173,
+          "energia_qcol_75c_kwhtanno": 737,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ZELIOS XP 2.5-1 H": [
+        {
+          "area_lorda_m2": 2.53,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1173,
+          "energia_qcol_75c_kwhtanno": 737,
+          "producibilita_specifica_kwhtm2anno": 464,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ZELIOS CF 2.0-3": [
+        {
+          "area_lorda_m2": 2.02,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 867,
+          "energia_qcol_75c_kwhtanno": 527,
+          "producibilita_specifica_kwhtm2anno": 429,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ZELIOS XP 2.7 V": [
+        {
+          "area_lorda_m2": 2.77,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1188,
+          "energia_qcol_75c_kwhtanno": 723,
+          "producibilita_specifica_kwhtm2anno": 429,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ZELIOS XP 2.7 H": [
+        {
+          "area_lorda_m2": 2.76,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1184,
+          "energia_qcol_75c_kwhtanno": 720,
+          "producibilita_specifica_kwhtm2anno": 429,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ZELIOS CF 2.0-1": [
+        {
+          "area_lorda_m2": 2.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 754,
+          "energia_qcol_75c_kwhtanno": 420,
+          "producibilita_specifica_kwhtm2anno": 375,
+          "tipologia_pannello": "Piani",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ZELIOS THERMO GR-2 150-1 TR": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": 1.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ZELIOS THERMO GR-2 150-1 TT": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": 1.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ZELIOS THERMO GR-2 200-1 TR": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": 1.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 696,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ZELIOS THERMO GR-2 200-1 TT": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": 1.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 696,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ZELIOS THERMO GR-2 300-2 TR": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": 1.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 623,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ZELIOS THERMO GR-2 200-2 TT": [
+        {
+          "area_lorda_m2": 1.9,
+          "area_assorbitore_m2": 1.8,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 623,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "ZELIOS THERMO HF-2 150-1 TR": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 545,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "ZELIOS THERMO HF-2 150-1 TT": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 545,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "ZELIOS THERMO HF-2 200-1 TR": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 626,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "ZELIOS THERMO HF-2 200-1 TT": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 626,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "ZELIOS THERMO HF-2 200-2 TR": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 408,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "ZELIOS THERMO HF-2 200-2 TT": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 408,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "ZELIOS THERMO HF-2 300-2 TR": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 556,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ],
+      "ZELIOS THERMO HF-2 300-2 TT": [
+        {
+          "area_lorda_m2": 2.2,
+          "area_assorbitore_m2": 2.01,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 556,
+          "tipologia_pannello": "impianti solari termici factory made",
+          "applicazione": "solo ACS"
+        }
+      ]
+    },
+    "BOSCH": {
+      "TSS200-2/FKC-2 Bosch": [
+        {
+          "area_lorda_m2": 2.37,
+          "area_assorbitore_m2": 2.25,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 580,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "SIME": {
+      "SIME NATURAL 160 S": [
+        {
+          "area_lorda_m2": 2.09,
+          "area_assorbitore_m2": 1.88,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 582,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SIME NATURAL 160 S LP": [
+        {
+          "area_lorda_m2": 2.09,
+          "area_assorbitore_m2": 1.88,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 582,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SIME NATURAL 200 S": [
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": 2.37,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 573,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SIME NATURAL 200 S LP": [
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": 2.37,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 573,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SIME NATURAL 300/5.2 S": [
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": 2.37,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 482,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ],
+      "SIME NATURAL 300/5.2 S LP": [
+        {
+          "area_lorda_m2": 2.6,
+          "area_assorbitore_m2": 2.37,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 482,
+          "tipologia_pannello": "Impianti solari termici factory made",
+          "applicazione": "Solo ACS"
+        }
+      ]
+    },
+    "RITTER ENERGIE": {
+      "STAR 15/26": [
+        {
+          "area_lorda_m2": 2.63,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1523,
+          "energia_qcol_75c_kwhtanno": 1275,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.63,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1523,
+          "energia_qcol_75c_kwhtanno": 1275,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.63,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1523,
+          "energia_qcol_75c_kwhtanno": 1275,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "STAR 15/39": [
+        {
+          "area_lorda_m2": 3.93,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2276,
+          "energia_qcol_75c_kwhtanno": 1906,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 3.93,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2276,
+          "energia_qcol_75c_kwhtanno": 1906,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.93,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2276,
+          "energia_qcol_75c_kwhtanno": 1906,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "STAR 19/33": [
+        {
+          "area_lorda_m2": 3.31,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1917,
+          "energia_qcol_75c_kwhtanno": 1605,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 3.31,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1917,
+          "energia_qcol_75c_kwhtanno": 1605,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.31,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1917,
+          "energia_qcol_75c_kwhtanno": 1605,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "STAR 19/49": [
+        {
+          "area_lorda_m2": 4.94,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2861,
+          "energia_qcol_75c_kwhtanno": 2395,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 4.94,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2861,
+          "energia_qcol_75c_kwhtanno": 2395,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 4.94,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2861,
+          "energia_qcol_75c_kwhtanno": 2395,
+          "producibilita_specifica_kwhtm2anno": 579,
+          "tipologia_pannello": "Sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "AQUA PLASMA 15/27": [
+        {
+          "area_lorda_m2": 2.67,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1797,
+          "energia_qcol_75c_kwhtanno": 1627,
+          "producibilita_specifica_kwhtm2anno": 673,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 2.67,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1797,
+          "energia_qcol_75c_kwhtanno": 1627,
+          "producibilita_specifica_kwhtm2anno": 673,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 2.67,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 1797,
+          "energia_qcol_75c_kwhtanno": 1627,
+          "producibilita_specifica_kwhtm2anno": 673,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "AQUA PLASMA 15/40": [
+        {
+          "area_lorda_m2": 3.99,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2685,
+          "energia_qcol_75c_kwhtanno": 2431,
+          "producibilita_specifica_kwhtm2anno": 673,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 3.99,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2685,
+          "energia_qcol_75c_kwhtanno": 2431,
+          "producibilita_specifica_kwhtm2anno": 673,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.99,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2685,
+          "energia_qcol_75c_kwhtanno": 2431,
+          "producibilita_specifica_kwhtm2anno": 673,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "AQUA PLASMA 19/34": [
+        {
+          "area_lorda_m2": 3.35,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2254,
+          "energia_qcol_75c_kwhtanno": 2041,
+          "producibilita_specifica_kwhtm2anno": 673,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 3.35,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2254,
+          "energia_qcol_75c_kwhtanno": 2041,
+          "producibilita_specifica_kwhtm2anno": 673,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 3.35,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 2254,
+          "energia_qcol_75c_kwhtanno": 2041,
+          "producibilita_specifica_kwhtm2anno": 673,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        }
+      ],
+      "AQUA PLASMA 19/50": [
+        {
+          "area_lorda_m2": 5.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 3372,
+          "energia_qcol_75c_kwhtanno": 3052,
+          "producibilita_specifica_kwhtm2anno": 673,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 5.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 3372,
+          "energia_qcol_75c_kwhtanno": 3052,
+          "producibilita_specifica_kwhtm2anno": 673,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 5.01,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": 3372,
+          "energia_qcol_75c_kwhtanno": 3052,
+          "producibilita_specifica_kwhtm2anno": 673,
+          "tipologia_pannello": "sottovuoto",
+          "applicazione": "Solo riscaldamento"
+        }
+      ]
+    },
+    "SONDAG ENERGY": {
+      "Diamond SKY 50": [
+        {
+          "area_lorda_m2": 49.94,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 1181,
+          "tipologia_pannello": "A concentrazione",
+          "applicazione": "Solo ACS"
+        },
+        {
+          "area_lorda_m2": 49.94,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 1181,
+          "tipologia_pannello": "A concentrazione",
+          "applicazione": "ACS e riscaldamento"
+        },
+        {
+          "area_lorda_m2": 49.94,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 1181,
+          "tipologia_pannello": "A concentrazione",
+          "applicazione": "Solo riscaldamento"
+        },
+        {
+          "area_lorda_m2": 49.94,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 1181,
+          "tipologia_pannello": "A concentrazione",
+          "applicazione": "solar cooling a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 49.94,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 1181,
+          "tipologia_pannello": "A concentrazione",
+          "applicazione": "solar cooling a media temperatura"
+        },
+        {
+          "area_lorda_m2": 49.94,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 1181,
+          "tipologia_pannello": "A concentrazione",
+          "applicazione": "Calore di processo a bassa temperatura"
+        },
+        {
+          "area_lorda_m2": 49.94,
+          "area_assorbitore_m2": null,
+          "energia_qcol_50c_kwhtanno": null,
+          "energia_qcol_75c_kwhtanno": null,
+          "producibilita_specifica_kwhtm2anno": 1181,
+          "tipologia_pannello": "A concentrazione",
+          "applicazione": "Calore di processo a media temperatura"
+        }
+      ]
+    }
+  }
+}

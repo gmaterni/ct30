@@ -1,0 +1,172 @@
+{
+    "codice": "CT30-T05",
+    "nome": "Test 05 - Super Pratica (Incentivo Massimo)",
+    "descrizione": "Privato con PdC 40kW in Zona E, made in EU, SCOP 4.5. Verifica calcolo con premialità e piano 5 rate (P >= 35kW).",
+    "soggetto": {
+        "tipo": "Privato residenziale",
+        "denominazione": "Mario Rossi",
+        "codiceFiscale": "RSSMRA80A01H501U",
+        "email": "mario.rossi@email.it",
+        "telefono": "3331234567"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "Mario Rossi",
+            "tipo": "Privato residenziale",
+            "cf_piva": "RSSMRA80A01H501U",
+            "titolo_godimento": "Proprietà",
+            "email": "mario.rossi@email.it",
+            "telefono": "3331234567"
+        },
+        "sr": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "mario.rossi@pec.it",
+            "coincide_con_sa": true,
+            "tipo": "Privato"
+        },
+        "proprietario": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "edificio": {
+        "indirizzo": "Via Milano 10, Milano (MI)",
+        "categoria_catastale": "A/2",
+        "zona_climatica": "Zona E",
+        "impianto_esistente": {
+            "tipo": "Caldaia",
+            "potenza_kw": 35,
+            "combustibile": "metano",
+            "libretto": true,
+            "libretto_codice": "IT0123456793"
+        }
+    },
+    "interventi": [
+        "III.A"
+    ],
+    "selectedInterventi": [
+        "III.A"
+    ],
+    "interventiData": {
+        "III.A": {
+            "marca_pdc": "BrandX",
+            "modello_pdc": "PDC-40-W",
+            "tipologia_pdc": "aria/acqua",
+            "potenza_pdc_kw": 40,
+            "potenza_elettrica_assorbita_kw": 10,
+            "cop": 4.2,
+            "scop": 4.5,
+            "eta_s": 150,
+            "servizio_pdc": "climatizzazione invernale",
+            "generatore_sostituito": "Caldaia a gas 35kW",
+            "made_in_eu": "sì",
+            "miglioramento_ep_40": "no",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "no",
+            "scheda_tecnica_pdc": "sì",
+            "costo_pdc": 25000,
+            "sostituisce_esistente": "sì"
+        }
+    },
+    "valori_campi": {
+        "III.A": {
+            "marca_pdc": "BrandX",
+            "modello_pdc": "PDC-40-W",
+            "tipologia_pdc": "aria/acqua",
+            "potenza_pdc_kw": 40,
+            "potenza_elettrica_assorbita_kw": 10,
+            "cop": 4.2,
+            "scop": 4.5,
+            "eta_s": 150,
+            "servizio_pdc": "climatizzazione invernale",
+            "generatore_sostituito": "Caldaia a gas 35kW",
+            "made_in_eu": "sì",
+            "miglioramento_ep_40": "no",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "no",
+            "scheda_tecnica_pdc": "sì",
+            "costo_pdc": 25000,
+            "sostituisce_esistente": "sì"
+        }
+    },
+    "postOperam": {
+        "III.A": {
+            "tipo_nuovo_generatore": "pompa di calore elettrica",
+            "pdc_elettrica_pura": true,
+            "rimane_gas": false,
+            "dismesso_esistente": "sì",
+            "sostituzione_integrale": "sì",
+            "serve_clima_invernale": true
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "forn",
+                "codice_intervento": "III.A",
+                "descrizione": "Fornitura pompa di calore BrandX PDC-40-W",
+                "tipo_costo": "fornitura",
+                "importo": 16000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "posa",
+                "codice_intervento": "III.A",
+                "descrizione": "Posa e collegamenti idraulici/elettrici",
+                "tipo_costo": "posa",
+                "importo": 6000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "dis",
+                "codice_intervento": "III.A",
+                "descrizione": "Dismissione caldaia esistente 35kW",
+                "tipo_costo": "opere_accessorie",
+                "importo": 1500,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "coll",
+                "codice_intervento": "III.A",
+                "descrizione": "Avviamento, collaudo e dichiarazione conformità",
+                "tipo_costo": "documentazione",
+                "importo": 1500,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 25000,
+            "totale_fornitura": 16000,
+            "totale_posa": 6000,
+            "totale_opere_accessorie": 1500,
+            "totale_documentazione": 1500
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Visura Catastale recente (ultimi 6 mesi)": true,
+        "Titolo di possesso (atto, contratto locazione, ecc.)": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

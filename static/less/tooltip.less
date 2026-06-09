@@ -1,0 +1,104 @@
+/**
+ * tooltip.less - Stili Material Design per i tooltip.
+ *
+ * @format
+ */
+
+@import "modules/variables.less";
+
+/* ========= VARIABILI LESS ========= */
+@tt-bg: rgba(33, 33, 33, 0.95);
+@tt-text: #ffffff;
+@tt-font: 12px @fsans;
+@tt-radius: 6px;
+@tt-shadow: 0 4px 12px rgba(0,0,0,0.3);
+@tt-transition: 0.2s opacity, 0.2s transform;
+
+/* ========= BASE TOOLTIP ========= */
+.tt-top,
+.tt-bottom,
+.tt-left,
+.tt-right {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: @tt-transition;
+    content: attr(data-tt);
+    background: @tt-bg;
+    color: @tt-text;
+    font: @tt-font;
+    padding: 6px 12px;
+    border-radius: @tt-radius;
+    box-shadow: @tt-shadow;
+    white-space: nowrap;
+    line-height: 1.4;
+    border: 2px solid rgba(255,255,255,0.15);
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.dark-theme .tt-top,
+.dark-theme .tt-bottom,
+.dark-theme .tt-left,
+.dark-theme .tt-right {
+    &::before {
+        background: rgba(255, 255, 255, 0.92);
+        color: #000;
+        border-color: rgba(0,0,0,0.15);
+    }
+}
+
+/* ========= POSIZIONAMENTI ========= */
+.tt-top {
+  &::before {
+    bottom: ~"calc(100% + 10px)";
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+  }
+  &:hover::before {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.tt-bottom {
+  &::before {
+    top: ~"calc(100% + 10px)";
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  &:hover::before {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.tt-left {
+  &::before {
+    right: ~"calc(100% + 10px)";
+    top: 50%;
+    transform: translateY(-50%) translateX(4px);
+  }
+  &:hover::before {
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+.tt-right {
+  &::before {
+    left: ~"calc(100% + 10px)";
+    top: 50%;
+    transform: translateY(-50%) translateX(-4px);
+  }
+  &:hover::before {
+    transform: translateY(-50%) translateX(0);
+  }
+}

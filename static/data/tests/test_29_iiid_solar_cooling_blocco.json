@@ -1,0 +1,176 @@
+{
+    "codice": "CT30-T29",
+    "nome": "III.D Solar Cooling — Blocco DEC <8",
+    "descrizione": "Test upgrade J: III.D Solar Cooling con DEC=6 (<8) → blocco in canCalculate. Verifica che il blocco DEC<8 funzioni. Anche rapporto potenza_assorbita/potenza_frigorifera = 0.7 (gap 1.43, fuori range 2-2.75).",
+    "soggetto": {
+        "tipo": "Privato residenziale",
+        "denominazione": "Giuseppe Verdi",
+        "codiceFiscale": "VRDGPP65M15G273Q",
+        "email": "giuseppe.verdi@email.it",
+        "telefono": "091 123456"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "Giuseppe Verdi",
+            "tipo": "Privato residenziale",
+            "cf_piva": "VRDGPP65M15G273Q",
+            "titolo_godimento": "Proprietà",
+            "email": "giuseppe.verdi@email.it",
+            "telefono": "091 123456"
+        },
+        "sr": {
+            "denominazione": "Giuseppe Verdi",
+            "cf_piva": "VRDGPP65M15G273Q",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "giuseppe.verdi@pec.it",
+            "coincide_con_sa": true,
+            "tipo": "Privato"
+        },
+        "proprietario": {
+            "denominazione": "Giuseppe Verdi",
+            "cf_piva": "VRDGPP65M15G273Q",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "ruoli": {
+        "sa": {
+            "denominazione": "Giuseppe Verdi",
+            "tipo": "Privato residenziale",
+            "cf_piva": "VRDGPP65M15G273Q",
+            "titolo_godimento": "Proprietà"
+        },
+        "sr": {
+            "denominazione": "Giuseppe Verdi",
+            "cf_piva": "VRDGPP65M15G273Q",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "giuseppe.verdi@pec.it",
+            "coincide_con_sa": true
+        },
+        "proprietario": {
+            "denominazione": "Giuseppe Verdi",
+            "cf_piva": "VRDGPP65M15G273Q",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "immobile": {
+        "indirizzo": "Viale dei Giardini 15, Palermo (PA)",
+        "zonaClimatica": "Zona B",
+        "destinazione": "Residenziale",
+        "tipo_edificio": "Villa Singola",
+        "categoriaCatastale": "A/2",
+        "classeEnergeticaAnte": "F",
+        "potenza_esistente_kw": 10,
+        "combustibile_ante": "elettrico"
+    },
+    "edificio": {
+        "indirizzo": "Viale dei Giardini 15, Palermo (PA)",
+        "categoria_catastale": "A/2",
+        "zona_climatica": "Zona B",
+        "superficie_utile_mq": 100,
+        "anno_costruzione": 2000,
+        "impianto_esistente": {
+            "tipo": "Condizionatori split",
+            "potenza_kw": 10,
+            "combustibile": "elettrico",
+            "libretto": true,
+            "libretto_codice": "IT0667788990"
+        }
+    },
+    "richiestaPreliminareInviata": false,
+    "interventi": [
+        "III.D"
+    ],
+    "selectedInterventi": [
+        "III.D"
+    ],
+    "valori_campi": {
+        "III.D": {
+            "tipo_pannello_solare": "Pannelli piani vetrati",
+            "superficie_lorda_mq": 20,
+            "certificazione_solar_keymark": "sì",
+            "uso_solare": "Solar Cooling",
+            "potenza_assorbitore_kw": 8,
+            "portata_aria_m3h": 3000,
+            "costo_solare_termico": 15000
+        }
+    },
+    "interventiData": {
+        "III.D": {
+            "tipo_pannello_solare": "Pannelli piani vetrati",
+            "superficie_lorda_mq": 20,
+            "certificazione_solar_keymark": "sì",
+            "uso_solare": "Solar Cooling",
+            "potenza_assorbitore_kw": 8,
+            "portata_aria_m3h": 3000,
+            "costo_solare_termico": 15000
+        }
+    },
+    "postOperam": {
+        "III.D": {
+            "impianto_solare_termico_installato": true,
+            "solare_cooling": true,
+            "integrazione_climatizzazione_estiva": true
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "forn",
+                "codice_intervento": "III.D",
+                "descrizione": "Impianto solare termico con Solar Cooling 20mq",
+                "tipo_costo": "fornitura",
+                "importo": 11000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "pos",
+                "codice_intervento": "III.D",
+                "descrizione": "Posa e installazione",
+                "tipo_costo": "posa",
+                "importo": 3000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "doc",
+                "codice_intervento": "III.D",
+                "descrizione": "Documentazione e collaudo",
+                "tipo_costo": "documentazione",
+                "importo": 1000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 15000,
+            "totale_fornitura": 11000,
+            "totale_posa": 3000,
+            "totale_documentazione": 1000
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Titolo di possesso": true,
+        "APE": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

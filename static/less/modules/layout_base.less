@@ -1,0 +1,20 @@
+// ===================================================================
+//  LAYOUT BASE (Vertical Cage)
+// ===================================================================
+
+div.container {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 4.5vh);
+  padding-top: 4.5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  div.item {
+    min-height: 50px;
+  }
+}

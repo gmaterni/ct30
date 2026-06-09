@@ -1,0 +1,163 @@
+{
+    "codice": "CT30-T30",
+    "nome": "III.F Teleriscaldamento — Fascia alta 200kW (>150kW)",
+    "descrizione": "Test upgrade A: III.F con potenza allaccio 200kW (fascia >150kW: cmax_kw=130, imax=20.000€). Soggetto PA condominio, zona E.",
+    "soggetto": {
+        "tipo": "Pubblica Amministrazione",
+        "denominazione": "Condominio Dante 30",
+        "codiceFiscale": "80012330010",
+        "email": "amministrazione@condominiodante30.it",
+        "telefono": "011 123456"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "Condominio Dante 30",
+            "tipo": "Pubblica Amministrazione",
+            "cf_piva": "80012330010",
+            "titolo_godimento": "Proprietà",
+            "email": "amministrazione@condominiodante30.it",
+            "telefono": "011 123456"
+        },
+        "sr": {
+            "denominazione": "Condominio Dante 30",
+            "cf_piva": "80012330010",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "condominiodante30@pec.it",
+            "coincide_con_sa": true,
+            "tipo": "Pubblica Amministrazione"
+        },
+        "proprietario": {
+            "denominazione": "Condominio Dante 30",
+            "cf_piva": "80012330010",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "ruoli": {
+        "sa": {
+            "denominazione": "Condominio Dante 30",
+            "tipo": "Pubblica Amministrazione",
+            "cf_piva": "80012330010",
+            "titolo_godimento": "Proprietà"
+        },
+        "sr": {
+            "denominazione": "Condominio Dante 30",
+            "cf_piva": "80012330010",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "condominiodante30@pec.it",
+            "coincide_con_sa": true
+        },
+        "proprietario": {
+            "denominazione": "Condominio Dante 30",
+            "cf_piva": "80012330010",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "immobile": {
+        "indirizzo": "Via Dante 30, Torino (TO)",
+        "zonaClimatica": "Zona E",
+        "destinazione": "Residenziale",
+        "tipo_edificio": "Condominio",
+        "categoriaCatastale": "A/3",
+        "classeEnergeticaAnte": "G",
+        "potenza_esistente_kw": 250,
+        "combustibile_ante": "gasolio"
+    },
+    "edificio": {
+        "indirizzo": "Via Dante 30, Torino (TO)",
+        "categoria_catastale": "A/3",
+        "zona_climatica": "Zona E",
+        "superficie_utile_mq": 2000,
+        "anno_costruzione": 1970,
+        "impianto_esistente": {
+            "tipo": "Caldaia centralizzata",
+            "potenza_kw": 250,
+            "combustibile": "gasolio",
+            "libretto": true,
+            "libretto_codice": "IT0778899001"
+        }
+    },
+    "richiestaPreliminareInviata": false,
+    "interventi": [
+        "III.F"
+    ],
+    "selectedInterventi": [
+        "III.F"
+    ],
+    "valori_campi": {
+        "III.F": {
+            "teleriscaldamento_efficiente": "sì",
+            "potenza_allaccio_kw": 200,
+            "costo_allaccio": 35000,
+            "tipo_allaccio": "condominiale"
+        }
+    },
+    "interventiData": {
+        "III.F": {
+            "teleriscaldamento_efficiente": "sì",
+            "potenza_allaccio_kw": 200,
+            "costo_allaccio": 35000,
+            "tipo_allaccio": "condominiale"
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "all",
+                "codice_intervento": "III.F",
+                "descrizione": "Allaccio teleriscaldamento 200kW",
+                "tipo_costo": "fornitura",
+                "importo": 25000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "pos",
+                "codice_intervento": "III.F",
+                "descrizione": "Posa e installazione scambiatore",
+                "tipo_costo": "posa",
+                "importo": 7000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "doc",
+                "codice_intervento": "III.F",
+                "descrizione": "Documentazione e collaudo",
+                "tipo_costo": "documentazione",
+                "importo": 3000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 35000,
+            "totale_fornitura": 25000,
+            "totale_posa": 7000,
+            "totale_documentazione": 3000
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Titolo di possesso": true,
+        "APE": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

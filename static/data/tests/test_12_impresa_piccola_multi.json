@@ -1,0 +1,267 @@
+{
+    "codice": "CT30-T12",
+    "nome": "Impresa Piccola - Isolamento II.A + PdC III.A con maggiorazione",
+    "descrizione": "Test Impresa piccola con multi-intervento II.A+III.A. Verifica: percentuale 30% (multi) + 20% (piccola impresa) = 50%, applicazione corretta maggiorazioni senza early return. Soggetto Impresa, territorio Zona E.",
+    "maggiorazioni": [
+        "magg_piccola_impresa"
+    ],
+    "soggetto": {
+        "tipo": "Impresa",
+        "denominazione": "Edil Green S.r.l.",
+        "codiceFiscale": "04567891234",
+        "partitaIva": "04567891234",
+        "email": "info@edilgreen.it"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "Edil Green S.r.l.",
+            "tipo": "Impresa",
+            "cf_piva": "04567891234",
+            "titolo_godimento": "Proprietà",
+            "email": "info@edilgreen.it",
+            "telefono": "0351234567",
+            "tipologia_soggetto": "impresa",
+            "dimensione_impresa": "piccola"
+        },
+        "sr": {
+            "denominazione": "Edil Green S.r.l.",
+            "cf_piva": "04567891234",
+            "iban": "IT60X0542811101000000987654",
+            "pec": "edilgreen@pec.it",
+            "coincide_con_sa": true,
+            "tipo": "Privato"
+        },
+        "proprietario": {
+            "denominazione": "Edil Green S.r.l.",
+            "cf_piva": "04567891234",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "Arch. Francesco Neri",
+            "cf": "NRIFNC80A01F205I"
+        }
+    },
+    "ruoli": {
+        "sa": {
+            "denominazione": "Edil Green S.r.l.",
+            "tipo": "Impresa",
+            "cf_piva": "04567891234",
+            "titolo_godimento": "Proprietà",
+            "tipologia_soggetto": "impresa",
+            "dimensione_impresa": "piccola"
+        },
+        "sr": {
+            "denominazione": "Edil Green S.r.l.",
+            "cf_piva": "04567891234",
+            "iban": "IT60X0542811101000000987654",
+            "pec": "edilgreen@pec.it",
+            "coincide_con_sa": true
+        },
+        "proprietario": {
+            "denominazione": "Edil Green S.r.l.",
+            "cf_piva": "04567891234",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "Arch. Francesco Neri",
+            "cf": "NRIFNC80A01F205I"
+        }
+    },
+    "immobile": {
+        "indirizzo": "Via Roma 42, Bergamo (BG)",
+        "zonaClimatica": "Zona E",
+        "destinazione": "Terziario",
+        "tipo_edificio": "Ufficio",
+        "categoriaCatastale": "A/10",
+        "classeEnergeticaAnte": "G",
+        "potenza_esistente_kw": 35,
+        "combustibile_ante": "metano"
+    },
+    "edificio": {
+        "indirizzo": "Via Roma 42, Bergamo (BG)",
+        "categoria_catastale": "A/10",
+        "zona_climatica": "Zona E",
+        "superficie_utile_mq": 200,
+        "anno_costruzione": 1980,
+        "impianto_esistente": {
+            "tipo": "Caldaia",
+            "potenza_kw": 35,
+            "combustibile": "metano",
+            "libretto": true,
+            "libretto_codice": "IT0998877665"
+        }
+    },
+    "richiestaPreliminareInviata": false,
+    "interventi": [
+        "II.A",
+        "III.A"
+    ],
+    "selectedInterventi": [
+        "II.A",
+        "III.A"
+    ],
+    "valori_campi": {
+        "II.A": {
+            "tipo_superficie_opaca": "Parete Esterna",
+            "superficie_isolata_mq": 80,
+            "costo_isolamento": 12000,
+            "spessore_mm": 80,
+            "materiale": "lana di roccia",
+            "lambda": 0.035,
+            "trasmittanza_ante": 0.8,
+            "trasmittanza_post": 0.28,
+            "miglioramento_ep_40": "sì",
+            "requisiti_minimi": "soddisfatti",
+            "costo": 12000,
+            "ufficio_tecnico_abilitato": true
+        },
+        "III.A": {
+            "marca_pdc": "Daikin",
+            "modello_pdc": "Altherma 3 R E HV",
+            "potenza_pdc_kw": 16,
+            "potenza_termica_nominale": 16,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 3.8,
+            "cop": 4.1,
+            "eta_s": 140,
+            "tipo_pdc": "alta temperatura",
+            "servizio_pdc": "climatizzazione invernale e ACS",
+            "generatore_sostituito": "Caldaia a gas",
+            "made_in_eu": "sì",
+            "miglioramento_ep_40": "sì",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "no",
+            "costo": 22000
+        }
+    },
+    "interventiData": {
+        "II.A": {
+            "tipo_superficie_opaca": "Parete Esterna",
+            "superficie_isolata_mq": 80,
+            "spessore_mm": 80,
+            "materiale": "lana di roccia",
+            "lambda": 0.035,
+            "trasmittanza_ante": 0.8,
+            "trasmittanza_post": 0.28,
+            "miglioramento_ep_40": "sì",
+            "requisiti_minimi": "soddisfatti",
+            "costo": 12000,
+            "ufficio_tecnico_abilitato": true
+        },
+        "III.A": {
+            "marca_pdc": "Daikin",
+            "modello_pdc": "Altherma 3 R E HV",
+            "potenza_pdc_kw": 16,
+            "potenza_termica_nominale": 16,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 3.8,
+            "cop": 4.1,
+            "eta_s": 140,
+            "tipo_pdc": "alta temperatura",
+            "servizio_pdc": "climatizzazione invernale e ACS",
+            "generatore_sostituito": "Caldaia a gas",
+            "made_in_eu": "sì",
+            "miglioramento_ep_40": "sì",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "no",
+            "costo": 22000
+        }
+    },
+    "postOperam": {
+        "II.A": {
+            "cappotto_realizzato": true
+        },
+        "III.A": {
+            "tipo_nuovo_generatore": "PdC aria/acqua",
+            "pdc_elettrica_pura": true,
+            "rimane_gas": false,
+            "dismesso_esistente": "sì",
+            "serve_clima_invernale": true
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "1",
+                "codice_intervento": "II.A",
+                "descrizione": "Cappotto termico pareti 80mq",
+                "tipo_costo": "fornitura",
+                "importo": 8000,
+                "quantita": 1,
+                "unita": "a corpo",
+                "is_custom": false
+            },
+            {
+                "id": "2",
+                "codice_intervento": "II.A",
+                "descrizione": "Posa cappotto termico",
+                "tipo_costo": "posa",
+                "importo": 4000,
+                "quantita": 1,
+                "unita": "a corpo",
+                "is_custom": false
+            },
+            {
+                "id": "3",
+                "codice_intervento": "III.A",
+                "descrizione": "Fornitura PdC Daikin Altherma 16kW",
+                "tipo_costo": "fornitura",
+                "importo": 15000,
+                "quantita": 1,
+                "unita": "a corpo",
+                "is_custom": false
+            },
+            {
+                "id": "4",
+                "codice_intervento": "III.A",
+                "descrizione": "Installazione PdC",
+                "tipo_costo": "posa",
+                "importo": 5000,
+                "quantita": 1,
+                "unita": "a corpo",
+                "is_custom": false
+            },
+            {
+                "id": "5",
+                "codice_intervento": "III.A",
+                "descrizione": "Smaltimento vecchia caldaia",
+                "tipo_costo": "altri",
+                "importo": 1000,
+                "quantita": 1,
+                "unita": "a corpo",
+                "is_custom": false
+            },
+            {
+                "id": "6",
+                "codice_intervento": "III.A",
+                "descrizione": "Collaudo e certificazione",
+                "tipo_costo": "documentazione",
+                "importo": 1000,
+                "quantita": 1,
+                "unita": "a corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 34000,
+            "totale_fornitura": 23000,
+            "totale_posa": 9000,
+            "totale_documentazione": 1000,
+            "totale_altri": 1000
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Partita Iva (SA)": true,
+        "Visura Camerale": true,
+        "Titolo di possesso": true,
+        "APE": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

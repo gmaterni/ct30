@@ -1,0 +1,815 @@
+===============================================================================
+          DOCUMENTO ANALITICO CONSOLIDATO: CONTO TERMICO 3.0 (CT3)
+===============================================================================
+Data Redazione: Giugno 2026 (Versione: 1.1 - Aggiornato: 9 Giugno 2026)
+Fonti Integrate:
+- Decreto MASE 7 agosto 2025 (GU n. 224 del 26/09/2025)
+- Regole Applicative GSE del 5 dicembre 2025
+- FAQ Webinar GSE 2026 e Analisi di Congruenza Tecnica
+===============================================================================
+
+-------------------------------------------------------------------------------
+AVVERTENZE PRELIMINARI E NOTE DI CONSULTAZIONE (CRITICITÀ)
+-------------------------------------------------------------------------------
+Prima di procedere con la progettazione, è fondamentale assimilare i seguenti
+punti cardine. Il mancato rispetto di anche uno solo di essi può invalidare
+l'intera istanza di incentivo:
+
+1. NATURA DEL CONTRIBUTO: Il Conto Termico 3.0 NON è una detrazione fiscale. È
+   un contributo diretto erogato dal GSE tramite bonifico bancario al Soggetto
+   Responsabile. Non è cumulabile con Ecobonus, Superbonus o Bonus Casa per
+   le medesime spese.
+2. IL BONIFICO "ORDINARIO": È l'errore più frequente. Deve essere utilizzato
+   esclusivamente il bonifico bancario/postale ORDINARIO. L'uso di bonifici
+   "parlanti" predisposti per le detrazioni fiscali (che applicano ritenute
+   d'acconto) comporta il RIGETTO immediato dell'istanza.
+3. PRIMATO NORMATIVO: Questo documento è un'analisi tecnica e operativa
+   consolidata. In caso di dubbi o discrepanze, il testo del Decreto e delle
+   Regole Applicative ufficiali ha valore assoluto e prevalente.
+4. DIAGNOSI INIZIALE: L'efficacia e la correttezza dell'incentivo dipendono
+   dalla precisione della diagnosi energetica iniziale e dalla coerenza dei
+   pagamenti finali.
+5. OBBLIGHI POST-EROGAZIONE: L'ottenimento dell'incentivo vincola il soggetto
+   al mantenimento dell'impianto in efficienza per almeno 5 anni dall'ultima
+   rata.
+
+-------------------------------------------------------------------------------
+
+INDICE ANALITICO:
+1.  QUADRO NORMATIVO E LOGICA DI INCENTIVAZIONE
+2.  ANALISI DEI SOGGETTI: AMMESSI, RESPONSABILI E DELEGATI
+3.  REQUISITI DELL'EDIFICIO E dell'IMPIANTO (ANTE-OPERAM)
+4.  TITOLO II: ANALISI DEGLI INTERVENTI DI EFFICIENZA ENERGETICA
+5.  TITOLO II: TABELLA COEFFICIENTI (Art.5)
+6.  TITOLO III: ANALISI DELLE TECNOLOGIE FER TERMICHE
+7.  TITOLO III: TABELLE COEFFICIENTI (Art.8)
+8.  REQUISITI TECNICI DI DETTAGLIO E "TRAPPOLE" PROGETTUALI
+9.  ANALISI FINANZIARIA: INTENSITÀ E MAGGIORAZIONI
+10. DISPOSIZIONI SPECIFICHE PER LE IMPRESE (TITOLO V)
+11. PROCEDURE E SCADENZE: IL PERCORSO CRITICO
+12. GESTIONE DEI PAGAMENTI E DOCUMENTAZIONE OBBLIGATORIA
+13. MODALITÀ DI EROGAZIONE E TEMPISTICA
+14. CONTROLLI, ISPEZIONI E MANTENIMENTO
+15. CUMULABILITÀ
+
+-------------------------------------------------------------------------------
+1. QUADRO NORMATIVO E LOGICA DI INCENTIVAZIONE
+-------------------------------------------------------------------------------
+Il CT3 evolve dal precedente regime introducendo una distinzione più marcata tra
+soggetti pubblici e privati, con un focus specifico sulla riduzione della
+domanda di energia primaria e l'integrazione di sistemi smart.
+
+ENTRATA IN VIGORE: Il decreto è pubblicato in GU n.224 del 26/09/2025; entra in
+vigore il 90° giorno successivo (25 dicembre 2025). Le domande presentate prima
+della entrata in vigore restano soggette al DM 16 febbraio 2016 (CT2.0).
+
+POTENZA MASSIMA AMMISSIBILE (Art.2, lett.z):
+- Interventi FER termiche: potenza termica ≤ 2 MW
+- Solari termici: superficie ≤ 2.500 m²
+- Microcogenerazione: capacità < 50 kWe
+
+BUDGET E CONTINGENTI (Art.3):
+Il plafond annuo di 900 M€ è ripartito per gestire la pressione della domanda:
+- 400 M€: PA e ETS non economici (assimilati a PA).
+- 500 M€: Soggetti privati (persone fisiche, condomini, imprese).
+  - Di cui 150 M€ riservati esclusivamente alle imprese (Art.28).
+- Sotto-limite per diagnosi energetiche (Art.15, c.6): 20 M€.
+Il monitoraggio avviene tramite il "contatore" GSE; al raggiungimento del
+limite, le istanze vengono bloccate dopo 60 giorni.
+
+DIVIETO DI REITERAZIONE (Art.10, c.7): Stesso intervento sul medesimo edificio
+non può essere ripetuto per almeno 1 anno dalla stipula del contratto GSE.
+
+-------------------------------------------------------------------------------
+2. ANALISI DEI SOGGETTI: AMMESSI, RESPONSABILI E DELEGATI
+-------------------------------------------------------------------------------
+La distinzione tra Soggetto Ammesso (SA) e Soggetto Responsabile (SR) è critica.
+
+SOGGETTO AMMESSO (SA): Chi ha diritto all'incentivo (proprietario/detentore).
+
+SOGGETTO RESPONSABILE (SR): Chi sottoscrive il contratto con il GSE. Spesso
+coincidono, ma nel CT3 si analizzano i casi di dissociazione:
+- ESCO (UNI CEI 11352): Può agire come SR per conto di un SA tramite contratto
+  EPC (Energy Performance Contract) o Servizio Energia. La certificazione UNI
+  CEI 11352 deve essere in corso di validità. Divieto di mandato all'incasso
+  per ESCO.
+- Soggetto pubblico deputato alla gestione degli immobili (Art.13, c.1, lett.b).
+- Soggetto privato selezionato dalla PA tramite PPP.
+- Comunità Energetiche Rinnovabili (CER) e Configurazioni di Autoconsumo (AUC):
+  Accesso come SR per conto dei membri. Cumulabili con incentivi per
+  l'autoconsumo nel rispetto del DM 414/2023.
+
+FOCUS ENTI DEL TERZO SETTORE (ETS):
+Gli ETS non sono una categoria monolitica:
+- ETS NON ECONOMICI: Seguono le regole della PA (100% incentivo in alcuni casi,
+  accesso alla prenotazione).
+- ETS ECONOMICI: Seguono le regole delle Imprese (Titolo V, no prenotazione
+  diretta, vincoli di risparmio energetico minimo).
+
+SOGGETTI AMMESSI — DETTAGLIO:
+- PA: Art.1, c.2 D.Lgs 165/2001 + elenco ISTAT + società in house (D.Lgs
+  175/2016) + cooperative sociali L.381/1991 + concessionari servizi pubblici.
+- Persone fisiche: Proprietari o detentori dell'immobile.
+- Condomini.
+- Imprese: Qualsiasi entità con attività economica, incluse ATI, consorzi,
+  società di scopo.
+- Aziende agricole: IAP (D.Lgs 99/2004).
+- Imprese forestali: ATECO 02.10.00, 02.20.00.
+- Privati (Tit.II): Solo ambito terziario. Condomini e persone fisiche in
+  ambito residenziale sono ESCLUSI dal Titolo II.
+- Privati (Tit.III): ambito terziario + ambito residenziale (Art.7 c.1 lett.b).
+
+-------------------------------------------------------------------------------
+3. REQUISITI DELL'EDIFICIO E DELL'IMPIANTO (ANTE-OPERAM)
+-------------------------------------------------------------------------------
+Per essere incentivabile, l'intervento deve avvenire su:
+- EDIFICI ESISTENTI: Dimostrato tramite accatastamento (categorie A, B, C, D, E).
+  Le categorie F (in costruzione) sono ESCLUSE.
+- Categorie catastali:
+  Residenziale: Gruppo A, escluse A/8, A/9, A/10.
+  Terziario: A/10, Gruppo B, Gruppo C escluse C/6 e C/7, Gruppo D escluso D/9,
+  Gruppo E escluse E/2, E/4, E/6.
+  (Allegato 1, Tabella 1)
+- Cat. A/1, A/8, A/9 (lusso): ammesse solo per PA e ETS non economici.
+- IMPIANTO DI RISCALDAMENTO: Deve essere presente e funzionante alla data di
+  entrata in vigore del decreto.
+  - Eccezione: Solare termico (III.D) e scaldacqua a PDC (III.E) possono essere
+    installati anche senza impianto di riscaldamento preesistente.
+- VOLUME CLIMATIZZATO: L'isolamento e gli infissi devono delimitare superfici
+  che separano un ambiente riscaldato dall'esterno o da ambienti non riscaldati.
+- Solo apparecchi nuovi o ricondizionati (Art.10, c.5). Apparecchio
+  ricondizionato: prodotto già immesso sul mercato, dismesso, sottoposto a
+  pulizia/manutenzione/riparazione, testato per ripristinare funzionalità e
+  prestazioni originarie.
+
+TRASMITTANZE MASSIME PER L'ACCESSO ALL'INCENTIVO (Allegato 1, Tabella 2)
+Valori limite U (W/m²K) per interventi II.A (isolamento) e II.B (infissi):
+
+| Intervento          | Zona A   | Zona B   | Zona C   | Zona D   | Zona E   | Zona F   |
+|---------------------|----------|----------|----------|----------|----------|----------|
+| Coperture           | 0,27     | 0,27     | 0,27     | 0,22     | 0,20     | 0,19     |
+| Pavimenti           | 0,40     | 0,40     | 0,30     | 0,28     | 0,25     | 0,23     |
+| Pareti verticali    | 0,38     | 0,38     | 0,30     | 0,26     | 0,23     | 0,22     |
+| Finestre + infissi  | 2,60     | 2,60     | 1,75     | 1,67     | 1,30     | 1,00     |
+
+Isolamento dall'interno o in intercapedine: trasmittanze incrementate del 30%,
+comunque nel rispetto dei limiti del DM 26/6/2015. Verifica obbligatoria del
+rischio condensa interstiziale e superficiale (UNI EN ISO 13788).
+
+In alternativa per edifici ante 29/10/1993: miglioramento dell'indice di
+prestazione energetica ≥ 50%.
+
+-------------------------------------------------------------------------------
+4. TITOLO II: ANALISI DEGLI INTERVENTI DI EFFICIENZA ENERGETICA
+-------------------------------------------------------------------------------
+L'analisi tecnica richiede il rispetto di trasmittanze (U) e requisiti smart.
+Per i coefficienti completi si veda la Sezione 5.
+
+NOTA AMMISSIBILITÀ: Soggetti privati in ambito residenziale (condomini e
+persone fisiche) sono ESCLUSI dal Titolo II.
+
+II.A - ISOLAMENTO SUPERFICI OPACHE:
+- Obbligo di correzione dei ponti termici nella diagnosi energetica.
+- Trasmittanze limite: vedi Tabella Sezione 3. Per isolamento interno o
+  intercapedine: U +30%. Verifica rischio condensa UNI EN ISO 13788.
+- Materiali: devono rispettare i Criteri Ambientali Minimi (CAM) se realizzato
+  da una PA.
+
+II.B - SOSTITUZIONE INFISSI:
+- Sostituzione di chiusure trasparenti (infissi).
+- Obbligo: Installazione di valvole termostatiche (o sistemi di termoregolazione
+  evoluti) sui terminali di emissione, se non già presenti.
+
+II.C - SCHERMATURE SOLARI:
+- Richiede intervento II.B abbinato (Art.5, lett.b).
+- Esposizione: da Est-Sud-Est a Ovest.
+- Classe schermatura solare ≥ 3 (UNI EN 14501); fattore solare gtot classe 3 o 4.
+- Fissi o mobili, non trasportabili.
+
+II.D - NZEB (Edifici a Energia Quasi Zero):
+- Intervento radicale. Consente ampliamenti volumetrici fino al 25% (Art.10,
+  c.3-bis, D.Lgs 28/2011).
+- PA: ammessa demolizione e ricostruzione, anche in sito diverso.
+
+II.E - ILLUMINAZIONE:
+- Sostituzione con sistemi efficienti (LED).
+- Resa cromatica: > 80 (interni), > 60 (externi).
+- Efficienza minima: 80 lm/W.
+- Potenza installata ≤ 50% della potenza sostituita.
+
+II.F - BUILDING AUTOMATION:
+- Richiede il raggiungimento della Classe B (UNI EN ISO 52120-1).
+- Deve gestire almeno riscaldamento e/o acqua calda sanitaria.
+- Include termoregolazione e contabilizzazione del calore.
+
+II.G - RICARICA VEICOLI ELETTRICI:
+- Incentivabile solo se abbinato a sostituzione del generatore con PdC elettrica
+  (III.A).
+- Potenza minima 7,4 kW; smart (misura + comandi); modo 3 o 4 (CEI EN 61851).
+- Comunque ≤ incentivo della PdC abbinata.
+
+II.H - FOTOVOLTAICO + ACCUMULO:
+- Incentivabile solo se abbinato a sostituzione del generatore con PdC elettrica
+  (III.A).
+- Potenza ≥ 2 kW e ≤ 1 MW.
+- Sovradimensionamento max 5% del fabbisogno calcolato.
+- Accumulo: ≥ 0,5 kWh/kWp, max 2 kWh/kWp.
+- Moduli: nuova costruzione, marcatura CE, tolleranza solo positiva, carico
+  ≥ 5.400 Pa, coefficiente temperatura ≥ -0,37 %/°C, garanzia prodotto ≥ 10
+  anni, garanzia rendimento ≥ 90% dopo 10 anni.
+- Inverter: efficienza ≥ 97%.
+- Comunque ≤ incentivo della PdC abbinata.
+
+DURATA EROGAZIONE (Art.11, Tabella 1):
+
+| Intervento                            | Durata      |
+|---------------------------------------|-------------|
+| II.A Isolamento                       | 5 anni      |
+| II.B Infissi                          | 5 anni      |
+| II.C Schermature                      | 5 anni      |
+| II.D NZEB                             | 5 anni      |
+| II.E Illuminazione                    | 5 anni      |
+| II.F Building automation              | 5 anni      |
+| II.G/H Ricarica + FV                 | Come abbinato |
+| III.A PdC ≤ 35 kW                     | 2 anni      |
+| III.A PdC > 35 kW e ≤ 2.000 kW       | 5 anni      |
+| III.B Ibridi ≤ 35 kW                  | 2 anni      |
+| III.B Ibridi > 35 kW e ≤ 2.000 kW    | 5 anni      |
+| III.C Biomassa ≤ 35 kW                | 2 anni      |
+| III.C Biomassa > 35 kW e ≤ 2.000 kW  | 5 anni      |
+| III.D Solare termico ≤ 50 m²          | 2 anni      |
+| III.D Solare termico > 50 m² e ≤ 2.500 m² | 5 anni  |
+| III.E Scaldacqua PdC                  | 2 anni      |
+| III.F Teleriscaldamento               | 5 anni      |
+| III.G Microcogenerazione              | 5 anni      |
+
+Multi-intervento: durata = massimo tra gli interventi.
+
+-------------------------------------------------------------------------------
+5. TITOLO II: TABELLA COEFFICIENTI (Allegato 2, Tabella 7)
+-------------------------------------------------------------------------------
+Formula generale efficienza (II.A, II.B, II.C):
+  I_tot = %_spesa × C × S_nt        con I_tot ≤ I_max
+
+Formula generale efficienza (II.D, II.E, II.F):
+  I_tot = %_spesa × C × S_ed        con I_tot ≤ I_max
+
+Maggiorazione componenti UE: +10% sull'I_tot.
+
+| Intervento (Art.5)                   | % spesa  | C_max         | I_max        |
+|--------------------------------------|----------|---------------|--------------|
+| Coperture esterno                    | 40%*     | 300 €/m²      | 1.000.000 €  |
+| Coperture interno                    | 40%*     | 150 €/m²      | (I+II+III)   |
+| Copertura ventilata                  | 40%*     | 350 €/m²      |              |
+| Pavimenti esterno                    | 40%*     | 170 €/m²      |              |
+| Pavimenti interno                    | 40%*     | 150 €/m²      |              |
+| Pareti esterno                       | 40%*     | 200 €/m²      |              |
+| Pareti interno                       | 40%*     | 100 €/m²      |              |
+| Parete ventilata                     | 40%*     | 250 €/m²      |              |
+| Finestre zone A/B/C                  | 40%**    | 700 €/m²      | 500.000 €    |
+| Finestre zone D/E/F                  | 40%**    | 800 €/m²      | 500.000 €    |
+| Schermature/ombregg.                 | 40%      | 250 €/m²      | 90.000 €     |
+| Meccanismi automatici                | 40%      | 50 €/m²       | 10.000 €     |
+| Filtraz. selettiva non riflettente   | 40%      | 130 €/m²      | 30.000 €     |
+| Filtraz. selettiva riflettente       | 40%      | 80 €/m²       |              |
+| NZEB zone A/B/C                      | 65%      | 1.000 €/m²    | 2.500.000 €  |
+| NZEB zone D/E/F                      | 65%      | 1.300 €/m²    | 3.000.000 €  |
+| Illuminazione alta efficienza        | 40%      | 15 €/m²       | 50.000 €     |
+| Illuminazione LED                    | 40%      | 35 €/m²       | 140.000 €    |
+| Building automation                  | 40%      | 60 €/m²       | 100.000 €    |
+
+Note Tabella 7:
+(*) Zone E/F: % = 50%. PA (Art.11 c.2): % = 100%.
+(**) Se abbinato ad Art.8 lett.a/b/c/e: % = 55%.
+
+INFRASTRUTTURE RICARICA (II.G) — Limite 30% del costo max ammissibile:
+| Fascia potenza                       | Valore                       |
+|--------------------------------------|------------------------------|
+| Monofase 7,4 < P ≤ 22 kW            | 2.400 €/punto                |
+| Trifase 7,4 < P ≤ 22 kW             | 8.400 €/punto                |
+| 22 < P ≤ 50 kW                      | 1.200 €/kW                   |
+| 50 < P ≤ 100 kW                     | 60.000 €/infrastruttura      |
+| P > 100 kW                          | 110.000 €/infrastruttura     |
+| Comunque ≤ incentivo PdC abbinata   |                              |
+
+FV + ACCUMULO (II.H) — Limite 20% del costo max ammissibile:
+| Fascia potenza     | €/kWp         |
+|--------------------|---------------|
+| ≤ 20 kW            | 1.500 €/kW    |
+| 20-200 kW          | 1.200 €/kW    |
+| 200-600 kW         | 1.100 €/kW    |
+| 600-1.000 kW       | 1.050 €/kW    |
+| Accumulo: 1.000 €/kWh               |               |
+
+Incrementi opzionali: +5% (registro lett.a), +10% (lett.b), +15% (lett.c).
+Comunque ≤ incentivo PdC abbinata.
+
+-------------------------------------------------------------------------------
+6. TITOLO III: ANALISI DELLE TECNOLOGIE FER TERMICHE
+-------------------------------------------------------------------------------
+Il calcolo dell'incentivo non è meramente forfettario ma segue algoritmi che
+premiano l'efficienza reale e l'ubicazione geografica. Per i coefficienti
+completi si veda la Sezione 7.
+
+III.A - POMPE DI CALORE ELETTRICHE:
+Formula:  I_a_tot = E_i × C_i
+  E_i = Q_u × [1 - 1/SCOP] × k_p
+  Q_u = P_rated × Q_uf
+  k_p = η_s / η_s_min_ecodesign
+
+Per macchine fixed double duct: E_i = Q_u × [1 - 1/COP] × k_p; COP_min = 2,6.
+
+SCOP minimi Ecodesign per zona: si veda Tabella 3-4, Sezione 7.
+Il Quf varia da 600 (Zona A) a 1800 (Zona F): a parità di macchina,
+l'incentivo in Zona F è il triplo rispetto alla Zona A.
+
+III.A - POMPE DI CALORE A GAS:
+  I_a_tot = E_i × C_i
+  E_i = Q_u × [1 - 1/(SPER × CC)] × k_p
+  CC = 2,5 (coefficiente di conversione, riflette 40% efficienza produzione
+  media UE — Dir. 2012/27/UE).
+
+III.B - SISTEMI IBRIDI E BIVALENTI:
+  I_a_tot = k × E_i × C_i
+  k = 1,25 (ibrido factory made, qualsiasi potenza)
+  k = 1,0  (sistema bivalente, Pn ≤ 35 kW)
+  k = 1,1  (sistema bivalente, Pn caldaia > 35 kW — maggiorazione 10%)
+  PdC a gas: usare SPER × CC al posto di SCOP.
+
+Caldaia a condensazione per sistemi bivalenti:
+- η_s > 90% (Pn < 400 kW) o η_100 > 98% (Pn ≥ 400 kW).
+- Termoregolazione classi V, VI, VII, VIII.
+- Rapporto potenza PdC / potenza caldaia ≤ 0,5 per ibridi factory made.
+
+III.C - BIOMASSA (caldaie):
+  I_a_tot = P_n × h_r × C_i × C_e
+  Riduzione -20% per generatori in centrali termiche di teleriscaldamento.
+
+III.C - BIOMASSA (stufe/termocamini):
+  I_a_tot = 3,35 × ln(P_n) × h_r × C_i × C_e
+
+Certificazione ambientale: Classe 5 stelle DM 186/2017 o superiore.
+Ce = 1,5 per riduzione emissioni polveri > 50% rispetto ai limiti Classe 5.
+Aree non metanizzate (aziende agricole/forestali): Ce = 1,5 anche per
+sostituzione GPL con biomassa.
+Manutenzione biennale obbligatoria per tutta la durata dell'incentivo.
+
+III.D - SOLARE TERMICO:
+  I_a_tot = C_i × Q_u × S_l
+L'incentivo è proporzionale alla superficie (S_l) ma il coefficiente C_i
+DECRESCE all'aumentare della dimensione (economia di scala).
+Q_u: Energia prodotta per m², derivata dai dati Solar Keymark riferiti alla
+località di Würzburg (standard europeo).
+
+Producibilità minima annua:
+- Collettori piani: > 300 kWh_t/m² anno
+- Sottovuoto/tubi evacuati: > 400 kWh_t/m² anno
+- Concentrazione (Atene): > 550 kWh_t/m² anno
+- Factory made: > 400 kWh_t/m² anno
+Garanzia collettori/bollitori: ≥ 5 anni.
+
+Solar cooling: rapporto superficie lorda / potenza frigorifera > 2 e ≤ 2,75.
+Macchine DEC: superficie minima 8 m² ogni 1.000 m³/h aria trattata, max 10.
+
+III.E - SCALDAQUA A POMPA DI CALORE:
+  40% della spesa. Max:
+  Classe A: 500 € (≤ 150 litri), 1.100 € (> 150 litri)
+  Classe A+: 700 € (≤ 150 litri), 1.500 € (> 150 litri)
+  Classe A o superiore (Reg. UE 812/2013). COP ≥ 2,6 (UNI EN 16147).
+
+III.F - TELERISCALDAMENTO:
+  I_tot = %_spesa × C × P_nsc     con I_tot ≤ I_max
+
+| Pn sottostazione  | % spesa | C_max      | I_max    |
+|-------------------|---------|------------|----------|
+| ≤ 50 kW           | 65%     | 200 €/kW   | 6.500 €  |
+| 50 < Pn ≤ 150 kW  | 65%     | 160 €/kW   | 15.000 € |
+| > 150 kW          | 65%     | 130 €/kW   | 30.000 € |
+
+III.G - MICROCOGENERAZIONE FER:
+  I_tot = %_spesa × C × P_nnt     con I_tot ≤ I_max
+  %_spesa = 65%
+  C_max = 5.000 €/kWe
+  I_max = 100.000 €
+  Potenza < 50 kWe. PES ≥ 10% (Allegato IV, D.Lgs 199/2021).
+  Alimentazione: biomassa, biogas, bioliquidi.
+
+-------------------------------------------------------------------------------
+7. TITOLO III: TABELLE COEFFICIENTI (Allegato 2)
+-------------------------------------------------------------------------------
+
+COEFFICIENTI DI UTILIZZO Q_uf (Tabella 8):
+| Zona | Q_uf |
+|------|------|
+| A    | 600  |
+| B    | 850  |
+| C    | 1.100|
+| D    | 1.400|
+| E    | 1.700|
+| F    | 1.800|
+
+STESSI VALORI PER h_r (biomassa — Tabella 11):
+| Zona | h_r  |
+|------|------|
+| A    | 600  |
+| B    | 850  |
+| C    | 1.100|
+| D    | 1.400|
+| E    | 1.700|
+| F    | 1.800|
+
+SCOP MINIMI ECODESIGN — PdC ELETTRICHE (Tabelle 3-4):
+| Tipo PdC                          | η_s % min | SCOP min | COP min |
+|-----------------------------------|-----------|----------|---------|
+| Aria/aria ≤ 12 kW (Reg.206/2012)  | 149       | 3,8      | 2,60    |
+| Aria/aria ≤ 12 kW GWP ≥ 150       | 134       | 3,42     | 2,34    |
+| Aria/aria > 12 kW (Reg.2281/2016) | 137       | 3,5      | —       |
+| Aria/aria rooftop ≤ 35 kW         | 137       | 3,5      | —       |
+| Aria/aria rooftop > 35 kW         | 125       | 3,2      | —       |
+| Acqua/aria (Reg.2281/2016)        | 137       | 3,625    | —       |
+| Aria/acqua (Reg.813/2013)         | 110       | 2,825    | —       |
+| Acqua/acqua (Reg.813/2013)        | 110       | 2,95     | —       |
+| Aria/acqua BT (Reg.813/2013)      | 125       | 3,2      | —       |
+| Acqua/acqua BT (Reg.813/2013)     | 125       | 3,325    | —       |
+| Salamoia/aria ≤ 12 kW             | 149       | 3,8      | —       |
+| Salamoia/aria > 12 kW             | 137       | 3,625    | —       |
+| Salamoia/acqua (Reg.813/2013)     | 110       | 2,825    | —       |
+| Salamoia/acqua BT (Reg.813/2013)  | 125       | 3,2      | —       |
+
+SCOP MINIMI ECODESIGN — PdC A GAS (Tabella 5):
+| Tipo                              | η_s % min | SPER min |
+|-----------------------------------|-----------|----------|
+| Aria/aria                         | 130       | 1,33     |
+| Acqua/aria                        | 130       | 1,33     |
+| Salamoia/aria                     | 130       | 1,33     |
+| Aria/acqua – acqua/acqua          | 110       | 1,13     |
+| Aria/acqua BT – acqua/acqua BT    | 125       | 1,28     |
+| Salamoia/acqua                    | 125       | 1,28     |
+| NOx assorbimento: < 120 mg/kWh termico                              |
+| NOx motore comb. int.: < 240 mg/kWh termico                         |
+
+COEFFICIENTI C_i — PdC (Tabella 9 — €/kWh_t):
+| Tipo PdC          | Denominazione     | Potenza     | C_i   |
+|-------------------|-------------------|-------------|-------|
+| Aria/aria         | Split/multisplit  | ≤ 12 kW     | 0,070 |
+| Aria/aria         | Fixed double duct | ≤ 12 kW     | 0,200 |
+| Aria/aria         | VRF/VRV           | 13-35 kW    | 0,150 |
+| Aria/aria         | VRF/VRV           | > 35 kW     | 0,055 |
+| Aria/aria         | Rooftop           | ≤ 35 kW     | 0,150 |
+| Aria/aria         | Rooftop           | > 35 kW     | 0,055 |
+| Aria/acqua        | —                 | ≤ 35 kW     | 0,150 |
+| Aria/acqua        | —                 | > 35 kW     | 0,060 |
+| Acqua/aria        | —                 | ≤ 35 kW     | 0,160 |
+| Acqua/aria        | —                 | > 35 kW     | 0,060 |
+| Acqua/acqua       | —                 | ≤ 35 kW     | 0,160 |
+| Acqua/acqua       | —                 | > 35 kW     | 0,060 |
+| Salamoia/aria     | —                 | ≤ 35 kW     | 0,160 |
+| Salamoia/aria     | —                 | > 35 kW     | 0,060 |
+| Salamoia/acqua    | —                 | ≤ 35 kW     | 0,160 |
+| Salamoia/acqua    | —                 | > 35 kW     | 0,060 |
+
+COEFFICIENTI C_i — BIOMASSA (Tabella 10 — €/kWh_t):
+| Tipo                      | ≤ 35 kW | > 35 ≤ 500 kW | > 500 kW |
+|---------------------------|---------|---------------|----------|
+| Caldaie biomassa          | 0,060   | 0,025         | 0,020    |
+| Termocamini/stufe legna   | 0,045   | —             | —        |
+| Termocamini/stufe pellet  | 0,055   | —             | —        |
+
+COEFFICIENTE C_e — BIOMASSA (Tabelle 12-13):
+| Riduzione emissioni PP  | C_e |
+|-------------------------|-----|
+| Fino al 20% compreso    | 1,0 |
+| Dal 20% al 50% compreso | 1,2 |
+| Superiore al 50%        | 1,5 |
+
+COEFFICIENTI C_i — SOLARE TERMICO (Tabella 16 — €/kWh_t):
+| Applicazione            | Sl < 12 | 12-50  | 50-200 | 200-500 | Sl > 500 |
+|-------------------------|---------|--------|--------|---------|----------|
+| ACS                     | 0,35    | 0,32   | 0,13   | 0,12    | 0,11     |
+| ACS + riscaldamento     | 0,36    | 0,33   | 0,13   | 0,12    | 0,11     |
+| Concentrazione          | 0,38    | 0,35   | 0,13   | 0,12    | 0,11     |
+| Solar cooling           | 0,43    | 0,40   | 0,17   | 0,15    | 0,14     |
+
+TEMPERATURE MEDIE FUNZIONAMENTO (Tabella 17):
+| Applicazione                          | Temperatura |
+|---------------------------------------|-------------|
+| ACS                                   | 50 °C       |
+| ACS + riscaldamento + calore proc. BT | 75 °C       |
+| Calore processo MT + solar cooling MT | 150 °C      |
+
+DIAGNOSI ENERGETICHE E APE (Tabella 21):
+| Destinazione               | Superficie     | C_max    | Max erogabile |
+|----------------------------|----------------|----------|---------------|
+| Residenziale E1 (esclusi   | ≤ 1.600 m²    | 1,50 €/m²| 10.000 €      |
+| collegi, conventi, caserme)| > 1.600 m²    | 1,00 €/m²| 10.000 €      |
+| Ospedali E3                | —              | 3,50 €/m²| 18.000 €      |
+| Tutti gli altri            | ≤ 2.500 m²    | 2,50 €/m²| 13.000 €      |
+| Tutti gli altri            | > 2.500 m²    | 2,00 €/m²| 13.000 €      |
+
+-------------------------------------------------------------------------------
+8. REQUISITI TECNICI DI DETTAGLIO E "TRAPPOLE" PROGETTUALI
+-------------------------------------------------------------------------------
+ISOLAMENTO (II.A):
+- Analisi del Rischio: Non basta rispettare la trasmittanza U. Il progettista
+  deve asseverare l'assenza di condensa interstiziale e superficiale (UNI EN
+  ISO 13788).
+- Materiali: Devono rispettare i Criteri Ambientali Minimi (CAM) se l'intervento
+  è realizzato da una PA.
+
+POMPE DI CALORE (III.A):
+- Limiti di Temperatura: Gli SCOP devono essere dichiarati alle temperature di
+  mandata di progetto (es. 35°C per radiante, 55°C per radiatori).
+- Sostituzione Funzionale: È ammessa la sostituzione del solo generatore,
+  mantenendo la rete di distribuzione, previa verifica della compatibilità.
+- CATASTO IMPIANTI: L'impianto post-operam deve essere obbligatoriamente
+  registrato nei catasti regionali (ove attivi). La mancanza di registrazione
+  impedisce il completamento dell'iter GSE.
+
+BIOMASSA (III.C):
+- Emissioni: Il coefficiente Ce premia le macchine con emissioni di polveri
+  sottili ridotte (>50% rispetto ai limiti Classe 5 stelle -> Ce = 1,5).
+- Manutenzione: Obbligo di contratto di manutenzione biennale e pulizia canna
+  fumaria per tutta la durata dell'incentivo.
+- Sostituzione ammessa da: biomassa, carbone, olio combustibile, gasolio.
+- Sostituzione da GPL/gas naturale: solo se particolato ≤ 1 mg/Nm³.
+- Caldaie ≤ 500 kWt: Certificazione UNI EN 303-5 Classe 5; rendimento ≥ 87% +
+  log(Pn); accumulo termico ≥ 20 dm³/kWt; pellet UNI EN ISO 17225-2.
+- Caldaie > 500 kWt e ≤ 2.000 kWt: rendimento ≥ 92%; PP ≤ 10 mg/Nm³;
+  COT ≤ 5 mg/Nm³; NOx ≤ 150 mg/Nm³; CO ≤ 150 mg/Nm³ (riferimento 13% O₂);
+  sistema abbattimento particolato primario con disponibilità ≥ 90%.
+- Stufe/termocamini a pellet: UNI EN 16510:2023; rendimento > 85%.
+- Termocamini a legna: solo in sostituzione di camini/termocamini/stufe a
+  legna; UNI EN 16510:2023; rendimento > 85%.
+- Stufe a legna: UNI EN 16510:2023; rendimento > 85%.
+
+SOLARE TERMICO (III.D):
+- Certificazione Solar Keymark (o ENEA per concentrazione).
+- Solar cooling: rapporto superficie lorda / potenza frigorifera > 2 e ≤ 2,75.
+- Superficie > 100 m²: contabilizzazione obbligatoria.
+
+SCALDAQUA A PdC (III.E):
+- Sostituzione di scaldacqua elettrici o a gas esistenti.
+- COP ≥ 2,6 (UNI EN 16147).
+
+IMPACT ASSESSMENT — EDIFICI 48-TER (scolastici/sanitari pubblici):
+- Interventi ammessi al 100%: Tutti gli interventi del Titolo II (Efficienza)
+  e del Titolo III (FER) realizzati su edifici scolastici e strutture
+  sanitarie pubbliche.
+- Università: NON riconducibili a edifici scolastici ai fini 48-ter.
+
+-------------------------------------------------------------------------------
+9. ANALISI FINANZIARIA: INTENSITÀ E MAGGIORAZIONI
+-------------------------------------------------------------------------------
+La determinazione del contributo segue un'algebra complessa di basi e bonus.
+
+PUBBLICHE AMMINISTRAZIONI:
+- 65%: Percentuale base per tutti gli interventi.
+- 100%: Per NZEB (II.D).
+- 100% SCUOLE: Applicabile a tutti gli edifici scolastici di ogni ordine e
+  grado, indipendentemente dalla popolazione del comune.
+- 100% OSPEDALI e COMUNI < 15.000 ab: Per edifici utilizzati per servizi
+  sociali e collettivi.
+  - NOTA SR/PROPRIETÀ: Se l'immobile è comunale ma gestito da un ETS non
+    economico, entrambi possono agire come Soggetto Responsabile mantenendo
+    il diritto al 100%.
+- IVA: Ammissibile per PA e ETS non economici dove costituisca un costo reale
+  non recuperabile.
+- DIAGNOSI/APE: Incentivata al 100% se obbligatoria per l'intervento.
+  Contributo anticipato = 50% delle spettanze massime (Tabella 21).
+  Restante 50% dopo realizzazione di almeno 1 intervento.
+  Limite richieste anticipo: 3/anno per soggetto; 5/anno per comuni >
+  30.000 abitanti, province, regioni, PA centrali.
+  Termine trasmissione diagnosi: 12 mesi dall'accettazione — pena decadenza.
+
+SOGGETTI PRIVATI / PERSONE FISICHE:
+- Base: Fino al 65% (varia per tecnologia, vedi Tabella 7).
+- DIAGNOSI/APE: Incentivata al 50% delle spese sostenute, esclusivamente se
+  la diagnosi è richiesta obbligatoriamente dal Decreto per l'intervento.
+- Se già ottenuto contributo anticipato per diagnosi, la spesa diagnosi NON
+  è inclusa nelle spese ammissibili Art.6/9.
+
+IMPRESE (TITOLO V):
+Vedi Sezione 10 — Disposizioni specifiche per le Imprese.
+
+BONUS COMPONENTI UE:
+Maggiorazione del 10% dell'incentivo base se i componenti principali sono
+prodotti nell'Unione Europea (richiede certificazione del produttore).
+
+MAGGIORAZIONI APPLICABILI (riepilogo):
+- Zona assistita (Art.107.3.a TFUE): +15%
+- Zona assistita (Art.107.3.c TFUE): +5%
+- Efficienza EP ≥ 40%: +15%
+- Componenti UE: +10% (solo Titolo II)
+- Piccola impresa: +20 punti % (Tit.II), +20 punti % (Tit.III)
+- Media impresa: +10 punti % (Tit.II), +10 punti % (Tit.III)
+- Zone montane (RA): premialità su costi trasporto e installazione
+
+COMMISSIONE GSE:
+1% della spesa ammessa, trattenuta dalle rate, max 250 € (Art.18).
+
+-------------------------------------------------------------------------------
+10. DISPOSIZIONI SPECIFICHE PER LE IMPRESE (TITOLO V)
+-------------------------------------------------------------------------------
+L'incentivo per le imprese costituisce Aiuto di Stato (Reg. GBER 651/2014,
+artt. 38-bis e 41).
+
+AMBITO ED ESCLUSIONI (Art.24):
+- Non si applica a imprese in difficoltà né a imprese con ordine di recupero UE.
+- Divieto combustibili fossili (incluso gas naturale) — Art.25, c.2.
+
+REQUISITI SPECIFICI (Art.25):
+- Efficienza energetica (Art.5): riduzione domanda energia primaria ≥ 10%
+  (singolo intervento) o ≥ 20% (multi-intervento).
+- Richiesta preliminare obbligatoria PRIMA dell'avvio lavori (Art.25, c.3):
+  nome/dimensione impresa, progetto, date, costi, tipologia aiuto + importo.
+- Per imprese/ETS economici con lavori avviati dal 7/8/25 ma non conclusi:
+  richiesta preliminare via PEC entro 30 giorni dalla pubblicazione RA
+  (a preliminareimpreseCT3@pec.gse.it) fino all'entrata in esercizio del
+  nuovo Portaltermico.
+- Aziende agricole/forestali: ammessa sostituzione di esistenti non fossili
+  con biomassa (Art.8 lett.c) su serre, fabbricati rurali, processi, TLR.
+
+SPESE AMMISSIBILI (Art.26):
+- Costi non direttamente connessi a efficienza energetica: non ammissibili.
+- PMI: inclusi costi APE ante e post-intervento.
+- IVA: mai ammissibile per le imprese.
+
+INTENSITÀ (Art.27):
+
+| Componente                    | Tit.II (Efficienza) | Tit.III (FER) |
+|-------------------------------|---------------------|---------------|
+| Base singolo intervento       | 25%                 | 45%           |
+| Base multi-intervento         | 30%                 | 45%           |
+| + Piccola impresa             | +20 punti %         | +20 punti %   |
+| + Media impresa               | +10 punti %         | +10 punti %   |
+| + Zona assistita 107.3.a      | +15 punti %         | —             |
+| + Zona assistita 107.3.c      | +5 punti %          | —             |
+| + EP ≥ 40%                    | +15 punti %         | —             |
+| Tetto massimo                 | 65%                 | 65%           |
+
+LIMITI DI SPESA (Art.28):
+- Limite annuo complessivo imprese: 150 M€.
+- Limite per singola impresa e intervento: 30 M€.
+
+-------------------------------------------------------------------------------
+11. PROCEDURE E SCADENZE: IL PERCORSO CRITICO
+-------------------------------------------------------------------------------
+ACCESSO DIRETTO:
+- Entro 60 giorni dalla fine lavori. La "fine lavori" coincide con l'ultimo
+  collaudo o la dichiarazione di conformità (DM 37/08).
+- Ritardi oltre i 60gg comportano l'inammissibilità dell'istanza.
+- Soggetti: tutti (PA, privati, imprese).
+- Dilazione pagamenti: fino 120 giorni (escluse prestazioni professionali).
+  Privati: oltre 120 giorni se ultima quota > 10% della spesa totale.
+
+PRENOTAZIONE (PA, ETS non economici, CER, AUC):
+- Consente di accantonare i fondi.
+- Richiede la Diagnosi Energetica e un atto formale (es. determina a
+  contrarre per PA, contratto EPC, provvedimento).
+- Contingente riservato: ≤ 50% del budget Art.3 c.2.
+- Acconto: Erogato all'avvio lavori (2/5 se durata 5 anni, 50% se 2 anni).
+  Obbligazione solidale tra PA e ESCO per acconti.
+- Termini:
+  - Avvio lavori entro 18 mesi; conclusione entro 12 mesi dall'avvio
+    (36 mesi per NZEB Art.5 lett.d).
+  - Uffici ricostruzione: avvio entro 18 mesi; conclusione entro 48 mesi.
+
+PROCEDURA SEMPLIFICATA (CATALOGO):
+- Per generatori < 35 kW (o solari ≤ 50 m²) presenti nell'elenco GSE.
+- Riduce l'onere documentale (non serve l'asseverazione tecnica di fine
+  lavori).
+- Scheda precompilata, verifica automatica per apparecchi in catalogo GSE.
+
+ITER ISTRUTTORIO GSE (Art.16):
+- Telematica via Portaltermico con scheda-domanda.
+- Verifica automatica requisiti minimi + congruità costi.
+- Integrazione documentale: 30 giorni (pena rigetto).
+- Preavviso di rigetto: 10 giorni per controdeduzioni.
+
+CORRISPETTIVO GSE (Art.18):
+1% del contributo totale, trattenuta dalle rate erogate, max 250 €.
+
+-------------------------------------------------------------------------------
+12. GESTIONE DEI PAGAMENTI E DOCUMENTAZIONE OBBLIGATORIA
+-------------------------------------------------------------------------------
+La completezza documentale è il presupposto per l'erogazione. Ogni documento
+deve essere analizzato per coerenza con l'istanza.
+
+DOCUMENTAZIONE AMMINISTRATIVA:
+- Identità: Documento del SR e del SA (se diversi).
+- Titolo di Possesso: Atto di proprietà, contratto di locazione o comodato
+  d'uso (regolarmente registrato) con autorizzazione del proprietario ai lavori.
+- Dichiarazione di Conformità (DM 37/08): Obbligatoria per tutti gli impianti.
+  Deve essere completa di allegati (progetto, relazione materiali, schema).
+
+DOCUMENTAZIONE TECNICA:
+- Asseverazione di Fine Lavori: Redatta da tecnico abilitato. Deve confermare
+  la rispondenza dell'intervento ai requisiti del DM 7/8/2025 e la congruità
+  delle spese.
+- Diagnosi Energetica e APE:
+  - Ante-operam: Per interventi di isolamento, NZEB e prenotazione.
+  - Post-operam: Per NZEB e interventi complessi che richiedono il calcolo
+    del risparmio di energia primaria.
+  - Obbligo diagnosi + APE: Art.5 lett.a e d (sempre); Art.5 lett.b,c e
+    Art.8 lett.a-g se potenza ≥ 200 kW.
+  - Non richieste per: calore di processo + reti TLR.
+- Schede Tecniche: Devono evidenziare i parametri prestazionali (U, SCOP,
+  ecc.) utilizzati nei calcoli.
+- Book Fotografico: Fondamentale per dimostrare l'esistenza dell'impianto
+  preesistente (ante) e la corretta installazione del nuovo (post). Le foto
+  devono includere la targhetta del generatore rimosso e di quello installato.
+
+DOCUMENTAZIONE FINANZIARIA (IL FLUSSO DI CASSA):
+- Fatture: Devono separare chiaramente i costi della fornitura da quelli
+  della posa in opera. Devono contenere il riferimento normativo
+  ("DM 7 agosto 2025").
+- Bonifici: Solo ORDINARI (MAI bonifici "parlanti" con ritenuta d'acconto).
+  Il SR deve essere l'ordinante del bonifico.
+  - Analisi del Rischio: Se il bonifico è effettuato da un soggetto terzo
+    senza delega formale o contratto (es. ESCO), l'istanza viene respinta.
+  - Causale bonifico: "DM7.8.25 FATT.N°xx/202x CF_SR CF_BEN"
+- Estratto Conto: Può essere richiesto dal GSE per verificare l'effettivo
+  addebito del bonifico.
+- Conservazione documenti: durata incentivazione + 5 anni successivi
+  all'ultima rata (Art.18, c.1).
+
+CONTRATTI EPC/SERVIZIO ENERGIA:
+- EPC: Allegato 8 D.Lgs 102/2014 + UNI CEI EN 17669:2023; risparmio
+  energetico garantito; Modello 9 obbligatorio.
+- Servizio Energia: Allegato 2 D.Lgs 115/2008; canone periodico; fornitore
+  acquista combustibile/vettore; terzo responsabile DPR 412/93; Modello 10.
+- Divieto di mandato all'incasso per ESCO e PPP.
+- Durata contratti (accesso diretto): stipula antecedente istanza; valido
+  fino a 5 anni post ultima rata; no cessione prima di 5 anni.
+- Durata contratti (prenotazione): valido fino a 5 anni post ultima rata;
+  no cessione prima di 5 anni.
+- PPP: durata ≥ periodo erogazione + 5 anni; clausole rescissorie per
+  restituzione incentivi; antecedente all'istanza.
+
+CONTROLLI ANTIMAFIA (Art.12, RA Sez. 4.8):
+- Cause esclusione Art.94/95 D.Lgs 36/2023 e Art.67 D.Lgs 159/2011.
+- Verifica obbligatoria per importi > 150.000 €.
+
+-------------------------------------------------------------------------------
+13. MODALITÀ DI EROGAZIONE E TEMPISTICA
+-------------------------------------------------------------------------------
+Il GSE eroga il contributo sul conto corrente indicato dal SR.
+- Importo ≤ 5.000 €: erogazione in un'unica rata.
+- Importo > 5.000 € e ≤ 15.000 €: erogazione in un'unica rata.
+- Importo > 15.000 €: suddivisione in rate annuali costanti (da 2 a 5 anni,
+  secondo Tabella durata, Sezione 4).
+  - Nota: Le PA e gli ETS non economici ricevono sempre l'incentivo in
+    un'unica rata, indipendentemente dall'importo.
+  - Soggetti privati (anche via ESCO): rata unica se incentivo totale
+    ≤ 15.000 € (Art.11, c.4).
+- Acconti (Prenotazione): Fino al 50% per PA, erogati all'atto della
+  presentazione della comunicazione di inizio lavori. Per durata 5 anni:
+  2/5 (40%) di acconto; per durata 2 anni: 50% di acconto.
+- Prima rata GSE: entro l'ultimo giorno del mese successivo al bimestre
+  di attivazione (Art.19, c.5).
+- Una tantum: incentivo ≤ 15.000 € → rata unica.
+
+CONTRATTI CON IL GSE:
+- Il SR accetta clausole contrattuali informaticamente (Art.14).
+- Comunicazione modifiche: durante erogazione + 5 anni successivi (Art.18,c.2).
+
+PROTEZIONE DATI (RA Sez. 14):
+- GDPR 2016/679 + D.Lgs 196/2003.
+- Titolare: GSE S.p.A., Roma, Viale Pilsudski 92.
+- RPD: rpd@gse.it / PEC rpd@pec.gse.it.
+
+-------------------------------------------------------------------------------
+14. CONTROLLI, ISPEZIONI E MANTENIMENTO
+-------------------------------------------------------------------------------
+Il contratto con il GSE ha una durata post-erogazione:
+- OBBLIGO DI MANTENIMENTO: L'impianto deve restare in esercizio per 5 anni
+  dall'ultima rata. La rimozione anticipata comporta la restituzione pro-quota.
+- ISPEZIONI SUL CAMPO: Il GSE effettua controlli a campione su almeno l'1%
+  delle richieste ammesse nell'anno precedente (Art.21).
+  - Verifiche entro 5 anni dal periodo di erogazione.
+  - Termine procedimento controllo: 180 giorni.
+  - Preavviso sopralluogo: minimo 2 settimane.
+- La mancanza della documentazione originale o la difformità tecnica tra
+  quanto dichiarato e quanto installato porta alla decadenza totale
+  dell'incentivo.
+- DIAGNOSI E APE: Devono essere conservate in originale.
+- VIOLAZIONI RILEVANTI (Art.21):
+  Dati non veritieri, documenti falsi, indisponibilità documentazione,
+  comportamento ostativo, componenti contraffatti/rubati, insussistenza
+  dei requisiti.
+
+-------------------------------------------------------------------------------
+15. CUMULABILITÀ
+-------------------------------------------------------------------------------
+REGOLE GENERALI (Art.17):
+- Il CT3.0 NON è cumulabile con Ecobonus, Superbonus o Bonus Casa per le
+  medesime spese.
+- Non cumulabile con altri incentivi statali (salvo fondi di garanzia,
+  rotazione, interessi).
+- Deroga edifici PA: cumulabile con altri incentivi/finanziamenti pubblici,
+  con limite fondo perduto complessivo max = 100% delle spese ammissibili.
+- Autoconsumo/CER/AUC: cumulabile nel rispetto del DM 414/2023 Art.6.
+- Cumulabile con contributi regionali/locali se non coprono gli stessi costi.
+- Bonus rimozione amianto: 55% cumulabile su costi di rimozione.
+
+================================================================================

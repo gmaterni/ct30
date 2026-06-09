@@ -1,0 +1,111 @@
+{
+    "codice": "CT30-T19",
+    "nome": "Az#9 — IVA non ammissibile per Impresa",
+    "descrizione": "Test azione #9: Impresa con III.A, IVA specificata. L'IVA deve essere sottratta dalla spesa prima del calcolo incentivo.",
+    "soggetto": {
+        "tipo": "Impresa",
+        "denominazione": "EdilCostruzioni Srl",
+        "codiceFiscale": "01234560157",
+        "email": "info@edilcostruzioni.it",
+        "telefono": "02 1234567"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "EdilCostruzioni Srl",
+            "tipo": "Impresa",
+            "cf_piva": "01234560157",
+            "titolo_godimento": "Proprietà",
+            "email": "info@edilcostruzioni.it",
+            "telefono": "02 1234567"
+        },
+        "sr": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "iban": "IT40X0123456789012345678901",
+            "pec": "mario.rossi@pec.it",
+            "coincide_con_sa": false,
+            "tipo": "Privato"
+        },
+        "proprietario": {
+            "denominazione": "EdilCostruzioni Srl",
+            "cf_piva": "01234560157",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "immobile": {
+        "indirizzo": "Via Roma 1, Milano (MI)",
+        "zonaClimatica": "Zona E",
+        "destinazione": "Terziario",
+        "tipo_edificio": "Uffici",
+        "categoriaCatastale": "D/7",
+        "classeEnergeticaAnte": "F",
+        "potenza_esistente_kw": 50,
+        "combustibile_ante": "metano"
+    },
+    "edificio": {
+        "indirizzo": "Via Roma 1, Milano (MI)",
+        "categoria_catastale": "D/7",
+        "zona_climatica": "Zona E",
+        "impianto_esistente": {
+            "tipo": "Caldaia",
+            "potenza_kw": 50,
+            "combustibile": "metano",
+            "libretto": false,
+            "libretto_codice": ""
+        }
+    },
+    "selectedInterventi": [
+        "III.A"
+    ],
+    "interventi": [
+        "III.A"
+    ],
+    "iva": {
+        "III.A": 2640
+    },
+    "valori_campi": {
+        "III.A": {
+            "potenza_pdc_kw": 10,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.5,
+            "eta_s": 140,
+            "made_in_eu": "no"
+        }
+    },
+    "interventiData": {
+        "III.A": {
+            "potenza_pdc_kw": 10,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.5,
+            "eta_s": 140,
+            "made_in_eu": "no"
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "III.A_01",
+                "codice_intervento": "III.A",
+                "descrizione": "Pompa di calore",
+                "tipo_costo": "fornitura",
+                "importo": 15000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 15000
+        }
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

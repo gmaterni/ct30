@@ -1,0 +1,208 @@
+{
+    "codice": "CT30-T01",
+    "nome": "Test 01 - Privato PdC Aria/Acqua",
+    "descrizione": "Sostituzione caldaia con PdC 12kW in Zona E per un privato. Verifica calcolo Ei, piano erogazione e vincoli.",
+    "soggetto": {
+        "tipo": "Privato residenziale",
+        "denominazione": "Mario Rossi",
+        "codiceFiscale": "RSSMRA80A01H501U",
+        "email": "mario.rossi@email.it",
+        "telefono": "021234567"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "Mario Rossi",
+            "tipo": "Privato residenziale",
+            "cf_piva": "RSSMRA80A01H501U",
+            "titolo_godimento": "Proprietà",
+            "email": "mario.rossi@email.it",
+            "telefono": "021234567"
+        },
+        "sr": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "mario.rossi@pec.it",
+            "coincide_con_sa": true,
+            "tipo": "Privato"
+        },
+        "proprietario": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "ruoli": {
+        "sa": {
+            "denominazione": "Mario Rossi",
+            "tipo": "Privato residenziale",
+            "cf_piva": "RSSMRA80A01H501U",
+            "titolo_godimento": "Proprietà"
+        },
+        "sr": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "mario.rossi@pec.it",
+            "coincide_con_sa": true
+        },
+        "proprietario": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "immobile": {
+        "indirizzo": "Via Roma 10, Milano (MI)",
+        "zonaClimatica": "Zona E",
+        "destinazione": "Residenziale",
+        "tipo_edificio": "Condominio",
+        "categoriaCatastale": "A/2",
+        "classeEnergeticaAnte": "G",
+        "potenza_esistente_kw": 24,
+        "combustibile_ante": "metano"
+    },
+    "edificio": {
+        "indirizzo": "Via Roma 10, Milano (MI)",
+        "categoria_catastale": "A/2",
+        "zona_climatica": "Zona E",
+        "impianto_esistente": {
+            "tipo": "Caldaia",
+            "potenza_kw": 24,
+            "combustibile": "metano",
+            "libretto": true,
+            "libretto_codice": "IT0123456789"
+        }
+    },
+    "richiestaPreliminareInviata": false,
+    "selectedInterventi": [
+        "III.A"
+    ],
+    "interventi": [
+        "III.A"
+    ],
+    "interventiData": {
+        "III.A": {
+            "marca_pdc": "Climax",
+            "modello_pdc": "ClimaxHeat 12kW",
+            "potenza_pdc_kw": 12,
+            "potenza_elettrica_assorbita_kw": 3,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.1,
+            "cop": 4.5,
+            "eta_s": 155,
+            "servizio_pdc": "climatizzazione invernale",
+            "generatore_sostituito": "Caldaia a gas 24kW",
+            "made_in_eu": "sì",
+            "miglioramento_ep_40": "sì",
+            "zona_assistita_a": "sì",
+            "zona_assistita_c": "no",
+            "scheda_tecnica_pdc": "sì",
+            "costo_pdc": 12500,
+            "sostituisce_esistente": "sì"
+        }
+    },
+    "valori_campi": {
+        "III.A": {
+            "marca_pdc": "Climax",
+            "modello_pdc": "ClimaxHeat 12kW",
+            "potenza_pdc_kw": 12,
+            "potenza_elettrica_assorbita_kw": 3,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.1,
+            "cop": 4.5,
+            "eta_s": 155,
+            "servizio_pdc": "climatizzazione invernale",
+            "generatore_sostituito": "Caldaia a gas 24kW",
+            "made_in_eu": "sì",
+            "miglioramento_ep_40": "sì",
+            "zona_assistita_a": "sì",
+            "zona_assistita_c": "no",
+            "scheda_tecnica_pdc": "sì",
+            "costo_pdc": 12500,
+            "sostituisce_esistente": "sì"
+        }
+    },
+    "postOperam": {
+        "III.A": {
+            "tipo_nuovo_generatore": "pompa di calore elettrica",
+            "pdc_elettrica_pura": true,
+            "rimane_gas": false,
+            "dismesso_esistente": "sì",
+            "sostituzione_integrale": "sì",
+            "serve_clima_invernale": true
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "forn",
+                "codice_intervento": "III.A",
+                "descrizione": "Fornitura pompa di calore Climax 12kW",
+                "tipo_costo": "fornitura",
+                "importo": 8000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "posa",
+                "codice_intervento": "III.A",
+                "descrizione": "Posa e collegamenti idraulici/elettrici",
+                "tipo_costo": "posa",
+                "importo": 3000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "dis",
+                "codice_intervento": "III.A",
+                "descrizione": "Dismissione caldaia esistente",
+                "tipo_costo": "opere_accessorie",
+                "importo": 800,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "coll",
+                "codice_intervento": "III.A",
+                "descrizione": "Avviamento, collaudo e dichiarazione conformità",
+                "tipo_costo": "documentazione",
+                "importo": 700,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 12500,
+            "totale_fornitura": 8000,
+            "totale_posa": 3000,
+            "totale_opere_accessorie": 800,
+            "totale_documentazione": 700
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Visura Catastale recente (ultimi 6 mesi)": true,
+        "Titolo di possesso (atto, contratto locazione, ecc.)": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

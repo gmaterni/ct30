@@ -1,0 +1,253 @@
+{
+    "codice": "CT30-T10",
+    "nome": "ETS non economico - Biomassa + Solare Termico",
+    "descrizione": "Ente del Terzo Settore non economico (assimilato PA) con generatore a biomassa classe 5 stelle (III.C) e pannelli solari termici (III.D). Verifica soggetto ETS non econ, accesso diretto, catalogo biomassa e solare termico.",
+    "soggetto": {
+        "tipo": "ETS non economico",
+        "denominazione": "Fondazione Santa Maria Onlus",
+        "codiceFiscale": "97531240689",
+        "partitaIva": "097531240689",
+        "email": "amministrazione@fondazionesantamaria.it",
+        "telefono": "06 12345678"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "Fondazione Santa Maria Onlus",
+            "tipo": "ETS non economico",
+            "cf_piva": "97531240689",
+            "titolo_godimento": "Proprietà",
+            "email": "amministrazione@fondazionesantamaria.it",
+            "telefono": "06 12345678"
+        },
+        "sr": {
+            "denominazione": "Fondazione Santa Maria Onlus",
+            "cf_piva": "97531240689",
+            "iban": "IT75X0123456789012345678901",
+            "pec": "fondazionesantamaria@pec.it",
+            "coincide_con_sa": true,
+            "tipo": "ETS non economico"
+        },
+        "proprietario": {
+            "denominazione": "Fondazione Santa Maria Onlus",
+            "cf_piva": "97531240689",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "Dott. Andrea Moretti",
+            "cf": "MRTNDR68R22H501Z"
+        }
+    },
+    "ruoli": {
+        "sa": {
+            "denominazione": "Fondazione Santa Maria Onlus",
+            "tipo": "ETS non economico",
+            "cf_piva": "97531240689",
+            "titolo_godimento": "Proprietà"
+        },
+        "sr": {
+            "denominazione": "Fondazione Santa Maria Onlus",
+            "cf_piva": "97531240689",
+            "iban": "IT75X0123456789012345678901",
+            "pec": "fondazionesantamaria@pec.it",
+            "coincide_con_sa": true
+        },
+        "proprietario": {
+            "denominazione": "Fondazione Santa Maria Onlus",
+            "cf_piva": "97531240689",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "Dott. Andrea Moretti",
+            "cf": "MRTNDR68R22H501Z"
+        }
+    },
+    "immobile": {
+        "indirizzo": "Via della Carità 15, Roma (RM)",
+        "zonaClimatica": "Zona D",
+        "destinazione": "Terziario",
+        "tipo_edificio": "Edificio Singolo",
+        "categoriaCatastale": "B/1",
+        "classeEnergeticaAnte": "G",
+        "potenza_esistente_kw": 80,
+        "combustibile_ante": "gasolio"
+    },
+    "edificio": {
+        "indirizzo": "Via della Carità 15, Roma (RM)",
+        "categoria_catastale": "B/1",
+        "zona_climatica": "Zona D",
+        "impianto_esistente": {
+            "tipo": "Caldaia",
+            "potenza_kw": 80,
+            "combustibile": "gasolio",
+            "libretto": true,
+            "libretto_codice": "IT0123456797"
+        }
+    },
+    "richiestaPreliminareInviata": false,
+    "selectedInterventi": [
+        "III.C",
+        "III.D"
+    ],
+    "interventi": [
+        "III.C",
+        "III.D"
+    ],
+    "valori_campi": {
+        "III.C": {
+            "marca_biomassa": "MCZ",
+            "modello_biomassa": "Club 35",
+            "potenza_nominale_kw": 35,
+            "classe_emissiva": "5 stelle",
+            "tipo_biomassa": "Pellet",
+            "miglioramento_ep_40": "sì",
+            "costo_biomassa": 18500,
+            "made_in_eu": "sì",
+            "zona_assistita_a": "sì",
+            "zona_assistita_c": "no"
+        },
+        "III.D": {
+            "tipo_pannello_solare": "Pannelli piani vetrati",
+            "superficie_lorda_mq": 12,
+            "certificazione_solar_keymark": "sì",
+            "costo_solare_termico": 9500,
+            "made_in_eu": "sì",
+            "zona_assistita_a": "sì",
+            "zona_assistita_c": "no"
+        }
+    },
+    "interventiData": {
+        "III.C": {
+            "marca_biomassa": "MCZ",
+            "modello_biomassa": "Club 35",
+            "potenza_nominale_kw": 35,
+            "classe_emissiva": "5 stelle",
+            "tipo_biomassa": "Pellet",
+            "miglioramento_ep_40": "sì",
+            "costo_biomassa": 18500,
+            "made_in_eu": "sì",
+            "zona_assistita_a": "sì",
+            "zona_assistita_c": "no"
+        },
+        "III.D": {
+            "tipo_pannello_solare": "Pannelli piani vetrati",
+            "superficie_lorda_mq": 12,
+            "certificazione_solar_keymark": "sì",
+            "costo_solare_termico": 9500,
+            "made_in_eu": "sì",
+            "zona_assistita_a": "sì",
+            "zona_assistita_c": "no"
+        }
+    },
+    "postOperam": {
+        "III.C": {
+            "generatore_biomassa_installato": true,
+            "classe_5_stelle": true,
+            "sostituisce_esistente": true,
+            "tipo_esistente": "Caldaia a gasolio"
+        },
+        "III.D": {
+            "solare_termico_installato": true,
+            "superficie_mq": 12,
+            "certificato_keymark": true
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "bio_forn",
+                "codice_intervento": "III.C",
+                "descrizione": "Generatore biomassa MCZ Club 35 35kW classe 5 stelle",
+                "tipo_costo": "fornitura",
+                "importo": 12000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "bio_posa",
+                "codice_intervento": "III.C",
+                "descrizione": "Posa generatore e canna fumaria",
+                "tipo_costo": "posa",
+                "importo": 4500,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "bio_doc",
+                "codice_intervento": "III.C",
+                "descrizione": "Documentazione tecnica e verifiche emissioni",
+                "tipo_costo": "documentazione",
+                "importo": 2000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "sol_forn",
+                "codice_intervento": "III.D",
+                "descrizione": "Pannelli solari termici piani vetrati 12mq",
+                "tipo_costo": "fornitura",
+                "importo": 6200,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "sol_posa",
+                "codice_intervento": "III.D",
+                "descrizione": "Posa pannelli solari e collegamenti idraulici",
+                "tipo_costo": "posa",
+                "importo": 2500,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "sol_doc",
+                "codice_intervento": "III.D",
+                "descrizione": "Certificazione Solar Keymark e documentazione",
+                "tipo_costo": "documentazione",
+                "importo": 800,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 28000,
+            "totale_fornitura": 18200,
+            "totale_posa": 7000,
+            "totale_documentazione": 2800
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Visura Catastale recente (ultimi 6 mesi)": true,
+        "Titolo di possesso (atto, contratto locazione, ecc.)": true,
+        "Copia documento identità Soggetto Responsabile": true,
+        "IBAN (documento di conferma conto)": true,
+        "PEC del Soggetto Responsabile": true,
+        "Delega alla compilazione": true,
+        "Atto di Assenso Proprietario": true,
+        "Relazione tecnica di valutazione preliminare": true,
+        "Documentazione fotografica ante-operam": true,
+        "APE / Diagnosi Energetica": true,
+        "Relazione tecnica illustrativa del progetto": true,
+        "Scheda tecnica generatore biomassa": true,
+        "Certificazione classe emissiva 5 stelle": true,
+        "Scheda tecnica pannello solare termico": true,
+        "Certificazione Solar Keymark": true,
+        "Fatture e bonifici": true,
+        "Dichiarazione di conformità": true,
+        "Certificazione Made in EU": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

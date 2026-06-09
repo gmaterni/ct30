@@ -1,0 +1,163 @@
+{
+    "codice": "CT30-T25",
+    "nome": "III.F Teleriscaldamento — 3 fasce potenza (fascia media 80kW)",
+    "descrizione": "Verifica III.F con potenza allaccio 80kW (fascia 50-150kW: cmax_kw=160, imax=15.000€). Soggetto privato terziario, zona E. Upgrade A.",
+    "soggetto": {
+        "tipo": "Privato terziario",
+        "denominazione": "Studio Commerciale S.r.l.",
+        "codiceFiscale": "01234560159",
+        "email": "info@studiocommerciale.it",
+        "telefono": "02 1234567"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "Studio Commerciale S.r.l.",
+            "tipo": "Privato terziario",
+            "cf_piva": "01234560159",
+            "titolo_godimento": "Proprietà",
+            "email": "info@studiocommerciale.it",
+            "telefono": "02 1234567"
+        },
+        "sr": {
+            "denominazione": "Studio Commerciale S.r.l.",
+            "cf_piva": "01234560159",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "studiocommerciale@pec.it",
+            "coincide_con_sa": true,
+            "tipo": "Privato"
+        },
+        "proprietario": {
+            "denominazione": "Studio Commerciale S.r.l.",
+            "cf_piva": "01234560159",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "ruoli": {
+        "sa": {
+            "denominazione": "Studio Commerciale S.r.l.",
+            "tipo": "Privato terziario",
+            "cf_piva": "01234560159",
+            "titolo_godimento": "Proprietà"
+        },
+        "sr": {
+            "denominazione": "Studio Commerciale S.r.l.",
+            "cf_piva": "01234560159",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "studiocommerciale@pec.it",
+            "coincide_con_sa": true
+        },
+        "proprietario": {
+            "denominazione": "Studio Commerciale S.r.l.",
+            "cf_piva": "01234560159",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "immobile": {
+        "indirizzo": "Viale delle Industrie 5, Milano (MI)",
+        "zonaClimatica": "Zona E",
+        "destinazione": "Terziario",
+        "tipo_edificio": "Uffici",
+        "categoriaCatastale": "A/10",
+        "classeEnergeticaAnte": "F",
+        "potenza_esistente_kw": 120,
+        "combustibile_ante": "metano"
+    },
+    "edificio": {
+        "indirizzo": "Viale delle Industrie 5, Milano (MI)",
+        "categoria_catastale": "A/10",
+        "zona_climatica": "Zona E",
+        "superficie_utile_mq": 800,
+        "anno_costruzione": 1995,
+        "impianto_esistente": {
+            "tipo": "Caldaia centralizzata",
+            "potenza_kw": 120,
+            "combustibile": "metano",
+            "libretto": true,
+            "libretto_codice": "IT0223344556"
+        }
+    },
+    "richiestaPreliminareInviata": false,
+    "interventi": [
+        "III.F"
+    ],
+    "selectedInterventi": [
+        "III.F"
+    ],
+    "valori_campi": {
+        "III.F": {
+            "teleriscaldamento_efficiente": "sì",
+            "potenza_allaccio_kw": 80,
+            "costo_allaccio": 20000,
+            "tipo_allaccio": "singolo"
+        }
+    },
+    "interventiData": {
+        "III.F": {
+            "teleriscaldamento_efficiente": "sì",
+            "potenza_allaccio_kw": 80,
+            "costo_allaccio": 20000,
+            "tipo_allaccio": "singolo"
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "all",
+                "codice_intervento": "III.F",
+                "descrizione": "Allaccio teleriscaldamento 80kW",
+                "tipo_costo": "fornitura",
+                "importo": 15000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "pos",
+                "codice_intervento": "III.F",
+                "descrizione": "Posa e installazione contabilizzatori",
+                "tipo_costo": "posa",
+                "importo": 4000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "doc",
+                "codice_intervento": "III.F",
+                "descrizione": "Documentazione e collaudo",
+                "tipo_costo": "documentazione",
+                "importo": 1000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 20000,
+            "totale_fornitura": 15000,
+            "totale_posa": 4000,
+            "totale_documentazione": 1000
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Titolo di possesso": true,
+        "APE": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

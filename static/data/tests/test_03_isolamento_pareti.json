@@ -1,0 +1,192 @@
+{
+    "codice": "CT30-T03",
+    "nome": "Test 03 - Terziario Isolamento Pareti",
+    "descrizione": "Cappotto termico per edilizia terziaria in Zona F. Verifica calcolo II.A (percentuale spesa + Cmax) e vincoli soggetto su Titolo II.",
+    "soggetto": {
+        "tipo": "Privato terziario",
+        "denominazione": "Luigi Bianchi",
+        "codiceFiscale": "BNCLGU75M15L219Z",
+        "email": "luigi.bianchi@webmail.com"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "Luigi Bianchi",
+            "tipo": "Privato terziario",
+            "cf_piva": "BNCLGU75M15L219Z",
+            "titolo_godimento": "Proprietà",
+            "email": "luigi.bianchi@webmail.com",
+            "telefono": "0437123456"
+        },
+        "sr": {
+            "denominazione": "Luigi Bianchi",
+            "cf_piva": "BNCLGU75M15L219Z",
+            "iban": "IT11X0123456789012345678901",
+            "pec": "luigi.bianchi@pec.it",
+            "coincide_con_sa": true,
+            "tipo": "Privato"
+        },
+        "proprietario": {
+            "denominazione": "Luigi Bianchi",
+            "cf_piva": "BNCLGU75M15L219Z",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "ruoli": {
+        "sa": {
+            "denominazione": "Luigi Bianchi",
+            "tipo": "Privato terziario",
+            "cf_piva": "BNCLGU75M15L219Z",
+            "titolo_godimento": "Proprietà"
+        },
+        "sr": {
+            "denominazione": "Luigi Bianchi",
+            "cf_piva": "BNCLGU75M15L219Z",
+            "iban": "IT11X0123456789012345678901",
+            "pec": "luigi.bianchi@pec.it",
+            "coincide_con_sa": true
+        },
+        "proprietario": {
+            "denominazione": "Luigi Bianchi",
+            "cf_piva": "BNCLGU75M15L219Z",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "immobile": {
+        "indirizzo": "Località Montagna 5, Belluno (BL)",
+        "zonaClimatica": "Zona F",
+        "destinazione": "Terziario",
+        "tipo_edificio": "Edificio Singolo",
+        "categoriaCatastale": "A/3",
+        "classeEnergeticaAnte": "G",
+        "potenza_esistente_kw": 18,
+        "combustibile_ante": "gpl"
+    },
+    "edificio": {
+        "indirizzo": "Località Montagna 5, Belluno (BL)",
+        "categoria_catastale": "A/3",
+        "ambito": "terziario",
+        "zona_climatica": "Zona F",
+        "impianto_esistente": {
+            "tipo": "Caldaia",
+            "potenza_kw": 18,
+            "combustibile": "gpl",
+            "libretto": true,
+            "libretto_codice": "IT0123456791"
+        }
+    },
+    "richiestaPreliminareInviata": false,
+    "selectedInterventi": [
+        "II.A"
+    ],
+    "interventi": [
+        "II.A"
+    ],
+    "interventiData": {
+        "II.A": {
+            "tipo_superficie_opaca": "Parete Esterna",
+            "superficie_isolata_mq": 220,
+            "trasmittanza_ante": 1.2,
+            "trasmittanza_post": 0.18,
+            "costo_isolamento": 32000,
+            "ape_ante_post_disponibile": "sì",
+            "made_in_eu": "sì",
+            "riduzione_ep_10": "sì",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "sì"
+        }
+    },
+    "valori_campi": {
+        "II.A": {
+            "tipo_superficie_opaca": "Parete Esterna",
+            "superficie_isolata_mq": 220,
+            "trasmittanza_ante": 1.2,
+            "trasmittanza_post": 0.18,
+            "costo_isolamento": 32000,
+            "ape_ante_post_disponibile": "sì",
+            "made_in_eu": "sì",
+            "riduzione_ep_10": "sì",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "sì"
+        }
+    },
+    "postOperam": {
+        "II.A": {
+            "superficie_coibentata_mq": 220,
+            "tipo_intervento": "cappotto esterno",
+            "miglioramento_prestazionale": true,
+            "trasmittanza_post": 0.18
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "mat",
+                "codice_intervento": "II.A",
+                "descrizione": "Fornitura materiale isolante (cappotto esterno 220mq)",
+                "tipo_costo": "fornitura",
+                "importo": 12000,
+                "quantita": 220,
+                "unita": "mq",
+                "is_custom": false
+            },
+            {
+                "id": "posa",
+                "codice_intervento": "II.A",
+                "descrizione": "Posa cappotto termico e rasature",
+                "tipo_costo": "posa",
+                "importo": 15000,
+                "quantita": 220,
+                "unita": "mq",
+                "is_custom": false
+            },
+            {
+                "id": "ponte",
+                "codice_intervento": "II.A",
+                "descrizione": "Ponteggi e opere accessorie",
+                "tipo_costo": "opere_accessorie",
+                "importo": 4000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "doc",
+                "codice_intervento": "II.A",
+                "descrizione": "Relazione tecnica e asseverazioni",
+                "tipo_costo": "documentazione",
+                "importo": 1000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 32000,
+            "totale_fornitura": 12000,
+            "totale_posa": 15000,
+            "totale_opere_accessorie": 4000,
+            "totale_documentazione": 1000
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Visura Catastale recente (ultimi 6 mesi)": true,
+        "Titolo di possesso (atto, contratto locazione, ecc.)": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

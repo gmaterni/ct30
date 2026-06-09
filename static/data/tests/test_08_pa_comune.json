@@ -1,0 +1,291 @@
+{
+    "codice": "CT30-T08",
+    "nome": "PA Comune ≤15k - Isolamento + PdC",
+    "descrizione": "Comune sotto 15.000 abitanti (PA) con isolamento pareti (II.A) e pompa di calore (III.A). Verifica intensità 100% per PA comuni ≤15k, accesso diretto post-intervento, soggetto PA.",
+    "soggetto": {
+        "tipo": "Pubblica Amministrazione",
+        "denominazione": "Comune di Montepulciano",
+        "codiceFiscale": "81002170522",
+        "partitaIva": "008100210522",
+        "email": "protocollo@comune.montepulciano.si.it",
+        "telefono": "0578 717111"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "Comune di Montepulciano",
+            "tipo": "Pubblica Amministrazione",
+            "cf_piva": "81002170522",
+            "titolo_godimento": "Proprietà",
+            "email": "protocollo@comune.montepulciano.si.it",
+            "telefono": "0578 717111"
+        },
+        "sr": {
+            "denominazione": "Comune di Montepulciano",
+            "cf_piva": "81002170522",
+            "iban": "IT28X0760101000000012345678",
+            "pec": "comune.montepulciano@pec.it",
+            "coincide_con_sa": true,
+            "tipo": "Pubblica Amministrazione"
+        },
+        "proprietario": {
+            "denominazione": "Comune di Montepulciano",
+            "cf_piva": "81002170522",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "Geom. Luca Bianchi",
+            "cf": "BNCLCU75M22G567X"
+        }
+    },
+    "ruoli": {
+        "sa": {
+            "denominazione": "Comune di Montepulciano",
+            "tipo": "Pubblica Amministrazione",
+            "cf_piva": "81002170522",
+            "titolo_godimento": "Proprietà"
+        },
+        "sr": {
+            "denominazione": "Comune di Montepulciano",
+            "cf_piva": "81002170522",
+            "iban": "IT28X0760101000000012345678",
+            "pec": "comune.montepulciano@pec.it",
+            "coincide_con_sa": true
+        },
+        "proprietario": {
+            "denominazione": "Comune di Montepulciano",
+            "cf_piva": "81002170522",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "Geom. Luca Bianchi",
+            "cf": "BNCLCU75M22G567X"
+        }
+    },
+    "immobile": {
+        "indirizzo": "Piazza Grande 1, Montepulciano (SI)",
+        "zonaClimatica": "Zona E",
+        "destinazione": "Terziario",
+        "tipo_edificio": "Edificio Singolo",
+        "categoriaCatastale": "B/1",
+        "classeEnergeticaAnte": "F",
+        "potenza_esistente_kw": 100,
+        "combustibile_ante": "metano"
+    },
+    "edificio": {
+        "indirizzo": "Piazza Grande 1, Montepulciano (SI)",
+        "categoria_catastale": "B/1",
+        "zona_climatica": "Zona E",
+        "superficie_utile_mq": 800,
+        "anno_costruzione": 1970,
+        "comune_sotto_15k": true,
+        "scuola_ospedale": false,
+        "impianto_esistente": {
+            "tipo": "Caldaia",
+            "potenza_kw": 100,
+            "combustibile": "metano",
+            "libretto": true,
+            "libretto_codice": "IT0123456796"
+        }
+    },
+    "richiestaPreliminareInviata": false,
+    "selectedInterventi": [
+        "II.A",
+        "III.A"
+    ],
+    "interventi": [
+        "II.A",
+        "III.A"
+    ],
+    "valori_campi": {
+        "II.A": {
+            "tipo_superficie_opaca": "Parete Esterna",
+            "superficie_isolata_mq": 450,
+            "trasmittanza_ante": 0.92,
+            "trasmittanza_post": 0.26,
+            "costo_isolamento": 72000,
+            "ape_ante_post_disponibile": "sì",
+            "made_in_eu": "sì",
+            "riduzione_ep_10": "sì",
+            "zona_assistita_a": "sì",
+            "zona_assistita_c": "no"
+        },
+        "III.A": {
+            "marca_pdc": "Aermec",
+            "modello_pdc": "ANL 060 H",
+            "potenza_pdc_kw": 60,
+            "potenza_elettrica_assorbita_kw": 14,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.0,
+            "cop": 4.3,
+            "eta_s": 152,
+            "servizio_pdc": "climatizzazione invernale e ACS",
+            "generatore_sostituito": "Caldaia a metano 100kW",
+            "made_in_eu": "sì",
+            "miglioramento_ep_40": "sì",
+            "zona_assistita_a": "sì",
+            "zona_assistita_c": "no",
+            "scheda_tecnica_pdc": "sì",
+            "costo_pdc": 48000,
+            "sostituisce_esistente": "sì"
+        }
+    },
+    "interventiData": {
+        "II.A": {
+            "tipo_superficie_opaca": "Parete Esterna",
+            "superficie_isolata_mq": 450,
+            "trasmittanza_ante": 0.92,
+            "trasmittanza_post": 0.26,
+            "costo_isolamento": 72000,
+            "ape_ante_post_disponibile": "sì",
+            "made_in_eu": "sì",
+            "riduzione_ep_10": "sì",
+            "zona_assistita_a": "sì",
+            "zona_assistita_c": "no"
+        },
+        "III.A": {
+            "marca_pdc": "Aermec",
+            "modello_pdc": "ANL 060 H",
+            "potenza_pdc_kw": 60,
+            "potenza_elettrica_assorbita_kw": 14,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.0,
+            "cop": 4.3,
+            "eta_s": 152,
+            "servizio_pdc": "climatizzazione invernale e ACS",
+            "generatore_sostituito": "Caldaia a metano 100kW",
+            "made_in_eu": "sì",
+            "miglioramento_ep_40": "sì",
+            "zona_assistita_a": "sì",
+            "zona_assistita_c": "no",
+            "scheda_tecnica_pdc": "sì",
+            "costo_pdc": 48000,
+            "sostituisce_esistente": "sì"
+        }
+    },
+    "postOperam": {
+        "II.A": {
+            "tipo_intervento": "isolamento pareti",
+            "superficie_isolata_mq": 450,
+            "miglioramento_trasmittanza": true
+        },
+        "III.A": {
+            "tipo_nuovo_generatore": "pompa di calore elettrica",
+            "pdc_elettrica_pura": true,
+            "rimane_gas": false,
+            "dismesso_esistente": "sì",
+            "sostituzione_integrale": "sì",
+            "serve_clima_invernale": true
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "isol_forn",
+                "codice_intervento": "II.A",
+                "descrizione": "Fornitura pannelli isolanti cappotto esterno 450mq",
+                "tipo_costo": "fornitura",
+                "importo": 38000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "isol_posa",
+                "codice_intervento": "II.A",
+                "descrizione": "Posa cappotto esterno con ponteggi",
+                "tipo_costo": "posa",
+                "importo": 28000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "isol_doc",
+                "codice_intervento": "II.A",
+                "descrizione": "Relazione tecnica e documentazione",
+                "tipo_costo": "documentazione",
+                "importo": 6000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "pdc_forn",
+                "codice_intervento": "III.A",
+                "descrizione": "Fornitura PDC Aermec ANL 060 H 60kW",
+                "tipo_costo": "fornitura",
+                "importo": 32000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "pdc_posa",
+                "codice_intervento": "III.A",
+                "descrizione": "Posa PDC e collegamenti impianto",
+                "tipo_costo": "posa",
+                "importo": 11000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "pdc_smalt",
+                "codice_intervento": "III.A",
+                "descrizione": "Smaltimento caldaia esistente",
+                "tipo_costo": "opere_accessorie",
+                "importo": 2000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "pdc_doc",
+                "codice_intervento": "III.A",
+                "descrizione": "Pratiche e documentazione tecnica PDC",
+                "tipo_costo": "documentazione",
+                "importo": 3000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 120000,
+            "totale_fornitura": 70000,
+            "totale_posa": 39000,
+            "totale_opere_accessorie": 2000,
+            "totale_documentazione": 9000
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Visura Catastale recente (ultimi 6 mesi)": true,
+        "Titolo di possesso (atto, contratto locazione, ecc.)": true,
+        "Copia documento identità Soggetto Responsabile": true,
+        "IBAN (documento di conferma conto)": true,
+        "PEC del Soggetto Responsabile": true,
+        "Delega alla compilazione": true,
+        "Atto di Assenso Proprietario": true,
+        "Relazione tecnica di valutazione preliminare": true,
+        "Documentazione fotografica ante-operam": true,
+        "APE / Diagnosi Energetica": true,
+        "Delibera di approvazione del progetto": true,
+        "Relazione tecnica illustrativa del progetto": true,
+        "Scheda tecnica PDC": true,
+        "Certificazioni prestazionali (COP, SCOP, ETA_s)": true,
+        "Libretto impianto ante": true,
+        "Libretto impianto post": true,
+        "Fatture e bonifici": true,
+        "Dichiarazione di conformità": true,
+        "Certificazione materiali Made in EU (isolamento)": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

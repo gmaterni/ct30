@@ -1,0 +1,258 @@
+{
+    "codice": "CT30-T13",
+    "nome": "Privato Terziario - Isolamento II.A + PdC III.A (perc_multi 55%)",
+    "descrizione": "Test privato terziario con multi-intervento II.A+III.A. Verifica perc_multi=55% per II.A abbinato a III.A. Soggetto privato (non PA, non Impresa) in zona E.",
+    "maggiorazioni": [],
+    "soggetto": {
+        "tipo": "Privato terziario",
+        "denominazione": "Mario Rossi",
+        "codiceFiscale": "RSSMRA80A01H501U",
+        "email": "mario.rossi@email.it"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "Mario Rossi",
+            "tipo": "Privato terziario",
+            "cf_piva": "RSSMRA80A01H501U",
+            "titolo_godimento": "Proprietà",
+            "email": "mario.rossi@email.it",
+            "telefono": "0351234567"
+        },
+        "sr": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "iban": "IT60X0542811101000000112233",
+            "pec": "mario.rossi@pec.it",
+            "coincide_con_sa": true,
+            "tipo": "Privato"
+        },
+        "proprietario": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "ruoli": {
+        "sa": {
+            "denominazione": "Mario Rossi",
+            "tipo": "Privato terziario",
+            "cf_piva": "RSSMRA80A01H501U",
+            "titolo_godimento": "Proprietà"
+        },
+        "sr": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "iban": "IT60X0542811101000000112233",
+            "pec": "mario.rossi@pec.it",
+            "coincide_con_sa": true
+        },
+        "proprietario": {
+            "denominazione": "Mario Rossi",
+            "cf_piva": "RSSMRA80A01H501U",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "immobile": {
+        "indirizzo": "Via Verdi 10, Bergamo (BG)",
+        "zonaClimatica": "Zona E",
+        "destinazione": "Terziario",
+        "tipo_edificio": "Ufficio",
+        "categoriaCatastale": "A/10",
+        "classeEnergeticaAnte": "F",
+        "potenza_esistente_kw": 20,
+        "combustibile_ante": "metano"
+    },
+    "edificio": {
+        "indirizzo": "Via Verdi 10, Bergamo (BG)",
+        "categoria_catastale": "A/10",
+        "zona_climatica": "Zona E",
+        "superficie_utile_mq": 150,
+        "anno_costruzione": 1990,
+        "impianto_esistente": {
+            "tipo": "Caldaia",
+            "potenza_kw": 20,
+            "combustibile": "metano",
+            "libretto": true,
+            "libretto_codice": "IT0112233445"
+        }
+    },
+    "richiestaPreliminareInviata": false,
+    "interventi": [
+        "II.A",
+        "III.A"
+    ],
+    "selectedInterventi": [
+        "II.A",
+        "III.A"
+    ],
+    "valori_campi": {
+        "II.A": {
+            "tipo_intervento": "pareti_perimetrali",
+            "superficie_mq": 60,
+            "spessore_mm": 100,
+            "materiale": "EPS",
+            "lambda": 0.031,
+            "trasmittanza_ante": 0.6,
+            "trasmittanza_post": 0.23,
+            "miglioramento_ep_40": "sì",
+            "requisiti_minimi": "soddisfatti",
+            "costo": 9000,
+            "ufficio_tecnico_abilitato": false
+        },
+        "III.A": {
+            "marca_pdc": "Mitsubishi",
+            "modello_pdc": "Ecodan PUHZ-W90V",
+            "potenza_pdc_kw": 9,
+            "potenza_termica_nominale": 9,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.2,
+            "cop": 4.5,
+            "eta_s": 155,
+            "tipo_pdc": "media temperatura",
+            "servizio_pdc": "climatizzazione invernale e ACS",
+            "generatore_sostituito": "Caldaia a gas",
+            "made_in_eu": "sì",
+            "miglioramento_ep_40": "sì",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "no",
+            "costo": 14000
+        }
+    },
+    "interventiData": {
+        "II.A": {
+            "tipo_intervento": "pareti_perimetrali",
+            "superficie_mq": 60,
+            "spessore_mm": 100,
+            "materiale": "EPS",
+            "lambda": 0.031,
+            "trasmittanza_ante": 0.6,
+            "trasmittanza_post": 0.23,
+            "miglioramento_ep_40": "sì",
+            "requisiti_minimi": "soddisfatti",
+            "costo": 9000,
+            "ufficio_tecnico_abilitato": false
+        },
+        "III.A": {
+            "marca_pdc": "Mitsubishi",
+            "modello_pdc": "Ecodan PUHZ-W90V",
+            "potenza_pdc_kw": 9,
+            "potenza_termica_nominale": 9,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.2,
+            "cop": 4.5,
+            "eta_s": 155,
+            "tipo_pdc": "media temperatura",
+            "servizio_pdc": "climatizzazione invernale e ACS",
+            "generatore_sostituito": "Caldaia a gas",
+            "made_in_eu": "sì",
+            "miglioramento_ep_40": "sì",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "no",
+            "costo": 14000
+        }
+    },
+    "postOperam": {
+        "II.A": {
+            "cappotto_realizzato": true
+        },
+        "III.A": {
+            "tipo_nuovo_generatore": "PdC aria/acqua",
+            "pdc_elettrica_pura": true,
+            "rimane_gas": false,
+            "dismesso_esistente": "sì",
+            "serve_clima_invernale": true
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "1",
+                "codice_intervento": "II.A",
+                "descrizione": "Fornitura isolamento pareti EPS",
+                "tipo_costo": "fornitura",
+                "importo": 6000,
+                "quantita": 1,
+                "unita": "a corpo",
+                "is_custom": false
+            },
+            {
+                "id": "2",
+                "codice_intervento": "II.A",
+                "descrizione": "Posa isolamento pareti",
+                "tipo_costo": "posa",
+                "importo": 3000,
+                "quantita": 1,
+                "unita": "a corpo",
+                "is_custom": false
+            },
+            {
+                "id": "3",
+                "codice_intervento": "III.A",
+                "descrizione": "Fornitura PdC Mitsubishi 9kW",
+                "tipo_costo": "fornitura",
+                "importo": 10000,
+                "quantita": 1,
+                "unita": "a corpo",
+                "is_custom": false
+            },
+            {
+                "id": "4",
+                "codice_intervento": "III.A",
+                "descrizione": "Installazione PdC",
+                "tipo_costo": "posa",
+                "importo": 3000,
+                "quantita": 1,
+                "unita": "a corpo",
+                "is_custom": false
+            },
+            {
+                "id": "5",
+                "codice_intervento": "III.A",
+                "descrizione": "Smaltimento vecchia caldaia",
+                "tipo_costo": "altri",
+                "importo": 500,
+                "quantita": 1,
+                "unita": "a corpo",
+                "is_custom": false
+            },
+            {
+                "id": "6",
+                "codice_intervento": "III.A",
+                "descrizione": "Collaudo e certificazione",
+                "tipo_costo": "documentazione",
+                "importo": 500,
+                "quantita": 1,
+                "unita": "a corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 23000,
+            "totale_fornitura": 16000,
+            "totale_posa": 6000,
+            "totale_documentazione": 500,
+            "totale_altri": 500
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Titolo di possesso": true,
+        "APE": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

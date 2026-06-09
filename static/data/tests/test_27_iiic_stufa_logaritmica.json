@@ -1,0 +1,196 @@
+{
+    "codice": "CT30-T27",
+    "nome": "III.C Biomassa Logaritmica — Stufa a pellet",
+    "descrizione": "Test upgrade B: III.C stufa a pellet con formula logaritmica (ln) per calcolo coeff_ci. Verifica corretta applicazione scala logaritmica per potenza <25kW.",
+    "soggetto": {
+        "tipo": "Privato residenziale",
+        "denominazione": "Anna Ferrari",
+        "codiceFiscale": "FRRNNA75B41A952R",
+        "email": "anna.ferrari@email.it",
+        "telefono": "0471 123456"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "Anna Ferrari",
+            "tipo": "Privato residenziale",
+            "cf_piva": "FRRNNA75B41A952R",
+            "titolo_godimento": "Proprietà",
+            "email": "anna.ferrari@email.it",
+            "telefono": "0471 123456"
+        },
+        "sr": {
+            "denominazione": "Anna Ferrari",
+            "cf_piva": "FRRNNA75B41A952R",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "anna.ferrari@pec.it",
+            "coincide_con_sa": true,
+            "tipo": "Privato"
+        },
+        "proprietario": {
+            "denominazione": "Anna Ferrari",
+            "cf_piva": "FRRNNA75B41A952R",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "ruoli": {
+        "sa": {
+            "denominazione": "Anna Ferrari",
+            "tipo": "Privato residenziale",
+            "cf_piva": "FRRNNA75B41A952R",
+            "titolo_godimento": "Proprietà"
+        },
+        "sr": {
+            "denominazione": "Anna Ferrari",
+            "cf_piva": "FRRNNA75B41A952R",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "anna.ferrari@pec.it",
+            "coincide_con_sa": true
+        },
+        "proprietario": {
+            "denominazione": "Anna Ferrari",
+            "cf_piva": "FRRNNA75B41A952R",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "immobile": {
+        "indirizzo": "Via Fiume 8, Bolzano (BZ)",
+        "zonaClimatica": "Zona E",
+        "destinazione": "Residenziale",
+        "tipo_edificio": "Villa Singola",
+        "categoriaCatastale": "A/2",
+        "classeEnergeticaAnte": "F",
+        "potenza_esistente_kw": 20,
+        "combustibile_ante": "metano"
+    },
+    "edificio": {
+        "indirizzo": "Via Fiume 8, Bolzano (BZ)",
+        "categoria_catastale": "A/2",
+        "zona_climatica": "Zona E",
+        "superficie_utile_mq": 90,
+        "anno_costruzione": 2005,
+        "impianto_esistente": {
+            "tipo": "Caldaia a metano",
+            "potenza_kw": 20,
+            "combustibile": "metano",
+            "libretto": true,
+            "libretto_codice": "IT0445566778"
+        }
+    },
+    "richiestaPreliminareInviata": false,
+    "interventi": [
+        "III.C"
+    ],
+    "selectedInterventi": [
+        "III.C"
+    ],
+    "valori_campi": {
+        "III.C": {
+            "tipo_generatore": "Stufa",
+            "tipo_biomassa": "Pellet",
+            "potenza_nominale_kw": 15,
+            "rendimento_stagionale": 82,
+            "classe_emissiva": "5 stelle",
+            "costo_biomassa": 5000,
+            "riduzione_pp": "≤20%",
+            "ore_funzionamento_annue": 1500,
+            "residenziale_terziario": "residenziale",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "no",
+            "made_in_eu": "sì",
+            "miglioramento_ep_40": "no",
+            "sostituisce_esistente": "sì",
+            "superficie_fabbricato_mq": 90,
+            "tiraggio_forzato": "sì"
+        }
+    },
+    "interventiData": {
+        "III.C": {
+            "tipo_generatore": "Stufa",
+            "tipo_biomassa": "Pellet",
+            "potenza_nominale_kw": 15,
+            "rendimento_stagionale": 82,
+            "classe_emissiva": "5 stelle",
+            "costo_biomassa": 5000,
+            "riduzione_pp": "≤20%",
+            "ore_funzionamento_annue": 1500,
+            "residenziale_terziario": "residenziale",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "no",
+            "made_in_eu": "sì",
+            "miglioramento_ep_40": "no",
+            "sostituisce_esistente": "sì",
+            "superficie_fabbricato_mq": 90,
+            "tiraggio_forzato": "sì"
+        }
+    },
+    "postOperam": {
+        "III.C": {
+            "tipo_nuovo_generatore": "stufa a pellet",
+            "rimane_combustibile_solido": true,
+            "dismesso_esistente": "sì",
+            "sostituzione_integrale": "sì",
+            "serve_clima_invernale": true
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "forn",
+                "codice_intervento": "III.C",
+                "descrizione": "Fornitura stufa a pellet 15kW",
+                "tipo_costo": "fornitura",
+                "importo": 3500,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "pos",
+                "codice_intervento": "III.C",
+                "descrizione": "Posa e installazione canna fumaria",
+                "tipo_costo": "posa",
+                "importo": 1000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "doc",
+                "codice_intervento": "III.C",
+                "descrizione": "Documentazione e collaudo",
+                "tipo_costo": "documentazione",
+                "importo": 500,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 5000,
+            "totale_fornitura": 3500,
+            "totale_posa": 1000,
+            "totale_documentazione": 500
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Titolo di possesso": true,
+        "APE": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

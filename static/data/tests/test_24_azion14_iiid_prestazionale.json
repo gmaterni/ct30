@@ -1,0 +1,173 @@
+{
+    "codice": "CT30-T24",
+    "nome": "III.D Solare termico — formula prestazionale Ci*Qu*Sl",
+    "descrizione": "Verifica che III.D calcoli con formula prestazionale min(Ci*Qu*Sl, percentuale_spesa). Pannelli piani vetrati 30mq, zona D, privato residenziale.",
+    "soggetto": {
+        "tipo": "Privato residenziale",
+        "denominazione": "Luigi Bianchi",
+        "codiceFiscale": "BNCLGU85M15H501F",
+        "email": "luigi.bianchi@email.it",
+        "telefono": "06 1234567"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "Luigi Bianchi",
+            "tipo": "Privato residenziale",
+            "cf_piva": "BNCLGU85M15H501F",
+            "titolo_godimento": "Proprietà",
+            "email": "luigi.bianchi@email.it",
+            "telefono": "06 1234567"
+        },
+        "sr": {
+            "denominazione": "Luigi Bianchi",
+            "cf_piva": "BNCLGU85M15H501F",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "luigi.bianchi@pec.it",
+            "coincide_con_sa": true,
+            "tipo": "Privato"
+        },
+        "proprietario": {
+            "denominazione": "Luigi Bianchi",
+            "cf_piva": "BNCLGU85M15H501F",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "ruoli": {
+        "sa": {
+            "denominazione": "Luigi Bianchi",
+            "tipo": "Privato residenziale",
+            "cf_piva": "BNCLGU85M15H501F",
+            "titolo_godimento": "Proprietà"
+        },
+        "sr": {
+            "denominazione": "Luigi Bianchi",
+            "cf_piva": "BNCLGU85M15H501F",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "luigi.bianchi@pec.it",
+            "coincide_con_sa": true
+        },
+        "proprietario": {
+            "denominazione": "Luigi Bianchi",
+            "cf_piva": "BNCLGU85M15H501F",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        },
+        "delegato": {
+            "nome": "",
+            "cf": ""
+        }
+    },
+    "immobile": {
+        "indirizzo": "Via Verdi 10, Roma (RM)",
+        "zonaClimatica": "Zona D",
+        "destinazione": "Residenziale",
+        "tipo_edificio": "Villa Singola",
+        "categoriaCatastale": "A/2",
+        "classeEnergeticaAnte": "F",
+        "potenza_esistente_kw": 24,
+        "combustibile_ante": "metano"
+    },
+    "edificio": {
+        "indirizzo": "Via Verdi 10, Roma (RM)",
+        "categoria_catastale": "A/2",
+        "zona_climatica": "Zona D",
+        "superficie_utile_mq": 120,
+        "anno_costruzione": 1990,
+        "impianto_esistente": {
+            "tipo": "Caldaia tradizionale",
+            "potenza_kw": 24,
+            "combustibile": "Gas naturale",
+            "libretto": true,
+            "libretto_codice": "LB67890"
+        }
+    },
+    "richiestaPreliminareInviata": false,
+    "interventi": [
+        "III.D"
+    ],
+    "selectedInterventi": [
+        "III.D"
+    ],
+    "valori_campi": {
+        "III.D": {
+            "tipo_pannello_solare": "Pannelli piani vetrati",
+            "superficie_lorda_mq": 30,
+            "certificazione_solar_keymark": "sì",
+            "produzione_termica_specifica_kwh_mq": "",
+            "costo_solare_termico": 18000
+        }
+    },
+    "interventiData": {
+        "III.D": {
+            "tipo_pannello_solare": "Pannelli piani vetrati",
+            "superficie_lorda_mq": 30,
+            "certificazione_solar_keymark": "sì",
+            "produzione_termica_specifica_kwh_mq": "",
+            "costo_solare_termico": 18000
+        }
+    },
+    "postOperam": {
+        "III.D": {
+            "impianto_solare_termico_installato": true,
+            "integrazione_climatizzazione_invernale": true,
+            "integrazione_acs": true
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "forn",
+                "codice_intervento": "III.D",
+                "descrizione": "Pannelli solari piani vetrati 30mq",
+                "tipo_costo": "fornitura",
+                "importo": 12000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "pos",
+                "codice_intervento": "III.D",
+                "descrizione": "Posa e installazione impianto solare",
+                "tipo_costo": "posa",
+                "importo": 4500,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "doc",
+                "codice_intervento": "III.D",
+                "descrizione": "Documentazione e collaudo",
+                "tipo_costo": "documentazione",
+                "importo": 1500,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 18000,
+            "totale_fornitura": 12000,
+            "totale_posa": 4500,
+            "totale_documentazione": 1500
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Titolo di possesso": true,
+        "APE": true,
+        "Certificazione Solar Keymark": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

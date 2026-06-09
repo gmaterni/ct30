@@ -1,0 +1,184 @@
+{
+    "codice": "CT30-T14",
+    "nome": "check_azion3_1 — PA comune <15k III.A 100%",
+    "descrizione": "Pratica di test per validare i flag PA comune<15k e scuola/ospedale. SA: Pubblica Amministrazione, comune sotto 15.000 ab., III.A in Zona E. L'incentivo deve essere calcolato al 100%.",
+    "soggetto": {
+        "tipo": "Pubblica Amministrazione",
+        "denominazione": "Comune di Montebelluna",
+        "codiceFiscale": "80012345678",
+        "partitaIva": "80012345678",
+        "email": "protocollo@comune.montebelluna.it",
+        "telefono": "+39 0423 123456"
+    },
+    "soggetti": {
+        "sa": {
+            "denominazione": "Comune di Montebelluna",
+            "tipo": "Pubblica Amministrazione",
+            "cf_piva": "80012345678",
+            "partita_iva": "80012345678",
+            "indirizzo": "Piazza del Comune 1, Montebelluna (TV)",
+            "titolo_godimento": "Proprietà",
+            "pec": "protocollo@pec.comune.montebelluna.it",
+            "email": "protocollo@comune.montebelluna.it",
+            "telefono": "+39 0423 123456"
+        },
+        "sr": {
+            "denominazione": "Comune di Montebelluna",
+            "tipo": "Pubblica Amministrazione",
+            "cf_piva": "80012345678",
+            "partita_iva": "80012345678",
+            "indirizzo": "Piazza del Comune 1, Montebelluna (TV)",
+            "iban": "IT60X0542811101000000123456",
+            "pec": "protocollo@pec.comune.montebelluna.it",
+            "email": "protocollo@comune.montebelluna.it",
+            "coincide_con_sa": true
+        },
+        "proprietario": {
+            "denominazione": "Comune di Montebelluna",
+            "cf_piva": "80012345678",
+            "partita_iva": "80012345678",
+            "indirizzo": "Piazza del Comune 1, Montebelluna (TV)",
+            "coincide_con_sa": true,
+            "atto_assenso": true
+        }
+    },
+    "immobile": {
+        "indirizzo": "Piazza del Comune 1, Montebelluna (TV)",
+        "zonaClimatica": "Zona E",
+        "destinazione": "Terziario",
+        "tipo_edificio": "Edificio Singolo",
+        "categoriaCatastale": "B/1",
+        "classeEnergeticaAnte": "F",
+        "potenza_esistente_kw": 60,
+        "combustibile_ante": "Gasolio"
+    },
+    "edificio": {
+        "indirizzo": "Piazza del Comune 1, Montebelluna (TV)",
+        "categoria_catastale": "B/1",
+        "zona_climatica": "Zona E",
+        "ambito": "Terziario",
+        "anno_costruzione": 1985,
+        "superficie_utile_mq": 800,
+        "comune_sotto_15k": true,
+        "scuola_ospedale": false,
+        "impianto_esistente": {
+            "tipo": "Caldaia",
+            "potenza_kw": 60,
+            "combustibile": "gasolio",
+            "libretto": true,
+            "libretto_codice": "IT0123456710"
+        }
+    },
+    "selectedInterventi": [
+        "III.A"
+    ],
+    "interventi": [
+        "III.A"
+    ],
+    "valori_campi": {
+        "III.A": {
+            "potenza_pdc_kw": 60,
+            "potenza_elettrica_assorbita_kw": 15,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.0,
+            "eta_s": 140,
+            "servizio_pdc": "Riscaldamento + ACS",
+            "generatore_sostituito": "Caldaia a gasolio 60kW",
+            "made_in_eu": "no",
+            "miglioramento_ep_40": "no",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "no",
+            "costo_pdc": 35000,
+            "sostituisce_esistente": "sì",
+            "sostituzione_integrale": "sì"
+        }
+    },
+    "interventiData": {
+        "III.A": {
+            "potenza_pdc_kw": 60,
+            "potenza_elettrica_assorbita_kw": 15,
+            "tipologia_pdc": "aria/acqua",
+            "scop": 4.0,
+            "eta_s": 140,
+            "servizio_pdc": "Riscaldamento + ACS",
+            "generatore_sostituito": "Caldaia a gasolio 60kW",
+            "made_in_eu": "no",
+            "miglioramento_ep_40": "no",
+            "zona_assistita_a": "no",
+            "zona_assistita_c": "no",
+            "costo_pdc": 35000,
+            "sostituisce_esistente": "sì",
+            "sostituzione_integrale": "sì"
+        }
+    },
+    "postOperam": {
+        "III.A": {
+            "tipo_nuovo_generatore": "Pompa di calore aria/acqua",
+            "pdc_elettrica_pura": true,
+            "rimane_gas": false,
+            "dismesso_esistente": "sì",
+            "sostituzione_integrale": true,
+            "serve_clima_invernale": true
+        }
+    },
+    "preventivo": {
+        "items": [
+            {
+                "id": "III.A_01",
+                "codice_intervento": "III.A",
+                "descrizione": "Pompa di calore Clivet WSAN-XEE 60",
+                "tipo_costo": "fornitura",
+                "importo": 25000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "III.A_02",
+                "codice_intervento": "III.A",
+                "descrizione": "Posa in opera PDC e collegamenti",
+                "tipo_costo": "posa",
+                "importo": 7000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            },
+            {
+                "id": "III.A_03",
+                "codice_intervento": "III.A",
+                "descrizione": "Documentazione tecnica e conformità",
+                "tipo_costo": "documentazione",
+                "importo": 3000,
+                "quantita": 1,
+                "unita": "corpo",
+                "is_custom": false
+            }
+        ],
+        "totals": {
+            "totale": 35000,
+            "totale_fornitura": 25000,
+            "totale_posa": 7000,
+            "totale_documentazione": 3000
+        }
+    },
+    "documentiStatus": {
+        "Documento Identità richiedente (SA)": true,
+        "Codice Fiscale / Tessera Sanitaria (SA)": true,
+        "Visura Catastale recente (ultimi 6 mesi)": true,
+        "Titolo di possesso (atto, contratto locazione, ecc.)": true,
+        "Copia documento identità Soggetto Responsabile": true,
+        "IBAN (documento di conferma conto)": true,
+        "PEC del Soggetto Responsabile": true,
+        "Scheda tecnica PDC": true,
+        "Certificazioni prestazionali (COP, SCOP, ETA_s)": true,
+        "Libretto impianto ante": true,
+        "Libretto impianto post": true,
+        "Fatture e bonifici": true,
+        "Dichiarazione di conformità": true
+    },
+    "input": {
+        "modalita_accesso": "diretto",
+        "data_fine_lavori": "2026-05-01",
+        "data_richiesta": "2026-05-15"
+    }
+}

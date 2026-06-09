@@ -1,0 +1,2922 @@
+{
+  "III.E": {
+    "AERMEC": {
+      "SHW 080": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "82",
+          "potenza_termica_kw": 1.077
+        }
+      ],
+      "SHW 110": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "102",
+          "potenza_termica_kw": 1.032
+        }
+      ],
+      "SHW 150": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "149",
+          "potenza_termica_kw": 1.121
+        }
+      ],
+      "SHW 200 S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "185",
+          "potenza_termica_kw": 1.749
+        }
+      ],
+      "SHW 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "192",
+          "potenza_termica_kw": 1.749
+        }
+      ],
+      "SHW 250 S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "240",
+          "potenza_termica_kw": 1.76
+        }
+      ],
+      "SHW 250": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "246",
+          "potenza_termica_kw": 1.712
+        }
+      ]
+    },
+    "AIC": {
+      "Dynamis 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "220",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "Dynamis 300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "278",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "Dynamis Max 450": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "450",
+          "potenza_termica_kw": 3.83
+        }
+      ]
+    },
+    "AIRCON": {
+      "Scaldacqua a pompa di calore 200lt": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "185",
+          "potenza_termica_kw": 1.17
+        }
+      ],
+      "Scaldacqua a pompa di calore 200lt con serpentina": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "185",
+          "potenza_termica_kw": 1.1
+        }
+      ],
+      "Scaldacqua a pompa di calore 100lt": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "98",
+          "potenza_termica_kw": 0.63
+        }
+      ],
+      "Scaldacqua a pompa di calore 150lt": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "145",
+          "potenza_termica_kw": 0.85
+        }
+      ],
+      "Scaldacqua a pompa di calore 300lt con serpentina": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 1.33
+        }
+      ],
+      "Scaldacqua a pompa di calore 300lt": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "275",
+          "potenza_termica_kw": 1.36
+        }
+      ]
+    },
+    "ARGO": {
+      "APHPDHW100": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "100",
+          "potenza_termica_kw": 0.9
+        }
+      ],
+      "APHPDHW200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 1.5
+        }
+      ],
+      "APHPDHW300S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 1.5
+        }
+      ]
+    },
+    "ARISTON": {
+      "NUOS PLUS S2 WI-FI 80 WH": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 0.776
+        }
+      ],
+      "NUOS EVO A+ 80": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 0.65
+        }
+      ],
+      "LYDOS HYBRID WIFI 80": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 0.384
+        }
+      ],
+      "LYDOS HYBRID WIFI 100": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "100",
+          "potenza_termica_kw": 0.359
+        }
+      ],
+      "NUOS PLUS S2 WI-FI 110 WH": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "110",
+          "potenza_termica_kw": 0.767
+        }
+      ],
+      "NUOS EVO A+ 110": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "110",
+          "potenza_termica_kw": 0.625
+        }
+      ],
+      "NUOS SPLIT INVERTER WI-FI ER 120": [
+        {
+          "tipologia_costruttiva": "Split (con unità esterna)",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "120",
+          "potenza_termica_kw": 1.981
+        }
+      ],
+      "LYDOS HYBRID WIFI 130": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "130",
+          "potenza_termica_kw": 0.384
+        }
+      ],
+      "NUOS PLUS S2 WI-FI 150 WH": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "147",
+          "potenza_termica_kw": 0.826
+        }
+      ],
+      "NUOS SPLIT INVERTER WI-FI ER 150": [
+        {
+          "tipologia_costruttiva": "Split (con unità esterna)",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "150",
+          "potenza_termica_kw": 2.275
+        }
+      ],
+      "NUOS EVO A+ 150": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "150",
+          "potenza_termica_kw": 0.725
+        }
+      ],
+      "NUOS FIT S2 WI-FI 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 0.728
+        }
+      ],
+      "NUOS SPLIT INVERTER WI-FI ER 200": [
+        {
+          "tipologia_costruttiva": "Split (con unità esterna)",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 2.275
+        }
+      ],
+      "NUOS PLUS WI-FI 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 2.135
+        }
+      ],
+      "NUOS PLUS S2 WI-FI 200 FS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 1.509
+        }
+      ],
+      "NUOS PRIMO HC A+ 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "202",
+          "potenza_termica_kw": 1.4
+        }
+      ],
+      "NUOS PRIMO HC A+ 240 SYS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "239",
+          "potenza_termica_kw": 1.485
+        }
+      ],
+      "NUOS PLUS WI-FI 250 TWIN SYS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "240",
+          "potenza_termica_kw": 2.247
+        }
+      ],
+      "NUOS PLUS S2 WI-FI 250 TWIN SYS FS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "240",
+          "potenza_termica_kw": 1.544
+        }
+      ],
+      "NUOS PRIMO HC A+ 240": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "244",
+          "potenza_termica_kw": 1.515
+        }
+      ],
+      "NUOS PLUS WI-FI 250 SYS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "245",
+          "potenza_termica_kw": 2.198
+        }
+      ],
+      "NUOS PLUS S2 WI-FI 250 SYS FS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "245",
+          "potenza_termica_kw": 1.544
+        }
+      ],
+      "NUOS FIT S2 WI-FI 250": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 0.854
+        }
+      ],
+      "NUOS PLUS WI-FI 250": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 2.345
+        }
+      ],
+      "NUOS PLUS S2 WI-FI 250 FS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 1.544
+        }
+      ],
+      "NUOS SPLIT INVERTER WI-FI ER 270": [
+        {
+          "tipologia_costruttiva": "Split (con unità esterna)",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 2.471
+        }
+      ]
+    },
+    "BALTUR": {
+      "QUADRA.2 W 110 M": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "110",
+          "potenza_termica_kw": 0.85
+        }
+      ],
+      "QUADRA.2 W HE 200S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "220",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "QUADRA.2 W HE 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "228",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "QUADRA.2 W HE 260S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "278",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "QUADRA.2 W HE 260": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "286",
+          "potenza_termica_kw": 2.06
+        }
+      ]
+    },
+    "BAXI": {
+      "SPC 200 Plus": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 1.35
+        }
+      ],
+      "SPC 200 S Plus": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 1.34
+        }
+      ],
+      "SPC 250 Plus": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 1.32
+        }
+      ],
+      "SPC 250 S Plus": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 1.3
+        }
+      ]
+    },
+    "BIASI": {
+      "NEOS 80": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "78",
+          "potenza_termica_kw": 0.99
+        }
+      ],
+      "NEOS TOP 100": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "100",
+          "potenza_termica_kw": 1.0
+        }
+      ],
+      "NEOS 200S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "190",
+          "potenza_termica_kw": 1.56
+        }
+      ],
+      "NEOS 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 1.56
+        }
+      ],
+      "NEOS TOP 200S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 1.6
+        }
+      ],
+      "NEOS 300s": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "290",
+          "potenza_termica_kw": 1.67
+        }
+      ],
+      "NEOS 300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 1.67
+        }
+      ],
+      "NEOS TOP 300S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 1.6
+        }
+      ]
+    },
+    "BONGIOANNI": {
+      "ECO AW 3.80 E": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 1.0
+        }
+      ],
+      "ECO AW 3.120 E": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "120",
+          "potenza_termica_kw": 1.0
+        }
+      ],
+      "ECO AW 2.200 SE": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "194",
+          "potenza_termica_kw": 1.16
+        }
+      ],
+      "ECO AW 3.200 SE": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 1.6
+        }
+      ],
+      "ECO AW 2.200 E": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "202",
+          "potenza_termica_kw": 1.16
+        }
+      ],
+      "ECO AW 2.300 SE": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "251",
+          "potenza_termica_kw": 1.33
+        }
+      ],
+      "ECO AW 2.300 E": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "260",
+          "potenza_termica_kw": 1.33
+        }
+      ],
+      "ECO AW 3.300 SE": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 1.6
+        }
+      ]
+    },
+    "BOSCH": {
+      "CS5001DW 80 W": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 0.69
+        }
+      ],
+      "CS5000DW 100 W": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "98",
+          "potenza_termica_kw": 0.67
+        }
+      ],
+      "CS5001DW 100 W": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "100",
+          "potenza_termica_kw": 0.72
+        }
+      ],
+      "CS5001DW 120 W": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "120",
+          "potenza_termica_kw": 0.67
+        }
+      ],
+      "CS5000DW 150 W": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "143",
+          "potenza_termica_kw": 0.68
+        }
+      ],
+      "CS5001DW 150 W": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "150",
+          "potenza_termica_kw": 0.68
+        }
+      ],
+      "CS3000DW 180": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "175",
+          "potenza_termica_kw": 0.66
+        }
+      ],
+      "CS5001DW 200 C": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "194",
+          "potenza_termica_kw": 1.27
+        }
+      ],
+      "CS5001DW 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "202",
+          "potenza_termica_kw": 1.27
+        }
+      ],
+      "CS5001DW 260 C": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "251",
+          "potenza_termica_kw": 1.23
+        }
+      ],
+      "CS5001DW 260": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "260",
+          "potenza_termica_kw": 1.23
+        }
+      ]
+    },
+    "BUDERUS": {
+      "WPT156-80 HA": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 0.69
+        }
+      ],
+      "WPT100 W": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "98",
+          "potenza_termica_kw": 0.67
+        }
+      ],
+      "WPT156-100 HA": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "100",
+          "potenza_termica_kw": 0.72
+        }
+      ],
+      "WPT150 W": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "143",
+          "potenza_termica_kw": 0.68
+        }
+      ],
+      "WPT156-150 HA": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "150",
+          "potenza_termica_kw": 0.68
+        }
+      ],
+      "WPT200.4 AS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "194",
+          "potenza_termica_kw": 1.27
+        }
+      ],
+      "WPT200.4 A": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "202",
+          "potenza_termica_kw": 1.27
+        }
+      ],
+      "WPT260.4 AS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "251",
+          "potenza_termica_kw": 1.23
+        }
+      ],
+      "WPT260.4 A": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "260",
+          "potenza_termica_kw": 1.23
+        }
+      ]
+    },
+    "CHAFFOTEAUX": {
+      "AQUANEXT WH 80": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 0.65
+        }
+      ],
+      "AQUANEXT WH 110": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "110",
+          "potenza_termica_kw": 0.625
+        }
+      ],
+      "AQUANEXT PLUS LINK 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 2.135
+        }
+      ],
+      "AQUANEXT PLUS LINK S2 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 1.509
+        }
+      ],
+      "AQUANEXT PERFORMANCE 200 A+": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "202",
+          "potenza_termica_kw": 1.4
+        }
+      ],
+      "AQUANEXT PERFORMANCE 240 SYS A+": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "239",
+          "potenza_termica_kw": 1.485
+        }
+      ],
+      "AQUANEXT PERFORMANCE 240 A+": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "244",
+          "potenza_termica_kw": 1.515
+        }
+      ],
+      "AQUANEXT PLUS LINK 250 SYS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "245",
+          "potenza_termica_kw": 2.198
+        }
+      ],
+      "AQUANEXT PLUS LINK S2 250 SYS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "245",
+          "potenza_termica_kw": 1.544
+        }
+      ],
+      "AQUANEXT PLUS LINK 250": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 2.345
+        }
+      ],
+      "AQUANEXT PLUS LINK S2 250": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 1.544
+        }
+      ]
+    },
+    "CLIMENIA": {
+      "CLI-SPC200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 2.8
+        }
+      ],
+      "CLI-SPC250": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 2.8
+        }
+      ],
+      "CLI-SPC300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 2.8
+        }
+      ]
+    },
+    "CLIVET": {
+      "AQUA F DSDH-P AQ 1 S 190S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "180",
+          "potenza_termica_kw": 1.237
+        }
+      ],
+      "AQUA F DSDH-P AQ 1 S 190": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "185",
+          "potenza_termica_kw": 1.261
+        }
+      ],
+      "AQUA F DSDH-P AQ 1 S 300S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 1.573
+        }
+      ],
+      "AQUA F DSDH-P AQ 1 S 300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "275",
+          "potenza_termica_kw": 1.595
+        }
+      ]
+    },
+    "COSMOGAS": {
+      "AGUAMAX 200 R290": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 1.5
+        }
+      ],
+      "AGUAMAX 300 R290": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 1.5
+        }
+      ]
+    },
+    "DAIKIN": {
+      "5MWXM90A9 - CKHWS180BV3": [
+        {
+          "potenza_termica_w": null,
+          "tipologia_costruttiva": "Split (con unità esterna)",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "180"
+        }
+      ],
+      "5MWXM68A9 - CKHWS180BV3": [
+        {
+          "potenza_termica_w": null,
+          "tipologia_costruttiva": "Split (con unità esterna)",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "180"
+        }
+      ],
+      "ALTHERMA M HW - EKHHE200PCV37": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "187",
+          "potenza_termica_kw": 1.339
+        }
+      ],
+      "ALTHERMA M HW - EKHHE200CV37": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "192",
+          "potenza_termica_kw": 1.339
+        }
+      ],
+      "5MWXM90A9 - CKHWS230BV3": [
+        {
+          "potenza_termica_w": null,
+          "tipologia_costruttiva": "Split (con unità esterna)",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "230"
+        }
+      ],
+      "5MWXM68A9 - CKHWS230BV3": [
+        {
+          "potenza_termica_w": null,
+          "tipologia_costruttiva": "Split (con unità esterna)",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "230"
+        }
+      ],
+      "ALTHERMA M HW - EKHHE260PCV37": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "247",
+          "potenza_termica_kw": 1.249
+        }
+      ],
+      "ALTHERMA M HW - EKHHE260CV37": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 1.249
+        }
+      ]
+    },
+    "DE DIETRICH": {
+      "ELENSIO 200 H": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "188",
+          "potenza_termica_kw": 1.34
+        }
+      ],
+      "ELENSIO 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "196",
+          "potenza_termica_kw": 1.35
+        }
+      ],
+      "ELENSIO 250 H": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "243",
+          "potenza_termica_kw": 1.3
+        }
+      ],
+      "ELENSIO 250": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "251",
+          "potenza_termica_kw": 1.32
+        }
+      ]
+    },
+    "DYNERGY": {
+      "HERA COMPACT R2 300LT": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "265",
+          "potenza_termica_kw": 1.95
+        }
+      ],
+      "HERA COMPACT R1 300LT": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "268",
+          "potenza_termica_kw": 1.95
+        }
+      ],
+      "HERA COMPACT M 300LT": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "273",
+          "potenza_termica_kw": 1.95
+        }
+      ],
+      "IDROSTAR EVO2": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 2.5
+        }
+      ]
+    },
+    "ECA TECHNOLOGY SRL": {
+      "EW 301 GR": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 1.7
+        }
+      ]
+    },
+    "ECOBEL": {
+      "ACS etamax 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 2.5
+        }
+      ],
+      "ACS etamax 300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 3.0
+        }
+      ]
+    },
+    "EDEN": {
+      "HWB-A110C2E15": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "110",
+          "potenza_termica_kw": 0.85
+        }
+      ],
+      "HWB-A200E4E12": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "220",
+          "potenza_termica_kw": 1.87
+        }
+      ],
+      "HWB-A200C2E12": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "228",
+          "potenza_termica_kw": 1.87
+        }
+      ],
+      "HWB-A300E4E12": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "278",
+          "potenza_termica_kw": 1.87
+        }
+      ],
+      "HWB-A300C2E12": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "286",
+          "potenza_termica_kw": 1.87
+        }
+      ]
+    },
+    "ELCO": {
+      "AEROTOP DHW WH 80.3": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 0.776
+        }
+      ],
+      "AEROTOP DHW WH 110.3": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "110",
+          "potenza_termica_kw": 0.767
+        }
+      ],
+      "AEROTOP DHW WH 150.3": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "147",
+          "potenza_termica_kw": 0.826
+        }
+      ],
+      "AEROTOP DHW 200.2": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 2.17
+        }
+      ],
+      "AEROTOP DHW 200.3": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 1.509
+        }
+      ],
+      "AEROTOP DHW 250.2 SYS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "245",
+          "potenza_termica_kw": 2.198
+        }
+      ],
+      "AEROTOP DHW 250.3 SYS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "245",
+          "potenza_termica_kw": 1.544
+        }
+      ],
+      "AEROTOP DHW 250.2": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 2.345
+        }
+      ],
+      "AEROTOP DHW 250.3": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 1.544
+        }
+      ]
+    },
+    "EMMETI": {
+      "EQ 1123": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "110",
+          "potenza_termica_kw": 0.75
+        }
+      ],
+      "EQ 2021": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A++",
+          "capacita_accumulo_litri": "190",
+          "potenza_termica_kw": 1.4
+        }
+      ],
+      "EQ 3021 ES": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A++",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 1.5
+        }
+      ]
+    },
+    "FERROLI": {
+      "EGEA 90 LT": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "89",
+          "potenza_termica_kw": 0.833
+        }
+      ],
+      "EGEA TECH 90 LT": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "89",
+          "potenza_termica_kw": 0.607
+        }
+      ],
+      "EGEA 120 LT": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "118",
+          "potenza_termica_kw": 0.833
+        }
+      ],
+      "EGEA TECH 120 LT": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "118",
+          "potenza_termica_kw": 0.613
+        }
+      ],
+      "EGEA 200 LT-S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "187",
+          "potenza_termica_kw": 1.339
+        }
+      ],
+      "EGEA TECH 200 LT-S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "187",
+          "potenza_termica_kw": 1.339
+        }
+      ],
+      "EGEA 200 LT": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "192",
+          "potenza_termica_kw": 1.339
+        }
+      ],
+      "EGEA 200 HT": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "192",
+          "potenza_termica_kw": 1.6
+        }
+      ],
+      "EGEA TECH 200 LT": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "192",
+          "potenza_termica_kw": 1.339
+        }
+      ],
+      "EGEA TECH 200 HT": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "192",
+          "potenza_termica_kw": 1.248
+        }
+      ],
+      "EGEA 260 LT-S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "247",
+          "potenza_termica_kw": 1.249
+        }
+      ],
+      "EGEA TECH 260 LT-S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "247",
+          "potenza_termica_kw": 1.249
+        }
+      ],
+      "EGEA 260 LT": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 1.249
+        }
+      ],
+      "EGEA 260 HT": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 1.6
+        }
+      ],
+      "EGEA TECH 260 LT": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 1.249
+        }
+      ],
+      "EGEA TECH 260 HT": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 1.283
+        }
+      ]
+    },
+    "FONDITAL": {
+      "MELORIA 100": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "100",
+          "potenza_termica_kw": 0.85
+        }
+      ],
+      "MELORIA 150": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "150",
+          "potenza_termica_kw": 1.1
+        }
+      ],
+      "MELORIA 190 S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "190",
+          "potenza_termica_kw": 1.19
+        }
+      ],
+      "WHPS PDC 300 DS +": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "273",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "WHPS PDC 300 SS +": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "278",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "MELORIA 300 S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 1.51
+        }
+      ]
+    },
+    "HAIER": {
+      "HP80M5": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 0.761
+        }
+      ],
+      "HP80M8-9": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "82",
+          "potenza_termica_kw": 0.979
+        }
+      ],
+      "HP110M8-9": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "102",
+          "potenza_termica_kw": 0.925
+        }
+      ],
+      "HP110M5": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "110",
+          "potenza_termica_kw": 0.769
+        }
+      ],
+      "HP150M8-9": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "149",
+          "potenza_termica_kw": 1.081
+        }
+      ],
+      "HP150M5": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "149",
+          "potenza_termica_kw": 0.859
+        }
+      ],
+      "HP250M7-F9": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "185",
+          "potenza_termica_kw": 1.413
+        }
+      ],
+      "HP200M7-F9": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "192",
+          "potenza_termica_kw": 1.444
+        }
+      ],
+      "HP200M3": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "195",
+          "potenza_termica_kw": 1.678
+        }
+      ],
+      "HP250M7C-F9": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "240",
+          "potenza_termica_kw": 1.433
+        }
+      ],
+      "HP250M3C": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "242",
+          "potenza_termica_kw": 1.762
+        }
+      ],
+      "HP200M7C-F9": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "246",
+          "potenza_termica_kw": 1.508
+        }
+      ],
+      "HP250M3": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "246",
+          "potenza_termica_kw": 1.688
+        }
+      ]
+    },
+    "HITACHI": {
+      "RAW-35HC_TAW-190RHC": [
+        {
+          "tipologia_costruttiva": "Split (con unità esterna)",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "190",
+          "potenza_termica_kw": 2.98
+        }
+      ],
+      "RAW-35HC_TAW-270RHC": [
+        {
+          "tipologia_costruttiva": "Split (con unità esterna)",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 3.59
+        }
+      ]
+    },
+    "HOVAL": {
+      "COMBIVAL WPE": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 1.78
+        }
+      ],
+      "COMBIVAL WPER": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 1.78
+        }
+      ]
+    },
+    "IDEMA": {
+      "ACS-100-R290": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "98",
+          "potenza_termica_kw": 0.98
+        }
+      ],
+      "ACS-150-R290": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "145",
+          "potenza_termica_kw": 1.3
+        }
+      ],
+      "ACS-200-R290": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "181",
+          "potenza_termica_kw": 1.43
+        }
+      ],
+      "ACS-200-SOL": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 2.02
+        }
+      ],
+      "ACS-300-R290": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 1.5
+        }
+      ],
+      "ACS-300-SOL-T": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 2.02
+        }
+      ],
+      "ACS-500-SOL": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "500",
+          "potenza_termica_kw": 4.0
+        }
+      ]
+    },
+    "IMMERGAS": {
+      "RAPAX 100 V2": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "100",
+          "potenza_termica_kw": 0.963
+        }
+      ],
+      "RAPAX 200 SOL V3": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "195",
+          "potenza_termica_kw": 2.149
+        }
+      ],
+      "RAPAX 200 V3": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 2.135
+        }
+      ],
+      "RAPAX 300 SOL V3": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "260",
+          "potenza_termica_kw": 2.408
+        }
+      ],
+      "RAPAX 300 V3": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 2.527
+        }
+      ]
+    },
+    "INTUIS": {
+      "EDEL 100 l air": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "100",
+          "potenza_termica_kw": 0.833
+        }
+      ],
+      "EDEL 150 l air": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "150",
+          "potenza_termica_kw": 0.88
+        }
+      ],
+      "EDEL 150 eau": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "150",
+          "potenza_termica_kw": 1.52
+        }
+      ],
+      "EDEL 200 air": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 2.35
+        }
+      ],
+      "EDEL 200 eau": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 1.668
+        }
+      ],
+      "EDEL 270 air E": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "265",
+          "potenza_termica_kw": 1.52
+        }
+      ],
+      "EDEL 270 air": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 2.43
+        }
+      ],
+      "EDEL 270 eau": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 1.764
+        }
+      ]
+    },
+    "ITALTHERM": {
+      "AQUASMART 100 W": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 0.95
+        }
+      ],
+      "AQUASMART 200 F SOLAR": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "181",
+          "potenza_termica_kw": 0.6
+        }
+      ],
+      "AQUASMART 200 F": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "185",
+          "potenza_termica_kw": 0.6
+        }
+      ],
+      "AQUASMART 300 F SOLAR": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 0.71
+        }
+      ],
+      "AQUASMART 300 F": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "275",
+          "potenza_termica_kw": 0.71
+        }
+      ]
+    },
+    "KRONOTERM": {
+      "WP2 LF-202E": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A++",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 1.83
+        }
+      ],
+      "WP2 LF-302E": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A++",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 1.83
+        }
+      ],
+      "ESSENTA-303": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A++",
+          "capacita_accumulo_litri": "290",
+          "potenza_termica_kw": 1.57
+        }
+      ],
+      "WP4 LF-502": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "450",
+          "potenza_termica_kw": 3.83
+        }
+      ]
+    },
+    "LG ELECTRONICS": {
+      "WH10ESF0 HA": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "100",
+          "potenza_termica_kw": 1.0
+        }
+      ],
+      "WH15ESF0 HA": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "150",
+          "potenza_termica_kw": 1.092
+        }
+      ],
+      "WH20ESF0 CA": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 1.856
+        }
+      ]
+    },
+    "MAXA": {
+      "CALIDO 105": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A++",
+          "capacita_accumulo_litri": "104",
+          "potenza_termica_kw": 1.0
+        }
+      ],
+      "CALIDO 190-S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "190",
+          "potenza_termica_kw": 1.5
+        }
+      ],
+      "CALIDO 190": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "196",
+          "potenza_termica_kw": 1.5
+        }
+      ],
+      "CALIDO1-D 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "217",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "CALIDO1-S 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "220",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "CALIDO1 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "228",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "CALIDO 250-S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 1.5
+        }
+      ],
+      "CALIDO 250": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "256",
+          "potenza_termica_kw": 1.5
+        }
+      ],
+      "CALIDO1-D 300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "273",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "CALIDO1-S 300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "278",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "CALIDO1 300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "286",
+          "potenza_termica_kw": 2.06
+        }
+      ]
+    },
+    "MIDEA": {
+      "RSJ-08/80RDN7-B1": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "78",
+          "potenza_termica_kw": 0.95
+        }
+      ],
+      "RSJ-09/100RDN7-B1": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "98",
+          "potenza_termica_kw": 0.98
+        }
+      ],
+      "RSJ-09/150RDN7-B1": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "145",
+          "potenza_termica_kw": 1.3
+        }
+      ],
+      "RSJ-15/181RDB10N7-L1": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "185",
+          "potenza_termica_kw": 1.1
+        }
+      ],
+      "RSJ-15/270RDB10N7-L1": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 1.33
+        }
+      ]
+    },
+    "OLIMPIA SPLENDID": {
+      "SHERPA SHW S3P 100": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "95",
+          "potenza_termica_kw": 0.286
+        }
+      ],
+      "SHERPA SHW S3P 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "178",
+          "potenza_termica_kw": 0.358
+        }
+      ],
+      "SHERPA SHW S2 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "202",
+          "potenza_termica_kw": 1.05
+        }
+      ],
+      "SHERPA SHW S2 260S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "251",
+          "potenza_termica_kw": 1.2
+        }
+      ],
+      "SHERPA SHW S3P 300S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "273",
+          "potenza_termica_kw": 0.365
+        }
+      ]
+    },
+    "PANASONIC": {
+      "P-DHW100AE5": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "100",
+          "potenza_termica_kw": 0.67
+        }
+      ],
+      "P-DHW150AE5": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "142",
+          "potenza_termica_kw": 0.63
+        }
+      ],
+      "P-DHW200CAE5": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "194",
+          "potenza_termica_kw": 1.22
+        }
+      ],
+      "P-DHW200AE5": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "202",
+          "potenza_termica_kw": 1.25
+        }
+      ],
+      "P-DHW260CAE5": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "252",
+          "potenza_termica_kw": 1.23
+        }
+      ],
+      "P-DHW260AE5": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "260",
+          "potenza_termica_kw": 1.2
+        }
+      ]
+    },
+    "RADIANT BRUCIATORI": {
+      "Nettuno Plus 100": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "95",
+          "potenza_termica_kw": 0.9
+        }
+      ],
+      "Nettuno Plus 200D": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "190",
+          "potenza_termica_kw": 1.28
+        }
+      ],
+      "Nettuno Plus 200S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "195",
+          "potenza_termica_kw": 1.28
+        }
+      ],
+      "Nettuno Plus 300D": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "290",
+          "potenza_termica_kw": 1.34
+        }
+      ],
+      "Nettuno Plus 300S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "295",
+          "potenza_termica_kw": 1.34
+        }
+      ]
+    },
+    "RHOSS": {
+      "Electa-SAN-Plus_TWCTZ_S_200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "174",
+          "potenza_termica_kw": 1.8
+        }
+      ],
+      "Electa-SAN-Plus_TWCTZ_B_200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "180",
+          "potenza_termica_kw": 1.8
+        }
+      ],
+      "Electa_SAN_TWCZ_S_200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "220",
+          "potenza_termica_kw": 1.87
+        }
+      ],
+      "Electa_SAN_TWCZ_B_200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "228",
+          "potenza_termica_kw": 1.87
+        }
+      ],
+      "Electa-SAN-Plus_TWCTZ_S_300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "261",
+          "potenza_termica_kw": 1.8
+        }
+      ],
+      "Electa-SAN-Plus_TWCTZ_B_300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 1.8
+        }
+      ],
+      "Electa_SAN_TWCZ_S_300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "278",
+          "potenza_termica_kw": 1.87
+        }
+      ],
+      "Electa_SAN_TWCZ_B_300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "286",
+          "potenza_termica_kw": 1.87
+        }
+      ]
+    },
+    "RIELLO": {
+      "NexAqua 80": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 0.59
+        }
+      ],
+      "NexAqua 80 Plus": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 0.59
+        }
+      ],
+      "NexAqua 120": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "120",
+          "potenza_termica_kw": 0.57
+        }
+      ],
+      "NexAqua 120 Plus": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "120",
+          "potenza_termica_kw": 0.57
+        }
+      ],
+      "NexPro 180 ACS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "178",
+          "potenza_termica_kw": 1.23
+        }
+      ],
+      "NexPro 250 S ACS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "251",
+          "potenza_termica_kw": 1.17
+        }
+      ],
+      "NexPro 250 ACS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "254",
+          "potenza_termica_kw": 1.17
+        }
+      ],
+      "NexPro 300 CS Plus": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "290",
+          "potenza_termica_kw": 1.95
+        }
+      ],
+      "NexPro 300 S Plus": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "295",
+          "potenza_termica_kw": 1.95
+        }
+      ],
+      "NexPro 300 Plus": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 1.95
+        }
+      ]
+    },
+    "RINNAI": {
+      "EHP-WH110": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "110",
+          "potenza_termica_kw": 0.85
+        }
+      ],
+      "EHP-WH200-2A": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "217",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "EHP-WH200-1A": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "220",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "EHP-WH200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "228",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "EHP-WH300-2A": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "273",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "EHP-WH300-1A": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "278",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "EHP-WH300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "286",
+          "potenza_termica_kw": 2.06
+        }
+      ],
+      "EWH-300-HH + EHP-WH-HH": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A",
+          "capacita_accumulo_litri": "309",
+          "potenza_termica_kw": 3.72
+        }
+      ]
+    },
+    "ROSSATO": {
+      "Air Combo X 110": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "102",
+          "potenza_termica_kw": 0.68
+        }
+      ],
+      "Air Combo Evo 200 S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "168",
+          "potenza_termica_kw": 1.38
+        }
+      ],
+      "Air Combo Evo 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "176",
+          "potenza_termica_kw": 1.38
+        }
+      ],
+      "Air Combo X 200 S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "185",
+          "potenza_termica_kw": 1.37
+        }
+      ],
+      "Air Combo X 250 S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "240",
+          "potenza_termica_kw": 1.23
+        }
+      ],
+      "Air Combo Evo 300 S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "272",
+          "potenza_termica_kw": 1.84
+        }
+      ],
+      "Air Combo Evo 300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "284",
+          "potenza_termica_kw": 1.84
+        }
+      ]
+    },
+    "SAVIO": {
+      "NEOS 80": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "78",
+          "potenza_termica_kw": 0.99
+        }
+      ],
+      "NEOS TOP 100": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "100",
+          "potenza_termica_kw": 1.0
+        }
+      ],
+      "NEOS 200S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "190",
+          "potenza_termica_kw": 1.56
+        }
+      ],
+      "NEOS 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 1.56
+        }
+      ],
+      "NEOS TOP 200S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 1.6
+        }
+      ],
+      "NEOS 300s": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "290",
+          "potenza_termica_kw": 1.67
+        }
+      ],
+      "NEOS 300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 1.67
+        }
+      ],
+      "NEOS TOP 300S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 1.6
+        }
+      ]
+    },
+    "SIC": {
+      "COMPACT CRE-PEP 275": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "265",
+          "potenza_termica_kw": 1.95
+        }
+      ],
+      "COMPACT CRE-PWW 275": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "268",
+          "potenza_termica_kw": 1.95
+        }
+      ],
+      "COMPACT CRE-PEL 275": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "275",
+          "potenza_termica_kw": 1.95
+        }
+      ]
+    },
+    "SIME": {
+      "ECOMAXI VB 80": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 2.3
+        }
+      ],
+      "ECOMAXI VB 120": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "120",
+          "potenza_termica_kw": 2.3
+        }
+      ],
+      "ECOMAXI VB 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 2.4
+        }
+      ],
+      "ECOMAXI VB 200 S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 2.4
+        }
+      ],
+      "ECOMAXI VB 300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 2.4
+        }
+      ],
+      "ECOMAXI VB 300 S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 2.4
+        }
+      ]
+    },
+    "SINCLAIR": {
+      "SWH-80P": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "78",
+          "potenza_termica_kw": 0.95
+        }
+      ],
+      "SWH-100P": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "98",
+          "potenza_termica_kw": 0.98
+        }
+      ],
+      "SWH-150P": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "145",
+          "potenza_termica_kw": 1.3
+        }
+      ],
+      "SWH-190IRES2": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "168",
+          "potenza_termica_kw": 1.62
+        }
+      ],
+      "SWH-190IRES": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "168",
+          "potenza_termica_kw": 1.62
+        }
+      ],
+      "SWH-190IRE": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "176",
+          "potenza_termica_kw": 1.62
+        }
+      ],
+      "SWH-190PS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "185",
+          "potenza_termica_kw": 0.71
+        }
+      ],
+      "SWH-35ERA2+SWH-200DE": [
+        {
+          "tipologia_costruttiva": "Split (con unità esterna)",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "185",
+          "potenza_termica_kw": 3.5
+        }
+      ],
+      "SWH-300IRES2": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "272",
+          "potenza_termica_kw": 2.3
+        }
+      ],
+      "SWH-300IRES": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "272",
+          "potenza_termica_kw": 2.3
+        }
+      ],
+      "SWH-300PS": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "275",
+          "potenza_termica_kw": 0.71
+        }
+      ],
+      "SWH-300IRE": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "284",
+          "potenza_termica_kw": 2.3
+        }
+      ]
+    },
+    "STELBI": {
+      "TECNOEVO BM 80": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "78",
+          "potenza_termica_kw": 0.64
+        }
+      ],
+      "TECNOEVO BM 100": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "98",
+          "potenza_termica_kw": 0.63
+        }
+      ],
+      "TECNOEVO BM 200 S1": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "181",
+          "potenza_termica_kw": 1.1
+        }
+      ],
+      "TECNOEVO BM 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "185",
+          "potenza_termica_kw": 1.17
+        }
+      ],
+      "TECNOEVO BL 200 S1": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "194",
+          "potenza_termica_kw": 1.16
+        }
+      ],
+      "TECNOEVO BL 200": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "202",
+          "potenza_termica_kw": 1.16
+        }
+      ],
+      "TECNOEVO BL 300 S1": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "251",
+          "potenza_termica_kw": 1.33
+        }
+      ],
+      "TECNOEVO BL 300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "260",
+          "potenza_termica_kw": 1.33
+        }
+      ],
+      "TECNOEVO BM 300 S1": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 1.33
+        }
+      ],
+      "TECNOEVO BM 300": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "275",
+          "potenza_termica_kw": 1.36
+        }
+      ]
+    },
+    "STIEBEL ELTRON": {
+      "SHP-I 200 Plus": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "200",
+          "potenza_termica_kw": 0.002
+        }
+      ],
+      "SHP-F 220 Premium": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "220",
+          "potenza_termica_kw": 0.002
+        }
+      ],
+      "SHP-F 300 X Premium": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "291",
+          "potenza_termica_kw": 0.002
+        }
+      ],
+      "SHP-I 300 H Plus": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "294",
+          "potenza_termica_kw": 0.002
+        }
+      ],
+      "SHP-I 300 Plus": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 0.002
+        }
+      ],
+      "SHP-F 300 Premium": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "302",
+          "potenza_termica_kw": 0.002
+        }
+      ]
+    },
+    "TOSHIBA": {
+      "HWS-G1801CNHMV-E": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "178",
+          "potenza_termica_kw": 1.42
+        }
+      ],
+      "HWS-G1901CNRR-E": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "190",
+          "potenza_termica_kw": 1.7
+        }
+      ],
+      "HWS-G1901ENXR-E": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "190",
+          "potenza_termica_kw": 1.7
+        }
+      ],
+      "HWS-G2501ENHMV-E": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "251",
+          "potenza_termica_kw": 1.42
+        }
+      ],
+      "HWS-G2501CNHMV-E": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "254",
+          "potenza_termica_kw": 1.42
+        }
+      ],
+      "HWS-G2601CNRR-E": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "260",
+          "potenza_termica_kw": 1.7
+        }
+      ],
+      "HWS-G2601ENXR-E": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "260",
+          "potenza_termica_kw": 1.7
+        }
+      ]
+    },
+    "VIESSMANN": {
+      "Vitocal 060-AD T0W-R290": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 1.2
+        },
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "110",
+          "potenza_termica_kw": 1.2
+        }
+      ],
+      "Vitocal 060-A T0E-R290": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "180",
+          "potenza_termica_kw": 1.25
+        },
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 1.25
+        }
+      ],
+      "Vitocal 060-A T0S-R290": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "250",
+          "potenza_termica_kw": 1.25
+        }
+      ],
+      "Vitocal 262-A T2E-R290": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 1.18
+        }
+      ],
+      "Vitocal 262-A T2H-R290": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "300",
+          "potenza_termica_kw": 1.18
+        }
+      ]
+    },
+    "WOLF": {
+      "FHS 180S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "166",
+          "potenza_termica_kw": 1.0
+        }
+      ],
+      "FHS 280HE": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "258",
+          "potenza_termica_kw": 1.42
+        }
+      ],
+      "FHS 280HE (R290)": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "258",
+          "potenza_termica_kw": 1.6
+        }
+      ],
+      "FHS 280S": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 1.42
+        }
+      ],
+      "FHS 280S (R290)": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "270",
+          "potenza_termica_kw": 1.6
+        }
+      ]
+    },
+    "YOKOHAMA SEKAI": {
+      "XOTW 060H": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "60",
+          "potenza_termica_kw": 0.6
+        }
+      ],
+      "XOTW 060V": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "60",
+          "potenza_termica_kw": 0.6
+        }
+      ],
+      "XOTW 080H": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 0.6
+        }
+      ],
+      "XOTW 080V": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "80",
+          "potenza_termica_kw": 0.6
+        }
+      ],
+      "XOTW 100H": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "100",
+          "potenza_termica_kw": 0.6
+        }
+      ],
+      "XOTW 100V": [
+        {
+          "tipologia_costruttiva": "Monoblocco",
+          "classe_energetica": "A+",
+          "capacita_accumulo_litri": "100",
+          "potenza_termica_kw": 0.6
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+    "III.G": {
+        "EF EnErgia": {
+            "MicroCogen 10": [
+                {
+                    "marca": "EF EnErgia",
+                    "modello": "MicroCogen 10",
+                    "potenza_elettrica_kwe": 10,
+                    "potenza_termica_kwt": 25,
+                    "rendimento_elettrico_pct": 30,
+                    "rendimento_termico_pct": 60,
+                    "tipo_alimentazione": "Biogas",
+                    "pes_pct": 15
+                }
+            ],
+            "MicroCogen 20": [
+                {
+                    "marca": "EF EnErgia",
+                    "modello": "MicroCogen 20",
+                    "potenza_elettrica_kwe": 20,
+                    "potenza_termica_kwt": 50,
+                    "rendimento_elettrico_pct": 32,
+                    "rendimento_termico_pct": 58,
+                    "tipo_alimentazione": "Biogas",
+                    "pes_pct": 18
+                }
+            ]
+        },
+        "EcoPower": {
+            "EcoGen 15": [
+                {
+                    "marca": "EcoPower",
+                    "modello": "EcoGen 15",
+                    "potenza_elettrica_kwe": 15,
+                    "potenza_termica_kwt": 35,
+                    "rendimento_elettrico_pct": 28,
+                    "rendimento_termico_pct": 62,
+                    "tipo_alimentazione": "Biomassa",
+                    "pes_pct": 20
+                }
+            ],
+            "EcoGen 30": [
+                {
+                    "marca": "EcoPower",
+                    "modello": "EcoGen 30",
+                    "potenza_elettrica_kwe": 30,
+                    "potenza_termica_kwt": 70,
+                    "rendimento_elettrico_pct": 31,
+                    "rendimento_termico_pct": 60,
+                    "tipo_alimentazione": "Biomassa",
+                    "pes_pct": 22
+                }
+            ]
+        },
+        "GreenEnergy": {
+            "GE-Micro 50": [
+                {
+                    "marca": "GreenEnergy",
+                    "modello": "GE-Micro 50",
+                    "potenza_elettrica_kwe": 50,
+                    "potenza_termica_kwt": 120,
+                    "rendimento_elettrico_pct": 33,
+                    "rendimento_termico_pct": 55,
+                    "tipo_alimentazione": "Biomassa",
+                    "pes_pct": 25
+                }
+            ]
+        }
+    }
+}
