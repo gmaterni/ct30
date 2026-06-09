@@ -1196,12 +1196,14 @@ const UaWizardManager = function(viewportId) {
      * @returns {Promise<void>}
      */
     const _saveSintesi = async function() {
-        const content = _exportPraticaTxt();
+        var content = _exportPraticaTxt();
 
         if (!content) {
             console.error("_saveSintesi: contenuto report non valido");
             return;
         }
+
+        content = content + _exportCalcoliTxt() + _exportRisultatiTxt();
 
         const denominazione = _praticaData.richiedente.denominazione || "pratica";
         const fileName = denominazione.replace(/[^a-zA-Z0-9]/g, "_") + "_" + new Date().toISOString().slice(0, 10) + ".txt";
@@ -1434,6 +1436,136 @@ const UaWizardManager = function(viewportId) {
      * Visualizza l'anteprima del report finale in una finestra UaWindowAdm.
      * @returns {void}
      */
+    const _exportCalcoliTxt = function() {
+        const interventi = _praticaData.interventi || [];
+        const dt = _praticaData.dati_tecnici || {};
+        const ed = _praticaData.edificio || {};
+        const sa = _praticaData.richiedente || {};
+        const lines = [];
+        const SEPARATOR = "-".repeat(40);
+
+        if (!interventi.length) return "";
+
+        lines.push("");
+        lines.push(SEPARATOR);
+        lines.push("  CALCOLI — FORMULE INCENTIVO");
+        lines.push(SEPARATOR);
+        lines.push("");
+
+        interventi.forEach(function(code) {
+            const dati = dt[code] || {};
+            const metadata = FORMULE_INCENTIVO[code];
+            const calc = FormulaEngine.calculate(code, dati, { zonaClimatica: ed.zona_climatica, soggetto: sa.tipo_soggetto, codiciSelezionati: interventi, comuneSotto15k: !!ed.comune_sotto_15k, scuolaOspedale: !!ed.scuola_ospedale });
+            const metaIntervento = INTERVENTI[code] || {};
+            const nomeIntervento = metaIntervento.nome || code;
+
+            var formulaBase = "";
+            if (metadata) {
+                formulaBase = metadata.formula_base || "";
+            }
+
+            lines.push("  " + code + " — " + nomeIntervento);
+            if (formulaBase) {
+                lines.push("    Formula: I = " + formulaBase);
+            }
+
+            if (calc.steps && calc.steps.length > 0) {
+                lines.push("    " + "Passaggi:");
+                calc.steps.forEach(function(s) {
+                    var label = s.label || "";
+                    var desc = s.desc || "";
+                    var formulaExpr = s.formula || "";
+                    var calcVal = "";
+                    if (s.formula && calc.params) {
+                        calcVal = _substituteParams(s.formula, calc.params);
+                    }
+                    var isCurrency = typeof s.value === "number" && s.unit === "\u20ac";
+                    var valStr = isCurrency
+                        ? PreventivoManager.formatCurrency(s.value)
+                        : _formatNum2(s.value) + (s.unit ? " " + s.unit : "");
+                    var cellDesc = desc ? desc + " (" + label + ")" : label;
+                    lines.push("      " + cellDesc + ": " + (formulaExpr || "") + " = " + calcVal + " => " + valStr);
+                });
+            }
+
+            if (calc.amount !== undefined) {
+                var formattedAmount = PreventivoManager.formatCurrency(calc.amount);
+                lines.push("    Risultato: I = " + (formulaBase || "?") + " = " + formattedAmount);
+                if (calc.incentivoNetto !== undefined) {
+                    var nettoFormatted = PreventivoManager.formatCurrency(calc.incentivoNetto);
+                    var gseFormatted = PreventivoManager.formatCurrency(calc.corrispettivoGSE ? calc.corrispettivoGSE.importo : 0);
+                    lines.push("    Netto GSE: " + nettoFormatted + " (corrispettivo GSE: " + gseFormatted + ")");
+                }
+                if (calc.paymentPlan) {
+                    var rate = calc.paymentPlan.numInstallments;
+                    var rataLabel = rate === 1 ? "Unica soluzione" : rate + " rate annuali";
+                    lines.push("    Erogazione: " + rataLabel);
+                }
+            }
+
+            if (calc.errors && calc.errors.length > 0) {
+                lines.push("    Errori:");
+                calc.errors.forEach(function(e) {
+                    lines.push("      - " + e);
+                });
+            }
+
+            lines.push("");
+        });
+
+        return lines.join("\n");
+    };
+
+    const _exportRisultatiTxt = function() {
+        const interventi = _praticaData.interventi || [];
+        const dt = _praticaData.dati_tecnici || {};
+        const ed = _praticaData.edificio || {};
+        const sa = _praticaData.richiedente || {};
+        const lines = [];
+        const SEPARATOR = "-".repeat(40);
+
+        if (!interventi.length) return "";
+
+        lines.push("");
+        lines.push(SEPARATOR);
+        lines.push("  RISULTATI — DETTAGLIO CALCOLI");
+        lines.push(SEPARATOR);
+        lines.push("");
+
+        interventi.forEach(function(code) {
+            const dati = dt[code] || {};
+            const calc = FormulaEngine.calculate(code, dati, { zonaClimatica: ed.zona_climatica, soggetto: sa.tipo_soggetto, codiciSelezionati: interventi, comuneSotto15k: !!ed.comune_sotto_15k, scuolaOspedale: !!ed.scuola_ospedale });
+
+            lines.push("  Intervento " + code);
+
+            if (calc.steps && calc.steps.length > 0) {
+                calc.steps.forEach(function(s) {
+                    var isCurrency = typeof s.value === "number" && s.unit === "\u20ac";
+                    var valStr = isCurrency
+                        ? PreventivoManager.formatCurrency(s.value)
+                        : _formatNum2(s.value) + (s.unit ? " " + s.unit : "");
+                    var desc = s.desc || "";
+                    var label = s.label || "";
+                    var calcVal = s.calc || (typeof s.value === "number" ? _formatNum2(s.value) : s.value);
+                    lines.push("    " + desc + " | " + label + " | " + calcVal + " = " + valStr);
+                });
+            } else {
+                lines.push("    Nessun dettaglio disponibile.");
+            }
+
+            if (calc.errors && calc.errors.length > 0) {
+                lines.push("    Errori:");
+                calc.errors.forEach(function(e) {
+                    lines.push("      - " + e);
+                });
+            }
+
+            lines.push("");
+        });
+
+        return lines.join("\n");
+    };
+
     const _showExportDataPreview = function() {
         const winId = "win-export-dati";
         let win = UaWindowAdm.get(winId);
@@ -1449,7 +1581,7 @@ const UaWizardManager = function(viewportId) {
         win.removeClassStyle("dark-theme").removeClassStyle("light-theme");
         win.addClassStyle(isDark ? "dark-theme" : "light-theme");
 
-        const content = _exportPraticaTxt();
+        var content = _exportPraticaTxt();
 
         if (!content) {
             const html = '<div class="window-header">'
@@ -1464,6 +1596,10 @@ const UaWizardManager = function(viewportId) {
             if (closeBtn) closeBtn.onclick = function() { win.close(); };
             return;
         }
+
+        var calcoliTxt = _exportCalcoliTxt();
+        var risultatiTxt = _exportRisultatiTxt();
+        content = content + calcoliTxt + risultatiTxt;
 
         const html = '<div class="window-header">'
             + '<span class="title">DATI PRATICA - ' + (_praticaData.richiedente?.denominazione || "Report") + '</span>'
