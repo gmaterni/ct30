@@ -1434,6 +1434,59 @@ const UaWizardManager = function(viewportId) {
      * Visualizza l'anteprima del report finale in una finestra UaWindowAdm.
      * @returns {void}
      */
+    const _showExportDataPreview = function() {
+        const winId = "win-export-dati";
+        let win = UaWindowAdm.get(winId);
+
+        if (!win) {
+            win = UaWindowAdm.create(winId);
+            win.addClassStyle("ua-modal-window");
+            win.setStyle({ minWidth: "800px", minHeight: "70vh" });
+            win.setXY(10, 10).setZ(1500).drag();
+        }
+
+        const isDark = document.body.classList.contains("dark-theme");
+        win.removeClassStyle("dark-theme").removeClassStyle("light-theme");
+        win.addClassStyle(isDark ? "dark-theme" : "light-theme");
+
+        const content = _exportPraticaTxt();
+
+        if (!content) {
+            const html = '<div class="window-header">'
+                + '<span class="title">DATI PRATICA</span>'
+                + '<button class="close-btn btn-close-win" title="Chiudi">&times;</button>'
+                + '</div>'
+                + '<div class="window-body" style="padding:40px;text-align:center;">'
+                + '<p style="color:#f44336;">Errore: dati pratica non validi o assenti.</p>'
+                + '</div>';
+            win.setHtml(html).show();
+            const closeBtn = win.getElement().querySelector(".btn-close-win");
+            if (closeBtn) closeBtn.onclick = function() { win.close(); };
+            return;
+        }
+
+        const html = '<div class="window-header">'
+            + '<span class="title">DATI PRATICA - ' + (_praticaData.richiedente?.denominazione || "Report") + '</span>'
+            + '<div class="header-actions">'
+            + '<button id="btn-save-dati-txt" class="cmd-btn" title="Salva i dati in un file di testo" style="background:linear-gradient(135deg,#1976d2,#1565c0);border-color:#1976d2;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.3);">SALVA</button>'
+            + '</div>'
+            + '<button class="close-btn btn-close-win" title="Chiudi">&times;</button>'
+            + '</div>'
+            + '<div class="window-body" style="padding:20px;">'
+            + '<pre style="background:' + (isDark ? "#1e1e1e" : "#f5f5f5") + ';color:' + (isDark ? "#e0e0e0" : "#1e1e1e") + ';padding:16px;border-radius:6px;font-family:monospace;font-size:0.85rem;line-height:1.5;overflow:auto;max-height:70vh;white-space:pre-wrap;word-break:break-word;">'
+            + content.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+            + '</pre>'
+            + '</div>';
+
+        win.setHtml(html).show();
+
+        const winEl = win.getElement();
+        const closeBtn = winEl.querySelector(".btn-close-win");
+        if (closeBtn) closeBtn.onclick = function() { win.close(); };
+        const saveBtn = winEl.querySelector("#btn-save-dati-txt");
+        if (saveBtn) saveBtn.onclick = function() { _saveSintesi(); };
+    };
+
     const _showReportPreview = async function() {
         const winId = "win-report-preview";
         let win = UaWindowAdm.get(winId);
@@ -1605,7 +1658,6 @@ const UaWizardManager = function(viewportId) {
         let html = '<div class="window-header">'
             + '<span class="title">Report CT 3.0 - ' + saDenominazione + '</span>'
             + '<div class="header-actions">'
-            + '<button id="btn-save-report-txt" class="cmd-btn" title="Esporta i dati in formato testo" style="background:linear-gradient(135deg,#1976d2,#1565c0);border-color:#1976d2;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.3);">Esporta Dati</button>'
             + '<button id="btn-save-report-pdf" class="cmd-btn" title="Stampa il report" style="background:linear-gradient(135deg,#d32f2f,#b71c1c);border-color:#d32f2f;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.3);">Stampa Report</button>'
             + '</div>'
             + '<button class="close-btn btn-close-win" title="Chiudi">&times;</button>'
@@ -1682,10 +1734,6 @@ const UaWizardManager = function(viewportId) {
         const closeBtn = winEl.querySelector(".btn-close-win");
         if (closeBtn) {
             closeBtn.onclick = function() { win.close(); };
-        }
-        const exportBtn = winEl.querySelector("#btn-save-report-txt");
-        if (exportBtn) {
-            exportBtn.onclick = function() { _saveSintesi(); };
         }
         const printBtn = winEl.querySelector("#btn-save-report-pdf");
         if (printBtn) {
@@ -2204,6 +2252,7 @@ const UaWizardManager = function(viewportId) {
         const step6Title = '<div class="section-title">Riepilogo</div>';
         const btnGroup = '<div class="report-actions" style="display:flex;gap:10px;margin-bottom:20px;">'
             + '<button id="btn-wiz-preview-report" class="cmd-btn" style="flex:1;" title="Anteprima report dettagliato">REPORT</button>'
+            + '<button id="btn-wiz-dati-export" class="cmd-btn" style="flex:1;" title="Visualizza i dati della pratica">DATI</button>'
             + '<button id="btn-wiz-formule" class="cmd-btn" style="flex:1;" title="Mostra le formule di calcolo">CALCOLI</button>'
             + '<button id="btn-wiz-calcoli" class="cmd-btn" style="flex:1;" title="Mostra i dettagli dei calcoli">RISULTATI</button>'
             + '<button id="btn-wiz-documenti" class="cmd-btn" style="flex:1;" title="Verifica documenti richiesti">DOCUMENTI</button>'
@@ -2328,10 +2377,12 @@ const UaWizardManager = function(viewportId) {
 
     const _connectStep6Actions = function() {
         const reportBtn = document.getElementById("btn-wiz-preview-report");
+        const datiBtn = document.getElementById("btn-wiz-dati-export");
         const formuleBtn = document.getElementById("btn-wiz-formule");
         const calcoliBtn = document.getElementById("btn-wiz-calcoli");
         const archiveBtn = document.getElementById("btn-wiz-archive");
         if (reportBtn) reportBtn.addEventListener("click", _showReportPreview);
+        if (datiBtn) datiBtn.addEventListener("click", _showExportDataPreview);
         if (formuleBtn) formuleBtn.addEventListener("click", _showFormuleIncentivo);
         if (calcoliBtn) calcoliBtn.addEventListener("click", _showCalculationDetails);
         const documentiBtn = document.getElementById("btn-wiz-documenti");
