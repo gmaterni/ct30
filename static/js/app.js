@@ -294,7 +294,7 @@ const _setupEventListeners = function() {
                     + '<td class="action-cell">'
                     + '<button class="btn-arch btn-arch-load" data-id="' + p.id + '" title="Carica questa pratica nel wizard">CARICA</button>'
                     + '<span class="act-sep">|</span>'
-                    + '<button class="btn-arch btn-arch-report" data-id="' + p.id + '" title="Mostra il report dettagliato">REPORT</button>'
+                    + '<button class="btn-arch btn-arch-riepilogo" data-id="' + p.id + '" title="Apre la pratica sulla pagina Riepilogo">RIEPILOGO</button>'
                     + '<span class="act-sep">|</span>'
                     + '<button class="btn-arch btn-arch-del" data-id="' + p.id + '" title="Elimina definitivamente questa pratica">ELIMINA</button>'
                     + '</td>'
@@ -336,14 +336,16 @@ const _setupEventListeners = function() {
                 });
             });
 
-            // REPORT
-            winEl.querySelectorAll(".btn-arch-report").forEach(function(btn) {
+            // RIEPILOGO
+            winEl.querySelectorAll(".btn-arch-riepilogo").forEach(function(btn) {
                 btn.addEventListener("click", async function() {
                     const id = btn.getAttribute("data-id");
                     if (!id) return;
                     const p = await praticheMgr.get(id);
                     if (p && _wizard) {
-                        _wizard.showReport(p.dati);
+                        _wizard.loadData(p.dati);
+                        _wizard.goToEnd();
+                        _updateUIState();
                         win.close();
                     }
                 });
