@@ -49,8 +49,8 @@ const _renderWelcomeScreen = function() {
             + '</div>';
     }
 
-    const APPVERSION = "0.1.5";
-    const APPDATE = "09-06-2026";
+    const APPVERSION = "0.1.6";
+    const APPDATE = "10-06-2026";
 
     const html = '<article><div id="welcome-screen" style="text-align:center;padding-top:60px;">'
         + '<h1>Conto Termico 3.0</h1>'

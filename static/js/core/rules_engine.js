@@ -318,7 +318,7 @@ const UaRulesEngine = function() {
     };
 
     /**
-     * Verifica il termine di 90 giorni per accesso diretto (Art. 10 comma 1 D.M. 7/8/2025).
+     * Verifica il termine di 60 giorni per accesso diretto (Art. 10 comma 1 D.M. 7/8/2025).
      *
      * @param {boolean} isPrenotazione - Se l'accesso è in prenotazione.
      * @param {string} dataRichiesta - Data di invio della richiesta (YYYY-MM-DD).
@@ -593,7 +593,7 @@ const UaRulesEngine = function() {
         const norm = modalitaAccesso.toLowerCase();
 
         if (norm === "diretto") {
-            // Accesso diretto: qualsiasi soggetto, post-intervento, entro 90 giorni
+            // Accesso diretto: qualsiasi soggetto, post-intervento, entro 60 giorni
 
             // Intervento già completato (dataFineLavori passata)
             if (datiPratica.dataFineLavori) {
@@ -607,10 +607,10 @@ const UaRulesEngine = function() {
                 errors.push("ACCESSO DIRETTO: Per accesso diretto è richiesta la data di conclusione lavori.");
             }
 
-            // Verifica termine 90 giorni (richiama la funzione esistente)
-            const check90 = _checkAccessoDiretto(false, datiPratica.dataRichiesta, datiPratica.dataFineLavori);
-            if (!check90.success) {
-                errors.push(check90.error);
+            // Verifica termine 60 giorni (richiama la funzione esistente)
+            const check60 = _checkAccessoDiretto(false, datiPratica.dataRichiesta, datiPratica.dataFineLavori);
+            if (!check60.success) {
+                errors.push(check60.error);
             }
 
         } else if (norm === "prenotazione") {
@@ -1118,7 +1118,7 @@ const UaRulesEngine = function() {
             }
         }
 
-        // 8. Verifica Accesso Diretto 90gg (Art. 10 comma 1)
+        // 8. Verifica Accesso Diretto 60gg (Art. 10 comma 1)
         if (input.dataRichiesta || input.dataFineLavori) {
             const isPrenotazione = input.isPrenotazione || false;
             const accessoCheck = _checkAccessoDiretto(
