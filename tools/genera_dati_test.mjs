@@ -16,7 +16,7 @@ const {
   PROCEDURA_CONFIG, CATASTO
 } = normativa;
 
-const OUT_DIR = "/tmp/ct30_dati";
+const OUT_DIR = path.resolve(__dirname, "../tmp");
 const SEP = "-".repeat(40);
 const EQL = "=".repeat(60);
 
@@ -570,7 +570,7 @@ function main() {
 
   console.log("\n---");
   console.log("Totale: " + ok + " OK, " + err + " errori su " + files.length + " file");
-  console.log("Output in: " + OUT_DIR + "/");
+    console.log("Output in: " + path.relative(__dirname, OUT_DIR) + "/");
 
   if (allSections.length > 0) {
     const allPath = path.join(OUT_DIR, "TUTTE_PRATICHE_DATI.txt");

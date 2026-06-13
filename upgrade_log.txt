@@ -37,3 +37,46 @@ La funzione `_resolvePercentuale()` (riga 206-265) esiste e risolve correttament
    - cross_rule_engine.js _checkDependencies: 48→19
    - cross_rule_engine.js _checkTechnicalConstraints: 74→57
    - normativa.js II.H interventi_collegati_obbligatori: 168→158
+
+## 2026-06-13 — Fix critico: riconoscimento soggetto "PA" in isPAorETS + made_in_eu moltiplicativo
+
+### Problema 1 (critico)
+`_resolvePercentuale()` in `formula_engine.js:210` verificava
+`soggetto === "Pubblica Amministrazione"` ma il wizard e i JSON test usano
+`tipo: "PA"`. Il mismatch impediva l'attivazione del ramo PA, quindi:
+- comuneSotto15k non veniva riconosciuto → P07 (PA+comune≤15k) calcolava 65%
+  invece di 100% (perdita 17.500€ su 50.000€ di spesa)
+- Il cap 1.0 per PA/ETS non si attivava
+
+### Fix 1
+`formula_engine.js:210`: aggiunto `soggetto === "PA"` alla condizione isPAorETS:
+```
+const isPAorETS = soggetto === "Pubblica Amministrazione" || soggetto === "PA" || soggetto === "ETS non economico";
+```
+
+### Problema 2 (medio)
+`made_in_eu` era trattato come +10 punti % additivo (es. 40%→50%).
+Il Manuale Analitico (Sez.5 "Maggiorazione componenti UE: +10% sull'I_tot";
+Sez.9 "+10% dell'incentivo base") indica un bonus moltiplicativo.
+
+### Fix 2
+`formula_engine.js:340`: separato `made_in_eu` dagli altri bonus premialità:
+- made_in_eu: applicato come ×1.10 sul base
+- Altri bonus (zona_assistita, miglioramento_ep_40, FV enea): rimasti additivi (punti %)
+
+Prima: `finale = base + premialitaTotale`
+Dopo: `finale = base × (1 + madeInEuBonus) + (premialitaTotale - madeInEuBonus)`
+
+### Problema 3 (minore)
+Test JSON P03 e P07 usavano `riduzione_ep_10: "sì"` ma il bonus EP≥40% si attiva
+su `miglioramento_ep_40: "sì"` (campi distinti: 10% è soglia ammissibilità, 40% è
+bonus premialità).
+
+### Fix 3
+Aggiunto `miglioramento_ep_40: "sì"` ai JSON `test_p03_ets_non_economico.json` e
+`test_p07_pa_comune_100percento.json`.
+
+### File modificati
+- `static/js/core/formula_engine.js` — isPAorETS + made_in_eu moltiplicativo
+- `static/data/tests/test_p03_ets_non_economico.json` — +miglioramento_ep_40
+- `static/data/tests/test_p07_pa_comune_100percento.json` — +miglioramento_ep_40

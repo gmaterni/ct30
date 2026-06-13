@@ -97,7 +97,8 @@
       "trasmittanza_post": 0.23,
       "costo_isolamento": 50000,
       "made_in_eu": "sì",
-      "riduzione_ep_10": "sì"
+      "riduzione_ep_10": "sì",
+      "miglioramento_ep_40": "sì"
     }
   },
   "preventivo": {
