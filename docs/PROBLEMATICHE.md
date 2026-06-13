@@ -25,7 +25,7 @@ Analisi delle 10 regole più insidiose, con commento, riferimenti al codice e st
 
 **Soluzione**: Nessuna modifica al codice core — la matrice `MATRICE_SA_INTERVENTI` in `normativa.js` (riga 566) già imposta `privato_residenziale.titolo_ii: false`. La verifica è stata aggiunta come test R1-1..R1-6 in `test_problematiche.html` e come pratica JSON `test_p01_privato_titolo3.json` per wizard.
 
-**Attenzione**: `Privato terziario` ha `titolo_ii: true` (riga 573) — la differenza è solo l'ambito. Utenti confondono "privato residenziale" con "privato terziario".
+**Attenzione**: `Privato terziario` ha `titolo_ii: true` (riga 572) — la differenza è solo l'ambito. Utenti confondono "privato residenziale" con "privato terziario".
 
 **Pratiche di verifica**: `test_p01_privato_titolo3.json` (carica pratica privato + III.A); sezione R1 in `test_problematiche.html` (6 test).
 
@@ -61,7 +61,7 @@ Analisi delle 10 regole più insidiose, con commento, riferimenti al codice e st
 - Validare la richiesta preliminare come campo obbligatorio, non opzionale
 - Il divieto fossili è bloccante: se `haCombustibiliFossili=true`, nessun intervento III.B (ibrido gas) può essere selezionato
 
-**Soluzione**: `validateTitoloV()` in `rules_engine.js` (riga 667) implementa tutti i 10 controlli sequenziali. L'intensità per impresa è codificata in `INTENSITA_MASSIMA` (`normativa.js` riga 106-108): `Impresa_singolo_Titolo_II: 0.25`, `Impresa_multi_Titolo_II: 0.30`, `Impresa_Titolo_III: 0.45`. La funzione `_resolvePercentuale()` in `formula_engine.js` (riga 228-235) applica `made_in_eu` come moltiplicativo ×1.10 sul base (da commit 1b382bc). Il cap finale 65% (riga 342) è applicato dopo maggiorazioni e premialità. Test coperto da R2-1..R2-8 e `test_p02_impresa_titolo_v.json`.
+**Soluzione**: `validateTitoloV()` in `rules_engine.js` (riga 667) implementa tutti i 10 controlli sequenziali. L'intensità per impresa è codificata in `INTENSITA_MASSIMA` (`normativa.js` riga 106-108): `Impresa_singolo_Titolo_II: 0.25`, `Impresa_multi_Titolo_II: 0.30`, `Impresa_Titolo_III: 0.45`. La funzione `_resolvePercentuale()` in `formula_engine.js` (riga 284) applica `made_in_eu` come moltiplicativo ×1.10 sul base (da commit 1b382bc). Il cap finale 65% (riga 353-354) è applicato dopo maggiorazioni e premialità. Test coperto da R2-1..R2-8 e `test_p02_impresa_titolo_v.json`.
 
 **Attenzione**: IAP (`Imprenditore Agricolo Professionale`) è "assimilato a Impresa" ma NON ha richiesta preliminare obbligatoria (riga 538-549). Non applicare `validateTitoloV()` agli IAP.
 
@@ -79,7 +79,7 @@ Analisi delle 10 regole più insidiose, con commento, riferimenti al codice e st
 - `normativa.js` → `MATRICE_SA_INTERVENTI.ets_non_economico` (riga 576) e `ets_economico` (riga 582)
 - `normativa.js` → `SOGGETTI_CONFIG["ETS non economico"]` (riga 463) e `["ETS economico"]` (riga 477)
 - `rules_engine.js` → `_isSubjectCompatible()` e `validateInterventiPerSoggetto()`
-- `formula_engine.js` → `_resolvePercentuale()` (riga 210): `isPAorETS` include ETS non economico
+- `formula_engine.js` → `_resolvePercentuale()` (riga 284): `isPAorETS` include ETS non economico
 
 **Commento**: La distinzione "economico vs non economico" è spesso ambigua per l'utente. Un ETS con attività commerciale minima può cadere nella categoria sbagliata. L'ETS economico ha `titolo_ii: false` nella matrice, e `richiesta_preliminare: true` — di fatto regole identiche all'impresa.
 
@@ -87,10 +87,10 @@ Analisi delle 10 regole più insidiose, con commento, riferimenti al codice e st
 
 - In Fase 3 (Anagrafiche), se SA = ETS, chiedere obbligatoriamente: "L'ETS svolge attività economica?" (sì → economico, no → non economico)
 - Mostrare le implicazioni: "ETS non economico = 100% + prenotazione" vs "ETS economico = solo Titolo III + richiesta preliminare"
-- In `formula_engine.js`, la funzione `_resolvePercentuale()` verifica `isPAorETS` (riga 210) e applica cap 100% — questo è già corretto per ETS non economico. L'ETS economico invece segue regole impresa.
+- In `formula_engine.js`, la funzione `_resolvePercentuale()` verifica `isPAorETS` (riga 284) e applica cap 100% — questo è già corretto per ETS non economico. L'ETS economico invece segue regole impresa.
 - Validare in Fase 4: ETS economico non può selezionare II.A, II.B, II.C, II.D, II.E, II.F, II.G, II.H
 
-**Soluzione**: `_resolvePercentuale()` tratta `"ETS non economico"` come isPAorETS (riga 210, insieme a `"Pubblica Amministrazione"` e `"PA"`). La base per PA/ETS senza comuneSotto15k né scuolaOspedale è `PA_altri = 0.65`, con cap 1.0. Con `made_in_eu` moltiplicativo (×1.10), `miglioramento_ep_40` (+0.15), `zona_assistita_a` (+0.15) e `zona_assistita_c` (+0.05) si raggiunge il cap 1.0 (100%) — verificato su P03: 30.000€ su 30.000€. Il piano di pagamento usa `_isPAorETS()` (riga 49) che riconosce anche `"PA"` (commit a4e5dc8) per forzare rata unica su PA/ETS.
+**Soluzione**: `_resolvePercentuale()` tratta `"ETS non economico"` come isPAorETS (riga 288-291, insieme a `"Pubblica Amministrazione"` e `"PA"`). La base per PA/ETS senza comuneSotto15k né scuolaOspedale è `PA_altri = 0.65`, con cap 1.0. Con `made_in_eu` moltiplicativo (×1.10), `miglioramento_ep_40` (+0.15), `zona_assistita_a` (+0.15) e `zona_assistita_c` (+0.05) si raggiunge il cap 1.0 (100%) — verificato su P03: 30.000€ su 30.000€. Il piano di pagamento usa `_isPAorETS()` (riga 49) che riconosce anche `"PA"` (commit a4e5dc8) per forzare rata unica su PA/ETS.
 
 **Pratiche di verifica**: `test_p03_ets_non_economico.json` (ETS non econ + II.A 100%); sezione R3 in `test_problematiche.html` (6 test).
 
@@ -183,9 +183,9 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 **Dove**:
 
 - `normativa.js` → `INTENSITA_MASSIMA` (riga 100)
-- `formula_engine.js` → `_resolvePercentuale()` (riga 206) e `_resolveBonusScuole()` (se presente)
+- `formula_engine.js` → `_resolvePercentuale()` (riga 284) — la logica scuola/ospedale è inline (riga 297-300)
 
-**Commento**: Il cap 65% è l'ultimo controllo in `_resolvePercentuale()` (riga 261-262). Significa che anche applicando maggiorazioni e premialità, il totale non può superare 65% (o 100% per PA/ETS). La risoluzione segue una logica precisa (riga 214-264):
+**Commento**: Il cap 65% è l'ultimo controllo in `_resolvePercentuale()` (riga 353-354). Significa che anche applicando maggiorazioni e premialità, il totale non può superare 65% (o 100% per PA/ETS). La risoluzione segue una logica precisa (riga 284-357):
 
 1. PA/ETS non econ → 100% (scuole/comuni ≤15k) o 65% (altri PA)
 2. Impresa → 25/30/45% base
@@ -199,13 +199,13 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - Separare chiaramente il calcolo in step per trasparenza
 - Per PA: verificare comuneSotto15k (da DB o input utente) e isScuolaOspedale dal tipo edificio
 - Attenzione: ETS non economico e Cooperativa edilizia sono assimilati PA anche se non lo sono esplicitamente
-- II.D (nZEB) per PA forza 100% (riga 221-223) — priorità su altri calcoli
+- II.D (nZEB) per PA forza 100% (riga 302-303) — priorità su altri calcoli
 
 **Soluzione**: Tre fix applicati in questa sessione:
 
-1. **Riconoscimento "PA"** (`formula_engine.js` riga 210, commit 1b382bc): `isPAorETS` ora include `soggetto === "PA"` oltre a `"Pubblica Amministrazione"`. Prima del fix, il wizard usava `tipo: "PA"` ma la funzione cercava `"Pubblica Amministrazione"` → il ramo PA non si attivava mai. Conseguenza: P07 (PA + comune≤15k) calcolava 65% (32.500€) invece di 100% (50.000€) — **perdita 17.500€**.
+1. **Riconoscimento "PA"** (`formula_engine.js` riga 288-291, commit 1b382bc): `isPAorETS` ora include `soggetto === "PA"` oltre a `"Pubblica Amministrazione"`. Prima del fix, il wizard usava `tipo: "PA"` ma la funzione cercava `"Pubblica Amministrazione"` → il ramo PA non si attivava mai. Conseguenza: P07 (PA + comune≤15k) calcolava 65% (32.500€) invece di 100% (50.000€) — **perdita 17.500€**.
 
-2. **Made in EU moltiplicativo** (`formula_engine.js` riga 340, commit 1b382bc): `made_in_eu` passa da additivo (+10 punti %) a moltiplicativo (×1.10 sul base), conforme al Manuale Analitico Sez.5 ("+10% sull'I_tot") e Sez.9 ("+10% dell'incentivo base"). Altri bonus (zona_assistita, miglioramento_ep_40) restano additivi.
+2. **Made in EU moltiplicativo** (`formula_engine.js` riga 341-342, commit 1b382bc): `made_in_eu` passa da additivo (+10 punti %) a moltiplicativo (×1.10 sul base), conforme al Manuale Analitico Sez.5 ("+10% sull'I_tot") e Sez.9 ("+10% dell'incentivo base"). Altri bonus (zona_assistita, miglioramento_ep_40) restano additivi.
 
 3. **Piano pagamento PA/ETS** (`formula_engine.js` riga 49, commit a4e5dc8): `_isPAorETS()` ora riconosce `"PA"` per forzare rata unica su PA/ETS indipendentemente dall'importo (Manuale Sez.13 line 761-762). Prima del fix: P07 (50.000€) mostrava 5 rate anziché unica soluzione.
 
@@ -219,7 +219,7 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 
 **Dove**:
 
-- `formula_engine.js` → `_calculateCorrispettivoGSE()` (riga 189)
+- `formula_engine.js` → `_calculateCorrispettivoGSE()` (riga 267)
 
 **Commento**: Regola semplice ma con impatto sull'incentivo netto. Formula: `min(incentivo * 0.01, 250)`. Hardcoded come `percentuale = 1` e `massimale = 250`. Il codice divide per 100, quindi 1/100 = 0.01 = 1%.
 
@@ -228,10 +228,10 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - Calcolare commissione DOPO il calcolo dell'incentivo lordo, prima di mostrare il netto
 - Mostrare separatamente: lordo, commissione GSE, netto
 - Per pratiche con incentivo lordo > 25.000€, la commissione sarà 250€ (massimale)
-- Non dimenticare di arrotondare a 2 decimali (`toFixed(2)`, riga 200)
+- Non dimenticare di arrotondare a 2 decimali (`toFixed(2)`, riga 278)
 - La funzione ritorna anche `percentuale: 1` e `massimale: 250` per log/report
 
-**Soluzione**: `_calculateCorrispettivoGSE()` in `formula_engine.js` (riga 189) implementa `min(incentivo × 0.01, 250)`. Hardcoded `percentuale: 1`, `massimale: 250`. Chiamata dopo il calcolo dell'ammontare in `calculate()` (riga 867). L'incentivo netto = `amount - corrispettivo.importo`. Tutte le 8 pratiche DATI mostrano il GSE corretto (es. P07: 250€ massimale perché 50.000×1% = 500 > 250).
+**Soluzione**: `_calculateCorrispettivoGSE()` in `formula_engine.js` (riga 267) implementa `min(incentivo × 0.01, 250)`. Hardcoded `percentuale: 1`, `massimale: 250`. Chiamata dopo il calcolo dell'ammontare in `calculate()` (riga 1191-1193). L'incentivo netto = `amount - corrispettivo.importo`. Tutte le 8 pratiche DATI mostrano il GSE corretto (es. P07: 250€ massimale perché 50.000×1% = 500 > 250).
 
 **Pratiche di verifica**: sezione R8 in `test_problematiche.html` (2 test — calcolo interno, nessuna JSON pratica).
 
@@ -315,8 +315,8 @@ Ogni regola ha validazione **sia** nell'engine specializzato (rules_engine.js / 
 | R5 — II.C → II.B                    | Incluso in R4-8/R4-9                   | `test_p05_iiB_iiC_pairing.json`        |
 | R6 — ESCO → EPC                     | R6-1..R6-4 (4 test)                    | `test_p06_esco_epc.json`               |
 | R7 — Incentivo max                  | R7-1..R7-5 (5 test)                    | `test_p07_pa_comune_100percento.json`  |
-| R8 — GSE fee                        | R8-1..R8-2 (2 test)                    | — (calcolo interno, test unitario)     |
+| R8 — GSE fee                        | R8-1..R8-2 (2 test)                    | — (calcolo interno)                    |
 | R9 — Variazioni >20%                | R9-1..R9-6 (6 test)                    | — (validazione interna, test unitario) |
 | R10 — Mandato + atto assenso        | R10-1..R10-5 (5 test)                  | `test_p10_mandato_atto_assenso.json`   |
 
-**Totale**: 46 test unitari in `test_problematiche.html` + 8 pratiche JSON nel selettore "Problematiche (R1–R10)".
+**Totale**: 51 test unitari in `test_problematiche.html` + 8 pratiche JSON nel selettore "Problematiche (R1–R10)".

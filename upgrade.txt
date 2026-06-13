@@ -18,19 +18,17 @@
 
 **Soluzione applicata**: Rinominare `tipo_intervento` → `tipo_intervento_nzeb`, aggiungere `volume_esistente_mc: 500` e `volume_nuovo_mc: 100`.
 
-## 3. PROBLEMATICHE.md: copertura test
+## 3. PROBLEMATICHE.md: copertura test ✅
 
-**Da fare**: Per ogni regola in PROBLEMATICHE.md, verificare che esista almeno un test corrispondente. Attualmente:
-- Regole 1-3 (soggetti): coperte da R1, R2, R3
-- Regole 4-5 (pairing): coperte da R4
-- Regola 6 (ESCO/EPC): coperta da R6
-- Regole 7-8 (incentivo/GSE): coperte da R7, R8
-- Regola 9 (variazioni): coperta da R9
-- Regola 10 (documenti): coperta da R10
+Verificata: ogni regola ha almeno un test corrispondente. Totale 51 test unitari + 8 pratiche JSON. Aggiornato conteggio in PROBLEMATICHE.md (46→51).
 
-## 4. PROBLEMATICHE.md: allineamento con normativa.js
+## 4. PROBLEMATICHE.md: allineamento riferimenti righe ✅
 
-**Da fare**: Verificare periodicamente che i riferimenti alle righe in PROBLEMATICHE.md siano ancora validi dopo modifiche a normativa.js, rules_engine.js, formula_engine.js, cross_rule_engine.js.
+Verificati 50 riferimenti in 4 file. Correzzioni:
+- `normativa.js` riga 573→572 (privato_terziario.titolo_ii)
+- `formula_engine.js`: 12 riferimenti obsoleti aggiornati alle linee correnti (284, 288-291, 297-300, 302-303, 341-342, 353-354, 267, 278, 1191-1193)
+- `_resolveBonusScuole()` rimosso (logica inline)
+- `cross_rule_engine.js` e `rules_engine.js`: tutti i riferimenti ancora validi
 
 ## 5. test_problematiche.html: manutenzione
 

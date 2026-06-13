@@ -1,0 +1,274 @@
+{
+  // ── Configurazione OpenCode per sviluppo JavaScript vanilla lato client ──
+  // Modelli free, skill locali, agenti e subagenti per coding
+  "$schema": "https://opencode.ai/config.json",
+  // Modello predefinito (usato dagli agenti che non ne specificano uno)
+  "model": "opencode/deepseek-v4-flash-free",
+  // Modello leggero per titoli, riassunti, task brevi
+  "small_model": "google/gemini-3.5-flash",
+  // Agente attivato di default all'avvio
+  "default_agent": "build",
+  // ── Provider (solo free) ──────────────────────────────────
+  "provider": {
+    // Provider free di OpenCode
+    "opencode": {
+      "options": {
+        "apiKey": "{env:OPENCODE_API_KEY}"
+      }
+    },
+    // Provider Google (Gemini)
+    "google": {
+      "options": {
+        "apiKey": "{env:GEMINI_API_KEY}"
+      }
+    }
+  },
+  // ── Permessi globali ─────────────────────────────────────
+  // REGOLA: l'ultima regola che corrisponde vince.
+  // Metti sempre "*" (catch-all) per PRIMO, poi le eccezioni dopo.
+  "permission": {
+    // Strumenti di sola lettura — sempre liberi
+    "read": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "webfetch": "allow",
+    "websearch": "allow",
+    // Bash — pattern granulari per comandi
+    "bash": {
+      // Catch-all — tutto il resto chiede conferma
+      "*": "ask",
+      // Navigazione e lettura — sempre libere
+      "ls *": "allow",
+      "cat *": "allow",
+      "grep *": "allow",
+      "find *": "allow",
+      "pwd": "allow",
+      // Git — lettura libera, scrittura con conferma
+      "git status": "allow",
+      "git log *": "allow",
+      "git diff *": "allow",
+      "git branch *": "allow",
+      "git add *": "ask",
+      "git commit *": "ask",
+      "git push *": "ask",
+      "git pull": "ask",
+      // Node / npm — esecuzione script libera, install con conferma
+      "node *": "allow",
+      "npm run *": "allow",
+      "npm test": "allow",
+      "npm install *": "ask",
+      "npm init *": "ask",
+      "npx *": "ask",
+      // Python — script e test liberi
+      "python *": "allow",
+      "python3 *": "allow",
+      "pip install *": "ask",
+      // Comandi distruttivi — sempre vietati
+      "rm -rf *": "deny",
+      "rm -r *": "deny",
+      "sudo *": "deny",
+      "chmod *": "deny",
+      "mkfs *": "deny",
+      "dd *": "deny"
+    },
+    // Edit — permessi per directory del progetto
+    "edit": {
+      "*": "ask", // default: chiedi
+      "static/**": "allow", // HTML, JS, CSS, LESS
+      "static/*.html": "allow", // pagine HTML (solo root static/)
+      "src/**": "allow", // eventuale src/
+      "test/**": "allow", // test
+      "*.json": "ask", // file di configurazione
+      ".env*": "deny" // file sensibili
+    },
+    // Skill locali — tutte abilitate
+    // Le skill vengono scoperte automaticamente in:
+    //   .opencode/skills/<nome>/SKILL.md
+    //   ~/.config/opencode/skills/<nome>/SKILL.md
+    // Per disabilitare skill specifiche: "internal-*": "deny"
+    "skill": {
+      "*": "allow"
+    },
+    // Task (invocazione subagenti) — chiedi sempre salvo espliciti
+    "task": {
+      "*": "ask",
+      "explore": "allow",
+      "general": "allow"
+    },
+    // Stesso tool chiamato 3+ volte di fila
+    "doom_loop": "ask",
+    // Domande all'utente
+    "question": "allow",
+    // Accesso a path fuori dalla worktree
+    "external_directory": "ask"
+  },
+  // ── Agenti e subagenti per coding ──────────────────────────
+  "agent": {
+    // Agente Build — primario, accesso pieno per sviluppo
+    "build": {
+      "mode": "primary",
+      "temperature": 0.3,
+      "color": "#4A90D9",
+      "permission": {
+        "edit": "allow",
+        "bash": {
+          "*": "allow",
+          "git push *": "ask",
+          "rm -rf *": "deny",
+          "sudo *": "deny"
+        },
+        "skill": {
+          "*": "allow"
+        }
+      }
+    },
+    // Agente Plan — primario, sola lettura per analisi
+    "plan": {
+      "mode": "primary",
+      "model": "google/gemini-3.5-flash",
+      "temperature": 0.1,
+      "description": "Pianificazione e analisi senza modifiche",
+      "color": "#34D399",
+      "permission": {
+        "edit": "deny",
+        "bash": {
+          "*": "deny",
+          "ls *": "allow",
+          "cat *": "allow",
+          "grep *": "allow",
+          "find *": "allow",
+          "git *": "allow"
+        },
+        "webfetch": "allow"
+      }
+    },
+    // Subagente Code Reviewer — revisione codice
+    "code-reviewer": {
+      "description": "Revisiona codice per bug, sicurezza, performance",
+      "mode": "subagent",
+      "temperature": 0.1,
+      "color": "accent",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow"
+      }
+    },
+    // Subagente Test Writer — scrive e mantiene test
+    "test-writer": {
+      "description": "Scrive e mantiene test unitari e di integrazione",
+      "mode": "subagent",
+      "temperature": 0.2,
+      "permission": {
+        "edit": {
+          "*": "deny",
+          "test/**": "allow",
+          "src/**": "ask"
+        },
+        "bash": {
+          "*": "ask",
+          "npm test": "allow",
+          "npm run test:*": "allow",
+          "node *": "allow"
+        }
+      }
+    },
+    // Agente Orchestrator — coordina subagenti per task complessi
+    // Usa il permesso "task" per delegare a subagenti specifici
+    "orchestrator": {
+      "description": "Coordina subagenti per task complessi",
+      "mode": "primary",
+      "color": "#FF5733",
+      "temperature": 0.2,
+      "permission": {
+        "edit": "ask",
+        "bash": "ask",
+        "task": {
+          "*": "deny",
+          "code-reviewer": "allow",
+          "test-writer": "allow",
+          "explore": "allow",
+          "general": "allow"
+        },
+        "skill": {
+          "*": "allow"
+        }
+      }
+    }
+  },
+  // ── Comandi rapidi (/command) ─────────────────────────────
+  // Scorciatoie che appaiono in TUI con /.
+  // $ARGUMENTS viene sostituito con gli argomenti passati dall'utente.
+  "command": {
+    "dev": {
+      "template": "Avvia il dev server con live-reload. Usa npx live-server --port=8080 --no-css-inject.",
+      "description": "Avvia il server di sviluppo",
+      "agent": "build"
+    },
+    "lint": {
+      "template": "Esegui ESLint su tutti i file JavaScript in static/js/. Correggi gli errori automatici dove possibile.",
+      "description": "Esegui il linter",
+      "agent": "build"
+    },
+    "test": {
+      "template": "Esegui i test e mostra report con coverage.",
+      "description": "Esegui i test",
+      "agent": "build"
+    },
+    "build": {
+      "template": "Compila LESS in CSS (npx lessc static/less/main.less static/css/main.css), poi minimizza (npx cleancss -o static/css/main.min.css static/css/main.css).",
+      "description": "Compila LESS e minimizza CSS",
+      "agent": "build"
+    },
+    "review": {
+      "template": "Rivedi le modifiche in staged per bug, sicurezza e stile.",
+      "description": "Revisiona le modifiche",
+      "agent": "code-reviewer"
+    }
+  },
+  // ── Formatter (eseguiti automaticamente dopo write/edit) ──
+  // Il placeholder $FILE viene sostituito con il path del file
+  "formatter": {
+    "prettier": {
+      "command": [
+        "npx",
+        "prettier",
+        "--write",
+        "$FILE"
+      ],
+      "extensions": [
+        ".js",
+        ".html",
+        ".css",
+        ".less",
+        ".json",
+        ".md"
+      ]
+    }
+  },
+  // ── LSP (Language Server Protocol) ────────────────────────
+  // Fornisce diagnostica (errori, warning) al contesto dell'agente.
+  // TypeScript LSP funziona anche su JS vanilla (via JSDoc).
+  // "lsp": {
+  //   "typescript": { "disabled": true },
+  //   "eslint":     { "disabled": true }
+  // },
+  // ── Varie ─────────────────────────────────────────────────
+  "autoupdate": "notify", // notifica aggiornamenti senza installare
+  "share": "manual", // non condividere automaticamente
+  // File e cartelle ignorati dal watcher
+  "watcher": {
+    "ignore": [
+      "node_modules/**",
+      "dist/**",
+      ".git/**"
+    ]
+  },
+  // Gestione finestra contestuale
+  "compaction": {
+    "auto": true, // compatta automaticamente
+    "prune": false,
+    "reserved": 10000 // token riservati per strumenti
+  }
+}
