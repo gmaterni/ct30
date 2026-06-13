@@ -6,26 +6,26 @@ Pure client-side SPA: vanilla ES2020+ modules, no bundler, no npm deps, all libr
 
 ## Entrypoints
 
-- `static/index.html` → `<script type="module" src="js/app.js?0.1.7">`
-- Test suite: `static/test/test_suite.html` (requires HTTP server)
+- `static/index.html` → `<script type="module" src="js/app.js?0.1.8">`
+- Test pages: `static/test/test_suite.html` (4 groups), `test_problematiche.html`, `static/test/index.html`
+- Root `index.html` is a redirect to `static/index.html` — not the real entry
 
 ## Dev commands
 
-| Action | Command |
-|--------|---------|
-| Dev server | `npx live-server --port=8080 --no-css-inject` (from `static/`) |
-| Compile LESS | `npx lessc static/less/main.less static/css/main.css` |
-| Minify CSS | `npx cleancss -o static/css/main.min.css static/css/main.css` |
-| Run test suite | Serve `static/` via HTTP, open `/test/test_suite.html` |
-| MS tests in console | `QaManager.runAllTests()` in browser devtools |
+| Action              | Command                                                        |
+| ------------------- | -------------------------------------------------------------- |
+| Dev server          | `npx live-server --port=8080 --no-css-inject` (from `static/`) |
+| Compile LESS        | `npx lessc static/less/main.less static/css/main.css`          |
+| Minify CSS          | `npx cleancss -o static/css/main.min.css static/css/main.css`  |
+| Run test suite      | Serve `static/` via HTTP, open `/test/test_suite.html`         |
+| MS tests in console | `QaManager.runAllTests()` in browser devtools                  |
 
-The `bin/` scripts are dev-only helpers (git push to GitHub, compress CSS/JS). Do not rely on them for build.
+`bin/` scripts are dev-only helpers (git push/pages, compress CSS/JS, generate test data). Prettier auto-runs via `opencode.jsonc` formatter.
 
 ## Code conventions
 
 - **No `class`/`this`/`new`/`prototype`** — factory/closure with `let`/`const` only
 - **PascalCase factory prefix**: `Ua*` (e.g. `UaWizardManager`, `UaFormulaEngine`, `UaWindowAdm`)
-- **Return strict**: assign to descriptive variable before returning
 - **Template literal strict**: no logic inside `${}` — only variables
 - **Async/await only**: no `.then()`
 - **Fail-fast**: validate inputs at top of every function
@@ -43,53 +43,54 @@ static/js/app.js  (initApp — entry)
        ├─ core/cross_rule_engine.js   (+ normativa.js)
        ├─ core/preventivo_manager.js
        ├─ core/reliability_engine.js
-       ├─ core/catalogo_loader.js     (loads catalogs JSON on-demand)
+       ├─ core/premialita_engine.js
+       ├─ core/qa_manager.js          (runs TEST_SCENARIOS from normativa.js)
+       ├─ core/catalogo_loader.js     (loads catalog JSON on-demand)
        ├─ infra/idb_mgr.js           (Dexie IndexedDB, vendordized)
-       └─ ui/lib/uawindow.js          (modal windows)
+       ├─ infra/webuser_id.js         (per-user DB name: CT30_{WebId})
+       ├─ ui/lib/uawindow.js          (modal windows)
+       ├─ ui/lib/uadialog.js          (dialog helpers)
+       ├─ ui/lib/uadrag.js            (drag support)
+       └─ ui/lib/uajtfh.js            (dynamic HTML builder)
 ```
 
-The single source of truth for business rules is `static/js/core/normativa.js` — it exports `RULES`, `INTERVENTI`, `FORMULE_INCENTIVO`, `SCHEDE_TECNICHE`, `MATRICE_SA_INTERVENTI`, etc.
+Business rules SSOT: `static/js/core/normativa.js` — 21 exports including `RULES`, `INTERVENTI`, `FORMULE_INCENTIVO`, `SCHEDE_TECNICHE`, `MATRICE_SA_INTERVENTI`, `TEST_SCENARIOS`, etc.
 
 ## Data & persistence
 
 - **IndexedDB** via vendordized Dexie (`static/js/infra/vendor/dexie.js`), database per user: `CT30_{WebId}`
-- **14 tables**: `kvStore`, `settings`, `pratiche`, `proprietari`, `richiedenti`, `responsabili`, `delegati`, `edifici`, `interventi`, `economico`, `documenti`, `variazioni` — schema v8
+- **12 tables**: `kvStore`, `settings`, `pratiche`, `proprietari`, `richiedenti`, `responsabili`, `delegati`, `edifici`, `interventi`, `economico`, `documenti`, `variazioni` — schema v8
 - **3 mandatory anagraphics** (proprietario, richiedente, responsabile) even if same person, with `coincide_con_*` flags
-- Technical catalogs: `static/dati_tecnici/` JSON files loaded on-demand via `catalogo_loader.js`, registered in `index.json`
+- Technical catalogs: `static/dati_tecnici/` JSON (III.A–III.G) loaded on-demand via `catalogo_loader.js`, registered in `index.json`
 - Export/import DB via `Salva DB` / `Carica DB` buttons
 
 ## Versioning
 
 When updating app version, update in 3 places:
-1. `static/index.html` — query string on `js/app.js?...`
+
+1. `static/index.html` — query string on `js/app.js?0.1.8`
 2. `static/js/app.js` — `APPVERSION` and `APPDATE` in `_renderWelcomeScreen()`
 3. `static/js/core/normativa.js` — `NORMATIVA_VERSION` (normative version, not app)
 
 ## Tests
 
-Three test mechanisms, all manual (browser-based):
+Three manual browser-based mechanisms:
 
-1. **31 JSON scenarios** — `static/data/tests/test_*.json`, loaded via sidebar button "pratiche-test" in the wizard UI
-2. **25 MS scenarios** — embedded in `normativa.js` as `TEST_SCENARIOS`, run via `QaManager.runAllTests()` in browser console
-3. **Test suite page** — `static/test/test_suite.html` (4 groups: MS, Formula, Rules, Cross-Rule). **Requires HTTP server** (not `file://`). Uses `_cacheBustImport()` to bypass browser cache — Ctrl+F5 may be needed after module changes.
+1. **39 JSON scenarios** — `static/data/tests/test_*.json` (31 principal) + `test_p*.json` (8 problematiche), loaded via sidebar "pratiche-test" in wizard
+2. **25 MS scenarios** — embedded in `normativa.js` as `TEST_SCENARIOS`, run via `QaManager.runAllTests()` in console
+3. **Test suite pages** — `static/test/test_suite.html` (4 groups), `test_problematiche.html`, `index.html`. **Require HTTP server** (not `file://`). Use `_cacheBustImport()` — Ctrl+F5 may be needed after module changes.
 
-## Wizard phases
+## Wizard navigation (header bar buttons)
 
-7 phases: Pratica → Edificio → Anagrafiche → Interventi → Dati Tecnici → Economico → Riepilogo
+| Button   | ID                     | Behavior                                              |
+| -------- | ---------------------- | ----------------------------------------------------- |
+| RESET    | `cmd-reset`            | clears current practice                               |
+| INIZIO   | `btn-wiz-start-global` | step=0; disabled if step=0                            |
+| INDIETRO | `btn-wiz-prev-global`  | step--; disabled if step=0                            |
+| AVANTI   | `btn-wiz-next-global`  | step++; disabled if step=6                            |
+| FINE     | `btn-wiz-end-global`   | step=6; disabled if `_isEconomicoValorizzato()`=false |
 
-Each has a **"?"** button (`.step-help-btn`, top-right) opening contextual help in a `UaWindowAdm` modal.
-
-## Wizard navigation (header bar)
-
-| Button | Behavior |
-|--------|----------|
-| RESET | `cmd-reset` — clears current practice |
-| INIZIO | `btn-wiz-start-global` — goes to step 0; disabled if step=0 |
-| INDIETRO | `btn-wiz-prev-global` — step--; disabled if step=0 |
-| AVANTI | `btn-wiz-next-global` — step++ with validation; disabled if step=6 |
-| FINE | `btn-wiz-end-global` — goes to step 6; disabled if `_isEconomicoValorizzato()`=false |
-
-Visibility toggled by `_updateUIState()` in `app.js`; disabled state by `_updateGlobalNav()` in `wizard_manager.js`.
+Visibility: `_updateUIState()` in `app.js`. Disabled state: `_updateGlobalNav()` in `wizard_manager.js`.
 
 ## LESS organization
 
@@ -105,15 +106,4 @@ static/less/
     components.less   — cards, buttons, forms
 ```
 
-## Important rules & quirks
-
-- SA privato + ambito residenziale → only Titolo III (cannot use Titolo II interventions)
-- Impresa with attività economica → regime Titolo V
-- ETS non economico → assimilated to PA; ETS economico → only Titolo III+V
-- II.G+II.H must pair with III.A; II.C must pair with II.B
-- SR=ESCO → mandatory EPC contract
-- Incentive max 65% (100% for schools/PA Comuni ≤15k pop.)
-- GSE fee 1% max 250€
-- Variazioni >20% → prevent GSE approval
-- Mandatory irrevocable collection mandate for non-PA
-- Atto di assenso required if proprietario ≠ richiedente
+7 wizard phases: Pratica → Edificio → Anagrafiche → Interventi → Dati Tecnici → Economico → Riepilogo. Each has a "?" button (`.step-help-btn`, top-right) opening contextual help in a `UaWindowAdm` modal.

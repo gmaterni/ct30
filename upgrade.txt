@@ -1,44 +1,50 @@
-# PIANO INTERVENTI — Problematiche CT3.0
+# PIANO INTERVENTI — Residuo da PROBLEMATICHE_CRITICHE.md
 
-## 1. Test R7/R8: percentuale undefined per III.A
+## P1 — Unificare divieto fossili (#7) [ALTO]
 
-**Problema**: I test R7 e R8 usano III.A (Pompa di calore), ma `FormulaEngine.calculate()` non espone `params.percentuale` per codici con `tipo_formula: "prestazionale"`. La percentuale come cap viene calcolata internamente ma non esposta nel return.
+**Problema**: 3 implementazioni non coordinate per la stessa regola:
+- `rules_engine.js:392` — blacklist testuale di tipologie gas per III.A
+- `rules_engine.js:730` — flag booleano `haCombustibiliFossili` in `validateTitoloV`
+- `cross_rule_engine.js:115` — `_checkDivietoFossili` che blocca III.B e verifica alimentazione
 
-**Soluzione applicata**: Sostituire III.A con II.A (Isolamento) nei test R7/R8. II.A è `tipo_formula: "percentuale_spesa"` ed espone correttamente `params.percentuale` risolto da `_resolvePercentuale()`:
-- Privato II.A Zona E → 50% (cap 65%)
-- PA ≤15k II.A → 100% (comuneSotto15k)
-- ETS non econ II.A → 100% (assimilato PA)
-- Impresa II.A singolo → 25% (non 45% che è per Titolo III)
+**Obiettivo**: Unificare in un'unica funzione esportata da `cross_rule_engine.js`, chiamata da entrambi gli engine. Includere verifica III.C (biomassa con gas).
 
-**Alternativa futura**: Se serve testare III.A, leggere `res.params` completo per capire quali campi sono esposti, o modificare `_executeGenericFormula` per esporre sempre `params.percentuale`.
+**File**: `cross_rule_engine.js`, `rules_engine.js`
 
-## 2. Test R7-5: II.D dati insufficienti
+---
 
-**Problema**: II.D richiede `tipo_intervento_nzeb`, `volume_esistente_mc`, `volume_nuovo_mc` passati come `tipo_intervento` (nome campo errato).
+## P2 — Soglie ESCO 70kW/20m² nel codice (#11) [ALTO]
 
-**Soluzione applicata**: Rinominare `tipo_intervento` → `tipo_intervento_nzeb`, aggiungere `volume_esistente_mc: 500` e `volume_nuovo_mc: 100`.
+**Problema**: RA §3.5.1 impone soglie minime per ESCO come SR in ambito residenziale (>70kW climatizzazione, >20m² solare termico). Implementato solo nel Manuale, non nel codice.
 
-## 3. PROBLEMATICHE.md: copertura test ✅
+**Cosa serve**: Refactor di `validateAnagrafiche()` in `rules_engine.js:542` per ricevere dati interventi (potenza, superficie, ambito) e validare le soglie quando SR=ESCO in ambito residenziale.
 
-Verificata: ogni regola ha almeno un test corrispondente. Totale 51 test unitari + 8 pratiche JSON. Aggiornato conteggio in PROBLEMATICHE.md (46→51).
+**File**: `rules_engine.js`
 
-## 4. PROBLEMATICHE.md: allineamento riferimenti righe ✅
+---
 
-Verificati 50 riferimenti in 4 file. Correzzioni:
-- `normativa.js` riga 573→572 (privato_terziario.titolo_ii)
-- `formula_engine.js`: 12 riferimenti obsoleti aggiornati alle linee correnti (284, 288-291, 297-300, 302-303, 341-342, 353-354, 267, 278, 1191-1193)
-- `_resolveBonusScuole()` rimosso (logica inline)
-- `cross_rule_engine.js` e `rules_engine.js`: tutti i riferimenti ancora validi
+## P3 — Cap intensità visibile per componente (#9) [MEDIO]
 
-## 5. test_problematiche.html: manutenzione
+**Problema**: La formula in `formula_engine.js:348-356` applica il cap (65% o 100%) sul totale, ma l'utente non vede se singole maggiorazioni vengono azzerate.
 
-**Da fare**: Quando si aggiungono nuove regole o si modificano quelle esistenti:
-1. Aggiornare `docs/PROBLEMATICHE.md`
-2. Aggiungere test in `static/test/test_problematiche.html`
-3. Verificare con `npx live-server --port=8080 --no-css-inject` da `static/`
-4. Aprire `http://localhost:8080/test/test_problematiche.html`
-5. Commit delle modifiche
+**Obiettivo**: Nell'output economico, mostrare l'effetto del cap su ogni componente: base, made_in_eu, maggiorazioni, premialità, e quanto viene cappato.
 
-## 6. Estensione futura: test automatici in CI
+**File**: `formula_engine.js`, UI wizard fase Economico
 
-**Idea**: Se in futuro si introduce CI, i test in `test_problematiche.html` e `test_suite.html` potrebbero essere eseguiti con un headless browser (Puppeteer/Playwright) per automazione.
+---
+
+## P4 — Variazioni >20% integrata nel flusso wizard (#12) [MEDIO]
+
+**Problema**: `rules_engine.js:1009` implementa la verifica come validazione opzionale parametrica, non legata al flusso pratica.
+
+**Obiettivo**: Integrare alert preventivo durante la compilazione (fase Economico o Riepilogo) quando vengono rilevate variazioni >20% rispetto al preventivo.
+
+**File**: `rules_engine.js`, `wizard_manager.js`
+
+---
+
+## P5 — ESCO mandataria: verifica contratto EPC per SR=ESCO in multi (#11bis) [MEDIO]
+
+**Problema**: `validateAnagrafiche` controlla EPC solo se SR=ESCO e SR≠Richiedente. Ma la RA richiede EPC anche quando SA privato + SR=ESCO in ambito residenziale con soglie superiori.
+
+**File**: `rules_engine.js`

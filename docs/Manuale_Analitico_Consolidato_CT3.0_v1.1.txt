@@ -93,6 +93,9 @@ coincidono, ma nel CT3 si analizzano i casi di dissociazione:
   EPC (Energy Performance Contract) o Servizio Energia. La certificazione UNI
   CEI 11352 deve essere in corso di validità. Divieto di mandato all'incasso
   per ESCO.
+  - In ambito RESIDENZIALE, soglie minime per ESCO come SR: potenza >70 kW
+    (climatizzazione) o superficie >20 m² (solare termico). Sotto soglia, ESCO
+    opera solo come mandataria (RA §3.5.1).
 - Soggetto pubblico deputato alla gestione degli immobili (Art.13, c.1, lett.b).
 - Soggetto privato selezionato dalla PA tramite PPP.
 - Comunità Energetiche Rinnovabili (CER) e Configurazioni di Autoconsumo (AUC):
@@ -103,8 +106,9 @@ FOCUS ENTI DEL TERZO SETTORE (ETS):
 Gli ETS non sono una categoria monolitica:
 - ETS NON ECONOMICI: Seguono le regole della PA (100% incentivo in alcuni casi,
   accesso alla prenotazione).
-- ETS ECONOMICI: Seguono le regole delle Imprese (Titolo V, no prenotazione
-  diretta, vincoli di risparmio energetico minimo).
+- ETS ECONOMICI: Seguono le regole delle Imprese (Titolo V, vincoli di risparmio
+  energetico minimo). Possono accedere alla prenotazione (assimilati alla PA per
+  le modalità di accesso, RA §3.3).
 
 SOGGETTI AMMESSI — DETTAGLIO:
 - PA: Art.1, c.2 D.Lgs 165/2001 + elenco ISTAT + società in house (D.Lgs
@@ -632,7 +636,8 @@ REQUISITI SPECIFICI (Art.25):
 SPESE AMMISSIBILI (Art.26):
 - Costi non direttamente connessi a efficienza energetica: non ammissibili.
 - PMI: inclusi costi APE ante e post-intervento.
-- IVA: mai ammissibile per le imprese.
+- IVA: mai ammissibile per le imprese e per gli ETS economici (assimilati
+  alle imprese ai fini del calcolo dell'intensità, RA §4.2.1).
 
 INTENSITÀ (Art.27):
 
@@ -647,6 +652,11 @@ INTENSITÀ (Art.27):
 | + EP ≥ 40%                    | +15 punti %         | —             |
 | Tetto massimo                 | 65%                 | 65%           |
 
+**NOTA — Interventi II.D, II.G, II.H**: Per gli interventi NZEB (II.D),
+ricarica veicoli (II.G) e fotovoltaico+accumulo (II.H), l'intensità massima è
+fissata al 30%, anche in configurazione multi-intervento (RA §4.2.1, nota 6 a
+Tabella 11). Tale limite prevale su eventuali maggiorazioni dimensionali.
+
 LIMITI DI SPESA (Art.28):
 - Limite annuo complessivo imprese: 150 M€.
 - Limite per singola impresa e intervento: 30 M€.
@@ -655,9 +665,10 @@ LIMITI DI SPESA (Art.28):
 11. PROCEDURE E SCADENZE: IL PERCORSO CRITICO
 -------------------------------------------------------------------------------
 ACCESSO DIRETTO:
-- Entro 60 giorni dalla fine lavori. La "fine lavori" coincide con l'ultimo
-  collaudo o la dichiarazione di conformità (DM 37/08).
-- Ritardi oltre i 60gg comportano l'inammissibilità dell'istanza.
+- Entro 90 giorni dalla fine lavori (Decreto Art.14 c.2, RA §4.1.1). La "fine
+  lavori" coincide con l'ultimo collaudo o la dichiarazione di conformità
+  (DM 37/08).
+- Ritardi oltre i 90gg comportano l'inammissibilità dell'istanza.
 - Soggetti: tutti (PA, privati, imprese).
 - Dilazione pagamenti: fino 120 giorni (escluse prestazioni professionali).
   Privati: oltre 120 giorni se ultima quota > 10% della spesa totale.

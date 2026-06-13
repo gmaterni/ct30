@@ -1,1162 +1,2005 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CT30 Advisor — Test Suite</title>
     <style>
-        *, *::before, *::after { box-sizing: border-box; }
-        body {
-            background: #1e1e1e; color: #e0e0e0; font-family: 'Segoe UI', system-ui, sans-serif;
-            margin: 0; padding: 16px; font-size: 14px;
-        }
-        h1 { color: #68c8b2; font-size: 1.4rem; margin: 0 0 8px; }
-        h2 { color: #9ad8c8; font-size: 1.1rem; margin: 16px 0 8px; }
-        .toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
-        .toolbar button {
-            background: #2d2d2d; color: #e0e0e0; border: 1px solid #444;
-            padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.85rem;
-        }
-        .toolbar button:hover { background: #3a3a3a; border-color: #68c8b2; }
-        .toolbar button:disabled { opacity: 0.4; cursor: not-allowed; }
-        .summary {
-            display: flex; gap: 24px; margin: 8px 0 16px; padding: 12px 16px;
-            background: #252525; border-radius: 6px; border: 1px solid #333;
-        }
-        .summary .stat { display: flex; flex-direction: column; align-items: center; }
-        .summary .stat .num { font-size: 1.8rem; font-weight: 700; }
-        .summary .stat .label { font-size: 0.75rem; color: #999; text-transform: uppercase; }
-        .summary .stat.pass .num { color: #4caf50; }
-        .summary .stat.fail .num { color: #f44336; }
-        .summary .stat.skip .num { color: #ff9800; }
-        .summary .stat.total .num { color: #68c8b2; }
-        #output {
-            background: #252525; border: 1px solid #333; border-radius: 6px;
-            padding: 4px; max-height: 70vh; overflow-y: auto; font-family: 'Cascadia Code', 'Fira Code', monospace; font-size: 0.8rem;
-        }
-        .test-group { margin: 4px 0; }
-        .test-group-header {
-            padding: 6px 10px; cursor: pointer; display: flex; justify-content: space-between;
-            background: #2a2a2a; border-radius: 4px; user-select: none;
-        }
-        .test-group-header:hover { background: #333; }
-        .test-group-header .title { font-weight: 600; }
-        .test-group-header .badge { font-size: 0.75rem; padding: 1px 8px; border-radius: 10px; }
-        .test-group-header .badge.ok { background: #1b5e20; color: #a5d6a7; }
-        .test-group-header .badge.fail { background: #b71c1c; color: #ef9a9a; }
-        .test-group-body { padding: 4px 0 4px 16px; display: none; }
-        .test-group-body.open { display: block; }
-        .test-group-body .sub-header { font-size: 0.75rem; font-weight: 600; padding: 4px 6px; margin: 4px 0 2px; border-radius: 3px; display: inline-block; }
-        .test-group-body .sub-header.pass { background: rgba(76,175,80,0.12); color: #81c784; }
-        .test-group-body .sub-header.fail { background: rgba(244,67,54,0.12); color: #ef9a9a; }
-        .test-group-body .sub-section { padding-left: 8px; border-left: 2px solid transparent; margin-bottom: 6px; }
-        .test-group-body .sub-section.pass { border-left-color: rgba(76,175,80,0.3); }
-        .test-group-body .sub-section.fail { border-left-color: rgba(244,67,54,0.3); }
-        .test-group-body .sub-section:empty { display: none; }
-        .test-group-body .sub-section:empty + .sub-section:empty { display: none; }
-        .test-group-body .sub-section .sub-header:only-child { display: none; }
-        .test-group-body .sub-section .test-row:first-child { margin-top: 2px; }
-        .test-row {
-            padding: 3px 8px; margin: 2px 0; border-radius: 3px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .test-row.pass { background: rgba(76,175,80,0.08); }
-        .test-row.fail { background: rgba(244,67,54,0.10); }
-        .test-row .test-name { flex: 1; }
-        .test-row .test-result { font-weight: 600; font-size: 0.75rem; }
-        .test-row .test-result.pass { color: #4caf50; }
-        .test-row .test-result.fail { color: #f44336; }
-        .test-detail { color: #aaa; font-size: 0.75rem; margin-top: 2px; }
-        .test-detail ul { margin: 2px 0; padding-left: 16px; }
-        .progress-bar {
-            height: 3px; background: #333; border-radius: 2px; margin: 8px 0;
-            overflow: hidden; display: none;
-        }
-        .progress-bar .fill {
-            height: 100%; background: linear-gradient(90deg, #68c8b2, #4caf50);
-            width: 0%; transition: width 0.3s;
-        }
-        .error-msg { color: #f44336; padding: 8px; background: rgba(244,67,54,0.08); border-radius: 4px; margin: 8px 0; }
-        pre { margin: 4px 0; white-space: pre-wrap; }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        background: #1e1e1e;
+        color: #e0e0e0;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        margin: 0;
+        padding: 16px;
+        font-size: 14px;
+      }
+      h1 {
+        color: #68c8b2;
+        font-size: 1.4rem;
+        margin: 0 0 8px;
+      }
+      h2 {
+        color: #9ad8c8;
+        font-size: 1.1rem;
+        margin: 16px 0 8px;
+      }
+      .toolbar {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 12px 0;
+      }
+      .toolbar button {
+        background: #2d2d2d;
+        color: #e0e0e0;
+        border: 1px solid #444;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.85rem;
+      }
+      .toolbar button:hover {
+        background: #3a3a3a;
+        border-color: #68c8b2;
+      }
+      .toolbar button:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      .summary {
+        display: flex;
+        gap: 24px;
+        margin: 8px 0 16px;
+        padding: 12px 16px;
+        background: #252525;
+        border-radius: 6px;
+        border: 1px solid #333;
+      }
+      .summary .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .summary .stat .num {
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+      .summary .stat .label {
+        font-size: 0.75rem;
+        color: #999;
+        text-transform: uppercase;
+      }
+      .summary .stat.pass .num {
+        color: #4caf50;
+      }
+      .summary .stat.fail .num {
+        color: #f44336;
+      }
+      .summary .stat.skip .num {
+        color: #ff9800;
+      }
+      .summary .stat.total .num {
+        color: #68c8b2;
+      }
+      #output {
+        background: #252525;
+        border: 1px solid #333;
+        border-radius: 6px;
+        padding: 4px;
+        max-height: 70vh;
+        overflow-y: auto;
+        font-family: "Cascadia Code", "Fira Code", monospace;
+        font-size: 0.8rem;
+      }
+      .test-group {
+        margin: 4px 0;
+      }
+      .test-group-header {
+        padding: 6px 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        background: #2a2a2a;
+        border-radius: 4px;
+        user-select: none;
+      }
+      .test-group-header:hover {
+        background: #333;
+      }
+      .test-group-header .title {
+        font-weight: 600;
+      }
+      .test-group-header .badge {
+        font-size: 0.75rem;
+        padding: 1px 8px;
+        border-radius: 10px;
+      }
+      .test-group-header .badge.ok {
+        background: #1b5e20;
+        color: #a5d6a7;
+      }
+      .test-group-header .badge.fail {
+        background: #b71c1c;
+        color: #ef9a9a;
+      }
+      .test-group-body {
+        padding: 4px 0 4px 16px;
+        display: none;
+      }
+      .test-group-body.open {
+        display: block;
+      }
+      .test-group-body .sub-header {
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 4px 6px;
+        margin: 4px 0 2px;
+        border-radius: 3px;
+        display: inline-block;
+      }
+      .test-group-body .sub-header.pass {
+        background: rgba(76, 175, 80, 0.12);
+        color: #81c784;
+      }
+      .test-group-body .sub-header.fail {
+        background: rgba(244, 67, 54, 0.12);
+        color: #ef9a9a;
+      }
+      .test-group-body .sub-section {
+        padding-left: 8px;
+        border-left: 2px solid transparent;
+        margin-bottom: 6px;
+      }
+      .test-group-body .sub-section.pass {
+        border-left-color: rgba(76, 175, 80, 0.3);
+      }
+      .test-group-body .sub-section.fail {
+        border-left-color: rgba(244, 67, 54, 0.3);
+      }
+      .test-group-body .sub-section:empty {
+        display: none;
+      }
+      .test-group-body .sub-section:empty + .sub-section:empty {
+        display: none;
+      }
+      .test-group-body .sub-section .sub-header:only-child {
+        display: none;
+      }
+      .test-group-body .sub-section .test-row:first-child {
+        margin-top: 2px;
+      }
+      .test-row {
+        padding: 3px 8px;
+        margin: 2px 0;
+        border-radius: 3px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .test-row.pass {
+        background: rgba(76, 175, 80, 0.08);
+      }
+      .test-row.fail {
+        background: rgba(244, 67, 54, 0.1);
+      }
+      .test-row .test-name {
+        flex: 1;
+      }
+      .test-row .test-result {
+        font-weight: 600;
+        font-size: 0.75rem;
+      }
+      .test-row .test-result.pass {
+        color: #4caf50;
+      }
+      .test-row .test-result.fail {
+        color: #f44336;
+      }
+      .test-detail {
+        color: #aaa;
+        font-size: 0.75rem;
+        margin-top: 2px;
+      }
+      .test-detail ul {
+        margin: 2px 0;
+        padding-left: 16px;
+      }
+      .progress-bar {
+        height: 3px;
+        background: #333;
+        border-radius: 2px;
+        margin: 8px 0;
+        overflow: hidden;
+        display: none;
+      }
+      .progress-bar .fill {
+        height: 100%;
+        background: linear-gradient(90deg, #68c8b2, #4caf50);
+        width: 0%;
+        transition: width 0.3s;
+      }
+      .error-msg {
+        color: #f44336;
+        padding: 8px;
+        background: rgba(244, 67, 54, 0.08);
+        border-radius: 4px;
+        margin: 8px 0;
+      }
+      pre {
+        margin: 4px 0;
+        white-space: pre-wrap;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>CT30 Advisor — Test Suite Automatica</h1>
-    <p style="color:#888;margin:0 0 8px;font-size:0.85rem;">
-        Verifica gli scenari MS, le regole di ammissibilità, i calcoli formula engine e i casi JSON caricabili.
+    <p style="color: #888; margin: 0 0 8px; font-size: 0.85rem">
+      Verifica gli scenari MS, le regole di ammissibilità, i calcoli formula
+      engine e i casi JSON caricabili.
     </p>
 
     <div class="toolbar">
-        <button id="btn-run-ms" title="Esegue QaManager.runAllTests() sugli scenari MS-001..MS-021 (include Rules, Cross-Rule e canCalculate)">Scenari MS</button>
-        <button id="btn-run-formula" title="Test unitari del FormulaEngine">Formula Engine</button>
-        <button id="btn-run-rules" title="Test unitari del RulesEngine">Rules Engine</button>
-        <button id="btn-run-cross" title="Test unitari del CrossRuleEngine">Cross-Rule</button>
-        <button id="btn-run-all" class="primary">Esegui TUTTI</button>
-        <button id="btn-reset" style="margin-left:auto;">Reset</button>
+      <button
+        id="btn-run-ms"
+        title="Esegue QaManager.runAllTests() sugli scenari MS-001..MS-021 (include Rules, Cross-Rule e canCalculate)"
+      >
+        Scenari MS
+      </button>
+      <button id="btn-run-formula" title="Test unitari del FormulaEngine">
+        Formula Engine
+      </button>
+      <button id="btn-run-rules" title="Test unitari del RulesEngine">
+        Rules Engine
+      </button>
+      <button id="btn-run-cross" title="Test unitari del CrossRuleEngine">
+        Cross-Rule
+      </button>
+      <button id="btn-run-all" class="primary">Esegui TUTTI</button>
+      <button id="btn-reset" style="margin-left: auto">Reset</button>
     </div>
 
     <div class="summary" id="summary">
-        <div class="stat total"><span class="num" id="stat-total">0</span><span class="label">Totali</span></div>
-        <div class="stat pass"><span class="num" id="stat-pass">0</span><span class="label">Passati</span></div>
-        <div class="stat fail"><span class="num" id="stat-fail">0</span><span class="label">Falliti</span></div>
+      <div class="stat total">
+        <span class="num" id="stat-total">0</span
+        ><span class="label">Totali</span>
+      </div>
+      <div class="stat pass">
+        <span class="num" id="stat-pass">0</span
+        ><span class="label">Passati</span>
+      </div>
+      <div class="stat fail">
+        <span class="num" id="stat-fail">0</span
+        ><span class="label">Falliti</span>
+      </div>
     </div>
 
-    <div class="progress-bar" id="progress-bar"><div class="fill" id="progress-fill"></div></div>
+    <div class="progress-bar" id="progress-bar">
+      <div class="fill" id="progress-fill"></div>
+    </div>
 
     <div id="output"></div>
 
     <script type="module">
-        "use strict";
+      "use strict";
 
-        var el = function(id) { return document.getElementById(id); };
-        var out = el("output");
-        var statTotal = el("stat-total");
-        var statPass = el("stat-pass");
-        var statFail = el("stat-fail");
-        var progressBar = el("progress-bar");
-        var progressFill = el("progress-fill");
+      var el = function (id) {
+        return document.getElementById(id);
+      };
+      var out = el("output");
+      var statTotal = el("stat-total");
+      var statPass = el("stat-pass");
+      var statFail = el("stat-fail");
+      var progressBar = el("progress-bar");
+      var progressFill = el("progress-fill");
 
-        var testCount = 0;
-        var passCount = 0;
-        var failCount = 0;
+      var testCount = 0;
+      var passCount = 0;
+      var failCount = 0;
 
-        var _updateStats = function() {
-            statTotal.textContent = testCount;
-            statPass.textContent = passCount;
-            statFail.textContent = failCount;
+      var _updateStats = function () {
+        statTotal.textContent = testCount;
+        statPass.textContent = passCount;
+        statFail.textContent = failCount;
+      };
+
+      var _showProgress = function (pct) {
+        progressBar.style.display = "block";
+        progressFill.style.width = pct + "%";
+      };
+
+      var _hideProgress = function () {
+        progressBar.style.display = "none";
+        progressFill.style.width = "0%";
+      };
+
+      var _makeGroup = function (title, id) {
+        var div = document.createElement("div");
+        div.className = "test-group";
+        div.id = "group-" + id;
+        div.innerHTML =
+          '<div class="test-group-header" data-target="body-' +
+          id +
+          '">' +
+          '<span class="title">' +
+          title +
+          "</span>" +
+          '<span class="badge" id="badge-' +
+          id +
+          '">0</span>' +
+          "</div>" +
+          '<div class="test-group-body" id="body-' +
+          id +
+          '">' +
+          '<div class="sub-section pass" id="pass-' +
+          id +
+          '">' +
+          '<div class="sub-header pass">Passati</div></div>' +
+          '<div class="sub-section fail" id="fail-' +
+          id +
+          '">' +
+          '<div class="sub-header fail">Falliti</div></div>' +
+          "</div>";
+        out.appendChild(div);
+        div.querySelector(".test-group-header").onclick = function (e) {
+          var targetId = e.currentTarget.getAttribute("data-target");
+          var body = document.getElementById(targetId);
+          body.classList.toggle("open");
         };
-
-        var _showProgress = function(pct) {
-            progressBar.style.display = "block";
-            progressFill.style.width = pct + "%";
+        return {
+          body: el("body-" + id),
+          badge: el("badge-" + id),
+          passBody: el("pass-" + id),
+          failBody: el("fail-" + id),
         };
+      };
 
-        var _hideProgress = function() {
-            progressBar.style.display = "none";
-            progressFill.style.width = "0%";
-        };
+      var _addTestRow = function (parent, name, passed, detailArr) {
+        var target = passed ? parent.passBody : parent.failBody;
+        var row = document.createElement("div");
+        row.className = "test-row " + (passed ? "pass" : "fail");
+        var n = testCount;
+        row.innerHTML =
+          '<span class="test-name">' +
+          name +
+          "</span>" +
+          '<span class="test-result ' +
+          (passed ? "pass" : "fail") +
+          '">' +
+          (passed ? "OK" : "FAIL") +
+          "</span>";
+        target.appendChild(row);
 
-        var _makeGroup = function(title, id) {
-            var div = document.createElement("div");
-            div.className = "test-group";
-            div.id = "group-" + id;
-            div.innerHTML = '<div class="test-group-header" data-target="body-' + id + '">'
-                + '<span class="title">' + title + '</span>'
-                + '<span class="badge" id="badge-' + id + '">0</span>'
-                + '</div>'
-                + '<div class="test-group-body" id="body-' + id + '">'
-                + '<div class="sub-section pass" id="pass-' + id + '">'
-                + '<div class="sub-header pass">Passati</div></div>'
-                + '<div class="sub-section fail" id="fail-' + id + '">'
-                + '<div class="sub-header fail">Falliti</div></div>'
-                + '</div>';
-            out.appendChild(div);
-            div.querySelector(".test-group-header").onclick = function(e) {
-                var targetId = e.currentTarget.getAttribute("data-target");
-                var body = document.getElementById(targetId);
-                body.classList.toggle("open");
-            };
-            return {
-                body: el("body-" + id),
-                badge: el("badge-" + id),
-                passBody: el("pass-" + id),
-                failBody: el("fail-" + id)
-            };
-        };
-
-        var _addTestRow = function(parent, name, passed, detailArr) {
-            var target = passed ? parent.passBody : parent.failBody;
-            var row = document.createElement("div");
-            row.className = "test-row " + (passed ? "pass" : "fail");
-            var n = testCount;
-            row.innerHTML = '<span class="test-name">' + name + '</span>'
-                + '<span class="test-result ' + (passed ? "pass" : "fail") + '">'
-                + (passed ? "OK" : "FAIL") + '</span>';
-            target.appendChild(row);
-
-            if (detailArr && detailArr.length > 0) {
-                var dd = document.createElement("div");
-                dd.className = "test-detail";
-                var ul = document.createElement("ul");
-                detailArr.forEach(function(d) {
-                    var li = document.createElement("li");
-                    li.textContent = d;
-                    ul.appendChild(li);
-                });
-                dd.appendChild(ul);
-                target.appendChild(dd);
-            }
-
-            testCount = testCount + 1;
-            if (passed) { passCount = passCount + 1; } else { failCount = failCount + 1; }
-            var passRows = parent.passBody.querySelectorAll(".test-row").length;
-            var failRows = parent.failBody.querySelectorAll(".test-row").length;
-            var totalRows = passRows + failRows;
-            parent.badge.textContent = passRows + "/" + failRows + " OK/FAIL";
-            if (failRows > 0) { parent.badge.className = "badge fail"; } else { parent.badge.className = "badge ok"; }
-            _updateStats();
-            return { passed: passed, detail: detailArr };
-        };
-
-        var _resetGroupCounts = function() {
-            var groups = out.querySelectorAll(".test-group");
-            groups.forEach(function(g) {
-                var badge = g.querySelector(".badge[id]");
-                if (badge) badge.textContent = "0";
-            });
-        };
-
-        var _clearOutput = function() {
-            out.innerHTML = "";
-            testCount = 0; passCount = 0; failCount = 0;
-            _updateStats();
-            _hideProgress();
-        };
-
-        /* ========= MODULE LOADER (cache-proof: fetch + Blob URL) ========= */
-        var _baseHref = document.baseURI || location.href;
-        var _modDir = function(url) {
-            return url.substring(0, url.lastIndexOf("/") + 1);
-        };
-        var _bustNum = 0;
-        var _cacheBustImport = async function(relPath) {
-            _bustNum++;
-            var baseUrl = new URL(".", _baseHref).href;
-            var fullUrl = new URL(relPath, baseUrl).href;
-            var t = Date.now() + "-" + _bustNum + "-" + Math.random();
-            var bustUrl = fullUrl + "?t=" + t;
-            var resp = await fetch(bustUrl);
-            if (!resp.ok) throw new Error("Fetch " + bustUrl + " → " + resp.status);
-            var src = await resp.text();
-            var dir = _modDir(fullUrl);
-            src = src.replace(/from\s+["']\.\/([^"']+?)["']/g, function(m, imp) {
-                return 'from "' + dir + imp + '?t=' + Date.now() + "-" + _bustNum + "-" + Math.random() + '"';
-            });
-            return await import(URL.createObjectURL(new Blob([src], {type:"text/javascript"})));
-        };
-
-        /* ========= IMPORTS ========= */
-        var engines = null;
-        var _feDiag = {};
-
-        try {
-            var m = await _cacheBustImport("../js/core/qa_manager.js");
-            var QaManager = m.QaManager;
-            var mR = await _cacheBustImport("../js/core/rules_engine.js");
-            var RulesEngine = mR.RulesEngine;
-            var mF = await _cacheBustImport("../js/core/formula_engine.js");
-            var FormulaEngine = mF.FormulaEngine;
-            var mC = await _cacheBustImport("../js/core/cross_rule_engine.js");
-            var CrossRuleEngine = mC.CrossRuleEngine;
-            var mN = await _cacheBustImport("../js/core/normativa.js");
-            var RULES = mN.RULES;
-            var TEST_SCENARIOS = mN.TEST_SCENARIOS;
-            var INTERVENTI = mN.INTERVENTI;
-            var FORMULE_INCENTIVO = mN.FORMULE_INCENTIVO;
-            var SCHEDE_TECNICHE = mN.SCHEDE_TECNICHE;
-            var PREMIALITA_CONFIG = mN.PREMIALITA_CONFIG;
-            var OBBLIGO_MANTENIMENTO_ANNI = mN.OBBLIGO_MANTENIMENTO_ANNI;
-            var TERMINI_CONFIG = mN.TERMINI_CONFIG;
-            var PROCEDURA_CONFIG = mN.PROCEDURA_CONFIG;
-            engines = { QaManager: QaManager, RulesEngine: RulesEngine, FormulaEngine: FormulaEngine,
-                CrossRuleEngine: CrossRuleEngine, RULES: RULES, TEST_SCENARIOS: TEST_SCENARIOS,
-                INTERVENTI: INTERVENTI, FORMULE_INCENTIVO: FORMULE_INCENTIVO,
-                SCHEDE_TECNICHE: SCHEDE_TECNICHE, PREMIALITA_CONFIG: PREMIALITA_CONFIG,
-                OBBLIGO_MANTENIMENTO_ANNI: OBBLIGO_MANTENIMENTO_ANNI,
-                TERMINI_CONFIG: TERMINI_CONFIG, PROCEDURA_CONFIG: PROCEDURA_CONFIG,
-                NORMATIVA_VERSION: mN.NORMATIVA_VERSION,
-                SOGGETTI_CONFIG: mN.SOGGETTI_CONFIG,
-                FE_VERSION: mF.FormulaEngine._version,
-                FE_FEATURES: mF.FormulaEngine._features };
-            /* Diagnostic: fetch formula_engine.js raw from disk */
-            try {
-                var baseUrl = new URL(".", _baseHref).href;
-                var feUrl = new URL("../js/core/formula_engine.js", baseUrl).href + "?t=" + Date.now() + Math.random();
-                var _resp = await fetch(feUrl);
-                var _txt = await _resp.text();
-                _feDiag = {
-                    length: _txt.length,
-                    hasCondensa: _txt.indexOf("condensa") !== -1,
-                    hasCmaxMaggiorazione: _txt.indexOf("1.3") !== -1
-                };
-            } catch(e) { _feDiag = { error: e.message }; }
-
-        } catch (e) {
-            var errDiv = document.createElement("div");
-            errDiv.className = "error-msg";
-            errDiv.textContent = "ERRORE CARICAMENTO MODULI: " + e.message;
-            out.appendChild(errDiv);
+        if (detailArr && detailArr.length > 0) {
+          var dd = document.createElement("div");
+          dd.className = "test-detail";
+          var ul = document.createElement("ul");
+          detailArr.forEach(function (d) {
+            var li = document.createElement("li");
+            li.textContent = d;
+            ul.appendChild(li);
+          });
+          dd.appendChild(ul);
+          target.appendChild(dd);
         }
-        /* ========= /IMPORTS ========= */
 
-        /* ========= 1. MS SCENARIOS ========= */
-        var runMSScenarios = async function() {
-            if (!engines) return;
-            var grp = _makeGroup("1. Scenari MS (QaManager.runAllTests)", "ms");
-            try {
-                var report = engines.QaManager.runAllTests();
-                var passed = 0; var failed = 0;
-                report.results.forEach(function(r) {
-                    var p = r.success;
-                    if (p) { passed = passed + 1; } else { failed = failed + 1; }
-                    _addTestRow(grp, r.id + " — " + r.nome, p, r.dettagli);
-                });
-                grp.badge.textContent = passed + "/" + report.results.length + " OK, " + failed + " FAIL";
-                if (failed > 0) { grp.badge.className = "badge fail"; }
-            } catch (e) {
-                _addTestRow(grp, "QaManager.runAllTests() errore", false, [e.message]);
-            }
-        };
-
-        /* ========= 2. FORMULA ENGINE TESTS ========= */
-        var runFormulaTests = async function() {
-            if (!engines) return;
-            var grp = _makeGroup("2. Formula Engine — Test unitari", "formula");
-
-            var calcIIA = function(fe, tipo, spesa, mq, soggetto) {
-                return fe.calculate("II.A", {
-                    tipo_superficie_opaca: tipo,
-                    costo_isolamento: spesa || 16000,
-                    superficie_isolata_mq: mq || 80
-                }, { soggetto: soggetto || "Impresa", zonaClimatica: "Zona E" });
-            };
-
-            var fe = engines.FormulaEngine;
-
-            /* Test 2.0 — Version check: codice FormulaEngine aggiornato */
-            try {
-                var ver = fe._version;
-                var feat = fe._features;
-                var expectedVer = "v3-20260609";
-                var hasFeatures = feat && feat.hasCondensaWarning && feat.hasCmaxMaggiorazione30 && feat.hasHrZonale && feat.hasAucSoggetto;
-                var versionOk = ver === expectedVer;
-                var diag = [];
-                if (!versionOk) diag.push("Versione: " + ver + " (attesa " + expectedVer + ")");
-                if (!hasFeatures) diag.push("Features: " + JSON.stringify(feat));
-                var hasEtaMin = feat && feat.hasEtaMinPerTipo;
-                if (!hasEtaMin) diag.push("hasEtaMinPerTipo mancante in features");
-                _addTestRow(grp, "2.0 Version check: FormulaEngine aggiornato",
-                    versionOk && hasFeatures && hasEtaMin, diag);
-            } catch (e) {
-                _addTestRow(grp, "2.0 Version check", false, [e.message]);
-            }
-
-            /* Test 2.0a — Verifica indexOf("Intern") matcha "Parete Interna" (fix radice comune) */
-            try {
-                var _findInt = "Parete Interna".indexOf("Intern");
-                var _findCoper = "Coperture Interno".indexOf("Intern");
-                var _findPav = "Pavimenti Interno".indexOf("Intern");
-                _addTestRow(grp, "2.0a indexOf('Intern') su varianti interne -> OK",
-                    _findInt >= 0 && _findCoper >= 0 && _findPav >= 0,
-                    ["Parete Interna=" + _findInt, "Coperture Interno=" + _findCoper, "Pavimenti Interno=" + _findPav]);
-            } catch (e) {
-                _addTestRow(grp, "2.0a Diagnostica encoding", false, [e.message]);
-            }
-
-            /* Test 2.1 — II.A Parete Esterna: cmax=200, no warning condensa */
-            try {
-                var res = calcIIA(fe, "Parete Esterna");
-                var cmaxOk = res.params.cmax === 200;
-                var noWarn = !res.warnings || res.warnings.length === 0;
-                _addTestRow(grp, "2.1 II.A Parete Esterna → cmax=200, no warning condensa",
-                    cmaxOk && noWarn, cmaxOk ? [] : ["Atteso cmax=200, ottenuto " + res.params.cmax]
-                        .concat(noWarn ? [] : ["Warning inaspettato: " + res.warnings.join(", ")]));
-            } catch (e) {
-                _addTestRow(grp, "2.1 II.A Parete Esterna → cmax=200", false, [e.message]);
-            }
-
-            var _warnCheck = function(res) {
-                return res.warnings && res.warnings.length > 0
-                    && res.warnings[0].indexOf("condensa") !== -1;
-            };
-
-            /* Test 2.2 — II.A Parete Interna: cmax base 100 */
-            try {
-                var res = calcIIA(fe, "Parete Interna");
-                _addTestRow(grp, "2.2 II.A Parete Interna → cmax ≥ 100",
-                    res.params.cmax >= 100,
-                    ["Atteso cmax≥100, ottenuto " + res.params.cmax]);
-            } catch (e) {
-                _addTestRow(grp, "2.2 II.A Parete Interna → cmax", false, [e.message]);
-            }
-
-            /* Test 2.3 — II.A Parete Interna: warning condensa UNI 13788 */
-            try {
-                var res = calcIIA(fe, "Parete Interna");
-                var hasWarn = _warnCheck(res);
-                var cmaxOk = res.params.cmax >= 130;
-                var diagMsgs = [];
-                if (!hasWarn) diagMsgs.push("Warnings: " + JSON.stringify(res.warnings));
-                if (!cmaxOk) diagMsgs.push("cmax: " + res.params.cmax + " (atteso ≥130)");
-                _addTestRow(grp, "2.3 II.A Parete Interna → cmax≥130 + warning condensa",
-                    hasWarn && cmaxOk, diagMsgs);
-            } catch (e) {
-                _addTestRow(grp, "2.3 II.A Parete Interna → warning condensa", false, [e.message]);
-            }
-
-            /* Test 2.4 — II.A Coperture Interno: cmax base 150 */
-            try {
-                var res = calcIIA(fe, "Coperture Interno");
-                _addTestRow(grp, "2.4 II.A Coperture Interno → cmax ≥ 150",
-                    res.params.cmax >= 150,
-                    ["Atteso cmax≥150, ottenuto " + res.params.cmax]);
-            } catch (e) {
-                _addTestRow(grp, "2.4 II.A Coperture Interno → cmax", false, [e.message]);
-            }
-
-            /* Test 2.5 — II.A Coperture Interno: warning condensa */
-            try {
-                var res = calcIIA(fe, "Coperture Interno");
-                var hasWarn = _warnCheck(res);
-                var info = !hasWarn ? " (assente — forse cache browser)" : "";
-                _addTestRow(grp, "2.5 II.A Coperture Interno → warning condensa" + info,
-                    hasWarn, hasWarn ? [] : ["Warnings: " + JSON.stringify(res.warnings)]);
-            } catch (e) {
-                _addTestRow(grp, "2.5 II.A Coperture Interno → warning condensa", false, [e.message]);
-            }
-
-            /* Test 2.6 — II.A Pavimenti Interno: cmax base 150 */
-            try {
-                var res = calcIIA(fe, "Pavimenti Interno");
-                _addTestRow(grp, "2.6 II.A Pavimenti Interno → cmax ≥ 150",
-                    res.params.cmax >= 150,
-                    ["Atteso cmax≥150, ottenuto " + res.params.cmax]);
-            } catch (e) {
-                _addTestRow(grp, "2.6 II.A Pavimenti Interno → cmax", false, [e.message]);
-            }
-
-            /* Test 2.7 — II.A Pavimenti Interno: warning condensa */
-            try {
-                var res = calcIIA(fe, "Pavimenti Interno");
-                var hasWarn = _warnCheck(res);
-                var info = !hasWarn ? " (assente — forse cache browser)" : "";
-                _addTestRow(grp, "2.7 II.A Pavimenti Interno → warning condensa" + info,
-                    hasWarn, hasWarn ? [] : ["Warnings: " + JSON.stringify(res.warnings)]);
-            } catch (e) {
-                _addTestRow(grp, "2.7 II.A Pavimenti Interno → warning condensa", false, [e.message]);
-            }
-
-            /* Test 2.8 — II.A tipo sconosciuto: cmax=0 (fallback), no warning */
-            try {
-                var res = calcIIA(fe, "Tipo Sconosciuto");
-                var cmaxOk = res.params.cmax === 0;
-                var noWarn = !res.warnings || res.warnings.length === 0;
-                _addTestRow(grp, "2.8 II.A tipo sconosciuto → cmax=0 (fallback)",
-                    cmaxOk && noWarn,
-                    [!cmaxOk ? "Atteso cmax=0, ottenuto " + res.params.cmax : ""]
-                        .concat(!noWarn ? ["Warning inaspettato: " + res.warnings.join(", ")] : [])
-                        .filter(function(x) { return x; }));
-            } catch (e) {
-                _addTestRow(grp, "2.8 II.A tipo sconosciuto → cmax=0", false, [e.message]);
-            }
-
-            /* Test 2.9 — II.A calcolo: Impresa singolo Titolo II → perc=0.25 */
-            try {
-                var res = calcIIA(fe, "Parete Esterna", 20000, 80);
-                var perc = res.params.percentuale;
-                var ricalcolo = Math.min(20000, 80 * res.params.cmax) * perc;
-                var amountOk = Math.abs(res.amount - parseFloat(ricalcolo.toFixed(2))) < 1;
-                _addTestRow(grp, "2.9 II.A calcolo coerente: Impresa, perc=" + perc + ", importo=" + ricalcolo,
-                    amountOk, amountOk ? [] : ["Atteso " + ricalcolo + ", ottenuto " + res.amount + ". params=" + JSON.stringify(res.params)]);
-            } catch (e) {
-                _addTestRow(grp, "2.9 II.A calcolo coerente", false, [e.message]);
-            }
-
-            /* Test 2.10 — II.A percentuale per Impresa singolo Titolo II = 0.25 */
-            try {
-                var res = calcIIA(fe, "Parete Esterna", 20000, 80);
-                _addTestRow(grp, "2.10 II.A Impresa perc = 0.25",
-                    res.params.percentuale === 0.25,
-                    ["Atteso 0.25, ottenuto " + res.params.percentuale]);
-            } catch (e) {
-                _addTestRow(grp, "2.10 II.A Impresa perc = 0.25", false, [e.message]);
-            }
-
-            /* Test 2.11 — II.A percentuale per PA = 0.65 */
-            try {
-                var resPA = calcIIA(fe, "Parete Esterna", 20000, 80, "Pubblica Amministrazione");
-                _addTestRow(grp, "2.11 II.A PA perc = 0.65",
-                    resPA.params.percentuale === 0.65,
-                    ["Atteso 0.65, ottenuto " + resPA.params.percentuale]);
-            } catch (e) {
-                _addTestRow(grp, "2.11 II.A PA perc = 0.65", false, [e.message]);
-            }
-
-            /* Test 2.12 — OBBLIGO_MANTENIMENTO_ANNI */
-            try {
-                var anni = engines.OBBLIGO_MANTENIMENTO_ANNI;
-                _addTestRow(grp, "2.12 OBBLIGO_MANTENIMENTO_ANNI = 5",
-                    anni === 5, anni !== 5 ? ["Atteso 5, ottenuto " + anni] : []);
-            } catch (e) {
-                _addTestRow(grp, "2.12 OBBLIGO_MANTENIMENTO_ANNI", false, [e.message]);
-            }
-
-            /* Test 2.13 — FORMULE_INCENTIVO.III.G presente */
-            try {
-                var formulaIIIg = engines.FORMULE_INCENTIVO["III.G"];
-                var exists = !!formulaIIIg;
-                _addTestRow(grp, "2.13 FORMULE_INCENTIVO.III.G presente",
-                    exists, exists ? [] : ["FORMULE_INCENTIVO.III.G non trovato"]);
-            } catch (e) {
-                _addTestRow(grp, "2.13 FORMULE_INCENTIVO.III.G presente", false, [e.message]);
-            }
-
-            /* Test 2.14 — IVA Impresa su II.A: spesa=15000-iva2640=12360 */
-            try {
-                var resIva = fe.calculate("II.A", {
-                    tipo_superficie_opaca: "Parete Esterna",
-                    costo_isolamento: 15000,
-                    superficie_isolata_mq: 80,
-                    importo_iva: 2640
-                }, { soggetto: "Impresa", zonaClimatica: "Zona E" });
-                var spesaAfterIva = resIva.params.spesa !== undefined ? resIva.params.spesa : -1;
-                var ivaOk = Math.abs(spesaAfterIva - 12360) < 1;
-                _addTestRow(grp, "2.14 II.A Impresa: IVA 2640 sottratta da 15000 → 12360",
-                    ivaOk, ivaOk ? [] : ["Atteso spesa=12360, ottenuto " + spesaAfterIva + ". params=" + JSON.stringify(resIva.params)]);
-            } catch (e) {
-                _addTestRow(grp, "2.14 II.A Impresa: IVA sottratta", false, [e.message]);
-            }
-
-            /* Test 2.15 — IVA Privato su II.A: IVA NON sottratta (spesa=15000) */
-            try {
-                var resNoIva = fe.calculate("II.A", {
-                    tipo_superficie_opaca: "Parete Esterna",
-                    costo_isolamento: 15000,
-                    superficie_isolata_mq: 80,
-                    importo_iva: 2640
-                }, { soggetto: "Privato residenziale", zonaClimatica: "Zona E" });
-                var spesaNoIva = resNoIva.params.spesa || 0;
-                var ivaOk = Math.abs(spesaNoIva - 15000) < 1;
-                _addTestRow(grp, "2.15 II.A Privato: IVA NON sottratta (spesa=15000)",
-                    ivaOk, ivaOk ? [] : ["Atteso spesa=15000, ottenuto " + spesaNoIva + ". params=" + JSON.stringify(resNoIva.params)]);
-            } catch (e) {
-                _addTestRow(grp, "2.15 II.A Privato: IVA NON sottratta", false, [e.message]);
-            }
-
-            /* Test 2.16 — SCHEDE_TECNICHE.III.G ha campo potenza_elettrica */
-            try {
-                var schede = engines.SCHEDE_TECNICHE;
-                var iiiG = schede && schede["III.G"];
-                var hasCampi = iiiG && iiiG.campi
-                    && iiiG.campi.some(function(c) { return c.id === "potenza_elettrica"; });
-                _addTestRow(grp, "2.16 SCHEDE_TECNICHE.III.G ha campo potenza_elettrica",
-                    hasCampi, hasCampi ? [] : ["Campo potenza_elettrica non trovato in SCHEDE_TECNICHE.III.G"]);
-            } catch (e) {
-                _addTestRow(grp, "2.16 SCHEDE_TECNICHE.III.G campo potenza_elettrica", false, [e.message]);
-            }
-
-            /* Test 2.17 — PREMIALITA_CONFIG.made_in_eu.applicabile_a include Titolo III */
-            try {
-                var premialita = engines.PREMIALITA_CONFIG;
-                var appA = premialita && premialita.made_in_eu && premialita.made_in_eu.applicabile_a;
-                var hasIII = appA && Array.isArray(appA) && appA.some(function(c) { return c.indexOf("III") !== -1 || c.indexOf("3") !== -1; });
-                _addTestRow(grp, "2.17 made_in_eu applicabile_a include Titolo III",
-                    hasIII, hasIII ? [] : ["Titolo III non trovato in applicabile_a: " + JSON.stringify(appA)]);
-            } catch (e) {
-                _addTestRow(grp, "2.17 made_in_eu applicabile_a include Titolo III", false, [e.message]);
-            }
-
-            /* Test 2.18 — TERMINI_CONFIG.accesso_diretto_gg === 60 */
-            try {
-                var accessoGg = (engines.TERMINI_CONFIG && engines.TERMINI_CONFIG.accesso_diretto_gg) || -1;
-                _addTestRow(grp, "2.18 TERMINI_CONFIG.accesso_diretto_gg = 60",
-                    accessoGg === 60, accessoGg !== 60 ? ["Atteso 60, ottenuto " + accessoGg] : []);
-            } catch (e) {
-                _addTestRow(grp, "2.18 TERMINI_CONFIG.accesso_diretto_gg", false, [e.message]);
-            }
-
-            /* Test 2.19 — III.A/III.B Ci PDC (Manuale Tabella 9) */
-            try {
-                var ciA = engines.RULES.interventi["III.A"].coefficienti_ci;
-                var ciB = engines.RULES.interventi["III.B"].coefficienti_ci;
-                var ok = ciA && ciB
-                    && Math.abs(ciA["Ci_PDC_aria_aria_split_le12kW"] - 0.070) < 0.001
-                    && Math.abs(ciA["Ci_PDC_aria_aria_fixed_double_duct_le12kW"] - 0.200) < 0.001
-                    && Math.abs(ciA["Ci_PDC_aria_aria_VRF_12_35kW"] - 0.150) < 0.001
-                    && Math.abs(ciA["Ci_PDC_aria_aria_VRF_gt35kW"] - 0.055) < 0.001
-                    && Math.abs(ciA["Ci_PDC_aria_aria_rooftop_le35kW"] - 0.150) < 0.001
-                    && Math.abs(ciA["Ci_PDC_aria_aria_rooftop_gt35kW"] - 0.055) < 0.001
-                    && Math.abs(ciA["Ci_PDC_aria_acqua_le35kW"] - 0.150) < 0.001
-                    && Math.abs(ciA["Ci_PDC_aria_acqua_gt35kW"] - 0.060) < 0.001
-                    && Math.abs(ciA["Ci_PDC_acqua_aria_le35kW"] - 0.160) < 0.001
-                    && Math.abs(ciA["Ci_PDC_acqua_aria_gt35kW"] - 0.060) < 0.001
-                    && Math.abs(ciA["Ci_PDC_acqua_acqua_le35kW"] - 0.160) < 0.001
-                    && Math.abs(ciA["Ci_PDC_acqua_acqua_gt35kW"] - 0.060) < 0.001
-                    && Math.abs(ciA["Ci_PDC_salamoia_aria_le35kW"] - 0.160) < 0.001
-                    && Math.abs(ciA["Ci_PDC_salamoia_aria_gt35kW"] - 0.060) < 0.001
-                    && Math.abs(ciA["Ci_PDC_salamoia_acqua_le35kW"] - 0.160) < 0.001
-                    && Math.abs(ciA["Ci_PDC_salamoia_acqua_gt35kW"] - 0.060) < 0.001
-                    && Math.abs(ciA["Ci_PDC_gas_acqua_le35kW"] - 0.120) < 0.001
-                    && Math.abs(ciA["Ci_PDC_gas_acqua_gt35kW"] - 0.050) < 0.001;
-                var msg = ok ? [] : ["Discrepanza Ci PDC: " + JSON.stringify(ciA)];
-                _addTestRow(grp, "2.19 III.A/III.B Ci PDC (Tabella 9 Manuale)", ok, msg);
-            } catch (e) {
-                _addTestRow(grp, "2.19 III.A/III.B Ci PDC", false, [e.message]);
-            }
-
-            /* Test 2.20 — III.F fasce potenza (Manuale Tabella 14) */
-            try {
-                var fasce = engines.RULES.interventi["III.F"].fasce_potenza;
-                var ok = Array.isArray(fasce) && fasce.length === 3
-                    && fasce[0].max_kw === 50 && Math.abs(fasce[0].cmax_kw - 200) < 0.1 && fasce[0].imax === 6500
-                    && fasce[1].min_kw === 50 && fasce[1].max_kw === 150 && Math.abs(fasce[1].cmax_kw - 160) < 0.1 && fasce[1].imax === 15000
-                    && fasce[2].min_kw === 150 && Math.abs(fasce[2].cmax_kw - 130) < 0.1 && fasce[2].imax === 30000;
-                _addTestRow(grp, "2.20 III.F fasce potenza (Tabella 14 Manuale)", ok, ok ? [] : ["Fasce: " + JSON.stringify(fasce)]);
-            } catch (e) {
-                _addTestRow(grp, "2.20 III.F fasce potenza", false, [e.message]);
-            }
-
-            /* Test 2.21 — III.D Ci solare termico per-uso (Manuale Tabella 16) */
-            try {
-                var ciD = engines.RULES.interventi["III.D"].coefficienti_ci;
-                var ok = ciD && ciD["Solar Cooling"] && ciD["ACS"]
-                    && ciD["Solar Cooling"][0].sl_max === 12 && Math.abs(ciD["Solar Cooling"][0].ci - 0.43) < 0.01
-                    && ciD["Solar Cooling"][1].sl_max === 50 && Math.abs(ciD["Solar Cooling"][1].ci - 0.40) < 0.01
-                    && ciD["Solar Cooling"][2].sl_max === 200 && Math.abs(ciD["Solar Cooling"][2].ci - 0.17) < 0.01
-                    && ciD["Solar Cooling"][3].sl_max === 500 && Math.abs(ciD["Solar Cooling"][3].ci - 0.15) < 0.01
-                    && ciD["Solar Cooling"][4].sl_max === Infinity && Math.abs(ciD["Solar Cooling"][4].ci - 0.14) < 0.01
-                    && ciD["ACS"][0].sl_max === 12 && Math.abs(ciD["ACS"][0].ci - 0.35) < 0.01
-                    && ciD["ACS/Riscaldamento"][0].sl_max === 12 && Math.abs(ciD["ACS/Riscaldamento"][0].ci - 0.36) < 0.01
-                    && ciD["Concentrazione"][0].sl_max === 12 && Math.abs(ciD["Concentrazione"][0].ci - 0.38) < 0.01;
-                _addTestRow(grp, "2.21 III.D Ci solare per uso (Tabella 16 Manuale)", ok, ok ? [] : ["Ci D: " + JSON.stringify(ciD)]);
-            } catch (e) {
-                _addTestRow(grp, "2.21 III.D Ci solare", false, [e.message]);
-            }
-
-            /* Test 2.22 — QUF / hr (Manuale Tabella 8/11) */
-            try {
-                var zone = engines.RULES.fasce_climatiche;
-                var ok = zone && zone["Zona A"].quf === 600 && zone["Zona B"].quf === 850
-                    && zone["Zona C"].quf === 1100 && zone["Zona D"].quf === 1400
-                    && zone["Zona E"].quf === 1700 && zone["Zona F"].quf === 1800;
-                _addTestRow(grp, "2.22 QUF / hr (Tabella 8/11 Manuale)", ok, ok ? [] : ["QUF: " + JSON.stringify(zone)]);
-            } catch (e) {
-                _addTestRow(grp, "2.22 QUF", false, [e.message]);
-            }
-
-            /* Test 2.23 — II.A Isolamento Cmax (Manuale Tabella 7) */
-            try {
-                var varA = engines.RULES.interventi["II.A"].varianti;
-                var ok = varA && varA["Coperture Esterno"].cmax === 300
-                    && varA["Coperture Interno"].cmax === 150
-                    && varA["Coperture Ventilata"].cmax === 350
-                    && varA["Parete Esterna"].cmax === 200
-                    && varA["Parete Interna"].cmax === 100
-                    && varA["Parete Ventilata"].cmax === 250
-                    && varA["Pavimenti Esterno"].cmax === 170
-                    && varA["Pavimenti Interno"].cmax === 150;
-                _addTestRow(grp, "2.23 II.A Cmax isolamento (Tabella 7 Manuale)", ok, ok ? [] : ["II.A: " + JSON.stringify(varA)]);
-            } catch (e) {
-                _addTestRow(grp, "2.23 II.A", false, [e.message]);
-            }
-
-            /* Test 2.24 — II.B Infissi Cmax (Manuale Tabella 7) */
-            try {
-                var varB = engines.RULES.interventi["II.B"].varianti;
-                var ok = varB && varB["Zone A,B,C"].cmax === 700 && varB["Zone D,E,F"].cmax === 800;
-                _addTestRow(grp, "2.24 II.B Cmax infissi (Tabella 7 Manuale)", ok, ok ? [] : ["II.B: " + JSON.stringify(varB)]);
-            } catch (e) {
-                _addTestRow(grp, "2.24 II.B", false, [e.message]);
-            }
-
-            /* Test 2.25 — II.C Cmax schermature (Manuale Tabella 7) */
-            try {
-                var varC = engines.RULES.interventi["II.C"].varianti;
-                var ok = varC && varC["Schermature mobili"].cmax === 250
-                    && varC["Schermature fisse"].cmax === 250
-                    && varC["Filtrazione non riflettente"].cmax === 130
-                    && varC["Filtrazione riflettente"].cmax === 80;
-                _addTestRow(grp, "2.25 II.C Cmax schermature (Tabella 7 Manuale)", ok, ok ? [] : ["II.C: " + JSON.stringify(varC)]);
-            } catch (e) {
-                _addTestRow(grp, "2.25 II.C", false, [e.message]);
-            }
-
-            /* Test 2.26 — II.D NZEB Cmax (Manuale Tabella 7) */
-            try {
-                var varD = engines.RULES.interventi["II.D"].varianti;
-                var ok = varD && varD["Demolizione e ricostruzione"].cmax === 1300
-                    && varD["Ampliamento ≤25%"].cmax === 1000;
-                _addTestRow(grp, "2.26 II.D Cmax NZEB (Tabella 7 Manuale)", ok, ok ? [] : ["II.D: " + JSON.stringify(varD)]);
-            } catch (e) {
-                _addTestRow(grp, "2.26 II.D", false, [e.message]);
-            }
-
-            /* Test 2.27 — II.E Cmax illuminazione (Manuale Tabella 7) */
-            try {
-                var varE = engines.RULES.interventi["II.E"].varianti;
-                var ok = varE && varE["Edifici privati"].cmax === 35
-                    && varE["Edifici PA"].cmax === 15;
-                _addTestRow(grp, "2.27 II.E Cmax illuminazione (Tabella 7 Manuale)", ok, ok ? [] : ["II.E: " + JSON.stringify(varE)]);
-            } catch (e) {
-                _addTestRow(grp, "2.27 II.E", false, [e.message]);
-            }
-
-            /* Test 2.28 — II.F BAC Cmax (Manuale Tabella 7) */
-            try {
-                var varF = engines.RULES.interventi["II.F"].varianti;
-                var ok = varF && varF["Classe A EN 15232"].cmax === 70
-                    && varF["Classe B EN 15232"].cmax === 60;
-                _addTestRow(grp, "2.28 II.F Cmax BAC (Tabella 7 Manuale)", ok, ok ? [] : ["II.F: " + JSON.stringify(varF)]);
-            } catch (e) {
-                _addTestRow(grp, "2.28 II.F", false, [e.message]);
-            }
-
-            /* Test 2.29 — II.G Cmax ricarica EV (Manuale Tabella II.G) */
-            try {
-                var varG = engines.RULES.interventi["II.G"].varianti;
-                var ok = varG && varG["Punto ricarica Monofase"].cmax_fisso === 2400
-                    && varG["Punto ricarica Trifase"].cmax_fisso === 8400
-                    && varG["Potenza > 22 kW e ≤ 50 kW"].cmax_kw === 1200
-                    && varG["Potenza > 50 kW e ≤ 100 kW"].cmax_fisso_infrastruttura === 60000
-                    && varG["Potenza > 100 kW"].cmax_fisso_infrastruttura === 110000;
-                _addTestRow(grp, "2.29 II.G Cmax ricarica (Manuale)", ok, ok ? [] : ["II.G: " + JSON.stringify(varG)]);
-            } catch (e) {
-                _addTestRow(grp, "2.29 II.G", false, [e.message]);
-            }
-
-            /* Test 2.30 — II.H FV scaglioni + accumulo (Manuale Tabella II.H) */
-            try {
-                var scag = engines.RULES.interventi["II.H"].scaglioni_fv;
-                var acc = engines.RULES.interventi["II.H"].accumulo;
-                var ok = scag && acc && scag.length === 4
-                    && scag[0].fino_a === 20 && scag[0].cmax === 1500
-                    && scag[1].fino_a === 200 && scag[1].cmax === 1200
-                    && scag[2].fino_a === 600 && scag[2].cmax === 1100
-                    && scag[3].fino_a === 1000 && scag[3].cmax === 1050
-                    && acc.cmax === 1000;
-                _addTestRow(grp, "2.30 II.H FV scaglioni + accumulo (Manuale)", ok, ok ? [] : ["II.H: " + JSON.stringify(scag) + " acc:" + JSON.stringify(acc)]);
-            } catch (e) {
-                _addTestRow(grp, "2.30 II.H", false, [e.message]);
-            }
-
-            /* Test 2.31 — III.C Ci biomassa per tipo (Manuale Tabella 10) */
-            try {
-                var ciC = engines.RULES.interventi["III.C"].coeff_ci;
-                var ok = ciC && ciC["Caldaia"] && Array.isArray(ciC["Caldaia"])
-                    && ciC["Caldaia"][0].min_kw === 0 && ciC["Caldaia"][0].max_kw === 35 && Math.abs(ciC["Caldaia"][0].ci - 0.060) < 0.001
-                    && ciC["Caldaia"][1].min_kw === 35 && ciC["Caldaia"][1].max_kw === 500 && Math.abs(ciC["Caldaia"][1].ci - 0.025) < 0.001
-                    && ciC["Caldaia"][2].min_kw === 500 && ciC["Caldaia"][2].max_kw === Infinity && Math.abs(ciC["Caldaia"][2].ci - 0.020) < 0.001
-                    && ciC["Stufa"] && ciC["Stufa"]["Pellet"][0].ci === 0.055
-                    && ciC["Stufa"]["_default"][0].ci === 0.045;
-                _addTestRow(grp, "2.31 III.C Ci biomassa per tipo (Tabella 10 Manuale)", ok, ok ? [] : ["III.C coeff_ci: " + JSON.stringify(ciC)]);
-            } catch (e) {
-                _addTestRow(grp, "2.31 III.C Ci biomassa", false, [e.message]);
-            }
-
-            /* Test 2.32 — III.E scaglioni scaldacqua (Manuale III.E) */
-            try {
-                var cls = engines.RULES.interventi["III.E"].scaglioni_classe;
-                var ok = cls && cls["A"] && cls["A+"];
-                ok = ok && cls["A"][0].fino_a === 150 && cls["A"][0].incentivo_fisso === 500
-                    && cls["A"][1].oltre === true && cls["A"][1].incentivo_fisso === 1100
-                    && cls["A+"][0].fino_a === 150 && cls["A+"][0].incentivo_fisso === 700
-                    && cls["A+"][1].oltre === true && cls["A+"][1].incentivo_fisso === 1500;
-                _addTestRow(grp, "2.32 III.E scaglioni scaldacqua (Manuale)", ok, ok ? [] : ["III.E: " + JSON.stringify(cls)]);
-            } catch (e) {
-                _addTestRow(grp, "2.32 III.E", false, [e.message]);
-            }
-
-            /* Test 2.33 — III.G microcogenerazione (Manuale III.G) */
-            try {
-                var g = engines.RULES.interventi["III.G"];
-                var ok = g && g.perc === 0.65 && g.cmax === 5000 && g.imax === 100000;
-                _addTestRow(grp, "2.33 III.G cmax=5000 imax=100000 (Manuale)", ok, ok ? [] : ["III.G: " + JSON.stringify(g)]);
-            } catch (e) {
-                _addTestRow(grp, "2.33 III.G", false, [e.message]);
-            }
-
-            /* Test 2.34 — η_s_min per PDC aria/aria ≤12kW = 149 (Manuale Tabella 3) */
-            try {
-                var calc = fe.calculate("III.A", {
-                    tipologia_pdc: "aria/aria",
-                    potenza_pdc_kw: 8,
-                    scop: 4.0,
-                    eta_s: 160
-                }, { soggetto: "Privato residenziale", zonaClimatica: "Zona E" });
-                _addTestRow(grp, "2.34 η_s_min aria/aria ≤12kW = 149 (Tabella 3)",
-                    calc.params.eta_s_min_ecodesign === 149,
-                    ["Atteso 149, ottenuto " + calc.params.eta_s_min_ecodesign]);
-            } catch (e) {
-                _addTestRow(grp, "2.34 η_s_min aria/aria ≤12kW", false, [e.message]);
-            }
-
-            /* Test 2.35 — η_s_min per PDC aria/aria >12kW = 137 (Manuale Tabella 3) */
-            try {
-                var calc = fe.calculate("III.A", {
-                    tipologia_pdc: "aria/aria",
-                    potenza_pdc_kw: 20,
-                    scop: 4.0,
-                    eta_s: 160
-                }, { soggetto: "Privato residenziale", zonaClimatica: "Zona E" });
-                _addTestRow(grp, "2.35 η_s_min aria/aria >12kW = 137 (Tabella 3)",
-                    calc.params.eta_s_min_ecodesign === 137,
-                    ["Atteso 137, ottenuto " + calc.params.eta_s_min_ecodesign]);
-            } catch (e) {
-                _addTestRow(grp, "2.35 η_s_min aria/aria >12kW", false, [e.message]);
-            }
-
-            /* Test 2.36 — η_s_min per PDC aria/acqua = 110 (Manuale Tabella 3) */
-            try {
-                var calc = fe.calculate("III.A", {
-                    tipologia_pdc: "aria/acqua",
-                    potenza_pdc_kw: 10,
-                    scop: 4.5,
-                    eta_s: 150
-                }, { soggetto: "Privato residenziale", zonaClimatica: "Zona E" });
-                _addTestRow(grp, "2.36 η_s_min aria/acqua = 110 (Tabella 3)",
-                    calc.params.eta_s_min_ecodesign === 110,
-                    ["Atteso 110, ottenuto " + calc.params.eta_s_min_ecodesign]);
-            } catch (e) {
-                _addTestRow(grp, "2.36 η_s_min aria/acqua", false, [e.message]);
-            }
-
-            /* Test 2.37 — η_s_min per PDC acqua/aria = 137 (Manuale Tabella 4) */
-            try {
-                var calc = fe.calculate("III.A", {
-                    tipologia_pdc: "acqua/aria",
-                    potenza_pdc_kw: 15,
-                    scop: 5.0,
-                    eta_s: 170
-                }, { soggetto: "Privato residenziale", zonaClimatica: "Zona E" });
-                _addTestRow(grp, "2.37 η_s_min acqua/aria = 137 (Tabella 4)",
-                    calc.params.eta_s_min_ecodesign === 137,
-                    ["Atteso 137, ottenuto " + calc.params.eta_s_min_ecodesign]);
-            } catch (e) {
-                _addTestRow(grp, "2.37 η_s_min acqua/aria", false, [e.message]);
-            }
-
-            /* Test 2.38 — η_s_min per PDC acqua/acqua = 110 (Manuale Tabella 4) */
-            try {
-                var calc = fe.calculate("III.A", {
-                    tipologia_pdc: "acqua/acqua",
-                    potenza_pdc_kw: 30,
-                    scop: 5.2,
-                    eta_s: 180
-                }, { soggetto: "Privato residenziale", zonaClimatica: "Zona E" });
-                _addTestRow(grp, "2.38 η_s_min acqua/acqua = 110 (Tabella 4)",
-                    calc.params.eta_s_min_ecodesign === 110,
-                    ["Atteso 110, ottenuto " + calc.params.eta_s_min_ecodesign]);
-            } catch (e) {
-                _addTestRow(grp, "2.38 η_s_min acqua/acqua", false, [e.message]);
-            }
-
-            /* Test 2.39 — η_s_min per PDC gas/acqua (Tabella 5) */
-            try {
-                var calc = fe.calculate("III.A", {
-                    tipologia_pdc: "gas/acqua",
-                    potenza_pdc_kw: 50,
-                    scop: 1.6,
-                    eta_s: 130,
-                    eta_s_min_ecodesign: 110
-                }, { soggetto: "Privato residenziale", zonaClimatica: "Zona E" });
-                _addTestRow(grp, "2.39 η_s_min gas/acqua = 110 (Tabella 5)",
-                    calc.params.eta_s_min_ecodesign === 110,
-                    ["Atteso 110, ottenuto " + calc.params.eta_s_min_ecodesign]);
-            } catch (e) {
-                _addTestRow(grp, "2.39 η_s_min gas/acqua", false, [e.message]);
-            }
-
-            /* Test 2.40 — h_r zonali per III.C biomassa (Tabella 11 = Q_uf per zona) */
-            try {
-                var calcZonaE = fe.calculate("III.C", {
-                    potenza_nominale_kw: 25,
-                    classe_emissiva: "5 stelle",
-                    tipo_generatore: "Caldaia",
-                    riduzione_pp: "≤20%",
-                    costo_biomassa: 15000
-                }, { soggetto: "Privato residenziale", zonaClimatica: "Zona E" });
-                var calcZonaA = fe.calculate("III.C", {
-                    potenza_nominale_kw: 25,
-                    classe_emissiva: "5 stelle",
-                    tipo_generatore: "Caldaia",
-                    riduzione_pp: "≤20%",
-                    costo_biomassa: 15000
-                }, { soggetto: "Privato residenziale", zonaClimatica: "Zona A" });
-                var hrE = calcZonaE.params.ore_funzionamento_annue;
-                var hrA = calcZonaA.params.ore_funzionamento_annue;
-                var ok = hrE === 1700 && hrA === 600;
-                _addTestRow(grp, "2.40 h_r zonali (Tabella 11): Zona E=1700, Zona A=600",
-                    ok, ok ? [] : ["Zona E hr=" + hrE + " (atteso 1700), Zona A hr=" + hrA + " (atteso 600)"]);
-            } catch (e) {
-                _addTestRow(grp, "2.40 h_r zonali", false, [e.message]);
-            }
-
-            /* Test 2.41 — AUC presente in SOGGETTI_CONFIG */
-            try {
-                var aucConfig = engines.SOGGETTI_CONFIG?.AUC;
-                var ok = aucConfig && aucConfig.label && aucConfig.label.indexOf("AUC") !== -1;
-                _addTestRow(grp, "2.41 AUC in SOGGETTI_CONFIG", ok, ok ? [] : ["AUC non trovato: " + JSON.stringify(aucConfig)]);
-            } catch (e) {
-                _addTestRow(grp, "2.41 AUC in SOGGETTI_CONFIG", false, [e.message]);
-            }
-
-            /* Test 2.42 — NORMATIVA_VERSION aggiornata */
-            try {
-                var verNorm = engines.NORMATIVA_VERSION;
-                _addTestRow(grp, "2.42 NORMATIVA_VERSION = v2-20260609",
-                    verNorm === "v2-20260609", verNorm !== "v2-20260609" ? ["Versione: " + verNorm] : []);
-            } catch (e) {
-                _addTestRow(grp, "2.42 NORMATIVA_VERSION", false, [e.message]);
-            }
-
-            /* Valutazione complessiva */
-            var groupRows = grp.body.querySelectorAll(".test-row");
-            var okCount = 0; var failCountG = 0;
-            groupRows.forEach(function(r) {
-                if (r.classList.contains("pass")) okCount = okCount + 1;
-                else failCountG = failCountG + 1;
-            });
-            grp.badge.textContent = okCount + "/" + (okCount + failCountG) + " OK, " + failCountG + " FAIL";
-            if (failCountG > 0) grp.badge.className = "badge fail";
-            else grp.badge.className = "badge ok";
-        };
-
-        /* ========= 3. RULES ENGINE TESTS ========= */
-        var runRulesTests = async function() {
-            if (!engines) return;
-            var grp = _makeGroup("3. Rules Engine — Test unitari", "rules");
-
-            /* Test 3.1 — validateAmmissibilita: soggetto valido */
-            try {
-                var re = engines.RulesEngine;
-                var res = re.validateAmmissibilita({
-                    subjectType: "Pubblica Amministrazione",
-                    category: "B/1",
-                    buildingStatus: "esistente",
-                    selectedInterventi: ["III.A"]
-                });
-                _addTestRow(grp, "3.1 PA con III.A → ammissibile",
-                    res.success, res.success ? [] : res.errors);
-            } catch (e) {
-                _addTestRow(grp, "3.1 PA con III.A → ammissibile", false, [e.message]);
-            }
-
-            /* Test 3.2 — validateAmmissibilita: edificio nuovo → blocco */
-            try {
-                var re = engines.RulesEngine;
-                var res = re.validateAmmissibilita({
-                    subjectType: "Privato residenziale",
-                    category: "A/2",
-                    buildingStatus: "nuovo",
-                    selectedInterventi: ["III.A"]
-                });
-                _addTestRow(grp, "3.2 Edificio nuovo → blocco",
-                    !res.success, !res.success ? [] : ["Atteso blocco per edificio nuovo, ma validazione passata"]);
-            } catch (e) {
-                _addTestRow(grp, "3.2 Edificio nuovo → blocco", false, [e.message]);
-            }
-
-            /* Test 3.3 — III.G getInterventoCompatibility */
-            try {
-                var re = engines.RulesEngine;
-                var compat = re.getInterventoCompatibility("III.G", ["III"]);
-                _addTestRow(grp, "3.3 III.G compatibile con Titolo III",
-                    compat.isCompatible, compat.isCompatible ? [] : [compat.reason]);
-            } catch (e) {
-                _addTestRow(grp, "3.3 III.G compatibile con Titolo III", false, [e.message]);
-            }
-
-            /* Test 3.4 — II.G non compatibile con Titolo II */
-            try {
-                var re = engines.RulesEngine;
-                var compat = re.getInterventoCompatibility("II.G", ["III"]);
-                _addTestRow(grp, "3.4 II.G NON compatibile con Titolo III",
-                    !compat.isCompatible, !compat.isCompatible ? [] : ["Atteso incompatibile, ma risultato compatibile"]);
-            } catch (e) {
-                _addTestRow(grp, "3.4 II.G NON compatibile con Titolo III", false, [e.message]);
-            }
-
-            /* Test 3.5 — isSubjectCompatible PA → Titolo II */
-            try {
-                var re = engines.RulesEngine;
-                var compat = re.isSubjectCompatible("Pubblica Amministrazione", "II");
-                var compat3 = re.isSubjectCompatible("Pubblica Amministrazione", "III");
-                _addTestRow(grp, "3.5 PA compatibile con Titolo II e III",
-                    compat && compat3, !compat ? ["PA non compatibile con Titolo II"] : ["PA non compatibile con Titolo III"]);
-            } catch (e) {
-                _addTestRow(grp, "3.5 PA compatibile con Titolo II e III", false, [e.message]);
-            }
-
-            /* Test 3.6 — III.D solare termico senza impianto esistente (MS-010) */
-            try {
-                var re = engines.RulesEngine;
-                var res = re.validateAmmissibilita({
-                    subjectType: "Privato residenziale",
-                    category: "A/2",
-                    buildingStatus: "esistente",
-                    selectedInterventi: ["III.D"]
-                });
-                _addTestRow(grp, "3.6 III.D senza impianto esistente → ammissibile",
-                    res.success, res.success ? [] : res.errors);
-            } catch (e) {
-                _addTestRow(grp, "3.6 III.D senza impianto esistente → ammissibile", false, [e.message]);
-            }
-
-            /* Test 3.7 — Impresa require richiesta preliminare */
-            try {
-                var re = engines.RulesEngine;
-                var res = re.validateAmmissibilita({
-                    subjectType: "Impresa",
-                    category: "D/7",
-                    buildingStatus: "esistente",
-                    selectedInterventi: ["III.A"],
-                    richiestaPreliminareInviata: false
-                });
-                _addTestRow(grp, "3.7 Impresa senza preliminare → blocco",
-                    !res.success, !res.success ? [] : ["Atteso blocco, ma validazione passata"]);
-            } catch (e) {
-                _addTestRow(grp, "3.7 Impresa senza preliminare → blocco", false, [e.message]);
-            }
-
-            /* Test 3.8 — isSubjectCompatible Condominio → Titolo II bloccato */
-            try {
-                var re = engines.RulesEngine;
-                var compatII = re.isSubjectCompatible("Condominio", "II");
-                var compatIII = re.isSubjectCompatible("Condominio", "III");
-                _addTestRow(grp, "3.8 Condominio: Titolo II=blocco, Titolo III=OK",
-                    !compatII && compatIII, [!compatII ? "" : "Condominio compatibile con Titolo II (atteso blocco)",
-                        !compatIII ? "Condominio NON compatibile con Titolo III (atteso OK)" : ""].filter(function(x) { return x; }));
-            } catch (e) {
-                _addTestRow(grp, "3.8 Condominio Titolo II bloccato", false, [e.message]);
-            }
-
-            /* Test 3.9 — isSubjectCompatible Privato residenziale → Titolo II bloccato */
-            try {
-                var re = engines.RulesEngine;
-                var compatII = re.isSubjectCompatible("Privato residenziale", "II");
-                var compatIII = re.isSubjectCompatible("Privato residenziale", "III");
-                _addTestRow(grp, "3.9 Privato residenziale: Titolo II=blocco, Titolo III=OK",
-                    !compatII && compatIII, [!compatII ? "" : "Privato res. compatibile con Titolo II (atteso blocco)",
-                        !compatIII ? "Privato res. NON compatibile con Titolo III (atteso OK)" : ""].filter(function(x) { return x; }));
-            } catch (e) {
-                _addTestRow(grp, "3.9 Privato residenziale Titolo II bloccato", false, [e.message]);
-            }
-
-            /* Valutazione complessiva */
-            var groupRows = grp.body.querySelectorAll(".test-row");
-            var okCount = 0; var failCountG = 0;
-            groupRows.forEach(function(r) {
-                if (r.classList.contains("pass")) okCount = okCount + 1;
-                else failCountG = failCountG + 1;
-            });
-            grp.badge.textContent = okCount + "/" + (okCount + failCountG) + " OK, " + failCountG + " FAIL";
-            if (failCountG > 0) grp.badge.className = "badge fail";
-            else grp.badge.className = "badge ok";
-        };
-
-        /* ========= 4. CROSS-RULE ENGINE TESTS ========= */
-        var runCrossTests = async function() {
-            if (!engines) return;
-            var grp = _makeGroup("4. Cross-Rule Engine — Test unitari", "cross");
-
-            /* Test 4.1 — III.A + III.C mutualmente esclusivi */
-            try {
-                var cr = engines.CrossRuleEngine;
-                var res = cr.validateSelection(["III.A", "III.C"]);
-                _addTestRow(grp, "4.1 III.A + III.C → blocco (mutualmente esclusivi)",
-                    !res.success, !res.success ? [] : ["Atteso blocco, validazione passata: " + (res.errors || []).join("; ")]);
-            } catch (e) {
-                _addTestRow(grp, "4.1 III.A + III.C → blocco", false, [e.message]);
-            }
-
-            /* Test 4.2 — III.B + III.F mutualmente esclusivi */
-            try {
-                var cr = engines.CrossRuleEngine;
-                var res = cr.validateSelection(["III.B", "III.F"]);
-                _addTestRow(grp, "4.2 III.B + III.F → blocco (mutualmente esclusivi)",
-                    !res.success, !res.success ? [] : ["Atteso blocco, validazione passata"]);
-            } catch (e) {
-                _addTestRow(grp, "4.2 III.B + III.F → blocco", false, [e.message]);
-            }
-
-            /* Test 4.3 — II.H senza III.A → blocco (paired) */
-            try {
-                var cr = engines.CrossRuleEngine;
-                var res = cr.validateSelection(["II.H"]);
-                _addTestRow(grp, "4.3 II.H senza III.A → blocco (paired)",
-                    !res.success, !res.success ? [] : ["Atteso blocco per pairing mancante"]);
-            } catch (e) {
-                _addTestRow(grp, "4.3 II.H senza III.A → blocco", false, [e.message]);
-            }
-
-            /* Test 4.4 — II.H + III.A → OK (paired rispettato) */
-            try {
-                var cr = engines.CrossRuleEngine;
-                var res = cr.validateSelection(["III.A", "II.H"]);
-                _addTestRow(grp, "4.4 III.A + II.H → OK (pairing rispettato)",
-                    res.success, res.success ? [] : res.errors);
-            } catch (e) {
-                _addTestRow(grp, "4.4 III.A + II.H → OK", false, [e.message]);
-            }
-
-            /* Test 4.5 — III.A + III.G → OK (multi-intervento Titolo III) */
-            try {
-                var cr = engines.CrossRuleEngine;
-                var res = cr.validateSelection(["III.A", "III.G"]);
-                _addTestRow(grp, "4.5 III.A + III.G → OK (multi Titolo III)",
-                    res.success, res.success ? [] : res.errors);
-            } catch (e) {
-                _addTestRow(grp, "4.5 III.A + III.G → OK", false, [e.message]);
-            }
-
-            /* Test 4.6 — II.C senza II.B → blocco (paired) */
-            try {
-                var cr = engines.CrossRuleEngine;
-                var res = cr.validateSelection(["II.C"]);
-                _addTestRow(grp, "4.6 II.C senza II.B → blocco (schermature richiedono infissi)",
-                    !res.success, !res.success ? [] : ["Atteso blocco per pairing mancante"]);
-            } catch (e) {
-                _addTestRow(grp, "4.6 II.C senza II.B → blocco", false, [e.message]);
-            }
-
-            /* Valutazione complessiva */
-            var groupRows = grp.body.querySelectorAll(".test-row");
-            var okCount = 0; var failCountG = 0;
-            groupRows.forEach(function(r) {
-                if (r.classList.contains("pass")) okCount = okCount + 1;
-                else failCountG = failCountG + 1;
-            });
-            grp.badge.textContent = okCount + "/" + (okCount + failCountG) + " OK, " + failCountG + " FAIL";
-            if (failCountG > 0) grp.badge.className = "badge fail";
-            else grp.badge.className = "badge ok";
-        };
-
-        /* ========= EVENT BINDINGS ========= */
-        el("btn-run-ms").onclick = function() { _clearOutput(); runMSScenarios(); };
-        el("btn-run-formula").onclick = function() { _clearOutput(); runFormulaTests(); };
-        el("btn-run-rules").onclick = function() { _clearOutput(); runRulesTests(); };
-        el("btn-run-cross").onclick = function() { _clearOutput(); runCrossTests(); };
-        el("btn-run-all").onclick = async function() {
-            _clearOutput();
-            var btns = ["btn-run-ms","btn-run-formula","btn-run-rules","btn-run-cross","btn-run-all","btn-reset"];
-            btns.forEach(function(b) { el(b).disabled = true; });
-            try {
-                await runMSScenarios();
-                await runFormulaTests();
-                await runRulesTests();
-                await runCrossTests();
-            } finally {
-                btns.forEach(function(b) { el(b).disabled = false; });
-            }
-        };
-        el("btn-reset").onclick = function() { _clearOutput(); };
-
-        /* Carica messaggio iniziale */
-        if (!engines) {
-            var errDiv = document.createElement("div");
-            errDiv.className = "error-msg";
-            errDiv.innerHTML = "Moduli non caricati. Prova ad aprire questa pagina con un server HTTP locale:<br>"
-                + "<pre>python3 -m http.server 8080 --directory " + window.location.pathname.split('/test/')[0] + "</pre>"
-                + "Poi apri http://localhost:8080/test/test_suite.html";
-            out.appendChild(errDiv);
+        testCount = testCount + 1;
+        if (passed) {
+          passCount = passCount + 1;
         } else {
-            var info = document.createElement("div");
-            info.style.cssText = "color:#666;font-size:0.85rem;padding:12px;";
-            info.innerHTML = 'Premi uno dei pulsanti sopra per avviare i test.'
-                + '<br><span style="font-size:0.75rem;color:#888;">'
-                + 'Nota: se i moduli JS sono in cache, fai Ctrl+F5 (hard refresh) per ricaricarli.</span>';
-            out.appendChild(info);
+          failCount = failCount + 1;
         }
+        var passRows = parent.passBody.querySelectorAll(".test-row").length;
+        var failRows = parent.failBody.querySelectorAll(".test-row").length;
+        var totalRows = passRows + failRows;
+        parent.badge.textContent = passRows + "/" + failRows + " OK/FAIL";
+        if (failRows > 0) {
+          parent.badge.className = "badge fail";
+        } else {
+          parent.badge.className = "badge ok";
+        }
+        _updateStats();
+        return { passed: passed, detail: detailArr };
+      };
+
+      var _resetGroupCounts = function () {
+        var groups = out.querySelectorAll(".test-group");
+        groups.forEach(function (g) {
+          var badge = g.querySelector(".badge[id]");
+          if (badge) badge.textContent = "0";
+        });
+      };
+
+      var _clearOutput = function () {
+        out.innerHTML = "";
+        testCount = 0;
+        passCount = 0;
+        failCount = 0;
+        _updateStats();
+        _hideProgress();
+      };
+
+      /* ========= MODULE LOADER (cache-proof: fetch + Blob URL) ========= */
+      var _baseHref = document.baseURI || location.href;
+      var _modDir = function (url) {
+        return url.substring(0, url.lastIndexOf("/") + 1);
+      };
+      var _bustNum = 0;
+      var _cacheBustImport = async function (relPath) {
+        _bustNum++;
+        var baseUrl = new URL(".", _baseHref).href;
+        var fullUrl = new URL(relPath, baseUrl).href;
+        var t = Date.now() + "-" + _bustNum + "-" + Math.random();
+        var bustUrl = fullUrl + "?t=" + t;
+        var resp = await fetch(bustUrl);
+        if (!resp.ok) throw new Error("Fetch " + bustUrl + " → " + resp.status);
+        var src = await resp.text();
+        var dir = _modDir(fullUrl);
+        src = src.replace(/from\s+["']\.\/([^"']+?)["']/g, function (m, imp) {
+          return (
+            'from "' +
+            dir +
+            imp +
+            "?t=" +
+            Date.now() +
+            "-" +
+            _bustNum +
+            "-" +
+            Math.random() +
+            '"'
+          );
+        });
+        return await import(
+          URL.createObjectURL(new Blob([src], { type: "text/javascript" }))
+        );
+      };
+
+      /* ========= IMPORTS ========= */
+      var engines = null;
+      var _feDiag = {};
+
+      try {
+        var m = await _cacheBustImport("../js/core/qa_manager.js");
+        var QaManager = m.QaManager;
+        var mR = await _cacheBustImport("../js/core/rules_engine.js");
+        var RulesEngine = mR.RulesEngine;
+        var mF = await _cacheBustImport("../js/core/formula_engine.js");
+        var FormulaEngine = mF.FormulaEngine;
+        var mC = await _cacheBustImport("../js/core/cross_rule_engine.js");
+        var CrossRuleEngine = mC.CrossRuleEngine;
+        var mN = await _cacheBustImport("../js/core/normativa.js");
+        var RULES = mN.RULES;
+        var TEST_SCENARIOS = mN.TEST_SCENARIOS;
+        var INTERVENTI = mN.INTERVENTI;
+        var FORMULE_INCENTIVO = mN.FORMULE_INCENTIVO;
+        var SCHEDE_TECNICHE = mN.SCHEDE_TECNICHE;
+        var PREMIALITA_CONFIG = mN.PREMIALITA_CONFIG;
+        var OBBLIGO_MANTENIMENTO_ANNI = mN.OBBLIGO_MANTENIMENTO_ANNI;
+        var TERMINI_CONFIG = mN.TERMINI_CONFIG;
+        var PROCEDURA_CONFIG = mN.PROCEDURA_CONFIG;
+        engines = {
+          QaManager: QaManager,
+          RulesEngine: RulesEngine,
+          FormulaEngine: FormulaEngine,
+          CrossRuleEngine: CrossRuleEngine,
+          RULES: RULES,
+          TEST_SCENARIOS: TEST_SCENARIOS,
+          INTERVENTI: INTERVENTI,
+          FORMULE_INCENTIVO: FORMULE_INCENTIVO,
+          SCHEDE_TECNICHE: SCHEDE_TECNICHE,
+          PREMIALITA_CONFIG: PREMIALITA_CONFIG,
+          OBBLIGO_MANTENIMENTO_ANNI: OBBLIGO_MANTENIMENTO_ANNI,
+          TERMINI_CONFIG: TERMINI_CONFIG,
+          PROCEDURA_CONFIG: PROCEDURA_CONFIG,
+          NORMATIVA_VERSION: mN.NORMATIVA_VERSION,
+          SOGGETTI_CONFIG: mN.SOGGETTI_CONFIG,
+          FE_VERSION: mF.FormulaEngine._version,
+          FE_FEATURES: mF.FormulaEngine._features,
+        };
+        /* Diagnostic: fetch formula_engine.js raw from disk */
+        try {
+          var baseUrl = new URL(".", _baseHref).href;
+          var feUrl =
+            new URL("../js/core/formula_engine.js", baseUrl).href +
+            "?t=" +
+            Date.now() +
+            Math.random();
+          var _resp = await fetch(feUrl);
+          var _txt = await _resp.text();
+          _feDiag = {
+            length: _txt.length,
+            hasCondensa: _txt.indexOf("condensa") !== -1,
+            hasCmaxMaggiorazione: _txt.indexOf("1.3") !== -1,
+          };
+        } catch (e) {
+          _feDiag = { error: e.message };
+        }
+      } catch (e) {
+        var errDiv = document.createElement("div");
+        errDiv.className = "error-msg";
+        errDiv.textContent = "ERRORE CARICAMENTO MODULI: " + e.message;
+        out.appendChild(errDiv);
+      }
+      /* ========= /IMPORTS ========= */
+
+      /* ========= 1. MS SCENARIOS ========= */
+      var runMSScenarios = async function () {
+        if (!engines) return;
+        var grp = _makeGroup("1. Scenari MS (QaManager.runAllTests)", "ms");
+        try {
+          var report = engines.QaManager.runAllTests();
+          var passed = 0;
+          var failed = 0;
+          report.results.forEach(function (r) {
+            var p = r.success;
+            if (p) {
+              passed = passed + 1;
+            } else {
+              failed = failed + 1;
+            }
+            _addTestRow(grp, r.id + " — " + r.nome, p, r.dettagli);
+          });
+          grp.badge.textContent =
+            passed + "/" + report.results.length + " OK, " + failed + " FAIL";
+          if (failed > 0) {
+            grp.badge.className = "badge fail";
+          }
+        } catch (e) {
+          _addTestRow(grp, "QaManager.runAllTests() errore", false, [
+            e.message,
+          ]);
+        }
+      };
+
+      /* ========= 2. FORMULA ENGINE TESTS ========= */
+      var runFormulaTests = async function () {
+        if (!engines) return;
+        var grp = _makeGroup("2. Formula Engine — Test unitari", "formula");
+
+        var calcIIA = function (fe, tipo, spesa, mq, soggetto) {
+          return fe.calculate(
+            "II.A",
+            {
+              tipo_superficie_opaca: tipo,
+              costo_isolamento: spesa || 16000,
+              superficie_isolata_mq: mq || 80,
+            },
+            { soggetto: soggetto || "Impresa", zonaClimatica: "Zona E" },
+          );
+        };
+
+        var fe = engines.FormulaEngine;
+
+        /* Test 2.0 — Version check: codice FormulaEngine aggiornato */
+        try {
+          var ver = fe._version;
+          var feat = fe._features;
+          var expectedVer = "v3-20260609";
+          var hasFeatures =
+            feat &&
+            feat.hasCondensaWarning &&
+            feat.hasCmaxMaggiorazione30 &&
+            feat.hasHrZonale &&
+            feat.hasAucSoggetto;
+          var versionOk = ver === expectedVer;
+          var diag = [];
+          if (!versionOk)
+            diag.push("Versione: " + ver + " (attesa " + expectedVer + ")");
+          if (!hasFeatures) diag.push("Features: " + JSON.stringify(feat));
+          var hasEtaMin = feat && feat.hasEtaMinPerTipo;
+          if (!hasEtaMin) diag.push("hasEtaMinPerTipo mancante in features");
+          _addTestRow(
+            grp,
+            "2.0 Version check: FormulaEngine aggiornato",
+            versionOk && hasFeatures && hasEtaMin,
+            diag,
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.0 Version check", false, [e.message]);
+        }
+
+        /* Test 2.0a — Verifica indexOf("Intern") matcha "Parete Interna" (fix radice comune) */
+        try {
+          var _findInt = "Parete Interna".indexOf("Intern");
+          var _findCoper = "Coperture Interno".indexOf("Intern");
+          var _findPav = "Pavimenti Interno".indexOf("Intern");
+          _addTestRow(
+            grp,
+            "2.0a indexOf('Intern') su varianti interne -> OK",
+            _findInt >= 0 && _findCoper >= 0 && _findPav >= 0,
+            [
+              "Parete Interna=" + _findInt,
+              "Coperture Interno=" + _findCoper,
+              "Pavimenti Interno=" + _findPav,
+            ],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.0a Diagnostica encoding", false, [e.message]);
+        }
+
+        /* Test 2.1 — II.A Parete Esterna: cmax=200, no warning condensa */
+        try {
+          var res = calcIIA(fe, "Parete Esterna");
+          var cmaxOk = res.params.cmax === 200;
+          var noWarn = !res.warnings || res.warnings.length === 0;
+          _addTestRow(
+            grp,
+            "2.1 II.A Parete Esterna → cmax=200, no warning condensa",
+            cmaxOk && noWarn,
+            cmaxOk
+              ? []
+              : ["Atteso cmax=200, ottenuto " + res.params.cmax].concat(
+                  noWarn
+                    ? []
+                    : ["Warning inaspettato: " + res.warnings.join(", ")],
+                ),
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.1 II.A Parete Esterna → cmax=200", false, [
+            e.message,
+          ]);
+        }
+
+        var _warnCheck = function (res) {
+          return (
+            res.warnings &&
+            res.warnings.length > 0 &&
+            res.warnings[0].indexOf("condensa") !== -1
+          );
+        };
+
+        /* Test 2.2 — II.A Parete Interna: cmax base 100 */
+        try {
+          var res = calcIIA(fe, "Parete Interna");
+          _addTestRow(
+            grp,
+            "2.2 II.A Parete Interna → cmax ≥ 100",
+            res.params.cmax >= 100,
+            ["Atteso cmax≥100, ottenuto " + res.params.cmax],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.2 II.A Parete Interna → cmax", false, [
+            e.message,
+          ]);
+        }
+
+        /* Test 2.3 — II.A Parete Interna: warning condensa UNI 13788 */
+        try {
+          var res = calcIIA(fe, "Parete Interna");
+          var hasWarn = _warnCheck(res);
+          var cmaxOk = res.params.cmax >= 130;
+          var diagMsgs = [];
+          if (!hasWarn)
+            diagMsgs.push("Warnings: " + JSON.stringify(res.warnings));
+          if (!cmaxOk)
+            diagMsgs.push("cmax: " + res.params.cmax + " (atteso ≥130)");
+          _addTestRow(
+            grp,
+            "2.3 II.A Parete Interna → cmax≥130 + warning condensa",
+            hasWarn && cmaxOk,
+            diagMsgs,
+          );
+        } catch (e) {
+          _addTestRow(
+            grp,
+            "2.3 II.A Parete Interna → warning condensa",
+            false,
+            [e.message],
+          );
+        }
+
+        /* Test 2.4 — II.A Coperture Interno: cmax base 150 */
+        try {
+          var res = calcIIA(fe, "Coperture Interno");
+          _addTestRow(
+            grp,
+            "2.4 II.A Coperture Interno → cmax ≥ 150",
+            res.params.cmax >= 150,
+            ["Atteso cmax≥150, ottenuto " + res.params.cmax],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.4 II.A Coperture Interno → cmax", false, [
+            e.message,
+          ]);
+        }
+
+        /* Test 2.5 — II.A Coperture Interno: warning condensa */
+        try {
+          var res = calcIIA(fe, "Coperture Interno");
+          var hasWarn = _warnCheck(res);
+          var info = !hasWarn ? " (assente — forse cache browser)" : "";
+          _addTestRow(
+            grp,
+            "2.5 II.A Coperture Interno → warning condensa" + info,
+            hasWarn,
+            hasWarn ? [] : ["Warnings: " + JSON.stringify(res.warnings)],
+          );
+        } catch (e) {
+          _addTestRow(
+            grp,
+            "2.5 II.A Coperture Interno → warning condensa",
+            false,
+            [e.message],
+          );
+        }
+
+        /* Test 2.6 — II.A Pavimenti Interno: cmax base 150 */
+        try {
+          var res = calcIIA(fe, "Pavimenti Interno");
+          _addTestRow(
+            grp,
+            "2.6 II.A Pavimenti Interno → cmax ≥ 150",
+            res.params.cmax >= 150,
+            ["Atteso cmax≥150, ottenuto " + res.params.cmax],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.6 II.A Pavimenti Interno → cmax", false, [
+            e.message,
+          ]);
+        }
+
+        /* Test 2.7 — II.A Pavimenti Interno: warning condensa */
+        try {
+          var res = calcIIA(fe, "Pavimenti Interno");
+          var hasWarn = _warnCheck(res);
+          var info = !hasWarn ? " (assente — forse cache browser)" : "";
+          _addTestRow(
+            grp,
+            "2.7 II.A Pavimenti Interno → warning condensa" + info,
+            hasWarn,
+            hasWarn ? [] : ["Warnings: " + JSON.stringify(res.warnings)],
+          );
+        } catch (e) {
+          _addTestRow(
+            grp,
+            "2.7 II.A Pavimenti Interno → warning condensa",
+            false,
+            [e.message],
+          );
+        }
+
+        /* Test 2.8 — II.A tipo sconosciuto: cmax=0 (fallback), no warning */
+        try {
+          var res = calcIIA(fe, "Tipo Sconosciuto");
+          var cmaxOk = res.params.cmax === 0;
+          var noWarn = !res.warnings || res.warnings.length === 0;
+          _addTestRow(
+            grp,
+            "2.8 II.A tipo sconosciuto → cmax=0 (fallback)",
+            cmaxOk && noWarn,
+            [!cmaxOk ? "Atteso cmax=0, ottenuto " + res.params.cmax : ""]
+              .concat(
+                !noWarn
+                  ? ["Warning inaspettato: " + res.warnings.join(", ")]
+                  : [],
+              )
+              .filter(function (x) {
+                return x;
+              }),
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.8 II.A tipo sconosciuto → cmax=0", false, [
+            e.message,
+          ]);
+        }
+
+        /* Test 2.9 — II.A calcolo: Impresa singolo Titolo II → perc=0.25 */
+        try {
+          var res = calcIIA(fe, "Parete Esterna", 20000, 80);
+          var perc = res.params.percentuale;
+          var ricalcolo = Math.min(20000, 80 * res.params.cmax) * perc;
+          var amountOk =
+            Math.abs(res.amount - parseFloat(ricalcolo.toFixed(2))) < 1;
+          _addTestRow(
+            grp,
+            "2.9 II.A calcolo coerente: Impresa, perc=" +
+              perc +
+              ", importo=" +
+              ricalcolo,
+            amountOk,
+            amountOk
+              ? []
+              : [
+                  "Atteso " +
+                    ricalcolo +
+                    ", ottenuto " +
+                    res.amount +
+                    ". params=" +
+                    JSON.stringify(res.params),
+                ],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.9 II.A calcolo coerente", false, [e.message]);
+        }
+
+        /* Test 2.10 — II.A percentuale per Impresa singolo Titolo II = 0.25 */
+        try {
+          var res = calcIIA(fe, "Parete Esterna", 20000, 80);
+          _addTestRow(
+            grp,
+            "2.10 II.A Impresa perc = 0.25",
+            res.params.percentuale === 0.25,
+            ["Atteso 0.25, ottenuto " + res.params.percentuale],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.10 II.A Impresa perc = 0.25", false, [e.message]);
+        }
+
+        /* Test 2.11 — II.A percentuale per PA = 0.65 */
+        try {
+          var resPA = calcIIA(
+            fe,
+            "Parete Esterna",
+            20000,
+            80,
+            "Pubblica Amministrazione",
+          );
+          _addTestRow(
+            grp,
+            "2.11 II.A PA perc = 0.65",
+            resPA.params.percentuale === 0.65,
+            ["Atteso 0.65, ottenuto " + resPA.params.percentuale],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.11 II.A PA perc = 0.65", false, [e.message]);
+        }
+
+        /* Test 2.12 — OBBLIGO_MANTENIMENTO_ANNI */
+        try {
+          var anni = engines.OBBLIGO_MANTENIMENTO_ANNI;
+          _addTestRow(
+            grp,
+            "2.12 OBBLIGO_MANTENIMENTO_ANNI = 5",
+            anni === 5,
+            anni !== 5 ? ["Atteso 5, ottenuto " + anni] : [],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.12 OBBLIGO_MANTENIMENTO_ANNI", false, [
+            e.message,
+          ]);
+        }
+
+        /* Test 2.13 — FORMULE_INCENTIVO.III.G presente */
+        try {
+          var formulaIIIg = engines.FORMULE_INCENTIVO["III.G"];
+          var exists = !!formulaIIIg;
+          _addTestRow(
+            grp,
+            "2.13 FORMULE_INCENTIVO.III.G presente",
+            exists,
+            exists ? [] : ["FORMULE_INCENTIVO.III.G non trovato"],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.13 FORMULE_INCENTIVO.III.G presente", false, [
+            e.message,
+          ]);
+        }
+
+        /* Test 2.14 — IVA Impresa su II.A: spesa=15000-iva2640=12360 */
+        try {
+          var resIva = fe.calculate(
+            "II.A",
+            {
+              tipo_superficie_opaca: "Parete Esterna",
+              costo_isolamento: 15000,
+              superficie_isolata_mq: 80,
+              importo_iva: 2640,
+            },
+            { soggetto: "Impresa", zonaClimatica: "Zona E" },
+          );
+          var spesaAfterIva =
+            resIva.params.spesa !== undefined ? resIva.params.spesa : -1;
+          var ivaOk = Math.abs(spesaAfterIva - 12360) < 1;
+          _addTestRow(
+            grp,
+            "2.14 II.A Impresa: IVA 2640 sottratta da 15000 → 12360",
+            ivaOk,
+            ivaOk
+              ? []
+              : [
+                  "Atteso spesa=12360, ottenuto " +
+                    spesaAfterIva +
+                    ". params=" +
+                    JSON.stringify(resIva.params),
+                ],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.14 II.A Impresa: IVA sottratta", false, [
+            e.message,
+          ]);
+        }
+
+        /* Test 2.15 — IVA Privato su II.A: IVA NON sottratta (spesa=15000) */
+        try {
+          var resNoIva = fe.calculate(
+            "II.A",
+            {
+              tipo_superficie_opaca: "Parete Esterna",
+              costo_isolamento: 15000,
+              superficie_isolata_mq: 80,
+              importo_iva: 2640,
+            },
+            { soggetto: "Privato residenziale", zonaClimatica: "Zona E" },
+          );
+          var spesaNoIva = resNoIva.params.spesa || 0;
+          var ivaOk = Math.abs(spesaNoIva - 15000) < 1;
+          _addTestRow(
+            grp,
+            "2.15 II.A Privato: IVA NON sottratta (spesa=15000)",
+            ivaOk,
+            ivaOk
+              ? []
+              : [
+                  "Atteso spesa=15000, ottenuto " +
+                    spesaNoIva +
+                    ". params=" +
+                    JSON.stringify(resNoIva.params),
+                ],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.15 II.A Privato: IVA NON sottratta", false, [
+            e.message,
+          ]);
+        }
+
+        /* Test 2.16 — SCHEDE_TECNICHE.III.G ha campo potenza_elettrica */
+        try {
+          var schede = engines.SCHEDE_TECNICHE;
+          var iiiG = schede && schede["III.G"];
+          var hasCampi =
+            iiiG &&
+            iiiG.campi &&
+            iiiG.campi.some(function (c) {
+              return c.id === "potenza_elettrica";
+            });
+          _addTestRow(
+            grp,
+            "2.16 SCHEDE_TECNICHE.III.G ha campo potenza_elettrica",
+            hasCampi,
+            hasCampi
+              ? []
+              : [
+                  "Campo potenza_elettrica non trovato in SCHEDE_TECNICHE.III.G",
+                ],
+          );
+        } catch (e) {
+          _addTestRow(
+            grp,
+            "2.16 SCHEDE_TECNICHE.III.G campo potenza_elettrica",
+            false,
+            [e.message],
+          );
+        }
+
+        /* Test 2.17 — PREMIALITA_CONFIG.made_in_eu.applicabile_a solo Titolo II (RA §4.2) */
+        try {
+          var premialita = engines.PREMIALITA_CONFIG;
+          var appA =
+            premialita &&
+            premialita.made_in_eu &&
+            premialita.made_in_eu.applicabile_a;
+          var hasIII =
+            appA &&
+            Array.isArray(appA) &&
+            appA.some(function (c) {
+              return c.indexOf("III") !== -1 || c.indexOf("3") !== -1;
+            });
+          _addTestRow(
+            grp,
+            "2.17 made_in_eu applicabile_a solo Titolo II",
+            !hasIII,
+            hasIII
+              ? ["Titolo III trovato in applicabile_a: " + JSON.stringify(appA)]
+              : [],
+          );
+        } catch (e) {
+          _addTestRow(
+            grp,
+            "2.17 made_in_eu applicabile_a solo Titolo II",
+            false,
+            [e.message],
+          );
+        }
+
+        /* Test 2.18 — TERMINI_CONFIG.accesso_diretto_gg === 90 (Decreto Art.14) */
+        try {
+          var accessoGg =
+            (engines.TERMINI_CONFIG &&
+              engines.TERMINI_CONFIG.accesso_diretto_gg) ||
+            -1;
+          _addTestRow(
+            grp,
+            "2.18 TERMINI_CONFIG.accesso_diretto_gg = 90",
+            accessoGg === 90,
+            accessoGg !== 90 ? ["Atteso 90, ottenuto " + accessoGg] : [],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.18 TERMINI_CONFIG.accesso_diretto_gg", false, [
+            e.message,
+          ]);
+        }
+
+        /* Test 2.19 — III.A/III.B Ci PDC (Manuale Tabella 9) */
+        try {
+          var ciA = engines.RULES.interventi["III.A"].coefficienti_ci;
+          var ciB = engines.RULES.interventi["III.B"].coefficienti_ci;
+          var ok =
+            ciA &&
+            ciB &&
+            Math.abs(ciA["Ci_PDC_aria_aria_split_le12kW"] - 0.07) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_aria_aria_fixed_double_duct_le12kW"] - 0.2) <
+              0.001 &&
+            Math.abs(ciA["Ci_PDC_aria_aria_VRF_12_35kW"] - 0.15) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_aria_aria_VRF_gt35kW"] - 0.055) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_aria_aria_rooftop_le35kW"] - 0.15) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_aria_aria_rooftop_gt35kW"] - 0.055) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_aria_acqua_le35kW"] - 0.15) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_aria_acqua_gt35kW"] - 0.06) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_acqua_aria_le35kW"] - 0.16) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_acqua_aria_gt35kW"] - 0.06) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_acqua_acqua_le35kW"] - 0.16) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_acqua_acqua_gt35kW"] - 0.06) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_salamoia_aria_le35kW"] - 0.16) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_salamoia_aria_gt35kW"] - 0.06) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_salamoia_acqua_le35kW"] - 0.16) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_salamoia_acqua_gt35kW"] - 0.06) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_gas_acqua_le35kW"] - 0.12) < 0.001 &&
+            Math.abs(ciA["Ci_PDC_gas_acqua_gt35kW"] - 0.05) < 0.001;
+          var msg = ok ? [] : ["Discrepanza Ci PDC: " + JSON.stringify(ciA)];
+          _addTestRow(
+            grp,
+            "2.19 III.A/III.B Ci PDC (Tabella 9 Manuale)",
+            ok,
+            msg,
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.19 III.A/III.B Ci PDC", false, [e.message]);
+        }
+
+        /* Test 2.20 — III.F fasce potenza (Manuale Tabella 14) */
+        try {
+          var fasce = engines.RULES.interventi["III.F"].fasce_potenza;
+          var ok =
+            Array.isArray(fasce) &&
+            fasce.length === 3 &&
+            fasce[0].max_kw === 50 &&
+            Math.abs(fasce[0].cmax_kw - 200) < 0.1 &&
+            fasce[0].imax === 6500 &&
+            fasce[1].min_kw === 50 &&
+            fasce[1].max_kw === 150 &&
+            Math.abs(fasce[1].cmax_kw - 160) < 0.1 &&
+            fasce[1].imax === 15000 &&
+            fasce[2].min_kw === 150 &&
+            Math.abs(fasce[2].cmax_kw - 130) < 0.1 &&
+            fasce[2].imax === 30000;
+          _addTestRow(
+            grp,
+            "2.20 III.F fasce potenza (Tabella 14 Manuale)",
+            ok,
+            ok ? [] : ["Fasce: " + JSON.stringify(fasce)],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.20 III.F fasce potenza", false, [e.message]);
+        }
+
+        /* Test 2.21 — III.D Ci solare termico per-uso (Manuale Tabella 16) */
+        try {
+          var ciD = engines.RULES.interventi["III.D"].coefficienti_ci;
+          var ok =
+            ciD &&
+            ciD["Solar Cooling"] &&
+            ciD["ACS"] &&
+            ciD["Solar Cooling"][0].sl_max === 12 &&
+            Math.abs(ciD["Solar Cooling"][0].ci - 0.43) < 0.01 &&
+            ciD["Solar Cooling"][1].sl_max === 50 &&
+            Math.abs(ciD["Solar Cooling"][1].ci - 0.4) < 0.01 &&
+            ciD["Solar Cooling"][2].sl_max === 200 &&
+            Math.abs(ciD["Solar Cooling"][2].ci - 0.17) < 0.01 &&
+            ciD["Solar Cooling"][3].sl_max === 500 &&
+            Math.abs(ciD["Solar Cooling"][3].ci - 0.15) < 0.01 &&
+            ciD["Solar Cooling"][4].sl_max === Infinity &&
+            Math.abs(ciD["Solar Cooling"][4].ci - 0.14) < 0.01 &&
+            ciD["ACS"][0].sl_max === 12 &&
+            Math.abs(ciD["ACS"][0].ci - 0.35) < 0.01 &&
+            ciD["ACS/Riscaldamento"][0].sl_max === 12 &&
+            Math.abs(ciD["ACS/Riscaldamento"][0].ci - 0.36) < 0.01 &&
+            ciD["Concentrazione"][0].sl_max === 12 &&
+            Math.abs(ciD["Concentrazione"][0].ci - 0.38) < 0.01;
+          _addTestRow(
+            grp,
+            "2.21 III.D Ci solare per uso (Tabella 16 Manuale)",
+            ok,
+            ok ? [] : ["Ci D: " + JSON.stringify(ciD)],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.21 III.D Ci solare", false, [e.message]);
+        }
+
+        /* Test 2.22 — QUF / hr (Manuale Tabella 8/11) */
+        try {
+          var zone = engines.RULES.fasce_climatiche;
+          var ok =
+            zone &&
+            zone["Zona A"].quf === 600 &&
+            zone["Zona B"].quf === 850 &&
+            zone["Zona C"].quf === 1100 &&
+            zone["Zona D"].quf === 1400 &&
+            zone["Zona E"].quf === 1700 &&
+            zone["Zona F"].quf === 1800;
+          _addTestRow(
+            grp,
+            "2.22 QUF / hr (Tabella 8/11 Manuale)",
+            ok,
+            ok ? [] : ["QUF: " + JSON.stringify(zone)],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.22 QUF", false, [e.message]);
+        }
+
+        /* Test 2.23 — II.A Isolamento Cmax (Manuale Tabella 7) */
+        try {
+          var varA = engines.RULES.interventi["II.A"].varianti;
+          var ok =
+            varA &&
+            varA["Coperture Esterno"].cmax === 300 &&
+            varA["Coperture Interno"].cmax === 150 &&
+            varA["Coperture Ventilata"].cmax === 350 &&
+            varA["Parete Esterna"].cmax === 200 &&
+            varA["Parete Interna"].cmax === 100 &&
+            varA["Parete Ventilata"].cmax === 250 &&
+            varA["Pavimenti Esterno"].cmax === 170 &&
+            varA["Pavimenti Interno"].cmax === 150;
+          _addTestRow(
+            grp,
+            "2.23 II.A Cmax isolamento (Tabella 7 Manuale)",
+            ok,
+            ok ? [] : ["II.A: " + JSON.stringify(varA)],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.23 II.A", false, [e.message]);
+        }
+
+        /* Test 2.24 — II.B Infissi Cmax (Manuale Tabella 7) */
+        try {
+          var varB = engines.RULES.interventi["II.B"].varianti;
+          var ok =
+            varB &&
+            varB["Zone A,B,C"].cmax === 700 &&
+            varB["Zone D,E,F"].cmax === 800;
+          _addTestRow(
+            grp,
+            "2.24 II.B Cmax infissi (Tabella 7 Manuale)",
+            ok,
+            ok ? [] : ["II.B: " + JSON.stringify(varB)],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.24 II.B", false, [e.message]);
+        }
+
+        /* Test 2.25 — II.C Cmax schermature (Manuale Tabella 7) */
+        try {
+          var varC = engines.RULES.interventi["II.C"].varianti;
+          var ok =
+            varC &&
+            varC["Schermature mobili"].cmax === 250 &&
+            varC["Schermature fisse"].cmax === 250 &&
+            varC["Filtrazione non riflettente"].cmax === 130 &&
+            varC["Filtrazione riflettente"].cmax === 80;
+          _addTestRow(
+            grp,
+            "2.25 II.C Cmax schermature (Tabella 7 Manuale)",
+            ok,
+            ok ? [] : ["II.C: " + JSON.stringify(varC)],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.25 II.C", false, [e.message]);
+        }
+
+        /* Test 2.26 — II.D NZEB Cmax (Manuale Tabella 7) */
+        try {
+          var varD = engines.RULES.interventi["II.D"].varianti;
+          var ok =
+            varD &&
+            varD["Demolizione e ricostruzione"].cmax === 1300 &&
+            varD["Ampliamento ≤25%"].cmax === 1000;
+          _addTestRow(
+            grp,
+            "2.26 II.D Cmax NZEB (Tabella 7 Manuale)",
+            ok,
+            ok ? [] : ["II.D: " + JSON.stringify(varD)],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.26 II.D", false, [e.message]);
+        }
+
+        /* Test 2.27 — II.E Cmax illuminazione (Manuale Tabella 7) */
+        try {
+          var varE = engines.RULES.interventi["II.E"].varianti;
+          var ok =
+            varE &&
+            varE["Edifici privati"].cmax === 35 &&
+            varE["Edifici PA"].cmax === 15;
+          _addTestRow(
+            grp,
+            "2.27 II.E Cmax illuminazione (Tabella 7 Manuale)",
+            ok,
+            ok ? [] : ["II.E: " + JSON.stringify(varE)],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.27 II.E", false, [e.message]);
+        }
+
+        /* Test 2.28 — II.F BAC Cmax (Manuale Tabella 7) */
+        try {
+          var varF = engines.RULES.interventi["II.F"].varianti;
+          var ok =
+            varF &&
+            varF["Classe A EN 15232"].cmax === 70 &&
+            varF["Classe B EN 15232"].cmax === 60;
+          _addTestRow(
+            grp,
+            "2.28 II.F Cmax BAC (Tabella 7 Manuale)",
+            ok,
+            ok ? [] : ["II.F: " + JSON.stringify(varF)],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.28 II.F", false, [e.message]);
+        }
+
+        /* Test 2.29 — II.G Cmax ricarica EV (Manuale Tabella II.G) */
+        try {
+          var varG = engines.RULES.interventi["II.G"].varianti;
+          var ok =
+            varG &&
+            varG["Punto ricarica Monofase"].cmax_fisso === 2400 &&
+            varG["Punto ricarica Trifase"].cmax_fisso === 8400 &&
+            varG["Potenza > 22 kW e ≤ 50 kW"].cmax_kw === 1200 &&
+            varG["Potenza > 50 kW e ≤ 100 kW"].cmax_fisso_infrastruttura ===
+              60000 &&
+            varG["Potenza > 100 kW"].cmax_fisso_infrastruttura === 110000;
+          _addTestRow(
+            grp,
+            "2.29 II.G Cmax ricarica (Manuale)",
+            ok,
+            ok ? [] : ["II.G: " + JSON.stringify(varG)],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.29 II.G", false, [e.message]);
+        }
+
+        /* Test 2.30 — II.H FV scaglioni + accumulo (Manuale Tabella II.H) */
+        try {
+          var scag = engines.RULES.interventi["II.H"].scaglioni_fv;
+          var acc = engines.RULES.interventi["II.H"].accumulo;
+          var ok =
+            scag &&
+            acc &&
+            scag.length === 4 &&
+            scag[0].fino_a === 20 &&
+            scag[0].cmax === 1500 &&
+            scag[1].fino_a === 200 &&
+            scag[1].cmax === 1200 &&
+            scag[2].fino_a === 600 &&
+            scag[2].cmax === 1100 &&
+            scag[3].fino_a === 1000 &&
+            scag[3].cmax === 1050 &&
+            acc.cmax === 1000;
+          _addTestRow(
+            grp,
+            "2.30 II.H FV scaglioni + accumulo (Manuale)",
+            ok,
+            ok
+              ? []
+              : [
+                  "II.H: " +
+                    JSON.stringify(scag) +
+                    " acc:" +
+                    JSON.stringify(acc),
+                ],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.30 II.H", false, [e.message]);
+        }
+
+        /* Test 2.31 — III.C Ci biomassa per tipo (Manuale Tabella 10) */
+        try {
+          var ciC = engines.RULES.interventi["III.C"].coeff_ci;
+          var ok =
+            ciC &&
+            ciC["Caldaia"] &&
+            Array.isArray(ciC["Caldaia"]) &&
+            ciC["Caldaia"][0].min_kw === 0 &&
+            ciC["Caldaia"][0].max_kw === 35 &&
+            Math.abs(ciC["Caldaia"][0].ci - 0.06) < 0.001 &&
+            ciC["Caldaia"][1].min_kw === 35 &&
+            ciC["Caldaia"][1].max_kw === 500 &&
+            Math.abs(ciC["Caldaia"][1].ci - 0.025) < 0.001 &&
+            ciC["Caldaia"][2].min_kw === 500 &&
+            ciC["Caldaia"][2].max_kw === Infinity &&
+            Math.abs(ciC["Caldaia"][2].ci - 0.02) < 0.001 &&
+            ciC["Stufa"] &&
+            ciC["Stufa"]["Pellet"][0].ci === 0.055 &&
+            ciC["Stufa"]["_default"][0].ci === 0.045;
+          _addTestRow(
+            grp,
+            "2.31 III.C Ci biomassa per tipo (Tabella 10 Manuale)",
+            ok,
+            ok ? [] : ["III.C coeff_ci: " + JSON.stringify(ciC)],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.31 III.C Ci biomassa", false, [e.message]);
+        }
+
+        /* Test 2.32 — III.E scaglioni scaldacqua (Manuale III.E) */
+        try {
+          var cls = engines.RULES.interventi["III.E"].scaglioni_classe;
+          var ok = cls && cls["A"] && cls["A+"];
+          ok =
+            ok &&
+            cls["A"][0].fino_a === 150 &&
+            cls["A"][0].incentivo_fisso === 500 &&
+            cls["A"][1].oltre === true &&
+            cls["A"][1].incentivo_fisso === 1100 &&
+            cls["A+"][0].fino_a === 150 &&
+            cls["A+"][0].incentivo_fisso === 700 &&
+            cls["A+"][1].oltre === true &&
+            cls["A+"][1].incentivo_fisso === 1500;
+          _addTestRow(
+            grp,
+            "2.32 III.E scaglioni scaldacqua (Manuale)",
+            ok,
+            ok ? [] : ["III.E: " + JSON.stringify(cls)],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.32 III.E", false, [e.message]);
+        }
+
+        /* Test 2.33 — III.G microcogenerazione (Manuale III.G) */
+        try {
+          var g = engines.RULES.interventi["III.G"];
+          var ok = g && g.perc === 0.65 && g.cmax === 5000 && g.imax === 100000;
+          _addTestRow(
+            grp,
+            "2.33 III.G cmax=5000 imax=100000 (Manuale)",
+            ok,
+            ok ? [] : ["III.G: " + JSON.stringify(g)],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.33 III.G", false, [e.message]);
+        }
+
+        /* Test 2.34 — η_s_min per PDC aria/aria ≤12kW = 149 (Manuale Tabella 3) */
+        try {
+          var calc = fe.calculate(
+            "III.A",
+            {
+              tipologia_pdc: "aria/aria",
+              potenza_pdc_kw: 8,
+              scop: 4.0,
+              eta_s: 160,
+            },
+            { soggetto: "Privato residenziale", zonaClimatica: "Zona E" },
+          );
+          _addTestRow(
+            grp,
+            "2.34 η_s_min aria/aria ≤12kW = 149 (Tabella 3)",
+            calc.params.eta_s_min_ecodesign === 149,
+            ["Atteso 149, ottenuto " + calc.params.eta_s_min_ecodesign],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.34 η_s_min aria/aria ≤12kW", false, [e.message]);
+        }
+
+        /* Test 2.35 — η_s_min per PDC aria/aria >12kW = 137 (Manuale Tabella 3) */
+        try {
+          var calc = fe.calculate(
+            "III.A",
+            {
+              tipologia_pdc: "aria/aria",
+              potenza_pdc_kw: 20,
+              scop: 4.0,
+              eta_s: 160,
+            },
+            { soggetto: "Privato residenziale", zonaClimatica: "Zona E" },
+          );
+          _addTestRow(
+            grp,
+            "2.35 η_s_min aria/aria >12kW = 137 (Tabella 3)",
+            calc.params.eta_s_min_ecodesign === 137,
+            ["Atteso 137, ottenuto " + calc.params.eta_s_min_ecodesign],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.35 η_s_min aria/aria >12kW", false, [e.message]);
+        }
+
+        /* Test 2.36 — η_s_min per PDC aria/acqua = 110 (Manuale Tabella 3) */
+        try {
+          var calc = fe.calculate(
+            "III.A",
+            {
+              tipologia_pdc: "aria/acqua",
+              potenza_pdc_kw: 10,
+              scop: 4.5,
+              eta_s: 150,
+            },
+            { soggetto: "Privato residenziale", zonaClimatica: "Zona E" },
+          );
+          _addTestRow(
+            grp,
+            "2.36 η_s_min aria/acqua = 110 (Tabella 3)",
+            calc.params.eta_s_min_ecodesign === 110,
+            ["Atteso 110, ottenuto " + calc.params.eta_s_min_ecodesign],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.36 η_s_min aria/acqua", false, [e.message]);
+        }
+
+        /* Test 2.37 — η_s_min per PDC acqua/aria = 137 (Manuale Tabella 4) */
+        try {
+          var calc = fe.calculate(
+            "III.A",
+            {
+              tipologia_pdc: "acqua/aria",
+              potenza_pdc_kw: 15,
+              scop: 5.0,
+              eta_s: 170,
+            },
+            { soggetto: "Privato residenziale", zonaClimatica: "Zona E" },
+          );
+          _addTestRow(
+            grp,
+            "2.37 η_s_min acqua/aria = 137 (Tabella 4)",
+            calc.params.eta_s_min_ecodesign === 137,
+            ["Atteso 137, ottenuto " + calc.params.eta_s_min_ecodesign],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.37 η_s_min acqua/aria", false, [e.message]);
+        }
+
+        /* Test 2.38 — η_s_min per PDC acqua/acqua = 110 (Manuale Tabella 4) */
+        try {
+          var calc = fe.calculate(
+            "III.A",
+            {
+              tipologia_pdc: "acqua/acqua",
+              potenza_pdc_kw: 30,
+              scop: 5.2,
+              eta_s: 180,
+            },
+            { soggetto: "Privato residenziale", zonaClimatica: "Zona E" },
+          );
+          _addTestRow(
+            grp,
+            "2.38 η_s_min acqua/acqua = 110 (Tabella 4)",
+            calc.params.eta_s_min_ecodesign === 110,
+            ["Atteso 110, ottenuto " + calc.params.eta_s_min_ecodesign],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.38 η_s_min acqua/acqua", false, [e.message]);
+        }
+
+        /* Test 2.39 — η_s_min per PDC gas/acqua (Tabella 5) */
+        try {
+          var calc = fe.calculate(
+            "III.A",
+            {
+              tipologia_pdc: "gas/acqua",
+              potenza_pdc_kw: 50,
+              scop: 1.6,
+              eta_s: 130,
+              eta_s_min_ecodesign: 110,
+            },
+            { soggetto: "Privato residenziale", zonaClimatica: "Zona E" },
+          );
+          _addTestRow(
+            grp,
+            "2.39 η_s_min gas/acqua = 110 (Tabella 5)",
+            calc.params.eta_s_min_ecodesign === 110,
+            ["Atteso 110, ottenuto " + calc.params.eta_s_min_ecodesign],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.39 η_s_min gas/acqua", false, [e.message]);
+        }
+
+        /* Test 2.40 — h_r zonali per III.C biomassa (Tabella 11 = Q_uf per zona) */
+        try {
+          var calcZonaE = fe.calculate(
+            "III.C",
+            {
+              potenza_nominale_kw: 25,
+              classe_emissiva: "5 stelle",
+              tipo_generatore: "Caldaia",
+              riduzione_pp: "≤20%",
+              costo_biomassa: 15000,
+            },
+            { soggetto: "Privato residenziale", zonaClimatica: "Zona E" },
+          );
+          var calcZonaA = fe.calculate(
+            "III.C",
+            {
+              potenza_nominale_kw: 25,
+              classe_emissiva: "5 stelle",
+              tipo_generatore: "Caldaia",
+              riduzione_pp: "≤20%",
+              costo_biomassa: 15000,
+            },
+            { soggetto: "Privato residenziale", zonaClimatica: "Zona A" },
+          );
+          var hrE = calcZonaE.params.ore_funzionamento_annue;
+          var hrA = calcZonaA.params.ore_funzionamento_annue;
+          var ok = hrE === 1700 && hrA === 600;
+          _addTestRow(
+            grp,
+            "2.40 h_r zonali (Tabella 11): Zona E=1700, Zona A=600",
+            ok,
+            ok
+              ? []
+              : [
+                  "Zona E hr=" +
+                    hrE +
+                    " (atteso 1700), Zona A hr=" +
+                    hrA +
+                    " (atteso 600)",
+                ],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.40 h_r zonali", false, [e.message]);
+        }
+
+        /* Test 2.41 — AUC presente in SOGGETTI_CONFIG */
+        try {
+          var aucConfig = engines.SOGGETTI_CONFIG?.AUC;
+          var ok =
+            aucConfig &&
+            aucConfig.label &&
+            aucConfig.label.indexOf("AUC") !== -1;
+          _addTestRow(
+            grp,
+            "2.41 AUC in SOGGETTI_CONFIG",
+            ok,
+            ok ? [] : ["AUC non trovato: " + JSON.stringify(aucConfig)],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.41 AUC in SOGGETTI_CONFIG", false, [e.message]);
+        }
+
+        /* Test 2.42 — NORMATIVA_VERSION aggiornata */
+        try {
+          var verNorm = engines.NORMATIVA_VERSION;
+          _addTestRow(
+            grp,
+            "2.42 NORMATIVA_VERSION = v2-20260609",
+            verNorm === "v2-20260609",
+            verNorm !== "v2-20260609" ? ["Versione: " + verNorm] : [],
+          );
+        } catch (e) {
+          _addTestRow(grp, "2.42 NORMATIVA_VERSION", false, [e.message]);
+        }
+
+        /* Valutazione complessiva */
+        var groupRows = grp.body.querySelectorAll(".test-row");
+        var okCount = 0;
+        var failCountG = 0;
+        groupRows.forEach(function (r) {
+          if (r.classList.contains("pass")) okCount = okCount + 1;
+          else failCountG = failCountG + 1;
+        });
+        grp.badge.textContent =
+          okCount +
+          "/" +
+          (okCount + failCountG) +
+          " OK, " +
+          failCountG +
+          " FAIL";
+        if (failCountG > 0) grp.badge.className = "badge fail";
+        else grp.badge.className = "badge ok";
+      };
+
+      /* ========= 3. RULES ENGINE TESTS ========= */
+      var runRulesTests = async function () {
+        if (!engines) return;
+        var grp = _makeGroup("3. Rules Engine — Test unitari", "rules");
+
+        /* Test 3.1 — validateAmmissibilita: soggetto valido */
+        try {
+          var re = engines.RulesEngine;
+          var res = re.validateAmmissibilita({
+            subjectType: "Pubblica Amministrazione",
+            category: "B/1",
+            buildingStatus: "esistente",
+            selectedInterventi: ["III.A"],
+          });
+          _addTestRow(
+            grp,
+            "3.1 PA con III.A → ammissibile",
+            res.success,
+            res.success ? [] : res.errors,
+          );
+        } catch (e) {
+          _addTestRow(grp, "3.1 PA con III.A → ammissibile", false, [
+            e.message,
+          ]);
+        }
+
+        /* Test 3.2 — validateAmmissibilita: edificio nuovo → blocco */
+        try {
+          var re = engines.RulesEngine;
+          var res = re.validateAmmissibilita({
+            subjectType: "Privato residenziale",
+            category: "A/2",
+            buildingStatus: "nuovo",
+            selectedInterventi: ["III.A"],
+          });
+          _addTestRow(
+            grp,
+            "3.2 Edificio nuovo → blocco",
+            !res.success,
+            !res.success
+              ? []
+              : ["Atteso blocco per edificio nuovo, ma validazione passata"],
+          );
+        } catch (e) {
+          _addTestRow(grp, "3.2 Edificio nuovo → blocco", false, [e.message]);
+        }
+
+        /* Test 3.3 — III.G getInterventoCompatibility */
+        try {
+          var re = engines.RulesEngine;
+          var compat = re.getInterventoCompatibility("III.G", ["III"]);
+          _addTestRow(
+            grp,
+            "3.3 III.G compatibile con Titolo III",
+            compat.isCompatible,
+            compat.isCompatible ? [] : [compat.reason],
+          );
+        } catch (e) {
+          _addTestRow(grp, "3.3 III.G compatibile con Titolo III", false, [
+            e.message,
+          ]);
+        }
+
+        /* Test 3.4 — II.G non compatibile con Titolo II */
+        try {
+          var re = engines.RulesEngine;
+          var compat = re.getInterventoCompatibility("II.G", ["III"]);
+          _addTestRow(
+            grp,
+            "3.4 II.G NON compatibile con Titolo III",
+            !compat.isCompatible,
+            !compat.isCompatible
+              ? []
+              : ["Atteso incompatibile, ma risultato compatibile"],
+          );
+        } catch (e) {
+          _addTestRow(grp, "3.4 II.G NON compatibile con Titolo III", false, [
+            e.message,
+          ]);
+        }
+
+        /* Test 3.5 — isSubjectCompatible PA → Titolo II */
+        try {
+          var re = engines.RulesEngine;
+          var compat = re.isSubjectCompatible("Pubblica Amministrazione", "II");
+          var compat3 = re.isSubjectCompatible(
+            "Pubblica Amministrazione",
+            "III",
+          );
+          _addTestRow(
+            grp,
+            "3.5 PA compatibile con Titolo II e III",
+            compat && compat3,
+            !compat
+              ? ["PA non compatibile con Titolo II"]
+              : ["PA non compatibile con Titolo III"],
+          );
+        } catch (e) {
+          _addTestRow(grp, "3.5 PA compatibile con Titolo II e III", false, [
+            e.message,
+          ]);
+        }
+
+        /* Test 3.6 — III.D solare termico senza impianto esistente (MS-010) */
+        try {
+          var re = engines.RulesEngine;
+          var res = re.validateAmmissibilita({
+            subjectType: "Privato residenziale",
+            category: "A/2",
+            buildingStatus: "esistente",
+            selectedInterventi: ["III.D"],
+          });
+          _addTestRow(
+            grp,
+            "3.6 III.D senza impianto esistente → ammissibile",
+            res.success,
+            res.success ? [] : res.errors,
+          );
+        } catch (e) {
+          _addTestRow(
+            grp,
+            "3.6 III.D senza impianto esistente → ammissibile",
+            false,
+            [e.message],
+          );
+        }
+
+        /* Test 3.7 — Impresa require richiesta preliminare */
+        try {
+          var re = engines.RulesEngine;
+          var res = re.validateAmmissibilita({
+            subjectType: "Impresa",
+            category: "D/7",
+            buildingStatus: "esistente",
+            selectedInterventi: ["III.A"],
+            richiestaPreliminareInviata: false,
+          });
+          _addTestRow(
+            grp,
+            "3.7 Impresa senza preliminare → blocco",
+            !res.success,
+            !res.success ? [] : ["Atteso blocco, ma validazione passata"],
+          );
+        } catch (e) {
+          _addTestRow(grp, "3.7 Impresa senza preliminare → blocco", false, [
+            e.message,
+          ]);
+        }
+
+        /* Test 3.8 — isSubjectCompatible Condominio → Titolo II bloccato */
+        try {
+          var re = engines.RulesEngine;
+          var compatII = re.isSubjectCompatible("Condominio", "II");
+          var compatIII = re.isSubjectCompatible("Condominio", "III");
+          _addTestRow(
+            grp,
+            "3.8 Condominio: Titolo II=blocco, Titolo III=OK",
+            !compatII && compatIII,
+            [
+              !compatII
+                ? ""
+                : "Condominio compatibile con Titolo II (atteso blocco)",
+              !compatIII
+                ? "Condominio NON compatibile con Titolo III (atteso OK)"
+                : "",
+            ].filter(function (x) {
+              return x;
+            }),
+          );
+        } catch (e) {
+          _addTestRow(grp, "3.8 Condominio Titolo II bloccato", false, [
+            e.message,
+          ]);
+        }
+
+        /* Test 3.9 — isSubjectCompatible Privato residenziale → Titolo II bloccato */
+        try {
+          var re = engines.RulesEngine;
+          var compatII = re.isSubjectCompatible("Privato residenziale", "II");
+          var compatIII = re.isSubjectCompatible("Privato residenziale", "III");
+          _addTestRow(
+            grp,
+            "3.9 Privato residenziale: Titolo II=blocco, Titolo III=OK",
+            !compatII && compatIII,
+            [
+              !compatII
+                ? ""
+                : "Privato res. compatibile con Titolo II (atteso blocco)",
+              !compatIII
+                ? "Privato res. NON compatibile con Titolo III (atteso OK)"
+                : "",
+            ].filter(function (x) {
+              return x;
+            }),
+          );
+        } catch (e) {
+          _addTestRow(
+            grp,
+            "3.9 Privato residenziale Titolo II bloccato",
+            false,
+            [e.message],
+          );
+        }
+
+        /* Valutazione complessiva */
+        var groupRows = grp.body.querySelectorAll(".test-row");
+        var okCount = 0;
+        var failCountG = 0;
+        groupRows.forEach(function (r) {
+          if (r.classList.contains("pass")) okCount = okCount + 1;
+          else failCountG = failCountG + 1;
+        });
+        grp.badge.textContent =
+          okCount +
+          "/" +
+          (okCount + failCountG) +
+          " OK, " +
+          failCountG +
+          " FAIL";
+        if (failCountG > 0) grp.badge.className = "badge fail";
+        else grp.badge.className = "badge ok";
+      };
+
+      /* ========= 4. CROSS-RULE ENGINE TESTS ========= */
+      var runCrossTests = async function () {
+        if (!engines) return;
+        var grp = _makeGroup("4. Cross-Rule Engine — Test unitari", "cross");
+
+        /* Test 4.1 — III.A + III.C mutualmente esclusivi */
+        try {
+          var cr = engines.CrossRuleEngine;
+          var res = cr.validateSelection(["III.A", "III.C"]);
+          _addTestRow(
+            grp,
+            "4.1 III.A + III.C → blocco (mutualmente esclusivi)",
+            !res.success,
+            !res.success
+              ? []
+              : [
+                  "Atteso blocco, validazione passata: " +
+                    (res.errors || []).join("; "),
+                ],
+          );
+        } catch (e) {
+          _addTestRow(grp, "4.1 III.A + III.C → blocco", false, [e.message]);
+        }
+
+        /* Test 4.2 — III.B + III.F mutualmente esclusivi */
+        try {
+          var cr = engines.CrossRuleEngine;
+          var res = cr.validateSelection(["III.B", "III.F"]);
+          _addTestRow(
+            grp,
+            "4.2 III.B + III.F → blocco (mutualmente esclusivi)",
+            !res.success,
+            !res.success ? [] : ["Atteso blocco, validazione passata"],
+          );
+        } catch (e) {
+          _addTestRow(grp, "4.2 III.B + III.F → blocco", false, [e.message]);
+        }
+
+        /* Test 4.3 — II.H senza III.A → blocco (paired) */
+        try {
+          var cr = engines.CrossRuleEngine;
+          var res = cr.validateSelection(["II.H"]);
+          _addTestRow(
+            grp,
+            "4.3 II.H senza III.A → blocco (paired)",
+            !res.success,
+            !res.success ? [] : ["Atteso blocco per pairing mancante"],
+          );
+        } catch (e) {
+          _addTestRow(grp, "4.3 II.H senza III.A → blocco", false, [e.message]);
+        }
+
+        /* Test 4.4 — II.H + III.A → OK (paired rispettato) */
+        try {
+          var cr = engines.CrossRuleEngine;
+          var res = cr.validateSelection(["III.A", "II.H"]);
+          _addTestRow(
+            grp,
+            "4.4 III.A + II.H → OK (pairing rispettato)",
+            res.success,
+            res.success ? [] : res.errors,
+          );
+        } catch (e) {
+          _addTestRow(grp, "4.4 III.A + II.H → OK", false, [e.message]);
+        }
+
+        /* Test 4.5 — III.A + III.G → OK (multi-intervento Titolo III) */
+        try {
+          var cr = engines.CrossRuleEngine;
+          var res = cr.validateSelection(["III.A", "III.G"]);
+          _addTestRow(
+            grp,
+            "4.5 III.A + III.G → OK (multi Titolo III)",
+            res.success,
+            res.success ? [] : res.errors,
+          );
+        } catch (e) {
+          _addTestRow(grp, "4.5 III.A + III.G → OK", false, [e.message]);
+        }
+
+        /* Test 4.6 — II.C senza II.B → blocco (paired) */
+        try {
+          var cr = engines.CrossRuleEngine;
+          var res = cr.validateSelection(["II.C"]);
+          _addTestRow(
+            grp,
+            "4.6 II.C senza II.B → blocco (schermature richiedono infissi)",
+            !res.success,
+            !res.success ? [] : ["Atteso blocco per pairing mancante"],
+          );
+        } catch (e) {
+          _addTestRow(grp, "4.6 II.C senza II.B → blocco", false, [e.message]);
+        }
+
+        /* Valutazione complessiva */
+        var groupRows = grp.body.querySelectorAll(".test-row");
+        var okCount = 0;
+        var failCountG = 0;
+        groupRows.forEach(function (r) {
+          if (r.classList.contains("pass")) okCount = okCount + 1;
+          else failCountG = failCountG + 1;
+        });
+        grp.badge.textContent =
+          okCount +
+          "/" +
+          (okCount + failCountG) +
+          " OK, " +
+          failCountG +
+          " FAIL";
+        if (failCountG > 0) grp.badge.className = "badge fail";
+        else grp.badge.className = "badge ok";
+      };
+
+      /* ========= EVENT BINDINGS ========= */
+      el("btn-run-ms").onclick = function () {
+        _clearOutput();
+        runMSScenarios();
+      };
+      el("btn-run-formula").onclick = function () {
+        _clearOutput();
+        runFormulaTests();
+      };
+      el("btn-run-rules").onclick = function () {
+        _clearOutput();
+        runRulesTests();
+      };
+      el("btn-run-cross").onclick = function () {
+        _clearOutput();
+        runCrossTests();
+      };
+      el("btn-run-all").onclick = async function () {
+        _clearOutput();
+        var btns = [
+          "btn-run-ms",
+          "btn-run-formula",
+          "btn-run-rules",
+          "btn-run-cross",
+          "btn-run-all",
+          "btn-reset",
+        ];
+        btns.forEach(function (b) {
+          el(b).disabled = true;
+        });
+        try {
+          await runMSScenarios();
+          await runFormulaTests();
+          await runRulesTests();
+          await runCrossTests();
+        } finally {
+          btns.forEach(function (b) {
+            el(b).disabled = false;
+          });
+        }
+      };
+      el("btn-reset").onclick = function () {
+        _clearOutput();
+      };
+
+      /* Carica messaggio iniziale */
+      if (!engines) {
+        var errDiv = document.createElement("div");
+        errDiv.className = "error-msg";
+        errDiv.innerHTML =
+          "Moduli non caricati. Prova ad aprire questa pagina con un server HTTP locale:<br>" +
+          "<pre>python3 -m http.server 8080 --directory " +
+          window.location.pathname.split("/test/")[0] +
+          "</pre>" +
+          "Poi apri http://localhost:8080/test/test_suite.html";
+        out.appendChild(errDiv);
+      } else {
+        var info = document.createElement("div");
+        info.style.cssText = "color:#666;font-size:0.85rem;padding:12px;";
+        info.innerHTML =
+          "Premi uno dei pulsanti sopra per avviare i test." +
+          '<br><span style="font-size:0.75rem;color:#888;">' +
+          "Nota: se i moduli JS sono in cache, fai Ctrl+F5 (hard refresh) per ricaricarli.</span>";
+        out.appendChild(info);
+      }
     </script>
-</body>
+  </body>
 </html>

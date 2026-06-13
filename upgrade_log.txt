@@ -126,3 +126,55 @@ con 50.000€ > 15.000€) mostrava "5 rate annuali" invece di "Unica soluzione"
 
 ### File modificati
 - `static/js/core/formula_engine.js` — II.G case-insensitive trifase + III.C boundary ≤
+
+## 2026-06-13 — Risoluzione PROBLEMATICHE_CRITICHE (10/14 criticità)
+
+### Verifica incrociata
+Analizzate 14 criticità da `docs/PROBLEMATICHE_CRITICHE.md` confrontando:
+- Manuale Analitico v1.1
+- Regole Applicative GSE 5/12/2025
+- Decreto MASE 7/8/2025
+- Codice (normativa.js, rules_engine.js, formula_engine.js, cross_rule_engine.js)
+
+### Risultati verifica
+| # | Criticità | Origine |
+|---|-----------|---------|
+| 1 | Made in EU su Titolo III | Bug codice: `applicabile_a` includeva III.* |
+| 2 | 60gg vs 90gg | Errore Manuale (copiato nel codice) |
+| 3 | Impresa multi II 25% vs 30% | Duplicazione codice SOTTO_CATEGORIE_SA vs INTENSITA_MASSIMA |
+| 4 | II.D/II.G/II.H cap 30% non implementato | Omissione Manuale + codice |
+| 5 | ETS economico prenotazione=false | Errore Manuale + codice (RA concede prenotazione) |
+| 6 | II.C→II.B hard-coded | Qualità codice |
+| 7 | Divieto fossili 3x divergente | Qualità codice — **rimandato** |
+| 8 | IVA non esclusa per ETS economico | Bug codice parziale |
+| 9 | Cap intensità invisibile | UX — **rimandato** |
+| 10 | III.G in mutua esclusività | Inizialmente aggiunto, poi ritirato: III.G coesiste con III.A |
+| 11 | Soglie ESCO 70kW/20m² | Omissione Manuale + codice — **rimandato** |
+| 12 | Variazioni >20% opzionale | Flusso — **rimandato** |
+| 13 | perc_multi III.D/III.F esclusi | Qualità codice |
+| 14 | Atto assenso diritto reale | Bug codice |
+
+### Azioni
+1. **Manuale Analitico**: 5 correzioni (60→90gg, ETS prenotazione, II.D/II.G/II.H cap, ESCO soglie, IVA ETS)
+2. **normativa.js**: made_in_eu solo Titolo II, 3x 60→90, ETS prenotazione true, intensita_titolo_ii_multi, II.C obbligatori
+3. **rules_engine.js**: intensità multi, II.D/II.G/II.H cap, II.C generico da INTERVENTI, atto assenso esteso con titolo_possesso, import INTERVENTI
+4. **formula_engine.js**: perc_multi III.D/III.F, IVA anche ETS economico, cap II.D/II.G/II.H
+5. **cross_rule_engine.js**: II.C hard-coded rimosso, III.G aggiunto e poi rimosso da mutua esclusività
+6. **test_suite.html**: test 2.17 (solo Titolo II), 2.18 (90gg) aggiornati
+7. **docs/INTERVENTO_20260613.md**: resoconto intervento
+8. **upgrade.txt**: piano lavori rimanenti aggiornato
+
+### File modificati
+- `docs/Manuale_Analitico_Consolidato_CT3.0_v1.1.txt`
+- `static/js/core/normativa.js`
+- `static/js/core/rules_engine.js`
+- `static/js/core/formula_engine.js`
+- `static/js/core/cross_rule_engine.js`
+- `static/tes/test_suite.html`
+- `docs/INTERVENTO_20260613.md`
+- `upgrade.txt`
+
+### Test esito
+- 2.17: aggiornato (verifica solo Titolo II) ✅
+- 2.18: aggiornato (90gg) ✅
+- 4.5 III.A+III.G: test ripassato dopo rimozione III.G da mutua esclusività ✅

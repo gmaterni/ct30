@@ -316,7 +316,7 @@ const UaFormulaEngine = function () {
       }
     }
 
-    // perc_multi: se abbinato a III.A/B/C/E, usa perc_multi invece del default
+    // perc_multi: se abbinato a III.A/B/C/D/E/F, usa perc_multi invece del default
     if (!isPAorETS && soggetto !== "Impresa") {
       const interventoRules = RULES.interventi[code];
       const hasPercMulti =
@@ -324,7 +324,14 @@ const UaFormulaEngine = function () {
       if (hasPercMulti) {
         const selezionati = contesto?.codiciSelezionati || [];
         const hasAbbinamentoIII = selezionati.some(function (c) {
-          return ["III.A", "III.B", "III.C", "III.E"].includes(c);
+          return [
+            "III.A",
+            "III.B",
+            "III.C",
+            "III.D",
+            "III.E",
+            "III.F",
+          ].includes(c);
         });
         if (hasAbbinamentoIII) {
           base = interventoRules.perc_multi;
@@ -349,6 +356,12 @@ const UaFormulaEngine = function () {
       base * (1 + madeInEuBonus) +
       maggiorazioneTotale +
       (premialitaTotale - madeInEuBonus);
+
+    // II.D/II.G/II.H: cap 30% per imprese (RA §4.2.1 nota 6)
+    const codiciCap30 = ["II.D", "II.G", "II.H"];
+    if (soggetto === "Impresa" && codiciCap30.includes(code)) {
+      finale = Math.min(finale, 0.3);
+    }
 
     const cap = isPAorETS ? 1.0 : 0.65;
     finale = Math.min(finale, cap);
@@ -446,8 +459,12 @@ const UaFormulaEngine = function () {
     }
 
     // IVA: ammissibile per PA/ETS non econ (costo reale non recuperabile)
-    // IVA non ammissibile per Impresa: sottrai importo_iva dalla spesa
-    if (contesto?.soggetto === "Impresa" && dati.importo_iva > 0) {
+    // IVA non ammissibile per Impresa/ETS economico (RA §4.2.1, §3.3)
+    const soggettiIvaEsclusa = ["Impresa", "ETS economico"];
+    if (
+      soggettiIvaEsclusa.includes(contesto?.soggetto) &&
+      dati.importo_iva > 0
+    ) {
       const iva = parseFloat(dati.importo_iva) || 0;
       if (params.spesa !== undefined) {
         params.spesa = Math.max(0, params.spesa - iva);
