@@ -73,9 +73,9 @@ PREVENTIVO
   III.F — Allaccio a teleriscaldamento efficiente
     Formula: I = min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale
     Passaggi:
-      Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = min(35.000,00, min(200,00 × 130,00, 30.000,00)) × 0,85 => 22.100,00 €
-    Risultato: I = min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = 22.100,00 €
-    Netto GSE: 21.879,00 € (corrispettivo GSE: 221,00 €)
+      Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = min(35.000,00, min(200,00 × 130,00, 30.000,00)) × 0,65 => 16.900,00 €
+    Risultato: I = min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = 16.900,00 €
+    Netto GSE: 16.731,00 € (corrispettivo GSE: 169,00 €)
     Erogazione: Unica soluzione
 
 ----------------------------------------
@@ -83,4 +83,4 @@ PREVENTIVO
 ----------------------------------------
 
   Intervento III.F
-    Calcolo Incentivo Finale | I_tot | 22.100,00 = 22.100,00 €
+    Calcolo Incentivo Finale | I_tot | 16.900,00 = 16.900,00 €

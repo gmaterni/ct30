@@ -105,7 +105,7 @@ PREVENTIVO
       Energia termica incentivabile (enBase): tipo_generatore === 'Stufa' ? 3.35 * Math.log(potenza) * hr * Ci * Ce : potenza * hr * Ci * Ce = tipo_generatore === 'Stufa' ? 3.35 × Math.log(35,00) × 1850,00 × 0,06 × 1,00 : 35,00 × 1850,00 × 0,06 × 1,00 => 3885,00
       Energia con eventuale riduzione TLR (enDopoTlr): in_centrale_tlr === 'sì' ? enBase * 0.80 : enBase = in_centrale_tlr === 'sì' ? 3885,00 × 0.80 : 3885,00 => 3108,00
       Energia termica finale (enza): enDopoTlr = 3108,00 => 3108,00
-      Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(3108,00, min(18.500,00, 35,00 × 600,00) × 0,87) => 3108,00 €
+      Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(3108,00, min(18.500,00, 35,00 × 600,00) × 0,65) => 3108,00 €
     Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 3108,00 €
     Netto GSE: 3076,92 € (corrispettivo GSE: 31,08 €)
     Erogazione: Unica soluzione
@@ -113,7 +113,7 @@ PREVENTIVO
   III.D — Solare termico
     Formula: I = min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale)
     Passaggi:
-      Calcolo Incentivo Finale (I_tot): min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale) = min(0,35 × 670,00 × 12,00, min(9500,00, 12,00 × 550,00) × 0,87) => 2814,00 €
+      Calcolo Incentivo Finale (I_tot): min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale) = min(0,35 × 670,00 × 12,00, min(9500,00, 12,00 × 550,00) × 0,65) => 2814,00 €
     Risultato: I = min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale) = 2814,00 €
     Netto GSE: 2785,86 € (corrispettivo GSE: 28,14 €)
     Erogazione: Unica soluzione
