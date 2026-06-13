@@ -25,6 +25,8 @@ Analisi delle 10 regole più insidiose, con commento, riferimenti al codice e st
 
 **Attenzione**: `Privato terziario` ha `titolo_ii: true` (riga 573) — la differenza è solo l'ambito. Utenti confondono "privato residenziale" con "privato terziario".
 
+**Pratiche di verifica**: `test_p01_privato_titolo3.json` (carica pratica privato + III.A); sezione R1 in `test_problematiche.html` (6 test).
+
 ---
 
 ## 2. Impresa con attività economica → regime Titolo V
@@ -59,6 +61,8 @@ Analisi delle 10 regole più insidiose, con commento, riferimenti al codice e st
 
 **Attenzione**: IAP (`Imprenditore Agricolo Professionale`) è "assimilato a Impresa" ma NON ha richiesta preliminare obbligatoria (riga 538-549). Non applicare `validateTitoloV()` agli IAP.
 
+**Pratiche di verifica**: `test_p02_impresa_titolo_v.json` (impresa con preliminare + III.A); sezione R2 in `test_problematiche.html` (8 test).
+
 ---
 
 ## 3. ETS non economico → assimilato PA; ETS economico → solo Titolo III+V
@@ -83,6 +87,8 @@ Analisi delle 10 regole più insidiose, con commento, riferimenti al codice e st
 - Mostrare le implicazioni: "ETS non economico = 100% + prenotazione" vs "ETS economico = solo Titolo III + richiesta preliminare"
 - In `formula_engine.js`, la funzione `_resolvePercentuale()` verifica `isPAorETS` (riga 210) e applica cap 100% — questo è già corretto per ETS non economico. L'ETS economico invece segue regole impresa.
 - Validare in Fase 4: ETS economico non può selezionare II.A, II.B, II.C, II.D, II.E, II.F, II.G, II.H
+
+**Pratiche di verifica**: `test_p03_ets_non_economico.json` (ETS non econ + II.A 100%); sezione R3 in `test_problematiche.html` (6 test).
 
 ---
 
@@ -112,6 +118,8 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - Non permettere selezione II.G/II.H senza III.A già selezionato nella lista interventi
 - Attenzione: II.H (FV) ha anche requisito potenza 2-1000 kW (riga 98-99 in normativa.js)
 
+**Pratiche di verifica**: `test_p04_iiH_iiiA_pairing.json` (III.A elettrica + FV con sostituzione); sezione R4 in `test_problematiche.html` (9 test).
+
 ---
 
 ## 5. II.C (schermature solari) deve abbinarsi a II.B (infissi)
@@ -132,6 +140,8 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - Notare che II.B ha `vincolo_logico.richiede_valvole_termostatiche` se è in presenza di impianto centralizzato — II.C erediterebbe questo vincolo indirettamente
 - La formula `perc_multi` (40%→55%) per II.C vale se abbinato a III.A, non a II.B
 
+**Pratiche di verifica**: `test_p05_iiB_iiC_pairing.json` (II.B infissi + II.C schermature); sezione R4-8/R4-9 in `test_problematiche.html`.
+
 ---
 
 ## 6. SR = ESCO → contratto EPC obbligatorio (con eccezione)
@@ -151,6 +161,8 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - Validare entrambi i documenti in Fase 6
 - Attenzione: `contratto_epc` e `certificazione_11352_valida` sono due campi distinti nel DB
 - Quando `coincide_con_richiedente = true`, disabilitare campo EPC (non richiesto) ma mantenere certificazione 11352
+
+**Pratiche di verifica**: `test_p06_esco_epc.json` (SR=ESCO ≠ SA con EPC); sezione R6 in `test_problematiche.html` (4 test).
 
 ---
 
@@ -179,6 +191,8 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - Attenzione: ETS non economico e Cooperativa edilizia sono assimilati PA anche se non lo sono esplicitamente
 - II.D (nZEB) per PA forza 100% (riga 221-223) — priorità su altri calcoli
 
+**Pratiche di verifica**: `test_p07_pa_comune_100percento.json` (PA ≤15k + II.A 100%); sezione R7 in `test_problematiche.html` (5 test).
+
 ---
 
 ## 8. Commissione GSE 1% max 250€
@@ -198,6 +212,8 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - Per pratiche con incentivo lordo > 25.000€, la commissione sarà 250€ (massimale)
 - Non dimenticare di arrotondare a 2 decimali (`toFixed(2)`, riga 200)
 - La funzione ritorna anche `percentuale: 1` e `massimale: 250` per log/report
+
+**Pratiche di verifica**: sezione R8 in `test_problematiche.html` (2 test — calcolo interno, nessuna JSON pratica).
 
 ---
 
@@ -221,6 +237,8 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - La variazione 0% = nessun blocco; variazione 20.0% = nessun blocco (soglia stretta)
 - NB: la funzione `validateTermini()` riceve `variazionePercentuale` via opzioni — assicurarsi che Fase 6 lo fornisca sempre
 
+**Pratiche di verifica**: sezione R9 in `test_problematiche.html` (6 test — validazione interna, nessuna JSON pratica).
+
 ---
 
 ## 10. Mandato irrevocabile all'incasso + atto di assenso
@@ -243,6 +261,8 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - I flag `coincide_con_proprietario`, `coincide_con_richiedente`, `coincide_con_responsabile` (riga 524) esonerano dall'obbligo — controllarli PRIMA di richiedere il documento
 - Se CF uguali ma flag non impostati: solo warning (riga 502-503), non blocco
 - In Fase 7 (Riepilogo), ripetere la validazione documentale: `documenti_flags` in `_praticaData.economico` deve confermare
+
+**Pratiche di verifica**: `test_p10_mandato_atto_assenso.json` (SR non-PA + proprietario≠richiedente); sezione R10 in `test_problematiche.html` (5 test).
 
 ---
 
