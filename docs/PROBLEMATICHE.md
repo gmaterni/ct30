@@ -92,9 +92,9 @@ Analisi delle 10 regole più insidiose, con commento, riferimenti al codice e st
 
 **Dove**:
 
-- `normativa.js` → `INTERVENTI.II.G.interventi_collegati_obbligatori: ["III.A"]` (riga 145) e `II.H` analogo (riga 168)
+- `normativa.js` → `INTERVENTI.II.G.interventi_collegati_obbligatori: ["III.A"]` (riga 145) e `II.H` analogo (riga 158)
 - `rules_engine.js` → `validateInterventiPerSoggetto()` (riga 874) — presenza codice
-- `cross_rule_engine.js` → `_checkTechnicalConstraints()` (riga 74) — requisiti tecnici aggiuntivi
+- `cross_rule_engine.js` → `_checkTechnicalConstraints()` (riga 57) — requisiti tecnici aggiuntivi
 
 **Commento**: Il codice è più restrittivo di quanto sembri:
 
@@ -121,7 +121,7 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 **Dove**:
 
 - `rules_engine.js` → `validateInterventiPerSoggetto()` (riga 884)
-- `cross_rule_engine.js` → `_checkDependencies()` (riga 48)
+- `cross_rule_engine.js` → `_checkDependencies()` (riga 19)
 
 **Commento**: Doppia validazione in due engine distinti. La regola sembra ovvia ma è spesso ignorata: un utente seleziona "schermature solari" pensando siano un intervento a sé stante.
 
@@ -257,3 +257,22 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 | **Fase 7** (Riepilogo)    | Ripetere tutte le validazioni; mostrare documenti mancanti; audit finale                                    |
 
 Ogni regola ha validazione **sia** nell'engine specializzato (rules_engine.js / cross_rule_engine.js / formula_engine.js) **sia** nel flusso wizard (wizard_manager.js). Le due vie devono rimanere allineate.
+
+---
+
+## Copertura test
+
+| Regola                              | `test_problematiche.html`              | JSON pratica (`static/data/tests/`)    |
+| ----------------------------------- | -------------------------------------- | -------------------------------------- |
+| R1 — Privato resid. solo Titolo III | R1-1..R1-6 (6 test)                    | `test_p01_privato_titolo3.json`        |
+| R2 — Impresa Titolo V               | R2-1..R2-8 (8 test)                    | `test_p02_impresa_titolo_v.json`       |
+| R3 — ETS non econ/economico         | R3-1..R3-6 (6 test)                    | `test_p03_ets_non_economico.json`      |
+| R4 — II.G/II.H → III.A              | R4-1..R4-9 (9 test, incl. II.C → II.B) | `test_p04_iiH_iiiA_pairing.json`       |
+| R5 — II.C → II.B                    | Incluso in R4-8/R4-9                   | `test_p05_iiB_iiC_pairing.json`        |
+| R6 — ESCO → EPC                     | R6-1..R6-4 (4 test)                    | `test_p06_esco_epc.json`               |
+| R7 — Incentivo max                  | R7-1..R7-5 (5 test)                    | `test_p07_pa_comune_100percento.json`  |
+| R8 — GSE fee                        | R8-1..R8-2 (2 test)                    | — (calcolo interno, test unitario)     |
+| R9 — Variazioni >20%                | R9-1..R9-6 (6 test)                    | — (validazione interna, test unitario) |
+| R10 — Mandato + atto assenso        | R10-1..R10-5 (5 test)                  | `test_p10_mandato_atto_assenso.json`   |
+
+**Totale**: 46 test unitari in `test_problematiche.html` + 8 pratiche JSON nel selettore "Problematiche (R1–R10)".

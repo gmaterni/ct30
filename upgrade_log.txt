@@ -26,3 +26,14 @@ La funzione `_resolvePercentuale()` (riga 206-265) esiste e risolve correttament
 - Per testare il cap percentuale, usare codici `percentuale_spesa`.
 - Per III.A, il test appropriato è verificare l'`amount` prodotto dalla formula prestazionale, non la percentuale.
 - II.D richiede 5 campi: `superficie_utile_mq`, `costo_nzeb`, `tipo_intervento_nzeb`, `volume_esistente_mc`, `volume_nuovo_mc`.
+
+## 2026-06-13 — Creazione pratiche JSON Problematiche (R1-R7, R10)
+
+### Azioni
+1. Creati 8 file JSON in `static/data/tests/test_p*.json` per R1-R7, R10
+2. Registrati in `wizard_manager.js` TEST_SCENARIOS_LIST come gruppo "Problematiche (R1–R10)"
+3. Aggiunta tabella copertura test in `docs/PROBLEMATICHE.md`
+4. Corretti riferimenti riga in `docs/PROBLEMATICHE.md`:
+   - cross_rule_engine.js _checkDependencies: 48→19
+   - cross_rule_engine.js _checkTechnicalConstraints: 74→57
+   - normativa.js II.H interventi_collegati_obbligatori: 168→158
