@@ -310,7 +310,7 @@ Ogni regola ha validazione **sia** nell'engine specializzato (rules_engine.js / 
 | ----------------------------------- | -------------------------------------- | ------------------------------------- | ----------------------------- |
 | R1 — Privato resid. solo Titolo III | R1-1..R1-6 (6 test)                    | `test_p01_privato_titolo3.json`       | ✅ 3.815,06€ (III.A)          |
 | R2 — Impresa Titolo V               | R2-1..R2-8 (8 test)                    | `test_p02_impresa_titolo_v.json`      | ✅ 9.207,69€ (III.A 45%)      |
-| R3 — ETS non econ/economico         | R3-1..R3-6 (6 test)                    | `test_p03_ets_non_economico.json`     | ✅ 19.500,00€ (II.A 100%)     |
+| R3 — ETS non econ/economico         | R3-1..R3-6 (6 test)                    | `test_p03_ets_non_economico.json`     | ✅ 19.500,00€ (II.A 65%)      |
 | R4 — II.G/II.H → III.A              | R4-1..R4-9 (9 test, incl. II.C → II.B) | `test_p04_iiH_iiiA_pairing.json`      | ✅ 10.006,82€ + 7.800,00€     |
 | R5 — II.C → II.B                    | Incluso in R4-8/R4-9                   | `test_p05_iiB_iiC_pairing.json`       | ✅ 7.680,00€ + 3.200,00€      |
 | R6 — ESCO → EPC                     | R6-1..R6-4 (4 test)                    | `test_p06_esco_epc.json`              | ✅ 8.368,64€ (PA+ESCO)        |
