@@ -1,70 +1,119 @@
-# AGENTS.md — CT30 (Conto Termico 3.0 Advisor)
+# CT30 Advisor — Agent Instructions
 
-## What this is
+## Project type
 
-Vanilla JS (ES Module) SPA, no framework/bundler/npm. Open `static/index.html` in a browser. Root `index.html` redirects there. LESS compiled client-side via vendored `less.js`.
+Pure client-side SPA: vanilla ES2020+ modules, no bundler, no npm deps, all libraries vendordized. LESS compiled in-browser via `less/less.js`.
 
-## Commands
+## Entrypoints
 
-```bash
-# Serve the app (ES modules require HTTP):
-python3 -m http.server 8080 --directory static/
-# then open http://localhost:8080/  (or http://localhost:8080/test/test_suite.html)
+- `static/index.html` → `<script type="module" src="js/app.js?0.1.7">`
+- Test suite: `static/test/test_suite.html` (requires HTTP server)
 
-# Compile LESS → CSS (requires lessc + cleancss)
-./bin/comprcss.sh
+## Dev commands
 
-# Minify JS (requires google-closure-compiler)
-./bin/comprjs.sh
+| Action | Command |
+|--------|---------|
+| Dev server | `npx live-server --port=8080 --no-css-inject` (from `static/`) |
+| Compile LESS | `npx lessc static/less/main.less static/css/main.css` |
+| Minify CSS | `npx cleancss -o static/css/main.min.css static/css/main.css` |
+| Run test suite | Serve `static/` via HTTP, open `/test/test_suite.html` |
+| MS tests in console | `QaManager.runAllTests()` in browser devtools |
 
-# Deploy (force-push + enable Pages — has hardcoded GITHUB_TOKEN, handle with care)
-./bin/git_push.sh
-./bin/git_pages.sh
-```
-
-## Testing
-
-- **JSON scenarios**: 31 test JSONs in `static/data/tests/`, registered in `wizard_manager.js:30` as `TEST_SCENARIOS_LIST` (8 groups). Load via sidebar "pratiche-test" button.
-- **Automated (browser console)**: `QaManager.runAllTests()` runs 25 MS scenarios (`MS-001`..`MS-025`) embedded in `normativa.js` as `TEST_SCENARIOS` — validates RulesEngine, CrossRuleEngine, FormulaEngine.
-- **Test suite page** (`static/test/test_suite.html`): 4 groups (MS Scenarios, Formula, Rules, Cross-Rule). Uses `_cacheBustImport()` (fetch + Blob URL) to bypass ES module cache. Hard refresh (Ctrl+F5) may help.
-- **Quick test**: open `static/index.html`, click "pratiche-test" to load any JSON scenario.
-
-## Entry & flow
-
-`static/index.html` → `js/app.js` → `js/wizard_manager.js` (7-step wizard). Steps: 0=Pratica, 1=Edificio, 2=Anagrafiche, 3=Interventi, 4=Dati Tecnici, 5=Economico, 6=Riepilogo.
-
-## Architecture
-
-- **IndexedDB** via vendored Dexie.js (`static/js/infra/vendor/dexie.js`). Per-user DB name: `CT30_{WebId}` (localStorage via `static/js/infra/webuser_id.js`). Schema v8, non-destructive upgrade from v6. 12 tables.
-- **Single source of truth for business logic**: `static/js/core/normativa.js` — rules, formulas, constants, SCHEDE_TECNICHE (~l.1003), FORMULE_INCENTIVO (~l.1274), PREMIALITA_CONFIG (~l.21), TEST_SCENARIOS (~l.1586). `NORMATIVA_VERSION` at l.19.
-- **Core modules** (9 files in `static/js/core/`): `normativa.js`, `rules_engine.js`, `formula_engine.js`, `cross_rule_engine.js`, `premialita_engine.js`, `preventivo_manager.js`, `catalogo_loader.js`, `reliability_engine.js`, `qa_manager.js`. Exception: `catalogo_loader.js` exports plain functions (`loadCatalogo`, `getMarche`, `getModelliPerMarca`), not a Ua factory.
-- **UI library** (`static/js/ui/lib/`): `uawindow.js`, `uadialog.js`, `uadrag.js`, `uajtfh.js`. Overrides `alert`/`confirm`/`prompt`.
-- **Vendor**: Dexie.js (IndexedDB), `marked.min.js` (docs/help Markdown); less.js (LESS compilation).
-- **Technical catalogs**: JSON in `static/dati_tecnici/` mapped by `index.json`. Currently III.A–III.E + III.G (III.F not yet cataloged).
-- **Documentation**: `docs/README.md` (indice) + 7 reference Markdown + 1 TXT.
-
-## Cross-cutting constraints (non-obvious)
-
-- **Mutual exclusivity**: III.A, III.B, III.C, III.F cannot be selected together (`cross_rule_engine.js:167`).
-- **Paired interventions**: II.H (FV) and II.G (ricarica EV) require III.A (electric heat pump with integrale sostituzione); II.C (schermature) requires II.B (infissi).
-- **ETS non economico** treated as PA for intensity and single-rata rules (`formula_engine.js:_isPAorETS`).
-- **PA/ETS single rata**: always 1 installment regardless of amount.
-- **IVA**: subtracted from eligible spend for Impresa only.
-- **Accesso diretto deadline**: 60gg from data_fine_lavori (`TERMINI_CONFIG.accesso_diretto_gg` in normativa.js:68).
+The `bin/` scripts are dev-only helpers (git push to GitHub, compress CSS/JS). Do not rely on them for build.
 
 ## Code conventions
 
-Factory/closure pattern — NO `class`/`this`/`new`/`prototype` in application code (built-in constructors like `Date`, `Set`, `Function` are OK). Use `let`/`const` private state (note: 4 legacy core files — `preventivo_manager.js`, `premialita_engine.js`, `qa_manager.js`, `reliability_engine.js` — still use `var`; new code must use `const`). Factories: `PascalCase` with `Ua` prefix (e.g., `UaWizardManager`, `UaFormulaEngine`). Named exports only, no default exports. ES module imports via relative paths in all files. Prefer `async`/`await`; one `.then()` in application code (`wizard_manager.js:610`). Variables/code in English; comments/docs/logs in Italian. No logic inside template literals — pre-assign variables only.
+- **No `class`/`this`/`new`/`prototype`** — factory/closure with `let`/`const` only
+- **PascalCase factory prefix**: `Ua*` (e.g. `UaWizardManager`, `UaFormulaEngine`, `UaWindowAdm`)
+- **Return strict**: assign to descriptive variable before returning
+- **Template literal strict**: no logic inside `${}` — only variables
+- **Async/await only**: no `.then()`
+- **Fail-fast**: validate inputs at top of every function
+- **Language**: code/constants/identifiers in English; comments/logs in Italian
+- **CSS selectors**: JS hooks = `id`/`data-*` attributes; CSS hooks = `class`. Never select by class for logic.
+- **Dark theme**: teal accent `#68c8b2` (no residual indigo/violet references)
 
-## Tooling & config
+## Architecture
 
-- **`opencode.json`** at root defines agent types and skill permissions (7 skills for coding agent). This file and `AGENTS.md` are `.gitignore`d.
-- **`.agents/skills/`** contains per-skill guidance files referenced by `opencode.json`.
-- **Other `.gitignore`d files**: `normative/`, `bin/`, `tmp/`, `report/`, `log/`, `.vscode/`, `*.code-workspace`.
-- **No CI/CD**: zero automated pipeline (no `.github/` directory, no workflow files, no active pre-commit hooks). Testing done manually via browser or `QaManager.runAllTests()`.
+```
+static/js/app.js  (initApp — entry)
+  └─ wizard_manager.js  (7-phase wizard controller)
+       ├─ core/rules_engine.js        (+ normativa.js SSOT)
+       ├─ core/formula_engine.js      (+ normativa.js)
+       ├─ core/cross_rule_engine.js   (+ normativa.js)
+       ├─ core/preventivo_manager.js
+       ├─ core/reliability_engine.js
+       ├─ core/catalogo_loader.js     (loads catalogs JSON on-demand)
+       ├─ infra/idb_mgr.js           (Dexie IndexedDB, vendordized)
+       └─ ui/lib/uawindow.js          (modal windows)
+```
 
-## Notable facts
+The single source of truth for business rules is `static/js/core/normativa.js` — it exports `RULES`, `INTERVENTI`, `FORMULE_INCENTIVO`, `SCHEDE_TECNICHE`, `MATRICE_SA_INTERVENTI`, etc.
 
-- DB export/import: sidebar buttons "Salva DB" / "Carica DB", or `idbMgr.exportAll()` / `idbMgr.importAll()`. `budgetMgr` in `idb_mgr.js` tracks plafond per soggetto categoria.
-- `static/dati_tecnici/index.json` maps intervention codes (III.A–III.G) to their catalog JSON files.
-- The `static/test/test_suite.html` test page requires an HTTP server (same as main app — ES modules don't work with `file://`).
+## Data & persistence
+
+- **IndexedDB** via vendordized Dexie (`static/js/infra/vendor/dexie.js`), database per user: `CT30_{WebId}`
+- **14 tables**: `kvStore`, `settings`, `pratiche`, `proprietari`, `richiedenti`, `responsabili`, `delegati`, `edifici`, `interventi`, `economico`, `documenti`, `variazioni` — schema v8
+- **3 mandatory anagraphics** (proprietario, richiedente, responsabile) even if same person, with `coincide_con_*` flags
+- Technical catalogs: `static/dati_tecnici/` JSON files loaded on-demand via `catalogo_loader.js`, registered in `index.json`
+- Export/import DB via `Salva DB` / `Carica DB` buttons
+
+## Versioning
+
+When updating app version, update in 3 places:
+1. `static/index.html` — query string on `js/app.js?...`
+2. `static/js/app.js` — `APPVERSION` and `APPDATE` in `_renderWelcomeScreen()`
+3. `static/js/core/normativa.js` — `NORMATIVA_VERSION` (normative version, not app)
+
+## Tests
+
+Three test mechanisms, all manual (browser-based):
+
+1. **31 JSON scenarios** — `static/data/tests/test_*.json`, loaded via sidebar button "pratiche-test" in the wizard UI
+2. **25 MS scenarios** — embedded in `normativa.js` as `TEST_SCENARIOS`, run via `QaManager.runAllTests()` in browser console
+3. **Test suite page** — `static/test/test_suite.html` (4 groups: MS, Formula, Rules, Cross-Rule). **Requires HTTP server** (not `file://`). Uses `_cacheBustImport()` to bypass browser cache — Ctrl+F5 may be needed after module changes.
+
+## Wizard phases
+
+7 phases: Pratica → Edificio → Anagrafiche → Interventi → Dati Tecnici → Economico → Riepilogo
+
+Each has a **"?"** button (`.step-help-btn`, top-right) opening contextual help in a `UaWindowAdm` modal.
+
+## Wizard navigation (header bar)
+
+| Button | Behavior |
+|--------|----------|
+| RESET | `cmd-reset` — clears current practice |
+| INIZIO | `btn-wiz-start-global` — goes to step 0; disabled if step=0 |
+| INDIETRO | `btn-wiz-prev-global` — step--; disabled if step=0 |
+| AVANTI | `btn-wiz-next-global` — step++ with validation; disabled if step=6 |
+| FINE | `btn-wiz-end-global` — goes to step 6; disabled if `_isEconomicoValorizzato()`=false |
+
+Visibility toggled by `_updateUIState()` in `app.js`; disabled state by `_updateGlobalNav()` in `wizard_manager.js`.
+
+## LESS organization
+
+```
+static/less/
+  style.less          — main styles
+  tooltip.less        — custom tooltips (data-tt attribute)
+  uadialog.less       — dialog styles
+  modules/
+    variables.less    — colors, fonts, breakpoints
+    layout_base.less
+    layout.less       — responsive (SM≤576, MD≤768, LG≤992, XL>1200)
+    components.less   — cards, buttons, forms
+```
+
+## Important rules & quirks
+
+- SA privato + ambito residenziale → only Titolo III (cannot use Titolo II interventions)
+- Impresa with attività economica → regime Titolo V
+- ETS non economico → assimilated to PA; ETS economico → only Titolo III+V
+- II.G+II.H must pair with III.A; II.C must pair with II.B
+- SR=ESCO → mandatory EPC contract
+- Incentive max 65% (100% for schools/PA Comuni ≤15k pop.)
+- GSE fee 1% max 250€
+- Variazioni >20% → prevent GSE approval
+- Mandatory irrevocable collection mandate for non-PA
+- Atto di assenso required if proprietario ≠ richiedente
