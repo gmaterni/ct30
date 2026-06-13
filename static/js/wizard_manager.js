@@ -4323,6 +4323,31 @@ const UaWizardManager = function (viewportId) {
       console.warn("Avvisi anagrafiche:", anagCheck.warnings);
     }
 
+    // Variazioni >20% preventivo vs spese (RA Art.25 c.2, P4)
+    var eco = _praticaData.economico || {};
+    var preventivoItems = eco.preventivo || [];
+    var preventivoTotale = 0;
+    preventivoItems.forEach(function (item) {
+      preventivoTotale += parseFloat(item.importo || item.amount || 0) || 0;
+    });
+    var speseMap = eco.spese || {};
+    var speseTotale = 0;
+    Object.keys(speseMap).forEach(function (code) {
+      speseTotale += parseFloat(speseMap[code] || 0) || 0;
+    });
+    if (preventivoTotale > 0) {
+      var variazionePerc =
+        ((speseTotale - preventivoTotale) / preventivoTotale) * 100;
+      var terminiCheck = _rulesEngine.validateTermini(
+        _praticaData.pratica || {},
+        { variazionePercentuale: variazionePerc },
+      );
+      if (!terminiCheck.success) {
+        alert("VARIAZIONE >20%: " + terminiCheck.errors.join("\n"));
+        return false;
+      }
+    }
+
     return true;
   };
 

@@ -199,3 +199,9 @@ Analizzate 14 criticità da `docs/PROBLEMATICHE_CRITICHE.md` confrontando:
 1. `_resolvePercentuale` refactorizzata per restituire `{ valore, base, madeInEuBonus, maggiorazioneTotale, premialitaTotale, anteCap, cap, capped30 }`
 2. `_executeGenericFormula` salva breakdown in `params._intensitaBreakdown`
 3. UI fase Economico: griglia intensità per componente con indicatore cap visivo
+
+## 2026-06-13 — P4 completato (Variazioni >20% nel flusso wizard)
+
+### P4 — Variazioni >20% nel flusso wizard (#12)
+1. `_validateStep5` calcola automaticamente variazione % tra preventivo e spese
+2. Se >20%, alert bloccante tramite `validateTermini({ variazionePercentuale })`

@@ -128,7 +128,7 @@ finale = base * (1 + madeInEuBonus) + maggiorazioneTotale + (premialitaTotale - 
 
 **Implementazione**: Validazione opzionale in `rules_engine.js`.
 
-**⏳ DA FARE**: Integrare alert nel flusso wizard. Vedi `upgrade.txt` P4.
+**✅ RISOLTO (P4)**: Calcolo automatico variazione preventivo vs spese in `_validateStep5`. Alert bloccante se >20% con richiamo a `validateTermini`.
 
 ---
 
@@ -167,6 +167,6 @@ finale = base * (1 + madeInEuBonus) + maggiorazioneTotale + (premialitaTotale - 
 | 9   | Formula intensità: cap invisibile all'utente  | ✅ Risolto (P3)             |
 | 10  | Mutua esclusività: III.G e II.D               | ✅ III.G escluso (coesiste) |
 | 11  | Soglie ESCO 70kW/20m² non implementate        | ✅ Risolto (P2)             |
-| 12  | Variazioni >20%: regola opzionale             | ⏳ P4 upgrade.txt           |
+| 12  | Variazioni >20%: regola opzionale             | ✅ Risolto (P4)             |
 | 13  | perc_multi: III.D e III.F esclusi             | ✅ Risolto                  |
 | 14  | Atto assenso: diritto reale non coperto       | ✅ Risolto                  |

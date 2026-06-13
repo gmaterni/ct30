@@ -26,13 +26,10 @@ Tre implementazioni erano state unificate in `_checkDivietoFossiliUnified` in `c
 
 ---
 
-## P4 — Variazioni >20% integrata nel flusso wizard (#12) [MEDIO]
+## ~~P4 — Variazioni >20% integrata nel flusso wizard (#12) [MEDIO]~~ ✅ COMPLETATO 2026-06-13
 
-**Problema**: `rules_engine.js:1009` implementa la verifica come validazione opzionale parametrica, non legata al flusso pratica.
-
-**Obiettivo**: Integrare alert preventivo durante la compilazione (fase Economico o Riepilogo) quando vengono rilevate variazioni >20% rispetto al preventivo.
-
-**File**: `rules_engine.js`, `wizard_manager.js`
+- `_validateStep5` calcola automaticamente variazione % (preventivo vs spese)
+- Se >20%, chiama `validateTermini({ variazionePercentuale })` e mostra alert bloccante
 
 ---
 
