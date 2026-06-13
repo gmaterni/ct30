@@ -519,7 +519,7 @@ function main() {
 
   const testDir = path.resolve(STATIC, "data/tests");
   const files = readdirSync(testDir)
-    .filter(function (f) { return f.startsWith("test_p") && f.endsWith(".json"); })
+    .filter(function (f) { return f.endsWith(".json"); })
     .map(function (f) { return path.join(testDir, f); })
     .sort();
 
@@ -528,15 +528,15 @@ function main() {
     process.exit(1);
   }
 
-  console.log("Generazione file DATI per " + files.length + " pratiche Problematiche...\n");
+  console.log("Generazione file DATI per " + files.length + " pratiche di test...\n");
 
   const allSections = [];
   let ok = 0, err = 0;
 
   files.forEach(function (filePath) {
     const basename = path.basename(filePath, ".json");
-    const label = basename.replace(/^test_p\d+_/, "P");
-    const outName = label + "_DATI.txt";
+    const label = basename.replace(/^test_p\d+_/, "").replace(/^test_\d+_/, "");
+    const outName = "DATI_" + label + ".txt";
 
     let scenario;
     try {
