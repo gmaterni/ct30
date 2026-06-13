@@ -539,7 +539,7 @@ const UaFormulaEngine = function () {
           RULES.interventi["II.G"].varianti["Potenza > 50 kW e ≤ 100 kW"]
             ?.cmax_fisso_infrastruttura || 60000;
       } else {
-        const varKey = tipo.includes("trifase")
+        const varKey = tipo.toLowerCase().includes("trifase")
           ? "Punto ricarica Trifase"
           : "Punto ricarica Monofase";
         const cmaxFisso =
@@ -604,7 +604,7 @@ const UaFormulaEngine = function () {
       }
       let ciVal = 0.025;
       for (const c of ciArr) {
-        if (potenza >= c.min_kw && potenza < c.max_kw) {
+        if (potenza >= c.min_kw && potenza <= c.max_kw) {
           ciVal = c.ci;
           break;
         }

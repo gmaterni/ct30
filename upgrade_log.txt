@@ -90,3 +90,27 @@ con 50.000€ > 15.000€) mostrava "5 rate annuali" invece di "Unica soluzione"
 - `static/js/core/formula_engine.js` — isPAorETS (_resolvePercentuale + _isPAorETS) + made_in_eu moltiplicativo
 - `static/data/tests/test_p03_ets_non_economico.json` — +miglioramento_ep_40
 - `static/data/tests/test_p07_pa_comune_100percento.json` — +miglioramento_ep_40
+
+## 2026-06-13 — Fix #5/6 da verifica DATI su 39 pratiche
+
+### Bug #5 — II.G tariffa Trifase non riconosciuta
+- **Dove**: `formula_engine.js:542`
+- **Problema**: `tipo.includes("trifase")` è case-sensitive, non matcha `"Punto ricarica Trifase"` (T maiuscola) → fallback a Monofase 2.400€/punto
+- **Fix**: `tipo.toLowerCase().includes("trifase")`
+- **Pratiche corrette**: CT30-T04 (II.G: 6.912€ → 7.200€), CT30-T07 (II.G: 7.632€ → 8.195€)
+
+### Bug #6 — III.C C_i per 35kW boundary errato
+- **Dove**: `formula_engine.js:607`
+- **Problema**: `potenza < c.max_kw` (strict `<`) esclude potenza=35 dal primo bucket (0-35kW, C_i=0.060), cade nel secondo (35-500kW, C_i=0.025)
+- **Fix**: `potenza <= c.max_kw`
+- **Pratiche corrette**: CT30-T10 (III.C: 1.295€ → 3.108€), CT30-T31 (III.C: 1.050€ → 2.520€)
+
+### Falsi positivi (comportamento corretto, non modificati)
+- III.E 60% (CT30-T07): base 40% + zona_assistita 20% = 60% — OK
+- PA 85% (CT30-T30): base PA 65% + zona_assistita 20% = 85% — OK
+- ETS 87% (CT30-T10): base PA 65% × 1.10 made_in_eu + 15% zona_a = 86,5% — OK
+- Impresa 48% (CT30-T22): base 25% × 1.10 + 15% zona_a + 5% zona_c − 10% doppia = 47,5% — OK
+- made_in_eu su III.A: III.A è prestazionale, non usa percentuale — OK
+
+### File modificati
+- `static/js/core/formula_engine.js` — II.G case-insensitive trifase + III.C boundary ≤
