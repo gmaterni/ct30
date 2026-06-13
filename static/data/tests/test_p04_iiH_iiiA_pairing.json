@@ -1,0 +1,151 @@
+{
+  "codice": "CT30-P04",
+  "nome": "R4: III.A elettrica pura + II.H FV → pairing obbligatorio OK",
+  "descrizione": "PDC aria/acqua elettrica con sostituzione integrale + FV 10kWp. Verifica che II.H sia trainato da III.A elettrico.",
+  "soggetto": {
+    "tipo": "Privato terziario",
+    "denominazione": "Azienda Verde S.r.l.",
+    "codiceFiscale": "01234567892",
+    "partitaIva": "01234567892",
+    "email": "info@aziendaverde.it"
+  },
+  "soggetti": {
+    "sa": {
+      "denominazione": "Azienda Verde S.r.l.",
+      "tipo": "Privato terziario",
+      "cf_piva": "01234567892",
+      "titolo_godimento": "Proprietà",
+      "email": "info@aziendaverde.it",
+      "telefono": "0519876543"
+    },
+    "sr": {
+      "denominazione": "Azienda Verde S.r.l.",
+      "cf_piva": "01234567892",
+      "iban": "IT60X0542811101000000999",
+      "pec": "aziendaverde@pec.it",
+      "coincide_con_sa": true,
+      "tipo": "Privato"
+    },
+    "proprietario": {
+      "denominazione": "Azienda Verde S.r.l.",
+      "cf_piva": "01234567892",
+      "coincide_con_sa": true,
+      "atto_assenso": true
+    },
+    "delegato": {
+      "nome": "",
+      "cf": ""
+    }
+  },
+  "ruoli": {
+    "sa": {
+      "denominazione": "Azienda Verde S.r.l.",
+      "tipo": "Privato terziario",
+      "cf_piva": "01234567892",
+      "titolo_godimento": "Proprietà"
+    },
+    "sr": {
+      "denominazione": "Azienda Verde S.r.l.",
+      "cf_piva": "01234567892",
+      "iban": "IT60X0542811101000000999",
+      "pec": "aziendaverde@pec.it",
+      "coincide_con_sa": true
+    },
+    "proprietario": {
+      "denominazione": "Azienda Verde S.r.l.",
+      "cf_piva": "01234567892",
+      "coincide_con_sa": true,
+      "atto_assenso": true
+    },
+    "delegato": {
+      "nome": "",
+      "cf": ""
+    }
+  },
+  "immobile": {
+    "indirizzo": "Via del Sole 5, Bologna (BO)",
+    "zonaClimatica": "Zona E",
+    "destinazione": "Terziario",
+    "tipo_edificio": "Edificio Singolo",
+    "categoriaCatastale": "D/1",
+    "classeEnergeticaAnte": "F",
+    "potenza_esistente_kw": 80,
+    "combustibile_ante": "gasolio"
+  },
+  "edificio": {
+    "indirizzo": "Via del Sole 5, Bologna (BO)",
+    "categoria_catastale": "D/1",
+    "zona_climatica": "Zona E",
+    "impianto_esistente": {
+      "tipo": "Caldaia",
+      "potenza_kw": 80,
+      "combustibile": "gasolio",
+      "libretto": true,
+      "libretto_codice": "IT0123456792"
+    },
+    "classe_ante": "F"
+  },
+  "selectedInterventi": ["III.A", "II.H"],
+  "interventi": ["III.A", "II.H"],
+  "interventiData": {
+    "III.A": {
+      "tipologia_pdc": "aria/acqua",
+      "potenza_pdc_kw": 30,
+      "scop": 4.5,
+      "eta_s": 185,
+      "made_in_eu": "sì",
+      "miglioramento_ep_40": "sì",
+      "costo_pdc": 25000,
+      "sostituisce_esistente": "sì"
+    },
+    "II.H": {
+      "potenza_fv_kw": 10,
+      "is_autoconsumo": "sì",
+      "made_in_eu": "sì",
+      "accumulo_presente": "sì",
+      "capacita_accumulo_kwh": 10,
+      "costo_fv": 15000
+    }
+  },
+  "preventivo": {
+    "items": [
+      {
+        "id": "pdc_forn",
+        "codice_intervento": "III.A",
+        "descrizione": "Fornitura PDC aria/acqua 30kW",
+        "tipo_costo": "fornitura",
+        "importo": 18000,
+        "quantita": 1
+      },
+      {
+        "id": "pdc_posa",
+        "codice_intervento": "III.A",
+        "descrizione": "Posa PDC",
+        "tipo_costo": "posa",
+        "importo": 7000,
+        "quantita": 1
+      },
+      {
+        "id": "fv_forn",
+        "codice_intervento": "II.H",
+        "descrizione": "Fornitura FV 10kWp + accumulo 10kWh",
+        "tipo_costo": "fornitura",
+        "importo": 10000,
+        "quantita": 1
+      },
+      {
+        "id": "fv_posa",
+        "codice_intervento": "II.H",
+        "descrizione": "Posa moduli FV e inverter",
+        "tipo_costo": "posa",
+        "importo": 5000,
+        "quantita": 1
+      }
+    ]
+  },
+  "input": {
+    "modalita_accesso": "diretto",
+    "data_fine_lavori": "2026-08-01",
+    "data_richiesta": "2026-08-15"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "codice": "CT30-P02",
+  "nome": "R2: Impresa → Regime Titolo V (richiesta preliminare + III.A 45%)",
+  "descrizione": "Impresa con attività economica, richiesta preliminare via PEC, III.A PdC 100kW. Verifica intensità 45% Titolo V.",
+  "soggetto": {
+    "tipo": "Privato terziario",
+    "denominazione": "TecnoIndustria S.p.A.",
+    "codiceFiscale": "01234567890",
+    "partitaIva": "01234567890",
+    "email": "info@tecnoindustria.it"
+  },
+  "soggetti": {
+    "sa": {
+      "denominazione": "TecnoIndustria S.p.A.",
+      "tipo": "Impresa",
+      "cf_piva": "01234567890",
+      "titolo_godimento": "Proprietà",
+      "email": "info@tecnoindustria.it",
+      "telefono": "0811234567"
+    },
+    "sr": {
+      "denominazione": "TecnoIndustria S.p.A.",
+      "cf_piva": "01234567890",
+      "iban": "IT99P0123456789012345678901",
+      "pec": "amministrazione@pec.tecnoindustria.it",
+      "coincide_con_sa": true,
+      "tipo": "Privato"
+    },
+    "proprietario": {
+      "denominazione": "TecnoIndustria S.p.A.",
+      "cf_piva": "01234567890",
+      "coincide_con_sa": true,
+      "atto_assenso": true
+    },
+    "delegato": {
+      "nome": "Ing. Marco Verdi",
+      "cf": "VRDMRA80A01H501U"
+    }
+  },
+  "ruoli": {
+    "sa": {
+      "denominazione": "TecnoIndustria S.p.A.",
+      "tipo": "Impresa",
+      "cf_piva": "01234567890",
+      "titolo_godimento": "Proprietà"
+    },
+    "sr": {
+      "denominazione": "TecnoIndustria S.p.A.",
+      "cf_piva": "01234567890",
+      "iban": "IT99P0123456789012345678901",
+      "pec": "amministrazione@pec.tecnoindustria.it",
+      "coincide_con_sa": true
+    },
+    "proprietario": {
+      "denominazione": "TecnoIndustria S.p.A.",
+      "cf_piva": "01234567890",
+      "coincide_con_sa": true,
+      "atto_assenso": true
+    },
+    "delegato": {
+      "nome": "Ing. Marco Verdi",
+      "cf": "VRDMRA80A01H501U"
+    }
+  },
+  "immobile": {
+    "indirizzo": "Via delle Industrie 50, Napoli (NA)",
+    "zonaClimatica": "Zona C",
+    "destinazione": "Terziario",
+    "tipo_edificio": "Edificio Singolo",
+    "categoriaCatastale": "D/7",
+    "classeEnergeticaAnte": "F",
+    "potenza_esistente_kw": 150,
+    "combustibile_ante": "gasolio"
+  },
+  "edificio": {
+    "indirizzo": "Via delle Industrie 50, Napoli (NA)",
+    "categoria_catastale": "D/7",
+    "zona_climatica": "Zona C",
+    "impianto_esistente": {
+      "tipo": "Caldaia",
+      "potenza_kw": 150,
+      "combustibile": "gasolio",
+      "libretto": true,
+      "libretto_codice": "IT0123456790"
+    }
+  },
+  "richiestaPreliminareInviata": true,
+  "dataRichiestaPreliminare": "2026-01-15",
+  "dataPrimoImpegno": "2026-02-01",
+  "selectedInterventi": ["III.A"],
+  "interventi": ["III.A"],
+  "interventiData": {
+    "III.A": {
+      "tipologia_pdc": "acqua/acqua",
+      "potenza_pdc_kw": 100,
+      "scop": 5.2,
+      "eta_s": 190,
+      "made_in_eu": "sì",
+      "miglioramento_ep_40": "sì",
+      "costo_pdc": 85000,
+      "sostituisce_esistente": "sì"
+    }
+  },
+  "preventivo": {
+    "items": [
+      {
+        "id": "pdc_forn",
+        "codice_intervento": "III.A",
+        "descrizione": "Fornitura pompa di calore 100kW acqua/acqua",
+        "tipo_costo": "fornitura",
+        "importo": 55000,
+        "quantita": 1
+      },
+      {
+        "id": "pdc_posa",
+        "codice_intervento": "III.A",
+        "descrizione": "Posa e collegamenti",
+        "tipo_costo": "posa",
+        "importo": 20000,
+        "quantita": 1
+      },
+      {
+        "id": "pdc_doc",
+        "codice_intervento": "III.A",
+        "descrizione": "Documentazione tecnica",
+        "tipo_costo": "documentazione",
+        "importo": 10000,
+        "quantita": 1
+      }
+    ]
+  },
+  "input": {
+    "modalita_accesso": "diretto",
+    "data_fine_lavori": "2026-07-01",
+    "data_richiesta": "2026-07-15"
+  }
+}

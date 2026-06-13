@@ -1,0 +1,126 @@
+{
+  "codice": "CT30-P03",
+  "nome": "R3: ETS non economico → assimilato PA (II.A isolamento 100%)",
+  "descrizione": "ETS non economico con II.A isolamento pareti. Verifica intensità 100% per isPAorETS.",
+  "soggetto": {
+    "tipo": "ETS non economico",
+    "denominazione": "Fondazione Green Future ETS",
+    "codiceFiscale": "01234567891",
+    "partitaIva": "01234567891",
+    "email": "info@fondazionegreenfuture.it"
+  },
+  "soggetti": {
+    "sa": {
+      "denominazione": "Fondazione Green Future ETS",
+      "tipo": "ETS non economico",
+      "cf_piva": "01234567891",
+      "titolo_godimento": "Proprietà",
+      "email": "info@fondazionegreenfuture.it",
+      "telefono": "021234567"
+    },
+    "sr": {
+      "denominazione": "Fondazione Green Future ETS",
+      "cf_piva": "01234567891",
+      "iban": "IT60X0542811101000000123456",
+      "pec": "fondazionegreenfuture@pec.it",
+      "coincide_con_sa": true,
+      "tipo": "Privato"
+    },
+    "proprietario": {
+      "denominazione": "Fondazione Green Future ETS",
+      "cf_piva": "01234567891",
+      "coincide_con_sa": true,
+      "atto_assenso": true
+    },
+    "delegato": {
+      "nome": "",
+      "cf": ""
+    }
+  },
+  "ruoli": {
+    "sa": {
+      "denominazione": "Fondazione Green Future ETS",
+      "tipo": "ETS non economico",
+      "cf_piva": "01234567891",
+      "titolo_godimento": "Proprietà"
+    },
+    "sr": {
+      "denominazione": "Fondazione Green Future ETS",
+      "cf_piva": "01234567891",
+      "iban": "IT60X0542811101000000123456",
+      "pec": "fondazionegreenfuture@pec.it",
+      "coincide_con_sa": true
+    },
+    "proprietario": {
+      "denominazione": "Fondazione Green Future ETS",
+      "cf_piva": "01234567891",
+      "coincide_con_sa": true,
+      "atto_assenso": true
+    },
+    "delegato": {
+      "nome": "",
+      "cf": ""
+    }
+  },
+  "immobile": {
+    "indirizzo": "Viale della Sostenibilità 20, Bologna (BO)",
+    "zonaClimatica": "Zona E",
+    "destinazione": "Uffici",
+    "tipo_edificio": "Edificio Singolo",
+    "categoriaCatastale": "A/10",
+    "classeEnergeticaAnte": "F",
+    "potenza_esistente_kw": 50,
+    "combustibile_ante": "metano"
+  },
+  "edificio": {
+    "indirizzo": "Viale della Sostenibilità 20, Bologna (BO)",
+    "categoria_catastale": "A/10",
+    "zona_climatica": "Zona E",
+    "impianto_esistente": {
+      "tipo": "Caldaia",
+      "potenza_kw": 50,
+      "combustibile": "metano",
+      "libretto": true,
+      "libretto_codice": "IT0123456791"
+    },
+    "classe_ante": "F"
+  },
+  "selectedInterventi": ["II.A"],
+  "interventi": ["II.A"],
+  "interventiData": {
+    "II.A": {
+      "tipo_superficie_opaca": "Parete Esterna",
+      "superficie_isolata_mq": 200,
+      "trasmittanza_ante": 1.2,
+      "trasmittanza_post": 0.25,
+      "costo_isolamento": 30000,
+      "made_in_eu": "sì",
+      "riduzione_ep_10": "sì"
+    }
+  },
+  "preventivo": {
+    "items": [
+      {
+        "id": "isol_forn",
+        "codice_intervento": "II.A",
+        "descrizione": "Isolamento pareti esterne 200mq",
+        "tipo_costo": "fornitura",
+        "importo": 20000,
+        "quantita": 1
+      },
+      {
+        "id": "isol_posa",
+        "codice_intervento": "II.A",
+        "descrizione": "Posa isolamento a cappotto",
+        "tipo_costo": "posa",
+        "importo": 10000,
+        "quantita": 1
+      }
+    ]
+  },
+  "input": {
+    "modalita_accesso": "diretto",
+    "data_fine_lavori": "2026-09-01",
+    "data_richiesta": "2026-09-15"
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "codice": "CT30-P05",
+  "nome": "R5: II.B infissi + II.C schermature → abbinamento obbligatorio OK",
+  "descrizione": "Privato residenziale con II.B infissi + II.C schermature solari. Verifica che II.C richieda II.B.",
+  "soggetto": {
+    "tipo": "Privato residenziale",
+    "denominazione": "Luigi Bianchi",
+    "codiceFiscale": "BNCLGU75B12F205N",
+    "email": "luigi.bianchi@email.it",
+    "telefono": "031234567"
+  },
+  "soggetti": {
+    "sa": {
+      "denominazione": "Luigi Bianchi",
+      "tipo": "Privato residenziale",
+      "cf_piva": "BNCLGU75B12F205N",
+      "titolo_godimento": "Proprietà",
+      "email": "luigi.bianchi@email.it",
+      "telefono": "031234567"
+    },
+    "sr": {
+      "denominazione": "Luigi Bianchi",
+      "cf_piva": "BNCLGU75B12F205N",
+      "iban": "IT60X0542811101000000998",
+      "pec": "luigi.bianchi@pec.it",
+      "coincide_con_sa": true,
+      "tipo": "Privato"
+    },
+    "proprietario": {
+      "denominazione": "Luigi Bianchi",
+      "cf_piva": "BNCLGU75B12F205N",
+      "coincide_con_sa": true,
+      "atto_assenso": true
+    },
+    "delegato": {
+      "nome": "",
+      "cf": ""
+    }
+  },
+  "ruoli": {
+    "sa": {
+      "denominazione": "Luigi Bianchi",
+      "tipo": "Privato residenziale",
+      "cf_piva": "BNCLGU75B12F205N",
+      "titolo_godimento": "Proprietà"
+    },
+    "sr": {
+      "denominazione": "Luigi Bianchi",
+      "cf_piva": "BNCLGU75B12F205N",
+      "iban": "IT60X0542811101000000998",
+      "pec": "luigi.bianchi@pec.it",
+      "coincide_con_sa": true
+    },
+    "proprietario": {
+      "denominazione": "Luigi Bianchi",
+      "cf_piva": "BNCLGU75B12F205N",
+      "coincide_con_sa": true,
+      "atto_assenso": true
+    },
+    "delegato": {
+      "nome": "",
+      "cf": ""
+    }
+  },
+  "immobile": {
+    "indirizzo": "Via dei Tigli 3, Bergamo (BG)",
+    "zonaClimatica": "Zona E",
+    "destinazione": "Residenziale",
+    "tipo_edificio": "Villa Singola",
+    "categoriaCatastale": "A/7",
+    "classeEnergeticaAnte": "F",
+    "potenza_esistente_kw": 20,
+    "combustibile_ante": "metano"
+  },
+  "edificio": {
+    "indirizzo": "Via dei Tigli 3, Bergamo (BG)",
+    "categoria_catastale": "A/7",
+    "zona_climatica": "Zona E",
+    "impianto_esistente": {
+      "tipo": "Caldaia",
+      "potenza_kw": 20,
+      "combustibile": "metano",
+      "libretto": true,
+      "libretto_codice": "IT0123456793"
+    },
+    "classe_ante": "F"
+  },
+  "selectedInterventi": ["II.B", "II.C"],
+  "interventi": ["II.B", "II.C"],
+  "interventiData": {
+    "II.B": {
+      "tipologia_serramento": "finestra",
+      "superficie_infissi_mq": 25,
+      "trasmittanza_infissi_ante": 3.5,
+      "trasmittanza_infissi_post": 1.1,
+      "costo_infissi": 12000,
+      "valvole_termostatiche": "già presenti",
+      "made_in_eu": "sì"
+    },
+    "II.C": {
+      "tipo_schermatura": "Schermature mobili",
+      "superficie_schermata_mq": 20,
+      "fattore_solare_g": 0.6,
+      "fattore_solare_g_post": 0.15,
+      "costo_schermatura": 5000,
+      "made_in_eu": "sì"
+    }
+  },
+  "preventivo": {
+    "items": [
+      {
+        "id": "infissi_forn",
+        "codice_intervento": "II.B",
+        "descrizione": "Fornitura infissi classe A+ 25mq",
+        "tipo_costo": "fornitura",
+        "importo": 8000,
+        "quantita": 1
+      },
+      {
+        "id": "infissi_posa",
+        "codice_intervento": "II.B",
+        "descrizione": "Posa infissi e controtelai",
+        "tipo_costo": "posa",
+        "importo": 4000,
+        "quantita": 1
+      },
+      {
+        "id": "scherm_forn",
+        "codice_intervento": "II.C",
+        "descrizione": "Fornitura schermature solari",
+        "tipo_costo": "fornitura",
+        "importo": 3000,
+        "quantita": 1
+      },
+      {
+        "id": "scherm_posa",
+        "codice_intervento": "II.C",
+        "descrizione": "Posa schermature",
+        "tipo_costo": "posa",
+        "importo": 2000,
+        "quantita": 1
+      }
+    ]
+  },
+  "input": {
+    "modalita_accesso": "diretto",
+    "data_fine_lavori": "2026-06-01",
+    "data_richiesta": "2026-06-15"
+  }
+}

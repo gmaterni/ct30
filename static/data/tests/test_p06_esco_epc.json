@@ -1,0 +1,134 @@
+{
+  "codice": "CT30-P06",
+  "nome": "R6: SR=ESCO ≠ SA → contratto EPC obbligatorio (UNI CEI EN 17669)",
+  "descrizione": "SA=Comune, SR=ESCO (terza parte). ESCO non coincide con richiedente: EPC obbligatorio + certificazione 11352.",
+  "soggetto": {
+    "tipo": "PA",
+    "denominazione": "Comune di Solaria",
+    "codiceFiscale": "80012345678",
+    "email": "protocollo@comunesolaria.it",
+    "telefono": "031234569"
+  },
+  "soggetti": {
+    "sa": {
+      "denominazione": "Comune di Solaria",
+      "tipo": "PA",
+      "cf_piva": "80012345678",
+      "titolo_godimento": "Propriet\u00e0",
+      "email": "protocollo@comunesolaria.it",
+      "telefono": "031234569"
+    },
+    "sr": {
+      "denominazione": "ESCO GreenService S.p.A.",
+      "cf_piva": "09876543210",
+      "iban": "IT60X0542811101000000997",
+      "pec": "greenservice@pec.it",
+      "coincide_con_sa": false,
+      "tipo": "ESCO"
+    },
+    "proprietario": {
+      "denominazione": "Comune di Solaria",
+      "cf_piva": "80012345678",
+      "coincide_con_sa": true,
+      "atto_assenso": true
+    },
+    "delegato": {
+      "nome": "Arch. Anna Neri",
+      "cf": "NRLNNA80A41F205M"
+    }
+  },
+  "ruoli": {
+    "sa": {
+      "denominazione": "Comune di Solaria",
+      "tipo": "PA",
+      "cf_piva": "80012345678",
+      "titolo_godimento": "Propriet\u00e0"
+    },
+    "sr": {
+      "denominazione": "ESCO GreenService S.p.A.",
+      "cf_piva": "09876543210",
+      "iban": "IT60X0542811101000000997",
+      "pec": "greenservice@pec.it",
+      "coincide_con_sa": false
+    },
+    "proprietario": {
+      "denominazione": "Comune di Solaria",
+      "cf_piva": "80012345678",
+      "coincide_con_sa": true,
+      "atto_assenso": true
+    },
+    "delegato": {
+      "nome": "Arch. Anna Neri",
+      "cf": "NRLNNA80A41F205M"
+    }
+  },
+  "immobile": {
+    "indirizzo": "Piazza del Municipio 1, Solaria (SO)",
+    "zonaClimatica": "Zona E",
+    "destinazione": "Uffici",
+    "tipo_edificio": "Edificio Singolo",
+    "categoriaCatastale": "B/4",
+    "classeEnergeticaAnte": "G",
+    "potenza_esistente_kw": 100,
+    "combustibile_ante": "metano"
+  },
+  "edificio": {
+    "indirizzo": "Piazza del Municipio 1, Solaria (SO)",
+    "categoria_catastale": "B/4",
+    "zona_climatica": "Zona E",
+    "impianto_esistente": {
+      "tipo": "Centrale termica",
+      "potenza_kw": 100,
+      "combustibile": "metano",
+      "libretto": true,
+      "libretto_codice": "IT0123456794"
+    },
+    "comune_sotto_15k": true,
+    "scuola_ospedale": false,
+    "classe_ante": "G"
+  },
+  "selectedInterventi": ["III.A"],
+  "interventi": ["III.A"],
+  "interventiData": {
+    "III.A": {
+      "tipologia_pdc": "aria/acqua",
+      "potenza_pdc_kw": 60,
+      "scop": 4.8,
+      "eta_s": 190,
+      "made_in_eu": "sì",
+      "miglioramento_ep_40": "sì",
+      "costo_pdc": 45000,
+      "sostituisce_esistente": "sì"
+    }
+  },
+  "documenti": {
+    "contratto_epc": true,
+    "certificazione_11352_valida": true,
+    "mandato_incasso": true
+  },
+  "preventivo": {
+    "items": [
+      {
+        "id": "pdc_forn",
+        "codice_intervento": "III.A",
+        "descrizione": "Fornitura PDC aria/acqua 60kW",
+        "tipo_costo": "fornitura",
+        "importo": 30000,
+        "quantita": 1
+      },
+      {
+        "id": "pdc_posa",
+        "codice_intervento": "III.A",
+        "descrizione": "Posa e adeguamento impianto",
+        "tipo_costo": "posa",
+        "importo": 15000,
+        "quantita": 1
+      }
+    ]
+  },
+  "input": {
+    "modalita_accesso": "diretto",
+    "data_fine_lavori": "2026-10-01",
+    "data_richiesta": "2026-10-15"
+  }
+}

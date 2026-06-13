@@ -1,0 +1,127 @@
+{
+  "codice": "CT30-P01",
+  "nome": "R1: Privato Residenziale → solo Titolo III (PdC aria/acqua)",
+  "descrizione": "SA privato + ambito residenziale: selezionati III.A + II.H. Verifica che Titolo II sia bloccato dalla matrice SA.",
+  "soggetto": {
+    "tipo": "Privato residenziale",
+    "denominazione": "Mario Rossi",
+    "codiceFiscale": "RSSMRA80A01H501U",
+    "email": "mario.rossi@email.it",
+    "telefono": "021234567"
+  },
+  "soggetti": {
+    "sa": {
+      "denominazione": "Mario Rossi",
+      "tipo": "Privato residenziale",
+      "cf_piva": "RSSMRA80A01H501U",
+      "titolo_godimento": "Proprietà",
+      "email": "mario.rossi@email.it",
+      "telefono": "021234567"
+    },
+    "sr": {
+      "denominazione": "Mario Rossi",
+      "cf_piva": "RSSMRA80A01H501U",
+      "iban": "IT60X0542811101000000123456",
+      "pec": "mario.rossi@pec.it",
+      "coincide_con_sa": true,
+      "tipo": "Privato"
+    },
+    "proprietario": {
+      "denominazione": "Mario Rossi",
+      "cf_piva": "RSSMRA80A01H501U",
+      "coincide_con_sa": true,
+      "atto_assenso": true
+    },
+    "delegato": {
+      "nome": "",
+      "cf": ""
+    }
+  },
+  "ruoli": {
+    "sa": {
+      "denominazione": "Mario Rossi",
+      "tipo": "Privato residenziale",
+      "cf_piva": "RSSMRA80A01H501U",
+      "titolo_godimento": "Proprietà"
+    },
+    "sr": {
+      "denominazione": "Mario Rossi",
+      "cf_piva": "RSSMRA80A01H501U",
+      "iban": "IT60X0542811101000000123456",
+      "pec": "mario.rossi@pec.it",
+      "coincide_con_sa": true
+    },
+    "proprietario": {
+      "denominazione": "Mario Rossi",
+      "cf_piva": "RSSMRA80A01H501U",
+      "coincide_con_sa": true,
+      "atto_assenso": true
+    },
+    "delegato": {
+      "nome": "",
+      "cf": ""
+    }
+  },
+  "immobile": {
+    "indirizzo": "Via Roma 10, Milano (MI)",
+    "zonaClimatica": "Zona E",
+    "destinazione": "Residenziale",
+    "tipo_edificio": "Condominio",
+    "categoriaCatastale": "A/2",
+    "classeEnergeticaAnte": "G",
+    "potenza_esistente_kw": 24,
+    "combustibile_ante": "metano"
+  },
+  "edificio": {
+    "indirizzo": "Via Roma 10, Milano (MI)",
+    "categoria_catastale": "A/2",
+    "zona_climatica": "Zona E",
+    "impianto_esistente": {
+      "tipo": "Caldaia",
+      "potenza_kw": 24,
+      "combustibile": "metano",
+      "libretto": true,
+      "libretto_codice": "IT0123456789"
+    },
+    "classe_ante": "G"
+  },
+  "selectedInterventi": ["III.A"],
+  "interventi": ["III.A"],
+  "interventiData": {
+    "III.A": {
+      "tipologia_pdc": "aria/acqua",
+      "potenza_pdc_kw": 12,
+      "scop": 4.2,
+      "eta_s": 180,
+      "made_in_eu": "sì",
+      "miglioramento_ep_40": "sì",
+      "costo_pdc": 15000,
+      "sostituisce_esistente": "sì"
+    }
+  },
+  "preventivo": {
+    "items": [
+      {
+        "id": "pdc_forn",
+        "codice_intervento": "III.A",
+        "descrizione": "Fornitura pompa di calore aria/acqua 12kW",
+        "tipo_costo": "fornitura",
+        "importo": 10000,
+        "quantita": 1
+      },
+      {
+        "id": "pdc_posa",
+        "codice_intervento": "III.A",
+        "descrizione": "Posa e collegamenti idraulici",
+        "tipo_costo": "posa",
+        "importo": 5000,
+        "quantita": 1
+      }
+    ]
+  },
+  "input": {
+    "modalita_accesso": "diretto",
+    "data_fine_lavori": "2026-07-01",
+    "data_richiesta": "2026-07-15"
+  }
+}

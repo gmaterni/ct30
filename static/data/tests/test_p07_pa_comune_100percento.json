@@ -1,0 +1,128 @@
+{
+  "codice": "CT30-P07",
+  "nome": "R7: PA Comune ≤15.000ab → incentivo 100% (II.A isolamento)",
+  "descrizione": "PA con comune sotto 15k abitanti, II.A isolamento pareti. Verifica intensità massima 100% per PA/comuneSotto15k.",
+  "soggetto": {
+    "tipo": "PA",
+    "denominazione": "Comune di Piccolavilla",
+    "codiceFiscale": "80012345670",
+    "email": "protocollo@piccolavilla.it",
+    "telefono": "051123456"
+  },
+  "soggetti": {
+    "sa": {
+      "denominazione": "Comune di Piccolavilla",
+      "tipo": "PA",
+      "cf_piva": "80012345670",
+      "titolo_godimento": "Propriet\u00e0",
+      "email": "protocollo@piccolavilla.it",
+      "telefono": "051123456"
+    },
+    "sr": {
+      "denominazione": "Comune di Piccolavilla",
+      "cf_piva": "80012345670",
+      "iban": "IT60X0542811101000000996",
+      "pec": "piccolavilla@pec.it",
+      "coincide_con_sa": true,
+      "tipo": "Privato"
+    },
+    "proprietario": {
+      "denominazione": "Comune di Piccolavilla",
+      "cf_piva": "80012345670",
+      "coincide_con_sa": true,
+      "atto_assenso": true
+    },
+    "delegato": {
+      "nome": "",
+      "cf": ""
+    }
+  },
+  "ruoli": {
+    "sa": {
+      "denominazione": "Comune di Piccolavilla",
+      "tipo": "PA",
+      "cf_piva": "80012345670",
+      "titolo_godimento": "Propriet\u00e0"
+    },
+    "sr": {
+      "denominazione": "Comune di Piccolavilla",
+      "cf_piva": "80012345670",
+      "iban": "IT60X0542811101000000996",
+      "pec": "piccolavilla@pec.it",
+      "coincide_con_sa": true
+    },
+    "proprietario": {
+      "denominazione": "Comune di Piccolavilla",
+      "cf_piva": "80012345670",
+      "coincide_con_sa": true,
+      "atto_assenso": true
+    },
+    "delegato": {
+      "nome": "",
+      "cf": ""
+    }
+  },
+  "immobile": {
+    "indirizzo": "Piazza del Popolo 1, Piccolavilla (PI)",
+    "zonaClimatica": "Zona D",
+    "destinazione": "Uffici",
+    "tipo_edificio": "Edificio Singolo",
+    "categoriaCatastale": "B/4",
+    "classeEnergeticaAnte": "F",
+    "potenza_esistente_kw": 60,
+    "combustibile_ante": "metano"
+  },
+  "edificio": {
+    "indirizzo": "Piazza del Popolo 1, Piccolavilla (PI)",
+    "categoria_catastale": "B/4",
+    "zona_climatica": "Zona D",
+    "impianto_esistente": {
+      "tipo": "Caldaia",
+      "potenza_kw": 60,
+      "combustibile": "metano",
+      "libretto": true,
+      "libretto_codice": "IT0123456795"
+    },
+    "comune_sotto_15k": true,
+    "scuola_ospedale": false,
+    "classe_ante": "F"
+  },
+  "selectedInterventi": ["II.A"],
+  "interventi": ["II.A"],
+  "interventiData": {
+    "II.A": {
+      "tipo_superficie_opaca": "Parete Esterna",
+      "superficie_isolata_mq": 300,
+      "trasmittanza_ante": 1.0,
+      "trasmittanza_post": 0.23,
+      "costo_isolamento": 50000,
+      "made_in_eu": "sì",
+      "riduzione_ep_10": "sì"
+    }
+  },
+  "preventivo": {
+    "items": [
+      {
+        "id": "isol_forn",
+        "codice_intervento": "II.A",
+        "descrizione": "Isolamento pareti esterne 300mq",
+        "tipo_costo": "fornitura",
+        "importo": 35000,
+        "quantita": 1
+      },
+      {
+        "id": "isol_posa",
+        "codice_intervento": "II.A",
+        "descrizione": "Posa isolamento a cappotto",
+        "tipo_costo": "posa",
+        "importo": 15000,
+        "quantita": 1
+      }
+    ]
+  },
+  "input": {
+    "modalita_accesso": "diretto",
+    "data_fine_lavori": "2026-11-01",
+    "data_richiesta": "2026-11-15"
+  }
+}

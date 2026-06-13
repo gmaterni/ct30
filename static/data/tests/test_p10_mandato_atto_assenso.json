@@ -1,0 +1,131 @@
+{
+  "codice": "CT30-P10",
+  "nome": "R10: Mandato incasso (non-PA) + atto assenso (prop≠richiedente)",
+  "descrizione": "SR non-PA con mandato_incasso obbligatorio. Proprietario ≠ richiedente: atto_di_assenso obbligatorio.",
+  "soggetto": {
+    "tipo": "Privato residenziale",
+    "denominazione": "Giuseppe Verdi",
+    "codiceFiscale": "VRDGPP65B15F205N",
+    "email": "giuseppe.verdi@email.it",
+    "telefono": "021234568"
+  },
+  "soggetti": {
+    "sa": {
+      "denominazione": "Giuseppe Verdi",
+      "tipo": "Privato residenziale",
+      "cf_piva": "VRDGPP65B15F205N",
+      "titolo_godimento": "Comodato",
+      "email": "giuseppe.verdi@email.it",
+      "telefono": "021234568"
+    },
+    "sr": {
+      "denominazione": "Giuseppe Verdi",
+      "cf_piva": "VRDGPP65B15F205N",
+      "iban": "IT60X0542811101000000995",
+      "pec": "giuseppe.verdi@pec.it",
+      "coincide_con_sa": true,
+      "tipo": "Privato"
+    },
+    "proprietario": {
+      "denominazione": "Maria Bianchi",
+      "cf_piva": "BNCMRA70A41F205R",
+      "coincide_con_sa": false,
+      "atto_assenso": false
+    },
+    "delegato": {
+      "nome": "",
+      "cf": ""
+    }
+  },
+  "ruoli": {
+    "sa": {
+      "denominazione": "Giuseppe Verdi",
+      "tipo": "Privato residenziale",
+      "cf_piva": "VRDGPP65B15F205N",
+      "titolo_godimento": "Comodato"
+    },
+    "sr": {
+      "denominazione": "Giuseppe Verdi",
+      "cf_piva": "VRDGPP65B15F205N",
+      "iban": "IT60X0542811101000000995",
+      "pec": "giuseppe.verdi@pec.it",
+      "coincide_con_sa": true
+    },
+    "proprietario": {
+      "denominazione": "Maria Bianchi",
+      "cf_piva": "BNCMRA70A41F205R",
+      "coincide_con_sa": false,
+      "atto_assenso": false
+    },
+    "delegato": {
+      "nome": "",
+      "cf": ""
+    }
+  },
+  "immobile": {
+    "indirizzo": "Via Dante 22, Milano (MI)",
+    "zonaClimatica": "Zona E",
+    "destinazione": "Residenziale",
+    "tipo_edificio": "Condominio",
+    "categoriaCatastale": "A/3",
+    "classeEnergeticaAnte": "G",
+    "potenza_esistente_kw": 24,
+    "combustibile_ante": "metano"
+  },
+  "edificio": {
+    "indirizzo": "Via Dante 22, Milano (MI)",
+    "categoria_catastale": "A/3",
+    "zona_climatica": "Zona E",
+    "impianto_esistente": {
+      "tipo": "Caldaia",
+      "potenza_kw": 24,
+      "combustibile": "metano",
+      "libretto": true,
+      "libretto_codice": "IT0123456796"
+    },
+    "classe_ante": "G"
+  },
+  "selectedInterventi": ["III.A"],
+  "interventi": ["III.A"],
+  "interventiData": {
+    "III.A": {
+      "tipologia_pdc": "aria/acqua",
+      "potenza_pdc_kw": 10,
+      "scop": 4.1,
+      "eta_s": 175,
+      "made_in_eu": "sì",
+      "miglioramento_ep_40": "sì",
+      "costo_pdc": 12000,
+      "sostituisce_esistente": "sì"
+    }
+  },
+  "documenti": {
+    "mandato_incasso": true,
+    "atto_assenso": true
+  },
+  "preventivo": {
+    "items": [
+      {
+        "id": "pdc_forn",
+        "codice_intervento": "III.A",
+        "descrizione": "Fornitura PDC aria/acqua 10kW",
+        "tipo_costo": "fornitura",
+        "importo": 8000,
+        "quantita": 1
+      },
+      {
+        "id": "pdc_posa",
+        "codice_intervento": "III.A",
+        "descrizione": "Posa PDC e collegamenti",
+        "tipo_costo": "posa",
+        "importo": 4000,
+        "quantita": 1
+      }
+    ]
+  },
+  "input": {
+    "modalita_accesso": "diretto",
+    "data_fine_lavori": "2026-12-01",
+    "data_richiesta": "2026-12-15"
+  }
+}
