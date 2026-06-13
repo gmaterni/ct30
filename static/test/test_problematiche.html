@@ -1281,43 +1281,37 @@
         {
           const grp = _makeGroup("6. Incentivo max e commissione GSE", "g6");
 
-          /* R7-1: Privato III.A → cap 65% */
+          /* R7-1: Privato II.A → ≤ 65% */
           try {
             const res = FE.calculate(
-              "III.A",
+              "II.A",
               {
-                tipologia_pdc: "aria/acqua",
-                potenza_pdc_kw: 10,
-                scop: 4.5,
-                eta_s: 150,
-                costo_pdc: 18000,
-                costo_installazione: 2000,
+                tipo_superficie_opaca: "Parete Esterna",
+                costo_isolamento: 16000,
+                superficie_isolata_mq: 80,
               },
               { soggetto: "Privato residenziale", zonaClimatica: "Zona E" },
             );
             _addTestRow(
               grp,
-              "R7-1 Privato III.A → percentuale ≤ 65%",
+              "R7-1 Privato II.A → percentuale ≤ 65%",
               res.params.percentuale <= 0.65,
               ["Percentuale: " + res.params.percentuale + ", attesa ≤ 0.65"],
             );
           } catch (e) {
-            _addTestRow(grp, "R7-1 Privato III.A → percentuale ≤ 65%", false, [
+            _addTestRow(grp, "R7-1 Privato II.A → percentuale ≤ 65%", false, [
               e.message,
             ]);
           }
 
-          /* R7-2: PA comune ≤15k → 100% */
+          /* R7-2: PA comune ≤15k II.A → 100% */
           try {
             const res = FE.calculate(
-              "III.A",
+              "II.A",
               {
-                tipologia_pdc: "aria/acqua",
-                potenza_pdc_kw: 10,
-                scop: 4.5,
-                eta_s: 150,
-                costo_pdc: 18000,
-                costo_installazione: 2000,
+                tipo_superficie_opaca: "Parete Esterna",
+                costo_isolamento: 16000,
+                superficie_isolata_mq: 80,
               },
               {
                 soggetto: "Pubblica Amministrazione",
@@ -1327,72 +1321,69 @@
             );
             _addTestRow(
               grp,
-              "R7-2 PA comune ≤15k III.A → percentuale = 100%",
+              "R7-2 PA comune ≤15k II.A → percentuale = 100%",
               res.params.percentuale >= 0.99,
               ["Percentuale: " + res.params.percentuale + ", attesa 1.0"],
             );
           } catch (e) {
             _addTestRow(
               grp,
-              "R7-2 PA comune ≤15k III.A → percentuale = 100%",
+              "R7-2 PA comune ≤15k II.A → percentuale = 100%",
               false,
               [e.message],
             );
           }
 
-          /* R7-3: ETS non economico → 100% */
+          /* R7-3: ETS non economico II.A → 65% (PA_altri, senza comuneSotto15k) */
           try {
             const res = FE.calculate(
-              "III.A",
+              "II.A",
               {
-                tipologia_pdc: "aria/acqua",
-                potenza_pdc_kw: 10,
-                scop: 4.5,
-                eta_s: 150,
-                costo_pdc: 18000,
-                costo_installazione: 2000,
+                tipo_superficie_opaca: "Parete Esterna",
+                costo_isolamento: 16000,
+                superficie_isolata_mq: 80,
               },
               { soggetto: "ETS non economico", zonaClimatica: "Zona E" },
             );
             _addTestRow(
               grp,
-              "R7-3 ETS non econ III.A → percentuale = 100%",
-              res.params.percentuale >= 0.99,
-              ["Percentuale: " + res.params.percentuale + ", attesa 1.0"],
+              "R7-3 ETS non econ II.A → percentuale = 65% (PA_altri)",
+              Math.abs(res.params.percentuale - 0.65) < 0.01,
+              ["Percentuale: " + res.params.percentuale + ", attesa 0.65"],
             );
           } catch (e) {
             _addTestRow(
               grp,
-              "R7-3 ETS non econ III.A → percentuale = 100%",
+              "R7-3 ETS non econ II.A → percentuale = 65%",
               false,
               [e.message],
             );
           }
 
-          /* R7-4: Impresa III.A → 45% */
+          /* R7-4: Impresa II.A singolo → 25% */
           try {
             const res = FE.calculate(
-              "III.A",
+              "II.A",
               {
-                tipologia_pdc: "aria/acqua",
-                potenza_pdc_kw: 10,
-                scop: 4.5,
-                eta_s: 150,
-                costo_pdc: 18000,
-                costo_installazione: 2000,
+                tipo_superficie_opaca: "Parete Esterna",
+                costo_isolamento: 16000,
+                superficie_isolata_mq: 80,
               },
               { soggetto: "Impresa", zonaClimatica: "Zona E" },
             );
             _addTestRow(
               grp,
-              "R7-4 Impresa III.A → percentuale = 45%",
-              Math.abs(res.params.percentuale - 0.45) < 0.01,
-              ["Percentuale: " + res.params.percentuale + ", attesa 0.45"],
+              "R7-4 Impresa II.A singolo → percentuale = 25%",
+              Math.abs(res.params.percentuale - 0.25) < 0.01,
+              ["Percentuale: " + res.params.percentuale + ", attesa 0.25"],
             );
           } catch (e) {
-            _addTestRow(grp, "R7-4 Impresa III.A → percentuale = 45%", false, [
-              e.message,
-            ]);
+            _addTestRow(
+              grp,
+              "R7-4 Impresa II.A singolo → percentuale = 25%",
+              false,
+              [e.message],
+            );
           }
 
           /* R7-5: PA II.D → 100% */
@@ -1400,9 +1391,11 @@
             const res = FE.calculate(
               "II.D",
               {
-                tipo_intervento: "Demolizione e ricostruzione",
-                superficie_netta_mq: 100,
+                tipo_intervento_nzeb: "Demolizione e ricostruzione",
+                superficie_utile_mq: 100,
                 costo_nzeb: 80000,
+                volume_esistente_mc: 500,
+                volume_nuovo_mc: 100,
               },
               { soggetto: "Pubblica Amministrazione", zonaClimatica: "Zona E" },
             );
@@ -1418,17 +1411,14 @@
             ]);
           }
 
-          /* R8-1: GSE fee su 10000€ → 100€ */
+          /* R8-1: GSE fee su spesa incentivabile → struttura */
           try {
             const res = FE.calculate(
-              "III.A",
+              "II.A",
               {
-                tipologia_pdc: "aria/acqua",
-                potenza_pdc_kw: 10,
-                scop: 4.5,
-                eta_s: 150,
-                costo_pdc: 2000,
-                costo_installazione: 500,
+                tipo_superficie_opaca: "Parete Esterna",
+                costo_isolamento: 20000,
+                superficie_isolata_mq: 80,
               },
               {
                 soggetto: "Pubblica Amministrazione",
@@ -1460,14 +1450,11 @@
           /* R8-2: GSE fee: importo=min(incentivo*0.01, 250) */
           try {
             const res = FE.calculate(
-              "III.A",
+              "II.A",
               {
-                tipologia_pdc: "aria/acqua",
-                potenza_pdc_kw: 10,
-                scop: 4.5,
-                eta_s: 150,
-                costo_pdc: 2000,
-                costo_installazione: 500,
+                tipo_superficie_opaca: "Parete Esterna",
+                costo_isolamento: 20000,
+                superficie_isolata_mq: 80,
               },
               {
                 soggetto: "Pubblica Amministrazione",

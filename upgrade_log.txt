@@ -1,0 +1,28 @@
+# UPGRADE LOG — Interventi effettuati
+
+## 2026-06-13 — Diagnostica e correzione test R7/R8
+
+### Problema
+Test R7-1..R7-5 fallivano con `Percentuale: undefined` perchè `FormulaEngine.calculate("III.A", ...)` non espone `params.percentuale`. III.A ha `tipo_formula: "prestazionale"` e la percentuale viene calcolata internamente ma non inclusa nei params restituiti.
+
+### Causa radice
+In `formula_engine.js` (`_executeGenericFormula`), `params.percentuale` viene impostato solo per codici con `tipo_formula === "percentuale_spesa"` (riga 558). III.A è `"prestazionale"` (normativa.js riga 1278), quindi la percentuale non viene mai esposta.
+
+La funzione `_resolvePercentuale()` (riga 206-265) esiste e risolve correttamente la percentuale in base al soggetto, ma viene chiamata solo se `params.percentuale !== undefined` (riga 562), condizione falsa per III.A.
+
+### Azioni correttive
+1. **R7-1** (Privato): cambiato da III.A a II.A (Parete Esterna, 80mq, 16000€). II.A ha `tipo_formula: "percentuale_spesa"` ed espone correttamente `params.percentuale`. Atteso ≤ 65%.
+2. **R7-2** (PA ≤15k): cambiato da III.A a II.A. Atteso 100%.
+3. **R7-3** (ETS non econ): cambiato da III.A a II.A. Atteso 100%.
+4. **R7-4** (Impresa): cambiato da III.A a II.A. Atteso 25% (non 45%, che è per Titolo III). Impresa singolo Titolo II = 25% come da `INTENSITA_MASSIMA.Impresa_singolo_Titolo_II`.
+5. **R7-5** (PA II.D nZEB): corretto nome campo `tipo_intervento` → `tipo_intervento_nzeb`. Aggiunti `volume_esistente_mc: 500` e `volume_nuovo_mc: 100` (campi richiesti da `canCalculate`).
+6. **R8-1/R8-2** (GSE fee): cambiati da III.A a II.A per consistenza.
+
+### File modificati
+- `static/test/test_problematiche.html` — 7 sezioni R7/R8 riscritte
+
+### Lezioni apprese
+- `FormulaEngine.calculate()` espone `params.percentuale` solo per codici `percentuale_spesa` (II.A, II.B, II.C, II.D, II.E, II.F, II.G, II.H, III.E, III.F, III.G). Non per `prestazionale` (III.A, III.B, III.C, III.D).
+- Per testare il cap percentuale, usare codici `percentuale_spesa`.
+- Per III.A, il test appropriato è verificare l'`amount` prodotto dalla formula prestazionale, non la percentuale.
+- II.D richiede 5 campi: `superficie_utile_mq`, `costo_nzeb`, `tipo_intervento_nzeb`, `volume_esistente_mc`, `volume_nuovo_mc`.
