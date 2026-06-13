@@ -1,0 +1,1885 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CT30 Advisor — Test Problematiche</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        background: #1e1e1e;
+        color: #e0e0e0;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        margin: 0;
+        padding: 16px;
+        font-size: 14px;
+      }
+      h1 {
+        color: #68c8b2;
+        font-size: 1.4rem;
+        margin: 0 0 4px;
+      }
+      .subtitle {
+        color: #888;
+        font-size: 0.85rem;
+        margin: 0 0 12px;
+      }
+      .toolbar {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 12px 0;
+      }
+      .toolbar button {
+        background: #2d2d2d;
+        color: #e0e0e0;
+        border: 1px solid #444;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.85rem;
+      }
+      .toolbar button:hover {
+        background: #3a3a3a;
+        border-color: #68c8b2;
+      }
+      .toolbar button:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      .toolbar button.primary {
+        background: #1b5e20;
+        border-color: #4caf50;
+      }
+      .toolbar button.primary:hover {
+        background: #2e7d32;
+      }
+      .summary {
+        display: flex;
+        gap: 24px;
+        margin: 8px 0 16px;
+        padding: 12px 16px;
+        background: #252525;
+        border-radius: 6px;
+        border: 1px solid #333;
+      }
+      .summary .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .summary .stat .num {
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+      .summary .stat .label {
+        font-size: 0.75rem;
+        color: #999;
+        text-transform: uppercase;
+      }
+      .summary .stat.pass .num {
+        color: #4caf50;
+      }
+      .summary .stat.fail .num {
+        color: #f44336;
+      }
+      .summary .stat.total .num {
+        color: #68c8b2;
+      }
+      #output {
+        background: #252525;
+        border: 1px solid #333;
+        border-radius: 6px;
+        padding: 4px;
+        max-height: 75vh;
+        overflow-y: auto;
+        font-family: "Cascadia Code", "Fira Code", monospace;
+        font-size: 0.8rem;
+      }
+      .test-group {
+        margin: 4px 0;
+      }
+      .test-group-header {
+        padding: 6px 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        background: #2a2a2a;
+        border-radius: 4px;
+        user-select: none;
+      }
+      .test-group-header:hover {
+        background: #333;
+      }
+      .test-group-header .title {
+        font-weight: 600;
+      }
+      .test-group-header .badge {
+        font-size: 0.75rem;
+        padding: 1px 8px;
+        border-radius: 10px;
+      }
+      .test-group-header .badge.ok {
+        background: #1b5e20;
+        color: #a5d6a7;
+      }
+      .test-group-header .badge.fail {
+        background: #b71c1c;
+        color: #ef9a9a;
+      }
+      .test-group-body {
+        padding: 4px 0 4px 16px;
+        display: none;
+      }
+      .test-group-body.open {
+        display: block;
+      }
+      .test-group-body .sub-header {
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 4px 6px;
+        margin: 4px 0 2px;
+        border-radius: 3px;
+        display: inline-block;
+      }
+      .test-group-body .sub-header.pass {
+        background: rgba(76, 175, 80, 0.12);
+        color: #81c784;
+      }
+      .test-group-body .sub-header.fail {
+        background: rgba(244, 67, 54, 0.12);
+        color: #ef9a9a;
+      }
+      .test-group-body .sub-section {
+        padding-left: 8px;
+        border-left: 2px solid transparent;
+        margin-bottom: 6px;
+      }
+      .test-group-body .sub-section.pass {
+        border-left-color: rgba(76, 175, 80, 0.3);
+      }
+      .test-group-body .sub-section.fail {
+        border-left-color: rgba(244, 67, 54, 0.3);
+      }
+      .test-row {
+        padding: 3px 8px;
+        margin: 2px 0;
+        border-radius: 3px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .test-row.pass {
+        background: rgba(76, 175, 80, 0.08);
+      }
+      .test-row.fail {
+        background: rgba(244, 67, 54, 0.1);
+      }
+      .test-row .test-name {
+        flex: 1;
+      }
+      .test-row .test-result {
+        font-weight: 600;
+        font-size: 0.75rem;
+      }
+      .test-row .test-result.pass {
+        color: #4caf50;
+      }
+      .test-row .test-result.fail {
+        color: #f44336;
+      }
+      .test-detail {
+        color: #aaa;
+        font-size: 0.75rem;
+        margin-top: 2px;
+      }
+      .test-detail ul {
+        margin: 2px 0;
+        padding-left: 16px;
+      }
+      .progress-bar {
+        height: 3px;
+        background: #333;
+        border-radius: 2px;
+        margin: 8px 0;
+        overflow: hidden;
+        display: none;
+      }
+      .progress-bar .fill {
+        height: 100%;
+        background: linear-gradient(90deg, #68c8b2, #4caf50);
+        width: 0%;
+        transition: width 0.3s;
+      }
+      .error-msg {
+        color: #f44336;
+        padding: 8px;
+        background: rgba(244, 67, 54, 0.08);
+        border-radius: 4px;
+        margin: 8px 0;
+      }
+      .rule-ref {
+        color: #ff8f00;
+        font-size: 0.7rem;
+        margin-left: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CT30 Advisor — Test Problematiche</h1>
+    <p class="subtitle">
+      Copertura delle 10 regole business critiche da docs/PROBLEMATICHE.md
+    </p>
+
+    <div class="toolbar">
+      <button id="btn-run-all" class="primary">Esegui TUTTI</button>
+      <button id="btn-reset" style="margin-left: auto">Reset</button>
+    </div>
+
+    <div class="summary" id="summary">
+      <div class="stat total">
+        <span class="num" id="stat-total">0</span
+        ><span class="label">Totali</span>
+      </div>
+      <div class="stat pass">
+        <span class="num" id="stat-pass">0</span
+        ><span class="label">Passati</span>
+      </div>
+      <div class="stat fail">
+        <span class="num" id="stat-fail">0</span
+        ><span class="label">Falliti</span>
+      </div>
+    </div>
+
+    <div class="progress-bar" id="progress-bar">
+      <div class="fill" id="progress-fill"></div>
+    </div>
+
+    <div id="output"></div>
+
+    <script type="module">
+      "use strict";
+
+      const el = function (id) {
+        return document.getElementById(id);
+      };
+      const out = el("output");
+      const statTotal = el("stat-total");
+      const statPass = el("stat-pass");
+      const statFail = el("stat-fail");
+      const progressBar = el("progress-bar");
+      const progressFill = el("progress-fill");
+
+      let testCount = 0;
+      let passCount = 0;
+      let failCount = 0;
+
+      const _updateStats = function () {
+        statTotal.textContent = testCount;
+        statPass.textContent = passCount;
+        statFail.textContent = failCount;
+      };
+
+      const _showProgress = function (pct) {
+        progressBar.style.display = "block";
+        progressFill.style.width = pct + "%";
+      };
+
+      const _hideProgress = function () {
+        progressBar.style.display = "none";
+        progressFill.style.width = "0%";
+      };
+
+      const _makeGroup = function (title, id) {
+        const div = document.createElement("div");
+        div.className = "test-group";
+        div.id = "group-" + id;
+        div.innerHTML =
+          '<div class="test-group-header" data-target="body-' +
+          id +
+          '">' +
+          '<span class="title">' +
+          title +
+          "</span>" +
+          '<span class="badge" id="badge-' +
+          id +
+          '">0</span>' +
+          "</div>" +
+          '<div class="test-group-body" id="body-' +
+          id +
+          '">' +
+          '<div class="sub-section pass" id="pass-' +
+          id +
+          '">' +
+          '<div class="sub-header pass">Passati</div></div>' +
+          '<div class="sub-section fail" id="fail-' +
+          id +
+          '">' +
+          '<div class="sub-header fail">Falliti</div></div>' +
+          "</div>";
+        out.appendChild(div);
+        div.querySelector(".test-group-header").onclick = function (e) {
+          const targetId = e.currentTarget.getAttribute("data-target");
+          document.getElementById(targetId).classList.toggle("open");
+        };
+        return {
+          body: el("body-" + id),
+          badge: el("badge-" + id),
+          passBody: el("pass-" + id),
+          failBody: el("fail-" + id),
+        };
+      };
+
+      const _addTestRow = function (parent, name, passed, detailArr) {
+        const target = passed ? parent.passBody : parent.failBody;
+        const row = document.createElement("div");
+        row.className = "test-row " + (passed ? "pass" : "fail");
+        row.innerHTML =
+          '<span class="test-name">' +
+          name +
+          "</span>" +
+          '<span class="test-result ' +
+          (passed ? "pass" : "fail") +
+          '">' +
+          (passed ? "OK" : "FAIL") +
+          "</span>";
+        target.appendChild(row);
+
+        if (detailArr && detailArr.length > 0) {
+          const dd = document.createElement("div");
+          dd.className = "test-detail";
+          const ul = document.createElement("ul");
+          detailArr.forEach(function (d) {
+            const li = document.createElement("li");
+            li.textContent = d;
+            ul.appendChild(li);
+          });
+          dd.appendChild(ul);
+          target.appendChild(dd);
+        }
+
+        testCount = testCount + 1;
+        if (passed) {
+          passCount = passCount + 1;
+        } else {
+          failCount = failCount + 1;
+        }
+        const passRows = parent.passBody.querySelectorAll(".test-row").length;
+        const failRows = parent.failBody.querySelectorAll(".test-row").length;
+        const totalRows = passRows + failRows;
+        parent.badge.textContent = passRows + "/" + failRows + " OK/FAIL";
+        if (failRows > 0) {
+          parent.badge.className = "badge fail";
+        } else {
+          parent.badge.className = "badge ok";
+        }
+        _updateStats();
+        return { passed: passed, detail: detailArr };
+      };
+
+      const _clearOutput = function () {
+        out.innerHTML = "";
+        testCount = 0;
+        passCount = 0;
+        failCount = 0;
+        _updateStats();
+        _hideProgress();
+      };
+
+      /* ========= MODULE LOADER (cache-proof) ========= */
+      const _baseHref = document.baseURI || location.href;
+      const _modDir = function (url) {
+        return url.substring(0, url.lastIndexOf("/") + 1);
+      };
+      let _bustNum = 0;
+      const _cacheBustImport = async function (relPath) {
+        _bustNum++;
+        const baseUrl = new URL(".", _baseHref).href;
+        const fullUrl = new URL(relPath, baseUrl).href;
+        const t = Date.now() + "-" + _bustNum + "-" + Math.random();
+        const bustUrl = fullUrl + "?t=" + t;
+        const resp = await fetch(bustUrl);
+        if (!resp.ok) throw new Error("Fetch " + bustUrl + " → " + resp.status);
+        let src = await resp.text();
+        const dir = _modDir(fullUrl);
+        src = src.replace(/from\s+["']\.\/([^"']+?)["']/g, function (m, imp) {
+          return (
+            'from "' +
+            dir +
+            imp +
+            "?t=" +
+            Date.now() +
+            "-" +
+            _bustNum +
+            "-" +
+            Math.random() +
+            '"'
+          );
+        });
+        return await import(
+          URL.createObjectURL(new Blob([src], { type: "text/javascript" }))
+        );
+      };
+
+      /* ========= IMPORTS ========= */
+      let engines = null;
+
+      try {
+        const mR = await _cacheBustImport("../js/core/rules_engine.js");
+        const RulesEngine = mR.RulesEngine;
+        const mF = await _cacheBustImport("../js/core/formula_engine.js");
+        const FormulaEngine = mF.FormulaEngine;
+        const mC = await _cacheBustImport("../js/core/cross_rule_engine.js");
+        const CrossRuleEngine = mC.CrossRuleEngine;
+        const mN = await _cacheBustImport("../js/core/normativa.js");
+        const RULES = mN.RULES;
+        const INTERVENTI = mN.INTERVENTI;
+        const SOGGETTI_CONFIG = mN.SOGGETTI_CONFIG;
+        const MATRICE_SA_INTERVENTI = mN.MATRICE_SA_INTERVENTI;
+        const SOTTO_CATEGORIE_SA = mN.SOTTO_CATEGORIE_SA;
+        const TERMINI_CONFIG = mN.TERMINI_CONFIG;
+        engines = {
+          RulesEngine,
+          FormulaEngine,
+          CrossRuleEngine,
+          RULES,
+          INTERVENTI,
+          SOGGETTI_CONFIG,
+          MATRICE_SA_INTERVENTI,
+          SOTTO_CATEGORIE_SA,
+          TERMINI_CONFIG,
+        };
+      } catch (e) {
+        const errDiv = document.createElement("div");
+        errDiv.className = "error-msg";
+        errDiv.textContent = "ERRORE CARICAMENTO MODULI: " + e.message;
+        out.appendChild(errDiv);
+      }
+
+      /* ========= TESTS ========= */
+
+      const runAllTests = async function () {
+        if (!engines) return;
+        _clearOutput();
+
+        const RE = engines.RulesEngine;
+        const FE = engines.FormulaEngine;
+        const CR = engines.CrossRuleEngine;
+
+        /* ===== GRUPPO 1: Regole 1-3 (Soggetto) ===== */
+        {
+          const grp = _makeGroup(
+            "1. SA privato + ambito residenziale → solo Titolo III",
+            "g1",
+          );
+
+          /* R1-1: Privato residenziale → Titolo II bloccato */
+          try {
+            const compatII = RE.isSubjectCompatible(
+              "Privato residenziale",
+              "II",
+            );
+            _addTestRow(
+              grp,
+              "R1-1 Privato residenziale + II = blocco",
+              compatII === false,
+              compatII !== false
+                ? ["isSubjectCompatible ha ritornato true per II"]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R1-1 Privato residenziale + II = blocco", false, [
+              e.message,
+            ]);
+          }
+
+          /* R1-2: Privato residenziale → Titolo III OK */
+          try {
+            const compatIII = RE.isSubjectCompatible(
+              "Privato residenziale",
+              "III",
+            );
+            _addTestRow(
+              grp,
+              "R1-2 Privato residenziale + III = OK",
+              compatIII === true,
+              compatIII !== true
+                ? ["isSubjectCompatible ha ritornato false per III"]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R1-2 Privato residenziale + III = OK", false, [
+              e.message,
+            ]);
+          }
+
+          /* R1-3: Condominio → Titolo II bloccato (stessa matrice) */
+          try {
+            const compatII = RE.isSubjectCompatible("Condominio", "II");
+            _addTestRow(
+              grp,
+              "R1-3 Condominio + II = blocco (stessa matrice privato_residenziale)",
+              compatII === false,
+              compatII !== false
+                ? ["isSubjectCompatible ha ritornato true per II"]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R1-3 Condominio + II = blocco", false, [
+              e.message,
+            ]);
+          }
+
+          /* R1-4: Condominio → Titolo III OK */
+          try {
+            const compatIII = RE.isSubjectCompatible("Condominio", "III");
+            _addTestRow(
+              grp,
+              "R1-4 Condominio + III = OK",
+              compatIII === true,
+              compatIII !== true
+                ? ["isSubjectCompatible ha ritornato false per III"]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R1-4 Condominio + III = OK", false, [e.message]);
+          }
+
+          /* R1-5: Privato terziario → Titolo II OK (diverso ambito) */
+          try {
+            const compatII = RE.isSubjectCompatible("Privato terziario", "II");
+            _addTestRow(
+              grp,
+              "R1-5 Privato terziario + II = OK (ambito diverso)",
+              compatII === true,
+              compatII !== true
+                ? ["isSubjectCompatible ha ritornato false per II"]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R1-5 Privato terziario + II = OK", false, [
+              e.message,
+            ]);
+          }
+
+          /* R1-6: validateAmmissibilita blocca privato residenziale con II.A */
+          try {
+            const res = RE.validateAmmissibilita({
+              subjectType: "Privato residenziale",
+              category: "A/2",
+              buildingStatus: "esistente",
+              selectedInterventi: ["II.A"],
+            });
+            _addTestRow(
+              grp,
+              "R1-6 validateAmmissibilita blocca II.A per Privato res.",
+              !res.success,
+              res.success
+                ? [
+                    "Atteso blocco, validazione passata: " +
+                      res.errors.join("; "),
+                  ]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R1-6 validateAmmissibilita blocca II.A", false, [
+              e.message,
+            ]);
+          }
+
+          _evalGroup(grp);
+        }
+
+        /* ===== GRUPPO 2: Regola 2 (Impresa Titolo V) ===== */
+        {
+          const grp = _makeGroup("2. Impresa → regime Titolo V", "g2");
+
+          /* R2-1: Impresa senza richiesta preliminare → blocco */
+          try {
+            const res = RE.validateTitoloV(
+              {
+                richiestaPreliminareInviata: false,
+                dimensione: "piccola",
+                riduzioneEP: 15,
+                apePreDisponibile: true,
+                apePostDisponibile: true,
+                haCombustibiliFossili: false,
+                costoIntervento: 50000,
+              },
+              ["II.A"],
+            );
+            _addTestRow(
+              grp,
+              "R2-1 Impresa senza preliminare → blocco R01",
+              !res.success,
+              res.success
+                ? ["Atteso blocco, validazione passata"]
+                : [res.errors.join("; ")],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R2-1 Impresa senza preliminare → blocco", false, [
+              e.message,
+            ]);
+          }
+
+          /* R2-2: Impresa con preliminare e dati OK → success */
+          try {
+            const res = RE.validateTitoloV(
+              {
+                richiestaPreliminareInviata: true,
+                dataRichiestaPreliminare: "2026-01-15",
+                dataPrimoImpegno: "2026-02-01",
+                dimensione: "piccola",
+                riduzioneEP: 15,
+                apePreDisponibile: true,
+                apePostDisponibile: true,
+                haCombustibiliFossili: false,
+                costoIntervento: 50000,
+              },
+              ["II.A"],
+            );
+            _addTestRow(
+              grp,
+              "R2-2 Impresa con preliminare + dati OK → success",
+              res.success,
+              !res.success
+                ? [
+                    "Atteso success, ottenuti errori: " +
+                      (res.errors || []).join("; "),
+                  ]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(
+              grp,
+              "R2-2 Impresa con preliminare + dati OK → success",
+              false,
+              [e.message],
+            );
+          }
+
+          /* R2-3: Impresa con combustibili fossili → blocco R05 */
+          try {
+            const res = RE.validateTitoloV(
+              {
+                richiestaPreliminareInviata: true,
+                dimensione: "piccola",
+                riduzioneEP: 15,
+                apePreDisponibile: true,
+                apePostDisponibile: true,
+                haCombustibiliFossili: true,
+                costoIntervento: 50000,
+              },
+              ["II.A"],
+            );
+            _addTestRow(
+              grp,
+              "R2-3 Impresa con combustibili fossili → blocco R05",
+              !res.success,
+              res.success
+                ? ["Atteso blocco per fossili"]
+                : [res.errors.join("; ")],
+            );
+          } catch (e) {
+            _addTestRow(
+              grp,
+              "R2-3 Impresa con combustibili fossili → blocco",
+              false,
+              [e.message],
+            );
+          }
+
+          /* R2-4: Impresa costo 31M€ → blocco R06 */
+          try {
+            const res = RE.validateTitoloV(
+              {
+                richiestaPreliminareInviata: true,
+                dimensione: "piccola",
+                riduzioneEP: 15,
+                apePreDisponibile: true,
+                apePostDisponibile: true,
+                haCombustibiliFossili: false,
+                costoIntervento: 31000000,
+              },
+              ["II.A"],
+            );
+            _addTestRow(
+              grp,
+              "R2-4 Impresa costo 31M€ → blocco R06 (limite 30M€)",
+              !res.success,
+              res.success
+                ? ["Atteso blocco per supero limite 30M€"]
+                : [res.errors.join("; ")],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R2-4 Impresa costo 31M€ → blocco R06", false, [
+              e.message,
+            ]);
+          }
+
+          /* R2-5: Impresa senza APE → blocco R04 */
+          try {
+            const res = RE.validateTitoloV(
+              {
+                richiestaPreliminareInviata: true,
+                dimensione: "piccola",
+                riduzioneEP: 15,
+                apePreDisponibile: false,
+                apePostDisponibile: false,
+                haCombustibiliFossili: false,
+                costoIntervento: 50000,
+              },
+              ["II.A"],
+            );
+            _addTestRow(
+              grp,
+              "R2-5 Impresa senza APE → blocco R04",
+              !res.success,
+              res.success
+                ? ["Atteso blocco per APE mancante"]
+                : [res.errors.join("; ")],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R2-5 Impresa senza APE → blocco R04", false, [
+              e.message,
+            ]);
+          }
+
+          /* R2-6: IAP non richiede validateTitoloV (assimilato ma senza preliminare) */
+          try {
+            const key = RE.getEngineData().soggetti["IAP"];
+            const haPreliminare = key && key.richiesta_preliminare;
+            _addTestRow(
+              grp,
+              "R2-6 IAP non ha richiesta_preliminare = true",
+              haPreliminare !== true,
+              haPreliminare === true
+                ? ["IAP ha richiesta_preliminare=true, atteso assente"]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(
+              grp,
+              "R2-6 IAP non ha richiesta_preliminare=true",
+              false,
+              [e.message],
+            );
+          }
+
+          /* R2-7: Piccola impresa → maggiorazione 20% */
+          try {
+            const res = RE.validateTitoloV(
+              {
+                richiestaPreliminareInviata: true,
+                dimensione: "piccola",
+                riduzioneEP: 15,
+                apePreDisponibile: true,
+                apePostDisponibile: true,
+                haCombustibiliFossili: false,
+                costoIntervento: 50000,
+              },
+              ["II.A"],
+            );
+            _addTestRow(
+              grp,
+              "R2-7 Piccola impresa → maggiorazione +20%",
+              res.maggiorazioneDimensione === 0.2,
+              ["Atteso 0.20, ottenuto " + res.maggiorazioneDimensione],
+            );
+          } catch (e) {
+            _addTestRow(
+              grp,
+              "R2-7 Piccola impresa → maggiorazione +20%",
+              false,
+              [e.message],
+            );
+          }
+
+          /* R2-8: Grande impresa → maggiorazione 0% */
+          try {
+            const res = RE.validateTitoloV(
+              {
+                richiestaPreliminareInviata: true,
+                dimensione: "grande",
+                riduzioneEP: 15,
+                apePreDisponibile: true,
+                apePostDisponibile: true,
+                haCombustibiliFossili: false,
+                costoIntervento: 50000,
+              },
+              ["II.A"],
+            );
+            _addTestRow(
+              grp,
+              "R2-8 Grande impresa → maggiorazione 0%",
+              res.maggiorazioneDimensione === 0,
+              ["Atteso 0, ottenuto " + res.maggiorazioneDimensione],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R2-8 Grande impresa → maggiorazione 0%", false, [
+              e.message,
+            ]);
+          }
+
+          _evalGroup(grp);
+        }
+
+        /* ===== GRUPPO 3: Regola 3 (ETS) ===== */
+        {
+          const grp = _makeGroup("3. ETS non economico vs economico", "g3");
+
+          /* R3-1: ETS non economico + Titolo II = OK (assimilato PA) */
+          try {
+            const compatII = RE.isSubjectCompatible("ETS non economico", "II");
+            _addTestRow(
+              grp,
+              "R3-1 ETS non econ + II = OK (assimilato PA)",
+              compatII === true,
+              compatII !== true
+                ? ["isSubjectCompatible ha ritornato false per II"]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R3-1 ETS non econ + II = OK", false, [e.message]);
+          }
+
+          /* R3-2: ETS non economico + Titolo III = OK */
+          try {
+            const compatIII = RE.isSubjectCompatible(
+              "ETS non economico",
+              "III",
+            );
+            _addTestRow(
+              grp,
+              "R3-2 ETS non econ + III = OK",
+              compatIII === true,
+              compatIII !== true
+                ? ["isSubjectCompatible ha ritornato false per III"]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R3-2 ETS non econ + III = OK", false, [
+              e.message,
+            ]);
+          }
+
+          /* R3-3: ETS economico + Titolo II = blocco */
+          try {
+            const compatII = RE.isSubjectCompatible("ETS economico", "II");
+            _addTestRow(
+              grp,
+              "R3-3 ETS economico + II = blocco",
+              compatII === false,
+              compatII !== false
+                ? ["isSubjectCompatible ha ritornato true per II"]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R3-3 ETS economico + II = blocco", false, [
+              e.message,
+            ]);
+          }
+
+          /* R3-4: ETS economico + Titolo III = OK */
+          try {
+            const compatIII = RE.isSubjectCompatible("ETS economico", "III");
+            _addTestRow(
+              grp,
+              "R3-4 ETS economico + III = OK",
+              compatIII === true,
+              compatIII !== true
+                ? ["isSubjectCompatible ha ritornato false per III"]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R3-4 ETS economico + III = OK", false, [
+              e.message,
+            ]);
+          }
+
+          /* R3-5: ETS economico → richiesta_preliminare = true (come impresa) */
+          try {
+            const cfg = RE.getEngineData().soggetti["ETS economico"];
+            _addTestRow(
+              grp,
+              "R3-5 ETS economico ha richiesta_preliminare=true",
+              cfg && cfg.richiesta_preliminare === true,
+              !cfg
+                ? ["SOGGETTI_CONFIG.ETS economico non trovato"]
+                : ["richiesta_preliminare=" + cfg.richiesta_preliminare],
+            );
+          } catch (e) {
+            _addTestRow(
+              grp,
+              "R3-5 ETS economico ha richiesta_preliminare=true",
+              false,
+              [e.message],
+            );
+          }
+
+          /* R3-6: ETS non economico → prenotazione = true (come PA) */
+          try {
+            const cfg = RE.getEngineData().soggetti["ETS non economico"];
+            _addTestRow(
+              grp,
+              "R3-6 ETS non econ ha prenotazione=true (come PA)",
+              cfg && cfg.prenotazione === true,
+              !cfg
+                ? ["SOGGETTI_CONFIG.ETS non economico non trovato"]
+                : ["prenotazione=" + cfg.prenotazione],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R3-6 ETS non econ ha prenotazione=true", false, [
+              e.message,
+            ]);
+          }
+
+          _evalGroup(grp);
+        }
+
+        /* ===== GRUPPO 4: Regole 4-5 (Pairing interventi) ===== */
+        {
+          const grp = _makeGroup(
+            "4. Pairing obbligatori (II.G/II.H→III.A, II.C→II.B)",
+            "g4",
+          );
+
+          /* R4-1: II.H senza III.A → blocco (validateSelection) */
+          try {
+            const res = CR.validateSelection(["II.H"]);
+            _addTestRow(
+              grp,
+              "R4-1 II.H senza III.A → blocco (validateSelection)",
+              !res.success,
+              res.success
+                ? ["Atteso blocco per pairing mancante"]
+                : [res.errors.join("; ")],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R4-1 II.H senza III.A → blocco", false, [
+              e.message,
+            ]);
+          }
+
+          /* R4-2: II.H + III.A → OK pairing base */
+          try {
+            const res = CR.validateSelection(["III.A", "II.H"]);
+            _addTestRow(
+              grp,
+              "R4-2 II.H + III.A → OK (pairing base)",
+              res.success,
+              !res.success
+                ? ["Atteso OK, ottenuto: " + (res.errors || []).join("; ")]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R4-2 II.H + III.A → OK", false, [e.message]);
+          }
+
+          /* R4-3: II.G senza III.A → blocco */
+          try {
+            const res = CR.validateSelection(["II.G"]);
+            _addTestRow(
+              grp,
+              "R4-3 II.G senza III.A → blocco",
+              !res.success,
+              res.success
+                ? ["Atteso blocco per pairing mancante"]
+                : [res.errors.join("; ")],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R4-3 II.G senza III.A → blocco", false, [
+              e.message,
+            ]);
+          }
+
+          /* R4-4: II.G + III.A → OK pairing base */
+          try {
+            const res = CR.validateSelection(["III.A", "II.G"]);
+            _addTestRow(
+              grp,
+              "R4-4 II.G + III.A → OK (pairing base)",
+              res.success,
+              !res.success
+                ? ["Atteso OK, ottenuto: " + (res.errors || []).join("; ")]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R4-4 II.G + III.A → OK", false, [e.message]);
+          }
+
+          /* R4-5: II.H + III.A non elettrica → blocco tecnico */
+          try {
+            const res = CR.validateSelectionWithData(
+              ["III.A", "II.H"],
+              {
+                "III.A": {
+                  tipologia_pdc: "gas/acqua",
+                  sostituisce_esistente: true,
+                },
+              },
+              null,
+            );
+            _addTestRow(
+              grp,
+              "R4-5 II.H + III.A gas/acqua → blocco (PDC non elettrica)",
+              !res.success,
+              res.success
+                ? ["Atteso blocco per PDC non elettrica"]
+                : [res.errors.join("; ")],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R4-5 II.H + III.A gas/acqua → blocco", false, [
+              e.message,
+            ]);
+          }
+
+          /* R4-6: II.H + III.A elettrica senza sostituzione → blocco tecnico */
+          try {
+            const res = CR.validateSelectionWithData(
+              ["III.A", "II.H"],
+              {
+                "III.A": {
+                  tipologia_pdc: "aria/acqua",
+                  sostituisce_esistente: false,
+                },
+              },
+              null,
+            );
+            _addTestRow(
+              grp,
+              "R4-6 II.H + III.A senza sostituzione integrale → blocco",
+              !res.success,
+              res.success
+                ? ["Atteso blocco per sostituzione mancante"]
+                : [res.errors.join("; ")],
+            );
+          } catch (e) {
+            _addTestRow(
+              grp,
+              "R4-6 II.H + III.A senza sostituzione integrale → blocco",
+              false,
+              [e.message],
+            );
+          }
+
+          /* R4-7: II.H + III.A elettrica con sostituzione → OK */
+          try {
+            const res = CR.validateSelectionWithData(
+              ["III.A", "II.H"],
+              {
+                "III.A": {
+                  tipologia_pdc: "aria/acqua",
+                  sostituisce_esistente: true,
+                },
+              },
+              null,
+            );
+            _addTestRow(
+              grp,
+              "R4-7 II.H + III.A elettrica + sostituzione → OK",
+              res.success,
+              !res.success
+                ? ["Atteso OK, ottenuto: " + (res.errors || []).join("; ")]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(
+              grp,
+              "R4-7 II.H + III.A elettrica + sostituzione → OK",
+              false,
+              [e.message],
+            );
+          }
+
+          /* R4-8: II.C senza II.B → blocco */
+          try {
+            const res = CR.validateSelection(["II.C"]);
+            _addTestRow(
+              grp,
+              "R4-8 II.C senza II.B → blocco",
+              !res.success,
+              res.success
+                ? ["Atteso blocco per pairing II.C→II.B mancante"]
+                : [res.errors.join("; ")],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R4-8 II.C senza II.B → blocco", false, [
+              e.message,
+            ]);
+          }
+
+          /* R4-9: II.C + II.B → OK */
+          try {
+            const res = CR.validateSelection(["II.B", "II.C"]);
+            _addTestRow(
+              grp,
+              "R4-9 II.C + II.B → OK (pairing rispettato)",
+              res.success,
+              !res.success
+                ? ["Atteso OK, ottenuto: " + (res.errors || []).join("; ")]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R4-9 II.C + II.B → OK", false, [e.message]);
+          }
+
+          _evalGroup(grp);
+        }
+
+        /* ===== GRUPPO 5: Regola 6 (SR=ESCO → EPC) ===== */
+        {
+          const grp = _makeGroup("5. SR=ESCO → contratto EPC", "g5");
+
+          /* R6-1: SR=ESCO, SR≠SA, no EPC → blocco */
+          try {
+            const res = RE.validateAnagrafiche({
+              proprietario: { coincide_con_richiedente: true },
+              richiedente: {
+                coincide_con_proprietario: true,
+                coincide_con_responsabile: false,
+              },
+              responsabile: {
+                tipo_soggetto: "ESCO",
+                coincide_con_richiedente: false,
+                certificazione_11352_valida: true,
+                contratto_epc: false,
+                mandato_incasso: true,
+              },
+            });
+            const hasEpcError =
+              !res.success &&
+              res.errors.some(function (e) {
+                return e.indexOf("EPC") !== -1 || e.indexOf("contratto") !== -1;
+              });
+            _addTestRow(
+              grp,
+              "R6-1 ESCO ≠ SA, senza EPC → blocco",
+              hasEpcError,
+              !res.success
+                ? [res.errors.join("; ")]
+                : ["Atteso errore EPC, validazione passata"],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R6-1 ESCO ≠ SA, senza EPC → blocco", false, [
+              e.message,
+            ]);
+          }
+
+          /* R6-2: SR=ESCO, SR≠SA, con EPC → OK */
+          try {
+            const res = RE.validateAnagrafiche({
+              proprietario: { coincide_con_richiedente: true },
+              richiedente: {
+                coincide_con_proprietario: true,
+                coincide_con_responsabile: false,
+              },
+              responsabile: {
+                tipo_soggetto: "ESCO",
+                coincide_con_richiedente: false,
+                certificazione_11352_valida: true,
+                contratto_epc: true,
+                mandato_incasso: true,
+              },
+            });
+            _addTestRow(
+              grp,
+              "R6-2 ESCO ≠ SA, con EPC → OK",
+              res.success,
+              !res.success ? [res.errors.join("; ")] : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R6-2 ESCO ≠ SA, con EPC → OK", false, [
+              e.message,
+            ]);
+          }
+
+          /* R6-3: SR=ESCO, SR=SA (coincide), senza EPC → OK */
+          try {
+            const res = RE.validateAnagrafiche({
+              proprietario: { coincide_con_richiedente: true },
+              richiedente: {
+                coincide_con_proprietario: true,
+                coincide_con_responsabile: true,
+              },
+              responsabile: {
+                tipo_soggetto: "ESCO",
+                coincide_con_richiedente: true,
+                certificazione_11352_valida: true,
+                contratto_epc: false,
+                mandato_incasso: true,
+              },
+            });
+            const noEpcError =
+              res.success ||
+              !res.errors.some(function (e) {
+                return e.indexOf("EPC") !== -1;
+              });
+            _addTestRow(
+              grp,
+              "R6-3 ESCO = SA, senza EPC → OK (eccezione coincidenza)",
+              noEpcError,
+              !noEpcError
+                ? [
+                    "Atteso OK per coincidenza, ottenuto errore EPC: " +
+                      res.errors.join("; "),
+                  ]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R6-3 ESCO = SA, senza EPC → OK", false, [
+              e.message,
+            ]);
+          }
+
+          /* R6-4: ESCO senza certificazione 11352 → blocco */
+          try {
+            const res = RE.validateAnagrafiche({
+              proprietario: { coincide_con_richiedente: true },
+              richiedente: {
+                coincide_con_proprietario: true,
+                coincide_con_responsabile: false,
+              },
+              responsabile: {
+                tipo_soggetto: "ESCO",
+                coincide_con_richiedente: false,
+                certificazione_11352_valida: false,
+                contratto_epc: true,
+                mandato_incasso: true,
+              },
+            });
+            const hasCertError =
+              !res.success &&
+              res.errors.some(function (e) {
+                return e.indexOf("11352") !== -1;
+              });
+            _addTestRow(
+              grp,
+              "R6-4 ESCO senza certificazione 11352 → blocco",
+              hasCertError,
+              !res.success
+                ? [res.errors.join("; ")]
+                : ["Atteso errore 11352, validazione passata"],
+            );
+          } catch (e) {
+            _addTestRow(
+              grp,
+              "R6-4 ESCO senza certificazione 11352 → blocco",
+              false,
+              [e.message],
+            );
+          }
+
+          _evalGroup(grp);
+        }
+
+        /* ===== GRUPPO 6: Regole 7-8 (Incentivo e GSE) ===== */
+        {
+          const grp = _makeGroup("6. Incentivo max e commissione GSE", "g6");
+
+          /* R7-1: Privato III.A → cap 65% */
+          try {
+            const res = FE.calculate(
+              "III.A",
+              {
+                tipologia_pdc: "aria/acqua",
+                potenza_pdc_kw: 10,
+                scop: 4.5,
+                eta_s: 150,
+                costo_pdc: 18000,
+                costo_installazione: 2000,
+              },
+              { soggetto: "Privato residenziale", zonaClimatica: "Zona E" },
+            );
+            _addTestRow(
+              grp,
+              "R7-1 Privato III.A → percentuale ≤ 65%",
+              res.params.percentuale <= 0.65,
+              ["Percentuale: " + res.params.percentuale + ", attesa ≤ 0.65"],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R7-1 Privato III.A → percentuale ≤ 65%", false, [
+              e.message,
+            ]);
+          }
+
+          /* R7-2: PA comune ≤15k → 100% */
+          try {
+            const res = FE.calculate(
+              "III.A",
+              {
+                tipologia_pdc: "aria/acqua",
+                potenza_pdc_kw: 10,
+                scop: 4.5,
+                eta_s: 150,
+                costo_pdc: 18000,
+                costo_installazione: 2000,
+              },
+              {
+                soggetto: "Pubblica Amministrazione",
+                zonaClimatica: "Zona E",
+                comuneSotto15k: true,
+              },
+            );
+            _addTestRow(
+              grp,
+              "R7-2 PA comune ≤15k III.A → percentuale = 100%",
+              res.params.percentuale >= 0.99,
+              ["Percentuale: " + res.params.percentuale + ", attesa 1.0"],
+            );
+          } catch (e) {
+            _addTestRow(
+              grp,
+              "R7-2 PA comune ≤15k III.A → percentuale = 100%",
+              false,
+              [e.message],
+            );
+          }
+
+          /* R7-3: ETS non economico → 100% */
+          try {
+            const res = FE.calculate(
+              "III.A",
+              {
+                tipologia_pdc: "aria/acqua",
+                potenza_pdc_kw: 10,
+                scop: 4.5,
+                eta_s: 150,
+                costo_pdc: 18000,
+                costo_installazione: 2000,
+              },
+              { soggetto: "ETS non economico", zonaClimatica: "Zona E" },
+            );
+            _addTestRow(
+              grp,
+              "R7-3 ETS non econ III.A → percentuale = 100%",
+              res.params.percentuale >= 0.99,
+              ["Percentuale: " + res.params.percentuale + ", attesa 1.0"],
+            );
+          } catch (e) {
+            _addTestRow(
+              grp,
+              "R7-3 ETS non econ III.A → percentuale = 100%",
+              false,
+              [e.message],
+            );
+          }
+
+          /* R7-4: Impresa III.A → 45% */
+          try {
+            const res = FE.calculate(
+              "III.A",
+              {
+                tipologia_pdc: "aria/acqua",
+                potenza_pdc_kw: 10,
+                scop: 4.5,
+                eta_s: 150,
+                costo_pdc: 18000,
+                costo_installazione: 2000,
+              },
+              { soggetto: "Impresa", zonaClimatica: "Zona E" },
+            );
+            _addTestRow(
+              grp,
+              "R7-4 Impresa III.A → percentuale = 45%",
+              Math.abs(res.params.percentuale - 0.45) < 0.01,
+              ["Percentuale: " + res.params.percentuale + ", attesa 0.45"],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R7-4 Impresa III.A → percentuale = 45%", false, [
+              e.message,
+            ]);
+          }
+
+          /* R7-5: PA II.D → 100% */
+          try {
+            const res = FE.calculate(
+              "II.D",
+              {
+                tipo_intervento: "Demolizione e ricostruzione",
+                superficie_netta_mq: 100,
+                costo_nzeb: 80000,
+              },
+              { soggetto: "Pubblica Amministrazione", zonaClimatica: "Zona E" },
+            );
+            _addTestRow(
+              grp,
+              "R7-5 PA II.D nZEB → percentuale = 100%",
+              res.params.percentuale >= 0.99,
+              ["Percentuale: " + res.params.percentuale + ", attesa 1.0"],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R7-5 PA II.D nZEB → percentuale = 100%", false, [
+              e.message,
+            ]);
+          }
+
+          /* R8-1: GSE fee su 10000€ → 100€ */
+          try {
+            const res = FE.calculate(
+              "III.A",
+              {
+                tipologia_pdc: "aria/acqua",
+                potenza_pdc_kw: 10,
+                scop: 4.5,
+                eta_s: 150,
+                costo_pdc: 2000,
+                costo_installazione: 500,
+              },
+              {
+                soggetto: "Pubblica Amministrazione",
+                zonaClimatica: "Zona E",
+                comuneSotto15k: true,
+              },
+            );
+            const gse = res.corrispettivoGSE;
+            const gseOk = gse && gse.percentuale === 1 && gse.massimale === 250;
+            _addTestRow(
+              grp,
+              "R8-1 GSE: percentuale=1 massimale=250",
+              gseOk,
+              !gse
+                ? ["corrispettivoGSE non presente"]
+                : [
+                    "percentuale=" +
+                      gse.percentuale +
+                      ", massimale=" +
+                      gse.massimale,
+                  ],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R8-1 GSE: percentuale=1 massimale=250", false, [
+              e.message,
+            ]);
+          }
+
+          /* R8-2: GSE fee: importo=min(incentivo*0.01, 250) */
+          try {
+            const res = FE.calculate(
+              "III.A",
+              {
+                tipologia_pdc: "aria/acqua",
+                potenza_pdc_kw: 10,
+                scop: 4.5,
+                eta_s: 150,
+                costo_pdc: 2000,
+                costo_installazione: 500,
+              },
+              {
+                soggetto: "Pubblica Amministrazione",
+                zonaClimatica: "Zona E",
+                comuneSotto15k: true,
+              },
+            );
+            const gse = res.corrispettivoGSE;
+            if (gse && res.amount > 0) {
+              const atteso = Math.min(res.amount * 0.01, 250);
+              const diff = Math.abs(gse.importo - atteso);
+              _addTestRow(
+                grp,
+                "R8-2 GSE importo = min(incentivo*1%, 250€)",
+                diff < 0.02,
+                [
+                  "Atteso " +
+                    atteso +
+                    ", ottenuto " +
+                    gse.importo +
+                    ", netto=" +
+                    res.incentivoNetto,
+                ],
+              );
+            } else {
+              _addTestRow(
+                grp,
+                "R8-2 GSE importo = min(incentivo*1%, 250€)",
+                false,
+                [!gse ? "corrispettivoGSE mancante" : "amount=0"],
+              );
+            }
+          } catch (e) {
+            _addTestRow(
+              grp,
+              "R8-2 GSE importo = min(incentivo*1%, 250€)",
+              false,
+              [e.message],
+            );
+          }
+
+          _evalGroup(grp);
+        }
+
+        /* ===== GRUPPO 7: Regola 9 (Variazioni >20%) ===== */
+        {
+          const grp = _makeGroup("7. Variazioni >20% → approvazione GSE", "g7");
+
+          /* R9-1: Variazione 25% → blocco */
+          try {
+            const res = RE.validateTermini(
+              { data_fine_lavori: "2026-03-15", data_richiesta: "2026-04-01" },
+              { variazionePercentuale: 25 },
+            );
+            _addTestRow(
+              grp,
+              "R9-1 Variazione 25% → blocco (>20)",
+              !res.success,
+              !res.success ? [] : ["Atteso blocco, validazione passata"],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R9-1 Variazione 25% → blocco", false, [
+              e.message,
+            ]);
+          }
+
+          /* R9-2: Variazione 15% → OK */
+          try {
+            const res = RE.validateTermini(
+              { data_fine_lavori: "2026-03-15", data_richiesta: "2026-04-01" },
+              { variazionePercentuale: 15 },
+            );
+            _addTestRow(
+              grp,
+              "R9-2 Variazione 15% → OK (sotto soglia)",
+              res.success,
+              res.success
+                ? []
+                : ["Atteso OK, ottenuto: " + res.errors.join("; ")],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R9-2 Variazione 15% → OK", false, [e.message]);
+          }
+
+          /* R9-3: Variazione 20% → OK (soglia stretta, non ≥) */
+          try {
+            const res = RE.validateTermini(
+              { data_fine_lavori: "2026-03-15", data_richiesta: "2026-04-01" },
+              { variazionePercentuale: 20 },
+            );
+            _addTestRow(
+              grp,
+              "R9-3 Variazione 20% → OK (soglia stretta, non ≥)",
+              res.success,
+              res.success
+                ? []
+                : [
+                    "Atteso OK (soglia stretta), ottenuto blocco: " +
+                      res.errors.join("; "),
+                  ],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R9-3 Variazione 20% → OK", false, [e.message]);
+          }
+
+          /* R9-4: Variazione -30% → blocco (Math.abs) */
+          try {
+            const res = RE.validateTermini(
+              { data_fine_lavori: "2026-03-15", data_richiesta: "2026-04-01" },
+              { variazionePercentuale: -30 },
+            );
+            _addTestRow(
+              grp,
+              "R9-4 Variazione -30% → blocco (Math.abs supera 20)",
+              !res.success,
+              !res.success
+                ? []
+                : ["Atteso blocco per |var|>20", "variazionePercentuale=-30"],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R9-4 Variazione -30% → blocco", false, [
+              e.message,
+            ]);
+          }
+
+          /* R9-5: Variazione 0% → OK */
+          try {
+            const res = RE.validateTermini(
+              { data_fine_lavori: "2026-03-15", data_richiesta: "2026-04-01" },
+              { variazionePercentuale: 0 },
+            );
+            _addTestRow(
+              grp,
+              "R9-5 Variazione 0% → OK (nessuna variazione)",
+              res.success,
+              res.success
+                ? []
+                : ["Atteso OK, ottenuto: " + res.errors.join("; ")],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R9-5 Variazione 0% → OK", false, [e.message]);
+          }
+
+          /* R9-6: TERMINI_CONFIG.variazione_soglia_perc = 20 */
+          try {
+            const soglia =
+              engines.TERMINI_CONFIG &&
+              engines.TERMINI_CONFIG.variazione_soglia_perc;
+            _addTestRow(
+              grp,
+              "R9-6 TERMINI_CONFIG.variazione_soglia_perc = 20",
+              soglia === 20,
+              ["Atteso 20, ottenuto " + soglia],
+            );
+          } catch (e) {
+            _addTestRow(
+              grp,
+              "R9-6 TERMINI_CONFIG.variazione_soglia_perc = 20",
+              false,
+              [e.message],
+            );
+          }
+
+          _evalGroup(grp);
+        }
+
+        /* ===== GRUPPO 8: Regola 10 (Mandato + Atto Assenso) ===== */
+        {
+          const grp = _makeGroup("8. Mandato incasso + atto assenso", "g8");
+
+          /* R10-1: SR non-PA senza mandato → blocco */
+          try {
+            const res = RE.validateAnagrafiche({
+              proprietario: { coincide_con_richiedente: true },
+              richiedente: {
+                coincide_con_proprietario: true,
+                coincide_con_responsabile: true,
+              },
+              responsabile: {
+                tipo_soggetto: "Privato",
+                coincide_con_richiedente: true,
+                mandato_incasso: false,
+              },
+            });
+            const hasMandatoErr =
+              !res.success &&
+              res.errors.some(function (e) {
+                return e.indexOf("mandato") !== -1;
+              });
+            _addTestRow(
+              grp,
+              "R10-1 SR non-PA senza mandato → blocco",
+              hasMandatoErr,
+              !res.success
+                ? [res.errors.join("; ")]
+                : ["Atteso errore mandato, validazione passata"],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R10-1 SR non-PA senza mandato → blocco", false, [
+              e.message,
+            ]);
+          }
+
+          /* R10-2: SR PA senza mandato → OK (PA esente) */
+          try {
+            const res = RE.validateAnagrafiche({
+              proprietario: { coincide_con_richiedente: true },
+              richiedente: {
+                coincide_con_proprietario: true,
+                coincide_con_responsabile: true,
+              },
+              responsabile: {
+                tipo_soggetto: "Pubblica Amministrazione",
+                coincide_con_richiedente: true,
+                mandato_incasso: false,
+              },
+            });
+            const noMandatoErr =
+              res.success ||
+              !res.errors.some(function (e) {
+                return e.indexOf("mandato") !== -1;
+              });
+            _addTestRow(
+              grp,
+              "R10-2 SR PA senza mandato → OK (PA esente)",
+              noMandatoErr,
+              !noMandatoErr
+                ? [
+                    "Atteso OK per PA, ottenuto errore: " +
+                      res.errors.join("; "),
+                  ]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R10-2 SR PA senza mandato → OK", false, [
+              e.message,
+            ]);
+          }
+
+          /* R10-3: Proprietario ≠ richiedente senza atto assenso → blocco */
+          try {
+            const res = RE.validateAnagrafiche({
+              proprietario: {
+                coincide_con_richiedente: false,
+                atto_assenso: false,
+              },
+              richiedente: {
+                coincide_con_proprietario: false,
+                coincide_con_responsabile: true,
+                atto_assenso: false,
+              },
+              responsabile: {
+                tipo_soggetto: "Privato",
+                coincide_con_richiedente: true,
+                mandato_incasso: true,
+              },
+            });
+            const hasAssensoErr =
+              !res.success &&
+              res.errors.some(function (e) {
+                return e.indexOf("Assenso") !== -1;
+              });
+            _addTestRow(
+              grp,
+              "R10-3 Proprietario ≠ Richiedente senza atto assenso → blocco",
+              hasAssensoErr,
+              !res.success
+                ? [res.errors.join("; ")]
+                : ["Atteso errore atto assenso, validazione passata"],
+            );
+          } catch (e) {
+            _addTestRow(
+              grp,
+              "R10-3 Prop ≠ Rich senza atto assenso → blocco",
+              false,
+              [e.message],
+            );
+          }
+
+          /* R10-4: Proprietario ≠ richiedente con atto assenso → OK */
+          try {
+            const res = RE.validateAnagrafiche({
+              proprietario: {
+                coincide_con_richiedente: false,
+                atto_assenso: true,
+              },
+              richiedente: {
+                coincide_con_proprietario: false,
+                coincide_con_responsabile: true,
+                atto_assenso: false,
+              },
+              responsabile: {
+                tipo_soggetto: "Privato",
+                coincide_con_richiedente: true,
+                mandato_incasso: true,
+              },
+            });
+            _addTestRow(
+              grp,
+              "R10-4 Prop ≠ Rich con atto assenso → OK",
+              res.success,
+              !res.success ? [res.errors.join("; ")] : [],
+            );
+          } catch (e) {
+            _addTestRow(grp, "R10-4 Prop ≠ Rich con atto assenso → OK", false, [
+              e.message,
+            ]);
+          }
+
+          /* R10-5: Proprietario = richiedente (coincide) senza atto assenso → OK */
+          try {
+            const res = RE.validateAnagrafiche({
+              proprietario: { coincide_con_richiedente: true },
+              richiedente: {
+                coincide_con_proprietario: true,
+                coincide_con_responsabile: true,
+              },
+              responsabile: {
+                tipo_soggetto: "Privato",
+                coincide_con_richiedente: true,
+                mandato_incasso: true,
+              },
+            });
+            const noAssensoErr =
+              res.success ||
+              !res.errors.some(function (e) {
+                return e.indexOf("Assenso") !== -1;
+              });
+            _addTestRow(
+              grp,
+              "R10-5 Prop = Rich (coincide) senza atto assenso → OK",
+              noAssensoErr,
+              !noAssensoErr
+                ? [
+                    "Atteso OK per coincidenza, ottenuto: " +
+                      res.errors.join("; "),
+                  ]
+                : [],
+            );
+          } catch (e) {
+            _addTestRow(
+              grp,
+              "R10-5 Prop = Rich (coincide) senza atto assenso → OK",
+              false,
+              [e.message],
+            );
+          }
+
+          _evalGroup(grp);
+        }
+
+        _hideProgress();
+      };
+
+      /* Helper: valuta gruppo e aggiorna badge */
+      const _evalGroup = function (grp) {
+        const groupRows = grp.body.querySelectorAll(".test-row");
+        let okCount = 0;
+        let failCountG = 0;
+        groupRows.forEach(function (r) {
+          if (r.classList.contains("pass")) okCount = okCount + 1;
+          else failCountG = failCountG + 1;
+        });
+        grp.badge.textContent =
+          okCount +
+          "/" +
+          (okCount + failCountG) +
+          " OK, " +
+          failCountG +
+          " FAIL";
+        if (failCountG > 0) grp.badge.className = "badge fail";
+        else grp.badge.className = "badge ok";
+      };
+
+      /* ========= EVENT BINDINGS ========= */
+      el("btn-run-all").onclick = async function () {
+        const btns = ["btn-run-all", "btn-reset"];
+        btns.forEach(function (b) {
+          el(b).disabled = true;
+        });
+        try {
+          await runAllTests();
+        } finally {
+          btns.forEach(function (b) {
+            el(b).disabled = false;
+          });
+        }
+      };
+      el("btn-reset").onclick = function () {
+        _clearOutput();
+      };
+
+      /* ========= MESSAGGIO INIZIALE ========= */
+      if (!engines) {
+        const errDiv = document.createElement("div");
+        errDiv.className = "error-msg";
+        errDiv.innerHTML =
+          "Moduli non caricati. Apri con server HTTP locale:<br>" +
+          "<pre>python3 -m http.server 8080 --directory " +
+          window.location.pathname.split("/test/")[0] +
+          "</pre>" +
+          "Poi apri http://localhost:8080/test/test_problematiche.html";
+        out.appendChild(errDiv);
+      } else {
+        const info = document.createElement("div");
+        info.style.cssText = "color:#666;font-size:0.85rem;padding:12px;";
+        info.innerHTML =
+          'Premi "Esegui TUTTI" per avviare i test sulle 10 regole critiche.' +
+          '<br><span style="font-size:0.75rem;color:#888;">' +
+          "8 gruppi, ~50 test. Richiede server HTTP. Ctrl+F5 dopo modifiche moduli.</span>";
+        out.appendChild(info);
+      }
+    </script>
+  </body>
+</html>

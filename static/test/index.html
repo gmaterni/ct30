@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CT30 Advisor — Test Suite Index</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        background: #1e1e1e;
+        color: #e0e0e0;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        margin: 0;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+      }
+      h1 {
+        color: #68c8b2;
+        font-size: 1.6rem;
+        margin: 0 0 4px;
+        text-align: center;
+      }
+      .subtitle {
+        color: #888;
+        font-size: 0.9rem;
+        margin: 0 0 32px;
+        text-align: center;
+      }
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 16px;
+        max-width: 800px;
+        width: 100%;
+      }
+      .card {
+        background: #252525;
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 20px;
+        text-decoration: none;
+        color: inherit;
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+        display: block;
+      }
+      .card:hover {
+        border-color: #68c8b2;
+        background: #2a2a2a;
+      }
+      .card .title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #68c8b2;
+        margin-bottom: 6px;
+      }
+      .card .desc {
+        font-size: 0.85rem;
+        color: #aaa;
+        line-height: 1.4;
+      }
+      .card .badge {
+        display: inline-block;
+        font-size: 0.7rem;
+        padding: 2px 8px;
+        border-radius: 10px;
+        margin-top: 8px;
+      }
+      .badge.regression {
+        background: #1b5e20;
+        color: #a5d6a7;
+      }
+      .badge.problematiche {
+        background: #e65100;
+        color: #ffcc80;
+      }
+      .footer {
+        margin-top: 40px;
+        font-size: 0.75rem;
+        color: #555;
+        text-align: center;
+      }
+      .footer a {
+        color: #68c8b2;
+        text-decoration: none;
+      }
+      .footer a:hover {
+        text-decoration: underline;
+      }
+      .note {
+        background: #1a1a2e;
+        border: 1px solid #333;
+        border-radius: 6px;
+        padding: 12px 16px;
+        font-size: 0.8rem;
+        color: #999;
+        max-width: 800px;
+        width: 100%;
+        margin-top: 24px;
+      }
+      .note code {
+        color: #68c8b2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CT30 Advisor — Test Suite</h1>
+    <p class="subtitle">Seleziona una famiglia di test</p>
+
+    <div class="card-grid">
+      <a class="card" href="test_suite.html">
+        <div class="title">Suite Principale</div>
+        <div class="desc">
+          4 gruppi: Scenari MS, Formula Engine, Rules Engine, Cross-Rule Engine.
+          Copertura completa dei moduli core.
+        </div>
+        <span class="badge regression">full regression</span>
+      </a>
+
+      <a class="card" href="test_problematiche.html">
+        <div class="title">Problematiche</div>
+        <div class="desc">
+          8 gruppi, 46 test focalizzati sulle 10 regole business critiche (da
+          <code>docs/PROBLEMATICHE.md</code>).
+        </div>
+        <span class="badge problematiche">10 regole</span>
+      </a>
+    </div>
+
+    <div class="note">
+      <strong>⚠️ Richiede server HTTP</strong> — aprire con
+      <code>file://</code> non funziona (i moduli ES import falliscono).
+      <br /><br />
+      <strong>Dev:</strong>
+      <code>npx live-server --port=8080 --no-css-inject</code> (dalla cartella
+      <code>static/</code>)
+      <br />
+      <strong>Alternativa:</strong>
+      <code>python3 -m http.server 8080 --directory ../</code> <br /><br />
+      Dopo modifiche ai moduli JS: <strong>Ctrl+F5</strong> (hard refresh) per
+      bypassare la cache.
+    </div>
+
+    <div class="footer">
+      CT30 Advisor &mdash; <a href="../../README.md">README</a> &middot;
+      <a href="../../docs/SPECIFICHE.md">Specifiche</a> &middot;
+      <a href="../../docs/PROBLEMATICHE.md">Problematiche</a>
+    </div>
+  </body>
+</html>
