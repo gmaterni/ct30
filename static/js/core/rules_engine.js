@@ -25,6 +25,8 @@ import {
   INTERVENTI,
 } from "./normativa.js";
 
+import { CrossRuleEngine } from "./cross_rule_engine.js";
+
 /**
  * Factory per il motore delle regole.
  *
@@ -896,6 +898,26 @@ const UaRulesEngine = function () {
         "TITOLO V (R04): APE post-intervento obbligatorio per le imprese (Art. 25 D.M. 7/8/2025).",
       );
     }
+
+    // 5. Divieto combustibili fossili (delegato a cross_rule_engine)
+    var fossileSoggettoData = {
+      tipoSoggetto: "Impresa",
+      sottoCategoria: "impresa",
+      haCombustibiliFossili: datiImpresa.haCombustibiliFossili,
+    };
+    var fossileCheck = CrossRuleEngine.checkDivietoFossili(
+      interventi || [],
+      {},
+      fossileSoggettoData,
+    );
+    if (!fossileCheck.isValid) {
+      fossileCheck.errors.forEach(function (e) {
+        errors.push(e);
+      });
+    }
+    fossileCheck.warnings.forEach(function (w) {
+      warnings.push(w);
+    });
 
     // 6. Limite singola impresa: 30 M€/intervento
     if (
