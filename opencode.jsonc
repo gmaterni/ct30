@@ -91,6 +91,7 @@
       "*": "allow"
     },
     // Task (invocazione subagenti) — chiedi sempre salvo espliciti
+    // Nota: build agent sovrascrive per i suoi subagenti
     "task": {
       "*": "ask",
       "explore": "allow",
@@ -118,6 +119,11 @@
           "rm -rf *": "deny",
           "sudo *": "deny"
         },
+        "task": {
+          "*": "allow"
+        },
+        "doom_loop": "allow",
+        "external_directory": "allow",
         "skill": {
           "*": "allow"
         }
