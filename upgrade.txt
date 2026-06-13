@@ -1,15 +1,11 @@
 # PIANO INTERVENTI — Residuo da PROBLEMATICHE_CRITICHE.md
 
-## P1 — Unificare divieto fossili (#7) [ALTO]
+## ~~P1 — Unificare divieto fossili (#7) [ALTO]~~ ✅ COMPLETATO 2026-06-13
 
-**Problema**: 3 implementazioni non coordinate per la stessa regola:
-- `rules_engine.js:392` — blacklist testuale di tipologie gas per III.A
-- `rules_engine.js:730` — flag booleano `haCombustibiliFossili` in `validateTitoloV`
-- `cross_rule_engine.js:115` — `_checkDivietoFossili` che blocca III.B e verifica alimentazione
-
-**Obiettivo**: Unificare in un'unica funzione esportata da `cross_rule_engine.js`, chiamata da entrambi gli engine. Includere verifica III.C (biomassa con gas).
-
-**File**: `cross_rule_engine.js`, `rules_engine.js`
+Tre implementazioni erano state unificate in `_checkDivietoFossiliUnified` in `cross_rule_engine.js`. Completata l'integrazione:
+- Rimossi i duplicati da `rules_engine.js` (`_checkInterventoAmmissibilita` III.A gas, `validateTitoloV` haCombustibiliFossili)
+- Rimosso import inutilizzato `CrossRuleEngine` da `rules_engine.js`
+- Wizard chiama `validateSelectionWithData(selected, interventiData, soggettoData)` in fase Interventi
 
 ---
 

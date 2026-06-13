@@ -1078,7 +1078,13 @@ const UaWizardManager = function (viewportId) {
       _praticaData.interventi = selected;
       var tipoSA = _praticaData.richiedente.tipo_soggetto || "";
       var ambito = _praticaData.edificio.ambito || "";
-      var cre = _crossRuleEngine.validateSelection(selected);
+      var soggettoData = _praticaData.richiedente || {};
+      var interventiData = _praticaData.dati_tecnici || {};
+      var cre = _crossRuleEngine.validateSelectionWithData(
+        selected,
+        interventiData,
+        soggettoData,
+      );
       var re = _rulesEngine.validateInterventiPerSoggetto(
         tipoSA,
         ambito,

@@ -74,7 +74,7 @@ Analisi incrociata tra Regole Applicative CT 3.0, Decreto MASE 7/8/2025, Manuale
 2. `rules_engine.js` — flag `haCombustibiliFossili` in `validateTitoloV`
 3. `cross_rule_engine.js` — `_checkDivietoFossili` che blocca III.B e verifica alimentazione
 
-**⏳ DA FARE**: Unificare in un'unica funzione in cross_rule_engine.js. Vedi `upgrade.txt` P1.
+**✅ RISOLTO (P1)**: Unificato in `_checkDivietoFossiliUnified` in `cross_rule_engine.js`. Copre Impresa + ETS economico, III.A gas/ibrido, III.B, III.C, alimentazione fossile su qualsiasi intervento, flag `haCombustibiliFossili`. Wizard chiama `validateSelectionWithData`.
 
 ---
 
@@ -162,7 +162,7 @@ finale = base * (1 + madeInEuBonus) + maggiorazioneTotale + (premialitaTotale - 
 | 4   | II.D/II.G/II.H impresa 30% non implementato   | ✅ Risolto                  |
 | 5   | ETS economico: prenotazione=false             | ✅ Risolto                  |
 | 6   | II.C→II.B hard-coded, non nei dati            | ✅ Risolto                  |
-| 7   | Divieto fossili: 3 implementazioni divergenti | ⏳ P1 upgrade.txt           |
+| 7   | Divieto fossili: 3 implementazioni divergenti | ✅ Risolto (P1)             |
 | 8   | IVA non esclusa per ETS economico             | ✅ Risolto                  |
 | 9   | Formula intensità: cap invisibile all'utente  | ⏳ P3 upgrade.txt           |
 | 10  | Mutua esclusività: III.G e II.D               | ✅ III.G escluso (coesiste) |

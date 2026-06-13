@@ -25,8 +25,6 @@ import {
   INTERVENTI,
 } from "./normativa.js";
 
-import { CrossRuleEngine } from "./cross_rule_engine.js";
-
 /**
  * Factory per il motore delle regole.
  *
@@ -405,9 +403,10 @@ const UaRulesEngine = function () {
 
   /**
    * Verifica se la tipologia di intervento è ammissibile per il soggetto.
-   * Gestisce regole specifiche come l'esclusione di PDC a gas per Imprese ed ETS economici.
+   * Nota: il divieto fossili (III.A gas/ibrido, haCombustibiliFossili) è
+   * centralizzato in cross_rule_engine.js → _checkDivietoFossiliUnified.
    *
-   * @param {string} subjectType - Tipo di soggetto (es. 'Impresa', 'ETS economico').
+   * @param {string} subjectType - Tipo di soggetto.
    * @param {string} interventoCode - Codice intervento (es. 'III.A').
    * @param {Object} interventoDati - Dati tecnici dell'intervento.
    * @returns {Object} Risultato della validazione.
@@ -444,35 +443,6 @@ const UaRulesEngine = function () {
       res.success = false;
       res.error = errMsg;
       return res;
-    }
-
-    // Regola specifica: Esclusione PDC a gas per Imprese ed ETS economici (Art. 25 comma 2)
-    const soggettiEsclusiPdCGas = ["Impresa", "ETS economico"];
-    const tipologieGasEscluse = ["ibrido", "gas", "hybrid", "metano", "gpl"];
-
-    if (
-      soggettiEsclusiPdCGas.includes(subjectType) &&
-      interventoCode === "III.A"
-    ) {
-      const dati = interventoDati || {};
-      const tipologiaPdc = (
-        dati.tipologia_pdc ||
-        dati.tipologia ||
-        ""
-      ).toLowerCase();
-
-      const isPdCGas = tipologieGasEscluse.some(function (t) {
-        return tipologiaPdc.includes(t);
-      });
-
-      if (isPdCGas) {
-        res.success = false;
-        res.error =
-          "Art. 25 comma 2: Le PDC a gas o ibride non sono ammesse per " +
-          subjectType +
-          ".";
-        return res;
-      }
     }
 
     // III.B: rapporto PdC/caldaia ≤0.5 per sistemi ibridi (Manuale Analitico Sez.6)
@@ -924,17 +894,6 @@ const UaRulesEngine = function () {
     if (!datiImpresa.apePostDisponibile) {
       errors.push(
         "TITOLO V (R04): APE post-intervento obbligatorio per le imprese (Art. 25 D.M. 7/8/2025).",
-      );
-    }
-
-    // 5. Divieto combustibili fossili
-    if (
-      datiImpresa.haCombustibiliFossili === true ||
-      datiImpresa.haCombustibiliFossili === "si" ||
-      datiImpresa.haCombustibiliFossili === "Sì"
-    ) {
-      errors.push(
-        "TITOLO V (R05): Vietati apparecchi a combustibili fossili (incluso gas naturale). L'impresa non può installare generatori alimentati a combustibili fossili.",
       );
     }
 
