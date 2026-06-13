@@ -1,0 +1,107 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T27
+  Nome:            III.C Biomassa Logaritmica — Stufa a pellet
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test upgrade B: III.C stufa a pellet con formula logaritmica (ln) per calcolo coeff_ci. Verifica corretta applicazione scala logaritmica per potenza <25kW.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Fiume 8, Bolzano (BZ)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona E
+  Superficie utile mq:   90
+  Anno costruzione:      2005
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia a metano
+    Potenza termica:     20 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Anna Ferrari
+    tipo: Privato residenziale
+    cf_piva: FRRNNA75B41A952R
+    email: anna.ferrari@email.it
+    telefono: 0471 123456
+  SR (Responsabile):
+    denominazione: Anna Ferrari
+    cf_piva: FRRNNA75B41A952R
+    iban: IT60X0542811101000000123456
+    pec: anna.ferrari@pec.it
+  PROPRIETARIO:
+    denominazione: Anna Ferrari
+    cf_piva: FRRNNA75B41A952R
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.C
+    tipo_generatore: Stufa
+    tipo_biomassa: Pellet
+    potenza_nominale_kw: 15
+    rendimento_stagionale: 82
+    classe_emissiva: 5 stelle
+    costo_biomassa: 5000
+    riduzione_pp: ≤20%
+    ore_funzionamento_annue: 1500
+    residenziale_terziario: residenziale
+    zona_assistita_a: no
+    zona_assistita_c: no
+    made_in_eu: sì
+    miglioramento_ep_40: no
+    sostituisce_esistente: sì
+    superficie_fabbricato_mq: 90
+    tiraggio_forzato: sì
+    zona_non_metanizzata: sì
+    in_centrale_tlr: sì
+
+PREVENTIVO
+----------------------------------------
+  III.C | Fornitura stufa a pellet 15kW | fornitura | 3500.00 €
+  III.C | Posa e installazione canna fumaria | posa | 1000.00 €
+  III.C | Documentazione e collaudo | documentazione | 500.00 €
+  ------------------------------
+  TOTALE: 5000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.C — Generatori a biomassa (classe 5 stelle)
+    Formula: I = min(enza, min(spesa, potenza * cmax) * percentuale)
+    Passaggi:
+      Ore funzionamento annue (default: Q_uf per zona climatica) (hr): ore_funzionamento_annue || quf_zona || 1500 = 1500,00 || quf_zona || 1500 => 1500,00
+      Coefficiente ambientale Ce (Ce): (zona_non_metanizzata === 'sì' && tipo_biomassa === 'GPL') ? 1.5 : riduzione_pp === '>50%' ? 1.5 : riduzione_pp === '20-50%' ? 1.2 : 1.0 = (zona_non_metanizzata === 'sì' && tipo_biomassa === 'GPL') ? 1.5 : riduzione_pp === '>50%' ? 1.5 : riduzione_pp === '20-50%' ? 1.2 : 1.0 => 1,00
+      Energia termica incentivabile (enBase): tipo_generatore === 'Stufa' ? 3.35 * Math.log(potenza) * hr * Ci * Ce : potenza * hr * Ci * Ce = tipo_generatore === 'Stufa' ? 3.35 × Math.log(15,00) × 1500,00 × 0,06 × 1,00 : 15,00 × 1500,00 × 0,06 × 1,00 => 748,44
+      Energia con eventuale riduzione TLR (enDopoTlr): in_centrale_tlr === 'sì' ? enBase * 0.80 : enBase = in_centrale_tlr === 'sì' ? 748,44 × 0.80 : 748,44 => 598,75
+      Energia termica finale (enza): enDopoTlr = 598,75 => 598,75
+      Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(598,75, min(5000,00, 15,00 × 600,00) × 0,65) => 598,75 €
+    Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 598,75 €
+    Netto GSE: 592,76 € (corrispettivo GSE: 5,99 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.C
+    Ore funzionamento annue (default: Q_uf per zona climatica) | hr | 1500,00 = 1500,00
+    Coefficiente ambientale Ce | Ce | 1,00 = 1,00
+    Energia termica incentivabile | enBase | 748,44 = 748,44
+    Energia con eventuale riduzione TLR | enDopoTlr | 598,75 = 598,75
+    Energia termica finale | enza | 598,75 = 598,75
+    Calcolo Incentivo Finale | I_tot | 598,75 = 598,75 €

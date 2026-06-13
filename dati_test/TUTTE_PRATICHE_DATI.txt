@@ -1,0 +1,4318 @@
+
+============================================================
+  PAGE BREAK — Test 01 - Privato PdC Aria/Acqua (CT30-T01)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T01
+  Nome:            Test 01 - Privato PdC Aria/Acqua
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Sostituzione caldaia con PdC 12kW in Zona E per un privato. Verifica calcolo Ei, piano erogazione e vincoli.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Roma 10, Milano (MI)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     24 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Mario Rossi
+    tipo: Privato residenziale
+    cf_piva: RSSMRA80A01H501U
+    email: mario.rossi@email.it
+    telefono: 021234567
+  SR (Responsabile):
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+    iban: IT60X0542811101000000123456
+    pec: mario.rossi@pec.it
+  PROPRIETARIO:
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    marca_pdc: Climax
+    modello_pdc: ClimaxHeat 12kW
+    potenza_pdc_kw: 12
+    potenza_elettrica_assorbita_kw: 3
+    tipologia_pdc: aria/acqua
+    scop: 4.1
+    cop: 4.5
+    eta_s: 155
+    servizio_pdc: climatizzazione invernale
+    generatore_sostituito: Caldaia a gas 24kW
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+    scheda_tecnica_pdc: sì
+    costo_pdc: 12500
+    sostituisce_esistente: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Fornitura pompa di calore Climax 12kW | fornitura | 8000.00 €
+  III.A | Posa e collegamenti idraulici/elettrici | posa | 3000.00 €
+  III.A | Dismissione caldaia esistente | opere_accessorie | 800.00 €
+  III.A | Avviamento, collaudo e dichiarazione conformità | documentazione | 700.00 €
+  ------------------------------
+  TOTALE: 12500.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 155,00 / 110,00 => 1,41
+      Calore totale prodotto stimato (Qu): Prated * Quf = 12,00 × 1700,00 => 20.400,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 20.400,00 × (1 - 1/4,10) × 1,41 => 21.734,37
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 21.734,37 × 0,15 × 1,00 => 3260,16 €
+    Risultato: I = k * Ei * Ci * CC = 3260,16 €
+    Netto GSE: 3227,56 € (corrispettivo GSE: 32,60 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,41 = 1,41
+    Calore totale prodotto stimato | Qu | 20.400,00 = 20.400,00
+    Energia termica incentivata | Ei | 21.734,37 = 21.734,37
+    Calcolo Incentivo Finale | I_tot | 3260,16 = 3260,16 €
+
+============================================================
+  PAGE BREAK — Test 02 - Impresa Grande PdC + FV (CT30-T02)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T02
+  Nome:            Test 02 - Impresa Grande PdC + FV
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Riqualificazione industriale con PdC 100kW e Fotovoltaico 50kW in Zona C. Verifica effetto incentivante, rate 5 anni, cross-rules II.H+III.A.
+  Rich. Preliminare: Sì (2026-01-15)
+  Primo impegno:     2026-02-01
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via delle Industrie 50, Napoli (NA)
+  Categoria catastale:   D/7
+  Zona climatica:        Zona C
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     150 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: TecnoIndustria S.p.A.
+    tipo: Privato terziario
+    cf_piva: 01234567890
+    email: info@tecnoindustria.it
+    telefono: 0811234567
+  SR (Responsabile):
+    denominazione: TecnoIndustria S.p.A.
+    cf_piva: 01234567890
+    iban: IT99P0123456789012345678901
+    pec: amministrazione@pec.tecnoindustria.it
+  PROPRIETARIO:
+    denominazione: TecnoIndustria S.p.A.
+    cf_piva: 01234567890
+  DELEGATO:
+    nome: Ing. Marco Verdi
+    cf: VRDMRA80A01H501U
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    marca_pdc: ThermoSys
+    modello_pdc: ThermoSys 100kW
+    potenza_pdc_kw: 100
+    potenza_elettrica_assorbita_kw: 22
+    tipologia_pdc: acqua/acqua
+    scop: 5.2
+    cop: 5.8
+    eta_s: 190
+    servizio_pdc: climatizzazione invernale e ACS
+    generatore_sostituito: Caldaia a gasolio 150kW
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+    scheda_tecnica_pdc: sì
+    costo_pdc: 85000
+    sostituisce_esistente: sì
+  II.H
+    marca_moduli: SolarTech
+    modello_moduli: ST-450Wp
+    potenza_fv_kw: 50
+    numero_moduli: 112
+    accumulo_presente: sì
+    capacita_accumulo_kwh: 20
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+    registro_enea: sì
+    ue_production: sì
+    same_section: sì
+    is_autoconsumo: sì
+    costo_fv: 65000
+    sostituzione_integrale: sì
+
+PREVENTIVO
+----------------------------------------
+  II.H | Fornitura moduli FV SolarTech 50kWp e inverter | fornitura | 38000.00 €
+  II.H | Sistema accumulo 20kWh | fornitura | 12000.00 €
+  II.H | Posa moduli, inverter e collegamenti | posa | 12000.00 €
+  II.H | Pratiche di connessione e documentazione impianto | documentazione | 3000.00 €
+  III.A | Fornitura pompa di calore ThermoSys 100kW acqua/acqua | fornitura | 55000.00 €
+  III.A | Posa, collegamenti idraulici e adeguamento impianto | posa | 20000.00 €
+  III.A | Documentazione tecnica e dichiarazione conformità | documentazione | 10000.00 €
+  ------------------------------
+  TOTALE: 150000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 190,00 / 110,00 => 1,73
+      Calore totale prodotto stimato (Qu): Prated * Quf = 100,00 × 1100,00 => 110.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 110.000,00 × (1 - 1/5,20) × 1,73 => 153.461,54
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 153.461,54 × 0,06 × 1,00 => 9207,69 €
+    Risultato: I = k * Ei * Ci * CC = 9207,69 €
+    Netto GSE: 9115,61 € (corrispettivo GSE: 92,08 €)
+    Erogazione: Unica soluzione
+
+  II.H — Fotovoltaico e accumulo abbinati a pompa di calore elettrica
+    Formula: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale
+    Risultato: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = 0,00 €
+    Errori:
+      - II.H: accumulo 20 kWh insufficiente per 50 kWp (min 0.5 kWh/kWp, ratio 0.40).
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,73 = 1,73
+    Calore totale prodotto stimato | Qu | 110.000,00 = 110.000,00
+    Energia termica incentivata | Ei | 153.461,54 = 153.461,54
+    Calcolo Incentivo Finale | I_tot | 9207,69 = 9207,69 €
+
+  Intervento II.H
+    Nessun dettaglio disponibile.
+    Errori:
+      - II.H: accumulo 20 kWh insufficiente per 50 kWp (min 0.5 kWh/kWp, ratio 0.40).
+
+============================================================
+  PAGE BREAK — Test 03 - Terziario Isolamento Pareti (CT30-T03)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T03
+  Nome:            Test 03 - Terziario Isolamento Pareti
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Cappotto termico per edilizia terziaria in Zona F. Verifica calcolo II.A (percentuale spesa + Cmax) e vincoli soggetto su Titolo II.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Località Montagna 5, Belluno (BL)
+  Categoria catastale:   A/3
+  Zona climatica:        Zona F
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     18 kW
+    Combustibile:        gpl
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Luigi Bianchi
+    tipo: Privato terziario
+    cf_piva: BNCLGU75M15L219Z
+    email: luigi.bianchi@webmail.com
+    telefono: 0437123456
+  SR (Responsabile):
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU75M15L219Z
+    iban: IT11X0123456789012345678901
+    pec: luigi.bianchi@pec.it
+  PROPRIETARIO:
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU75M15L219Z
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Esterna
+    superficie_isolata_mq: 220
+    trasmittanza_ante: 1.2
+    trasmittanza_post: 0.18
+    costo_isolamento: 32000
+    ape_ante_post_disponibile: sì
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    zona_assistita_a: no
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  II.A | Fornitura materiale isolante (cappotto esterno 220mq) | fornitura | 12000.00 €
+  II.A | Posa cappotto termico e rasature | posa | 15000.00 €
+  II.A | Ponteggi e opere accessorie | opere_accessorie | 4000.00 €
+  II.A | Relazione tecnica e asseverazioni | documentazione | 1000.00 €
+  ------------------------------
+  TOTALE: 32000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(32.000,00, 220,00 × 200,00) × 0,60 => 19.200,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 19.200,00 €
+    Netto GSE: 19.008,00 € (corrispettivo GSE: 192,00 €)
+    Erogazione: 5 rate annuali
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 19.200,00 = 19.200,00 €
+
+============================================================
+  PAGE BREAK — Test 04 - Terziario Ricarica Veicoli (CT30-T04)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T04
+  Nome:            Test 04 - Terziario Ricarica Veicoli
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Installazione colonnine di ricarica per parcheggio terziario + PdC centralizzata 120kW in Zona E. Verifica II.G + III.A, cross-rules.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Piazza della Libertà 1, Torino (TO)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       E
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     120 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Condominio Belvedere
+    tipo: Privato terziario
+    cf_piva: 90012345678
+    email: amministrazione@condominiobelvedere.it
+    telefono: 0111234567
+  SR (Responsabile):
+    denominazione: Condominio Belvedere
+    cf_piva: 90012345678
+    iban: IT22Y0123456789012345678901
+    pec: amministrazione@pec.condominiobelvedere.it
+  PROPRIETARIO:
+    denominazione: Condominio Belvedere
+    cf_piva: 90012345678
+  DELEGATO:
+    nome: Studio Amministratore Rossi
+    cf: 09876543210
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.G
+    costo_colonnina: 15000
+    numero_punti_ricarica: 6
+    potenza_ricarica_kw: 22
+    tipo_ricarica: Punto ricarica Trifase
+    is_smart: sì
+    modo_ricarica: modo 3
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+  III.A
+    marca_pdc: Climaveneta
+    modello_pdc: CV-120kW
+    potenza_pdc_kw: 120
+    potenza_elettrica_assorbita_kw: 30
+    tipologia_pdc: aria/acqua
+    scop: 4.2
+    cop: 4.5
+    eta_s: 160
+    servizio_pdc: climatizzazione invernale centralizzata
+    generatore_sostituito: Caldaia centralizzata metano 120kW
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+    scheda_tecnica_pdc: sì
+    costo_pdc: 45000
+    sostituisce_esistente: sì
+
+PREVENTIVO
+----------------------------------------
+  II.G | Fornitura 6 colonnine trifase 22kW | fornitura | 54000.00 €
+  II.G | Posa linee e colonnine parcheggio | posa | 5000.00 €
+  II.G | Documentazione e dichiarazione conformità | documentazione | 1000.00 €
+  III.A | Fornitura PDC centralizzata Climaveneta 120kW | fornitura | 28000.00 €
+  III.A | Posa e adeguamento centrale termica | posa | 13000.00 €
+  III.A | Documentazione e conformità | documentazione | 4000.00 €
+  ------------------------------
+  TOTALE: 105000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.G — Infrastrutture ricarica veicoli elettrici
+    Formula: I = min(spesa, cmax_scelto) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, cmax_scelto) * percentuale = min(15.000,00, 50.400,00) × 0,48 => 7200,00 €
+    Risultato: I = min(spesa, cmax_scelto) * percentuale = 7200,00 €
+    Netto GSE: 7128,00 € (corrispettivo GSE: 72,00 €)
+    Erogazione: Unica soluzione
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 160,00 / 110,00 => 1,45
+      Calore totale prodotto stimato (Qu): Prated * Quf = 120,00 × 1700,00 => 204.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 204.000,00 × (1 - 1/4,20) × 1,45 => 226.077,92
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 226.077,92 × 0,06 × 1,00 => 13.564,68 €
+    Risultato: I = k * Ei * Ci * CC = 13.564,68 €
+    Netto GSE: 13.429,03 € (corrispettivo GSE: 135,65 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.G
+    Calcolo Incentivo Finale | I_tot | 7200,00 = 7200,00 €
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,45 = 1,45
+    Calore totale prodotto stimato | Qu | 204.000,00 = 204.000,00
+    Energia termica incentivata | Ei | 226.077,92 = 226.077,92
+    Calcolo Incentivo Finale | I_tot | 13.564,68 = 13.564,68 €
+
+============================================================
+  PAGE BREAK — Test 05 - Super Pratica (Incentivo Massimo) (CT30-T05)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T05
+  Nome:            Test 05 - Super Pratica (Incentivo Massimo)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Privato con PdC 40kW in Zona E, made in EU, SCOP 4.5. Verifica calcolo con premialità e piano 5 rate (P >= 35kW).
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Milano 10, Milano (MI)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       N/D
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     35 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Mario Rossi
+    tipo: Privato residenziale
+    cf_piva: RSSMRA80A01H501U
+    email: mario.rossi@email.it
+    telefono: 3331234567
+  SR (Responsabile):
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+    iban: IT60X0542811101000000123456
+    pec: mario.rossi@pec.it
+  PROPRIETARIO:
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    marca_pdc: BrandX
+    modello_pdc: PDC-40-W
+    tipologia_pdc: aria/acqua
+    potenza_pdc_kw: 40
+    potenza_elettrica_assorbita_kw: 10
+    cop: 4.2
+    scop: 4.5
+    eta_s: 150
+    servizio_pdc: climatizzazione invernale
+    generatore_sostituito: Caldaia a gas 35kW
+    made_in_eu: sì
+    miglioramento_ep_40: no
+    zona_assistita_a: no
+    zona_assistita_c: no
+    scheda_tecnica_pdc: sì
+    costo_pdc: 25000
+    sostituisce_esistente: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Fornitura pompa di calore BrandX PDC-40-W | fornitura | 16000.00 €
+  III.A | Posa e collegamenti idraulici/elettrici | posa | 6000.00 €
+  III.A | Dismissione caldaia esistente 35kW | opere_accessorie | 1500.00 €
+  III.A | Avviamento, collaudo e dichiarazione conformità | documentazione | 1500.00 €
+  ------------------------------
+  TOTALE: 25000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 150,00 / 110,00 => 1,36
+      Calore totale prodotto stimato (Qu): Prated * Quf = 40,00 × 1700,00 => 68.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 68.000,00 × (1 - 1/4,50) × 1,36 => 72.121,21
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 72.121,21 × 0,06 × 1,00 => 4327,27 €
+    Risultato: I = k * Ei * Ci * CC = 4327,27 €
+    Netto GSE: 4284,00 € (corrispettivo GSE: 43,27 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,36 = 1,36
+    Calore totale prodotto stimato | Qu | 68.000,00 = 68.000,00
+    Energia termica incentivata | Ei | 72.121,21 = 72.121,21
+    Calcolo Incentivo Finale | I_tot | 4327,27 = 4327,27 €
+
+============================================================
+  PAGE BREAK — Test 06 - Pratica Reale (Incentivo Calcolato) (CT30-T06)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T06
+  Nome:            Test 06 - Pratica Reale (Incentivo Calcolato)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Simulazione completa di pratica reale con preventivo, ruoli, delegato tecnico, e tutti i dati tecnici. PdC 40kW Zona E con premialità made in EU.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Milano 10, Milano (MI)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     35 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Mario Rossi
+    tipo: Privato residenziale
+    cf_piva: RSSMRA80A01H501U
+    email: mario.rossi@email.it
+    telefono: 3331234567
+  SR (Responsabile):
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+    iban: IT60X0542811101000000123456
+    pec: mario.rossi@pec.it
+  PROPRIETARIO:
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+  DELEGATO:
+    nome: Arch. Studio Sviluppo
+    cf: STDSVL80A01H501W
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    marca_pdc: BrandX
+    modello_pdc: PDC-40-W
+    tipologia_pdc: aria/acqua
+    potenza_pdc_kw: 40
+    potenza_elettrica_assorbita_kw: 10
+    cop: 4.2
+    scop: 4.5
+    eta_s: 150
+    servizio_pdc: climatizzazione invernale
+    generatore_sostituito: Caldaia a gas 35kW
+    made_in_eu: sì
+    miglioramento_ep_40: no
+    zona_assistita_a: no
+    zona_assistita_c: no
+    scheda_tecnica_pdc: sì
+    costo_pdc: 25000
+    sostituisce_esistente: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Fornitura pompa di calore BrandX PDC-40-W | fornitura | 20000.00 €
+  III.A | Posa e collegamenti idraulici/elettrici | posa | 5000.00 €
+  III.A | Pratiche autorizzative e documentazione | documentazione | 2000.00 €
+  ------------------------------
+  TOTALE: 27000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 150,00 / 110,00 => 1,36
+      Calore totale prodotto stimato (Qu): Prated * Quf = 40,00 × 1700,00 => 68.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 68.000,00 × (1 - 1/4,50) × 1,36 => 72.121,21
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 72.121,21 × 0,06 × 1,00 => 4327,27 €
+    Risultato: I = k * Ei * Ci * CC = 4327,27 €
+    Netto GSE: 4284,00 € (corrispettivo GSE: 43,27 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,36 = 1,36
+    Calore totale prodotto stimato | Qu | 68.000,00 = 68.000,00
+    Energia termica incentivata | Ei | 72.121,21 = 72.121,21
+    Calcolo Incentivo Finale | I_tot | 4327,27 = 4327,27 €
+
+============================================================
+  PAGE BREAK — Privato Terziario - Pacchetto Full Electric (Massima Completezza) (CT30-T07)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T07
+  Nome:            Privato Terziario - Pacchetto Full Electric (Massima Completezza)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Pratica completa con 5 interventi (PdC, FV, Ricarica, Building Automation, Scaldacqua PDC) per test esaustivo di tutti i moduli. Include doppio formato legacy/nuovo per immobile/edificio, soggetto/soggetti, interventi/interventiData. Soggetto terziario D/7, zona E.
+  Rich. Preliminare: Sì (2025-12-15)
+  Primo impegno:     2026-01-20
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via dell'Innovazione, 42 – Milano (MI)
+  Categoria catastale:   D/7
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Sistema Ibrido
+    Potenza termica:     150 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: GreenBuild S.r.l.
+    tipo: Privato terziario
+    cf_piva: 09876543210
+    email: amministrazione@greenbuild.it
+    telefono: +39 02 12345678
+  SR (Responsabile):
+    denominazione: Studio Tecnico Energetica S.r.l.
+    cf_piva: 03729150155
+    iban: IT60X0542811101000000123456
+    pec: studiogestione@pec.energetica.it
+  PROPRIETARIO:
+    denominazione: GreenBuild S.r.l.
+    cf_piva: 09876543210
+  DELEGATO:
+    nome: Ing. Marco Bianchi
+    cf: BNCMRC85M15H501U
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    marca_pdc: Clivet
+    modello_pdc: WSAN-XEE 120
+    potenza_pdc_kw: 80
+    potenza_elettrica_assorbita_kw: 22
+    tipologia_pdc: aria/acqua
+    scop: 4.2
+    cop: 4.5
+    eta_s: 145
+    servizio_pdc: Riscaldamento + ACS
+    generatore_sostituito: Caldaia a gas
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+    scheda_tecnica_pdc: disponibile
+    costo_pdc: 52000
+    sostituisce_esistente: sì
+    sostituzione_integrale: sì
+    classe_energetica_prodotto: A++
+    potenza_termica_nominale: 78.5
+    con_accumulo: sì
+    capacita_accumulo_pdc_l: 500
+  II.H
+    marca_moduli: SunPower
+    modello_moduli: MAX6-450
+    potenza_fv_kw: 60
+    numero_moduli: 135
+    accumulo_presente: sì
+    capacita_accumulo_kwh: 120
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+    registro_enea: sì
+    ue_production: sì
+    same_section: sì
+    is_autoconsumo: sì
+    costo_fv: 48000
+    sostituzione_integrale: sì
+    marca_inverter: Fronius
+    modello_inverter: Symo 50.0-3-S
+    potenza_inverter_kw: 50
+  II.G
+    costo_colonnina: 18000
+    numero_punti_ricarica: 6
+    potenza_ricarica_kw: 22
+    tipo_ricarica: Punto ricarica Trifase
+    is_smart: sì
+    modo_ricarica: modo 4
+    marca_colonnina: ABB
+    modello_colonnina: Terra AC 22
+    con_contabilizzazione: sì
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+  II.F
+    costo_building_automation: 15000
+    superficie_edificio_mq: 5000
+    classe_bac: B
+    funzioni_controllo: Gestione carichi, termoregolazione, monitoraggio
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+    nr_dispositivi: 35
+    contabilizzazione_calore: sì
+    sistema_centrale: sì
+  III.E
+    marca_scaldacqua: Ariston
+    modello_scaldacqua: Nuos Evo 200
+    capacita_litri: 200
+    classe_energetica: A+
+    costo_scaldacqua: 2500
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+    sostituisce_scaldacqua_esistente: sì
+    tipo_sostituito: Elettrico
+    cop_scaldacqua: 3.2
+
+PREVENTIVO
+----------------------------------------
+  II.F | Sistema BMS e building automation | fornitura | 10500.00 €
+  II.F | Configurazione e collaudo BMS | posa | 3500.00 €
+  II.F | Documentazione sistema building automation | documentazione | 1000.00 €
+  II.G | Colonnine ricarica ABB Terra AC 22 (6 pz) | fornitura | 72000.00 €
+  II.G | Posa colonnine e linee elettriche dedicate | posa | 4500.00 €
+  II.G | Opere civili accessorie | opere_accessorie | 1500.00 €
+  II.H | Moduli FV SunPower MAX6-450 (135 pz) | fornitura | 32000.00 €
+  II.H | Inverter Fronius Symo 50.0 e accumulo 120kWh | fornitura | 9500.00 €
+  II.H | Posa impianto FV e collegamenti elettrici | posa | 5500.00 €
+  II.H | Documentazione tecnica e pratiche GSE | documentazione | 1000.00 €
+  III.A | Pompa di calore Clivet WSAN-XEE 120 | fornitura | 38000.00 €
+  III.A | Posa in opera PDC e collegamenti idraulici | posa | 8500.00 €
+  III.A | Adeguamento terminali e sistema di regolazione | opere_accessorie | 4200.00 €
+  III.A | Pratiche e documentazione tecnica | documentazione | 1300.00 €
+  III.E | Scaldacqua PDC Ariston Nuos Evo 200 | fornitura | 1800.00 €
+  III.E | Posa scaldacqua PDC e collegamenti | posa | 500.00 €
+  III.E | Documentazione tecnica scaldacqua | documentazione | 200.00 €
+  ------------------------------
+  TOTALE: 195500.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 145,00 / 110,00 => 1,32
+      Calore totale prodotto stimato (Qu): Prated * Quf = 80,00 × 1700,00 => 136.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 136.000,00 × (1 - 1/4,20) × 1,32 => 136.588,74
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 136.588,74 × 0,06 × 1,00 => 8195,32 €
+    Risultato: I = k * Ei * Ci * CC = 8195,32 €
+    Netto GSE: 8113,37 € (corrispettivo GSE: 81,95 €)
+    Erogazione: Unica soluzione
+
+  II.H — Fotovoltaico e accumulo abbinati a pompa di calore elettrica
+    Formula: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = min(48.000,00, 60,00 × 1200,00 + 120,00 × 1000,00) × 0,52 => 24.960,00 €
+    Risultato: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = 24.960,00 €
+    Netto GSE: 24.710,40 € (corrispettivo GSE: 249,60 €)
+    Erogazione: 5 rate annuali
+
+  II.G — Infrastrutture ricarica veicoli elettrici
+    Formula: I = min(spesa, cmax_scelto) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, cmax_scelto) * percentuale = min(18.000,00, 50.400,00) × 0,53 => 9540,00 €
+    Risultato: I = min(spesa, cmax_scelto) * percentuale = 9540,00 €
+    Netto GSE: 9444,60 € (corrispettivo GSE: 95,40 €)
+    Erogazione: Unica soluzione
+
+  II.F — Building automation e gestione carichi
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(15.000,00, 5000,00 × 60,00) × 0,64 => 9600,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 9600,00 €
+    Netto GSE: 9504,00 € (corrispettivo GSE: 96,00 €)
+    Erogazione: Unica soluzione
+
+  III.E — Scaldacqua a pompa di calore
+    Formula: I = min(spesa * percentuale, incentivo_fisso_per_scaglione)
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa * percentuale, incentivo_fisso_per_scaglione) = min(2500,00 × 0,60, 1500,00) => 1500,00 €
+    Risultato: I = min(spesa * percentuale, incentivo_fisso_per_scaglione) = 1500,00 €
+    Netto GSE: 1485,00 € (corrispettivo GSE: 15,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,32 = 1,32
+    Calore totale prodotto stimato | Qu | 136.000,00 = 136.000,00
+    Energia termica incentivata | Ei | 136.588,74 = 136.588,74
+    Calcolo Incentivo Finale | I_tot | 8195,32 = 8195,32 €
+
+  Intervento II.H
+    Calcolo Incentivo Finale | I_tot | 24.960,00 = 24.960,00 €
+
+  Intervento II.G
+    Calcolo Incentivo Finale | I_tot | 9540,00 = 9540,00 €
+
+  Intervento II.F
+    Calcolo Incentivo Finale | I_tot | 9600,00 = 9600,00 €
+
+  Intervento III.E
+    Calcolo Incentivo Finale | I_tot | 1500,00 = 1500,00 €
+
+============================================================
+  PAGE BREAK — PA Comune ≤15k - Isolamento + PdC (CT30-T08)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T08
+  Nome:            PA Comune ≤15k - Isolamento + PdC
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Comune sotto 15.000 abitanti (PA) con isolamento pareti (II.A) e pompa di calore (III.A). Verifica intensità 100% per PA comuni ≤15k, accesso diretto post-intervento, soggetto PA.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Piazza Grande 1, Montepulciano (SI)
+  Categoria catastale:   B/1
+  Zona climatica:        Zona E
+  Superficie utile mq:   800
+  Anno costruzione:      1970
+  Comune <15.000 ab:     Sì
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     100 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Comune di Montepulciano
+    tipo: Pubblica Amministrazione
+    cf_piva: 81002170522
+    email: protocollo@comune.montepulciano.si.it
+    telefono: 0578 717111
+  SR (Responsabile):
+    denominazione: Comune di Montepulciano
+    cf_piva: 81002170522
+    iban: IT28X0760101000000012345678
+    pec: comune.montepulciano@pec.it
+  PROPRIETARIO:
+    denominazione: Comune di Montepulciano
+    cf_piva: 81002170522
+  DELEGATO:
+    nome: Geom. Luca Bianchi
+    cf: BNCLCU75M22G567X
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Esterna
+    superficie_isolata_mq: 450
+    trasmittanza_ante: 0.92
+    trasmittanza_post: 0.26
+    costo_isolamento: 72000
+    ape_ante_post_disponibile: sì
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+  III.A
+    marca_pdc: Aermec
+    modello_pdc: ANL 060 H
+    potenza_pdc_kw: 60
+    potenza_elettrica_assorbita_kw: 14
+    tipologia_pdc: aria/acqua
+    scop: 4
+    cop: 4.3
+    eta_s: 152
+    servizio_pdc: climatizzazione invernale e ACS
+    generatore_sostituito: Caldaia a metano 100kW
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+    scheda_tecnica_pdc: sì
+    costo_pdc: 48000
+    sostituisce_esistente: sì
+
+PREVENTIVO
+----------------------------------------
+  II.A | Fornitura pannelli isolanti cappotto esterno 450mq | fornitura | 38000.00 €
+  II.A | Posa cappotto esterno con ponteggi | posa | 28000.00 €
+  II.A | Relazione tecnica e documentazione | documentazione | 6000.00 €
+  III.A | Fornitura PDC Aermec ANL 060 H 60kW | fornitura | 32000.00 €
+  III.A | Posa PDC e collegamenti impianto | posa | 11000.00 €
+  III.A | Smaltimento caldaia esistente | opere_accessorie | 2000.00 €
+  III.A | Pratiche e documentazione tecnica PDC | documentazione | 3000.00 €
+  ------------------------------
+  TOTALE: 120000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(72.000,00, 450,00 × 200,00) × 1,00 => 72.000,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 72.000,00 €
+    Netto GSE: 71.750,00 € (corrispettivo GSE: 250,00 €)
+    Erogazione: Unica soluzione
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 152,00 / 110,00 => 1,38
+      Calore totale prodotto stimato (Qu): Prated * Quf = 60,00 × 1700,00 => 102.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 102.000,00 × (1 - 1/4,00) × 1,38 => 105.709,09
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 105.709,09 × 0,06 × 1,00 => 6342,55 €
+    Risultato: I = k * Ei * Ci * CC = 6342,55 €
+    Netto GSE: 6279,12 € (corrispettivo GSE: 63,43 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 72.000,00 = 72.000,00 €
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,38 = 1,38
+    Calore totale prodotto stimato | Qu | 102.000,00 = 102.000,00
+    Energia termica incentivata | Ei | 105.709,09 = 105.709,09
+    Calcolo Incentivo Finale | I_tot | 6342,55 = 6342,55 €
+
+============================================================
+  PAGE BREAK — Privato - Infissi + Schermature Solari (CT30-T09)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T09
+  Nome:            Privato - Infissi + Schermature Solari
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Sostituzione infissi (II.B) con schermature solari (II.C) per privato residenziale. Verifica cross-rule II.C deve essere abbinato a II.B, premialità Made in EU per Titolo II.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Dante Alighieri 22, Bologna (BO)
+  Categoria catastale:   A/3
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     35 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Giuseppe Verdi
+    tipo: Privato residenziale
+    cf_piva: VRDGPP75R15F205X
+    email: giuseppe.verdi@email.it
+    telefono: 051 9876543
+  SR (Responsabile):
+    denominazione: Giuseppe Verdi
+    cf_piva: VRDGPP75R15F205X
+    iban: IT40X0123456789012345678901
+    pec: giuseppe.verdi@pec.it
+  PROPRIETARIO:
+    denominazione: Giuseppe Verdi
+    cf_piva: VRDGPP75R15F205X
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.B
+    tipologia_serramento: finestra
+    superficie_infissi_mq: 28
+    trasmittanza_infissi_ante: 3.2
+    trasmittanza_infissi_post: 1.1
+    costo_infissi: 21000
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+    valvole_termostatiche: già presenti
+  II.C
+    tipo_schermatura: Schermature mobili
+    superficie_schermata_mq: 20
+    fattore_solare_g: 0.65
+    fattore_solare_g_post: 0.15
+    costo_schermatura: 6500
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+
+PREVENTIVO
+----------------------------------------
+  II.B | Fornitura infissi classe A+ 28mq | fornitura | 14000.00 €
+  II.B | Posa infissi e smaltimento vecchi serramenti | posa | 5500.00 €
+  II.B | Documentazione tecnica infissi | documentazione | 1500.00 €
+  II.C | Fornitura schermature solari mobili 20mq | fornitura | 4200.00 €
+  II.C | Posa schermature solari | posa | 1800.00 €
+  II.C | Documentazione tecnica schermature | documentazione | 500.00 €
+  ------------------------------
+  TOTALE: 27500.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.B — Sostituzione chiusure trasparenti/infissi
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(21.000,00, 28,00 × 800,00) × 0,59 => 12.390,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 12.390,00 €
+    Netto GSE: 12.266,10 € (corrispettivo GSE: 123,90 €)
+    Erogazione: Unica soluzione
+
+  II.C — Schermature e ombreggiamento solare
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(6500,00, 20,00 × 250,00) × 0,59 => 2950,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 2950,00 €
+    Netto GSE: 2920,50 € (corrispettivo GSE: 29,50 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.B
+    Calcolo Incentivo Finale | I_tot | 12.390,00 = 12.390,00 €
+
+  Intervento II.C
+    Calcolo Incentivo Finale | I_tot | 2950,00 = 2950,00 €
+
+============================================================
+  PAGE BREAK — ETS non economico - Biomassa + Solare Termico (CT30-T10)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T10
+  Nome:            ETS non economico - Biomassa + Solare Termico
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Ente del Terzo Settore non economico (assimilato PA) con generatore a biomassa classe 5 stelle (III.C) e pannelli solari termici (III.D). Verifica soggetto ETS non econ, accesso diretto, catalogo biomassa e solare termico.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via della Carità 15, Roma (RM)
+  Categoria catastale:   B/1
+  Zona climatica:        Zona D
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     80 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Fondazione Santa Maria Onlus
+    tipo: ETS non economico
+    cf_piva: 97531240689
+    email: amministrazione@fondazionesantamaria.it
+    telefono: 06 12345678
+  SR (Responsabile):
+    denominazione: Fondazione Santa Maria Onlus
+    cf_piva: 97531240689
+    iban: IT75X0123456789012345678901
+    pec: fondazionesantamaria@pec.it
+  PROPRIETARIO:
+    denominazione: Fondazione Santa Maria Onlus
+    cf_piva: 97531240689
+  DELEGATO:
+    nome: Dott. Andrea Moretti
+    cf: MRTNDR68R22H501Z
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.C
+    marca_biomassa: MCZ
+    modello_biomassa: Club 35
+    potenza_nominale_kw: 35
+    classe_emissiva: 5 stelle
+    tipo_biomassa: Pellet
+    miglioramento_ep_40: sì
+    costo_biomassa: 18500
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+    tipo_generatore: Caldaia
+    ore_funzionamento_annue: 1850
+    riduzione_pp: ≤20%
+    zona_non_metanizzata: sì
+    in_centrale_tlr: sì
+  III.D
+    tipo_pannello_solare: Pannelli piani vetrati
+    superficie_lorda_mq: 12
+    certificazione_solar_keymark: sì
+    costo_solare_termico: 9500
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+    produzione_termica_specifica_kwh_mq: 670
+    temperatura_funzionamento: 50°C (ACS)
+    uso_solare: ACS
+    potenza_assorbitore_kw: 151
+    portata_aria_m3h: 30070
+
+PREVENTIVO
+----------------------------------------
+  III.C | Generatore biomassa MCZ Club 35 35kW classe 5 stelle | fornitura | 12000.00 €
+  III.C | Posa generatore e canna fumaria | posa | 4500.00 €
+  III.C | Documentazione tecnica e verifiche emissioni | documentazione | 2000.00 €
+  III.D | Pannelli solari termici piani vetrati 12mq | fornitura | 6200.00 €
+  III.D | Posa pannelli solari e collegamenti idraulici | posa | 2500.00 €
+  III.D | Certificazione Solar Keymark e documentazione | documentazione | 800.00 €
+  ------------------------------
+  TOTALE: 28000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.C — Generatori a biomassa (classe 5 stelle)
+    Formula: I = min(enza, min(spesa, potenza * cmax) * percentuale)
+    Passaggi:
+      Ore funzionamento annue (default: Q_uf per zona climatica) (hr): ore_funzionamento_annue || quf_zona || 1500 = 1850,00 || quf_zona || 1500 => 1850,00
+      Coefficiente ambientale Ce (Ce): (zona_non_metanizzata === 'sì' && tipo_biomassa === 'GPL') ? 1.5 : riduzione_pp === '>50%' ? 1.5 : riduzione_pp === '20-50%' ? 1.2 : 1.0 = (zona_non_metanizzata === 'sì' && tipo_biomassa === 'GPL') ? 1.5 : riduzione_pp === '>50%' ? 1.5 : riduzione_pp === '20-50%' ? 1.2 : 1.0 => 1,00
+      Energia termica incentivabile (enBase): tipo_generatore === 'Stufa' ? 3.35 * Math.log(potenza) * hr * Ci * Ce : potenza * hr * Ci * Ce = tipo_generatore === 'Stufa' ? 3.35 × Math.log(35,00) × 1850,00 × 0,06 × 1,00 : 35,00 × 1850,00 × 0,06 × 1,00 => 3885,00
+      Energia con eventuale riduzione TLR (enDopoTlr): in_centrale_tlr === 'sì' ? enBase * 0.80 : enBase = in_centrale_tlr === 'sì' ? 3885,00 × 0.80 : 3885,00 => 3108,00
+      Energia termica finale (enza): enDopoTlr = 3108,00 => 3108,00
+      Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(3108,00, min(18.500,00, 35,00 × 600,00) × 0,87) => 3108,00 €
+    Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 3108,00 €
+    Netto GSE: 3076,92 € (corrispettivo GSE: 31,08 €)
+    Erogazione: Unica soluzione
+
+  III.D — Solare termico
+    Formula: I = min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale)
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale) = min(0,35 × 670,00 × 12,00, min(9500,00, 12,00 × 550,00) × 0,87) => 2814,00 €
+    Risultato: I = min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale) = 2814,00 €
+    Netto GSE: 2785,86 € (corrispettivo GSE: 28,14 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.C
+    Ore funzionamento annue (default: Q_uf per zona climatica) | hr | 1850,00 = 1850,00
+    Coefficiente ambientale Ce | Ce | 1,00 = 1,00
+    Energia termica incentivabile | enBase | 3885,00 = 3885,00
+    Energia con eventuale riduzione TLR | enDopoTlr | 3108,00 = 3108,00
+    Energia termica finale | enza | 3108,00 = 3108,00
+    Calcolo Incentivo Finale | I_tot | 3108,00 = 3108,00 €
+
+  Intervento III.D
+    Calcolo Incentivo Finale | I_tot | 2814,00 = 2814,00 €
+
+============================================================
+  PAGE BREAK — Privato Residenziale - Sistema Ibrido III.B + Scaldacqua III.E (CT30-T11)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T11
+  Nome:            Privato Residenziale - Sistema Ibrido III.B + Scaldacqua III.E
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test III.B ibrido/bivalente (k=1.25/1.00) e III.E con formula corretta (min(spesa*40%, massimale)). Soggetto privato residenziale, zona E, due interventi III.B + III.E.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via del Sole 15, Bergamo (BG)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     28 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Luigi Bianchi
+    tipo: Privato residenziale
+    cf_piva: BNCLGU75M15H501U
+    email: luigi.bianchi@email.it
+    telefono: 031234567
+  SR (Responsabile):
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU75M15H501U
+    iban: IT60X0542811101000000123456
+    pec: luigi.bianchi@pec.it
+  PROPRIETARIO:
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU75M15H501U
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.B
+    marca_pdc: Viessmann
+    modello_pdc: Vitocaldens 222-F
+    potenza_pdc_kw: 8
+    potenza_termica_nominale: 8
+    tipologia_pdc: aria/acqua
+    scop: 4
+    cop: 4.3
+    eta_s: 148
+    tipo_sistema: Ibrido parallelo
+    servizio_pdc: climatizzazione invernale e ACS
+    generatore_sostituito: Caldaia a gas 28kW
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    zona_assistita_a: no
+    zona_assistita_c: no
+    scheda_tecnica_pdc: sì
+    costo_ibrido: 15000
+    sostituisce_esistente: sì
+    potenza_caldaia_kw: 601
+    eta_s_caldaia: 89
+  III.E
+    marca_scaldacqua: Ariston
+    modello_scaldacqua: Nuos Evo 110
+    capacita_litri: 110
+    classe_energetica: A+
+    costo_scaldacqua: 2000
+    zona_assistita_a: no
+    zona_assistita_c: no
+    sostituisce_scaldacqua_esistente: sì
+    tipo_sostituito: Elettrico
+    cop_scaldacqua: 3.4
+
+PREVENTIVO
+----------------------------------------
+  III.B | Fornitura sistema ibrido Viessmann | fornitura | 10000.00 €
+  III.B | Posa e collegamenti | posa | 3500.00 €
+  III.B | Avviamento e collaudo | documentazione | 1500.00 €
+  III.E | Fornitura scaldacqua PDC Ariston | fornitura | 1500.00 €
+  III.E | Posa scaldacqua | posa | 500.00 €
+  ------------------------------
+  TOTALE: 17000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.B — Sistema ibrido/bivalente/add-on (gas + PDC)
+    Formula: I = k * Ei * Ci * CC
+    Risultato: I = k * Ei * Ci * CC = 0,00 €
+    Errori:
+      - III.B: η_s caldaia 89% inferiore al minimo 98% per potenza ≥400 kW (Manuale Analitico Sez.6).
+
+  III.E — Scaldacqua a pompa di calore
+    Formula: I = min(spesa * percentuale, incentivo_fisso_per_scaglione)
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa * percentuale, incentivo_fisso_per_scaglione) = min(2000,00 × 0,40, 700,00) => 700,00 €
+    Risultato: I = min(spesa * percentuale, incentivo_fisso_per_scaglione) = 700,00 €
+    Netto GSE: 693,00 € (corrispettivo GSE: 7,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.B
+    Nessun dettaglio disponibile.
+    Errori:
+      - III.B: η_s caldaia 89% inferiore al minimo 98% per potenza ≥400 kW (Manuale Analitico Sez.6).
+
+  Intervento III.E
+    Calcolo Incentivo Finale | I_tot | 700,00 = 700,00 €
+
+============================================================
+  PAGE BREAK — Impresa Piccola - Isolamento II.A + PdC III.A con maggiorazione (CT30-T12)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T12
+  Nome:            Impresa Piccola - Isolamento II.A + PdC III.A con maggiorazione
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test Impresa piccola con multi-intervento II.A+III.A. Verifica: percentuale 30% (multi) + 20% (piccola impresa) = 50%, applicazione corretta maggiorazioni senza early return. Soggetto Impresa, territorio Zona E.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Roma 42, Bergamo (BG)
+  Categoria catastale:   A/10
+  Zona climatica:        Zona E
+  Superficie utile mq:   200
+  Anno costruzione:      1980
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     35 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Edil Green S.r.l.
+    tipo: Impresa
+    cf_piva: 04567891234
+    email: info@edilgreen.it
+    telefono: 0351234567
+  SR (Responsabile):
+    denominazione: Edil Green S.r.l.
+    cf_piva: 04567891234
+    iban: IT60X0542811101000000987654
+    pec: edilgreen@pec.it
+  PROPRIETARIO:
+    denominazione: Edil Green S.r.l.
+    cf_piva: 04567891234
+  DELEGATO:
+    nome: Arch. Francesco Neri
+    cf: NRIFNC80A01F205I
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Esterna
+    superficie_isolata_mq: 80
+    spessore_mm: 80
+    materiale: lana di roccia
+    lambda: 0.035
+    trasmittanza_ante: 0.8
+    trasmittanza_post: 0.28
+    miglioramento_ep_40: sì
+    requisiti_minimi: soddisfatti
+    costo: 12000
+    ufficio_tecnico_abilitato: true
+    costo_isolamento: 1500001
+    ape_ante_post_disponibile: sì
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+  III.A
+    marca_pdc: Daikin
+    modello_pdc: Altherma 3 R E HV
+    potenza_pdc_kw: 16
+    potenza_termica_nominale: 16
+    tipologia_pdc: aria/acqua
+    scop: 3.8
+    cop: 4.1
+    eta_s: 140
+    tipo_pdc: alta temperatura
+    servizio_pdc: climatizzazione invernale e ACS
+    generatore_sostituito: Caldaia a gas
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    zona_assistita_a: no
+    zona_assistita_c: no
+    costo: 22000
+    costo_pdc: 900001
+
+PREVENTIVO
+----------------------------------------
+  II.A | Cappotto termico pareti 80mq | fornitura | 8000.00 €
+  II.A | Posa cappotto termico | posa | 4000.00 €
+  III.A | Fornitura PdC Daikin Altherma 16kW | fornitura | 15000.00 €
+  III.A | Installazione PdC | posa | 5000.00 €
+  III.A | Smaltimento vecchia caldaia | altri | 1000.00 €
+  III.A | Collaudo e certificazione | documentazione | 1000.00 €
+  ------------------------------
+  TOTALE: 34000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(1.500.001,00, 80,00 × 200,00) × 0,63 => 10.000,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 10.000,00 €
+    Netto GSE: 9900,00 € (corrispettivo GSE: 100,00 €)
+    Erogazione: Unica soluzione
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 140,00 / 110,00 => 1,27
+      Calore totale prodotto stimato (Qu): Prated * Quf = 16,00 × 1700,00 => 27.200,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 27.200,00 × (1 - 1/3,80) × 1,27 => 25.508,13
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 25.508,13 × 0,15 × 1,00 => 3826,22 €
+    Risultato: I = k * Ei * Ci * CC = 3826,22 €
+    Netto GSE: 3787,96 € (corrispettivo GSE: 38,26 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 10.000,00 = 10.000,00 €
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,27 = 1,27
+    Calore totale prodotto stimato | Qu | 27.200,00 = 27.200,00
+    Energia termica incentivata | Ei | 25.508,13 = 25.508,13
+    Calcolo Incentivo Finale | I_tot | 3826,22 = 3826,22 €
+
+============================================================
+  PAGE BREAK — Privato Terziario - Isolamento II.A + PdC III.A (perc_multi 55%) (CT30-T13)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T13
+  Nome:            Privato Terziario - Isolamento II.A + PdC III.A (perc_multi 55%)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test privato terziario con multi-intervento II.A+III.A. Verifica perc_multi=55% per II.A abbinato a III.A. Soggetto privato (non PA, non Impresa) in zona E.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Verdi 10, Bergamo (BG)
+  Categoria catastale:   A/10
+  Zona climatica:        Zona E
+  Superficie utile mq:   150
+  Anno costruzione:      1990
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     20 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Mario Rossi
+    tipo: Privato terziario
+    cf_piva: RSSMRA80A01H501U
+    email: mario.rossi@email.it
+    telefono: 0351234567
+  SR (Responsabile):
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+    iban: IT60X0542811101000000112233
+    pec: mario.rossi@pec.it
+  PROPRIETARIO:
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Esterna
+    superficie_isolata_mq: 60
+    spessore_mm: 100
+    materiale: EPS
+    lambda: 0.031
+    trasmittanza_ante: 0.6
+    trasmittanza_post: 0.23
+    miglioramento_ep_40: sì
+    requisiti_minimi: soddisfatti
+    costo_isolamento: 9000
+    ufficio_tecnico_abilitato: false
+    ape_ante_post_disponibile: sì
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+  III.A
+    marca_pdc: Mitsubishi
+    modello_pdc: Ecodan PUHZ-W90V
+    potenza_pdc_kw: 9
+    potenza_termica_nominale: 9
+    tipologia_pdc: aria/acqua
+    scop: 4.2
+    cop: 4.5
+    eta_s: 155
+    tipo_pdc: media temperatura
+    servizio_pdc: climatizzazione invernale e ACS
+    generatore_sostituito: Caldaia a gas
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    zona_assistita_a: no
+    zona_assistita_c: no
+    costo: 14000
+    costo_pdc: 900001
+
+PREVENTIVO
+----------------------------------------
+  II.A | Fornitura isolamento pareti EPS | fornitura | 6000.00 €
+  II.A | Posa isolamento pareti | posa | 3000.00 €
+  III.A | Fornitura PdC Mitsubishi 9kW | fornitura | 10000.00 €
+  III.A | Installazione PdC | posa | 3000.00 €
+  III.A | Smaltimento vecchia caldaia | altri | 500.00 €
+  III.A | Collaudo e certificazione | documentazione | 500.00 €
+  ------------------------------
+  TOTALE: 23000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(9000,00, 60,00 × 200,00) × 0,65 => 5850,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 5850,00 €
+    Netto GSE: 5791,50 € (corrispettivo GSE: 58,50 €)
+    Erogazione: Unica soluzione
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 155,00 / 110,00 => 1,41
+      Calore totale prodotto stimato (Qu): Prated * Quf = 9,00 × 1700,00 => 15.300,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 15.300,00 × (1 - 1/4,20) × 1,41 => 16.425,97
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.425,97 × 0,15 × 1,00 => 2463,90 €
+    Risultato: I = k * Ei * Ci * CC = 2463,90 €
+    Netto GSE: 2439,26 € (corrispettivo GSE: 24,64 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 5850,00 = 5850,00 €
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,41 = 1,41
+    Calore totale prodotto stimato | Qu | 15.300,00 = 15.300,00
+    Energia termica incentivata | Ei | 16.425,97 = 16.425,97
+    Calcolo Incentivo Finale | I_tot | 2463,90 = 2463,90 €
+
+============================================================
+  PAGE BREAK — check_azion3_1 — PA comune <15k III.A 100% (CT30-T14)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T14
+  Nome:            check_azion3_1 — PA comune <15k III.A 100%
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Pratica di test per validare i flag PA comune<15k e scuola/ospedale. SA: Pubblica Amministrazione, comune sotto 15.000 ab., III.A in Zona E. L'incentivo deve essere calcolato al 100%.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Piazza del Comune 1, Montebelluna (TV)
+  Categoria catastale:   B/1
+  Zona climatica:        Zona E
+  Superficie utile mq:   800
+  Anno costruzione:      1985
+  Comune <15.000 ab:     Sì
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     60 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Comune di Montebelluna
+    tipo: Pubblica Amministrazione
+    cf_piva: 80012345678
+    email: protocollo@comune.montebelluna.it
+    telefono: +39 0423 123456
+  SR (Responsabile):
+    denominazione: Comune di Montebelluna
+    cf_piva: 80012345678
+    iban: IT60X0542811101000000123456
+    pec: protocollo@pec.comune.montebelluna.it
+  PROPRIETARIO:
+    denominazione: Comune di Montebelluna
+    cf_piva: 80012345678
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    potenza_pdc_kw: 60
+    potenza_elettrica_assorbita_kw: 15
+    tipologia_pdc: aria/acqua
+    scop: 4
+    eta_s: 140
+    servizio_pdc: Riscaldamento + ACS
+    generatore_sostituito: Caldaia a gasolio 60kW
+    made_in_eu: no
+    miglioramento_ep_40: no
+    zona_assistita_a: no
+    zona_assistita_c: no
+    costo_pdc: 35000
+    sostituisce_esistente: sì
+    sostituzione_integrale: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Pompa di calore Clivet WSAN-XEE 60 | fornitura | 25000.00 €
+  III.A | Posa in opera PDC e collegamenti | posa | 7000.00 €
+  III.A | Documentazione tecnica e conformità | documentazione | 3000.00 €
+  ------------------------------
+  TOTALE: 35000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 140,00 / 110,00 => 1,27
+      Calore totale prodotto stimato (Qu): Prated * Quf = 60,00 × 1700,00 => 102.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 102.000,00 × (1 - 1/4,00) × 1,27 => 97.363,64
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 97.363,64 × 0,06 × 1,00 => 5841,82 €
+    Risultato: I = k * Ei * Ci * CC = 5841,82 €
+    Netto GSE: 5783,40 € (corrispettivo GSE: 58,42 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,27 = 1,27
+    Calore totale prodotto stimato | Qu | 102.000,00 = 102.000,00
+    Energia termica incentivata | Ei | 97.363,64 = 97.363,64
+    Calcolo Incentivo Finale | I_tot | 5841,82 = 5841,82 €
+
+============================================================
+  PAGE BREAK — Az#4 — II.B valvole non presenti (blocco) (CT30-T15)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T15
+  Nome:            Az#4 — II.B valvole non presenti (blocco)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test azione #4: II.B infissi con valvole_termostatiche = "non presenti". Il calcolo deve essere bloccato.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Dante Alighieri 22, Bologna (BO)
+  Categoria catastale:   A/3
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     35 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Giuseppe Verdi
+    tipo: Privato terziario
+    cf_piva: VRDGPP75R15F205X
+    email: giuseppe.verdi@email.it
+    telefono: 051 9876543
+  SR (Responsabile):
+    denominazione: Giuseppe Verdi
+    cf_piva: VRDGPP75R15F205X
+    iban: IT40X0123456789012345678901
+    pec: giuseppe.verdi@pec.it
+  PROPRIETARIO:
+    denominazione: Giuseppe Verdi
+    cf_piva: VRDGPP75R15F205X
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.B
+    tipologia_serramento: finestra
+    superficie_infissi_mq: 28
+    trasmittanza_infissi_ante: 3.2
+    trasmittanza_infissi_post: 1.1
+    costo_infissi: 21000
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+    valvole_termostatiche: non presenti
+
+PREVENTIVO
+----------------------------------------
+  II.B | Fornitura infissi classe A+ 28mq | fornitura | 14000.00 €
+  II.B | Posa infissi e smaltimento vecchi serramenti | posa | 5500.00 €
+  II.B | Documentazione tecnica infissi | documentazione | 1500.00 €
+  ------------------------------
+  TOTALE: 21000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.B — Sostituzione chiusure trasparenti/infissi
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 0,00 €
+    Errori:
+      - II.B: valvole termostatiche/termoregolazione non presenti. Devono essere già presenti o installate contestualmente.
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.B
+    Nessun dettaglio disponibile.
+    Errori:
+      - II.B: valvole termostatiche/termoregolazione non presenti. Devono essere già presenti o installate contestualmente.
+
+============================================================
+  PAGE BREAK — Az#5 — ETS non econ II.A isolamento 100% (CT30-T16)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T16
+  Nome:            Az#5 — ETS non econ II.A isolamento 100%
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test azione #5: ETS non economico con II.A (isolamento) + comune_sotto_15k. L'incentivo deve essere calcolato al 100% (come PA). Deselezionando comune_sotto_15k deve scendere al 65%.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Roma 15, Montebelluna (TV)
+  Categoria catastale:   B/1
+  Zona climatica:        Zona E
+  Superficie utile mq:   800
+  Anno costruzione:      1985
+  Comune <15.000 ab:     Sì
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     60 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Fondazione Casa Accoglienza ETS
+    tipo: ETS non economico
+    cf_piva: 90012345678
+    email: info@fondazionecasaaccoglienza.ets.it
+    telefono: +39 0423 654321
+  SR (Responsabile):
+    denominazione: Fondazione Casa Accoglienza ETS
+    cf_piva: 90012345678
+    iban: IT60X0542811101000000654321
+    pec: fondazionecasaaccoglienza@pec.ets.it
+  PROPRIETARIO:
+    denominazione: Fondazione Casa Accoglienza ETS
+    cf_piva: 90012345678
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Esterna
+    superficie_isolata_mq: 500
+    costo_isolamento: 50000
+    made_in_eu: no
+    riduzione_ep_10: no
+    zona_assistita_a: no
+    zona_assistita_c: no
+    trasmittanza_ante: 1.57
+    trasmittanza_post: 0.16
+    ape_ante_post_disponibile: sì
+
+PREVENTIVO
+----------------------------------------
+  II.A | Cappotto termico esterno 500mq | fornitura | 35000.00 €
+  II.A | Posa cappotto termico | posa | 12000.00 €
+  II.A | Documentazione tecnica e relazione | documentazione | 3000.00 €
+  ------------------------------
+  TOTALE: 50000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(50.000,00, 500,00 × 200,00) × 1,00 => 50.000,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 50.000,00 €
+    Netto GSE: 49.750,00 € (corrispettivo GSE: 250,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 50.000,00 = 50.000,00 €
+
+============================================================
+  PAGE BREAK — Az#6 — ETS non econ unica rata sopra 15k (CT30-T17)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T17
+  Nome:            Az#6 — ETS non econ unica rata sopra 15k
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test azione #6: ETS non economico con II.A sopra 15.000€. Deve mostrare unica rata (non rateizzata) perché PA/ETS hanno sempre soluzione unica.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Roma 15, Montebelluna (TV)
+  Categoria catastale:   B/1
+  Zona climatica:        Zona E
+  Superficie utile mq:   800
+  Anno costruzione:      1985
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     60 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Fondazione Casa Accoglienza ETS
+    tipo: ETS non economico
+    cf_piva: 90012345678
+    email: info@fondazionecasaaccoglienza.ets.it
+    telefono: +39 0423 654321
+  SR (Responsabile):
+    denominazione: Fondazione Casa Accoglienza ETS
+    cf_piva: 90012345678
+    iban: IT60X0542811101000000654321
+    pec: fondazionecasaaccoglienza@pec.ets.it
+  PROPRIETARIO:
+    denominazione: Fondazione Casa Accoglienza ETS
+    cf_piva: 90012345678
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Esterna
+    superficie_isolata_mq: 500
+    costo_isolamento: 50000
+    made_in_eu: no
+    riduzione_ep_10: no
+    zona_assistita_a: no
+    zona_assistita_c: no
+    trasmittanza_ante: 1.57
+    trasmittanza_post: 0.16
+    ape_ante_post_disponibile: sì
+
+PREVENTIVO
+----------------------------------------
+  II.A | Cappotto termico esterno 500mq | fornitura | 35000.00 €
+  II.A | Posa cappotto termico | posa | 12000.00 €
+  II.A | Documentazione tecnica e relazione | documentazione | 3000.00 €
+  ------------------------------
+  TOTALE: 50000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(50.000,00, 500,00 × 200,00) × 0,65 => 32.500,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 32.500,00 €
+    Netto GSE: 32.250,00 € (corrispettivo GSE: 250,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 32.500,00 = 32.500,00 €
+
+============================================================
+  PAGE BREAK — Az#7 — Made in EU esteso a III.A (CT30-T18)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T18
+  Nome:            Az#7 — Made in EU esteso a III.A
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test azione #7: made_in_eu ora disponibile per tutti gli interventi (II.* e III.*). III.A con campo made_in_eu in scheda tecnica.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Dante Alighieri 22, Bologna (BO)
+  Categoria catastale:   A/3
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     35 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Mario Rossi
+    tipo: Privato residenziale
+    cf_piva: RSSMRA80A01H501U
+    email: mario.rossi@email.it
+    telefono: 051 1234567
+  SR (Responsabile):
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+    iban: IT40X0123456789012345678901
+    pec: mario.rossi@pec.it
+  PROPRIETARIO:
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    potenza_pdc_kw: 10
+    tipologia_pdc: aria/acqua
+    scop: 4.5
+    eta_s: 140
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    costo_pdc: 900001
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Pompa di calore | fornitura | 12000.00 €
+  ------------------------------
+  TOTALE: 12000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 140,00 / 110,00 => 1,27
+      Calore totale prodotto stimato (Qu): Prated * Quf = 10,00 × 1700,00 => 17.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 17.000,00 × (1 - 1/4,50) × 1,27 => 16.828,28
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.828,28 × 0,15 × 1,00 => 2524,24 €
+    Risultato: I = k * Ei * Ci * CC = 2524,24 €
+    Netto GSE: 2499,00 € (corrispettivo GSE: 25,24 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,27 = 1,27
+    Calore totale prodotto stimato | Qu | 17.000,00 = 17.000,00
+    Energia termica incentivata | Ei | 16.828,28 = 16.828,28
+    Calcolo Incentivo Finale | I_tot | 2524,24 = 2524,24 €
+
+============================================================
+  PAGE BREAK — Az#9 — IVA non ammissibile per Impresa (CT30-T19)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T19
+  Nome:            Az#9 — IVA non ammissibile per Impresa
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test azione #9: Impresa con III.A, IVA specificata. L'IVA deve essere sottratta dalla spesa prima del calcolo incentivo.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Roma 1, Milano (MI)
+  Categoria catastale:   D/7
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     50 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: EdilCostruzioni Srl
+    tipo: Impresa
+    cf_piva: 01234560157
+    email: info@edilcostruzioni.it
+    telefono: 02 1234567
+  SR (Responsabile):
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+    iban: IT40X0123456789012345678901
+    pec: mario.rossi@pec.it
+  PROPRIETARIO:
+    denominazione: EdilCostruzioni Srl
+    cf_piva: 01234560157
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    potenza_pdc_kw: 10
+    tipologia_pdc: aria/acqua
+    scop: 4.5
+    eta_s: 140
+    made_in_eu: no
+    miglioramento_ep_40: sì
+    costo_pdc: 900001
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Pompa di calore | fornitura | 15000.00 €
+  ------------------------------
+  TOTALE: 15000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 140,00 / 110,00 => 1,27
+      Calore totale prodotto stimato (Qu): Prated * Quf = 10,00 × 1700,00 => 17.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 17.000,00 × (1 - 1/4,50) × 1,27 => 16.828,28
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.828,28 × 0,15 × 1,00 => 2524,24 €
+    Risultato: I = k * Ei * Ci * CC = 2524,24 €
+    Netto GSE: 2499,00 € (corrispettivo GSE: 25,24 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,27 = 1,27
+    Calore totale prodotto stimato | Qu | 17.000,00 = 17.000,00
+    Energia termica incentivata | Ei | 16.828,28 = 16.828,28
+    Calcolo Incentivo Finale | I_tot | 2524,24 = 2524,24 €
+
+============================================================
+  PAGE BREAK — Az#10 — Impresa con III.G Microcogenerazione + III.A (CT30-T20)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T20
+  Nome:            Az#10 — Impresa con III.G Microcogenerazione + III.A
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test azione #10: Impresa terziario con III.G microcogenerazione + III.A pompa di calore. Verifica multi-intervento III.A+III.G e gestione IVA su entrambi.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Torino 25, Milano (MI)
+  Categoria catastale:   D/7
+  Zona climatica:        Zona E
+  Superficie utile mq:   500
+  Anno costruzione:      1985
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     80 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: EdilEnergia S.p.A.
+    tipo: Impresa
+    cf_piva: 08765430158
+    email: info@edilenergia.it
+    telefono: 02 9876543
+  SR (Responsabile):
+    denominazione: Luigi Verdi
+    cf_piva: VRDLGU85M15F205X
+    iban: IT40X0123456789012345678902
+    pec: luigi.verdi@pec.it
+  PROPRIETARIO:
+    denominazione: EdilEnergia S.p.A.
+    cf_piva: 08765430158
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    potenza_pdc_kw: 10
+    tipologia_pdc: aria/acqua
+    scop: 4.5
+    eta_s: 140
+    made_in_eu: no
+    miglioramento_ep_40: sì
+    costo_pdc: 900001
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+  III.G
+    potenza_elettrica: 20
+    potenza_termica: 50
+    pes: 18
+    rendimento_elettrico: 0.35
+    rendimento_termico: 0.5
+    tipo_alimentazione: gas naturale
+    made_in_eu: no
+    costo_intervento: 300001
+    miglioramento_ep_40: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Pompa di calore 10kW aria/acqua | fornitura | 15000.00 €
+  III.G | Microcogeneratore 20kWe | fornitura | 25000.00 €
+  ------------------------------
+  TOTALE: 40000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 140,00 / 110,00 => 1,27
+      Calore totale prodotto stimato (Qu): Prated * Quf = 10,00 × 1700,00 => 17.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 17.000,00 × (1 - 1/4,50) × 1,27 => 16.828,28
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.828,28 × 0,15 × 1,00 => 2524,24 €
+    Risultato: I = k * Ei * Ci * CC = 2524,24 €
+    Netto GSE: 2499,00 € (corrispettivo GSE: 25,24 €)
+    Erogazione: Unica soluzione
+
+  III.G — Microcogenerazione (≤50 kWe)
+    Formula: I = min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale = min(300.001,00, min(20,00 × 5000,00, 100.000,00)) × 0,65 => 65.000,00 €
+    Risultato: I = min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale = 65.000,00 €
+    Netto GSE: 64.750,00 € (corrispettivo GSE: 250,00 €)
+    Erogazione: 5 rate annuali
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,27 = 1,27
+    Calore totale prodotto stimato | Qu | 17.000,00 = 17.000,00
+    Energia termica incentivata | Ei | 16.828,28 = 16.828,28
+    Calcolo Incentivo Finale | I_tot | 2524,24 = 2524,24 €
+
+  Intervento III.G
+    Calcolo Incentivo Finale | I_tot | 65.000,00 = 65.000,00 €
+
+============================================================
+  PAGE BREAK — Az#11 — Vincolo mantenimento 5 anni (CT30-T21)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T21
+  Nome:            Az#11 — Vincolo mantenimento 5 anni
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test azione #11: Impresa con III.A. Verifica presenza obbligo normativo di mantenimento impianto per 5 anni dalla data di erogazione (D.M. 7 agosto 2025).
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Viale Lombardia 50, Milano (MI)
+  Categoria catastale:   D/7
+  Zona climatica:        Zona E
+  Superficie utile mq:   400
+  Anno costruzione:      1990
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     60 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: GreenTech Service Srl
+    tipo: Impresa
+    cf_piva: 07654321012
+    email: info@greentech.it
+    telefono: 02 3456789
+  SR (Responsabile):
+    denominazione: Anna Bianchi
+    cf_piva: BNCNNA80A41F205Z
+    iban: IT40X0123456789012345678903
+    pec: anna.bianchi@pec.it
+  PROPRIETARIO:
+    denominazione: GreenTech Service Srl
+    cf_piva: 07654321012
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    potenza_pdc_kw: 10
+    tipologia_pdc: aria/acqua
+    scop: 4.5
+    eta_s: 140
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    costo_pdc: 900001
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Pompa di calore 10kW aria/acqua | fornitura | 18000.00 €
+  ------------------------------
+  TOTALE: 18000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 140,00 / 110,00 => 1,27
+      Calore totale prodotto stimato (Qu): Prated * Quf = 10,00 × 1700,00 => 17.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 17.000,00 × (1 - 1/4,50) × 1,27 => 16.828,28
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.828,28 × 0,15 × 1,00 => 2524,24 €
+    Risultato: I = k * Ei * Ci * CC = 2524,24 €
+    Netto GSE: 2499,00 € (corrispettivo GSE: 25,24 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,27 = 1,27
+    Calore totale prodotto stimato | Qu | 17.000,00 = 17.000,00
+    Energia termica incentivata | Ei | 16.828,28 = 16.828,28
+    Calcolo Incentivo Finale | I_tot | 2524,24 = 2524,24 €
+
+============================================================
+  PAGE BREAK — Az#12 — II.A Parete Interna con maggiorazione cmax 30% (CT30-T22)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T22
+  Nome:            Az#12 — II.A Parete Interna con maggiorazione cmax 30%
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test azione #12: Impresa terziario con II.A Parete Interna. Verifica maggiorazione cmax 30% per parete interna e corretta applicazione limite di spesa.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Piazza della Repubblica 12, Bergamo (BG)
+  Categoria catastale:   D/7
+  Zona climatica:        Zona E
+  Superficie utile mq:   300
+  Anno costruzione:      1975
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     30 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: EdilFutura S.r.l.
+    tipo: Impresa
+    cf_piva: 05432109876
+    email: info@edilfutura.it
+    telefono: 035 567890
+  SR (Responsabile):
+    denominazione: EdilFutura S.r.l.
+    cf_piva: 05432109876
+    iban: IT40X0123456789012345678904
+    pec: edilfutura@pec.it
+  PROPRIETARIO:
+    denominazione: EdilFutura S.r.l.
+    cf_piva: 05432109876
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Interna
+    superficie_isolata_mq: 80
+    superficie_mq: 80
+    trasmittanza_ante: 1.2
+    trasmittanza_post: 0.28
+    costo_isolamento: 15000
+    made_in_eu: sì
+    ape_ante_post_disponibile: sì
+    riduzione_ep_10: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  II.A | Isolamento parete interna 80mq | fornitura | 10000.00 €
+  II.A | Posa isolamento parete interna | posa | 5000.00 €
+  ------------------------------
+  TOTALE: 15000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(15.000,00, 80,00 × 130,00) × 0,48 => 4940,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 4940,00 €
+    Netto GSE: 4890,60 € (corrispettivo GSE: 49,40 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 4940,00 = 4940,00 €
+
+============================================================
+  PAGE BREAK — Blocco II.D — ampliamento volumetrico eccede 25% (CT30-T23)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T23
+  Nome:            Blocco II.D — ampliamento volumetrico eccede 25%
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Verifica blocco calcolo per II.D quando volume_nuovo_mc > 25% del volume_esistente_mc (200 > 400*0.25=100). Soggetto privato residenziale, zona E.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Roma 1, Milano (MI)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona E
+  Superficie utile mq:   100
+  Anno costruzione:      1980
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia tradizionale
+    Potenza termica:     24 kW
+    Combustibile:        Gas naturale
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Mario Rossi
+    tipo: Privato residenziale
+    cf_piva: RSSMRA80A01F205X
+    email: mario.rossi@email.it
+    telefono: 02 1234567
+  SR (Responsabile):
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01F205X
+    iban: IT60X0542811101000000123456
+    pec: mario.rossi@pec.it
+  PROPRIETARIO:
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01F205X
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.D
+    tipo_intervento_nzeb: Ampliamento ≤25%
+    superficie_utile_mq: 100
+    volume_esistente_mc: 400
+    volume_nuovo_mc: 200
+    classe_energetica_post: A4
+    costo_nzeb: 200000
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  II.D | Intervento NZEB ampliamento volumetrico | fornitura | 150000.00 €
+  II.D | Posa e realizzazione opere | posa | 40000.00 €
+  II.D | Documentazione e APE post | documentazione | 10000.00 €
+  ------------------------------
+  TOTALE: 200000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.D — Trasformazione in edificio nZEB
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 0,00 €
+    Errori:
+      - II.D: ampliamento volumetrico 200 mc eccede il limite del 25% (100 mc).
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.D
+    Nessun dettaglio disponibile.
+    Errori:
+      - II.D: ampliamento volumetrico 200 mc eccede il limite del 25% (100 mc).
+
+============================================================
+  PAGE BREAK — III.D Solare termico — formula prestazionale Ci*Qu*Sl (CT30-T24)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T24
+  Nome:            III.D Solare termico — formula prestazionale Ci*Qu*Sl
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Verifica che III.D calcoli con formula prestazionale min(Ci*Qu*Sl, percentuale_spesa). Pannelli piani vetrati 30mq, zona D, privato residenziale.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Verdi 10, Roma (RM)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona D
+  Superficie utile mq:   120
+  Anno costruzione:      1990
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia tradizionale
+    Potenza termica:     24 kW
+    Combustibile:        Gas naturale
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Luigi Bianchi
+    tipo: Privato residenziale
+    cf_piva: BNCLGU85M15H501F
+    email: luigi.bianchi@email.it
+    telefono: 06 1234567
+  SR (Responsabile):
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU85M15H501F
+    iban: IT60X0542811101000000123456
+    pec: luigi.bianchi@pec.it
+  PROPRIETARIO:
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU85M15H501F
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.D
+    tipo_pannello_solare: Pannelli piani vetrati
+    superficie_lorda_mq: 30
+    certificazione_solar_keymark: sì
+    produzione_termica_specifica_kwh_mq: 670
+    costo_solare_termico: 18000
+    temperatura_funzionamento: 50°C (ACS)
+    uso_solare: ACS
+    potenza_assorbitore_kw: 151
+    portata_aria_m3h: 30070
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.D | Pannelli solari piani vetrati 30mq | fornitura | 12000.00 €
+  III.D | Posa e installazione impianto solare | posa | 4500.00 €
+  III.D | Documentazione e collaudo | documentazione | 1500.00 €
+  ------------------------------
+  TOTALE: 18000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.D — Solare termico
+    Formula: I = min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale)
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale) = min(0,32 × 670,00 × 30,00, min(18.000,00, 30,00 × 550,00) × 0,65) => 6432,00 €
+    Risultato: I = min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale) = 6432,00 €
+    Netto GSE: 6367,68 € (corrispettivo GSE: 64,32 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.D
+    Calcolo Incentivo Finale | I_tot | 6432,00 = 6432,00 €
+
+============================================================
+  PAGE BREAK — III.F Teleriscaldamento — 3 fasce potenza (fascia media 80kW) (CT30-T25)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T25
+  Nome:            III.F Teleriscaldamento — 3 fasce potenza (fascia media 80kW)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Verifica III.F con potenza allaccio 80kW (fascia 50-150kW: cmax_kw=160, imax=15.000€). Soggetto privato terziario, zona E. Upgrade A.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Viale delle Industrie 5, Milano (MI)
+  Categoria catastale:   A/10
+  Zona climatica:        Zona E
+  Superficie utile mq:   800
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia centralizzata
+    Potenza termica:     120 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Studio Commerciale S.r.l.
+    tipo: Privato terziario
+    cf_piva: 01234560159
+    email: info@studiocommerciale.it
+    telefono: 02 1234567
+  SR (Responsabile):
+    denominazione: Studio Commerciale S.r.l.
+    cf_piva: 01234560159
+    iban: IT60X0542811101000000123456
+    pec: studiocommerciale@pec.it
+  PROPRIETARIO:
+    denominazione: Studio Commerciale S.r.l.
+    cf_piva: 01234560159
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.F
+    teleriscaldamento_efficiente: sì
+    potenza_allaccio_kw: 80
+    costo_allaccio: 20000
+    tipo_allaccio: singolo
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.F | Allaccio teleriscaldamento 80kW | fornitura | 15000.00 €
+  III.F | Posa e installazione contabilizzatori | posa | 4000.00 €
+  III.F | Documentazione e collaudo | documentazione | 1000.00 €
+  ------------------------------
+  TOTALE: 20000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.F — Allaccio a teleriscaldamento efficiente
+    Formula: I = min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = min(20.000,00, min(80,00 × 160,00, 15.000,00)) × 0,65 => 8320,00 €
+    Risultato: I = min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = 8320,00 €
+    Netto GSE: 8236,80 € (corrispettivo GSE: 83,20 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.F
+    Calcolo Incentivo Finale | I_tot | 8320,00 = 8320,00 €
+
+============================================================
+  PAGE BREAK — III.C Biomassa Prestazionale — Caldaia a legna/cippato (CT30-T26)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T26
+  Nome:            III.C Biomassa Prestazionale — Caldaia a legna/cippato
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test upgrade B: III.C caldaia biomassa con formula prestazionale lineare. Verifica enza (Ci×Qu×Sl) e cap su spesa×percentuale. Soggetto privato residenziale, zona E.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via del Bosco 3, Trento (TN)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona E
+  Superficie utile mq:   150
+  Anno costruzione:      1980
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia a gasolio
+    Potenza termica:     35 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Mario Rossi
+    tipo: Privato residenziale
+    cf_piva: RSSMRA80A01L378F
+    email: mario.rossi@email.it
+    telefono: 0461 123456
+  SR (Responsabile):
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01L378F
+    iban: IT60X0542811101000000123456
+    pec: mario.rossi@pec.it
+  PROPRIETARIO:
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01L378F
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.C
+    tipo_generatore: Caldaia
+    tipo_biomassa: Cippato
+    potenza_nominale_kw: 25
+    rendimento_stagionale: 78
+    classe_emissiva: 5 stelle
+    costo_biomassa: 12000
+    riduzione_pp: ≤20%
+    ore_funzionamento_annue: 1500
+    residenziale_terziario: residenziale
+    zona_assistita_a: no
+    zona_assistita_c: no
+    made_in_eu: sì
+    miglioramento_ep_40: no
+    sostituisce_esistente: sì
+    superficie_fabbricato_mq: 150
+    sigillo_camino: sì
+    zona_non_metanizzata: sì
+    in_centrale_tlr: sì
+
+PREVENTIVO
+----------------------------------------
+  III.C | Fornitura caldaia a legna/cippato 25kW | fornitura | 8000.00 €
+  III.C | Posa e installazione | posa | 3000.00 €
+  III.C | Documentazione e collaudo | documentazione | 1000.00 €
+  ------------------------------
+  TOTALE: 12000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.C — Generatori a biomassa (classe 5 stelle)
+    Formula: I = min(enza, min(spesa, potenza * cmax) * percentuale)
+    Passaggi:
+      Ore funzionamento annue (default: Q_uf per zona climatica) (hr): ore_funzionamento_annue || quf_zona || 1500 = 1500,00 || quf_zona || 1500 => 1500,00
+      Coefficiente ambientale Ce (Ce): (zona_non_metanizzata === 'sì' && tipo_biomassa === 'GPL') ? 1.5 : riduzione_pp === '>50%' ? 1.5 : riduzione_pp === '20-50%' ? 1.2 : 1.0 = (zona_non_metanizzata === 'sì' && tipo_biomassa === 'GPL') ? 1.5 : riduzione_pp === '>50%' ? 1.5 : riduzione_pp === '20-50%' ? 1.2 : 1.0 => 1,00
+      Energia termica incentivabile (enBase): tipo_generatore === 'Stufa' ? 3.35 * Math.log(potenza) * hr * Ci * Ce : potenza * hr * Ci * Ce = tipo_generatore === 'Stufa' ? 3.35 × Math.log(25,00) × 1500,00 × 0,06 × 1,00 : 25,00 × 1500,00 × 0,06 × 1,00 => 2250,00
+      Energia con eventuale riduzione TLR (enDopoTlr): in_centrale_tlr === 'sì' ? enBase * 0.80 : enBase = in_centrale_tlr === 'sì' ? 2250,00 × 0.80 : 2250,00 => 1800,00
+      Energia termica finale (enza): enDopoTlr = 1800,00 => 1800,00
+      Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(1800,00, min(12.000,00, 25,00 × 600,00) × 0,65) => 1800,00 €
+    Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 1800,00 €
+    Netto GSE: 1782,00 € (corrispettivo GSE: 18,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.C
+    Ore funzionamento annue (default: Q_uf per zona climatica) | hr | 1500,00 = 1500,00
+    Coefficiente ambientale Ce | Ce | 1,00 = 1,00
+    Energia termica incentivabile | enBase | 2250,00 = 2250,00
+    Energia con eventuale riduzione TLR | enDopoTlr | 1800,00 = 1800,00
+    Energia termica finale | enza | 1800,00 = 1800,00
+    Calcolo Incentivo Finale | I_tot | 1800,00 = 1800,00 €
+
+============================================================
+  PAGE BREAK — III.C Biomassa Logaritmica — Stufa a pellet (CT30-T27)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T27
+  Nome:            III.C Biomassa Logaritmica — Stufa a pellet
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test upgrade B: III.C stufa a pellet con formula logaritmica (ln) per calcolo coeff_ci. Verifica corretta applicazione scala logaritmica per potenza <25kW.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Fiume 8, Bolzano (BZ)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona E
+  Superficie utile mq:   90
+  Anno costruzione:      2005
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia a metano
+    Potenza termica:     20 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Anna Ferrari
+    tipo: Privato residenziale
+    cf_piva: FRRNNA75B41A952R
+    email: anna.ferrari@email.it
+    telefono: 0471 123456
+  SR (Responsabile):
+    denominazione: Anna Ferrari
+    cf_piva: FRRNNA75B41A952R
+    iban: IT60X0542811101000000123456
+    pec: anna.ferrari@pec.it
+  PROPRIETARIO:
+    denominazione: Anna Ferrari
+    cf_piva: FRRNNA75B41A952R
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.C
+    tipo_generatore: Stufa
+    tipo_biomassa: Pellet
+    potenza_nominale_kw: 15
+    rendimento_stagionale: 82
+    classe_emissiva: 5 stelle
+    costo_biomassa: 5000
+    riduzione_pp: ≤20%
+    ore_funzionamento_annue: 1500
+    residenziale_terziario: residenziale
+    zona_assistita_a: no
+    zona_assistita_c: no
+    made_in_eu: sì
+    miglioramento_ep_40: no
+    sostituisce_esistente: sì
+    superficie_fabbricato_mq: 90
+    tiraggio_forzato: sì
+    zona_non_metanizzata: sì
+    in_centrale_tlr: sì
+
+PREVENTIVO
+----------------------------------------
+  III.C | Fornitura stufa a pellet 15kW | fornitura | 3500.00 €
+  III.C | Posa e installazione canna fumaria | posa | 1000.00 €
+  III.C | Documentazione e collaudo | documentazione | 500.00 €
+  ------------------------------
+  TOTALE: 5000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.C — Generatori a biomassa (classe 5 stelle)
+    Formula: I = min(enza, min(spesa, potenza * cmax) * percentuale)
+    Passaggi:
+      Ore funzionamento annue (default: Q_uf per zona climatica) (hr): ore_funzionamento_annue || quf_zona || 1500 = 1500,00 || quf_zona || 1500 => 1500,00
+      Coefficiente ambientale Ce (Ce): (zona_non_metanizzata === 'sì' && tipo_biomassa === 'GPL') ? 1.5 : riduzione_pp === '>50%' ? 1.5 : riduzione_pp === '20-50%' ? 1.2 : 1.0 = (zona_non_metanizzata === 'sì' && tipo_biomassa === 'GPL') ? 1.5 : riduzione_pp === '>50%' ? 1.5 : riduzione_pp === '20-50%' ? 1.2 : 1.0 => 1,00
+      Energia termica incentivabile (enBase): tipo_generatore === 'Stufa' ? 3.35 * Math.log(potenza) * hr * Ci * Ce : potenza * hr * Ci * Ce = tipo_generatore === 'Stufa' ? 3.35 × Math.log(15,00) × 1500,00 × 0,06 × 1,00 : 15,00 × 1500,00 × 0,06 × 1,00 => 748,44
+      Energia con eventuale riduzione TLR (enDopoTlr): in_centrale_tlr === 'sì' ? enBase * 0.80 : enBase = in_centrale_tlr === 'sì' ? 748,44 × 0.80 : 748,44 => 598,75
+      Energia termica finale (enza): enDopoTlr = 598,75 => 598,75
+      Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(598,75, min(5000,00, 15,00 × 600,00) × 0,65) => 598,75 €
+    Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 598,75 €
+    Netto GSE: 592,76 € (corrispettivo GSE: 5,99 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.C
+    Ore funzionamento annue (default: Q_uf per zona climatica) | hr | 1500,00 = 1500,00
+    Coefficiente ambientale Ce | Ce | 1,00 = 1,00
+    Energia termica incentivabile | enBase | 748,44 = 748,44
+    Energia con eventuale riduzione TLR | enDopoTlr | 598,75 = 598,75
+    Energia termica finale | enza | 598,75 = 598,75
+    Calcolo Incentivo Finale | I_tot | 598,75 = 598,75 €
+
+============================================================
+  PAGE BREAK — III.B Ibrido — Blocco rapporto PdC/caldaia >0.5 (CT30-T28)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T28
+  Nome:            III.B Ibrido — Blocco rapporto PdC/caldaia >0.5
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test upgrade G: III.B ibrido factory made con rapporto PdC/caldaia >0.5 → blocco in canCalculate. Verifica che K=1.25 non venga applicato. Rapporto = 10kW/(10kW+10kW) = 0.50 = 50% (caso limite, non blocca).
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Roma 20, Verona (VR)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona E
+  Superficie utile mq:   110
+  Anno costruzione:      1998
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia a gas
+    Potenza termica:     24 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Paolo Neri
+    tipo: Privato residenziale
+    cf_piva: NREPLA82R15L400R
+    email: paolo.neri@email.it
+    telefono: 045 123456
+  SR (Responsabile):
+    denominazione: Paolo Neri
+    cf_piva: NREPLA82R15L400R
+    iban: IT60X0542811101000000123456
+    pec: paolo.neri@pec.it
+  PROPRIETARIO:
+    denominazione: Paolo Neri
+    cf_piva: NREPLA82R15L400R
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.B
+    tipo_sistema: Ibrido parallelo
+    potenza_pdc_kw: 10
+    potenza_caldaia_kw: 10
+    potenza_termica_nominale: 20
+    tipologia_pdc: aria/acqua
+    scop: 4.2
+    eta_s: 150
+    costo_ibrido: 14000
+    generatore_sostituito: Caldaia a gas 24kW
+    sostituisce_esistente: sì
+    made_in_eu: no
+    miglioramento_ep_40: no
+    zona_assistita_a: no
+    zona_assistita_c: no
+    scheda_tecnica_pdc: sì
+    eta_s_caldaia: 89
+
+PREVENTIVO
+----------------------------------------
+  III.B | Fornitura sistema ibrido 10kW PdC + 10kW caldaia | fornitura | 9000.00 €
+  III.B | Posa e collegamenti | posa | 3500.00 €
+  III.B | Documentazione e collaudo | documentazione | 1500.00 €
+  ------------------------------
+  TOTALE: 14000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.B — Sistema ibrido/bivalente/add-on (gas + PDC)
+    Formula: I = k * Ei * Ci * CC
+    Risultato: I = k * Ei * Ci * CC = 0,00 €
+    Errori:
+      - III.B: rapporto PdC/caldaia 1.00 supera il limite 0.5 per sistemi ibridi factory made (Manuale Analitico Sez.6).
+      - III.B: η_s caldaia 89% inferiore al minimo 90% per potenza <400 kW (Manuale Analitico Sez.6).
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.B
+    Nessun dettaglio disponibile.
+    Errori:
+      - III.B: rapporto PdC/caldaia 1.00 supera il limite 0.5 per sistemi ibridi factory made (Manuale Analitico Sez.6).
+      - III.B: η_s caldaia 89% inferiore al minimo 90% per potenza <400 kW (Manuale Analitico Sez.6).
+
+============================================================
+  PAGE BREAK — III.D Solar Cooling — Blocco DEC <8 (CT30-T29)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T29
+  Nome:            III.D Solar Cooling — Blocco DEC <8
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test upgrade J: III.D Solar Cooling con DEC=6 (<8) → blocco in canCalculate. Verifica che il blocco DEC<8 funzioni. Anche rapporto potenza_assorbita/potenza_frigorifera = 0.7 (gap 1.43, fuori range 2-2.75).
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Viale dei Giardini 15, Palermo (PA)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona B
+  Superficie utile mq:   100
+  Anno costruzione:      2000
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Condizionatori split
+    Potenza termica:     10 kW
+    Combustibile:        elettrico
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Giuseppe Verdi
+    tipo: Privato residenziale
+    cf_piva: VRDGPP65M15G273Q
+    email: giuseppe.verdi@email.it
+    telefono: 091 123456
+  SR (Responsabile):
+    denominazione: Giuseppe Verdi
+    cf_piva: VRDGPP65M15G273Q
+    iban: IT60X0542811101000000123456
+    pec: giuseppe.verdi@pec.it
+  PROPRIETARIO:
+    denominazione: Giuseppe Verdi
+    cf_piva: VRDGPP65M15G273Q
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.D
+    tipo_pannello_solare: Pannelli piani vetrati
+    superficie_lorda_mq: 20
+    certificazione_solar_keymark: sì
+    uso_solare: Solar Cooling
+    potenza_assorbitore_kw: 8
+    portata_aria_m3h: 3000
+    costo_solare_termico: 15000
+    produzione_termica_specifica_kwh_mq: 670
+    temperatura_funzionamento: 50°C (ACS)
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.D | Impianto solare termico con Solar Cooling 20mq | fornitura | 11000.00 €
+  III.D | Posa e installazione | posa | 3000.00 €
+  III.D | Documentazione e collaudo | documentazione | 1000.00 €
+  ------------------------------
+  TOTALE: 15000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.D — Solare termico
+    Formula: I = min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale)
+    Risultato: I = min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale) = 0,00 €
+    Errori:
+      - III.D Solar Cooling: DEC 6.67 m²/(1000 m³/h) inferiore al minimo 8 (Manuale Analitico Sez.6).
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.D
+    Nessun dettaglio disponibile.
+    Errori:
+      - III.D Solar Cooling: DEC 6.67 m²/(1000 m³/h) inferiore al minimo 8 (Manuale Analitico Sez.6).
+
+============================================================
+  PAGE BREAK — III.F Teleriscaldamento — Fascia alta 200kW (>150kW) (CT30-T30)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T30
+  Nome:            III.F Teleriscaldamento — Fascia alta 200kW (>150kW)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test upgrade A: III.F con potenza allaccio 200kW (fascia >150kW: cmax_kw=130, imax=20.000€). Soggetto PA condominio, zona E.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Dante 30, Torino (TO)
+  Categoria catastale:   A/3
+  Zona climatica:        Zona E
+  Superficie utile mq:   2000
+  Anno costruzione:      1970
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia centralizzata
+    Potenza termica:     250 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Condominio Dante 30
+    tipo: Pubblica Amministrazione
+    cf_piva: 80012330010
+    email: amministrazione@condominiodante30.it
+    telefono: 011 123456
+  SR (Responsabile):
+    denominazione: Condominio Dante 30
+    cf_piva: 80012330010
+    iban: IT60X0542811101000000123456
+    pec: condominiodante30@pec.it
+  PROPRIETARIO:
+    denominazione: Condominio Dante 30
+    cf_piva: 80012330010
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.F
+    teleriscaldamento_efficiente: sì
+    potenza_allaccio_kw: 200
+    costo_allaccio: 35000
+    tipo_allaccio: condominiale
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.F | Allaccio teleriscaldamento 200kW | fornitura | 25000.00 €
+  III.F | Posa e installazione scambiatore | posa | 7000.00 €
+  III.F | Documentazione e collaudo | documentazione | 3000.00 €
+  ------------------------------
+  TOTALE: 35000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.F — Allaccio a teleriscaldamento efficiente
+    Formula: I = min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = min(35.000,00, min(200,00 × 130,00, 30.000,00)) × 0,85 => 22.100,00 €
+    Risultato: I = min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = 22.100,00 €
+    Netto GSE: 21.879,00 € (corrispettivo GSE: 221,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.F
+    Calcolo Incentivo Finale | I_tot | 22.100,00 = 22.100,00 €
+
+============================================================
+  PAGE BREAK — III.C Caldaia legna — Formula logaritmica D (tipo generatore 4) (CT30-T31)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T31
+  Nome:            III.C Caldaia legna — Formula logaritmica D (tipo generatore 4)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test upgrade B: III.C caldaia a legna tipo D (coeff_ci con ln) con potenza >25kW (formula lineare per tipo D). Verifica corretta selezione coeff_ci per tipo generatore 'Caldaia a legna'.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via dei Castagni 12, Aosta (AO)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona F
+  Superficie utile mq:   130
+  Anno costruzione:      1975
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia a gasolio
+    Potenza termica:     30 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Carlo Bianchi
+    tipo: Privato residenziale
+    cf_piva: BNCCRL70P15A326X
+    email: carlo.bianchi@email.it
+    telefono: 0165 123456
+  SR (Responsabile):
+    denominazione: Carlo Bianchi
+    cf_piva: BNCCRL70P15A326X
+    iban: IT60X0542811101000000123456
+    pec: carlo.bianchi@pec.it
+  PROPRIETARIO:
+    denominazione: Carlo Bianchi
+    cf_piva: BNCCRL70P15A326X
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.C
+    tipo_generatore: Caldaia
+    tipo_biomassa: Cippato
+    potenza_nominale_kw: 35
+    rendimento_stagionale: 80
+    classe_emissiva: 5 stelle
+    costo_biomassa: 15000
+    riduzione_pp: ≤20%
+    ore_funzionamento_annue: 1500
+    residenziale_terziario: residenziale
+    zona_assistita_a: no
+    zona_assistita_c: no
+    made_in_eu: sì
+    miglioramento_ep_40: no
+    sostituisce_esistente: sì
+    superficie_fabbricato_mq: 130
+    sigillo_camino: sì
+    zona_non_metanizzata: sì
+    in_centrale_tlr: sì
+
+PREVENTIVO
+----------------------------------------
+  III.C | Fornitura caldaia a legna 35kW | fornitura | 10000.00 €
+  III.C | Posa e installazione | posa | 3500.00 €
+  III.C | Documentazione e collaudo | documentazione | 1500.00 €
+  ------------------------------
+  TOTALE: 15000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.C — Generatori a biomassa (classe 5 stelle)
+    Formula: I = min(enza, min(spesa, potenza * cmax) * percentuale)
+    Passaggi:
+      Ore funzionamento annue (default: Q_uf per zona climatica) (hr): ore_funzionamento_annue || quf_zona || 1500 = 1500,00 || quf_zona || 1500 => 1500,00
+      Coefficiente ambientale Ce (Ce): (zona_non_metanizzata === 'sì' && tipo_biomassa === 'GPL') ? 1.5 : riduzione_pp === '>50%' ? 1.5 : riduzione_pp === '20-50%' ? 1.2 : 1.0 = (zona_non_metanizzata === 'sì' && tipo_biomassa === 'GPL') ? 1.5 : riduzione_pp === '>50%' ? 1.5 : riduzione_pp === '20-50%' ? 1.2 : 1.0 => 1,00
+      Energia termica incentivabile (enBase): tipo_generatore === 'Stufa' ? 3.35 * Math.log(potenza) * hr * Ci * Ce : potenza * hr * Ci * Ce = tipo_generatore === 'Stufa' ? 3.35 × Math.log(35,00) × 1500,00 × 0,06 × 1,00 : 35,00 × 1500,00 × 0,06 × 1,00 => 3150,00
+      Energia con eventuale riduzione TLR (enDopoTlr): in_centrale_tlr === 'sì' ? enBase * 0.80 : enBase = in_centrale_tlr === 'sì' ? 3150,00 × 0.80 : 3150,00 => 2520,00
+      Energia termica finale (enza): enDopoTlr = 2520,00 => 2520,00
+      Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(2520,00, min(15.000,00, 35,00 × 600,00) × 0,65) => 2520,00 €
+    Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 2520,00 €
+    Netto GSE: 2494,80 € (corrispettivo GSE: 25,20 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.C
+    Ore funzionamento annue (default: Q_uf per zona climatica) | hr | 1500,00 = 1500,00
+    Coefficiente ambientale Ce | Ce | 1,00 = 1,00
+    Energia termica incentivabile | enBase | 3150,00 = 3150,00
+    Energia con eventuale riduzione TLR | enDopoTlr | 2520,00 = 2520,00
+    Energia termica finale | enza | 2520,00 = 2520,00
+    Calcolo Incentivo Finale | I_tot | 2520,00 = 2520,00 €
+
+============================================================
+  PAGE BREAK — R1: Privato Residenziale → solo Titolo III (PdC aria/acqua) (CT30-P01)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-P01
+  Nome:            R1: Privato Residenziale → solo Titolo III (PdC aria/acqua)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-07-15
+  Data fine lavori:2026-07-01
+  Modalità accesso:diretto
+  Note:            SA privato + ambito residenziale: selezionati III.A + II.H. Verifica che Titolo II sia bloccato dalla matrice SA.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Roma 10, Milano (MI)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     24 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Mario Rossi
+    tipo: Privato residenziale
+    cf_piva: RSSMRA80A01H501U
+    email: mario.rossi@email.it
+    telefono: 021234567
+  SR (Responsabile):
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+    iban: IT60X0542811101000000123456
+    pec: mario.rossi@pec.it
+  PROPRIETARIO:
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    tipologia_pdc: aria/acqua
+    potenza_pdc_kw: 12
+    scop: 4.2
+    eta_s: 180
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    costo_pdc: 15000
+    sostituisce_esistente: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Fornitura pompa di calore aria/acqua 12kW | fornitura | 10000.00 €
+  III.A | Posa e collegamenti idraulici | posa | 5000.00 €
+  ------------------------------
+  TOTALE: 15000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 180,00 / 110,00 => 1,64
+      Calore totale prodotto stimato (Qu): Prated * Quf = 12,00 × 1700,00 => 20.400,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 20.400,00 × (1 - 1/4,20) × 1,64 => 25.433,77
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 25.433,77 × 0,15 × 1,00 => 3815,06 €
+    Risultato: I = k * Ei * Ci * CC = 3815,06 €
+    Netto GSE: 3776,91 € (corrispettivo GSE: 38,15 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,64 = 1,64
+    Calore totale prodotto stimato | Qu | 20.400,00 = 20.400,00
+    Energia termica incentivata | Ei | 25.433,77 = 25.433,77
+    Calcolo Incentivo Finale | I_tot | 3815,06 = 3815,06 €
+
+============================================================
+  PAGE BREAK — R2: Impresa → Regime Titolo V (richiesta preliminare + III.A 45%) (CT30-P02)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-P02
+  Nome:            R2: Impresa → Regime Titolo V (richiesta preliminare + III.A 45%)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-07-15
+  Data fine lavori:2026-07-01
+  Modalità accesso:diretto
+  Note:            Impresa con attività economica, richiesta preliminare via PEC, III.A PdC 100kW. Verifica intensità 45% Titolo V.
+  Rich. Preliminare: Sì (2026-01-15)
+  Primo impegno:     2026-02-01
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via delle Industrie 50, Napoli (NA)
+  Categoria catastale:   D/7
+  Zona climatica:        Zona C
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     150 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: TecnoIndustria S.p.A.
+    tipo: Impresa
+    cf_piva: 01234567890
+    email: info@tecnoindustria.it
+    telefono: 0811234567
+  SR (Responsabile):
+    denominazione: TecnoIndustria S.p.A.
+    cf_piva: 01234567890
+    iban: IT99P0123456789012345678901
+    pec: amministrazione@pec.tecnoindustria.it
+  PROPRIETARIO:
+    denominazione: TecnoIndustria S.p.A.
+    cf_piva: 01234567890
+  DELEGATO:
+    nome: Ing. Marco Verdi
+    cf: VRDMRA80A01H501U
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    tipologia_pdc: acqua/acqua
+    potenza_pdc_kw: 100
+    scop: 5.2
+    eta_s: 190
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    costo_pdc: 85000
+    sostituisce_esistente: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Fornitura pompa di calore 100kW acqua/acqua | fornitura | 55000.00 €
+  III.A | Posa e collegamenti | posa | 20000.00 €
+  III.A | Documentazione tecnica | documentazione | 10000.00 €
+  ------------------------------
+  TOTALE: 85000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 190,00 / 110,00 => 1,73
+      Calore totale prodotto stimato (Qu): Prated * Quf = 100,00 × 1100,00 => 110.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 110.000,00 × (1 - 1/5,20) × 1,73 => 153.461,54
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 153.461,54 × 0,06 × 1,00 => 9207,69 €
+    Risultato: I = k * Ei * Ci * CC = 9207,69 €
+    Netto GSE: 9115,61 € (corrispettivo GSE: 92,08 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,73 = 1,73
+    Calore totale prodotto stimato | Qu | 110.000,00 = 110.000,00
+    Energia termica incentivata | Ei | 153.461,54 = 153.461,54
+    Calcolo Incentivo Finale | I_tot | 9207,69 = 9207,69 €
+
+============================================================
+  PAGE BREAK — R3: ETS non economico → assimilato PA (II.A isolamento 100%) (CT30-P03)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-P03
+  Nome:            R3: ETS non economico → assimilato PA (II.A isolamento 100%)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-09-15
+  Data fine lavori:2026-09-01
+  Modalità accesso:diretto
+  Note:            ETS non economico con II.A isolamento pareti. Verifica intensità 100% per isPAorETS.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Viale della Sostenibilità 20, Bologna (BO)
+  Categoria catastale:   A/10
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     50 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Fondazione Green Future ETS
+    tipo: ETS non economico
+    cf_piva: 01234567891
+    email: info@fondazionegreenfuture.it
+    telefono: 021234567
+  SR (Responsabile):
+    denominazione: Fondazione Green Future ETS
+    cf_piva: 01234567891
+    iban: IT60X0542811101000000123456
+    pec: fondazionegreenfuture@pec.it
+  PROPRIETARIO:
+    denominazione: Fondazione Green Future ETS
+    cf_piva: 01234567891
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Esterna
+    superficie_isolata_mq: 200
+    trasmittanza_ante: 1.2
+    trasmittanza_post: 0.25
+    costo_isolamento: 30000
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    miglioramento_ep_40: sì
+    ape_ante_post_disponibile: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  II.A | Isolamento pareti esterne 200mq | fornitura | 20000.00 €
+  II.A | Posa isolamento a cappotto | posa | 10000.00 €
+  ------------------------------
+  TOTALE: 30000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(30.000,00, 200,00 × 200,00) × 1,00 => 30.000,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 30.000,00 €
+    Netto GSE: 29.750,00 € (corrispettivo GSE: 250,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 30.000,00 = 30.000,00 €
+
+============================================================
+  PAGE BREAK — R4: III.A elettrica pura + II.H FV → pairing obbligatorio OK (CT30-P04)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-P04
+  Nome:            R4: III.A elettrica pura + II.H FV → pairing obbligatorio OK
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-08-15
+  Data fine lavori:2026-08-01
+  Modalità accesso:diretto
+  Note:            PDC aria/acqua elettrica con sostituzione integrale + FV 10kWp. Verifica che II.H sia trainato da III.A elettrico.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via del Sole 5, Bologna (BO)
+  Categoria catastale:   D/1
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     80 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Azienda Verde S.r.l.
+    tipo: Privato terziario
+    cf_piva: 01234567892
+    email: info@aziendaverde.it
+    telefono: 0519876543
+  SR (Responsabile):
+    denominazione: Azienda Verde S.r.l.
+    cf_piva: 01234567892
+    iban: IT60X0542811101000000999
+    pec: aziendaverde@pec.it
+  PROPRIETARIO:
+    denominazione: Azienda Verde S.r.l.
+    cf_piva: 01234567892
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    tipologia_pdc: aria/acqua
+    potenza_pdc_kw: 30
+    scop: 4.5
+    eta_s: 185
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    costo_pdc: 25000
+    sostituisce_esistente: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+  II.H
+    potenza_fv_kw: 10
+    is_autoconsumo: sì
+    made_in_eu: sì
+    accumulo_presente: sì
+    capacita_accumulo_kwh: 10
+    costo_fv: 15000
+    registro_enea: sì
+    ue_production: sì
+    same_section: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  II.H | Fornitura FV 10kWp + accumulo 10kWh | fornitura | 10000.00 €
+  II.H | Posa moduli FV e inverter | posa | 5000.00 €
+  III.A | Fornitura PDC aria/acqua 30kW | fornitura | 18000.00 €
+  III.A | Posa PDC | posa | 7000.00 €
+  ------------------------------
+  TOTALE: 40000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 185,00 / 110,00 => 1,68
+      Calore totale prodotto stimato (Qu): Prated * Quf = 30,00 × 1700,00 => 51.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 51.000,00 × (1 - 1/4,50) × 1,68 => 66.712,12
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 66.712,12 × 0,15 × 1,00 => 10.006,82 €
+    Risultato: I = k * Ei * Ci * CC = 10.006,82 €
+    Netto GSE: 9906,75 € (corrispettivo GSE: 100,07 €)
+    Erogazione: Unica soluzione
+
+  II.H — Fotovoltaico e accumulo abbinati a pompa di calore elettrica
+    Formula: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = min(15.000,00, 10,00 × 1500,00 + 10,00 × 1000,00) × 0,52 => 7800,00 €
+    Risultato: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = 7800,00 €
+    Netto GSE: 7722,00 € (corrispettivo GSE: 78,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,68 = 1,68
+    Calore totale prodotto stimato | Qu | 51.000,00 = 51.000,00
+    Energia termica incentivata | Ei | 66.712,12 = 66.712,12
+    Calcolo Incentivo Finale | I_tot | 10.006,82 = 10.006,82 €
+
+  Intervento II.H
+    Calcolo Incentivo Finale | I_tot | 7800,00 = 7800,00 €
+
+============================================================
+  PAGE BREAK — R5: II.B infissi + II.C schermature → abbinamento obbligatorio OK (CT30-P05)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-P05
+  Nome:            R5: II.B infissi + II.C schermature → abbinamento obbligatorio OK
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-06-15
+  Data fine lavori:2026-06-01
+  Modalità accesso:diretto
+  Note:            Privato residenziale con II.B infissi + II.C schermature solari. Verifica che II.C richieda II.B.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via dei Tigli 3, Bergamo (BG)
+  Categoria catastale:   A/7
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     20 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Luigi Bianchi
+    tipo: Privato residenziale
+    cf_piva: BNCLGU75B12F205N
+    email: luigi.bianchi@email.it
+    telefono: 031234567
+  SR (Responsabile):
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU75B12F205N
+    iban: IT60X0542811101000000998
+    pec: luigi.bianchi@pec.it
+  PROPRIETARIO:
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU75B12F205N
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.B
+    tipologia_serramento: finestra
+    superficie_infissi_mq: 25
+    trasmittanza_infissi_ante: 3.5
+    trasmittanza_infissi_post: 1.1
+    costo_infissi: 12000
+    valvole_termostatiche: già presenti
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+  II.C
+    tipo_schermatura: Schermature mobili
+    superficie_schermata_mq: 20
+    fattore_solare_g: 0.6
+    fattore_solare_g_post: 0.15
+    costo_schermatura: 5000
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  II.B | Fornitura infissi classe A+ 25mq | fornitura | 8000.00 €
+  II.B | Posa infissi e controtelai | posa | 4000.00 €
+  II.C | Fornitura schermature solari | fornitura | 3000.00 €
+  II.C | Posa schermature | posa | 2000.00 €
+  ------------------------------
+  TOTALE: 17000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.B — Sostituzione chiusure trasparenti/infissi
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(12.000,00, 25,00 × 800,00) × 0,64 => 7680,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 7680,00 €
+    Netto GSE: 7603,20 € (corrispettivo GSE: 76,80 €)
+    Erogazione: Unica soluzione
+
+  II.C — Schermature e ombreggiamento solare
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(5000,00, 20,00 × 250,00) × 0,64 => 3200,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 3200,00 €
+    Netto GSE: 3168,00 € (corrispettivo GSE: 32,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.B
+    Calcolo Incentivo Finale | I_tot | 7680,00 = 7680,00 €
+
+  Intervento II.C
+    Calcolo Incentivo Finale | I_tot | 3200,00 = 3200,00 €
+
+============================================================
+  PAGE BREAK — R6: SR=ESCO ≠ SA → contratto EPC obbligatorio (UNI CEI EN 17669) (CT30-P06)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-P06
+  Nome:            R6: SR=ESCO ≠ SA → contratto EPC obbligatorio (UNI CEI EN 17669)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-10-15
+  Data fine lavori:2026-10-01
+  Modalità accesso:diretto
+  Note:            SA=Comune, SR=ESCO (terza parte). ESCO non coincide con richiedente: EPC obbligatorio + certificazione 11352.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Piazza del Municipio 1, Solaria (SO)
+  Categoria catastale:   B/4
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     Sì
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Centrale termica
+    Potenza termica:     100 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Comune di Solaria
+    tipo: PA
+    cf_piva: 80012345678
+    email: protocollo@comunesolaria.it
+    telefono: 031234569
+  SR (Responsabile):
+    denominazione: ESCO GreenService S.p.A.
+    cf_piva: 09876543210
+    iban: IT60X0542811101000000997
+    pec: greenservice@pec.it
+  PROPRIETARIO:
+    denominazione: Comune di Solaria
+    cf_piva: 80012345678
+  DELEGATO:
+    nome: Arch. Anna Neri
+    cf: NRLNNA80A41F205M
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    tipologia_pdc: aria/acqua
+    potenza_pdc_kw: 60
+    scop: 4.8
+    eta_s: 190
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    costo_pdc: 45000
+    sostituisce_esistente: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Fornitura PDC aria/acqua 60kW | fornitura | 30000.00 €
+  III.A | Posa e adeguamento impianto | posa | 15000.00 €
+  ------------------------------
+  TOTALE: 45000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 190,00 / 110,00 => 1,73
+      Calore totale prodotto stimato (Qu): Prated * Quf = 60,00 × 1700,00 => 102.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 102.000,00 × (1 - 1/4,80) × 1,73 => 139.477,27
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 139.477,27 × 0,06 × 1,00 => 8368,64 €
+    Risultato: I = k * Ei * Ci * CC = 8368,64 €
+    Netto GSE: 8284,95 € (corrispettivo GSE: 83,69 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,73 = 1,73
+    Calore totale prodotto stimato | Qu | 102.000,00 = 102.000,00
+    Energia termica incentivata | Ei | 139.477,27 = 139.477,27
+    Calcolo Incentivo Finale | I_tot | 8368,64 = 8368,64 €
+
+============================================================
+  PAGE BREAK — R7: PA Comune ≤15.000ab → incentivo 100% (II.A isolamento) (CT30-P07)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-P07
+  Nome:            R7: PA Comune ≤15.000ab → incentivo 100% (II.A isolamento)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-11-15
+  Data fine lavori:2026-11-01
+  Modalità accesso:diretto
+  Note:            PA con comune sotto 15k abitanti, II.A isolamento pareti. Verifica intensità massima 100% per PA/comuneSotto15k.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Piazza del Popolo 1, Piccolavilla (PI)
+  Categoria catastale:   B/4
+  Zona climatica:        Zona D
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     Sì
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     60 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Comune di Piccolavilla
+    tipo: PA
+    cf_piva: 80012345670
+    email: protocollo@piccolavilla.it
+    telefono: 051123456
+  SR (Responsabile):
+    denominazione: Comune di Piccolavilla
+    cf_piva: 80012345670
+    iban: IT60X0542811101000000996
+    pec: piccolavilla@pec.it
+  PROPRIETARIO:
+    denominazione: Comune di Piccolavilla
+    cf_piva: 80012345670
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Esterna
+    superficie_isolata_mq: 300
+    trasmittanza_ante: 1
+    trasmittanza_post: 0.23
+    costo_isolamento: 50000
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    miglioramento_ep_40: sì
+    ape_ante_post_disponibile: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  II.A | Isolamento pareti esterne 300mq | fornitura | 35000.00 €
+  II.A | Posa isolamento a cappotto | posa | 15000.00 €
+  ------------------------------
+  TOTALE: 50000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(50.000,00, 300,00 × 200,00) × 1,00 => 50.000,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 50.000,00 €
+    Netto GSE: 49.750,00 € (corrispettivo GSE: 250,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 50.000,00 = 50.000,00 €
+
+============================================================
+  PAGE BREAK — R10: Mandato incasso (non-PA) + atto assenso (prop≠richiedente) (CT30-P10)
+============================================================
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-P10
+  Nome:            R10: Mandato incasso (non-PA) + atto assenso (prop≠richiedente)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-12-15
+  Data fine lavori:2026-12-01
+  Modalità accesso:diretto
+  Note:            SR non-PA con mandato_incasso obbligatorio. Proprietario ≠ richiedente: atto_di_assenso obbligatorio.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Dante 22, Milano (MI)
+  Categoria catastale:   A/3
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     24 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Giuseppe Verdi
+    tipo: Privato residenziale
+    cf_piva: VRDGPP65B15F205N
+    email: giuseppe.verdi@email.it
+    telefono: 021234568
+  SR (Responsabile):
+    denominazione: Giuseppe Verdi
+    cf_piva: VRDGPP65B15F205N
+    iban: IT60X0542811101000000995
+    pec: giuseppe.verdi@pec.it
+  PROPRIETARIO:
+    denominazione: Maria Bianchi
+    cf_piva: BNCMRA70A41F205R
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    tipologia_pdc: aria/acqua
+    potenza_pdc_kw: 10
+    scop: 4.1
+    eta_s: 175
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    costo_pdc: 12000
+    sostituisce_esistente: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Fornitura PDC aria/acqua 10kW | fornitura | 8000.00 €
+  III.A | Posa PDC e collegamenti | posa | 4000.00 €
+  ------------------------------
+  TOTALE: 12000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 175,00 / 110,00 => 1,59
+      Calore totale prodotto stimato (Qu): Prated * Quf = 10,00 × 1700,00 => 17.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 17.000,00 × (1 - 1/4,10) × 1,59 => 20.449,00
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 20.449,00 × 0,15 × 1,00 => 3067,35 €
+    Risultato: I = k * Ei * Ci * CC = 3067,35 €
+    Netto GSE: 3036,68 € (corrispettivo GSE: 30,67 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,59 = 1,59
+    Calore totale prodotto stimato | Qu | 17.000,00 = 17.000,00
+    Energia termica incentivata | Ei | 20.449,00 = 20.449,00
+    Calcolo Incentivo Finale | I_tot | 3067,35 = 3067,35 €

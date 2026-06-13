@@ -1,0 +1,123 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T11
+  Nome:            Privato Residenziale - Sistema Ibrido III.B + Scaldacqua III.E
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test III.B ibrido/bivalente (k=1.25/1.00) e III.E con formula corretta (min(spesa*40%, massimale)). Soggetto privato residenziale, zona E, due interventi III.B + III.E.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via del Sole 15, Bergamo (BG)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     28 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Luigi Bianchi
+    tipo: Privato residenziale
+    cf_piva: BNCLGU75M15H501U
+    email: luigi.bianchi@email.it
+    telefono: 031234567
+  SR (Responsabile):
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU75M15H501U
+    iban: IT60X0542811101000000123456
+    pec: luigi.bianchi@pec.it
+  PROPRIETARIO:
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU75M15H501U
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.B
+    marca_pdc: Viessmann
+    modello_pdc: Vitocaldens 222-F
+    potenza_pdc_kw: 8
+    potenza_termica_nominale: 8
+    tipologia_pdc: aria/acqua
+    scop: 4
+    cop: 4.3
+    eta_s: 148
+    tipo_sistema: Ibrido parallelo
+    servizio_pdc: climatizzazione invernale e ACS
+    generatore_sostituito: Caldaia a gas 28kW
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    zona_assistita_a: no
+    zona_assistita_c: no
+    scheda_tecnica_pdc: sì
+    costo_ibrido: 15000
+    sostituisce_esistente: sì
+    potenza_caldaia_kw: 601
+    eta_s_caldaia: 89
+  III.E
+    marca_scaldacqua: Ariston
+    modello_scaldacqua: Nuos Evo 110
+    capacita_litri: 110
+    classe_energetica: A+
+    costo_scaldacqua: 2000
+    zona_assistita_a: no
+    zona_assistita_c: no
+    sostituisce_scaldacqua_esistente: sì
+    tipo_sostituito: Elettrico
+    cop_scaldacqua: 3.4
+
+PREVENTIVO
+----------------------------------------
+  III.B | Fornitura sistema ibrido Viessmann | fornitura | 10000.00 €
+  III.B | Posa e collegamenti | posa | 3500.00 €
+  III.B | Avviamento e collaudo | documentazione | 1500.00 €
+  III.E | Fornitura scaldacqua PDC Ariston | fornitura | 1500.00 €
+  III.E | Posa scaldacqua | posa | 500.00 €
+  ------------------------------
+  TOTALE: 17000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.B — Sistema ibrido/bivalente/add-on (gas + PDC)
+    Formula: I = k * Ei * Ci * CC
+    Risultato: I = k * Ei * Ci * CC = 0,00 €
+    Errori:
+      - III.B: η_s caldaia 89% inferiore al minimo 98% per potenza ≥400 kW (Manuale Analitico Sez.6).
+
+  III.E — Scaldacqua a pompa di calore
+    Formula: I = min(spesa * percentuale, incentivo_fisso_per_scaglione)
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa * percentuale, incentivo_fisso_per_scaglione) = min(2000,00 × 0,40, 700,00) => 700,00 €
+    Risultato: I = min(spesa * percentuale, incentivo_fisso_per_scaglione) = 700,00 €
+    Netto GSE: 693,00 € (corrispettivo GSE: 7,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.B
+    Nessun dettaglio disponibile.
+    Errori:
+      - III.B: η_s caldaia 89% inferiore al minimo 98% per potenza ≥400 kW (Manuale Analitico Sez.6).
+
+  Intervento III.E
+    Calcolo Incentivo Finale | I_tot | 700,00 = 700,00 €

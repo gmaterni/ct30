@@ -16,7 +16,7 @@ const {
   PROCEDURA_CONFIG, CATASTO
 } = normativa;
 
-const OUT_DIR = path.resolve(__dirname, "../tmp");
+const OUT_DIR = path.resolve(__dirname, "../dati_test");
 const SEP = "-".repeat(40);
 const EQL = "=".repeat(60);
 

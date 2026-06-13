@@ -1,0 +1,110 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-P05
+  Nome:            R5: II.B infissi + II.C schermature → abbinamento obbligatorio OK
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-06-15
+  Data fine lavori:2026-06-01
+  Modalità accesso:diretto
+  Note:            Privato residenziale con II.B infissi + II.C schermature solari. Verifica che II.C richieda II.B.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via dei Tigli 3, Bergamo (BG)
+  Categoria catastale:   A/7
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     20 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Luigi Bianchi
+    tipo: Privato residenziale
+    cf_piva: BNCLGU75B12F205N
+    email: luigi.bianchi@email.it
+    telefono: 031234567
+  SR (Responsabile):
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU75B12F205N
+    iban: IT60X0542811101000000998
+    pec: luigi.bianchi@pec.it
+  PROPRIETARIO:
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU75B12F205N
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.B
+    tipologia_serramento: finestra
+    superficie_infissi_mq: 25
+    trasmittanza_infissi_ante: 3.5
+    trasmittanza_infissi_post: 1.1
+    costo_infissi: 12000
+    valvole_termostatiche: già presenti
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+  II.C
+    tipo_schermatura: Schermature mobili
+    superficie_schermata_mq: 20
+    fattore_solare_g: 0.6
+    fattore_solare_g_post: 0.15
+    costo_schermatura: 5000
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  II.B | Fornitura infissi classe A+ 25mq | fornitura | 8000.00 €
+  II.B | Posa infissi e controtelai | posa | 4000.00 €
+  II.C | Fornitura schermature solari | fornitura | 3000.00 €
+  II.C | Posa schermature | posa | 2000.00 €
+  ------------------------------
+  TOTALE: 17000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.B — Sostituzione chiusure trasparenti/infissi
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(12.000,00, 25,00 × 800,00) × 0,64 => 7680,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 7680,00 €
+    Netto GSE: 7603,20 € (corrispettivo GSE: 76,80 €)
+    Erogazione: Unica soluzione
+
+  II.C — Schermature e ombreggiamento solare
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(5000,00, 20,00 × 250,00) × 0,64 => 3200,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 3200,00 €
+    Netto GSE: 3168,00 € (corrispettivo GSE: 32,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.B
+    Calcolo Incentivo Finale | I_tot | 7680,00 = 7680,00 €
+
+  Intervento II.C
+    Calcolo Incentivo Finale | I_tot | 3200,00 = 3200,00 €

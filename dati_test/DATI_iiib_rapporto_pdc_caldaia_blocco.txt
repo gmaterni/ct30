@@ -1,0 +1,97 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T28
+  Nome:            III.B Ibrido — Blocco rapporto PdC/caldaia >0.5
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test upgrade G: III.B ibrido factory made con rapporto PdC/caldaia >0.5 → blocco in canCalculate. Verifica che K=1.25 non venga applicato. Rapporto = 10kW/(10kW+10kW) = 0.50 = 50% (caso limite, non blocca).
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Roma 20, Verona (VR)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona E
+  Superficie utile mq:   110
+  Anno costruzione:      1998
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia a gas
+    Potenza termica:     24 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Paolo Neri
+    tipo: Privato residenziale
+    cf_piva: NREPLA82R15L400R
+    email: paolo.neri@email.it
+    telefono: 045 123456
+  SR (Responsabile):
+    denominazione: Paolo Neri
+    cf_piva: NREPLA82R15L400R
+    iban: IT60X0542811101000000123456
+    pec: paolo.neri@pec.it
+  PROPRIETARIO:
+    denominazione: Paolo Neri
+    cf_piva: NREPLA82R15L400R
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.B
+    tipo_sistema: Ibrido parallelo
+    potenza_pdc_kw: 10
+    potenza_caldaia_kw: 10
+    potenza_termica_nominale: 20
+    tipologia_pdc: aria/acqua
+    scop: 4.2
+    eta_s: 150
+    costo_ibrido: 14000
+    generatore_sostituito: Caldaia a gas 24kW
+    sostituisce_esistente: sì
+    made_in_eu: no
+    miglioramento_ep_40: no
+    zona_assistita_a: no
+    zona_assistita_c: no
+    scheda_tecnica_pdc: sì
+    eta_s_caldaia: 89
+
+PREVENTIVO
+----------------------------------------
+  III.B | Fornitura sistema ibrido 10kW PdC + 10kW caldaia | fornitura | 9000.00 €
+  III.B | Posa e collegamenti | posa | 3500.00 €
+  III.B | Documentazione e collaudo | documentazione | 1500.00 €
+  ------------------------------
+  TOTALE: 14000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.B — Sistema ibrido/bivalente/add-on (gas + PDC)
+    Formula: I = k * Ei * Ci * CC
+    Risultato: I = k * Ei * Ci * CC = 0,00 €
+    Errori:
+      - III.B: rapporto PdC/caldaia 1.00 supera il limite 0.5 per sistemi ibridi factory made (Manuale Analitico Sez.6).
+      - III.B: η_s caldaia 89% inferiore al minimo 90% per potenza <400 kW (Manuale Analitico Sez.6).
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.B
+    Nessun dettaglio disponibile.
+    Errori:
+      - III.B: rapporto PdC/caldaia 1.00 supera il limite 0.5 per sistemi ibridi factory made (Manuale Analitico Sez.6).
+      - III.B: η_s caldaia 89% inferiore al minimo 90% per potenza <400 kW (Manuale Analitico Sez.6).

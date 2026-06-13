@@ -1,0 +1,137 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T12
+  Nome:            Impresa Piccola - Isolamento II.A + PdC III.A con maggiorazione
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test Impresa piccola con multi-intervento II.A+III.A. Verifica: percentuale 30% (multi) + 20% (piccola impresa) = 50%, applicazione corretta maggiorazioni senza early return. Soggetto Impresa, territorio Zona E.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Roma 42, Bergamo (BG)
+  Categoria catastale:   A/10
+  Zona climatica:        Zona E
+  Superficie utile mq:   200
+  Anno costruzione:      1980
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     35 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Edil Green S.r.l.
+    tipo: Impresa
+    cf_piva: 04567891234
+    email: info@edilgreen.it
+    telefono: 0351234567
+  SR (Responsabile):
+    denominazione: Edil Green S.r.l.
+    cf_piva: 04567891234
+    iban: IT60X0542811101000000987654
+    pec: edilgreen@pec.it
+  PROPRIETARIO:
+    denominazione: Edil Green S.r.l.
+    cf_piva: 04567891234
+  DELEGATO:
+    nome: Arch. Francesco Neri
+    cf: NRIFNC80A01F205I
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Esterna
+    superficie_isolata_mq: 80
+    spessore_mm: 80
+    materiale: lana di roccia
+    lambda: 0.035
+    trasmittanza_ante: 0.8
+    trasmittanza_post: 0.28
+    miglioramento_ep_40: sì
+    requisiti_minimi: soddisfatti
+    costo: 12000
+    ufficio_tecnico_abilitato: true
+    costo_isolamento: 1500001
+    ape_ante_post_disponibile: sì
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+  III.A
+    marca_pdc: Daikin
+    modello_pdc: Altherma 3 R E HV
+    potenza_pdc_kw: 16
+    potenza_termica_nominale: 16
+    tipologia_pdc: aria/acqua
+    scop: 3.8
+    cop: 4.1
+    eta_s: 140
+    tipo_pdc: alta temperatura
+    servizio_pdc: climatizzazione invernale e ACS
+    generatore_sostituito: Caldaia a gas
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    zona_assistita_a: no
+    zona_assistita_c: no
+    costo: 22000
+    costo_pdc: 900001
+
+PREVENTIVO
+----------------------------------------
+  II.A | Cappotto termico pareti 80mq | fornitura | 8000.00 €
+  II.A | Posa cappotto termico | posa | 4000.00 €
+  III.A | Fornitura PdC Daikin Altherma 16kW | fornitura | 15000.00 €
+  III.A | Installazione PdC | posa | 5000.00 €
+  III.A | Smaltimento vecchia caldaia | altri | 1000.00 €
+  III.A | Collaudo e certificazione | documentazione | 1000.00 €
+  ------------------------------
+  TOTALE: 34000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(1.500.001,00, 80,00 × 200,00) × 0,63 => 10.000,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 10.000,00 €
+    Netto GSE: 9900,00 € (corrispettivo GSE: 100,00 €)
+    Erogazione: Unica soluzione
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 140,00 / 110,00 => 1,27
+      Calore totale prodotto stimato (Qu): Prated * Quf = 16,00 × 1700,00 => 27.200,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 27.200,00 × (1 - 1/3,80) × 1,27 => 25.508,13
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 25.508,13 × 0,15 × 1,00 => 3826,22 €
+    Risultato: I = k * Ei * Ci * CC = 3826,22 €
+    Netto GSE: 3787,96 € (corrispettivo GSE: 38,26 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 10.000,00 = 10.000,00 €
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,27 = 1,27
+    Calore totale prodotto stimato | Qu | 27.200,00 = 27.200,00
+    Energia termica incentivata | Ei | 25.508,13 = 25.508,13
+    Calcolo Incentivo Finale | I_tot | 3826,22 = 3826,22 €

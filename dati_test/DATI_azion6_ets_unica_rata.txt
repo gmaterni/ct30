@@ -1,0 +1,89 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T17
+  Nome:            Az#6 — ETS non econ unica rata sopra 15k
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test azione #6: ETS non economico con II.A sopra 15.000€. Deve mostrare unica rata (non rateizzata) perché PA/ETS hanno sempre soluzione unica.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Roma 15, Montebelluna (TV)
+  Categoria catastale:   B/1
+  Zona climatica:        Zona E
+  Superficie utile mq:   800
+  Anno costruzione:      1985
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     60 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Fondazione Casa Accoglienza ETS
+    tipo: ETS non economico
+    cf_piva: 90012345678
+    email: info@fondazionecasaaccoglienza.ets.it
+    telefono: +39 0423 654321
+  SR (Responsabile):
+    denominazione: Fondazione Casa Accoglienza ETS
+    cf_piva: 90012345678
+    iban: IT60X0542811101000000654321
+    pec: fondazionecasaaccoglienza@pec.ets.it
+  PROPRIETARIO:
+    denominazione: Fondazione Casa Accoglienza ETS
+    cf_piva: 90012345678
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Esterna
+    superficie_isolata_mq: 500
+    costo_isolamento: 50000
+    made_in_eu: no
+    riduzione_ep_10: no
+    zona_assistita_a: no
+    zona_assistita_c: no
+    trasmittanza_ante: 1.57
+    trasmittanza_post: 0.16
+    ape_ante_post_disponibile: sì
+
+PREVENTIVO
+----------------------------------------
+  II.A | Cappotto termico esterno 500mq | fornitura | 35000.00 €
+  II.A | Posa cappotto termico | posa | 12000.00 €
+  II.A | Documentazione tecnica e relazione | documentazione | 3000.00 €
+  ------------------------------
+  TOTALE: 50000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(50.000,00, 500,00 × 200,00) × 0,65 => 32.500,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 32.500,00 €
+    Netto GSE: 32.250,00 € (corrispettivo GSE: 250,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 32.500,00 = 32.500,00 €

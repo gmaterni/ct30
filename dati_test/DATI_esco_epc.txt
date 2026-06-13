@@ -1,0 +1,97 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-P06
+  Nome:            R6: SR=ESCO ≠ SA → contratto EPC obbligatorio (UNI CEI EN 17669)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-10-15
+  Data fine lavori:2026-10-01
+  Modalità accesso:diretto
+  Note:            SA=Comune, SR=ESCO (terza parte). ESCO non coincide con richiedente: EPC obbligatorio + certificazione 11352.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Piazza del Municipio 1, Solaria (SO)
+  Categoria catastale:   B/4
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     Sì
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Centrale termica
+    Potenza termica:     100 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Comune di Solaria
+    tipo: PA
+    cf_piva: 80012345678
+    email: protocollo@comunesolaria.it
+    telefono: 031234569
+  SR (Responsabile):
+    denominazione: ESCO GreenService S.p.A.
+    cf_piva: 09876543210
+    iban: IT60X0542811101000000997
+    pec: greenservice@pec.it
+  PROPRIETARIO:
+    denominazione: Comune di Solaria
+    cf_piva: 80012345678
+  DELEGATO:
+    nome: Arch. Anna Neri
+    cf: NRLNNA80A41F205M
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    tipologia_pdc: aria/acqua
+    potenza_pdc_kw: 60
+    scop: 4.8
+    eta_s: 190
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    costo_pdc: 45000
+    sostituisce_esistente: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Fornitura PDC aria/acqua 60kW | fornitura | 30000.00 €
+  III.A | Posa e adeguamento impianto | posa | 15000.00 €
+  ------------------------------
+  TOTALE: 45000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 190,00 / 110,00 => 1,73
+      Calore totale prodotto stimato (Qu): Prated * Quf = 60,00 × 1700,00 => 102.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 102.000,00 × (1 - 1/4,80) × 1,73 => 139.477,27
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 139.477,27 × 0,06 × 1,00 => 8368,64 €
+    Risultato: I = k * Ei * Ci * CC = 8368,64 €
+    Netto GSE: 8284,95 € (corrispettivo GSE: 83,69 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,73 = 1,73
+    Calore totale prodotto stimato | Qu | 102.000,00 = 102.000,00
+    Energia termica incentivata | Ei | 139.477,27 = 139.477,27
+    Calcolo Incentivo Finale | I_tot | 8368,64 = 8368,64 €

@@ -1,0 +1,138 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T02
+  Nome:            Test 02 - Impresa Grande PdC + FV
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Riqualificazione industriale con PdC 100kW e Fotovoltaico 50kW in Zona C. Verifica effetto incentivante, rate 5 anni, cross-rules II.H+III.A.
+  Rich. Preliminare: Sì (2026-01-15)
+  Primo impegno:     2026-02-01
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via delle Industrie 50, Napoli (NA)
+  Categoria catastale:   D/7
+  Zona climatica:        Zona C
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     150 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: TecnoIndustria S.p.A.
+    tipo: Privato terziario
+    cf_piva: 01234567890
+    email: info@tecnoindustria.it
+    telefono: 0811234567
+  SR (Responsabile):
+    denominazione: TecnoIndustria S.p.A.
+    cf_piva: 01234567890
+    iban: IT99P0123456789012345678901
+    pec: amministrazione@pec.tecnoindustria.it
+  PROPRIETARIO:
+    denominazione: TecnoIndustria S.p.A.
+    cf_piva: 01234567890
+  DELEGATO:
+    nome: Ing. Marco Verdi
+    cf: VRDMRA80A01H501U
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    marca_pdc: ThermoSys
+    modello_pdc: ThermoSys 100kW
+    potenza_pdc_kw: 100
+    potenza_elettrica_assorbita_kw: 22
+    tipologia_pdc: acqua/acqua
+    scop: 5.2
+    cop: 5.8
+    eta_s: 190
+    servizio_pdc: climatizzazione invernale e ACS
+    generatore_sostituito: Caldaia a gasolio 150kW
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+    scheda_tecnica_pdc: sì
+    costo_pdc: 85000
+    sostituisce_esistente: sì
+  II.H
+    marca_moduli: SolarTech
+    modello_moduli: ST-450Wp
+    potenza_fv_kw: 50
+    numero_moduli: 112
+    accumulo_presente: sì
+    capacita_accumulo_kwh: 20
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+    registro_enea: sì
+    ue_production: sì
+    same_section: sì
+    is_autoconsumo: sì
+    costo_fv: 65000
+    sostituzione_integrale: sì
+
+PREVENTIVO
+----------------------------------------
+  II.H | Fornitura moduli FV SolarTech 50kWp e inverter | fornitura | 38000.00 €
+  II.H | Sistema accumulo 20kWh | fornitura | 12000.00 €
+  II.H | Posa moduli, inverter e collegamenti | posa | 12000.00 €
+  II.H | Pratiche di connessione e documentazione impianto | documentazione | 3000.00 €
+  III.A | Fornitura pompa di calore ThermoSys 100kW acqua/acqua | fornitura | 55000.00 €
+  III.A | Posa, collegamenti idraulici e adeguamento impianto | posa | 20000.00 €
+  III.A | Documentazione tecnica e dichiarazione conformità | documentazione | 10000.00 €
+  ------------------------------
+  TOTALE: 150000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 190,00 / 110,00 => 1,73
+      Calore totale prodotto stimato (Qu): Prated * Quf = 100,00 × 1100,00 => 110.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 110.000,00 × (1 - 1/5,20) × 1,73 => 153.461,54
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 153.461,54 × 0,06 × 1,00 => 9207,69 €
+    Risultato: I = k * Ei * Ci * CC = 9207,69 €
+    Netto GSE: 9115,61 € (corrispettivo GSE: 92,08 €)
+    Erogazione: Unica soluzione
+
+  II.H — Fotovoltaico e accumulo abbinati a pompa di calore elettrica
+    Formula: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale
+    Risultato: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = 0,00 €
+    Errori:
+      - II.H: accumulo 20 kWh insufficiente per 50 kWp (min 0.5 kWh/kWp, ratio 0.40).
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,73 = 1,73
+    Calore totale prodotto stimato | Qu | 110.000,00 = 110.000,00
+    Energia termica incentivata | Ei | 153.461,54 = 153.461,54
+    Calcolo Incentivo Finale | I_tot | 9207,69 = 9207,69 €
+
+  Intervento II.H
+    Nessun dettaglio disponibile.
+    Errori:
+      - II.H: accumulo 20 kWh insufficiente per 50 kWp (min 0.5 kWh/kWp, ratio 0.40).

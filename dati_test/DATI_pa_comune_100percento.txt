@@ -1,0 +1,89 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-P07
+  Nome:            R7: PA Comune ≤15.000ab → incentivo 100% (II.A isolamento)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-11-15
+  Data fine lavori:2026-11-01
+  Modalità accesso:diretto
+  Note:            PA con comune sotto 15k abitanti, II.A isolamento pareti. Verifica intensità massima 100% per PA/comuneSotto15k.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Piazza del Popolo 1, Piccolavilla (PI)
+  Categoria catastale:   B/4
+  Zona climatica:        Zona D
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     Sì
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     60 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Comune di Piccolavilla
+    tipo: PA
+    cf_piva: 80012345670
+    email: protocollo@piccolavilla.it
+    telefono: 051123456
+  SR (Responsabile):
+    denominazione: Comune di Piccolavilla
+    cf_piva: 80012345670
+    iban: IT60X0542811101000000996
+    pec: piccolavilla@pec.it
+  PROPRIETARIO:
+    denominazione: Comune di Piccolavilla
+    cf_piva: 80012345670
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Esterna
+    superficie_isolata_mq: 300
+    trasmittanza_ante: 1
+    trasmittanza_post: 0.23
+    costo_isolamento: 50000
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    miglioramento_ep_40: sì
+    ape_ante_post_disponibile: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  II.A | Isolamento pareti esterne 300mq | fornitura | 35000.00 €
+  II.A | Posa isolamento a cappotto | posa | 15000.00 €
+  ------------------------------
+  TOTALE: 50000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(50.000,00, 300,00 × 200,00) × 1,00 => 50.000,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 50.000,00 €
+    Netto GSE: 49.750,00 € (corrispettivo GSE: 250,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 50.000,00 = 50.000,00 €

@@ -1,0 +1,91 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T29
+  Nome:            III.D Solar Cooling — Blocco DEC <8
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test upgrade J: III.D Solar Cooling con DEC=6 (<8) → blocco in canCalculate. Verifica che il blocco DEC<8 funzioni. Anche rapporto potenza_assorbita/potenza_frigorifera = 0.7 (gap 1.43, fuori range 2-2.75).
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Viale dei Giardini 15, Palermo (PA)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona B
+  Superficie utile mq:   100
+  Anno costruzione:      2000
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Condizionatori split
+    Potenza termica:     10 kW
+    Combustibile:        elettrico
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Giuseppe Verdi
+    tipo: Privato residenziale
+    cf_piva: VRDGPP65M15G273Q
+    email: giuseppe.verdi@email.it
+    telefono: 091 123456
+  SR (Responsabile):
+    denominazione: Giuseppe Verdi
+    cf_piva: VRDGPP65M15G273Q
+    iban: IT60X0542811101000000123456
+    pec: giuseppe.verdi@pec.it
+  PROPRIETARIO:
+    denominazione: Giuseppe Verdi
+    cf_piva: VRDGPP65M15G273Q
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.D
+    tipo_pannello_solare: Pannelli piani vetrati
+    superficie_lorda_mq: 20
+    certificazione_solar_keymark: sì
+    uso_solare: Solar Cooling
+    potenza_assorbitore_kw: 8
+    portata_aria_m3h: 3000
+    costo_solare_termico: 15000
+    produzione_termica_specifica_kwh_mq: 670
+    temperatura_funzionamento: 50°C (ACS)
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.D | Impianto solare termico con Solar Cooling 20mq | fornitura | 11000.00 €
+  III.D | Posa e installazione | posa | 3000.00 €
+  III.D | Documentazione e collaudo | documentazione | 1000.00 €
+  ------------------------------
+  TOTALE: 15000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.D — Solare termico
+    Formula: I = min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale)
+    Risultato: I = min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale) = 0,00 €
+    Errori:
+      - III.D Solar Cooling: DEC 6.67 m²/(1000 m³/h) inferiore al minimo 8 (Manuale Analitico Sez.6).
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.D
+    Nessun dettaglio disponibile.
+    Errori:
+      - III.D Solar Cooling: DEC 6.67 m²/(1000 m³/h) inferiore al minimo 8 (Manuale Analitico Sez.6).

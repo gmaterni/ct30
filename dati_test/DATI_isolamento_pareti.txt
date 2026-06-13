@@ -1,0 +1,90 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T03
+  Nome:            Test 03 - Terziario Isolamento Pareti
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Cappotto termico per edilizia terziaria in Zona F. Verifica calcolo II.A (percentuale spesa + Cmax) e vincoli soggetto su Titolo II.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Località Montagna 5, Belluno (BL)
+  Categoria catastale:   A/3
+  Zona climatica:        Zona F
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     18 kW
+    Combustibile:        gpl
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Luigi Bianchi
+    tipo: Privato terziario
+    cf_piva: BNCLGU75M15L219Z
+    email: luigi.bianchi@webmail.com
+    telefono: 0437123456
+  SR (Responsabile):
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU75M15L219Z
+    iban: IT11X0123456789012345678901
+    pec: luigi.bianchi@pec.it
+  PROPRIETARIO:
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU75M15L219Z
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Esterna
+    superficie_isolata_mq: 220
+    trasmittanza_ante: 1.2
+    trasmittanza_post: 0.18
+    costo_isolamento: 32000
+    ape_ante_post_disponibile: sì
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    zona_assistita_a: no
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  II.A | Fornitura materiale isolante (cappotto esterno 220mq) | fornitura | 12000.00 €
+  II.A | Posa cappotto termico e rasature | posa | 15000.00 €
+  II.A | Ponteggi e opere accessorie | opere_accessorie | 4000.00 €
+  II.A | Relazione tecnica e asseverazioni | documentazione | 1000.00 €
+  ------------------------------
+  TOTALE: 32000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(32.000,00, 220,00 × 200,00) × 0,60 => 19.200,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 19.200,00 €
+    Netto GSE: 19.008,00 € (corrispettivo GSE: 192,00 €)
+    Erogazione: 5 rate annuali
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 19.200,00 = 19.200,00 €

@@ -1,0 +1,86 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T25
+  Nome:            III.F Teleriscaldamento — 3 fasce potenza (fascia media 80kW)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Verifica III.F con potenza allaccio 80kW (fascia 50-150kW: cmax_kw=160, imax=15.000€). Soggetto privato terziario, zona E. Upgrade A.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Viale delle Industrie 5, Milano (MI)
+  Categoria catastale:   A/10
+  Zona climatica:        Zona E
+  Superficie utile mq:   800
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia centralizzata
+    Potenza termica:     120 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Studio Commerciale S.r.l.
+    tipo: Privato terziario
+    cf_piva: 01234560159
+    email: info@studiocommerciale.it
+    telefono: 02 1234567
+  SR (Responsabile):
+    denominazione: Studio Commerciale S.r.l.
+    cf_piva: 01234560159
+    iban: IT60X0542811101000000123456
+    pec: studiocommerciale@pec.it
+  PROPRIETARIO:
+    denominazione: Studio Commerciale S.r.l.
+    cf_piva: 01234560159
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.F
+    teleriscaldamento_efficiente: sì
+    potenza_allaccio_kw: 80
+    costo_allaccio: 20000
+    tipo_allaccio: singolo
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.F | Allaccio teleriscaldamento 80kW | fornitura | 15000.00 €
+  III.F | Posa e installazione contabilizzatori | posa | 4000.00 €
+  III.F | Documentazione e collaudo | documentazione | 1000.00 €
+  ------------------------------
+  TOTALE: 20000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.F — Allaccio a teleriscaldamento efficiente
+    Formula: I = min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = min(20.000,00, min(80,00 × 160,00, 15.000,00)) × 0,65 => 8320,00 €
+    Risultato: I = min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = 8320,00 €
+    Netto GSE: 8236,80 € (corrispettivo GSE: 83,20 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.F
+    Calcolo Incentivo Finale | I_tot | 8320,00 = 8320,00 €

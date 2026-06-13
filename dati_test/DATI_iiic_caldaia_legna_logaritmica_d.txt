@@ -1,0 +1,107 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T31
+  Nome:            III.C Caldaia legna — Formula logaritmica D (tipo generatore 4)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test upgrade B: III.C caldaia a legna tipo D (coeff_ci con ln) con potenza >25kW (formula lineare per tipo D). Verifica corretta selezione coeff_ci per tipo generatore 'Caldaia a legna'.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via dei Castagni 12, Aosta (AO)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona F
+  Superficie utile mq:   130
+  Anno costruzione:      1975
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia a gasolio
+    Potenza termica:     30 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Carlo Bianchi
+    tipo: Privato residenziale
+    cf_piva: BNCCRL70P15A326X
+    email: carlo.bianchi@email.it
+    telefono: 0165 123456
+  SR (Responsabile):
+    denominazione: Carlo Bianchi
+    cf_piva: BNCCRL70P15A326X
+    iban: IT60X0542811101000000123456
+    pec: carlo.bianchi@pec.it
+  PROPRIETARIO:
+    denominazione: Carlo Bianchi
+    cf_piva: BNCCRL70P15A326X
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.C
+    tipo_generatore: Caldaia
+    tipo_biomassa: Cippato
+    potenza_nominale_kw: 35
+    rendimento_stagionale: 80
+    classe_emissiva: 5 stelle
+    costo_biomassa: 15000
+    riduzione_pp: ≤20%
+    ore_funzionamento_annue: 1500
+    residenziale_terziario: residenziale
+    zona_assistita_a: no
+    zona_assistita_c: no
+    made_in_eu: sì
+    miglioramento_ep_40: no
+    sostituisce_esistente: sì
+    superficie_fabbricato_mq: 130
+    sigillo_camino: sì
+    zona_non_metanizzata: sì
+    in_centrale_tlr: sì
+
+PREVENTIVO
+----------------------------------------
+  III.C | Fornitura caldaia a legna 35kW | fornitura | 10000.00 €
+  III.C | Posa e installazione | posa | 3500.00 €
+  III.C | Documentazione e collaudo | documentazione | 1500.00 €
+  ------------------------------
+  TOTALE: 15000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.C — Generatori a biomassa (classe 5 stelle)
+    Formula: I = min(enza, min(spesa, potenza * cmax) * percentuale)
+    Passaggi:
+      Ore funzionamento annue (default: Q_uf per zona climatica) (hr): ore_funzionamento_annue || quf_zona || 1500 = 1500,00 || quf_zona || 1500 => 1500,00
+      Coefficiente ambientale Ce (Ce): (zona_non_metanizzata === 'sì' && tipo_biomassa === 'GPL') ? 1.5 : riduzione_pp === '>50%' ? 1.5 : riduzione_pp === '20-50%' ? 1.2 : 1.0 = (zona_non_metanizzata === 'sì' && tipo_biomassa === 'GPL') ? 1.5 : riduzione_pp === '>50%' ? 1.5 : riduzione_pp === '20-50%' ? 1.2 : 1.0 => 1,00
+      Energia termica incentivabile (enBase): tipo_generatore === 'Stufa' ? 3.35 * Math.log(potenza) * hr * Ci * Ce : potenza * hr * Ci * Ce = tipo_generatore === 'Stufa' ? 3.35 × Math.log(35,00) × 1500,00 × 0,06 × 1,00 : 35,00 × 1500,00 × 0,06 × 1,00 => 3150,00
+      Energia con eventuale riduzione TLR (enDopoTlr): in_centrale_tlr === 'sì' ? enBase * 0.80 : enBase = in_centrale_tlr === 'sì' ? 3150,00 × 0.80 : 3150,00 => 2520,00
+      Energia termica finale (enza): enDopoTlr = 2520,00 => 2520,00
+      Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(2520,00, min(15.000,00, 35,00 × 600,00) × 0,65) => 2520,00 €
+    Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 2520,00 €
+    Netto GSE: 2494,80 € (corrispettivo GSE: 25,20 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.C
+    Ore funzionamento annue (default: Q_uf per zona climatica) | hr | 1500,00 = 1500,00
+    Coefficiente ambientale Ce | Ce | 1,00 = 1,00
+    Energia termica incentivabile | enBase | 3150,00 = 3150,00
+    Energia con eventuale riduzione TLR | enDopoTlr | 2520,00 = 2520,00
+    Energia termica finale | enza | 2520,00 = 2520,00
+    Calcolo Incentivo Finale | I_tot | 2520,00 = 2520,00 €

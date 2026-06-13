@@ -1,5 +1,17 @@
 # UPGRADE LOG — Interventi effettuati
 
+## 2026-06-13 — Rinomina tmp/ → dati_test/ + rigenerazione DATI
+
+### Azioni
+1. Rinominata directory `tools/../tmp/` → `dati_test/` (output script genera_dati_test.mjs)
+2. Aggiornato `tools/genera_dati_test.mjs:19` — `OUT_DIR` da `"../tmp"` a `"../dati_test"`
+3. Aggiornato `bin/genera_dati_test.sh` — commenti ed echo da `./tmp/` a `./dati_test/`
+4. Rigenerati tutti i 39 file DATI + TUTTE_PRATICHE_DATI.txt (156.3 KB)
+5. Rimossi 8 file stale formato vecchio (P*.txt)
+6. Creato `docs/PROBLEMATICHE_CRITICHE.md` — 14 criticità normative vs implementazione
+7. Aggiornati riferimenti righe in `docs/PROBLEMATICHE.md` (13 fix su formula_engine.js)
+8. Aggiornato conteggio test 46→51 in `docs/PROBLEMATICHE.md`
+
 ## 2026-06-13 — Diagnostica e correzione test R7/R8
 
 ### Problema

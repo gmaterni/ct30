@@ -1,0 +1,89 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T22
+  Nome:            Az#12 — II.A Parete Interna con maggiorazione cmax 30%
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test azione #12: Impresa terziario con II.A Parete Interna. Verifica maggiorazione cmax 30% per parete interna e corretta applicazione limite di spesa.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Piazza della Repubblica 12, Bergamo (BG)
+  Categoria catastale:   D/7
+  Zona climatica:        Zona E
+  Superficie utile mq:   300
+  Anno costruzione:      1975
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     30 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: EdilFutura S.r.l.
+    tipo: Impresa
+    cf_piva: 05432109876
+    email: info@edilfutura.it
+    telefono: 035 567890
+  SR (Responsabile):
+    denominazione: EdilFutura S.r.l.
+    cf_piva: 05432109876
+    iban: IT40X0123456789012345678904
+    pec: edilfutura@pec.it
+  PROPRIETARIO:
+    denominazione: EdilFutura S.r.l.
+    cf_piva: 05432109876
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Interna
+    superficie_isolata_mq: 80
+    superficie_mq: 80
+    trasmittanza_ante: 1.2
+    trasmittanza_post: 0.28
+    costo_isolamento: 15000
+    made_in_eu: sì
+    ape_ante_post_disponibile: sì
+    riduzione_ep_10: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  II.A | Isolamento parete interna 80mq | fornitura | 10000.00 €
+  II.A | Posa isolamento parete interna | posa | 5000.00 €
+  ------------------------------
+  TOTALE: 15000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(15.000,00, 80,00 × 130,00) × 0,48 => 4940,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 4940,00 €
+    Netto GSE: 4890,60 € (corrispettivo GSE: 49,40 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 4940,00 = 4940,00 €

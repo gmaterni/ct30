@@ -1,0 +1,94 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-P10
+  Nome:            R10: Mandato incasso (non-PA) + atto assenso (prop≠richiedente)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-12-15
+  Data fine lavori:2026-12-01
+  Modalità accesso:diretto
+  Note:            SR non-PA con mandato_incasso obbligatorio. Proprietario ≠ richiedente: atto_di_assenso obbligatorio.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Dante 22, Milano (MI)
+  Categoria catastale:   A/3
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     24 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Giuseppe Verdi
+    tipo: Privato residenziale
+    cf_piva: VRDGPP65B15F205N
+    email: giuseppe.verdi@email.it
+    telefono: 021234568
+  SR (Responsabile):
+    denominazione: Giuseppe Verdi
+    cf_piva: VRDGPP65B15F205N
+    iban: IT60X0542811101000000995
+    pec: giuseppe.verdi@pec.it
+  PROPRIETARIO:
+    denominazione: Maria Bianchi
+    cf_piva: BNCMRA70A41F205R
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    tipologia_pdc: aria/acqua
+    potenza_pdc_kw: 10
+    scop: 4.1
+    eta_s: 175
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    costo_pdc: 12000
+    sostituisce_esistente: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Fornitura PDC aria/acqua 10kW | fornitura | 8000.00 €
+  III.A | Posa PDC e collegamenti | posa | 4000.00 €
+  ------------------------------
+  TOTALE: 12000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 175,00 / 110,00 => 1,59
+      Calore totale prodotto stimato (Qu): Prated * Quf = 10,00 × 1700,00 => 17.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 17.000,00 × (1 - 1/4,10) × 1,59 => 20.449,00
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 20.449,00 × 0,15 × 1,00 => 3067,35 €
+    Risultato: I = k * Ei * Ci * CC = 3067,35 €
+    Netto GSE: 3036,68 € (corrispettivo GSE: 30,67 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,59 = 1,59
+    Calore totale prodotto stimato | Qu | 17.000,00 = 17.000,00
+    Energia termica incentivata | Ei | 20.449,00 = 20.449,00
+    Calcolo Incentivo Finale | I_tot | 3067,35 = 3067,35 €

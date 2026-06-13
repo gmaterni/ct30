@@ -1,0 +1,224 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T07
+  Nome:            Privato Terziario - Pacchetto Full Electric (Massima Completezza)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Pratica completa con 5 interventi (PdC, FV, Ricarica, Building Automation, Scaldacqua PDC) per test esaustivo di tutti i moduli. Include doppio formato legacy/nuovo per immobile/edificio, soggetto/soggetti, interventi/interventiData. Soggetto terziario D/7, zona E.
+  Rich. Preliminare: Sì (2025-12-15)
+  Primo impegno:     2026-01-20
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via dell'Innovazione, 42 – Milano (MI)
+  Categoria catastale:   D/7
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Sistema Ibrido
+    Potenza termica:     150 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: GreenBuild S.r.l.
+    tipo: Privato terziario
+    cf_piva: 09876543210
+    email: amministrazione@greenbuild.it
+    telefono: +39 02 12345678
+  SR (Responsabile):
+    denominazione: Studio Tecnico Energetica S.r.l.
+    cf_piva: 03729150155
+    iban: IT60X0542811101000000123456
+    pec: studiogestione@pec.energetica.it
+  PROPRIETARIO:
+    denominazione: GreenBuild S.r.l.
+    cf_piva: 09876543210
+  DELEGATO:
+    nome: Ing. Marco Bianchi
+    cf: BNCMRC85M15H501U
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    marca_pdc: Clivet
+    modello_pdc: WSAN-XEE 120
+    potenza_pdc_kw: 80
+    potenza_elettrica_assorbita_kw: 22
+    tipologia_pdc: aria/acqua
+    scop: 4.2
+    cop: 4.5
+    eta_s: 145
+    servizio_pdc: Riscaldamento + ACS
+    generatore_sostituito: Caldaia a gas
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+    scheda_tecnica_pdc: disponibile
+    costo_pdc: 52000
+    sostituisce_esistente: sì
+    sostituzione_integrale: sì
+    classe_energetica_prodotto: A++
+    potenza_termica_nominale: 78.5
+    con_accumulo: sì
+    capacita_accumulo_pdc_l: 500
+  II.H
+    marca_moduli: SunPower
+    modello_moduli: MAX6-450
+    potenza_fv_kw: 60
+    numero_moduli: 135
+    accumulo_presente: sì
+    capacita_accumulo_kwh: 120
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+    registro_enea: sì
+    ue_production: sì
+    same_section: sì
+    is_autoconsumo: sì
+    costo_fv: 48000
+    sostituzione_integrale: sì
+    marca_inverter: Fronius
+    modello_inverter: Symo 50.0-3-S
+    potenza_inverter_kw: 50
+  II.G
+    costo_colonnina: 18000
+    numero_punti_ricarica: 6
+    potenza_ricarica_kw: 22
+    tipo_ricarica: Punto ricarica Trifase
+    is_smart: sì
+    modo_ricarica: modo 4
+    marca_colonnina: ABB
+    modello_colonnina: Terra AC 22
+    con_contabilizzazione: sì
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+  II.F
+    costo_building_automation: 15000
+    superficie_edificio_mq: 5000
+    classe_bac: B
+    funzioni_controllo: Gestione carichi, termoregolazione, monitoraggio
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+    nr_dispositivi: 35
+    contabilizzazione_calore: sì
+    sistema_centrale: sì
+  III.E
+    marca_scaldacqua: Ariston
+    modello_scaldacqua: Nuos Evo 200
+    capacita_litri: 200
+    classe_energetica: A+
+    costo_scaldacqua: 2500
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+    sostituisce_scaldacqua_esistente: sì
+    tipo_sostituito: Elettrico
+    cop_scaldacqua: 3.2
+
+PREVENTIVO
+----------------------------------------
+  II.F | Sistema BMS e building automation | fornitura | 10500.00 €
+  II.F | Configurazione e collaudo BMS | posa | 3500.00 €
+  II.F | Documentazione sistema building automation | documentazione | 1000.00 €
+  II.G | Colonnine ricarica ABB Terra AC 22 (6 pz) | fornitura | 72000.00 €
+  II.G | Posa colonnine e linee elettriche dedicate | posa | 4500.00 €
+  II.G | Opere civili accessorie | opere_accessorie | 1500.00 €
+  II.H | Moduli FV SunPower MAX6-450 (135 pz) | fornitura | 32000.00 €
+  II.H | Inverter Fronius Symo 50.0 e accumulo 120kWh | fornitura | 9500.00 €
+  II.H | Posa impianto FV e collegamenti elettrici | posa | 5500.00 €
+  II.H | Documentazione tecnica e pratiche GSE | documentazione | 1000.00 €
+  III.A | Pompa di calore Clivet WSAN-XEE 120 | fornitura | 38000.00 €
+  III.A | Posa in opera PDC e collegamenti idraulici | posa | 8500.00 €
+  III.A | Adeguamento terminali e sistema di regolazione | opere_accessorie | 4200.00 €
+  III.A | Pratiche e documentazione tecnica | documentazione | 1300.00 €
+  III.E | Scaldacqua PDC Ariston Nuos Evo 200 | fornitura | 1800.00 €
+  III.E | Posa scaldacqua PDC e collegamenti | posa | 500.00 €
+  III.E | Documentazione tecnica scaldacqua | documentazione | 200.00 €
+  ------------------------------
+  TOTALE: 195500.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 145,00 / 110,00 => 1,32
+      Calore totale prodotto stimato (Qu): Prated * Quf = 80,00 × 1700,00 => 136.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 136.000,00 × (1 - 1/4,20) × 1,32 => 136.588,74
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 136.588,74 × 0,06 × 1,00 => 8195,32 €
+    Risultato: I = k * Ei * Ci * CC = 8195,32 €
+    Netto GSE: 8113,37 € (corrispettivo GSE: 81,95 €)
+    Erogazione: Unica soluzione
+
+  II.H — Fotovoltaico e accumulo abbinati a pompa di calore elettrica
+    Formula: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = min(48.000,00, 60,00 × 1200,00 + 120,00 × 1000,00) × 0,52 => 24.960,00 €
+    Risultato: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = 24.960,00 €
+    Netto GSE: 24.710,40 € (corrispettivo GSE: 249,60 €)
+    Erogazione: 5 rate annuali
+
+  II.G — Infrastrutture ricarica veicoli elettrici
+    Formula: I = min(spesa, cmax_scelto) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, cmax_scelto) * percentuale = min(18.000,00, 50.400,00) × 0,53 => 9540,00 €
+    Risultato: I = min(spesa, cmax_scelto) * percentuale = 9540,00 €
+    Netto GSE: 9444,60 € (corrispettivo GSE: 95,40 €)
+    Erogazione: Unica soluzione
+
+  II.F — Building automation e gestione carichi
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(15.000,00, 5000,00 × 60,00) × 0,64 => 9600,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 9600,00 €
+    Netto GSE: 9504,00 € (corrispettivo GSE: 96,00 €)
+    Erogazione: Unica soluzione
+
+  III.E — Scaldacqua a pompa di calore
+    Formula: I = min(spesa * percentuale, incentivo_fisso_per_scaglione)
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa * percentuale, incentivo_fisso_per_scaglione) = min(2500,00 × 0,60, 1500,00) => 1500,00 €
+    Risultato: I = min(spesa * percentuale, incentivo_fisso_per_scaglione) = 1500,00 €
+    Netto GSE: 1485,00 € (corrispettivo GSE: 15,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,32 = 1,32
+    Calore totale prodotto stimato | Qu | 136.000,00 = 136.000,00
+    Energia termica incentivata | Ei | 136.588,74 = 136.588,74
+    Calcolo Incentivo Finale | I_tot | 8195,32 = 8195,32 €
+
+  Intervento II.H
+    Calcolo Incentivo Finale | I_tot | 24.960,00 = 24.960,00 €
+
+  Intervento II.G
+    Calcolo Incentivo Finale | I_tot | 9540,00 = 9540,00 €
+
+  Intervento II.F
+    Calcolo Incentivo Finale | I_tot | 9600,00 = 9600,00 €
+
+  Intervento III.E
+    Calcolo Incentivo Finale | I_tot | 1500,00 = 1500,00 €

@@ -1,0 +1,119 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-P04
+  Nome:            R4: III.A elettrica pura + II.H FV → pairing obbligatorio OK
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-08-15
+  Data fine lavori:2026-08-01
+  Modalità accesso:diretto
+  Note:            PDC aria/acqua elettrica con sostituzione integrale + FV 10kWp. Verifica che II.H sia trainato da III.A elettrico.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via del Sole 5, Bologna (BO)
+  Categoria catastale:   D/1
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     80 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Azienda Verde S.r.l.
+    tipo: Privato terziario
+    cf_piva: 01234567892
+    email: info@aziendaverde.it
+    telefono: 0519876543
+  SR (Responsabile):
+    denominazione: Azienda Verde S.r.l.
+    cf_piva: 01234567892
+    iban: IT60X0542811101000000999
+    pec: aziendaverde@pec.it
+  PROPRIETARIO:
+    denominazione: Azienda Verde S.r.l.
+    cf_piva: 01234567892
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    tipologia_pdc: aria/acqua
+    potenza_pdc_kw: 30
+    scop: 4.5
+    eta_s: 185
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    costo_pdc: 25000
+    sostituisce_esistente: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+  II.H
+    potenza_fv_kw: 10
+    is_autoconsumo: sì
+    made_in_eu: sì
+    accumulo_presente: sì
+    capacita_accumulo_kwh: 10
+    costo_fv: 15000
+    registro_enea: sì
+    ue_production: sì
+    same_section: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  II.H | Fornitura FV 10kWp + accumulo 10kWh | fornitura | 10000.00 €
+  II.H | Posa moduli FV e inverter | posa | 5000.00 €
+  III.A | Fornitura PDC aria/acqua 30kW | fornitura | 18000.00 €
+  III.A | Posa PDC | posa | 7000.00 €
+  ------------------------------
+  TOTALE: 40000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 185,00 / 110,00 => 1,68
+      Calore totale prodotto stimato (Qu): Prated * Quf = 30,00 × 1700,00 => 51.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 51.000,00 × (1 - 1/4,50) × 1,68 => 66.712,12
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 66.712,12 × 0,15 × 1,00 => 10.006,82 €
+    Risultato: I = k * Ei * Ci * CC = 10.006,82 €
+    Netto GSE: 9906,75 € (corrispettivo GSE: 100,07 €)
+    Erogazione: Unica soluzione
+
+  II.H — Fotovoltaico e accumulo abbinati a pompa di calore elettrica
+    Formula: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = min(15.000,00, 10,00 × 1500,00 + 10,00 × 1000,00) × 0,52 => 7800,00 €
+    Risultato: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = 7800,00 €
+    Netto GSE: 7722,00 € (corrispettivo GSE: 78,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,68 = 1,68
+    Calore totale prodotto stimato | Qu | 51.000,00 = 51.000,00
+    Energia termica incentivata | Ei | 66.712,12 = 66.712,12
+    Calcolo Incentivo Finale | I_tot | 10.006,82 = 10.006,82 €
+
+  Intervento II.H
+    Calcolo Incentivo Finale | I_tot | 7800,00 = 7800,00 €

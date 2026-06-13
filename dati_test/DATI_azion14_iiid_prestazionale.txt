@@ -1,0 +1,91 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T24
+  Nome:            III.D Solare termico — formula prestazionale Ci*Qu*Sl
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Verifica che III.D calcoli con formula prestazionale min(Ci*Qu*Sl, percentuale_spesa). Pannelli piani vetrati 30mq, zona D, privato residenziale.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Verdi 10, Roma (RM)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona D
+  Superficie utile mq:   120
+  Anno costruzione:      1990
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia tradizionale
+    Potenza termica:     24 kW
+    Combustibile:        Gas naturale
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Luigi Bianchi
+    tipo: Privato residenziale
+    cf_piva: BNCLGU85M15H501F
+    email: luigi.bianchi@email.it
+    telefono: 06 1234567
+  SR (Responsabile):
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU85M15H501F
+    iban: IT60X0542811101000000123456
+    pec: luigi.bianchi@pec.it
+  PROPRIETARIO:
+    denominazione: Luigi Bianchi
+    cf_piva: BNCLGU85M15H501F
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.D
+    tipo_pannello_solare: Pannelli piani vetrati
+    superficie_lorda_mq: 30
+    certificazione_solar_keymark: sì
+    produzione_termica_specifica_kwh_mq: 670
+    costo_solare_termico: 18000
+    temperatura_funzionamento: 50°C (ACS)
+    uso_solare: ACS
+    potenza_assorbitore_kw: 151
+    portata_aria_m3h: 30070
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.D | Pannelli solari piani vetrati 30mq | fornitura | 12000.00 €
+  III.D | Posa e installazione impianto solare | posa | 4500.00 €
+  III.D | Documentazione e collaudo | documentazione | 1500.00 €
+  ------------------------------
+  TOTALE: 18000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.D — Solare termico
+    Formula: I = min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale)
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale) = min(0,32 × 670,00 × 30,00, min(18.000,00, 30,00 × 550,00) × 0,65) => 6432,00 €
+    Risultato: I = min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale) = 6432,00 €
+    Netto GSE: 6367,68 € (corrispettivo GSE: 64,32 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.D
+    Calcolo Incentivo Finale | I_tot | 6432,00 = 6432,00 €

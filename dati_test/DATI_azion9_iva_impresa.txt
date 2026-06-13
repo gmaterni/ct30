@@ -1,0 +1,92 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T19
+  Nome:            Az#9 — IVA non ammissibile per Impresa
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test azione #9: Impresa con III.A, IVA specificata. L'IVA deve essere sottratta dalla spesa prima del calcolo incentivo.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Roma 1, Milano (MI)
+  Categoria catastale:   D/7
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     50 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: EdilCostruzioni Srl
+    tipo: Impresa
+    cf_piva: 01234560157
+    email: info@edilcostruzioni.it
+    telefono: 02 1234567
+  SR (Responsabile):
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+    iban: IT40X0123456789012345678901
+    pec: mario.rossi@pec.it
+  PROPRIETARIO:
+    denominazione: EdilCostruzioni Srl
+    cf_piva: 01234560157
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    potenza_pdc_kw: 10
+    tipologia_pdc: aria/acqua
+    scop: 4.5
+    eta_s: 140
+    made_in_eu: no
+    miglioramento_ep_40: sì
+    costo_pdc: 900001
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Pompa di calore | fornitura | 15000.00 €
+  ------------------------------
+  TOTALE: 15000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 140,00 / 110,00 => 1,27
+      Calore totale prodotto stimato (Qu): Prated * Quf = 10,00 × 1700,00 => 17.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 17.000,00 × (1 - 1/4,50) × 1,27 => 16.828,28
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.828,28 × 0,15 × 1,00 => 2524,24 €
+    Risultato: I = k * Ei * Ci * CC = 2524,24 €
+    Netto GSE: 2499,00 € (corrispettivo GSE: 25,24 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,27 = 1,27
+    Calore totale prodotto stimato | Qu | 17.000,00 = 17.000,00
+    Energia termica incentivata | Ei | 16.828,28 = 16.828,28
+    Calcolo Incentivo Finale | I_tot | 2524,24 = 2524,24 €

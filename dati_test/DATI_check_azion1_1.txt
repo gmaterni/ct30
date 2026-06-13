@@ -1,0 +1,99 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T14
+  Nome:            check_azion3_1 — PA comune <15k III.A 100%
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Pratica di test per validare i flag PA comune<15k e scuola/ospedale. SA: Pubblica Amministrazione, comune sotto 15.000 ab., III.A in Zona E. L'incentivo deve essere calcolato al 100%.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Piazza del Comune 1, Montebelluna (TV)
+  Categoria catastale:   B/1
+  Zona climatica:        Zona E
+  Superficie utile mq:   800
+  Anno costruzione:      1985
+  Comune <15.000 ab:     Sì
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     60 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Comune di Montebelluna
+    tipo: Pubblica Amministrazione
+    cf_piva: 80012345678
+    email: protocollo@comune.montebelluna.it
+    telefono: +39 0423 123456
+  SR (Responsabile):
+    denominazione: Comune di Montebelluna
+    cf_piva: 80012345678
+    iban: IT60X0542811101000000123456
+    pec: protocollo@pec.comune.montebelluna.it
+  PROPRIETARIO:
+    denominazione: Comune di Montebelluna
+    cf_piva: 80012345678
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    potenza_pdc_kw: 60
+    potenza_elettrica_assorbita_kw: 15
+    tipologia_pdc: aria/acqua
+    scop: 4
+    eta_s: 140
+    servizio_pdc: Riscaldamento + ACS
+    generatore_sostituito: Caldaia a gasolio 60kW
+    made_in_eu: no
+    miglioramento_ep_40: no
+    zona_assistita_a: no
+    zona_assistita_c: no
+    costo_pdc: 35000
+    sostituisce_esistente: sì
+    sostituzione_integrale: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Pompa di calore Clivet WSAN-XEE 60 | fornitura | 25000.00 €
+  III.A | Posa in opera PDC e collegamenti | posa | 7000.00 €
+  III.A | Documentazione tecnica e conformità | documentazione | 3000.00 €
+  ------------------------------
+  TOTALE: 35000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 140,00 / 110,00 => 1,27
+      Calore totale prodotto stimato (Qu): Prated * Quf = 60,00 × 1700,00 => 102.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 102.000,00 × (1 - 1/4,00) × 1,27 => 97.363,64
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 97.363,64 × 0,06 × 1,00 => 5841,82 €
+    Risultato: I = k * Ei * Ci * CC = 5841,82 €
+    Netto GSE: 5783,40 € (corrispettivo GSE: 58,42 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,27 = 1,27
+    Calore totale prodotto stimato | Qu | 102.000,00 = 102.000,00
+    Energia termica incentivata | Ei | 97.363,64 = 97.363,64
+    Calcolo Incentivo Finale | I_tot | 5841,82 = 5841,82 €

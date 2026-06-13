@@ -1,0 +1,112 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T09
+  Nome:            Privato - Infissi + Schermature Solari
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Sostituzione infissi (II.B) con schermature solari (II.C) per privato residenziale. Verifica cross-rule II.C deve essere abbinato a II.B, premialità Made in EU per Titolo II.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Dante Alighieri 22, Bologna (BO)
+  Categoria catastale:   A/3
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     35 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Giuseppe Verdi
+    tipo: Privato residenziale
+    cf_piva: VRDGPP75R15F205X
+    email: giuseppe.verdi@email.it
+    telefono: 051 9876543
+  SR (Responsabile):
+    denominazione: Giuseppe Verdi
+    cf_piva: VRDGPP75R15F205X
+    iban: IT40X0123456789012345678901
+    pec: giuseppe.verdi@pec.it
+  PROPRIETARIO:
+    denominazione: Giuseppe Verdi
+    cf_piva: VRDGPP75R15F205X
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.B
+    tipologia_serramento: finestra
+    superficie_infissi_mq: 28
+    trasmittanza_infissi_ante: 3.2
+    trasmittanza_infissi_post: 1.1
+    costo_infissi: 21000
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+    valvole_termostatiche: già presenti
+  II.C
+    tipo_schermatura: Schermature mobili
+    superficie_schermata_mq: 20
+    fattore_solare_g: 0.65
+    fattore_solare_g_post: 0.15
+    costo_schermatura: 6500
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+
+PREVENTIVO
+----------------------------------------
+  II.B | Fornitura infissi classe A+ 28mq | fornitura | 14000.00 €
+  II.B | Posa infissi e smaltimento vecchi serramenti | posa | 5500.00 €
+  II.B | Documentazione tecnica infissi | documentazione | 1500.00 €
+  II.C | Fornitura schermature solari mobili 20mq | fornitura | 4200.00 €
+  II.C | Posa schermature solari | posa | 1800.00 €
+  II.C | Documentazione tecnica schermature | documentazione | 500.00 €
+  ------------------------------
+  TOTALE: 27500.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.B — Sostituzione chiusure trasparenti/infissi
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(21.000,00, 28,00 × 800,00) × 0,59 => 12.390,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 12.390,00 €
+    Netto GSE: 12.266,10 € (corrispettivo GSE: 123,90 €)
+    Erogazione: Unica soluzione
+
+  II.C — Schermature e ombreggiamento solare
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(6500,00, 20,00 × 250,00) × 0,59 => 2950,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 2950,00 €
+    Netto GSE: 2920,50 € (corrispettivo GSE: 29,50 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.B
+    Calcolo Incentivo Finale | I_tot | 12.390,00 = 12.390,00 €
+
+  Intervento II.C
+    Calcolo Incentivo Finale | I_tot | 2950,00 = 2950,00 €

@@ -1,0 +1,92 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T18
+  Nome:            Az#7 — Made in EU esteso a III.A
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test azione #7: made_in_eu ora disponibile per tutti gli interventi (II.* e III.*). III.A con campo made_in_eu in scheda tecnica.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Dante Alighieri 22, Bologna (BO)
+  Categoria catastale:   A/3
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     35 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Mario Rossi
+    tipo: Privato residenziale
+    cf_piva: RSSMRA80A01H501U
+    email: mario.rossi@email.it
+    telefono: 051 1234567
+  SR (Responsabile):
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+    iban: IT40X0123456789012345678901
+    pec: mario.rossi@pec.it
+  PROPRIETARIO:
+    denominazione: Mario Rossi
+    cf_piva: RSSMRA80A01H501U
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    potenza_pdc_kw: 10
+    tipologia_pdc: aria/acqua
+    scop: 4.5
+    eta_s: 140
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    costo_pdc: 900001
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Pompa di calore | fornitura | 12000.00 €
+  ------------------------------
+  TOTALE: 12000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 140,00 / 110,00 => 1,27
+      Calore totale prodotto stimato (Qu): Prated * Quf = 10,00 × 1700,00 => 17.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 17.000,00 × (1 - 1/4,50) × 1,27 => 16.828,28
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.828,28 × 0,15 × 1,00 => 2524,24 €
+    Risultato: I = k * Ei * Ci * CC = 2524,24 €
+    Netto GSE: 2499,00 € (corrispettivo GSE: 25,24 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,27 = 1,27
+    Calore totale prodotto stimato | Qu | 17.000,00 = 17.000,00
+    Energia termica incentivata | Ei | 16.828,28 = 16.828,28
+    Calcolo Incentivo Finale | I_tot | 2524,24 = 2524,24 €

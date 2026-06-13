@@ -1,0 +1,89 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-P03
+  Nome:            R3: ETS non economico → assimilato PA (II.A isolamento 100%)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-09-15
+  Data fine lavori:2026-09-01
+  Modalità accesso:diretto
+  Note:            ETS non economico con II.A isolamento pareti. Verifica intensità 100% per isPAorETS.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Viale della Sostenibilità 20, Bologna (BO)
+  Categoria catastale:   A/10
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     50 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Fondazione Green Future ETS
+    tipo: ETS non economico
+    cf_piva: 01234567891
+    email: info@fondazionegreenfuture.it
+    telefono: 021234567
+  SR (Responsabile):
+    denominazione: Fondazione Green Future ETS
+    cf_piva: 01234567891
+    iban: IT60X0542811101000000123456
+    pec: fondazionegreenfuture@pec.it
+  PROPRIETARIO:
+    denominazione: Fondazione Green Future ETS
+    cf_piva: 01234567891
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Esterna
+    superficie_isolata_mq: 200
+    trasmittanza_ante: 1.2
+    trasmittanza_post: 0.25
+    costo_isolamento: 30000
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    miglioramento_ep_40: sì
+    ape_ante_post_disponibile: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  II.A | Isolamento pareti esterne 200mq | fornitura | 20000.00 €
+  II.A | Posa isolamento a cappotto | posa | 10000.00 €
+  ------------------------------
+  TOTALE: 30000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(30.000,00, 200,00 × 200,00) × 1,00 => 30.000,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 30.000,00 €
+    Netto GSE: 29.750,00 € (corrispettivo GSE: 250,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 30.000,00 = 30.000,00 €

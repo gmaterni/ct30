@@ -1,0 +1,131 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T08
+  Nome:            PA Comune ≤15k - Isolamento + PdC
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Comune sotto 15.000 abitanti (PA) con isolamento pareti (II.A) e pompa di calore (III.A). Verifica intensità 100% per PA comuni ≤15k, accesso diretto post-intervento, soggetto PA.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Piazza Grande 1, Montepulciano (SI)
+  Categoria catastale:   B/1
+  Zona climatica:        Zona E
+  Superficie utile mq:   800
+  Anno costruzione:      1970
+  Comune <15.000 ab:     Sì
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     100 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Comune di Montepulciano
+    tipo: Pubblica Amministrazione
+    cf_piva: 81002170522
+    email: protocollo@comune.montepulciano.si.it
+    telefono: 0578 717111
+  SR (Responsabile):
+    denominazione: Comune di Montepulciano
+    cf_piva: 81002170522
+    iban: IT28X0760101000000012345678
+    pec: comune.montepulciano@pec.it
+  PROPRIETARIO:
+    denominazione: Comune di Montepulciano
+    cf_piva: 81002170522
+  DELEGATO:
+    nome: Geom. Luca Bianchi
+    cf: BNCLCU75M22G567X
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.A
+    tipo_superficie_opaca: Parete Esterna
+    superficie_isolata_mq: 450
+    trasmittanza_ante: 0.92
+    trasmittanza_post: 0.26
+    costo_isolamento: 72000
+    ape_ante_post_disponibile: sì
+    made_in_eu: sì
+    riduzione_ep_10: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+  III.A
+    marca_pdc: Aermec
+    modello_pdc: ANL 060 H
+    potenza_pdc_kw: 60
+    potenza_elettrica_assorbita_kw: 14
+    tipologia_pdc: aria/acqua
+    scop: 4
+    cop: 4.3
+    eta_s: 152
+    servizio_pdc: climatizzazione invernale e ACS
+    generatore_sostituito: Caldaia a metano 100kW
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+    scheda_tecnica_pdc: sì
+    costo_pdc: 48000
+    sostituisce_esistente: sì
+
+PREVENTIVO
+----------------------------------------
+  II.A | Fornitura pannelli isolanti cappotto esterno 450mq | fornitura | 38000.00 €
+  II.A | Posa cappotto esterno con ponteggi | posa | 28000.00 €
+  II.A | Relazione tecnica e documentazione | documentazione | 6000.00 €
+  III.A | Fornitura PDC Aermec ANL 060 H 60kW | fornitura | 32000.00 €
+  III.A | Posa PDC e collegamenti impianto | posa | 11000.00 €
+  III.A | Smaltimento caldaia esistente | opere_accessorie | 2000.00 €
+  III.A | Pratiche e documentazione tecnica PDC | documentazione | 3000.00 €
+  ------------------------------
+  TOTALE: 120000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.A — Isolamento termico superfici opache
+    Formula: I = min(spesa, superficie * cmax) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(72.000,00, 450,00 × 200,00) × 1,00 => 72.000,00 €
+    Risultato: I = min(spesa, superficie * cmax) * percentuale = 72.000,00 €
+    Netto GSE: 71.750,00 € (corrispettivo GSE: 250,00 €)
+    Erogazione: Unica soluzione
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 152,00 / 110,00 => 1,38
+      Calore totale prodotto stimato (Qu): Prated * Quf = 60,00 × 1700,00 => 102.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 102.000,00 × (1 - 1/4,00) × 1,38 => 105.709,09
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 105.709,09 × 0,06 × 1,00 => 6342,55 €
+    Risultato: I = k * Ei * Ci * CC = 6342,55 €
+    Netto GSE: 6279,12 € (corrispettivo GSE: 63,43 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.A
+    Calcolo Incentivo Finale | I_tot | 72.000,00 = 72.000,00 €
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,38 = 1,38
+    Calore totale prodotto stimato | Qu | 102.000,00 = 102.000,00
+    Energia termica incentivata | Ei | 105.709,09 = 105.709,09
+    Calcolo Incentivo Finale | I_tot | 6342,55 = 6342,55 €

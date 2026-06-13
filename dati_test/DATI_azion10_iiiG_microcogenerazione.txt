@@ -1,0 +1,116 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T20
+  Nome:            Az#10 — Impresa con III.G Microcogenerazione + III.A
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test azione #10: Impresa terziario con III.G microcogenerazione + III.A pompa di calore. Verifica multi-intervento III.A+III.G e gestione IVA su entrambi.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Torino 25, Milano (MI)
+  Categoria catastale:   D/7
+  Zona climatica:        Zona E
+  Superficie utile mq:   500
+  Anno costruzione:      1985
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       F
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     80 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: EdilEnergia S.p.A.
+    tipo: Impresa
+    cf_piva: 08765430158
+    email: info@edilenergia.it
+    telefono: 02 9876543
+  SR (Responsabile):
+    denominazione: Luigi Verdi
+    cf_piva: VRDLGU85M15F205X
+    iban: IT40X0123456789012345678902
+    pec: luigi.verdi@pec.it
+  PROPRIETARIO:
+    denominazione: EdilEnergia S.p.A.
+    cf_piva: 08765430158
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.A
+    potenza_pdc_kw: 10
+    tipologia_pdc: aria/acqua
+    scop: 4.5
+    eta_s: 140
+    made_in_eu: no
+    miglioramento_ep_40: sì
+    costo_pdc: 900001
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+  III.G
+    potenza_elettrica: 20
+    potenza_termica: 50
+    pes: 18
+    rendimento_elettrico: 0.35
+    rendimento_termico: 0.5
+    tipo_alimentazione: gas naturale
+    made_in_eu: no
+    costo_intervento: 300001
+    miglioramento_ep_40: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.A | Pompa di calore 10kW aria/acqua | fornitura | 15000.00 €
+  III.G | Microcogeneratore 20kWe | fornitura | 25000.00 €
+  ------------------------------
+  TOTALE: 40000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 140,00 / 110,00 => 1,27
+      Calore totale prodotto stimato (Qu): Prated * Quf = 10,00 × 1700,00 => 17.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 17.000,00 × (1 - 1/4,50) × 1,27 => 16.828,28
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.828,28 × 0,15 × 1,00 => 2524,24 €
+    Risultato: I = k * Ei * Ci * CC = 2524,24 €
+    Netto GSE: 2499,00 € (corrispettivo GSE: 25,24 €)
+    Erogazione: Unica soluzione
+
+  III.G — Microcogenerazione (≤50 kWe)
+    Formula: I = min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale = min(300.001,00, min(20,00 × 5000,00, 100.000,00)) × 0,65 => 65.000,00 €
+    Risultato: I = min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale = 65.000,00 €
+    Netto GSE: 64.750,00 € (corrispettivo GSE: 250,00 €)
+    Erogazione: 5 rate annuali
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,27 = 1,27
+    Calore totale prodotto stimato | Qu | 17.000,00 = 17.000,00
+    Energia termica incentivata | Ei | 16.828,28 = 16.828,28
+    Calcolo Incentivo Finale | I_tot | 2524,24 = 2524,24 €
+
+  Intervento III.G
+    Calcolo Incentivo Finale | I_tot | 65.000,00 = 65.000,00 €

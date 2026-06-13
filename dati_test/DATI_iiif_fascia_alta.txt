@@ -1,0 +1,86 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T30
+  Nome:            III.F Teleriscaldamento — Fascia alta 200kW (>150kW)
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Test upgrade A: III.F con potenza allaccio 200kW (fascia >150kW: cmax_kw=130, imax=20.000€). Soggetto PA condominio, zona E.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Via Dante 30, Torino (TO)
+  Categoria catastale:   A/3
+  Zona climatica:        Zona E
+  Superficie utile mq:   2000
+  Anno costruzione:      1970
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       G
+  Impianto Esistente:
+    Tipo:                Caldaia centralizzata
+    Potenza termica:     250 kW
+    Combustibile:        gasolio
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Condominio Dante 30
+    tipo: Pubblica Amministrazione
+    cf_piva: 80012330010
+    email: amministrazione@condominiodante30.it
+    telefono: 011 123456
+  SR (Responsabile):
+    denominazione: Condominio Dante 30
+    cf_piva: 80012330010
+    iban: IT60X0542811101000000123456
+    pec: condominiodante30@pec.it
+  PROPRIETARIO:
+    denominazione: Condominio Dante 30
+    cf_piva: 80012330010
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  III.F
+    teleriscaldamento_efficiente: sì
+    potenza_allaccio_kw: 200
+    costo_allaccio: 35000
+    tipo_allaccio: condominiale
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: sì
+
+PREVENTIVO
+----------------------------------------
+  III.F | Allaccio teleriscaldamento 200kW | fornitura | 25000.00 €
+  III.F | Posa e installazione scambiatore | posa | 7000.00 €
+  III.F | Documentazione e collaudo | documentazione | 3000.00 €
+  ------------------------------
+  TOTALE: 35000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  III.F — Allaccio a teleriscaldamento efficiente
+    Formula: I = min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = min(35.000,00, min(200,00 × 130,00, 30.000,00)) × 0,85 => 22.100,00 €
+    Risultato: I = min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = 22.100,00 €
+    Netto GSE: 21.879,00 € (corrispettivo GSE: 221,00 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento III.F
+    Calcolo Incentivo Finale | I_tot | 22.100,00 = 22.100,00 €

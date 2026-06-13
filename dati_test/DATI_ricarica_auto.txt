@@ -1,0 +1,129 @@
+============================================================
+  REPORT DETTAGLIATO PRATICA
+============================================================
+
+DATI GENERALI
+----------------------------------------
+  Codice:          CT30-T04
+  Nome:            Test 04 - Terziario Ricarica Veicoli
+  Data inserimento:2026-06-13
+  Data richiesta:  2026-05-15
+  Data fine lavori:2026-05-01
+  Modalità accesso:diretto
+  Note:            Installazione colonnine di ricarica per parcheggio terziario + PdC centralizzata 120kW in Zona E. Verifica II.G + III.A, cross-rules.
+
+EDIFICIO
+----------------------------------------
+  Indirizzo:             Piazza della Libertà 1, Torino (TO)
+  Categoria catastale:   A/2
+  Zona climatica:        Zona E
+  Superficie utile mq:   120
+  Anno costruzione:      1995
+  Comune <15.000 ab:     No
+  Scuola/ospedale:       No
+  APE classe ante:       E
+  Impianto Esistente:
+    Tipo:                Caldaia
+    Potenza termica:     120 kW
+    Combustibile:        metano
+
+SOGGETTI
+----------------------------------------
+  SA (Richiedente):
+    denominazione: Condominio Belvedere
+    tipo: Privato terziario
+    cf_piva: 90012345678
+    email: amministrazione@condominiobelvedere.it
+    telefono: 0111234567
+  SR (Responsabile):
+    denominazione: Condominio Belvedere
+    cf_piva: 90012345678
+    iban: IT22Y0123456789012345678901
+    pec: amministrazione@pec.condominiobelvedere.it
+  PROPRIETARIO:
+    denominazione: Condominio Belvedere
+    cf_piva: 90012345678
+  DELEGATO:
+    nome: Studio Amministratore Rossi
+    cf: 09876543210
+
+INTERVENTI SELEZIONATI
+----------------------------------------
+  II.G
+    costo_colonnina: 15000
+    numero_punti_ricarica: 6
+    potenza_ricarica_kw: 22
+    tipo_ricarica: Punto ricarica Trifase
+    is_smart: sì
+    modo_ricarica: modo 3
+    made_in_eu: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+  III.A
+    marca_pdc: Climaveneta
+    modello_pdc: CV-120kW
+    potenza_pdc_kw: 120
+    potenza_elettrica_assorbita_kw: 30
+    tipologia_pdc: aria/acqua
+    scop: 4.2
+    cop: 4.5
+    eta_s: 160
+    servizio_pdc: climatizzazione invernale centralizzata
+    generatore_sostituito: Caldaia centralizzata metano 120kW
+    made_in_eu: sì
+    miglioramento_ep_40: sì
+    zona_assistita_a: sì
+    zona_assistita_c: no
+    scheda_tecnica_pdc: sì
+    costo_pdc: 45000
+    sostituisce_esistente: sì
+
+PREVENTIVO
+----------------------------------------
+  II.G | Fornitura 6 colonnine trifase 22kW | fornitura | 54000.00 €
+  II.G | Posa linee e colonnine parcheggio | posa | 5000.00 €
+  II.G | Documentazione e dichiarazione conformità | documentazione | 1000.00 €
+  III.A | Fornitura PDC centralizzata Climaveneta 120kW | fornitura | 28000.00 €
+  III.A | Posa e adeguamento centrale termica | posa | 13000.00 €
+  III.A | Documentazione e conformità | documentazione | 4000.00 €
+  ------------------------------
+  TOTALE: 105000.00 €
+
+============================================================
+  Generato da tools/genera_dati_test.mjs
+============================================================
+----------------------------------------
+  CALCOLI — FORMULE INCENTIVO
+----------------------------------------
+
+  II.G — Infrastrutture ricarica veicoli elettrici
+    Formula: I = min(spesa, cmax_scelto) * percentuale
+    Passaggi:
+      Calcolo Incentivo Finale (I_tot): min(spesa, cmax_scelto) * percentuale = min(15.000,00, 50.400,00) × 0,48 => 7200,00 €
+    Risultato: I = min(spesa, cmax_scelto) * percentuale = 7200,00 €
+    Netto GSE: 7128,00 € (corrispettivo GSE: 72,00 €)
+    Erogazione: Unica soluzione
+
+  III.A — Pompa di calore elettrica per climatizzazione invernale
+    Formula: I = k * Ei * Ci * CC
+    Passaggi:
+      Coefficiente di premialità (kp): eta_s / eta_s_min_ecodesign = 160,00 / 110,00 => 1,45
+      Calore totale prodotto stimato (Qu): Prated * Quf = 120,00 × 1700,00 => 204.000,00
+      Energia termica incentivata (Ei): Qu * (1 - 1/SCOP) * kp = 204.000,00 × (1 - 1/4,20) × 1,45 => 226.077,92
+      Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 226.077,92 × 0,06 × 1,00 => 13.564,68 €
+    Risultato: I = k * Ei * Ci * CC = 13.564,68 €
+    Netto GSE: 13.429,03 € (corrispettivo GSE: 135,65 €)
+    Erogazione: Unica soluzione
+
+----------------------------------------
+  RISULTATI — DETTAGLIO CALCOLI
+----------------------------------------
+
+  Intervento II.G
+    Calcolo Incentivo Finale | I_tot | 7200,00 = 7200,00 €
+
+  Intervento III.A
+    Coefficiente di premialità | kp | 1,45 = 1,45
+    Calore totale prodotto stimato | Qu | 204.000,00 = 204.000,00
+    Energia termica incentivata | Ei | 226.077,92 = 226.077,92
+    Calcolo Incentivo Finale | I_tot | 13.564,68 = 13.564,68 €
