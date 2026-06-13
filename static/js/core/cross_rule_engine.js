@@ -118,35 +118,70 @@ const UaCrossRuleEngine = function () {
     return result;
   };
 
-  const _checkDivietoFossili = function (
+  const _checkDivietoFossiliUnified = function (
     codiciSelezionati,
     interventiData,
     soggettoData,
   ) {
     const result = { isValid: true, errors: [], warnings: [] };
 
-    const isImpresa =
-      soggettoData &&
-      (soggettoData.sottoCategoria === "impresa" ||
-        soggettoData.tipoSoggetto === "Impresa");
+    const soggettiEsclusiFossili = ["Impresa", "ETS economico"];
 
-    if (!isImpresa) {
+    const isSoggettoEscluso =
+      soggettoData &&
+      (soggettiEsclusiFossili.includes(soggettoData.tipoSoggetto) ||
+        soggettoData.sottoCategoria === "impresa");
+
+    if (!isSoggettoEscluso) {
       return result;
     }
 
+    const tipoSoggetto = soggettoData.tipoSoggetto || "Impresa";
+    const labelSoggetto =
+      tipoSoggetto === "ETS economico" ? "ETS economico" : "Impresa";
+
+    // 1. III.A: PDC a gas/ibride escluse (Art. 25 comma 2)
+    if (codiciSelezionati.includes("III.A") && interventiData) {
+      const datiIIIa = interventiData["III.A"] || {};
+      const tipologiaPdc = (
+        datiIIIa.tipologia_pdc ||
+        datiIIIa.tipologia ||
+        ""
+      ).toLowerCase();
+      const tipologieGasEscluse = ["ibrido", "gas", "hybrid", "metano", "gpl"];
+      const isPdCGas = tipologieGasEscluse.some(function (t) {
+        return tipologiaPdc.includes(t);
+      });
+      if (isPdCGas) {
+        result.isValid = false;
+        result.errors.push(
+          "IMP-R02: Le PDC a gas o ibride (III.A) non sono ammesse per " +
+            labelSoggetto +
+            " (Art. 25 comma 2).",
+        );
+      }
+    }
+
+    // 2. III.B: ibrido gas sempre vietato per Impresa/ETS
     if (codiciSelezionati.includes("III.B")) {
       result.isValid = false;
       result.errors.push(
-        "IMP-R03: Impresa non può installare sistemi ibridi gas (III.B) — divieto combustibili fossili (Titolo V).",
+        "IMP-R03: " +
+          labelSoggetto +
+          " non può installare sistemi ibridi gas (III.B) — divieto combustibili fossili (Titolo V).",
       );
     }
 
+    // 3. III.C: biomassa — warning
     if (codiciSelezionati.includes("III.C")) {
       result.warnings.push(
-        "IMP-W01: Biomassa (III.C) per Impresa: verificare assenza fossili nel sistema.",
+        "IMP-W01: Biomassa (III.C) per " +
+          labelSoggetto +
+          ": verificare assenza fossili nel sistema.",
       );
     }
 
+    // 4. Alimentazione fossile su qualsiasi intervento
     if (interventiData) {
       Object.entries(interventiData).forEach(([code, dati]) => {
         if (
@@ -156,14 +191,37 @@ const UaCrossRuleEngine = function () {
         ) {
           result.isValid = false;
           result.errors.push(
-            `IMP-R04: Intervento ${code} con alimentazione a ${dati.alimentazione} non ammesso per Impresa (divieto fossili).`,
+            "IMP-R04: Intervento " +
+              code +
+              " con alimentazione a " +
+              dati.alimentazione +
+              " non ammesso per " +
+              labelSoggetto +
+              " (divieto fossili).",
           );
         }
       });
     }
 
+    // 5. haCombustibiliFossili flag (datiImpresa)
+    if (
+      soggettoData.haCombustibiliFossili === true ||
+      soggettoData.haCombustibiliFossili === "si" ||
+      soggettoData.haCombustibiliFossili === "Sì"
+    ) {
+      result.isValid = false;
+      result.errors.push(
+        "IMP-R05: Vietati apparecchi a combustibili fossili (incluso gas naturale). " +
+          labelSoggetto +
+          " non può installare generatori alimentati a combustibili fossili.",
+      );
+    }
+
     return result;
   };
+
+  // Alias per retrocompatibilità
+  const _checkDivietoFossili = _checkDivietoFossiliUnified;
 
   const _checkMultiIntervento = function (codiciSelezionati) {
     return codiciSelezionati && codiciSelezionati.length >= 2;
@@ -314,6 +372,7 @@ const UaCrossRuleEngine = function () {
     validateSelectionWithData,
     getSuggestions,
     checkDivietoFossili: _checkDivietoFossili,
+    checkDivietoFossiliUnified: _checkDivietoFossiliUnified,
     checkMultiIntervento: _checkMultiIntervento,
   };
 };

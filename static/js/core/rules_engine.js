@@ -25,6 +25,8 @@ import {
   INTERVENTI,
 } from "./normativa.js";
 
+import { CrossRuleEngine } from "./cross_rule_engine.js";
+
 /**
  * Factory per il motore delle regole.
  *
