@@ -282,48 +282,61 @@ const UaFormulaEngine = function () {
   };
 
   const _resolvePercentuale = function (code, percDefault, contesto, dati) {
-    const soggetto = contesto?.soggetto || "";
-    const intensita = PROCEDURA_CONFIG.INTENSITA_MASSIMA || {};
-    const isMulti = contesto?.isMultiIntervento === true;
-    const isPAorETS =
+    var soggetto = contesto?.soggetto || "";
+    var intensita = PROCEDURA_CONFIG.INTENSITA_MASSIMA || {};
+    var isMulti = contesto?.isMultiIntervento === true;
+    var isPAorETS =
       soggetto === "Pubblica Amministrazione" ||
       soggetto === "PA" ||
       soggetto === "ETS non economico";
 
-    let base = percDefault;
+    var breakdown = {
+      base: percDefault,
+      madeInEuBonus: 0,
+      maggiorazioneTotale: 0,
+      premialitaTotale: 0,
+      anteCap: 0,
+      cap: 0,
+      capped30: false,
+      valore: 0,
+    };
 
     if (isPAorETS) {
-      const isComuneSotto15k = contesto?.comuneSotto15k === true;
-      const isScuolaOspedale = contesto?.scuolaOspedale === true;
+      var isComuneSotto15k = contesto?.comuneSotto15k === true;
+      var isScuolaOspedale = contesto?.scuolaOspedale === true;
       if (isComuneSotto15k || isScuolaOspedale) {
-        base = intensita.PA_scuole_ospedali || 1.0;
-        return base;
+        breakdown.base = intensita.PA_scuole_ospedali || 1.0;
+        breakdown.valore = breakdown.base;
+        return breakdown;
       }
       if (code === "II.D") {
-        base = 1.0;
-        return base;
+        breakdown.base = 1.0;
+        breakdown.valore = breakdown.base;
+        return breakdown;
       }
-      base = intensita.PA_altri || 0.65;
+      breakdown.base = intensita.PA_altri || 0.65;
+      breakdown.valore = breakdown.base;
+      return breakdown;
     }
 
     if (soggetto === "Impresa") {
       if (code.startsWith("II.")) {
-        base = isMulti
+        breakdown.base = isMulti
           ? intensita.Impresa_multi_Titolo_II || 0.3
           : intensita.Impresa_singolo_Titolo_II || 0.25;
       } else {
-        base = intensita.Impresa_Titolo_III || 0.45;
+        breakdown.base = intensita.Impresa_Titolo_III || 0.45;
       }
     }
 
     // perc_multi: se abbinato a III.A/B/C/D/E/F, usa perc_multi invece del default
     if (!isPAorETS && soggetto !== "Impresa") {
-      const interventoRules = RULES.interventi[code];
-      const hasPercMulti =
+      var interventoRules = RULES.interventi[code];
+      var hasPercMulti =
         interventoRules && typeof interventoRules.perc_multi === "number";
       if (hasPercMulti) {
-        const selezionati = contesto?.codiciSelezionati || [];
-        const hasAbbinamentoIII = selezionati.some(function (c) {
+        var selezionati = contesto?.codiciSelezionati || [];
+        var hasAbbinamentoIII = selezionati.some(function (c) {
           return [
             "III.A",
             "III.B",
@@ -334,39 +347,42 @@ const UaFormulaEngine = function () {
           ].includes(c);
         });
         if (hasAbbinamentoIII) {
-          base = interventoRules.perc_multi;
+          breakdown.base = interventoRules.perc_multi;
         }
       }
     }
 
-    const maggiorazioni = _calculateMaggiorazioni(contesto);
-    const maggiorazioneTotale = maggiorazioni.totale / 100;
+    var maggiorazioni = _calculateMaggiorazioni(contesto);
+    breakdown.maggiorazioneTotale = maggiorazioni.totale / 100;
 
-    const premialita = _calculatePremialita(code, dati || {}, contesto);
-    const premialitaTotale = premialita.totale;
+    var premialita = _calculatePremialita(code, dati || {}, contesto);
+    breakdown.premialitaTotale = premialita.totale;
 
     // made_in_eu: moltiplicativo (×1.10 sul base), Manuale Analitico Sez.9
-    const madeInEuBonus =
+    breakdown.madeInEuBonus =
       dati?.made_in_eu === "sì" &&
       PREMIALITA_CONFIG.made_in_eu.applicabile_a.includes(code)
         ? PREMIALITA_CONFIG.made_in_eu.bonus_perc
         : 0;
 
-    let finale =
-      base * (1 + madeInEuBonus) +
-      maggiorazioneTotale +
-      (premialitaTotale - madeInEuBonus);
+    var anteCap =
+      breakdown.base * (1 + breakdown.madeInEuBonus) +
+      breakdown.maggiorazioneTotale +
+      (breakdown.premialitaTotale - breakdown.madeInEuBonus);
+
+    breakdown.anteCap = parseFloat(anteCap.toFixed(4));
 
     // II.D/II.G/II.H: cap 30% per imprese (RA §4.2.1 nota 6)
-    const codiciCap30 = ["II.D", "II.G", "II.H"];
+    var codiciCap30 = ["II.D", "II.G", "II.H"];
     if (soggetto === "Impresa" && codiciCap30.includes(code)) {
-      finale = Math.min(finale, 0.3);
+      anteCap = Math.min(anteCap, 0.3);
+      breakdown.capped30 = true;
     }
 
-    const cap = isPAorETS ? 1.0 : 0.65;
-    finale = Math.min(finale, cap);
+    breakdown.cap = isPAorETS ? 1.0 : 0.65;
+    breakdown.valore = parseFloat(Math.min(anteCap, breakdown.cap).toFixed(4));
 
-    return parseFloat(finale.toFixed(4));
+    return breakdown;
   };
 
   const _resolveQuf = function (zona) {
@@ -745,12 +761,16 @@ const UaFormulaEngine = function () {
     }
 
     if (params.percentuale !== undefined && contesto?.soggetto) {
-      params.percentuale = _resolvePercentuale(
+      var percResult = _resolvePercentuale(
         code,
         params.percentuale,
         contesto,
         dati,
       );
+      params.percentuale = percResult.valore;
+      if (percResult.base !== undefined) {
+        params._intensitaBreakdown = percResult;
+      }
     }
 
     const steps = [];

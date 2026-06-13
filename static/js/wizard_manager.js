@@ -1475,6 +1475,11 @@ const UaWizardManager = function (viewportId) {
     });
   };
 
+  var _fmtPerc = function (val) {
+    if (val === null || val === undefined) return "";
+    return (val * 100).toFixed(1) + "%";
+  };
+
   var _setFieldValue = function (card, name, val) {
     var input = card.querySelector('[name="' + name + '"]');
     if (!input) return;
@@ -1657,6 +1662,60 @@ const UaWizardManager = function (viewportId) {
               .join("");
             warnHtml += "</div>";
             html += warnHtml;
+          }
+          var ib = r.params && r.params._intensitaBreakdown;
+          if (ib) {
+            html +=
+              '<div style="font-size:0.8rem;margin:6px 0;padding:6px;background:rgba(104,200,178,0.06);border-radius:4px;">';
+            html += "<div><strong>Intensità:</strong></div>";
+            html +=
+              '<div style="display:grid;grid-template-columns:1fr 1fr;gap:2px 12px;">';
+            html +=
+              '<span>Base</span><span style="text-align:right;">' +
+              _fmtPerc(ib.base) +
+              "</span>";
+            if (ib.madeInEuBonus > 0) {
+              html +=
+                '<span>Made in EU</span><span style="text-align:right;color:#68c8b2;">+' +
+                _fmtPerc(ib.madeInEuBonus) +
+                "</span>";
+            }
+            if (ib.maggiorazioneTotale > 0) {
+              html +=
+                '<span>Maggiorazioni</span><span style="text-align:right;color:#68c8b2;">+' +
+                _fmtPerc(ib.maggiorazioneTotale) +
+                "</span>";
+            }
+            if (ib.premialitaTotale > 0 && ib.madeInEuBonus > 0) {
+              var altrePremialita = ib.premialitaTotale - ib.madeInEuBonus;
+              if (altrePremialita > 0) {
+                html +=
+                  '<span>Altre premialità</span><span style="text-align:right;color:#68c8b2;">+' +
+                  _fmtPerc(altrePremialita) +
+                  "</span>";
+              }
+            }
+            html +=
+              '<span style="border-top:1px solid #ccc;">Ante-cap</span><span style="text-align:right;border-top:1px solid #ccc;">' +
+              _fmtPerc(ib.anteCap) +
+              "</span>";
+            html +=
+              "<span>Cap (" +
+              _fmtPerc(ib.cap) +
+              ')</span><span style="text-align:right;">' +
+              (ib.anteCap > ib.cap
+                ? '<span style="color:#e74c3c;">cappato</span>'
+                : '<span style="color:#27ae60;">ok</span>') +
+              "</span>";
+            if (ib.capped30) {
+              html +=
+                '<span>Cap II.D/G/H</span><span style="text-align:right;color:#e74c3c;">30%</span>';
+            }
+            html +=
+              '<span style="font-weight:600;border-top:2px solid #68c8b2;">Finale</span><span style="font-weight:600;text-align:right;border-top:2px solid #68c8b2;color:#68c8b2;">' +
+              _fmtPerc(ib.valore) +
+              "</span>";
+            html += "</div></div>";
           }
           html +=
             "<p>Incentivo: <strong>" +

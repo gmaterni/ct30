@@ -18,13 +18,11 @@ Tre implementazioni erano state unificate in `_checkDivietoFossiliUnified` in `c
 
 ---
 
-## P3 — Cap intensità visibile per componente (#9) [MEDIO]
+## ~~P3 — Cap intensità visibile per componente (#9) [MEDIO]~~ ✅ COMPLETATO 2026-06-13
 
-**Problema**: La formula in `formula_engine.js:348-356` applica il cap (65% o 100%) sul totale, ma l'utente non vede se singole maggiorazioni vengono azzerate.
-
-**Obiettivo**: Nell'output economico, mostrare l'effetto del cap su ogni componente: base, made_in_eu, maggiorazioni, premialità, e quanto viene cappato.
-
-**File**: `formula_engine.js`, UI wizard fase Economico
+- `_resolvePercentuale` ora restituisce oggetto `{ valore, base, madeInEuBonus, maggiorazioneTotale, premialitaTotale, anteCap, cap, capped30 }`
+- `_executeGenericFormula` salva breakdown in `params._intensitaBreakdown`
+- UI fase Economico mostra griglia intensità per componente (Base, Made in EU, Maggiorazioni, Altre premialità, Ante-cap, Cap, Finale) con indicatore visivo cap
 
 ---
 

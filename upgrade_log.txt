@@ -192,3 +192,10 @@ Analizzate 14 criticità da `docs/PROBLEMATICHE_CRITICHE.md` confrontando:
 2. `validateAnagrafiche` ora accetta `contesto.{ambito, interventiData}` e verifica soglie RA §3.5.1
 3. Helper `_getMaxPotenzaClima` (III.A/III.B/III.C/III.F) e `_getSuperficieSolare` (III.D)
 4. Wizard chiama `validateAnagrafiche` in fase Economico (step 5)
+
+## 2026-06-13 — P3 completato (Cap intensità visibile per componente)
+
+### P3 — Cap intensità visibile per componente (#9)
+1. `_resolvePercentuale` refactorizzata per restituire `{ valore, base, madeInEuBonus, maggiorazioneTotale, premialitaTotale, anteCap, cap, capped30 }`
+2. `_executeGenericFormula` salva breakdown in `params._intensitaBreakdown`
+3. UI fase Economico: griglia intensità per componente con indicatore cap visivo

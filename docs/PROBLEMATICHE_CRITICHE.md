@@ -98,7 +98,7 @@ Analisi incrociata tra Regole Applicative CT 3.0, Decreto MASE 7/8/2025, Manuale
 finale = base * (1 + madeInEuBonus) + maggiorazioneTotale + (premialitaTotale - madeInEuBonus)
 ```
 
-**⏳ DA FARE**: Mostrare all'utente l'effetto del cap sulle singole componenti. Vedi `upgrade.txt` P3.
+**✅ RISOLTO (P3)**: `_resolvePercentuale` ora restituisce breakdown completo (`base, madeInEuBonus, maggiorazioneTotale, premialitaTotale, anteCap, cap, valore`). UI in fase Economico mostra griglia intensità per componente con indicatore cap.
 
 ---
 
@@ -164,7 +164,7 @@ finale = base * (1 + madeInEuBonus) + maggiorazioneTotale + (premialitaTotale - 
 | 6   | II.C→II.B hard-coded, non nei dati            | ✅ Risolto                  |
 | 7   | Divieto fossili: 3 implementazioni divergenti | ✅ Risolto (P1)             |
 | 8   | IVA non esclusa per ETS economico             | ✅ Risolto                  |
-| 9   | Formula intensità: cap invisibile all'utente  | ⏳ P3 upgrade.txt           |
+| 9   | Formula intensità: cap invisibile all'utente  | ✅ Risolto (P3)             |
 | 10  | Mutua esclusività: III.G e II.D               | ✅ III.G escluso (coesiste) |
 | 11  | Soglie ESCO 70kW/20m² non implementate        | ✅ Risolto (P2)             |
 | 12  | Variazioni >20%: regola opzionale             | ⏳ P4 upgrade.txt           |
