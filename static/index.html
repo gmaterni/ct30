@@ -1,78 +1,159 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CT30 Advisor — static</title>
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
-        <link rel="stylesheet/less" href="less/style.less" />
-        <link rel="stylesheet/less" href="less/tooltip.less" />
-        <link rel="stylesheet/less" href="less/uadialog.less" />
-        <script src="less/less.js"></script>
-        <!--
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CT30 Advisor — static</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet/less" href="less/style.less" />
+    <link rel="stylesheet/less" href="less/tooltip.less" />
+    <link rel="stylesheet/less" href="less/uadialog.less" />
+    <script src="less/less.js"></script>
+    <!--
             ========== VERSIONE APP ==========
             Per aggiornare versione e data di rilascio:
               1. Numero query string qui sotto (es. ?0.1.5)
               2. APPVERSION e APPDATE in static/js/app.js (funzione _renderWelcomeScreen)
               3. static/js/core/normativa.js → NORMATIVA_VERSION (versione normativa, non app)
         -->
-        <script type="module" src="js/app.js?0.1.7"></script>
-    </head>
+    <script type="module" src="js/app.js?0.1.8"></script>
+  </head>
 
-    <body class="dark-theme">
-        <header class="app-header">
-            <div class="header-left">
-                <button id="cmd-reset" class="cmd-btn danger" title="Cancella Dati Pratica Corrente" style="display:none;">RESET</button>
-                <div class="header-nav-group">
-                    <button id="btn-wiz-start-global" class="cmd-btn" style="display:none;">INIZIO</button>
-                    <button id="btn-wiz-prev-global" class="sec-btn" style="display:none;">INDIETRO</button>
-                    <button id="btn-wiz-next-global" class="cmd-btn" style="display:none;">AVANTI</button>
-                    <button id="btn-wiz-end-global" class="cmd-btn" style="display:none;">FINE</button>
-                </div>
-            </div>
-            <div class="header-right">
-                <span class="app-title">CT 3.0</span>
-            </div>
-        </header>
-        <div class="main-layout-container">
-            <nav class="side-commands">
-                <section class="cmd-group">
-                    <ul>
-                        <li><button id="btn-help" class="cmd-btn" title="Guida all'uso dell'applicativo">HELP</button></li>
-                    </ul>
-                </section>
-                <section class="cmd-group">
-                    <div class="section-label">PRATICHE</div>
-                    <ul>
-                        <li><button id="cmd-nuova-pratica" class="cmd-btn" title="Apri o crea una nuova pratica">Gestisci Pratica</button></li>
-                        <li><button id="cmd-elenco-pratiche" class="cmd-btn" title="Visualizza l'elenco delle pratiche archiviate">Elenco Pratiche</button></li>
-                    </ul>
-                </section>
-                <section class="cmd-group">
-                    <div class="section-label">GESTIONE DB</div>
-                    <ul>
-                        <li><button id="cmd-pulisci-db" class="cmd-btn danger" title="Elimina tutti i dati del database">Pulisci DB</button></li>
-                        <li><button id="cmd-salva-db" class="cmd-btn" title="Esporta il database in un file JSON">Salva DB</button></li>
-                        <li><button id="cmd-carica-db" class="cmd-btn" title="Importa un database da file JSON">Carica DB</button></li>
-                    </ul>
-                </section>
-                <section class="cmd-group">
-                    <ul>
-                        <li><button id="btn-load-test" class="cmd-btn" title="Carica uno scenario di test predefinito">pratiche-test</button></li>
-                    </ul>
-                </section>
-            </nav>
-            <main class="work-area">
-                <section id="wizard-viewport" aria-live="polite">
-                    <article>
-                        <div id="welcome-screen">
-                            <h1>Conto Termico 3.0</h1>
-                        </div>
-                    </article>
-                </section>
-            </main>
+  <body class="dark-theme">
+    <header class="app-header">
+      <div class="header-left">
+        <button
+          id="cmd-reset"
+          class="cmd-btn danger"
+          title="Cancella Dati Pratica Corrente"
+          style="display: none"
+        >
+          RESET
+        </button>
+        <div class="header-nav-group">
+          <button
+            id="btn-wiz-start-global"
+            class="cmd-btn"
+            style="display: none"
+          >
+            INIZIO
+          </button>
+          <button
+            id="btn-wiz-prev-global"
+            class="sec-btn"
+            style="display: none"
+          >
+            INDIETRO
+          </button>
+          <button
+            id="btn-wiz-next-global"
+            class="cmd-btn"
+            style="display: none"
+          >
+            AVANTI
+          </button>
+          <button id="btn-wiz-end-global" class="cmd-btn" style="display: none">
+            FINE
+          </button>
         </div>
-    </body>
-
+      </div>
+      <div class="header-right">
+        <span class="app-title">CT 3.0</span>
+      </div>
+    </header>
+    <div class="main-layout-container">
+      <nav class="side-commands">
+        <section class="cmd-group">
+          <ul>
+            <li>
+              <button
+                id="btn-help"
+                class="cmd-btn"
+                title="Guida all'uso dell'applicativo"
+              >
+                HELP
+              </button>
+            </li>
+          </ul>
+        </section>
+        <section class="cmd-group">
+          <div class="section-label">PRATICHE</div>
+          <ul>
+            <li>
+              <button
+                id="cmd-nuova-pratica"
+                class="cmd-btn"
+                title="Apri o crea una nuova pratica"
+              >
+                Gestisci Pratica
+              </button>
+            </li>
+            <li>
+              <button
+                id="cmd-elenco-pratiche"
+                class="cmd-btn"
+                title="Visualizza l'elenco delle pratiche archiviate"
+              >
+                Elenco Pratiche
+              </button>
+            </li>
+          </ul>
+        </section>
+        <section class="cmd-group">
+          <div class="section-label">GESTIONE DB</div>
+          <ul>
+            <li>
+              <button
+                id="cmd-pulisci-db"
+                class="cmd-btn danger"
+                title="Elimina tutti i dati del database"
+              >
+                Pulisci DB
+              </button>
+            </li>
+            <li>
+              <button
+                id="cmd-salva-db"
+                class="cmd-btn"
+                title="Esporta il database in un file JSON"
+              >
+                Salva DB
+              </button>
+            </li>
+            <li>
+              <button
+                id="cmd-carica-db"
+                class="cmd-btn"
+                title="Importa un database da file JSON"
+              >
+                Carica DB
+              </button>
+            </li>
+          </ul>
+        </section>
+        <section class="cmd-group">
+          <ul>
+            <li>
+              <button
+                id="btn-load-test"
+                class="cmd-btn"
+                title="Carica uno scenario di test predefinito"
+              >
+                pratiche-test
+              </button>
+            </li>
+          </ul>
+        </section>
+      </nav>
+      <main class="work-area">
+        <section id="wizard-viewport" aria-live="polite">
+          <article>
+            <div id="welcome-screen">
+              <h1>Conto Termico 3.0</h1>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>
