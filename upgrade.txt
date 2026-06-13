@@ -9,13 +9,12 @@ Tre implementazioni erano state unificate in `_checkDivietoFossiliUnified` in `c
 
 ---
 
-## P2 — Soglie ESCO 70kW/20m² nel codice (#11) [ALTO]
+## ~~P2 — Soglie ESCO 70kW/20m² nel codice (#11) [ALTO]~~ ✅ COMPLETATO 2026-06-13
 
-**Problema**: RA §3.5.1 impone soglie minime per ESCO come SR in ambito residenziale (>70kW climatizzazione, >20m² solare termico). Implementato solo nel Manuale, non nel codice.
-
-**Cosa serve**: Refactor di `validateAnagrafiche()` in `rules_engine.js:542` per ricevere dati interventi (potenza, superficie, ambito) e validare le soglie quando SR=ESCO in ambito residenziale.
-
-**File**: `rules_engine.js`
+- Aggiunti ESCO_SOGLIA_POTENZA_CLIMA_KW: 70, ESCO_SOGLIA_SUPERFICIE_SOLARE_MQ: 20 a normativa.js
+- `validateAnagrafiche` ora accetta parametro `contesto.{ambito, interventiData}`
+- Helper `_getMaxPotenzaClima` (III.A/III.B/III.C/III.F) e `_getSuperficieSolare` (III.D)
+- Wizard chiama `validateAnagrafiche` in fase Economico (step 5)
 
 ---
 

@@ -118,7 +118,7 @@ finale = base * (1 + madeInEuBonus) + maggiorazioneTotale + (premialitaTotale - 
 
 **Implementazione**: Nessuna nel codice.
 
-**⏳ DA FARE**: Validazione nel codice — serve refactor di `validateAnagrafiche`. Vedi `upgrade.txt` P2.
+**✅ RISOLTO (P2)**: Validato in `validateAnagrafiche` con parametro `contesto.{ambito, interventiData}`. Helper `_getMaxPotenzaClima` / `_getSuperficieSolare`. Wizard chiama la validazione in fase Economico.
 
 ---
 
@@ -166,7 +166,7 @@ finale = base * (1 + madeInEuBonus) + maggiorazioneTotale + (premialitaTotale - 
 | 8   | IVA non esclusa per ETS economico             | ✅ Risolto                  |
 | 9   | Formula intensità: cap invisibile all'utente  | ⏳ P3 upgrade.txt           |
 | 10  | Mutua esclusività: III.G e II.D               | ✅ III.G escluso (coesiste) |
-| 11  | Soglie ESCO 70kW/20m² non implementate        | ⏳ P2 upgrade.txt           |
+| 11  | Soglie ESCO 70kW/20m² non implementate        | ✅ Risolto (P2)             |
 | 12  | Variazioni >20%: regola opzionale             | ⏳ P4 upgrade.txt           |
 | 13  | perc_multi: III.D e III.F esclusi             | ✅ Risolto                  |
 | 14  | Atto assenso: diritto reale non coperto       | ✅ Risolto                  |

@@ -4243,6 +4243,27 @@ const UaWizardManager = function (viewportId) {
     if (!section) return false;
     _bindFormData(section, _praticaData.economico);
     _syncEconomicoDaFlatKeys();
+
+    // ESCO soglie ambito residenziale (RA §3.5.1) — verifica su dati tecnici
+    var anagData = {
+      proprietario: _praticaData.proprietario || {},
+      richiedente: _praticaData.richiedente || {},
+      responsabile: _praticaData.responsabile || {},
+      delegato: _praticaData.delegato || {},
+    };
+    var contesto = {
+      ambito: (_praticaData.edificio || {}).ambito || "",
+      interventiData: _praticaData.dati_tecnici || {},
+    };
+    var anagCheck = _rulesEngine.validateAnagrafiche(anagData, contesto);
+    if (!anagCheck.success) {
+      alert("ANAGRAFICHE: " + anagCheck.errors.join("\n"));
+      return false;
+    }
+    if (anagCheck.warnings.length > 0) {
+      console.warn("Avvisi anagrafiche:", anagCheck.warnings);
+    }
+
     return true;
   };
 

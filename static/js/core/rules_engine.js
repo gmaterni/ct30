@@ -503,6 +503,35 @@ const UaRulesEngine = function () {
     return res;
   };
 
+  // Helper: massima potenza climatizzazione tra interventi III.A, III.B, III.C, III.F
+  const _getMaxPotenzaClima = function (interventiData) {
+    if (!interventiData) return 0;
+    var maxKw = 0;
+    var codiciClima = ["III.A", "III.B", "III.C", "III.F"];
+    codiciClima.forEach(function (code) {
+      var dati = interventiData[code];
+      if (!dati) return;
+      var kw =
+        parseFloat(
+          dati.potenza_pdc_kw ||
+            dati.potenza_nominale_kw ||
+            dati.potenza_allaccio_kw ||
+            dati.potenza_assorbitore_kw ||
+            0,
+        ) || 0;
+      if (kw > maxKw) maxKw = kw;
+    });
+    return maxKw;
+  };
+
+  // Helper: superficie solare termico da III.D
+  const _getSuperficieSolare = function (interventiData) {
+    if (!interventiData) return 0;
+    var dati = interventiData["III.D"];
+    if (!dati) return 0;
+    return parseFloat(dati.superficie_lorda_mq || 0) || 0;
+  };
+
   // 4. NUOVE FUNZIONI PRIVATE
 
   /**
@@ -511,10 +540,11 @@ const UaRulesEngine = function () {
    * documenti accessori obbligatori.
    *
    * @param {Object} anagraficheData - { proprietario, richiedente, responsabile, delegato }
+   * @param {Object} [contesto] - { ambito, interventiData }
    * @returns {Object} { success, errors, warnings }
    * @private
    */
-  const validateAnagrafiche = function (anagraficheData) {
+  const validateAnagrafiche = function (anagraficheData, contesto) {
     const errors = [];
     const warnings = [];
 
@@ -642,6 +672,27 @@ const UaRulesEngine = function () {
       if (!resp.certificazione_11352_valida) {
         errors.push(
           "RESPONSABILE/SR: L'ESCO deve possedere certificazione UNI CEI 11352 valida al momento della richiesta.",
+        );
+      }
+    }
+
+    // ESCO: soglie minime in ambito residenziale (RA §3.5.1)
+    // ESCO come SR in ambito residenziale solo se potenza climatizzazione > 70kW
+    // o superficie solare termico > 20m²
+    if (tipoResp === "ESCO" && contesto && contesto.ambito === "residenziale") {
+      var interventiData = contesto.interventiData || {};
+      var potenzaMax = _getMaxPotenzaClima(interventiData);
+      var superficieSolare = _getSuperficieSolare(interventiData);
+      var sogliaPotenza = PROCEDURA_CONFIG.ESCO_SOGLIA_POTENZA_CLIMA_KW || 70;
+      var sogliaSuperficie =
+        PROCEDURA_CONFIG.ESCO_SOGLIA_SUPERFICIE_SOLARE_MQ || 20;
+      if (potenzaMax <= sogliaPotenza && superficieSolare <= sogliaSuperficie) {
+        errors.push(
+          "RESPONSABILE/SR: ESCO in ambito residenziale ammessa solo per potenza climatizzazione >" +
+            sogliaPotenza +
+            "kW o superficie solare >" +
+            sogliaSuperficie +
+            "m² (RA §3.5.1).",
         );
       }
     }
