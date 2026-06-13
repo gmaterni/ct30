@@ -76,7 +76,17 @@ bonus premialità).
 Aggiunto `miglioramento_ep_40: "sì"` ai JSON `test_p03_ets_non_economico.json` e
 `test_p07_pa_comune_100percento.json`.
 
+### Problema 4 (critico — scoperto in analisi finale)
+`_isPAorETS()` in `formula_engine.js:49` (funzione separata usata da
+`_calculatePaymentPlan`) non era stata aggiornata insieme a
+`_resolvePercentuale`. Anche qui mancava `"PA"`. Effetto: P07 (PA comune≤15k
+con 50.000€ > 15.000€) mostrava "5 rate annuali" invece di "Unica soluzione"
+(corretto per PA/ETS, Manuale Sez.13 line 761-762).
+
+### Fix 4
+`formula_engine.js:49-54`: aggiunto `soggettoType === "PA"` a `_isPAorETS`.
+
 ### File modificati
-- `static/js/core/formula_engine.js` — isPAorETS + made_in_eu moltiplicativo
+- `static/js/core/formula_engine.js` — isPAorETS (_resolvePercentuale + _isPAorETS) + made_in_eu moltiplicativo
 - `static/data/tests/test_p03_ets_non_economico.json` — +miglioramento_ep_40
 - `static/data/tests/test_p07_pa_comune_100percento.json` — +miglioramento_ep_40

@@ -49,6 +49,7 @@ const UaFormulaEngine = function () {
   const _isPAorETS = function (soggettoType) {
     return (
       soggettoType === "Pubblica Amministrazione" ||
+      soggettoType === "PA" ||
       soggettoType === "ETS non economico"
     );
   };
