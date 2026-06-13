@@ -679,6 +679,7 @@ const UaRulesEngine = function () {
     // ESCO: soglie minime in ambito residenziale (RA §3.5.1)
     // ESCO come SR in ambito residenziale solo se potenza climatizzazione > 70kW
     // o superficie solare termico > 20m²
+    var ESCOsoglieSuperate = false;
     if (tipoResp === "ESCO" && contesto && contesto.ambito === "residenziale") {
       var interventiData = contesto.interventiData || {};
       var potenzaMax = _getMaxPotenzaClima(interventiData);
@@ -693,6 +694,24 @@ const UaRulesEngine = function () {
             "kW o superficie solare >" +
             sogliaSuperficie +
             "m² (RA §3.5.1).",
+        );
+      } else {
+        ESCOsoglieSuperate = true;
+      }
+    }
+
+    // P5: ESCO + SA privato + residenziale + soglie superate → EPC obbligatorio
+    // (RA §3.5.1: anche se SR=SA, se privato in residenziale con soglie, serve EPC)
+    if (
+      tipoResp === "ESCO" &&
+      ESCOsoglieSuperate &&
+      rich.tipo_soggetto &&
+      (rich.tipo_soggetto === "Privato residenziale" ||
+        rich.tipo_soggetto === "Condominio")
+    ) {
+      if (!resp.contratto_epc) {
+        errors.push(
+          "RESPONSABILE/SR: ESCO in ambito residenziale con SA privato richiede contratto EPC (UNI CEI EN 17669) anche se SR coincide con SA (RA §3.5.1).",
         );
       }
     }

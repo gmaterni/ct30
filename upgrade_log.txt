@@ -205,3 +205,8 @@ Analizzate 14 criticità da `docs/PROBLEMATICHE_CRITICHE.md` confrontando:
 ### P4 — Variazioni >20% nel flusso wizard (#12)
 1. `_validateStep5` calcola automaticamente variazione % tra preventivo e spese
 2. Se >20%, alert bloccante tramite `validateTermini({ variazionePercentuale })`
+
+## 2026-06-13 — P5 completato (ESCO EPC per SA privato + residenziale + soglie)
+
+### P5 — ESCO EPC obbligatorio in multi (#11bis)
+1. `validateAnagrafiche` ora richiede contratto EPC anche quando ESCO + SA privato + residenziale + soglie superate (non solo quando SR≠SA)

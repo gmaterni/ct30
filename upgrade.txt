@@ -33,8 +33,6 @@ Tre implementazioni erano state unificate in `_checkDivietoFossiliUnified` in `c
 
 ---
 
-## P5 — ESCO mandataria: verifica contratto EPC per SR=ESCO in multi (#11bis) [MEDIO]
+## ~~P5 — ESCO mandataria: verifica contratto EPC per SR=ESCO in multi (#11bis) [MEDIO]~~ ✅ COMPLETATO 2026-06-13
 
-**Problema**: `validateAnagrafiche` controlla EPC solo se SR=ESCO e SR≠Richiedente. Ma la RA richiede EPC anche quando SA privato + SR=ESCO in ambito residenziale con soglie superiori.
-
-**File**: `rules_engine.js`
+- `validateAnagrafiche` ora richiede EPC anche quando ESCO + SA privato + residenziale + soglie superate (indipendentemente da coincidenza SR/SA)
