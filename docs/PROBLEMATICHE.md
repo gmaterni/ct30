@@ -23,6 +23,8 @@ Analisi delle 10 regole più insidiose, con commento, riferimenti al codice e st
 - In Fase 2 (Edificio): se ambito = residenziale e SA ≠ PA/ETS, sconsigliare attivamente interventi II
 - Cross-check: Fase 6 prima del calcolo economico, ripetere validazione
 
+**Soluzione**: Nessuna modifica al codice core — la matrice `MATRICE_SA_INTERVENTI` in `normativa.js` (riga 566) già imposta `privato_residenziale.titolo_ii: false`. La verifica è stata aggiunta come test R1-1..R1-6 in `test_problematiche.html` e come pratica JSON `test_p01_privato_titolo3.json` per wizard.
+
 **Attenzione**: `Privato terziario` ha `titolo_ii: true` (riga 573) — la differenza è solo l'ambito. Utenti confondono "privato residenziale" con "privato terziario".
 
 **Pratiche di verifica**: `test_p01_privato_titolo3.json` (carica pratica privato + III.A); sezione R1 in `test_problematiche.html` (6 test).
@@ -59,9 +61,9 @@ Analisi delle 10 regole più insidiose, con commento, riferimenti al codice e st
 - Validare la richiesta preliminare come campo obbligatorio, non opzionale
 - Il divieto fossili è bloccante: se `haCombustibiliFossili=true`, nessun intervento III.B (ibrido gas) può essere selezionato
 
-**Attenzione**: IAP (`Imprenditore Agricolo Professionale`) è "assimilato a Impresa" ma NON ha richiesta preliminare obbligatoria (riga 538-549). Non applicare `validateTitoloV()` agli IAP.
+**Soluzione**: `validateTitoloV()` in `rules_engine.js` (riga 667) implementa tutti i 10 controlli sequenziali. L'intensità per impresa è codificata in `INTENSITA_MASSIMA` (`normativa.js` riga 106-108): `Impresa_singolo_Titolo_II: 0.25`, `Impresa_multi_Titolo_II: 0.30`, `Impresa_Titolo_III: 0.45`. La funzione `_resolvePercentuale()` in `formula_engine.js` (riga 228-235) applica `made_in_eu` come moltiplicativo ×1.10 sul base (da commit 1b382bc). Il cap finale 65% (riga 342) è applicato dopo maggiorazioni e premialità. Test coperto da R2-1..R2-8 e `test_p02_impresa_titolo_v.json`.
 
-**Pratiche di verifica**: `test_p02_impresa_titolo_v.json` (impresa con preliminare + III.A); sezione R2 in `test_problematiche.html` (8 test).
+**Attenzione**: IAP (`Imprenditore Agricolo Professionale`) è "assimilato a Impresa" ma NON ha richiesta preliminare obbligatoria (riga 538-549). Non applicare `validateTitoloV()` agli IAP.
 
 ---
 
@@ -87,6 +89,8 @@ Analisi delle 10 regole più insidiose, con commento, riferimenti al codice e st
 - Mostrare le implicazioni: "ETS non economico = 100% + prenotazione" vs "ETS economico = solo Titolo III + richiesta preliminare"
 - In `formula_engine.js`, la funzione `_resolvePercentuale()` verifica `isPAorETS` (riga 210) e applica cap 100% — questo è già corretto per ETS non economico. L'ETS economico invece segue regole impresa.
 - Validare in Fase 4: ETS economico non può selezionare II.A, II.B, II.C, II.D, II.E, II.F, II.G, II.H
+
+**Soluzione**: `_resolvePercentuale()` tratta `"ETS non economico"` come isPAorETS (riga 210, insieme a `"Pubblica Amministrazione"` e `"PA"`). La base per PA/ETS senza comuneSotto15k né scuolaOspedale è `PA_altri = 0.65`, con cap 1.0. Con `made_in_eu` moltiplicativo (×1.10), `miglioramento_ep_40` (+0.15), `zona_assistita_a` (+0.15) e `zona_assistita_c` (+0.05) si raggiunge il cap 1.0 (100%) — verificato su P03: 30.000€ su 30.000€. Il piano di pagamento usa `_isPAorETS()` (riga 49) che riconosce anche `"PA"` (commit a4e5dc8) per forzare rata unica su PA/ETS.
 
 **Pratiche di verifica**: `test_p03_ets_non_economico.json` (ETS non econ + II.A 100%); sezione R3 in `test_problematiche.html` (6 test).
 
@@ -118,6 +122,8 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - Non permettere selezione II.G/II.H senza III.A già selezionato nella lista interventi
 - Attenzione: II.H (FV) ha anche requisito potenza 2-1000 kW (riga 98-99 in normativa.js)
 
+**Soluzione**: `cross_rule_engine.js._checkTechnicalConstraints()` (riga 57) verifica che III.A sia elettrica pura e con `sostituisce_esistente: true`. II.H ha `interventi_collegati_obbligatori: ["III.A"]` in `normativa.js` (riga 158). Per II.H, il bonus `made_in_eu` e `ue_production` sono applicati come premialità additive, con `made_in_eu` moltiplicativo ×1.10 sul base 0.20. Il vincolo "incentivo II.H ≤ incentivo III.A" è rispettato: P04 mostra 7.800€ ≤ 10.006,82€.
+
 **Pratiche di verifica**: `test_p04_iiH_iiiA_pairing.json` (III.A elettrica + FV con sostituzione); sezione R4 in `test_problematiche.html` (9 test).
 
 ---
@@ -140,6 +146,8 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - Notare che II.B ha `vincolo_logico.richiede_valvole_termostatiche` se è in presenza di impianto centralizzato — II.C erediterebbe questo vincolo indirettamente
 - La formula `perc_multi` (40%→55%) per II.C vale se abbinato a III.A, non a II.B
 
+**Soluzione**: `_checkDependencies()` in `cross_rule_engine.js` (riga 19) verifica la presenza di II.B quando II.C è selezionato. Il calcolo percentuale per II.B/II.C usa base 0.40, con `made_in_eu` moltiplicativo ×1.10 e zone assistite additive. P05 verifica: II.B 7.680€ (64%), II.C 3.200€ (64%), totale 10.880€ su 17.000€ di spesa.
+
 **Pratiche di verifica**: `test_p05_iiB_iiC_pairing.json` (II.B infissi + II.C schermature); sezione R4-8/R4-9 in `test_problematiche.html`.
 
 ---
@@ -161,6 +169,8 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - Validare entrambi i documenti in Fase 6
 - Attenzione: `contratto_epc` e `certificazione_11352_valida` sono due campi distinti nel DB
 - Quando `coincide_con_richiedente = true`, disabilitare campo EPC (non richiesto) ma mantenere certificazione 11352
+
+**Soluzione**: `validateAnagrafiche()` in `rules_engine.js` (riga 542-556) gestisce la logica: se SR.tipo === "ESCO" e non coincide con richiedente, richiede `contratto_epc`. La certificazione UNI CEI 11352 è sempre richiesta per ESCO. La pratica P06 verifica solo il calcolo III.A (prestazionale, 8.368,64€) — le regole contrattuali sono validate da rules_engine, non da formula_engine.
 
 **Pratiche di verifica**: `test_p06_esco_epc.json` (SR=ESCO ≠ SA con EPC); sezione R6 in `test_problematiche.html` (4 test).
 
@@ -191,7 +201,15 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - Attenzione: ETS non economico e Cooperativa edilizia sono assimilati PA anche se non lo sono esplicitamente
 - II.D (nZEB) per PA forza 100% (riga 221-223) — priorità su altri calcoli
 
-**Pratiche di verifica**: `test_p07_pa_comune_100percento.json` (PA ≤15k + II.A 100%); sezione R7 in `test_problematiche.html` (5 test).
+**Soluzione**: Tre fix applicati in questa sessione:
+
+1. **Riconoscimento "PA"** (`formula_engine.js` riga 210, commit 1b382bc): `isPAorETS` ora include `soggetto === "PA"` oltre a `"Pubblica Amministrazione"`. Prima del fix, il wizard usava `tipo: "PA"` ma la funzione cercava `"Pubblica Amministrazione"` → il ramo PA non si attivava mai. Conseguenza: P07 (PA + comune≤15k) calcolava 65% (32.500€) invece di 100% (50.000€) — **perdita 17.500€**.
+
+2. **Made in EU moltiplicativo** (`formula_engine.js` riga 340, commit 1b382bc): `made_in_eu` passa da additivo (+10 punti %) a moltiplicativo (×1.10 sul base), conforme al Manuale Analitico Sez.5 ("+10% sull'I_tot") e Sez.9 ("+10% dell'incentivo base"). Altri bonus (zona_assistita, miglioramento_ep_40) restano additivi.
+
+3. **Piano pagamento PA/ETS** (`formula_engine.js` riga 49, commit a4e5dc8): `_isPAorETS()` ora riconosce `"PA"` per forzare rata unica su PA/ETS indipendentemente dall'importo (Manuale Sez.13 line 761-762). Prima del fix: P07 (50.000€) mostrava 5 rate anziché unica soluzione.
+
+**Pratiche di verifica**: `test_p07_pa_comune_100percento.json` (PA ≤15k + II.A 100%); sezione R7 in `test_problematiche.html` (5 test). DATI P07 verificato: 50.000€ (100%), unica soluzione.
 
 ---
 
@@ -212,6 +230,8 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - Per pratiche con incentivo lordo > 25.000€, la commissione sarà 250€ (massimale)
 - Non dimenticare di arrotondare a 2 decimali (`toFixed(2)`, riga 200)
 - La funzione ritorna anche `percentuale: 1` e `massimale: 250` per log/report
+
+**Soluzione**: `_calculateCorrispettivoGSE()` in `formula_engine.js` (riga 189) implementa `min(incentivo × 0.01, 250)`. Hardcoded `percentuale: 1`, `massimale: 250`. Chiamata dopo il calcolo dell'ammontare in `calculate()` (riga 867). L'incentivo netto = `amount - corrispettivo.importo`. Tutte le 8 pratiche DATI mostrano il GSE corretto (es. P07: 250€ massimale perché 50.000×1% = 500 > 250).
 
 **Pratiche di verifica**: sezione R8 in `test_problematiche.html` (2 test — calcolo interno, nessuna JSON pratica).
 
@@ -237,6 +257,8 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - La variazione 0% = nessun blocco; variazione 20.0% = nessun blocco (soglia stretta)
 - NB: la funzione `validateTermini()` riceve `variazionePercentuale` via opzioni — assicurarsi che Fase 6 lo fornisca sempre
 
+**Soluzione**: `validateTermini()` in `rules_engine.js` (riga 1009-1015) usa `Math.abs(variazione) > TERMINI_CONFIG.variazione_soglia_perc` (soglia = 20, riga 74). Nessuna modifica al codice core — regola già correttamente implementata. Test coperti da R9-1..R9-6.
+
 **Pratiche di verifica**: sezione R9 in `test_problematiche.html` (6 test — validazione interna, nessuna JSON pratica).
 
 ---
@@ -261,6 +283,8 @@ II.H inoltre esclude III.B dalla possibilità di trainare (riga 849 in normativa
 - I flag `coincide_con_proprietario`, `coincide_con_richiedente`, `coincide_con_responsabile` (riga 524) esonerano dall'obbligo — controllarli PRIMA di richiedere il documento
 - Se CF uguali ma flag non impostati: solo warning (riga 502-503), non blocco
 - In Fase 7 (Riepilogo), ripetere la validazione documentale: `documenti_flags` in `_praticaData.economico` deve confermare
+
+**Soluzione**: `validateAnagrafiche()` in `rules_engine.js` (riga 523-529 per atto assenso, riga 558-564 per mandato). Mandato obbligatorio per tutti gli SR non-PA. Atto assenso obbligatorio se proprietario ≠ richiedente e non esonerato da flag coincidenza. Nessuna modifica al codice core — regole già implementate. P10 verifica solo III.A (prestazionale, 3.067,35€) — le regole documentali sono validate da rules_engine.
 
 **Pratiche di verifica**: `test_p10_mandato_atto_assenso.json` (SR non-PA + proprietario≠richiedente); sezione R10 in `test_problematiche.html` (5 test).
 
