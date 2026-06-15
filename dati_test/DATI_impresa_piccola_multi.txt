@@ -6,7 +6,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T12
   Nome:            Impresa Piccola - Isolamento II.A + PdC III.A con maggiorazione
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -110,7 +110,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(1.500.001,00, 80,00 × 200,00) × 0,63 => 10.000,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 10.000,00 €
     Netto GSE: 9900,00 € (corrispettivo GSE: 100,00 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
   III.A — Pompa di calore elettrica per climatizzazione invernale
     Formula: I = k * Ei * Ci * CC
@@ -121,7 +121,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 25.508,13 × 0,15 × 1,00 => 3826,22 €
     Risultato: I = k * Ei * Ci * CC = 3826,22 €
     Netto GSE: 3787,96 € (corrispettivo GSE: 38,26 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI

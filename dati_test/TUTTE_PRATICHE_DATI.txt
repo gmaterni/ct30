@@ -10,7 +10,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T01
   Nome:            Test 01 - Privato PdC Aria/Acqua
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -94,7 +94,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 21.734,37 × 0,15 × 1,00 => 3260,16 €
     Risultato: I = k * Ei * Ci * CC = 3260,16 €
     Netto GSE: 3227,56 € (corrispettivo GSE: 32,60 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -117,7 +117,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T02
   Nome:            Test 02 - Impresa Grande PdC + FV
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -225,7 +225,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 153.461,54 × 0,06 × 1,00 => 9207,69 €
     Risultato: I = k * Ei * Ci * CC = 9207,69 €
     Netto GSE: 9115,61 € (corrispettivo GSE: 92,08 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
   II.H — Fotovoltaico e accumulo abbinati a pompa di calore elettrica
     Formula: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale
@@ -259,7 +259,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T03
   Nome:            Test 03 - Terziario Isolamento Pareti
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -353,7 +353,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T04
   Nome:            Test 04 - Terziario Ricarica Veicoli
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -446,10 +446,10 @@ PREVENTIVO
   II.G — Infrastrutture ricarica veicoli elettrici
     Formula: I = min(spesa, cmax_scelto) * percentuale
     Passaggi:
-      Calcolo Incentivo Finale (I_tot): min(spesa, cmax_scelto) * percentuale = min(15.000,00, 50.400,00) × 0,48 => 7200,00 €
-    Risultato: I = min(spesa, cmax_scelto) * percentuale = 7200,00 €
-    Netto GSE: 7128,00 € (corrispettivo GSE: 72,00 €)
-    Erogazione: Unica soluzione
+      Calcolo Incentivo Finale (I_tot): min(spesa, cmax_scelto) * percentuale = min(15.000,00, 50.400,00) × 0,45 => 6750,00 €
+    Risultato: I = min(spesa, cmax_scelto) * percentuale = 6750,00 €
+    Netto GSE: 6682,50 € (corrispettivo GSE: 67,50 €)
+    Erogazione: 2 rate annuali
 
   III.A — Pompa di calore elettrica per climatizzazione invernale
     Formula: I = k * Ei * Ci * CC
@@ -460,14 +460,14 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 226.077,92 × 0,06 × 1,00 => 13.564,68 €
     Risultato: I = k * Ei * Ci * CC = 13.564,68 €
     Netto GSE: 13.429,03 € (corrispettivo GSE: 135,65 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
 ----------------------------------------
 
   Intervento II.G
-    Calcolo Incentivo Finale | I_tot | 7200,00 = 7200,00 €
+    Calcolo Incentivo Finale | I_tot | 6750,00 = 6750,00 €
 
   Intervento III.A
     Coefficiente di premialità | kp | 1,45 = 1,45
@@ -486,7 +486,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T05
   Nome:            Test 05 - Super Pratica (Incentivo Massimo)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -570,7 +570,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 72.121,21 × 0,06 × 1,00 => 4327,27 €
     Risultato: I = k * Ei * Ci * CC = 4327,27 €
     Netto GSE: 4284,00 € (corrispettivo GSE: 43,27 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -593,7 +593,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T06
   Nome:            Test 06 - Pratica Reale (Incentivo Calcolato)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -679,7 +679,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 72.121,21 × 0,06 × 1,00 => 4327,27 €
     Risultato: I = k * Ei * Ci * CC = 4327,27 €
     Netto GSE: 4284,00 € (corrispettivo GSE: 43,27 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -702,7 +702,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T07
   Nome:            Privato Terziario - Pacchetto Full Electric (Massima Completezza)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -863,23 +863,23 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 136.588,74 × 0,06 × 1,00 => 8195,32 €
     Risultato: I = k * Ei * Ci * CC = 8195,32 €
     Netto GSE: 8113,37 € (corrispettivo GSE: 81,95 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
   II.H — Fotovoltaico e accumulo abbinati a pompa di calore elettrica
     Formula: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale
     Passaggi:
-      Calcolo Incentivo Finale (I_tot): min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = min(48.000,00, 60,00 × 1200,00 + 120,00 × 1000,00) × 0,52 => 24.960,00 €
-    Risultato: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = 24.960,00 €
-    Netto GSE: 24.710,40 € (corrispettivo GSE: 249,60 €)
+      Calcolo Incentivo Finale (I_tot): min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = min(48.000,00, 60,00 × 1200,00 + 120,00 × 1000,00) × 0,50 => 24.000,00 €
+    Risultato: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = 24.000,00 €
+    Netto GSE: 23.760,00 € (corrispettivo GSE: 240,00 €)
     Erogazione: 5 rate annuali
 
   II.G — Infrastrutture ricarica veicoli elettrici
     Formula: I = min(spesa, cmax_scelto) * percentuale
     Passaggi:
-      Calcolo Incentivo Finale (I_tot): min(spesa, cmax_scelto) * percentuale = min(18.000,00, 50.400,00) × 0,53 => 9540,00 €
-    Risultato: I = min(spesa, cmax_scelto) * percentuale = 9540,00 €
-    Netto GSE: 9444,60 € (corrispettivo GSE: 95,40 €)
-    Erogazione: Unica soluzione
+      Calcolo Incentivo Finale (I_tot): min(spesa, cmax_scelto) * percentuale = min(18.000,00, 50.400,00) × 0,50 => 9000,00 €
+    Risultato: I = min(spesa, cmax_scelto) * percentuale = 9000,00 €
+    Netto GSE: 8910,00 € (corrispettivo GSE: 90,00 €)
+    Erogazione: 2 rate annuali
 
   II.F — Building automation e gestione carichi
     Formula: I = min(spesa, superficie * cmax) * percentuale
@@ -887,7 +887,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(15.000,00, 5000,00 × 60,00) × 0,64 => 9600,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 9600,00 €
     Netto GSE: 9504,00 € (corrispettivo GSE: 96,00 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
   III.E — Scaldacqua a pompa di calore
     Formula: I = min(spesa * percentuale, incentivo_fisso_per_scaglione)
@@ -895,7 +895,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa * percentuale, incentivo_fisso_per_scaglione) = min(2500,00 × 0,60, 1500,00) => 1500,00 €
     Risultato: I = min(spesa * percentuale, incentivo_fisso_per_scaglione) = 1500,00 €
     Netto GSE: 1485,00 € (corrispettivo GSE: 15,00 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -908,10 +908,10 @@ PREVENTIVO
     Calcolo Incentivo Finale | I_tot | 8195,32 = 8195,32 €
 
   Intervento II.H
-    Calcolo Incentivo Finale | I_tot | 24.960,00 = 24.960,00 €
+    Calcolo Incentivo Finale | I_tot | 24.000,00 = 24.000,00 €
 
   Intervento II.G
-    Calcolo Incentivo Finale | I_tot | 9540,00 = 9540,00 €
+    Calcolo Incentivo Finale | I_tot | 9000,00 = 9000,00 €
 
   Intervento II.F
     Calcolo Incentivo Finale | I_tot | 9600,00 = 9600,00 €
@@ -930,7 +930,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T08
   Nome:            PA Comune ≤15k - Isolamento + PdC
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -1065,7 +1065,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T09
   Nome:            Privato - Infissi + Schermature Solari
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -1150,7 +1150,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(21.000,00, 28,00 × 800,00) × 0,59 => 12.390,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 12.390,00 €
     Netto GSE: 12.266,10 € (corrispettivo GSE: 123,90 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
   II.C — Schermature e ombreggiamento solare
     Formula: I = min(spesa, superficie * cmax) * percentuale
@@ -1158,7 +1158,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(6500,00, 20,00 × 250,00) × 0,59 => 2950,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 2950,00 €
     Netto GSE: 2920,50 € (corrispettivo GSE: 29,50 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -1181,7 +1181,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T10
   Nome:            ETS non economico - Biomassa + Solare Termico
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -1319,7 +1319,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T11
   Nome:            Privato Residenziale - Sistema Ibrido III.B + Scaldacqua III.E
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -1421,7 +1421,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa * percentuale, incentivo_fisso_per_scaglione) = min(2000,00 × 0,40, 700,00) => 700,00 €
     Risultato: I = min(spesa * percentuale, incentivo_fisso_per_scaglione) = 700,00 €
     Netto GSE: 693,00 € (corrispettivo GSE: 7,00 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -1446,7 +1446,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T12
   Nome:            Impresa Piccola - Isolamento II.A + PdC III.A con maggiorazione
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -1550,7 +1550,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(1.500.001,00, 80,00 × 200,00) × 0,63 => 10.000,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 10.000,00 €
     Netto GSE: 9900,00 € (corrispettivo GSE: 100,00 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
   III.A — Pompa di calore elettrica per climatizzazione invernale
     Formula: I = k * Ei * Ci * CC
@@ -1561,7 +1561,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 25.508,13 × 0,15 × 1,00 => 3826,22 €
     Risultato: I = k * Ei * Ci * CC = 3826,22 €
     Netto GSE: 3787,96 € (corrispettivo GSE: 38,26 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -1587,7 +1587,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T13
   Nome:            Privato Terziario - Isolamento II.A + PdC III.A (perc_multi 55%)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -1687,7 +1687,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(9000,00, 60,00 × 200,00) × 0,65 => 5850,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 5850,00 €
     Netto GSE: 5791,50 € (corrispettivo GSE: 58,50 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
   III.A — Pompa di calore elettrica per climatizzazione invernale
     Formula: I = k * Ei * Ci * CC
@@ -1698,7 +1698,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.425,97 × 0,15 × 1,00 => 2463,90 €
     Risultato: I = k * Ei * Ci * CC = 2463,90 €
     Netto GSE: 2439,26 € (corrispettivo GSE: 24,64 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -1724,7 +1724,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T14
   Nome:            check_azion3_1 — PA comune <15k III.A 100%
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -1827,7 +1827,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T15
   Nome:            Az#4 — II.B valvole non presenti (blocco)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -1920,7 +1920,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T16
   Nome:            Az#5 — ETS non econ II.A isolamento 100%
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -2013,7 +2013,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T17
   Nome:            Az#6 — ETS non econ unica rata sopra 15k
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -2106,7 +2106,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T18
   Nome:            Az#7 — Made in EU esteso a III.A
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -2179,7 +2179,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.828,28 × 0,15 × 1,00 => 2524,24 €
     Risultato: I = k * Ei * Ci * CC = 2524,24 €
     Netto GSE: 2499,00 € (corrispettivo GSE: 25,24 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -2202,7 +2202,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T19
   Nome:            Az#9 — IVA non ammissibile per Impresa
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -2275,7 +2275,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.828,28 × 0,15 × 1,00 => 2524,24 €
     Risultato: I = k * Ei * Ci * CC = 2524,24 €
     Netto GSE: 2499,00 € (corrispettivo GSE: 25,24 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -2298,7 +2298,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T20
   Nome:            Az#10 — Impresa con III.G Microcogenerazione + III.A
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -2384,7 +2384,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.828,28 × 0,15 × 1,00 => 2524,24 €
     Risultato: I = k * Ei * Ci * CC = 2524,24 €
     Netto GSE: 2499,00 € (corrispettivo GSE: 25,24 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
   III.G — Microcogenerazione (≤50 kWe)
     Formula: I = min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale
@@ -2418,7 +2418,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T21
   Nome:            Az#11 — Vincolo mantenimento 5 anni
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -2491,7 +2491,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.828,28 × 0,15 × 1,00 => 2524,24 €
     Risultato: I = k * Ei * Ci * CC = 2524,24 €
     Netto GSE: 2499,00 € (corrispettivo GSE: 25,24 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -2514,7 +2514,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T22
   Nome:            Az#12 — II.A Parete Interna con maggiorazione cmax 30%
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -2587,7 +2587,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(15.000,00, 80,00 × 130,00) × 0,48 => 4940,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 4940,00 €
     Netto GSE: 4890,60 € (corrispettivo GSE: 49,40 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -2607,7 +2607,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T23
   Nome:            Blocco II.D — ampliamento volumetrico eccede 25%
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -2700,7 +2700,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T24
   Nome:            III.D Solare termico — formula prestazionale Ci*Qu*Sl
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -2775,7 +2775,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale) = min(0,32 × 670,00 × 30,00, min(18.000,00, 30,00 × 550,00) × 0,65) => 6432,00 €
     Risultato: I = min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale) = 6432,00 €
     Netto GSE: 6367,68 € (corrispettivo GSE: 64,32 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -2795,7 +2795,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T25
   Nome:            III.F Teleriscaldamento — 3 fasce potenza (fascia media 80kW)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -2865,7 +2865,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = min(20.000,00, min(80,00 × 160,00, 15.000,00)) × 0,65 => 8320,00 €
     Risultato: I = min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = 8320,00 €
     Netto GSE: 8236,80 € (corrispettivo GSE: 83,20 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -2885,7 +2885,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T26
   Nome:            III.C Biomassa Prestazionale — Caldaia a legna/cippato
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -2971,7 +2971,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(1800,00, min(12.000,00, 25,00 × 600,00) × 0,65) => 1800,00 €
     Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 1800,00 €
     Netto GSE: 1782,00 € (corrispettivo GSE: 18,00 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -2996,7 +2996,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T27
   Nome:            III.C Biomassa Logaritmica — Stufa a pellet
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -3082,7 +3082,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(598,75, min(5000,00, 15,00 × 600,00) × 0,65) => 598,75 €
     Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 598,75 €
     Netto GSE: 592,76 € (corrispettivo GSE: 5,99 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -3107,7 +3107,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T28
   Nome:            III.B Ibrido — Blocco rapporto PdC/caldaia >0.5
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -3208,7 +3208,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T29
   Nome:            III.D Solar Cooling — Blocco DEC <8
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -3303,7 +3303,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T30
   Nome:            III.F Teleriscaldamento — Fascia alta 200kW (>150kW)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -3393,7 +3393,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T31
   Nome:            III.C Caldaia legna — Formula logaritmica D (tipo generatore 4)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -3479,7 +3479,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(2520,00, min(15.000,00, 35,00 × 600,00) × 0,65) => 2520,00 €
     Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 2520,00 €
     Netto GSE: 2494,80 € (corrispettivo GSE: 25,20 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -3504,7 +3504,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-P01
   Nome:            R1: Privato Residenziale → solo Titolo III (PdC aria/acqua)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-07-15
   Data fine lavori:2026-07-01
   Modalità accesso:diretto
@@ -3579,7 +3579,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 25.433,77 × 0,15 × 1,00 => 3815,06 €
     Risultato: I = k * Ei * Ci * CC = 3815,06 €
     Netto GSE: 3776,91 € (corrispettivo GSE: 38,15 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -3602,7 +3602,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-P02
   Nome:            R2: Impresa → Regime Titolo V (richiesta preliminare + III.A 45%)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-07-15
   Data fine lavori:2026-07-01
   Modalità accesso:diretto
@@ -3683,7 +3683,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 153.461,54 × 0,06 × 1,00 => 9207,69 €
     Risultato: I = k * Ei * Ci * CC = 9207,69 €
     Netto GSE: 9115,61 € (corrispettivo GSE: 92,08 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -3706,7 +3706,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-P03
   Nome:            R3: ETS non economico → assimilato PA (II.A isolamento 100%)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-09-15
   Data fine lavori:2026-09-01
   Modalità accesso:diretto
@@ -3799,7 +3799,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-P04
   Nome:            R4: III.A elettrica pura + II.H FV → pairing obbligatorio OK
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-08-15
   Data fine lavori:2026-08-01
   Modalità accesso:diretto
@@ -3888,15 +3888,15 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 66.712,12 × 0,15 × 1,00 => 10.006,82 €
     Risultato: I = k * Ei * Ci * CC = 10.006,82 €
     Netto GSE: 9906,75 € (corrispettivo GSE: 100,07 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
   II.H — Fotovoltaico e accumulo abbinati a pompa di calore elettrica
     Formula: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale
     Passaggi:
-      Calcolo Incentivo Finale (I_tot): min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = min(15.000,00, 10,00 × 1500,00 + 10,00 × 1000,00) × 0,52 => 7800,00 €
-    Risultato: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = 7800,00 €
-    Netto GSE: 7722,00 € (corrispettivo GSE: 78,00 €)
-    Erogazione: Unica soluzione
+      Calcolo Incentivo Finale (I_tot): min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = min(15.000,00, 10,00 × 1500,00 + 10,00 × 1000,00) × 0,50 => 7500,00 €
+    Risultato: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = 7500,00 €
+    Netto GSE: 7425,00 € (corrispettivo GSE: 75,00 €)
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -3909,7 +3909,7 @@ PREVENTIVO
     Calcolo Incentivo Finale | I_tot | 10.006,82 = 10.006,82 €
 
   Intervento II.H
-    Calcolo Incentivo Finale | I_tot | 7800,00 = 7800,00 €
+    Calcolo Incentivo Finale | I_tot | 7500,00 = 7500,00 €
 
 ============================================================
   PAGE BREAK — R5: II.B infissi + II.C schermature → abbinamento obbligatorio OK (CT30-P05)
@@ -3922,7 +3922,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-P05
   Nome:            R5: II.B infissi + II.C schermature → abbinamento obbligatorio OK
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-06-15
   Data fine lavori:2026-06-01
   Modalità accesso:diretto
@@ -4005,7 +4005,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(12.000,00, 25,00 × 800,00) × 0,64 => 7680,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 7680,00 €
     Netto GSE: 7603,20 € (corrispettivo GSE: 76,80 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
   II.C — Schermature e ombreggiamento solare
     Formula: I = min(spesa, superficie * cmax) * percentuale
@@ -4013,7 +4013,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(5000,00, 20,00 × 250,00) × 0,64 => 3200,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 3200,00 €
     Netto GSE: 3168,00 € (corrispettivo GSE: 32,00 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -4036,7 +4036,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-P06
   Nome:            R6: SR=ESCO ≠ SA → contratto EPC obbligatorio (UNI CEI EN 17669)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-10-15
   Data fine lavori:2026-10-01
   Modalità accesso:diretto
@@ -4137,7 +4137,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-P07
   Nome:            R7: PA Comune ≤15.000ab → incentivo 100% (II.A isolamento)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-11-15
   Data fine lavori:2026-11-01
   Modalità accesso:diretto
@@ -4230,7 +4230,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-P10
   Nome:            R10: Mandato incasso (non-PA) + atto assenso (prop≠richiedente)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-12-15
   Data fine lavori:2026-12-01
   Modalità accesso:diretto
@@ -4305,7 +4305,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 20.449,00 × 0,15 × 1,00 => 3067,35 €
     Risultato: I = k * Ei * Ci * CC = 3067,35 €
     Netto GSE: 3036,68 € (corrispettivo GSE: 30,67 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI

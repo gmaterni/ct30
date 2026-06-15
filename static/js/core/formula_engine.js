@@ -59,6 +59,7 @@ const UaFormulaEngine = function () {
     code,
     dati,
     soggettoType,
+    modalitaAccesso,
   ) {
     if (typeof totalAmount !== "number" || totalAmount < 0) {
       console.error(
@@ -73,8 +74,8 @@ const UaFormulaEngine = function () {
       return null;
     }
 
-    // PA/ETS non economico: sempre unica rata (nessuna rateizzazione)
-    if (_isPAorETS(soggettoType)) {
+    // PA/ETS non economico: unica rata solo in accesso diretto (art.11 c.6)
+    if (_isPAorETS(soggettoType) && modalitaAccesso === "diretto") {
       const plan = {
         total: parseFloat(totalAmount.toFixed(2)),
         numInstallments: 1,
@@ -89,7 +90,6 @@ const UaFormulaEngine = function () {
       return plan;
     }
 
-    const SOGLIA_UNICA_SOLUZIONE = PROCEDURA_CONFIG.SOGLIA_UNICA_SOLUZIONE;
     const DURATA_PICCOLA_POTENZA =
       PROCEDURA_CONFIG.DURATA_STANDARD_PICCOLA_POTENZA;
     const DURATA_GRANDE_POTENZA =
@@ -103,20 +103,6 @@ const UaFormulaEngine = function () {
       isSinglePayment: false,
     };
 
-    if (totalAmount <= SOGLIA_UNICA_SOLUZIONE) {
-      plan.numInstallments = 1;
-      plan.isSinglePayment = true;
-      plan.documentazioneSemplificata =
-        totalAmount <=
-        (PROCEDURA_CONFIG.SOGLIA_DOCUMENTAZIONE_SEMPLIFICATA || 5000);
-      plan.installments.push({
-        n: 1,
-        amount: parseFloat(totalAmount.toFixed(2)),
-        label: "Unica soluzione",
-      });
-      return plan;
-    }
-
     let years = DURATA_GRANDE_POTENZA;
     const interventionRules = RULES.interventi[code];
 
@@ -126,10 +112,13 @@ const UaFormulaEngine = function () {
       const potenzaKw = _getPotenzaNominaleKw(code, dati);
 
       if (potenzaKw > 0) {
+        var soglia =
+          interventionRules &&
+          typeof interventionRules.soglia_superficie === "number"
+            ? interventionRules.soglia_superficie
+            : SOGLIA_POTENZA_KW;
         years =
-          potenzaKw < SOGLIA_POTENZA_KW
-            ? DURATA_PICCOLA_POTENZA
-            : DURATA_GRANDE_POTENZA;
+          potenzaKw <= soglia ? DURATA_PICCOLA_POTENZA : DURATA_GRANDE_POTENZA;
       } else if (
         interventionRules &&
         typeof interventionRules.durata === "object"
@@ -243,7 +232,12 @@ const UaFormulaEngine = function () {
       });
     }
 
-    if (dati.zona_assistita_a === "sì") {
+    if (
+      dati.zona_assistita_a === "sì" &&
+      PREMIALITA_CONFIG.zona_assistita_a.applicabile_a.some(function (p) {
+        return code.startsWith(p) || code === p;
+      })
+    ) {
       result.totale += PREMIALITA_CONFIG.zona_assistita_a.bonus_perc;
       result.dettaglio.push({
         codice: "zona_assistita_a",
@@ -252,7 +246,12 @@ const UaFormulaEngine = function () {
       });
     }
 
-    if (dati.zona_assistita_c === "sì") {
+    if (
+      dati.zona_assistita_c === "sì" &&
+      PREMIALITA_CONFIG.zona_assistita_c.applicabile_a.some(function (p) {
+        return code.startsWith(p) || code === p;
+      })
+    ) {
       result.totale += PREMIALITA_CONFIG.zona_assistita_c.bonus_perc;
       result.dettaglio.push({
         codice: "zona_assistita_c",
@@ -1241,11 +1240,13 @@ const UaFormulaEngine = function () {
         calculationResult.errors.length === 0
       ) {
         const soggettoType = contesto?.soggetto || "";
+        const modalitaAccesso = contesto?.modalita_accesso || "diretto";
         calculationResult.paymentPlan = _calculatePaymentPlan(
           calculationResult.amount,
           code,
           datiTecnici,
           soggettoType,
+          modalitaAccesso,
         );
       }
     } catch (err) {

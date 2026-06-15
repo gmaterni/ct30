@@ -6,7 +6,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-P06
   Nome:            R6: SR=ESCO ≠ SA → contratto EPC obbligatorio (UNI CEI EN 17669)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-10-15
   Data fine lavori:2026-10-01
   Modalità accesso:diretto

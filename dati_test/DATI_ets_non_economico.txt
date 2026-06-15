@@ -6,7 +6,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-P03
   Nome:            R3: ETS non economico → assimilato PA (II.A isolamento 100%)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-09-15
   Data fine lavori:2026-09-01
   Modalità accesso:diretto

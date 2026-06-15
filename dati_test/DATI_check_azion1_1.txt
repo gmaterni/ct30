@@ -6,7 +6,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T14
   Nome:            check_azion3_1 — PA comune <15k III.A 100%
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto

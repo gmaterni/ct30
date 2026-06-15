@@ -6,7 +6,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T27
   Nome:            III.C Biomassa Logaritmica — Stufa a pellet
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -92,7 +92,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(598,75, min(5000,00, 15,00 × 600,00) × 0,65) => 598,75 €
     Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 598,75 €
     Netto GSE: 592,76 € (corrispettivo GSE: 5,99 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI

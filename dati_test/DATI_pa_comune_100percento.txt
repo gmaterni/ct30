@@ -6,7 +6,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-P07
   Nome:            R7: PA Comune ≤15.000ab → incentivo 100% (II.A isolamento)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-11-15
   Data fine lavori:2026-11-01
   Modalità accesso:diretto

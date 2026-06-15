@@ -6,7 +6,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-P10
   Nome:            R10: Mandato incasso (non-PA) + atto assenso (prop≠richiedente)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-12-15
   Data fine lavori:2026-12-01
   Modalità accesso:diretto
@@ -81,7 +81,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 20.449,00 × 0,15 × 1,00 => 3067,35 €
     Risultato: I = k * Ei * Ci * CC = 3067,35 €
     Netto GSE: 3036,68 € (corrispettivo GSE: 30,67 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI

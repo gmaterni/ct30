@@ -23,6 +23,7 @@ import {
   CATASTO,
   SCHEDE_TECNICHE,
   FORMULE_INCENTIVO,
+  PROCEDURA_CONFIG,
 } from "./core/normativa.js";
 import { loadCatalogo } from "./core/catalogo_loader.js";
 
@@ -80,7 +81,7 @@ const TEST_SCENARIOS_LIST = [
   },
   {
     file: "data/tests/test_11_ibrido_bivalente.json",
-    label: "Sistema Ibrido III.B (bivalente) + Scaldacqua III.E",
+    label: "Sistema Ibrido III.B + III.E — blocco η_s atteso",
   },
   {
     file: "data/tests/test_13_privato_isolamento_pdc.json",
@@ -88,10 +89,6 @@ const TEST_SCENARIOS_LIST = [
   },
 
   { group: "Impresa" },
-  {
-    file: "data/tests/test_02_impresa_grande.json",
-    label: "PdC Grande III.A + Fotovoltaico II.H",
-  },
   {
     file: "data/tests/test_12_impresa_piccola_multi.json",
     label: "Isolamento II.A + PdC III.A — maggioraz. piccola impresa",
@@ -106,6 +103,10 @@ const TEST_SCENARIOS_LIST = [
   },
 
   { group: "Terziario" },
+  {
+    file: "data/tests/test_02_terziario_pdc_fv.json",
+    label: "Terziario — PdC III.A + II.H (blocco accumulo atteso)",
+  },
   {
     file: "data/tests/test_03_isolamento_pareti.json",
     label: "Isolamento Pareti II.A — superficie opaca",
@@ -363,26 +364,29 @@ const UaWizardManager = function (viewportId) {
     });
   };
 
-  const _calculateOverallPaymentPlan = function (results, soggettoType) {
+  const _calculateOverallPaymentPlan = function (
+    results,
+    soggettoType,
+    modalitaAccesso,
+  ) {
     let total = 0;
-    let hasErrors = false;
     Object.keys(results).forEach(function (code) {
       var r = results[code];
       if (r.errors && r.errors.length > 0) {
-        hasErrors = true;
-      } else {
-        total += r.amount || 0;
+        return;
       }
+      total += r.amount || 0;
     });
 
-    if (hasErrors || total === 0) {
+    if (total === 0) {
       return null;
     }
 
-    // PA/ETS non economico: sempre unica rata
+    // PA/ETS non economico: unica rata solo in accesso diretto (art.11 c.6)
     if (
-      soggettoType === "Pubblica Amministrazione" ||
-      soggettoType === "ETS non economico"
+      (soggettoType === "Pubblica Amministrazione" ||
+        soggettoType === "ETS non economico") &&
+      modalitaAccesso === "diretto"
     ) {
       const plan = {
         total: parseFloat(total.toFixed(2)),
@@ -405,7 +409,8 @@ const UaWizardManager = function (viewportId) {
       isSinglePayment: false,
     };
 
-    if (total <= 15000) {
+    const sogliaUnicaSoluzione = PROCEDURA_CONFIG.SOGLIA_UNICA_SOLUZIONE;
+    if (total <= sogliaUnicaSoluzione) {
       plan.numInstallments = 1;
       plan.isSinglePayment = true;
       plan.installments.push({
@@ -1649,7 +1654,10 @@ const UaWizardManager = function (viewportId) {
         html +=
           '<div class="result-card"><div class="card-title">' + code + "</div>";
         if (r.errors && r.errors.length > 0) {
-          var errorHtml = '<p class="error">' + r.errors.join("<br>") + "</p>";
+          var errorHtml =
+            '<div style="color:#ff6b6b;font-weight:600;margin:4px 0;">⛔ Blocco: ' +
+            r.errors[0] +
+            "</div>";
           html += errorHtml;
         } else {
           if (r.warnings && r.warnings.length > 0) {
@@ -1734,8 +1742,17 @@ const UaWizardManager = function (viewportId) {
               "</p>";
           }
           if (r.paymentPlan) {
+            var durata = r.paymentPlan.numInstallments;
+            var importoAnnuo =
+              durata > 0
+                ? PreventivoManager.formatCurrency(r.paymentPlan.total / durata)
+                : PreventivoManager.formatCurrency(r.paymentPlan.total);
             html +=
-              "<p>Rate: " + formatNum(r.paymentPlan.numInstallments) + "</p>";
+              '<div style="font-size:0.8em;opacity:0.6;">Durata: ' +
+              durata +
+              " anni — Importo annuo: " +
+              importoAnnuo +
+              "</div>";
           }
           totale += r.amount || 0;
         }
@@ -1750,12 +1767,23 @@ const UaWizardManager = function (viewportId) {
         const overallPlan = _calculateOverallPaymentPlan(
           results,
           richiedente.tipo_soggetto,
+          _praticaData.pratica.modalita_accesso,
         );
         if (overallPlan) {
           let planHtml =
             '<div class="payment-plan-overall" style="margin-top:15px;padding:12px;border:1px dashed #68c8b2;border-radius:6px;background:rgba(104,200,178,0.05);">';
           planHtml +=
             '<div style="font-weight:600;color:#68c8b2;margin-bottom:8px;">Piano di Erogazione Incentivo Complessivo</div>';
+          planHtml +=
+            '<div style="font-size:0.8em;opacity:0.7;margin-bottom:8px;">';
+          planHtml +=
+            "Ogni intervento è rateizzato in base alla propria durata ";
+          planHtml +=
+            "(2 anni per potenza &lt; 35kW, 5 anni per potenza ≥ 35kW o durata fissa). ";
+          planHtml +=
+            "L'importo annuo complessivo è la somma delle rate di tutti ";
+          planHtml += "gli interventi attivi in quell'anno.";
+          planHtml += "</div>";
           if (overallPlan.isSinglePayment) {
             planHtml +=
               '<p style="margin:4px 0;">Modalità: <strong>Unica annualità (Soluzione unica)</strong></p>';
@@ -1763,6 +1791,13 @@ const UaWizardManager = function (viewportId) {
               '<p style="margin:4px 0;">Importo: <strong>' +
               PreventivoManager.formatCurrency(overallPlan.total) +
               "</strong></p>";
+            if (
+              richiedente.tipo_soggetto === "Pubblica Amministrazione" ||
+              richiedente.tipo_soggetto === "ETS non economico"
+            ) {
+              planHtml +=
+                '<div style="font-size:0.8em;color:#68c8b2;">Pagamento in unica soluzione per PA/ETS non economico (ai sensi delle Regole Applicative §4.2)</div>';
+            }
           } else {
             planHtml +=
               '<p style="margin:4px 0;">Ripartizione in <strong>' +
@@ -1780,6 +1815,8 @@ const UaWizardManager = function (viewportId) {
             });
             planHtml += "</table>";
           }
+          planHtml +=
+            '<div style="font-size:0.75em;opacity:0.5;margin-top:4px;">Il numero di annualità corrisponde alla durata massima tra tutti gli interventi.</div>';
           planHtml += "</div>";
           totaleHtml += planHtml;
         }
@@ -2718,14 +2755,37 @@ const UaWizardManager = function (viewportId) {
     });
 
     let overallPlanHtml = "";
-    const overallPlan = _calculateOverallPaymentPlan(results, sa.tipo_soggetto);
+    const overallPlan = _calculateOverallPaymentPlan(
+      results,
+      sa.tipo_soggetto,
+      p.modalita_accesso,
+    );
     if (overallPlan) {
       overallPlanHtml =
         '<div style="margin-top:20px;padding:15px;border:1px solid rgba(104,200,178,0.3);border-radius:6px;background:rgba(104,200,178,0.05);">' +
         '<div style="font-weight:700;color:#68c8b2;font-size:1.1em;margin-bottom:10px;">PIANO DI EROGAZIONE INCENTIVO COMPLESSIVO</div>';
+      overallPlanHtml +=
+        '<div style="font-size:0.8em;opacity:0.7;margin-bottom:8px;">';
+      overallPlanHtml +=
+        "Ogni intervento è rateizzato in base alla propria durata ";
+      overallPlanHtml +=
+        "(2 anni per potenza &lt; 35kW, 5 anni per potenza ≥ 35kW o durata fissa). ";
+      overallPlanHtml +=
+        "L'importo annuo complessivo è la somma delle rate di tutti ";
+      overallPlanHtml += "gli interventi attivi in quell'anno.";
+      overallPlanHtml += "</div>";
       if (overallPlan.isSinglePayment) {
+        var paEtsNote = "";
+        if (
+          sa.tipo_soggetto === "Pubblica Amministrazione" ||
+          sa.tipo_soggetto === "ETS non economico"
+        ) {
+          paEtsNote =
+            '<div style="font-size:0.8em;color:#68c8b2;">Pagamento in unica soluzione per PA/ETS non economico (ai sensi delle Regole Applicative §4.2)</div>';
+        }
         overallPlanHtml +=
-          '<p style="margin:4px 0;">Erogazione in <strong>unica annualità (soluzione unica)</strong> per importo complessivo sotto la soglia di 15.000 €.</p>' +
+          '<p style="margin:4px 0;">Erogazione in <strong>unica annualità (soluzione unica)</strong>.</p>' +
+          paEtsNote +
           '<p style="margin:4px 0;font-size:1.1em;">Importo erogato: <strong>' +
           PreventivoManager.formatCurrency(overallPlan.total) +
           "</strong></p>";
@@ -2746,6 +2806,8 @@ const UaWizardManager = function (viewportId) {
         });
         overallPlanHtml += "</table>";
       }
+      overallPlanHtml +=
+        '<div style="font-size:0.75em;opacity:0.5;margin-top:4px;">Il numero di annualità corrisponde alla durata massima tra tutti gli interventi.</div>';
       overallPlanHtml += "</div>";
     }
 

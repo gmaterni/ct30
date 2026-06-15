@@ -6,7 +6,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-P02
   Nome:            R2: Impresa → Regime Titolo V (richiesta preliminare + III.A 45%)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-07-15
   Data fine lavori:2026-07-01
   Modalità accesso:diretto
@@ -87,7 +87,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 153.461,54 × 0,06 × 1,00 => 9207,69 €
     Risultato: I = k * Ei * Ci * CC = 9207,69 €
     Netto GSE: 9115,61 € (corrispettivo GSE: 92,08 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI

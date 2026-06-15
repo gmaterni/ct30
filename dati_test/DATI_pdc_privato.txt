@@ -6,7 +6,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T01
   Nome:            Test 01 - Privato PdC Aria/Acqua
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -90,7 +90,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 21.734,37 × 0,15 × 1,00 => 3260,16 €
     Risultato: I = k * Ei * Ci * CC = 3260,16 €
     Netto GSE: 3227,56 € (corrispettivo GSE: 32,60 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI

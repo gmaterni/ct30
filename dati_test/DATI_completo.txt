@@ -6,7 +6,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T07
   Nome:            Privato Terziario - Pacchetto Full Electric (Massima Completezza)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -167,23 +167,23 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 136.588,74 × 0,06 × 1,00 => 8195,32 €
     Risultato: I = k * Ei * Ci * CC = 8195,32 €
     Netto GSE: 8113,37 € (corrispettivo GSE: 81,95 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
   II.H — Fotovoltaico e accumulo abbinati a pompa di calore elettrica
     Formula: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale
     Passaggi:
-      Calcolo Incentivo Finale (I_tot): min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = min(48.000,00, 60,00 × 1200,00 + 120,00 × 1000,00) × 0,52 => 24.960,00 €
-    Risultato: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = 24.960,00 €
-    Netto GSE: 24.710,40 € (corrispettivo GSE: 249,60 €)
+      Calcolo Incentivo Finale (I_tot): min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = min(48.000,00, 60,00 × 1200,00 + 120,00 × 1000,00) × 0,50 => 24.000,00 €
+    Risultato: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = 24.000,00 €
+    Netto GSE: 23.760,00 € (corrispettivo GSE: 240,00 €)
     Erogazione: 5 rate annuali
 
   II.G — Infrastrutture ricarica veicoli elettrici
     Formula: I = min(spesa, cmax_scelto) * percentuale
     Passaggi:
-      Calcolo Incentivo Finale (I_tot): min(spesa, cmax_scelto) * percentuale = min(18.000,00, 50.400,00) × 0,53 => 9540,00 €
-    Risultato: I = min(spesa, cmax_scelto) * percentuale = 9540,00 €
-    Netto GSE: 9444,60 € (corrispettivo GSE: 95,40 €)
-    Erogazione: Unica soluzione
+      Calcolo Incentivo Finale (I_tot): min(spesa, cmax_scelto) * percentuale = min(18.000,00, 50.400,00) × 0,50 => 9000,00 €
+    Risultato: I = min(spesa, cmax_scelto) * percentuale = 9000,00 €
+    Netto GSE: 8910,00 € (corrispettivo GSE: 90,00 €)
+    Erogazione: 2 rate annuali
 
   II.F — Building automation e gestione carichi
     Formula: I = min(spesa, superficie * cmax) * percentuale
@@ -191,7 +191,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(15.000,00, 5000,00 × 60,00) × 0,64 => 9600,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 9600,00 €
     Netto GSE: 9504,00 € (corrispettivo GSE: 96,00 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
   III.E — Scaldacqua a pompa di calore
     Formula: I = min(spesa * percentuale, incentivo_fisso_per_scaglione)
@@ -199,7 +199,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa * percentuale, incentivo_fisso_per_scaglione) = min(2500,00 × 0,60, 1500,00) => 1500,00 €
     Risultato: I = min(spesa * percentuale, incentivo_fisso_per_scaglione) = 1500,00 €
     Netto GSE: 1485,00 € (corrispettivo GSE: 15,00 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -212,10 +212,10 @@ PREVENTIVO
     Calcolo Incentivo Finale | I_tot | 8195,32 = 8195,32 €
 
   Intervento II.H
-    Calcolo Incentivo Finale | I_tot | 24.960,00 = 24.960,00 €
+    Calcolo Incentivo Finale | I_tot | 24.000,00 = 24.000,00 €
 
   Intervento II.G
-    Calcolo Incentivo Finale | I_tot | 9540,00 = 9540,00 €
+    Calcolo Incentivo Finale | I_tot | 9000,00 = 9000,00 €
 
   Intervento II.F
     Calcolo Incentivo Finale | I_tot | 9600,00 = 9600,00 €

@@ -6,7 +6,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T25
   Nome:            III.F Teleriscaldamento — 3 fasce potenza (fascia media 80kW)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -76,7 +76,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = min(20.000,00, min(80,00 × 160,00, 15.000,00)) × 0,65 => 8320,00 €
     Risultato: I = min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = 8320,00 €
     Netto GSE: 8236,80 € (corrispettivo GSE: 83,20 €)
-    Erogazione: Unica soluzione
+    Erogazione: 5 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI

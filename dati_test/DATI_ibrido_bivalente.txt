@@ -6,7 +6,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T11
   Nome:            Privato Residenziale - Sistema Ibrido III.B + Scaldacqua III.E
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -108,7 +108,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa * percentuale, incentivo_fisso_per_scaglione) = min(2000,00 × 0,40, 700,00) => 700,00 €
     Risultato: I = min(spesa * percentuale, incentivo_fisso_per_scaglione) = 700,00 €
     Netto GSE: 693,00 € (corrispettivo GSE: 7,00 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI

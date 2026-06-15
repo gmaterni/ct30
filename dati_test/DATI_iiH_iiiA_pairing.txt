@@ -6,7 +6,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-P04
   Nome:            R4: III.A elettrica pura + II.H FV → pairing obbligatorio OK
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-08-15
   Data fine lavori:2026-08-01
   Modalità accesso:diretto
@@ -95,15 +95,15 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 66.712,12 × 0,15 × 1,00 => 10.006,82 €
     Risultato: I = k * Ei * Ci * CC = 10.006,82 €
     Netto GSE: 9906,75 € (corrispettivo GSE: 100,07 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
   II.H — Fotovoltaico e accumulo abbinati a pompa di calore elettrica
     Formula: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale
     Passaggi:
-      Calcolo Incentivo Finale (I_tot): min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = min(15.000,00, 10,00 × 1500,00 + 10,00 × 1000,00) × 0,52 => 7800,00 €
-    Risultato: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = 7800,00 €
-    Netto GSE: 7722,00 € (corrispettivo GSE: 78,00 €)
-    Erogazione: Unica soluzione
+      Calcolo Incentivo Finale (I_tot): min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = min(15.000,00, 10,00 × 1500,00 + 10,00 × 1000,00) × 0,50 => 7500,00 €
+    Risultato: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale = 7500,00 €
+    Netto GSE: 7425,00 € (corrispettivo GSE: 75,00 €)
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -116,4 +116,4 @@ PREVENTIVO
     Calcolo Incentivo Finale | I_tot | 10.006,82 = 10.006,82 €
 
   Intervento II.H
-    Calcolo Incentivo Finale | I_tot | 7800,00 = 7800,00 €
+    Calcolo Incentivo Finale | I_tot | 7500,00 = 7500,00 €

@@ -6,7 +6,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-P01
   Nome:            R1: Privato Residenziale → solo Titolo III (PdC aria/acqua)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-07-15
   Data fine lavori:2026-07-01
   Modalità accesso:diretto
@@ -81,7 +81,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 25.433,77 × 0,15 × 1,00 => 3815,06 €
     Risultato: I = k * Ei * Ci * CC = 3815,06 €
     Netto GSE: 3776,91 € (corrispettivo GSE: 38,15 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI

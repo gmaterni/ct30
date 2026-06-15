@@ -6,7 +6,7 @@ DATI GENERALI
 ----------------------------------------
   Codice:          CT30-T31
   Nome:            III.C Caldaia legna — Formula logaritmica D (tipo generatore 4)
-  Data inserimento:2026-06-13
+  Data inserimento:2026-06-15
   Data richiesta:  2026-05-15
   Data fine lavori:2026-05-01
   Modalità accesso:diretto
@@ -92,7 +92,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(2520,00, min(15.000,00, 35,00 × 600,00) × 0,65) => 2520,00 €
     Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 2520,00 €
     Netto GSE: 2494,80 € (corrispettivo GSE: 25,20 €)
-    Erogazione: Unica soluzione
+    Erogazione: 2 rate annuali
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI

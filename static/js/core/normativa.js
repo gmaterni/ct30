@@ -22,16 +22,7 @@ export const PREMIALITA_CONFIG = {
   made_in_eu: {
     label: "Made in EU",
     bonus_perc: 0.1,
-    applicabile_a: [
-      "II.A",
-      "II.B",
-      "II.C",
-      "II.D",
-      "II.E",
-      "II.F",
-      "II.G",
-      "II.H",
-    ],
+    applicabile_a: ["II.A", "II.B", "II.C", "II.D", "II.E", "II.F"],
     campo_attivazione: "made_in_eu",
     note: "+10% solo per Titolo II (Manuale Analitico Sez.9, RA §4.2)",
   },
