@@ -76,7 +76,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = min(20.000,00, min(80,00 × 160,00, 15.000,00)) × 0,65 => 8320,00 €
     Risultato: I = min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = 8320,00 €
     Netto GSE: 8236,80 € (corrispettivo GSE: 83,20 €)
-    Erogazione: 5 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI

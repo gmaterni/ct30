@@ -94,7 +94,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 21.734,37 × 0,15 × 1,00 => 3260,16 €
     Risultato: I = k * Ei * Ci * CC = 3260,16 €
     Netto GSE: 3227,56 € (corrispettivo GSE: 32,60 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -225,7 +225,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 153.461,54 × 0,06 × 1,00 => 9207,69 €
     Risultato: I = k * Ei * Ci * CC = 9207,69 €
     Netto GSE: 9115,61 € (corrispettivo GSE: 92,08 €)
-    Erogazione: 5 rate annuali
+    Erogazione: Unica soluzione
 
   II.H — Fotovoltaico e accumulo abbinati a pompa di calore elettrica
     Formula: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale
@@ -570,7 +570,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 72.121,21 × 0,06 × 1,00 => 4327,27 €
     Risultato: I = k * Ei * Ci * CC = 4327,27 €
     Netto GSE: 4284,00 € (corrispettivo GSE: 43,27 €)
-    Erogazione: 5 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -679,7 +679,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 72.121,21 × 0,06 × 1,00 => 4327,27 €
     Risultato: I = k * Ei * Ci * CC = 4327,27 €
     Netto GSE: 4284,00 € (corrispettivo GSE: 43,27 €)
-    Erogazione: 5 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -892,9 +892,9 @@ PREVENTIVO
   III.E — Scaldacqua a pompa di calore
     Formula: I = min(spesa * percentuale, incentivo_fisso_per_scaglione)
     Passaggi:
-      Calcolo Incentivo Finale (I_tot): min(spesa * percentuale, incentivo_fisso_per_scaglione) = min(2500,00 × 0,60, 1500,00) => 1500,00 €
-    Risultato: I = min(spesa * percentuale, incentivo_fisso_per_scaglione) = 1500,00 €
-    Netto GSE: 1485,00 € (corrispettivo GSE: 15,00 €)
+      Calcolo Incentivo Finale (I_tot): min(spesa * percentuale, incentivo_fisso_per_scaglione) = min(2500,00 × 0,40, 1500,00) => 1000,00 €
+    Risultato: I = min(spesa * percentuale, incentivo_fisso_per_scaglione) = 1000,00 €
+    Netto GSE: 990,00 € (corrispettivo GSE: 10,00 €)
     Erogazione: 2 rate annuali
 
 ----------------------------------------
@@ -917,7 +917,7 @@ PREVENTIVO
     Calcolo Incentivo Finale | I_tot | 9600,00 = 9600,00 €
 
   Intervento III.E
-    Calcolo Incentivo Finale | I_tot | 1500,00 = 1500,00 €
+    Calcolo Incentivo Finale | I_tot | 1000,00 = 1000,00 €
 
 ============================================================
   PAGE BREAK — PA Comune ≤15k - Isolamento + PdC (CT30-T08)
@@ -1421,7 +1421,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa * percentuale, incentivo_fisso_per_scaglione) = min(2000,00 × 0,40, 700,00) => 700,00 €
     Risultato: I = min(spesa * percentuale, incentivo_fisso_per_scaglione) = 700,00 €
     Netto GSE: 693,00 € (corrispettivo GSE: 7,00 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -1550,7 +1550,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(1.500.001,00, 80,00 × 200,00) × 0,63 => 10.000,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 10.000,00 €
     Netto GSE: 9900,00 € (corrispettivo GSE: 100,00 €)
-    Erogazione: 5 rate annuali
+    Erogazione: Unica soluzione
 
   III.A — Pompa di calore elettrica per climatizzazione invernale
     Formula: I = k * Ei * Ci * CC
@@ -1561,7 +1561,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 25.508,13 × 0,15 × 1,00 => 3826,22 €
     Risultato: I = k * Ei * Ci * CC = 3826,22 €
     Netto GSE: 3787,96 € (corrispettivo GSE: 38,26 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -1687,7 +1687,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(9000,00, 60,00 × 200,00) × 0,65 => 5850,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 5850,00 €
     Netto GSE: 5791,50 € (corrispettivo GSE: 58,50 €)
-    Erogazione: 5 rate annuali
+    Erogazione: Unica soluzione
 
   III.A — Pompa di calore elettrica per climatizzazione invernale
     Formula: I = k * Ei * Ci * CC
@@ -1698,7 +1698,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.425,97 × 0,15 × 1,00 => 2463,90 €
     Risultato: I = k * Ei * Ci * CC = 2463,90 €
     Netto GSE: 2439,26 € (corrispettivo GSE: 24,64 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -2179,7 +2179,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.828,28 × 0,15 × 1,00 => 2524,24 €
     Risultato: I = k * Ei * Ci * CC = 2524,24 €
     Netto GSE: 2499,00 € (corrispettivo GSE: 25,24 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -2275,7 +2275,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.828,28 × 0,15 × 1,00 => 2524,24 €
     Risultato: I = k * Ei * Ci * CC = 2524,24 €
     Netto GSE: 2499,00 € (corrispettivo GSE: 25,24 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -2389,9 +2389,9 @@ PREVENTIVO
   III.G — Microcogenerazione (≤50 kWe)
     Formula: I = min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale
     Passaggi:
-      Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale = min(300.001,00, min(20,00 × 5000,00, 100.000,00)) × 0,65 => 65.000,00 €
-    Risultato: I = min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale = 65.000,00 €
-    Netto GSE: 64.750,00 € (corrispettivo GSE: 250,00 €)
+      Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale = min(300.001,00, min(20,00 × 5000,00, 100.000,00)) × 0,45 => 45.000,00 €
+    Risultato: I = min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale = 45.000,00 €
+    Netto GSE: 44.750,00 € (corrispettivo GSE: 250,00 €)
     Erogazione: 5 rate annuali
 
 ----------------------------------------
@@ -2405,7 +2405,7 @@ PREVENTIVO
     Calcolo Incentivo Finale | I_tot | 2524,24 = 2524,24 €
 
   Intervento III.G
-    Calcolo Incentivo Finale | I_tot | 65.000,00 = 65.000,00 €
+    Calcolo Incentivo Finale | I_tot | 45.000,00 = 45.000,00 €
 
 ============================================================
   PAGE BREAK — Az#11 — Vincolo mantenimento 5 anni (CT30-T21)
@@ -2491,7 +2491,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.828,28 × 0,15 × 1,00 => 2524,24 €
     Risultato: I = k * Ei * Ci * CC = 2524,24 €
     Netto GSE: 2499,00 € (corrispettivo GSE: 25,24 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -2587,7 +2587,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(15.000,00, 80,00 × 130,00) × 0,48 => 4940,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 4940,00 €
     Netto GSE: 4890,60 € (corrispettivo GSE: 49,40 €)
-    Erogazione: 5 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -2775,7 +2775,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale) = min(0,32 × 670,00 × 30,00, min(18.000,00, 30,00 × 550,00) × 0,65) => 6432,00 €
     Risultato: I = min(Ci * Qu * Sl, min(spesa, Sl * cmax) * percentuale) = 6432,00 €
     Netto GSE: 6367,68 € (corrispettivo GSE: 64,32 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -2865,7 +2865,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = min(20.000,00, min(80,00 × 160,00, 15.000,00)) × 0,65 => 8320,00 €
     Risultato: I = min(spesa, min(potenza_allaccio * cmax_kw, imax_fascia)) * percentuale = 8320,00 €
     Netto GSE: 8236,80 € (corrispettivo GSE: 83,20 €)
-    Erogazione: 5 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -2971,7 +2971,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(1800,00, min(12.000,00, 25,00 × 600,00) × 0,65) => 1800,00 €
     Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 1800,00 €
     Netto GSE: 1782,00 € (corrispettivo GSE: 18,00 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -3082,7 +3082,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(598,75, min(5000,00, 15,00 × 600,00) × 0,65) => 598,75 €
     Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 598,75 €
     Netto GSE: 592,76 € (corrispettivo GSE: 5,99 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -3479,7 +3479,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(2520,00, min(15.000,00, 35,00 × 600,00) × 0,65) => 2520,00 €
     Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 2520,00 €
     Netto GSE: 2494,80 € (corrispettivo GSE: 25,20 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -3579,7 +3579,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 25.433,77 × 0,15 × 1,00 => 3815,06 €
     Risultato: I = k * Ei * Ci * CC = 3815,06 €
     Netto GSE: 3776,91 € (corrispettivo GSE: 38,15 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -3683,7 +3683,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 153.461,54 × 0,06 × 1,00 => 9207,69 €
     Risultato: I = k * Ei * Ci * CC = 9207,69 €
     Netto GSE: 9115,61 € (corrispettivo GSE: 92,08 €)
-    Erogazione: 5 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -4005,7 +4005,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(12.000,00, 25,00 × 800,00) × 0,64 => 7680,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 7680,00 €
     Netto GSE: 7603,20 € (corrispettivo GSE: 76,80 €)
-    Erogazione: 5 rate annuali
+    Erogazione: Unica soluzione
 
   II.C — Schermature e ombreggiamento solare
     Formula: I = min(spesa, superficie * cmax) * percentuale
@@ -4013,7 +4013,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(5000,00, 20,00 × 250,00) × 0,64 => 3200,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 3200,00 €
     Netto GSE: 3168,00 € (corrispettivo GSE: 32,00 €)
-    Erogazione: 5 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
@@ -4305,7 +4305,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 20.449,00 × 0,15 × 1,00 => 3067,35 €
     Risultato: I = k * Ei * Ci * CC = 3067,35 €
     Netto GSE: 3036,68 € (corrispettivo GSE: 30,67 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI

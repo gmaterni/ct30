@@ -600,9 +600,9 @@ Maggiorazione del 10% dell'incentivo base se i componenti principali sono
 prodotti nell'Unione Europea (richiede certificazione del produttore).
 
 MAGGIORAZIONI APPLICABILI (riepilogo):
-- Zona assistita (Art.107.3.a TFUE): +15%
-- Zona assistita (Art.107.3.c TFUE): +5%
-- Efficienza EP ≥ 40%: +15%
+- Zona assistita (Art.107.3.a TFUE): +15% (solo Titolo II)
+- Zona assistita (Art.107.3.c TFUE): +5% (solo Titolo II)
+- Efficienza EP ≥ 40%: +15% (solo Titolo II)
 - Componenti UE: +10% (solo Titolo II)
 - Piccola impresa: +20 punti % (Tit.II), +20 punti % (Tit.III)
 - Media impresa: +10 punti % (Tit.II), +10 punti % (Tit.III)
@@ -769,8 +769,9 @@ Il GSE eroga il contributo sul conto corrente indicato dal SR.
 - Importo > 5.000 € e ≤ 15.000 €: erogazione in un'unica rata.
 - Importo > 15.000 €: suddivisione in rate annuali costanti (da 2 a 5 anni,
   secondo Tabella durata, Sezione 4).
-  - Nota: Le PA e gli ETS non economici ricevono sempre l'incentivo in
-    un'unica rata, indipendentemente dall'importo.
+  - Nota: Le PA e gli ETS non economici ricevono l'incentivo in un'unica
+    rata, anche per importi superiori a 15.000 EUR, quando optano per la
+    procedura di accesso diretto (Art.11, c.6; RA §4.3).
   - Soggetti privati (anche via ESCO): rata unica se incentivo totale
     ≤ 15.000 € (Art.11, c.4).
 - Acconti (Prenotazione): Fino al 50% per PA, erogati all'atto della

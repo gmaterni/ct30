@@ -67,14 +67,14 @@ export const PREMIALITA_CONFIG = {
   zona_assistita_a: {
     label: "Zona assistita (art. 107.3 lett.a)",
     bonus_perc: 0.15,
-    applicabile_a: ["II.", "III."],
+    applicabile_a: ["II."],
     campo_attivazione: "zona_assistita_a",
     note: "+15% per zone assistite ai sensi dell'art. 107.3 lett.a TFUE",
   },
   zona_assistita_c: {
     label: "Zona assistita (art. 107.3 lett.c)",
     bonus_perc: 0.05,
-    applicabile_a: ["II.", "III."],
+    applicabile_a: ["II."],
     campo_attivazione: "zona_assistita_c",
     note: "+5% per zone assistite ai sensi dell'art. 107.3 lett.c TFUE",
   },

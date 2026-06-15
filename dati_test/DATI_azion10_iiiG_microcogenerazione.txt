@@ -97,9 +97,9 @@ PREVENTIVO
   III.G — Microcogenerazione (≤50 kWe)
     Formula: I = min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale
     Passaggi:
-      Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale = min(300.001,00, min(20,00 × 5000,00, 100.000,00)) × 0,65 => 65.000,00 €
-    Risultato: I = min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale = 65.000,00 €
-    Netto GSE: 64.750,00 € (corrispettivo GSE: 250,00 €)
+      Calcolo Incentivo Finale (I_tot): min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale = min(300.001,00, min(20,00 × 5000,00, 100.000,00)) × 0,45 => 45.000,00 €
+    Risultato: I = min(spesa, min(potenza_elettrica * cmax, imax)) * percentuale = 45.000,00 €
+    Netto GSE: 44.750,00 € (corrispettivo GSE: 250,00 €)
     Erogazione: 5 rate annuali
 
 ----------------------------------------
@@ -113,4 +113,4 @@ PREVENTIVO
     Calcolo Incentivo Finale | I_tot | 2524,24 = 2524,24 €
 
   Intervento III.G
-    Calcolo Incentivo Finale | I_tot | 65.000,00 = 65.000,00 €
+    Calcolo Incentivo Finale | I_tot | 45.000,00 = 45.000,00 €

@@ -114,7 +114,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 153.461,54 × 0,06 × 1,00 => 9207,69 €
     Risultato: I = k * Ei * Ci * CC = 9207,69 €
     Netto GSE: 9115,61 € (corrispettivo GSE: 92,08 €)
-    Erogazione: 5 rate annuali
+    Erogazione: Unica soluzione
 
   II.H — Fotovoltaico e accumulo abbinati a pompa di calore elettrica
     Formula: I = min(spesa, potenza_fv * cmax_scaglione + accumulo_kwh * cmax_accumulo) * percentuale

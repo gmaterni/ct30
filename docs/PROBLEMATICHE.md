@@ -207,21 +207,21 @@ Legenda ambiguità: 🟢 chiara | 🟡 ambigua | 🔴 conflitto normativo
 **Problema**: Regole Applicative §4.2.1 limitano la maggiorazione zona assistita
 al solo Titolo II. Tuttavia il campo `zona_assistita_a` / `zona_assistita_c` è
 presente nelle schede tecniche di interventi di **entrambi i Titoli** (II e III),
-e `PREMIALITA_CONFIG` ha `applicabile_a: ["II.", "III."]`.
+e `PREMIALITA_CONFIG` aveva `applicabile_a: ["II.", "III."]`.
 
 **Dove**: `PREMIALITA_CONFIG.zona_assistita_{a,c}.applicabile_a` (normativa.js:70,77)
 
 **Ambiguità**: RA §4.2.1 dice "Titolo II", ma le schede tecniche mettono il campo
-anche su interventi III. Possibile che la norma intenda zone assistite _in generale_
-(art.107 TFUE) e che la limitazione al Titolo II sia solo per via del combinato
-disposto con altri articoli. Serve chiarimento GSE.
+anche su interventi III. Risolta allineando il codice alle RA.
 
-**Decisione attuale**: mantenuto `applicabile_a: ["II.", "III."]` in attesa di
-chiarimento. Il filtro lato formula_engine esiste già (D4), basta restringere la
-lista.
+**Decisione attuale**: `applicabile_a: ["II."]` — zona assistita solo Titolo II
+in linea con RA §4.2.1 e Tabella intensità Manuale Analitico. I campi nelle schede
+tecniche Titolo III sono mantenuti (il dato può essere raccolto ma non incide sul
+calcolo).
 
-**Test**: Nessun test specifico — tutti i test con zona_assistita_a/c su interventi
-Titolo III (es. T04 III.A, T07 III.A+III.D) perderanno il bonus se ristretto.
+**Test**: Nessun test specifico — i test con zona_assistita_a/c su interventi
+Titolo III (es. T07 III.E, T20 III.G) perdono il bonus come da attese
+documentate in `PIANO_VERIFICA.md` sezione F1.
 
 ---
 

@@ -349,6 +349,28 @@ function _exportCalcoliTxt(dati) {
   const lines = [];
   const add = (t) => lines.push(t);
 
+  // Primo passaggio: calcola importi per determinare totale incentivo
+  var totaleIncentivo = 0;
+  var preCalcoli = {};
+  interventi.forEach(function (code) {
+    const datiInt = dt[code] || {};
+    const contesto = {
+      zonaClimatica: ed.zona_climatica,
+      soggetto: sa.tipo_soggetto,
+      codiciSelezionati: interventi,
+      comuneSotto15k: !!ed.comune_sotto_15k,
+      scuolaOspedale: !!ed.scuola_ospedale,
+      totaleIncentivo: 0,
+    };
+    try {
+      const calc = FormulaEngine.calculate(code, datiInt, contesto);
+      preCalcoli[code] = calc;
+      if (calc.amount > 0) totaleIncentivo += calc.amount;
+    } catch (err) {
+      preCalcoli[code] = null;
+    }
+  });
+
   add("");
   add(SEP);
   add("  CALCOLI — FORMULE INCENTIVO");
@@ -367,6 +389,7 @@ function _exportCalcoliTxt(dati) {
       codiciSelezionati: interventi,
       comuneSotto15k: !!ed.comune_sotto_15k,
       scuolaOspedale: !!ed.scuola_ospedale,
+      totaleIncentivo: totaleIncentivo,
     };
 
     let calc;
@@ -444,6 +467,24 @@ function _exportRisultatiTxt(dati) {
   const lines = [];
   const add = (t) => lines.push(t);
 
+  // Primo passaggio: calcola importi per determinare totale incentivo
+  var totaleIncentivo = 0;
+  interventi.forEach(function (code) {
+    const datiInt = dt[code] || {};
+    const contesto = {
+      zonaClimatica: ed.zona_climatica,
+      soggetto: sa.tipo_soggetto,
+      codiciSelezionati: interventi,
+      comuneSotto15k: !!ed.comune_sotto_15k,
+      scuolaOspedale: !!ed.scuola_ospedale,
+      totaleIncentivo: 0,
+    };
+    try {
+      const calc = FormulaEngine.calculate(code, datiInt, contesto);
+      if (calc.amount > 0) totaleIncentivo += calc.amount;
+    } catch (err) { /* ignore */ }
+  });
+
   add("");
   add(SEP);
   add("  RISULTATI — DETTAGLIO CALCOLI");
@@ -458,6 +499,7 @@ function _exportRisultatiTxt(dati) {
       codiciSelezionati: interventi,
       comuneSotto15k: !!ed.comune_sotto_15k,
       scuolaOspedale: !!ed.scuola_ospedale,
+      totaleIncentivo: totaleIncentivo,
     };
 
     let calc;

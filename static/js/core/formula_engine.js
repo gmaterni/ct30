@@ -60,6 +60,7 @@ const UaFormulaEngine = function () {
     dati,
     soggettoType,
     modalitaAccesso,
+    totaleIncentivo,
   ) {
     if (typeof totalAmount !== "number" || totalAmount < 0) {
       console.error(
@@ -76,6 +77,25 @@ const UaFormulaEngine = function () {
 
     // PA/ETS non economico: unica rata solo in accesso diretto (art.11 c.6)
     if (_isPAorETS(soggettoType) && modalitaAccesso === "diretto") {
+      const plan = {
+        total: parseFloat(totalAmount.toFixed(2)),
+        numInstallments: 1,
+        installments: [],
+        isSinglePayment: true,
+      };
+      plan.installments.push({
+        n: 1,
+        amount: parseFloat(totalAmount.toFixed(2)),
+        label: "Unica soluzione",
+      });
+      return plan;
+    }
+
+    // Soggetti privati: unica rata se incentivo totale ≤ 15.000€ (art.11 c.4)
+    var sogliaUnica = PROCEDURA_CONFIG.SOGLIA_UNICA_SOLUZIONE;
+    var refAmount =
+      typeof totaleIncentivo === "number" ? totaleIncentivo : totalAmount;
+    if (refAmount <= sogliaUnica) {
       const plan = {
         total: parseFloat(totalAmount.toFixed(2)),
         numInstallments: 1,
@@ -1247,6 +1267,7 @@ const UaFormulaEngine = function () {
           datiTecnici,
           soggettoType,
           modalitaAccesso,
+          contesto?.totaleIncentivo,
         );
       }
     } catch (err) {

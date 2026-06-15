@@ -106,7 +106,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(9000,00, 60,00 × 200,00) × 0,65 => 5850,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 5850,00 €
     Netto GSE: 5791,50 € (corrispettivo GSE: 58,50 €)
-    Erogazione: 5 rate annuali
+    Erogazione: Unica soluzione
 
   III.A — Pompa di calore elettrica per climatizzazione invernale
     Formula: I = k * Ei * Ci * CC
@@ -117,7 +117,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 16.425,97 × 0,15 × 1,00 => 2463,90 €
     Risultato: I = k * Ei * Ci * CC = 2463,90 €
     Netto GSE: 2439,26 € (corrispettivo GSE: 24,64 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI

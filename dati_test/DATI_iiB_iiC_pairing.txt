@@ -89,7 +89,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(12.000,00, 25,00 × 800,00) × 0,64 => 7680,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 7680,00 €
     Netto GSE: 7603,20 € (corrispettivo GSE: 76,80 €)
-    Erogazione: 5 rate annuali
+    Erogazione: Unica soluzione
 
   II.C — Schermature e ombreggiamento solare
     Formula: I = min(spesa, superficie * cmax) * percentuale
@@ -97,7 +97,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(spesa, superficie * cmax) * percentuale = min(5000,00, 20,00 × 250,00) × 0,64 => 3200,00 €
     Risultato: I = min(spesa, superficie * cmax) * percentuale = 3200,00 €
     Netto GSE: 3168,00 € (corrispettivo GSE: 32,00 €)
-    Erogazione: 5 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI

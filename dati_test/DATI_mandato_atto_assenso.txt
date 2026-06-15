@@ -81,7 +81,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): k * Ei * Ci * CC = 1,00 × 20.449,00 × 0,15 × 1,00 => 3067,35 €
     Risultato: I = k * Ei * Ci * CC = 3067,35 €
     Netto GSE: 3036,68 € (corrispettivo GSE: 30,67 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI

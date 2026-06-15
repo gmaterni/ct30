@@ -92,7 +92,7 @@ PREVENTIVO
       Calcolo Incentivo Finale (I_tot): min(enza, min(spesa, potenza * cmax) * percentuale) = min(598,75, min(5000,00, 15,00 × 600,00) × 0,65) => 598,75 €
     Risultato: I = min(enza, min(spesa, potenza * cmax) * percentuale) = 598,75 €
     Netto GSE: 592,76 € (corrispettivo GSE: 5,99 €)
-    Erogazione: 2 rate annuali
+    Erogazione: Unica soluzione
 
 ----------------------------------------
   RISULTATI — DETTAGLIO CALCOLI
