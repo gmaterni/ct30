@@ -97,4 +97,4 @@ implementate. L'unica discrepanza documentale (P03 100%→65%) è già stata
 corretta in `PROBLEMATICHE.md`.
 
 Per i dettagli sulle regole business: `PROBLEMATICHE.md`.
-Per il divario normativa vs implementazione: `PROBLEMATICHE_CRITICHE.md`.
+Per le regole business critiche: `PROBLEMATICHE.md`.
