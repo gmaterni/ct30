@@ -20,7 +20,7 @@ Pure client-side SPA: vanilla ES2020+ modules, no bundler, no npm deps, all libr
 | Run test suite      | Serve `static/` via HTTP, open `/test/test_suite.html`         |
 | MS tests in console | `QaManager.runAllTests()` in browser devtools                  |
 
-`bin/` scripts are dev-only helpers (git push/pages, compress CSS/JS, generate test data). Prettier auto-runs via `opencode.jsonc` formatter.
+`tools/genera_dati_test.mjs` generates `dati_test/DATI_*.txt` from all JSON test scenarios. Prettier auto-runs via `opencode.jsonc` formatter.
 
 ## Code conventions
 
@@ -107,3 +107,17 @@ static/less/
 ```
 
 7 wizard phases: Pratica → Edificio → Anagrafiche → Interventi → Dati Tecnici → Economico → Riepilogo. Each has a "?" button (`.step-help-btn`, top-right) opening contextual help in a `UaWindowAdm` modal.
+
+## Verifica
+
+Dopo ogni modifica a `formula_engine.js`, `rules_engine.js`, `cross_rule_engine.js`,
+`wizard_manager.js` o `normativa.js`, eseguire il piano di verifica in `PIANO_VERIFICA.md`.
+
+Script chiave per la verifica pre/post:
+
+```
+node tools/genera_dati_test.mjs          # genera dati_test/DATI_*.txt
+```
+
+Prima delle correzioni: salvare `dati_test/` come baseline. Dopo le correzioni:
+rigenerare e fare `diff` con la baseline per rilevare solo le differenze attese.
