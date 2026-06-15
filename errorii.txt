@@ -1,9 +1,0 @@
-1. nela sezione privato residenziale, il 2° mostra una unica rata superiore a 15000 che è il massimo per una sola annualità
-il 3° test non ha la rata dell'incentivo
-
-2. nella sezione Impresa il 1° test non ha la rata dell'incentivo
-
-3. Nella sezione Terziario il 2° test ha una rata superiore a 15000 e il 3° test non sò il principio su come sono state divise le annualità
-
-4. Nella sezione Pubblica amministrazione e ETS il 1° - 4° - 5° test hanno un importo elevato non rateizzato.
-

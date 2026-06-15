@@ -82,9 +82,9 @@ Verificare che l'importo lordo per ogni test corrisponda ai valori attesi
 | B1    | T01  | III.A PdC aria/acqua 12kW         | Ci=0.15         | 3.260,16€                       |
 | B2    | T02  | III.A + II.H FV 50kWp             | Ci=0.06 / —     | 9.207,69€ / 0€ (blocco)         |
 | B3    | T03  | II.A isolamento pareti 200mq      | 60%             | 19.200,00€                      |
-| B4    | T04  | II.G ricarica + III.A PdC         | 48% / Ci=0.06   | 7.200,00€ / 13.564,68€          |
+| B4    | T04  | II.G ricarica + III.A PdC         | 45% / Ci=0.06   | 6.750,00€ / 13.564,68€          |
 | B5    | T05  | III.A PdC 40kW (>35kW)            | Ci=0.06         | 4.327,27€                       |
-| B6    | T07  | III.A+II.H+II.G+II.F+III.E        | 52/53/64/60%+Ci | 8.195+24.960+9.540+9.600+1.500€ |
+| B6    | T07  | III.A+II.H+II.G+II.F+III.E        | 50/50/64/60%+Ci | 8.195+24.000+9.000+9.600+1.500€ |
 | B7    | T08  | PA ≤15k: II.A + III.A             | 100% / Ci=0.06  | 72.000€ / 6.342,55€             |
 | B8    | T10  | ETS non econ: III.C + III.D       | 65% / 65%       | 3.108€ / 2.814€                 |
 | B9    | T12  | Impresa: II.A + III.A             | 63% / Ci=0.15   | 10.000€ / 3.826,22€             |
@@ -132,7 +132,7 @@ Verificare le 8 pratiche "Problematiche (R1–R10)" dalla sidebar.
 | D1    | P01  | R1 — Privato solo III     | 3.815,06€              | III.A PdC       |
 | D2    | P02  | R2 — Impresa Titolo V     | 9.207,69€              | III.A 45%       |
 | D3    | P03  | R3 — ETS non econ         | 19.500,00€             | II.A 65%        |
-| D4    | P04  | R4 — II.H → III.A pairing | 10.006,82€ + 7.800,00€ | III.A + II.H    |
+| D4    | P04  | R4 — II.H → III.A pairing | 10.006,82€ + 7.500,00€ | III.A + II.H    |
 | D5    | P05  | R5 — II.C → II.B pairing  | 7.680,00€ + 3.200,00€  | II.B + II.C     |
 | D6    | P06  | R6 — ESCO → EPC           | 8.368,64€              | PA+ESCO         |
 | D7    | P07  | R7 — PA comune ≤15k 100%  | 50.000,00€             | II.A isolamento |
@@ -168,8 +168,13 @@ diff -r dati_test_baseline/ dati_test/
 
 Il diff DEVE mostrare solo differenze attese:
 
-- Test che cambiano piano rate (T01, T04, T07, T09, T13): ora splittati correttamente
-- Altri test: nessuna differenza negli importi lordi
+- **Rateizzazione**: tutti i test passano da `Unica soluzione` a `X rate annuali` (FASE 1)
+- **PA/ETS**: rimangono `Unica soluzione` (accesso diretto)
+- **Importi lordi** cambiano solo per test con II.G o II.H (D3: made_in_eu rimosso)
+  - T04 (II.G): 7.200€ → 6.750€
+  - T07 (II.H+II.G): 24.960+9.540 → 24.000+9.000
+  - P04 (II.H): 7.800 → 7.500
+- **Test invariati**: nessuna differenza sugli importi di III.A, III.D, II.A, ecc.
 
 Se il diff mostra differenze su importi lordi in test non toccati → regressione.
 
