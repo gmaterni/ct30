@@ -200,17 +200,42 @@ Legenda ambiguità: 🟢 chiara | 🟡 ambigua | 🔴 conflitto normativo
 
 ---
 
+## 11. Zona assistita — Titolo II o anche Titolo III?
+
+**Complessità**: 🟢 bassa **Ambiguità**: 🔴 conflitto normativo
+
+**Problema**: Regole Applicative §4.2.1 limitano la maggiorazione zona assistita
+al solo Titolo II. Tuttavia il campo `zona_assistita_a` / `zona_assistita_c` è
+presente nelle schede tecniche di interventi di **entrambi i Titoli** (II e III),
+e `PREMIALITA_CONFIG` ha `applicabile_a: ["II.", "III."]`.
+
+**Dove**: `PREMIALITA_CONFIG.zona_assistita_{a,c}.applicabile_a` (normativa.js:70,77)
+
+**Ambiguità**: RA §4.2.1 dice "Titolo II", ma le schede tecniche mettono il campo
+anche su interventi III. Possibile che la norma intenda zone assistite _in generale_
+(art.107 TFUE) e che la limitazione al Titolo II sia solo per via del combinato
+disposto con altri articoli. Serve chiarimento GSE.
+
+**Decisione attuale**: mantenuto `applicabile_a: ["II.", "III."]` in attesa di
+chiarimento. Il filtro lato formula_engine esiste già (D4), basta restringere la
+lista.
+
+**Test**: Nessun test specifico — tutti i test con zona_assistita_a/c su interventi
+Titolo III (es. T04 III.A, T07 III.A+III.D) perderanno il bonus se ristretto.
+
+---
+
 ## Mappa cross-reference
 
-| Regola                | CRITICHE # | P1-P5  | Test suite   | JSON pratica                          |
-| --------------------- | ---------- | ------ | ------------ | ------------------------------------- |
-| R1 Privato solo III   | —          | —      | R1-1..R1-6   | `test_p01_privato_titolo3.json`       |
-| R2 Impresa Titolo V   | #3, #4, #7 | P1     | R2-1..R2-8   | `test_p02_impresa_titolo_v.json`      |
-| R3 ETS                | #5, #8     | —      | R3-1..R3-6   | `test_p03_ets_non_economico.json`     |
-| R4 II.G/II.H→III.A    | —          | —      | R4-1..R4-9   | `test_p04_iiH_iiiA_pairing.json`      |
-| R5 II.C→II.B          | #6         | —      | R4-8/R4-9    | `test_p05_iiB_iiC_pairing.json`       |
-| R6 ESCO→EPC           | #11        | P2, P5 | R6-1..R6-4   | `test_p06_esco_epc.json`              |
-| R7 Cap intensità      | #3, #4, #9 | P3     | R7-1..R7-5   | `test_p07_pa_comune_100percento.json` |
-| R8 GSE fee            | —          | —      | R8-1..R8-2   | —                                     |
-| R9 Variazioni >20%    | #12        | P4     | R9-1..R9-6   | —                                     |
-| R10 Mandato + assenso | #14        | —      | R10-1..R10-5 | `test_p10_mandato_atto_assenso.json`  |
+| Regola                | P1-P5  | Test suite   | JSON pratica                          |
+| --------------------- | ------ | ------------ | ------------------------------------- |
+| R1 Privato solo III   | —      | R1-1..R1-6   | `test_p01_privato_titolo3.json`       |
+| R2 Impresa Titolo V   | P1     | R2-1..R2-8   | `test_p02_impresa_titolo_v.json`      |
+| R3 ETS                | —      | R3-1..R3-6   | `test_p03_ets_non_economico.json`     |
+| R4 II.G/II.H→III.A    | —      | R4-1..R4-9   | `test_p04_iiH_iiiA_pairing.json`      |
+| R5 II.C→II.B          | —      | R4-8/R4-9    | `test_p05_iiB_iiC_pairing.json`       |
+| R6 ESCO→EPC           | P2, P5 | R6-1..R6-4   | `test_p06_esco_epc.json`              |
+| R7 Cap intensità      | P3     | R7-1..R7-5   | `test_p07_pa_comune_100percento.json` |
+| R8 GSE fee            | —      | R8-1..R8-2   | —                                     |
+| R9 Variazioni >20%    | P4     | R9-1..R9-6   | —                                     |
+| R10 Mandato + assenso | —      | R10-1..R10-5 | `test_p10_mandato_atto_assenso.json`  |
