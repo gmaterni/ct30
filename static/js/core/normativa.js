@@ -16,7 +16,7 @@
 /**
  * Configurazioni Premialità (Bonus) CT 3.0.
  */
-export const NORMATIVA_VERSION = "v2-20260609";
+export const NORMATIVA_VERSION = "v2-20260615";
 
 export const PREMIALITA_CONFIG = {
   made_in_eu: {

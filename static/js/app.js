@@ -66,8 +66,8 @@ const _renderWelcomeScreen = function () {
       "</div>";
   }
 
-  const APPVERSION = "0.1.8";
-  const APPDATE = "13-06-2026";
+  const APPVERSION = "0.1.9";
+  const APPDATE = "15-06-2026";
 
   const html =
     '<article><div id="welcome-screen" style="text-align:center;padding-top:60px;">' +
