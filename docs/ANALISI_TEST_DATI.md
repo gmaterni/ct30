@@ -13,7 +13,7 @@ contro le regole business CT3.0.
 | R1 — Privato resid. solo Titolo III | R1-1..R1-6 (6 test)                  | `test_p01_privato_titolo3.json`       | ✅ 3.815,06€ (III.A)          |
 | R2 — Impresa Titolo V               | R2-1..R2-8 (8 test)                  | `test_p02_impresa_titolo_v.json`      | ✅ 9.207,69€ (III.A 45%)      |
 | R3 — ETS non econ/economico         | R3-1..R3-6 (6 test)                  | `test_p03_ets_non_economico.json`     | ✅ 19.500,00€ (II.A 65%)      |
-| R4 — II.G/II.H → III.A              | R4-1..R4-9 (9 test, incl. II.C→II.B) | `test_p04_iiH_iiiA_pairing.json`      | ✅ 10.006,82€ + 7.800,00€     |
+| R4 — II.G/II.H → III.A              | R4-1..R4-9 (9 test, incl. II.C→II.B) | `test_p04_iiH_iiiA_pairing.json`      | ✅ 10.006,82€ + 7.500,00€     |
 | R5 — II.C → II.B                    | Incluso in R4-8/R4-9                 | `test_p05_iiB_iiC_pairing.json`       | ✅ 7.680,00€ + 3.200,00€      |
 | R6 — ESCO → EPC                     | R6-1..R6-4 (4 test)                  | `test_p06_esco_epc.json`              | ✅ 8.368,64€ (PA+ESCO)        |
 | R7 — Incentivo max                  | R7-1..R7-5 (5 test)                  | `test_p07_pa_comune_100percento.json` | ✅ 50.000,00€ (100%)          |
@@ -33,10 +33,10 @@ contro le regole business CT3.0.
 | **T01**  | Privato residenziale         | III.A PdC aria/acqua 12kW                   | Ci=0.15         | 3.260,16€                       | —                                               | ✅                                          |
 | **T02**  | Privato terziario            | III.A + II.H FV 50kWp                       | Ci=0.06 / —     | 9.207,69€ / 0€                  | accumulo 20kWh < 25kWh (ratio 0.40 < 0.50)      | ⏸ blocco atteso                             |
 | **T03**  | Privato terziario            | II.A isolamento pareti 200mq                | 60%             | 19.200,00€                      | —                                               | ✅                                          |
-| **T04**  | Privato terziario            | II.G ricarica + III.A PdC                   | 48% / Ci=0.06   | 7.200,00€ / 13.564,68€          | —                                               | ✅                                          |
+| **T04**  | Privato terziario            | II.G ricarica + III.A PdC                   | 45% / Ci=0.06   | 6.750,00€ / 13.564,68€          | —                                               | ✅                                          |
 | **T05**  | Privato residenziale         | III.A PdC 40kW (>35kW)                      | Ci=0.06         | 4.327,27€                       | —                                               | ✅                                          |
-| **T06**  | Privato residenziale         | III.A PdC 40kW (>35kW)                      | Ci=0.06         | 4.327,27€                       | —                                               | ✅                                          |
-| **T07**  | Privato terziario            | III.A+II.H+II.G+II.F+III.E                  | 52/53/64/60%+Ci | 8.195+24.960+9.540+9.600+1.500€ | —                                               | ✅                                          |
+| **T06**  | Privato residenziale         | III.A PdC 12kW                              | Ci=0.15         | 3.260,16€                       | —                                               | ✅                                          |
+| **T07**  | Privato terziario            | III.A+II.H+II.G+II.F+III.E                  | 50/50/64/60%+Ci | 8.195+24.000+9.000+9.600+1.500€ | —                                               | ✅                                          |
 | **T08**  | PA comune≤15k                | II.A + III.A                                | 100% / Ci=0.06  | 72.000€ / 6.342,55€             | —                                               | ✅                                          |
 | **T09**  | Privato residenziale         | II.B + II.C                                 | 59% / 59%       | 12.390€ / 2.950€                | —                                               | ✅ (calc.) ⚠️ (wizard R1 blocca privato+II) |
 | **T10**  | ETS non economico            | III.C biomassa + III.D solare               | 65% / 65%       | 3.108€ / 2.814€                 | —                                               | ✅                                          |
@@ -74,7 +74,7 @@ T23 (volume), T28 (rapporto ibrido), T29 (DEC).
 | **P01**  | Privato residenziale | III.A PdC 12kW aria/acqua   | Ci=0.15     | 3.815,06€              | ✅    |
 | **P02**  | Impresa              | III.A PdC 100kW acqua/acqua | Ci=0.06     | 9.207,69€              | ✅    |
 | **P03**  | ETS non economico    | II.A isolamento 200mq       | 65%         | 19.500,00€             | ✅    |
-| **P04**  | Privato terziario    | III.A + II.H FV 10kWp       | Ci=0.15/52% | 10.006,82€ + 7.800,00€ | ✅    |
+| **P04**  | Privato terziario    | III.A + II.H FV 10kWp       | Ci=0.15/50% | 10.006,82€ + 7.500,00€ | ✅    |
 | **P05**  | Privato residenziale | II.B + II.C                 | 64%/64%     | 7.680,00€ + 3.200,00€  | ✅    |
 | **P06**  | PA (SA), ESCO (SR)   | III.A PdC 60kW              | Ci=0.06     | 8.368,64€              | ✅    |
 | **P07**  | PA comune≤15k        | II.A isolamento 300mq       | 100%        | 50.000,00€             | ✅    |

@@ -228,6 +228,71 @@ diritto reale o personale di godimento".
 
 ---
 
+## 15. PA/ETS: unica rata anche in accesso indiretto
+
+**Corrisponde a**: D1
+
+**Normativa**: Art.11 c.6: "per PA ed ETS non economici con accesso diretto,
+l'incentivo è erogato in un'unica soluzione".
+
+**Implementazione originale**: Unica rata per tutti i PA/ETS, indipendentemente
+da `modalita_accesso`.
+
+**✅ RISOLTO (D1)**: Aggiunto parametro `modalitaAccesso` a
+`_calculatePaymentPlan` in `formula_engine.js` e a `_calculateOverallPaymentPlan`
+in `wizard_manager.js`. La condizione per l'unica rata ora richiede
+`_isPAorETS(soggettoType) && modalitaAccesso === "diretto"`.
+
+---
+
+## 16. III.D: durata determinata con soglia potenza 35kW anziché superficie 50m²
+
+**Corrisponde a**: D2
+
+**Normativa**: Tabella 13 Regole Applicative: III.D (solare termico
+prestazionale) usa superficie lorda mq con soglia 50m² per durata 2 vs 5 anni.
+
+**Implementazione originale**: `_calculatePaymentPlan` usava
+`SOGLIA_POTENZA_KW` (35kW) per tutti gli interventi, incluso III.D dove
+`_getPotenzaNominaleKw` restituiva la superficie lorda.
+
+**✅ RISOLTO (D2)**: `_calculatePaymentPlan` ora verifica se l'intervento ha
+`soglia_superficie` in `RULES.interventi` e la usa come soglia. III.D ha
+`soglia_superficie: 50`. Confronto cambiato da `<` a `≤`.
+
+---
+
+## 17. Made in EU: II.G e II.H inclusi
+
+**Corrisponde a**: D3
+
+**Normativa**: Regole Applicative §4.2: made_in_eu è "maggiorazione del 10%
+per interventi art.5, comma 1, lett. a)-f)" — Titolo II, lettere A–F.
+
+**Implementazione originale**: `PREMIALITA_CONFIG.made_in_eu.applicabile_a`
+includeva anche `"II.G"` e `"II.H"`.
+
+**✅ RISOLTO (D3)**: Rimossi `"II.G"` e `"II.H"` dalla lista. Ora include solo
+II.A–II.F.
+
+---
+
+## 18. Zona assistita: filtro applicabile_a mancante
+
+**Corrisponde a**: D4
+
+**Normativa**: Regole Applicative §4.2.1: zona assistita si applica solo agli
+interventi del Titolo II.
+
+**Implementazione originale**: `zona_assistita_a` e `zona_assistita_c` erano
+applicati a qualsiasi intervento con il flag attivo, senza filtro per codice.
+
+**✅ RISOLTO (D4)**: Aggiunto filtro `applicabile_a.some(p ⇒
+code.startsWith(p) || code === p)` in `_calculatePremialita` per entrambe le
+zone assistite. `applicabile_a = ["II.", "III."]`.
+
+---
+
 ## Riepilogo
 
 | #   | Criticità                                     | Regola | Px  | Stato      |
@@ -246,3 +311,7 @@ diritto reale o personale di godimento".
 | 12  | Variazioni >20%: regola opzionale             | R9     | P4  | ✅ Risolto |
 | 13  | perc_multi: III.D e III.F esclusi             | R4,R5  | —   | ✅ Risolto |
 | 14  | Atto assenso: diritto reale non coperto       | R10    | —   | ✅ Risolto |
+| 15  | PA/ETS unica rata anche in accesso indiretto  | D1     | —   | ✅ Risolto |
+| 16  | III.D durata: soglia 35kW anziché 50m²        | D2     | —   | ✅ Risolto |
+| 17  | Made in EU: II.G e II.H inclusi               | D3     | —   | ✅ Risolto |
+| 18  | Zona assistita: filtro applicabile_a mancante | D4     | —   | ✅ Risolto |
