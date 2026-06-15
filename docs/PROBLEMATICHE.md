@@ -14,9 +14,9 @@ Legenda ambiguità: 🟢 chiara | 🟡 ambigua | 🔴 conflitto normativo
 
 **Problema**: Un Soggetto Attuatore privato in ambito residenziale non può accedere a interventi di Titolo II. Solo Titolo III.
 
-**Dove**: `MATRICE_SA_INTERVENTI.privato_residenziale.titolo_ii: false` (normativa.js:652), `_isSubjectCompatible()` (rules_engine.js:182), `validateInterventiPerSoggetto()` (rules_engine.js:1165)
+**Dove**: `MATRICE_SA_INTERVENTI.privato_residenziale.titolo_ii: false` (normativa.js:641), `_isSubjectCompatible()` (rules_engine.js:182), `validateInterventiPerSoggetto()` (rules_engine.js:1165)
 
-**Ambiguità**: Nessuna — la matrice SA è chiara. Il rischio è che l'utente confonda "privato residenziale" con "privato terziario" (che ha `titolo_ii: true`, normativa.js:658). Anche i condomini sono codificati come `privato_residenziale`.
+**Ambiguità**: Nessuna — la matrice SA è chiara. Il rischio è che l'utente confonda "privato residenziale" con "privato terziario" (che ha `titolo_ii: true`, normativa.js:647). Anche i condomini sono codificati come `privato_residenziale`.
 
 **Impatto**: Se non applicata → privato ottiene incentivi per interventi non ammessi (es. isolamento II.A in casa singola). Blocco a livello wizard, ma il formula engine calcola comunque (T09 nel test data lo dimostra).
 
@@ -30,7 +30,7 @@ Legenda ambiguità: 🟢 chiara | 🟡 ambigua | 🔴 conflitto normativo
 
 **Problema**: 10 vincoli aggiuntivi (richiesta preliminare via PEC, riduzione EP ≥10%, APE, divieto fossili, intensità ridotta 25/30/45%, limite 30M€, conservazione 10 anni, maggiorazione dimensionale, cap 65%).
 
-**Dove**: `SOTTO_CATEGORIE_SA.impresa.regole` (normativa.js:774), `validateTitoloV()` (rules_engine.js:863)
+**Dove**: `SOTTO_CATEGORIE_SA.impresa.regole` (normativa.js:765), `validateTitoloV()` (rules_engine.js:863)
 
 **Ambiguità**:
 
@@ -51,7 +51,7 @@ Legenda ambiguità: 🟢 chiara | 🟡 ambigua | 🔴 conflitto normativo
 
 **Problema**: Due categorie ETS con regimi opposti. ETS non economico = PA (100%, prenotazione, Titolo II+III). ETS economico = Impresa (richiesta preliminare, solo Titolo III, IVA esclusa).
 
-**Dove**: `MATRICE_SA_INTERVENTI.ets_non_economico/economico` (normativa.js:662/668), `SOGGETTI_CONFIG` (normativa.js:541/555), `_resolvePercentuale()` (formula_engine.js:284)
+**Dove**: `MATRICE_SA_INTERVENTI.ets_non_economico/economico` (normativa.js:653/659), `SOGGETTI_CONFIG` (normativa.js:465), `_resolvePercentuale()` (formula_engine.js:303)
 
 **Ambiguità**:
 
@@ -72,14 +72,14 @@ Legenda ambiguità: 🟢 chiara | 🟡 ambigua | 🔴 conflitto normativo
 
 **Problema**: II.G e II.H non sono interventi autonomi. Richiedono III.A **elettrica pura** con **sostituzione integrale**.
 
-**Dove**: `INTERVENTI.II.G/II.H.interventi_collegati_obbligatori` (normativa.js:218/231), `_checkTechnicalConstraints()` (cross_rule_engine.js:52), `_ELETTRICHE_TIPOLOGIE` (cross_rule_engine.js:8-16)
+**Dove**: `INTERVENTI.II.G/II.H.interventi_collegati_obbligatori` (normativa.js:207/220), `_checkTechnicalConstraints()` (cross_rule_engine.js:52), `_ELETTRICHE_TIPOLOGIE` (cross_rule_engine.js:8)
 
 **Ambiguità**:
 
 - La sostituzione integrale (`sostituisce_esistente = true`) non è documentata in `INTERVENTI` ma è hard-coded in `_checkTechnicalConstraints()`.
 - Per II.H (FV): vincolo "incentivo FV ≤ incentivo III.A" — non codificato esplicitamente ma rispettato dai coefficienti.
 - Solo III.A "elettrica pura" (tipologie elencate in `_ELETTRICHE_TIPOLOGIE`) è ammessa — III.B/III.C/III.F non trainano II.H.
-- II.H (FV) ha anche requisito potenza 2-1000 kW (normativa.js:4249, sezione TEST_SCENARIOS fornitura III.F).
+- II.H (FV) ha anche requisito potenza 2-1000 kW (normativa.js:4240, sezione TEST_SCENARIOS fornitura III.F).
 
 **Impatto**: Medio — blocca interventi se pairing errato, ma errore rilevabile in fase di compilazione.
 
@@ -93,7 +93,7 @@ Legenda ambiguità: 🟢 chiara | 🟡 ambigua | 🔴 conflitto normativo
 
 **Problema**: II.C non può essere installato da solo. Richiede II.B.
 
-**Dove**: `INTERVENTI.II.C.interventi_collegati_obbligatori` (normativa.js:1094), `_checkDependencies()` (cross_rule_engine.js:18)
+**Dove**: `INTERVENTI.II.C.interventi_collegati_obbligatori` (normativa.js:1065), `_checkDependencies()` (cross_rule_engine.js:18)
 
 **Ambiguità**:
 
@@ -132,7 +132,7 @@ Legenda ambiguità: 🟢 chiara | 🟡 ambigua | 🔴 conflitto normativo
 
 **Problema**: Cap 65% generalizzato, 100% per PA/ETS non econ con comune≤15k o scuola/ospedale. II.D (nZEB) per PA forza 100%. Il cap è l'ultimo controllo dopo maggiorazioni e premialità.
 
-**Dove**: `INTENSITA_MASSIMA` (normativa.js:129), `_resolvePercentuale()` (formula_engine.js:284-386)
+**Dove**: `INTENSITA_MASSIMA` (normativa.js:122), `_resolvePercentuale()` (formula_engine.js:303-385)
 
 **Ambiguità**:
 
@@ -153,7 +153,7 @@ Legenda ambiguità: 🟢 chiara | 🟡 ambigua | 🔴 conflitto normativo
 
 **Problema**: `min(incentivo × 0.01, 250)` sull'incentivo lordo.
 
-**Dove**: `_calculateCorrispettivoGSE()` (formula_engine.js:267)
+**Dove**: `_calculateCorrispettivoGSE()` (formula_engine.js:286)
 
 **Ambiguità**: Nessuna — formula hardcoded e chiara. L'unica attenzione: se incentivo lordo > 25.000€, la commissione è sempre 250€ (massimale).
 
@@ -169,7 +169,7 @@ Legenda ambiguità: 🟢 chiara | 🟡 ambigua | 🔴 conflitto normativo
 
 **Problema**: Se `|variazione% preventivo vs spese| > 20` → necessaria approvazione GSE. Soglia STRETTAMENTE maggiore (20.0 esatta non scatta).
 
-**Dove**: `TERMINI_CONFIG.variazione_soglia_perc: 20` (normativa.js:103), `validateTermini()` (rules_engine.js:1341)
+**Dove**: `TERMINI_CONFIG.variazione_soglia_perc: 20` (normativa.js:87), `validateTermini()` (rules_engine.js:1341)
 
 **Ambiguità**: Nessuna — formula chiara. Integrata nel wizard dal P4: `_validateStep5` calcola automaticamente la variazione e chiama `validateTermini`.
 
@@ -185,7 +185,7 @@ Legenda ambiguità: 🟢 chiara | 🟡 ambigua | 🔴 conflitto normativo
 
 **Problema**: Due obblighi documentali separati. Mandato: per tutti gli SR non-PA. Atto assenso: se proprietario ≠ richiedente (anche se coincidenza anagrafica non dichiarata).
 
-**Dove**: `validateAnagrafiche()` (rules_engine.js:547 — mandato riga 719-724, atto assenso riga 635)
+**Dove**: `validateAnagrafiche()` (rules_engine.js:547 — mandato riga 722-724, atto assenso riga 635)
 
 **Ambiguità**:
 
@@ -209,7 +209,7 @@ al solo Titolo II. Tuttavia il campo `zona_assistita_a` / `zona_assistita_c` è
 presente nelle schede tecniche di interventi di **entrambi i Titoli** (II e III),
 e `PREMIALITA_CONFIG` aveva `applicabile_a: ["II.", "III."]`.
 
-**Dove**: `PREMIALITA_CONFIG.zona_assistita_{a,c}.applicabile_a` (normativa.js:70,77)
+**Dove**: `PREMIALITA_CONFIG.zona_assistita_{a,c}.applicabile_a` (normativa.js:74,81)
 
 **Ambiguità**: RA §4.2.1 dice "Titolo II", ma le schede tecniche mettono il campo
 anche su interventi III. Risolta allineando il codice alle RA.
