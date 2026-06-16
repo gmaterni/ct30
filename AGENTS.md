@@ -6,7 +6,7 @@ Pure client-side SPA: vanilla ES2020+ modules, no bundler, no npm deps, all libr
 
 ## Entrypoints
 
-- `static/index.html` → `<script type="module" src="js/app.js?0.1.8">`
+- `static/index.html` → `<script type="module" src="js/app.js?0.1.9">`
 - Test pages: `static/test/test_suite.html` (4 groups), `test_problematiche.html`, `static/test/index.html`
 - Root `index.html` is a redirect to `static/index.html` — not the real entry
 
@@ -21,6 +21,8 @@ Pure client-side SPA: vanilla ES2020+ modules, no bundler, no npm deps, all libr
 | MS tests in console | `QaManager.runAllTests()` in browser devtools                  |
 
 `tools/genera_dati_test.mjs` generates `dati_test/DATI_*.txt` from all JSON test scenarios. Prettier auto-runs via `opencode.jsonc` formatter.
+
+Note: `static/css/` is not tracked — LESS compiles in-browser via `less/less.js` during dev. The `lessc`/`cleancss` commands above generate static CSS on-demand for production.
 
 ## Code conventions
 
@@ -68,9 +70,9 @@ Business rules SSOT: `static/js/core/normativa.js` — 21 exports including `RUL
 
 When updating app version, update in 3 places:
 
-1. `static/index.html` — query string on `js/app.js?0.1.8`
+1. `static/index.html` — query string on `js/app.js?0.1.9`
 2. `static/js/app.js` — `APPVERSION` and `APPDATE` in `_renderWelcomeScreen()`
-3. `static/js/core/normativa.js` — `NORMATIVA_VERSION` (normative version, not app)
+3. `static/js/core/normativa.js` — `NORMATIVA_VERSION` (format `v2-YYYYMMDD`, normative version not app)
 
 ## Tests
 
@@ -78,7 +80,7 @@ Three manual browser-based mechanisms:
 
 1. **39 JSON scenarios** — `static/data/tests/test_*.json` (31 principal) + `test_p*.json` (8 problematiche), loaded via sidebar "pratiche-test" in wizard
 2. **25 MS scenarios** — embedded in `normativa.js` as `TEST_SCENARIOS`, run via `QaManager.runAllTests()` in console
-3. **Test suite pages** — `static/test/test_suite.html` (4 groups), `test_problematiche.html`, `index.html`. **Require HTTP server** (not `file://`). Use `_cacheBustImport()` — Ctrl+F5 may be needed after module changes.
+3. **Test suite pages** — `static/test/test_suite.html` (4 groups), `test_problematiche.html`, `index.html`. **Require HTTP server** (not `file://`). Test pages define a local `_cacheBustImport()` helper — Ctrl+F5 may be needed after module changes.
 
 ## Wizard navigation (header bar buttons)
 
